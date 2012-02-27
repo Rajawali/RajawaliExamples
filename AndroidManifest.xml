@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.monyetmabuk.rajawali.tutorials"
-      android:versionCode="1"
+      android:versionCode="2"
       android:versionName="1.0">
 
 	<uses-sdk android:minSdkVersion="10" />
@@ -24,6 +24,7 @@
         <activity android:name="RajawaliUIElementsActivity"></activity>
         <activity android:name="Rajawali2DActivity"></activity>
         <activity android:name="RajawaliAccelerometerActivity"></activity>
+        <activity android:name="RajawaliMoreParticlesActivity"></activity>
 
     </application>
 </manifest>
