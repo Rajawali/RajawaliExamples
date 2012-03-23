@@ -25,6 +25,7 @@
         <activity android:name="Rajawali2DActivity"></activity>
         <activity android:name="RajawaliAccelerometerActivity"></activity>
         <activity android:name="RajawaliMoreParticlesActivity"></activity>
+        <activity android:name="RajawaliObjectPickingActivity"></activity>
 
     </application>
 </manifest>

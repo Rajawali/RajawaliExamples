@@ -42,7 +42,9 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("09. Using The Accelerometer",
 					RajawaliAccelerometerActivity.class, "RajawaliAccelerometerActivity"),
 			new ExampleItem("10. More Particles",
-					RajawaliMoreParticlesActivity.class, "RajawaliMoreParticlesActivity")
+					RajawaliMoreParticlesActivity.class, "RajawaliMoreParticlesActivity"),
+			new ExampleItem("11. Object Picking",
+					RajawaliObjectPickingActivity.class, "RajawaliObjectPickingActivity")
 
 	};
 

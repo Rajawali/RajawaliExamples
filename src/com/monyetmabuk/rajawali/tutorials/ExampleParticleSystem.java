@@ -9,6 +9,7 @@ import rajawali.Camera;
 import rajawali.materials.ParticleMaterial;
 import rajawali.math.Number3D;
 import rajawali.primitives.Particle;
+import rajawali.util.ObjectColorPicker.ColorPickerInfo;
 
 public class ExampleParticleSystem extends Particle {
 	protected Number3D mFriction;
@@ -85,10 +86,10 @@ public class ExampleParticleSystem extends Particle {
 	
 	@Override
 	public void render(Camera camera, float[] projMatrix, float[] vMatrix,
-			final float[] parentMatrix) {
+			final float[] parentMatrix, ColorPickerInfo pickerInfo) {
 		mParticleShader.setFriction(mFriction);
 		mParticleShader.setVelocity(mVelocityBuffer);
 		mParticleShader.setMultiParticlesEnabled(true);
-		super.render(camera, projMatrix, vMatrix, parentMatrix);
+		super.render(camera, projMatrix, vMatrix, parentMatrix, pickerInfo);
 	}
 }
