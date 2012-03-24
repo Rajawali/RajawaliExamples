@@ -1,4 +1,4 @@
-package com.monyetmabuk.tutorials.rajawali.tutorials.ui;
+package com.monyetmabuk.rajawali.tutorials.ui;
 
 import java.util.List;
 

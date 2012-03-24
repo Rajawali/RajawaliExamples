@@ -28,6 +28,7 @@ public final class R {
         public static final int posz=0x7f02000e;
         public static final int rajawali=0x7f02000f;
         public static final int rajawali_outline=0x7f020010;
+        public static final int rajawali_tex=0x7f020011;
     }
     public static final class id {
         public static final int imageView1=0x7f070000;
@@ -39,6 +40,8 @@ public final class R {
     public static final class raw {
         public static final int monkey=0x7f040000;
         public static final int monkey_ser=0x7f040001;
+        public static final int multiobjects_mtl=0x7f040002;
+        public static final int multiobjects_obj=0x7f040003;
     }
     public static final class string {
         public static final int app_name=0x7f050000;

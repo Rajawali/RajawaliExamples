@@ -14,7 +14,7 @@ import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.monyetmabuk.tutorials.rajawali.tutorials.ui.ExamplesAdapter;
+import com.monyetmabuk.rajawali.tutorials.ui.ExamplesAdapter;
 
 public class RajawaliExamplesActivity extends ListActivity {
 	private ExampleItem[] mItems = {
