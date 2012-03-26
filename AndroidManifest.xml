@@ -28,6 +28,7 @@
         <activity android:name="RajawaliBezierActivity"></activity>
         <activity android:name=".RajawaliAnimationActivity"></activity>
         <activity android:name="RajawaliBumpmapActivity"></activity>
+        <activity android:name="RajawaliObjectPickingActivity"></activity>
 
     </application>
 </manifest>
