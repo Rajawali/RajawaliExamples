@@ -46,8 +46,9 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("11. Object Picking",
 					RajawaliObjectPickingActivity.class, "RajawaliObjectPickingActivity"),
 			new ExampleItem("12. Animation",
-					RajawaliAnimationActivity.class, "RajawaliAnimationActivity")
-
+					RajawaliAnimationActivity.class, "RajawaliAnimationActivity"),
+			new ExampleItem("13. Bump Mapping",
+					RajawaliBumpmapActivity.class, "RajawaliBumpmapActivity")
 	};
 
 	@Override

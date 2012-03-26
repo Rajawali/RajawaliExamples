@@ -27,6 +27,7 @@
         <activity android:name="RajawaliMoreParticlesActivity"></activity>
         <activity android:name="RajawaliObjectPickingActivity"></activity>
         <activity android:name=".RajawaliAnimationActivity"></activity>
+        <activity android:name="RajawaliBumpmapActivity"></activity>
 
     </application>
 </manifest>
