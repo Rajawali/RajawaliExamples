@@ -48,7 +48,9 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("12. Animation",
 					RajawaliAnimationActivity.class, "RajawaliAnimationActivity"),
 			new ExampleItem("13. Bump Mapping",
-					RajawaliBumpmapActivity.class, "RajawaliBumpmapActivity")
+					RajawaliBumpmapActivity.class, "RajawaliBumpmapActivity"),
+			new ExampleItem("14. Bezier Path Animation",
+					RajawaliBezierActivity.class, "RajawaliBezierActivity")
 	};
 
 	@Override
