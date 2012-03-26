@@ -99,7 +99,6 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 		anim.setTransformable3D(mMonkey);
 		queue.addAnimation(anim);
 		
-		
 		queue.start();
 
 		((RajawaliExampleActivity) mContext).hideLoader();
