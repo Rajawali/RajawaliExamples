@@ -81,12 +81,12 @@ public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 		}
 		
 		mHalfSphere1.setMaterial(new BumpmapMaterial());
-		mHalfSphere1.addTexture(mTextureManager.addTexture(mDiffuseTexture1, TextureType.DIFFUSE, true, true));
-		mHalfSphere1.addTexture(mTextureManager.addTexture(mBumpTexture1, TextureType.BUMP, false, true));
+		mHalfSphere1.addTexture(mTextureManager.addTexture(mDiffuseTexture1, TextureType.DIFFUSE, true, false));
+		mHalfSphere1.addTexture(mTextureManager.addTexture(mBumpTexture1, TextureType.BUMP, false, false));
 		
 		mHalfSphere2.setMaterial(new BumpmapPhongMaterial());
-		mHalfSphere2.addTexture(mTextureManager.addTexture(mDiffuseTexture2, TextureType.DIFFUSE, true, true));
-		mHalfSphere2.addTexture(mTextureManager.addTexture(mBumpTexture2, TextureType.BUMP, false, true));
+		mHalfSphere2.addTexture(mTextureManager.addTexture(mDiffuseTexture2, TextureType.DIFFUSE, true, false));
+		mHalfSphere2.addTexture(mTextureManager.addTexture(mBumpTexture2, TextureType.BUMP, false, false));
 
 		Animation3D lightAnim = new RotateAroundAnimation3D(new Number3D(0, 0, 0), Axis.Z, 4);
 		lightAnim.setDuration(5000);
