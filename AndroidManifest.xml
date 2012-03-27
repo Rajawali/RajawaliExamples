@@ -29,6 +29,6 @@
         <activity android:name="RajawaliAnimationActivity"></activity>
         <activity android:name="RajawaliBumpmapActivity"></activity>
         <activity android:name="RajawaliObjectPickingActivity"></activity>
-
+        <activity android:name="RajawaliToonShadingActivity"></activity>
     </application>
 </manifest>
