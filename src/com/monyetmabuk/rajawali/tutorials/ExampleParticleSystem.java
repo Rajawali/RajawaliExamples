@@ -6,6 +6,7 @@ import java.nio.FloatBuffer;
 
 import android.opengl.GLES20;
 import rajawali.Camera;
+import rajawali.Geometry3D;
 import rajawali.materials.ParticleMaterial;
 import rajawali.math.Number3D;
 import rajawali.primitives.Particle;
@@ -66,7 +67,7 @@ public class ExampleParticleSystem extends Particle {
 		}
 		
 		mVelocityBuffer = ByteBuffer
-				.allocateDirect(velocity.length * FLOAT_SIZE_BYTES)
+				.allocateDirect(velocity.length * Geometry3D.FLOAT_SIZE_BYTES)
 				.order(ByteOrder.nativeOrder()).asFloatBuffer();
 		mVelocityBuffer.put(velocity).position(0);
 		
