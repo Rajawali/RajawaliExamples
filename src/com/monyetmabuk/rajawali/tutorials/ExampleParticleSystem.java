@@ -4,13 +4,13 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
-import android.opengl.GLES20;
 import rajawali.Camera;
 import rajawali.Geometry3D;
 import rajawali.materials.ParticleMaterial;
 import rajawali.math.Number3D;
 import rajawali.primitives.Particle;
 import rajawali.util.ObjectColorPicker.ColorPickerInfo;
+import android.opengl.GLES20;
 
 public class ExampleParticleSystem extends Particle {
 	protected Number3D mFriction;
@@ -47,7 +47,7 @@ public class ExampleParticleSystem extends Particle {
 			
 			velocity[index] = -.5f + ((float)Math.random() * 1f);
 			velocity[index + 1] = -.5f + ((float)Math.random() * 1f);
-			velocity[index + 2] = .5f + ((float)Math.random() * 1f);
+			velocity[index + 2] = ((float)Math.random() * 1f);
 			
 			normals[index] = 0;
 			normals[index + 1] = 0;
@@ -78,7 +78,6 @@ public class ExampleParticleSystem extends Particle {
 	
 	public void setTime(float time) {
 		mTime = time;
-		mParticleShader.setTime(mTime);
 	}
 	
 	public float getTime() {
@@ -86,11 +85,17 @@ public class ExampleParticleSystem extends Particle {
 	}
 	
 	@Override
-	public void render(Camera camera, float[] projMatrix, float[] vMatrix,
-			final float[] parentMatrix, ColorPickerInfo pickerInfo) {
+	protected void setShaderParams(Camera camera) {
+		super.setShaderParams(camera);
 		mParticleShader.setFriction(mFriction);
 		mParticleShader.setVelocity(mVelocityBuffer);
 		mParticleShader.setMultiParticlesEnabled(true);
+		mParticleShader.setTime(mTime);
+	}
+	
+	@Override
+	public void render(Camera camera, float[] projMatrix, float[] vMatrix,
+			final float[] parentMatrix, ColorPickerInfo pickerInfo) {
 		super.render(camera, projMatrix, vMatrix, parentMatrix, pickerInfo);
 	}
 }

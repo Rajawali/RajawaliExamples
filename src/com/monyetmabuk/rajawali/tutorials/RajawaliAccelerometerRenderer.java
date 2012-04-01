@@ -23,7 +23,7 @@ public class RajawaliAccelerometerRenderer extends RajawaliRenderer {
 
 	public RajawaliAccelerometerRenderer(Context context) {
 		super(context);
-		setFrameRate(30);
+		setFrameRate(60);
 		mClearChildren = false;
 		mAccValues = new Number3D();
 	}

@@ -17,7 +17,7 @@ public class RajawaliCustomShaderRenderer extends RajawaliRenderer {
 	
 	public RajawaliCustomShaderRenderer(Context context) {
 		super(context);
-		setFrameRate(30);
+		setFrameRate(60);
 	}
 	
 	@Override

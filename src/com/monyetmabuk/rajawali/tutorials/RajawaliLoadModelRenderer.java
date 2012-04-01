@@ -20,7 +20,7 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 
 	public RajawaliLoadModelRenderer(Context context) {
 		super(context);
-		setFrameRate(30);
+		setFrameRate(60);
 		mClearChildren = false;
 	}
 

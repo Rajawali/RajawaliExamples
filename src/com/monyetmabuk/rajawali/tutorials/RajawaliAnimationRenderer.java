@@ -29,7 +29,7 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 
 	public RajawaliAnimationRenderer(Context context) {
 		super(context);
-		setFrameRate(30);
+		setFrameRate(60);
 		mClearChildren = false;
 	}
 

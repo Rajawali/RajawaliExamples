@@ -18,7 +18,7 @@ public class RajawaliMoreParticlesRenderer extends RajawaliRenderer {
 	
 	public RajawaliMoreParticlesRenderer(Context context) {
 		super(context);
-		setFrameRate(30);
+		setFrameRate(60);
 		mClearChildren = false;
 	}
 	

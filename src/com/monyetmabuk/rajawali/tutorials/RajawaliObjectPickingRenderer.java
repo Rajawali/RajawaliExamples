@@ -27,7 +27,7 @@ public class RajawaliObjectPickingRenderer extends RajawaliRenderer implements O
 
 	public RajawaliObjectPickingRenderer(Context context) {
 		super(context);
-		setFrameRate(30);
+		setFrameRate(60);
 		mClearChildren = false;
 	}
 

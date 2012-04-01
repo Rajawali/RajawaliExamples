@@ -17,7 +17,7 @@ public class RajawaliBasicExampleRenderer extends RajawaliRenderer {
 	
 	public RajawaliBasicExampleRenderer(Context context) {
 		super(context);
-		setFrameRate(30);
+		setFrameRate(60);
 	}
 	
 	@Override

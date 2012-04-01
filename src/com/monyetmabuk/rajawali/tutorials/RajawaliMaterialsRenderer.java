@@ -24,7 +24,7 @@ public class RajawaliMaterialsRenderer extends RajawaliRenderer {
 	
 	public RajawaliMaterialsRenderer(Context context) {
 		super(context);
-		setFrameRate(30);
+		setFrameRate(60);
 		mClearChildren = false;
 	}
 	

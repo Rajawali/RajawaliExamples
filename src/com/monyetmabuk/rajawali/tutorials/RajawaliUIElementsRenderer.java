@@ -19,7 +19,7 @@ public class RajawaliUIElementsRenderer extends RajawaliRenderer {
 	
 	public RajawaliUIElementsRenderer(Context context) {
 		super(context);
-		setFrameRate(30);
+		setFrameRate(60);
 		mClearChildren = false;
 	}
 	
