@@ -27,13 +27,14 @@ public final class R {
         public static final int negx=0x7f02000d;
         public static final int negy=0x7f02000e;
         public static final int negz=0x7f02000f;
-        public static final int particle=0x7f020010;
-        public static final int posx=0x7f020011;
-        public static final int posy=0x7f020012;
-        public static final int posz=0x7f020013;
-        public static final int rajawali=0x7f020014;
-        public static final int rajawali_outline=0x7f020015;
-        public static final int rajawali_tex=0x7f020016;
+        public static final int ogrobase=0x7f020010;
+        public static final int particle=0x7f020011;
+        public static final int posx=0x7f020012;
+        public static final int posy=0x7f020013;
+        public static final int posz=0x7f020014;
+        public static final int rajawali=0x7f020015;
+        public static final int rajawali_outline=0x7f020016;
+        public static final int rajawali_tex=0x7f020017;
     }
     public static final class id {
         public static final int imageView1=0x7f070000;
@@ -50,6 +51,7 @@ public final class R {
         public static final int monkey_ser=0x7f040004;
         public static final int multiobjects_mtl=0x7f040005;
         public static final int multiobjects_obj=0x7f040006;
+        public static final int ogro=0x7f040007;
     }
     public static final class string {
         public static final int app_name=0x7f050000;

@@ -38,7 +38,7 @@ public class RajawaliExamplesActivity extends ListActivity {
 					"Rajawali2DActivity"),
 			new ExampleItem("08. Using The Accelerometer",
 					RajawaliAccelerometerActivity.class, "RajawaliAccelerometerActivity"),
-			new ExampleItem("09. More Particles",
+			new ExampleItem("09. Particles",
 					RajawaliMoreParticlesActivity.class, "RajawaliMoreParticlesActivity"),
 			new ExampleItem("10. Object Picking",
 					RajawaliObjectPickingActivity.class, "RajawaliObjectPickingActivity"),
@@ -49,7 +49,9 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("13. Bezier Path Animation",
 					RajawaliBezierActivity.class, "RajawaliBezierActivity"),
 			new ExampleItem("14. Toon Shading",
-					RajawaliToonShadingActivity.class, "RajawaliToonShadingActivity")
+					RajawaliToonShadingActivity.class, "RajawaliToonShadingActivity"),
+			new ExampleItem("15. MD2 Animation",
+					RajawaliMD2Activity.class, "RajawaliMD2Activity")
 	};
 
 	@Override
