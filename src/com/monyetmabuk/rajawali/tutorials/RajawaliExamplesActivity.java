@@ -51,7 +51,9 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("14. Toon Shading",
 					RajawaliToonShadingActivity.class, "RajawaliToonShadingActivity"),
 			new ExampleItem("15. MD2 Animation",
-					RajawaliMD2Activity.class, "RajawaliMD2Activity")
+					RajawaliMD2Activity.class, "RajawaliMD2Activity"),
+			new ExampleItem("16. Post Processing",
+					RajawaliPostProcessingActivity.class, "RajawaliPostProcessingActivity")
 	};
 
 	@Override
