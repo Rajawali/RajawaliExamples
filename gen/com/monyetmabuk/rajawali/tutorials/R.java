@@ -44,14 +44,15 @@ public final class R {
         public static final int main=0x7f030000;
     }
     public static final class raw {
-        public static final int coin_obj=0x7f040000;
-        public static final int half_sphere_obj=0x7f040001;
-        public static final int monkey=0x7f040002;
-        public static final int monkey_normal=0x7f040003;
-        public static final int monkey_ser=0x7f040004;
-        public static final int multiobjects_mtl=0x7f040005;
-        public static final int multiobjects_obj=0x7f040006;
-        public static final int ogro=0x7f040007;
+        public static final int boxes=0x7f040000;
+        public static final int coin_obj=0x7f040001;
+        public static final int half_sphere_obj=0x7f040002;
+        public static final int monkey=0x7f040003;
+        public static final int monkey_normal=0x7f040004;
+        public static final int monkey_ser=0x7f040005;
+        public static final int multiobjects_mtl=0x7f040006;
+        public static final int multiobjects_obj=0x7f040007;
+        public static final int ogro=0x7f040008;
     }
     public static final class string {
         public static final int app_name=0x7f050000;

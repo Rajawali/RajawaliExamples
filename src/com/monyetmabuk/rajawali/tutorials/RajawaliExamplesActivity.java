@@ -53,7 +53,9 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("15. MD2 Animation",
 					RajawaliMD2Activity.class, "RajawaliMD2Activity"),
 			new ExampleItem("16. Post Processing",
-					RajawaliPostProcessingActivity.class, "RajawaliPostProcessingActivity")
+					RajawaliPostProcessingActivity.class, "RajawaliPostProcessingActivity"),
+			new ExampleItem("17. Collision Detection",
+					RajawaliCollisionDetectionActivity.class, "RajawaliCollisionDetectionActivity")
 	};
 
 	@Override
