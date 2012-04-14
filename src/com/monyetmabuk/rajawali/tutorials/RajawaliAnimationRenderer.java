@@ -25,71 +25,66 @@ import android.view.animation.LinearInterpolator;
 public class RajawaliAnimationRenderer extends RajawaliRenderer {
 	private DirectionalLight mLight;
 	private BaseObject3D mMonkey;
-	private boolean mSceneInitialized;
 
 	public RajawaliAnimationRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
-		mClearChildren = false;
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).showLoader();
 
-		if (!mSceneInitialized) {
-			mLight = new DirectionalLight(0, 0, 1);
-			mLight.setPosition(-2, -2, -5);
-			mCamera.setPosition(0, 0, -14);
+		mLight = new DirectionalLight(0, 0, 1);
+		mLight.setPosition(-2, -2, -5);
+		mCamera.setPosition(0, 0, -14);
 
-			ObjectInputStream ois;
-			try {
-				ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_ser));
-				SerializedObject3D serializedMonkey = (SerializedObject3D)ois.readObject();
-				ois.close();
-				mMonkey = new BaseObject3D(serializedMonkey);
-				mMonkey.setLight(mLight);
-				addChild(mMonkey);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			startRendering();
-
-			mSceneInitialized = true;
+		ObjectInputStream ois;
+		try {
+			ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_ser));
+			SerializedObject3D serializedMonkey = (SerializedObject3D) ois.readObject();
+			ois.close();
+			mMonkey = new BaseObject3D(serializedMonkey);
+			mMonkey.setLight(mLight);
+			addChild(mMonkey);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		startRendering();
 
 		mMonkey.setMaterial(new DiffuseMaterial());
 		mMonkey.getMaterial().setUseColor(true);
 		mMonkey.setColor(0xff00ff00);
-		
+
 		Animation3DQueue queue = new Animation3DQueue();
-		
+
 		Animation3D anim = new ScaleAnimation3D(new Number3D(1.6f, .8f, 1));
-		//Animation3D anim = new RotateAroundAnimation3D(new Number3D(), Axis.Z, 2, -1);
+		// Animation3D anim = new RotateAroundAnimation3D(new Number3D(),
+		// Axis.Z, 2, -1);
 		anim.setInterpolator(new LinearInterpolator());
 		anim.setDuration(1000);
 		anim.setRepeatCount(3);
 		anim.setRepeatMode(Animation3D.REVERSE);
 		anim.setTransformable3D(mMonkey);
 		queue.addAnimation(anim);
-		
+
 		anim = new RotateAnimation3D(new Number3D(90, 180, 270));
 		anim.setDuration(2000);
 		anim.setTransformable3D(mMonkey);
 		queue.addAnimation(anim);
-		
+
 		anim = new TranslateAnimation3D(new Number3D(-2, -2, 0));
 		anim.setDuration(500);
 		anim.setTransformable3D(mMonkey);
 		queue.addAnimation(anim);
-		
+
 		anim = new TranslateAnimation3D(new Number3D(-2, -2, 0), new Number3D(2, 2, 0));
 		anim.setDuration(2000);
 		anim.setTransformable3D(mMonkey);
 		anim.setInterpolator(new BounceInterpolator());
 		anim.setRepeatCount(3);
 		queue.addAnimation(anim);
-		
+
 		anim = new RotateAroundAnimation3D(new Number3D(), Axis.Z, 3, 1);
 		anim.setInterpolator(new LinearInterpolator());
 		anim.setDuration(2000);
@@ -97,7 +92,7 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 		anim.setRepeatCount(Animation3D.INFINITE);
 		anim.setTransformable3D(mMonkey);
 		queue.addAnimation(anim);
-		
+
 		queue.start();
 
 		((RajawaliExampleActivity) mContext).hideLoader();

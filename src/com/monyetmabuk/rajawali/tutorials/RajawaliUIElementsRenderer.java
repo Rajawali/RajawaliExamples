@@ -15,45 +15,40 @@ import android.content.Context;
 public class RajawaliUIElementsRenderer extends RajawaliRenderer {
 	private DirectionalLight mLight;
 	private BaseObject3D mMonkey;
-	private boolean mSceneInitialized;
-	
+
 	public RajawaliUIElementsRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
-		mClearChildren = false;
 	}
-	
+
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).showLoader();
 
-		if (!mSceneInitialized) {
-			mLight = new DirectionalLight(0, 0, 1);
-			mLight.setPosition(-2, -2, -5);
-			mCamera.setPosition(0, 0, -7);
-			
-			try {
-				ObjectInputStream ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_ser));
-				SerializedObject3D serializedMonkey = (SerializedObject3D)ois.readObject();
-				ois.close();
-				
-				mMonkey = new BaseObject3D(serializedMonkey);
-				mMonkey.setLight(mLight);
-				addChild(mMonkey);
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-			startRendering();
-			mSceneInitialized = true;
+		mLight = new DirectionalLight(0, 0, 1);
+		mLight.setPosition(-2, -2, -5);
+		mCamera.setPosition(0, 0, -7);
+
+		try {
+			ObjectInputStream ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_ser));
+			SerializedObject3D serializedMonkey = (SerializedObject3D) ois.readObject();
+			ois.close();
+
+			mMonkey = new BaseObject3D(serializedMonkey);
+			mMonkey.setLight(mLight);
+			addChild(mMonkey);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
+		startRendering();
+
 		mMonkey.setMaterial(new PhongMaterial());
 		mMonkey.getMaterial().setUseColor(true);
 		mMonkey.setColor(0xffcfb52b);
-		
+
 		((RajawaliExampleActivity) mContext).hideLoader();
 	}
-	
+
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
 		mMonkey.setRotY(mMonkey.getRotY() + 1);

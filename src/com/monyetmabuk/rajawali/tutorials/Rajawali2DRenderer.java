@@ -11,7 +11,7 @@ import android.content.Context;
 public class Rajawali2DRenderer extends RajawaliRenderer {
 	private float mTime;
 	private CustomMaterial mCustomMaterial;
-	
+
 	public Rajawali2DRenderer(Context context) {
 		super(context);
 		setCamera(new Camera2D());
@@ -21,7 +21,7 @@ public class Rajawali2DRenderer extends RajawaliRenderer {
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		super.onSurfaceCreated(gl, config);
-		((RajawaliExampleActivity)mContext).showLoader();
+		((RajawaliExampleActivity) mContext).showLoader();
 
 		mCustomMaterial = new CustomMaterial();
 
@@ -30,7 +30,7 @@ public class Rajawali2DRenderer extends RajawaliRenderer {
 		addChild(plane);
 
 		startRendering();
-		((RajawaliExampleActivity)mContext).hideLoader();
+		((RajawaliExampleActivity) mContext).hideLoader();
 	}
 
 	public void onDrawFrame(GL10 glUnused) {

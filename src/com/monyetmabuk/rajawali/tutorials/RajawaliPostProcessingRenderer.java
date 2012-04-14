@@ -35,12 +35,10 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 		mLight = new DirectionalLight(0, 0, 1);
 		mLight.setPosition(-2, -2, -5);
 		mCamera.setPosition(0, 0, -7);
-		
+
 		try {
-			ObjectInputStream ois = new ObjectInputStream(mContext
-					.getResources().openRawResource(R.raw.monkey_ser));
-			SerializedObject3D serializedMonkey = (SerializedObject3D) ois
-					.readObject();
+			ObjectInputStream ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_ser));
+			SerializedObject3D serializedMonkey = (SerializedObject3D) ois.readObject();
 			ois.close();
 
 			BaseObject3D uberMonkey = new BaseObject3D(serializedMonkey);
@@ -58,16 +56,13 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 				monkey.setMaterial(new DiffuseMaterial());
 				monkey.setLight(mLight);
 				monkey.setScale(.7f);
-				monkey.setPosition(-4 + (int) (Math.random() * 8), -4
-						+ (int) (Math.random() * 8), (int) (Math.random() * 20));
+				monkey.setPosition(-4 + (int) (Math.random() * 8), -4 + (int) (Math.random() * 8), (int) (Math.random() * 20));
 				monkey.getMaterial().setUseColor(true);
-				monkey.setRotation((int) (Math.random() * 360),
-						(int) (Math.random() * 360),
-						(int) (Math.random() * 360));
+				monkey.setRotation((int) (Math.random() * 360), (int) (Math.random() * 360), (int) (Math.random() * 360));
 				// -- since it is a cloned object it is important to set the
-				//    second parameter to true or else all monkey will change
-				//    color.
-				monkey.setColor(0xff000000 + (int)(Math.random() * 0xffffff), true);
+				// second parameter to true or else all monkey will change
+				// color.
+				monkey.setColor(0xff000000 + (int) (Math.random() * 0xffffff), true);
 				addChild(monkey);
 			}
 		} catch (Exception e) {
@@ -75,7 +70,7 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 		}
 
 		startRendering();
-		
+
 		Animation3D anim = new TranslateAnimation3D(new Number3D(0, 0, -2));
 		anim.setDuration(6000);
 		anim.setRepeatCount(Animation3D.INFINITE);
@@ -83,13 +78,12 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 		anim.setTransformable3D(mCamera);
 		anim.setInterpolator(new AccelerateDecelerateInterpolator());
 		anim.start();
-		
+
 		mFilter = new SwirlFilter(mViewportWidth, mViewportHeight, 10, 1f);
 		addPostProcessingFilter(mFilter);
-		
+
 		((RajawaliExampleActivity) mContext).hideLoader();
 	}
-	
 
 	public void onSurfaceChanged(GL10 gl, int width, int height) {
 		super.onSurfaceChanged(gl, width, height);
@@ -101,16 +95,16 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
-		mTime += .05f * mDirection; 
+		mTime += .05f * mDirection;
 		mFilter.setTime(mTime);
-		
-		if(mTime >= 1) {
+
+		if (mTime >= 1) {
 			mTime = 1;
 			mDirection = -1;
-		} else if(mTime <= 0) {
+		} else if (mTime <= 0) {
 			mTime = 0;
 			mDirection = 1;
 		}
-		
+
 	}
 }
