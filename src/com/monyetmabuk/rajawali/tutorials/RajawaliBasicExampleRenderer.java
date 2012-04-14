@@ -20,7 +20,6 @@ public class RajawaliBasicExampleRenderer extends RajawaliRenderer {
 		setFrameRate(60);
 	}
 	
-	@Override
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity)mContext).showLoader();
@@ -42,7 +41,6 @@ public class RajawaliBasicExampleRenderer extends RajawaliRenderer {
         ((RajawaliExampleActivity)mContext).hideLoader();
 	}
 	
-	@Override
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
 		mSphere.setRotY(mSphere.getRotY() + 1);

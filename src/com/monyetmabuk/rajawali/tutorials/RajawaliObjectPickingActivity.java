@@ -11,7 +11,6 @@ import android.widget.TextView;
 public class RajawaliObjectPickingActivity extends RajawaliExampleActivity implements OnTouchListener {
 	private RajawaliObjectPickingRenderer mRenderer;
 	
-	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mRenderer = new RajawaliObjectPickingRenderer(this);
@@ -35,7 +34,6 @@ public class RajawaliObjectPickingActivity extends RajawaliExampleActivity imple
 		initLoader();
 	}
 	
-	@Override
 	public boolean onTouch(View v, MotionEvent event) {
 		if(event.getAction() == MotionEvent.ACTION_DOWN)
 		{

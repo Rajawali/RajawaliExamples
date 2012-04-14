@@ -20,22 +20,18 @@ public class ExamplesAdapter extends BaseAdapter {
 		this.objects = objects;
 	}
 
-	@Override
 	public int getCount() {
 		return objects.size();
 	}
 
-	@Override
 	public Object getItem(int position) {
 		return objects.get(position);
 	}
 
-	@Override
 	public long getItemId(int position) {
 		return position;
 	}
 
-	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		Object obj = objects.get(position);

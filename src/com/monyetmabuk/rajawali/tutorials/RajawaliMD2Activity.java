@@ -11,7 +11,6 @@ public class RajawaliMD2Activity extends RajawaliExampleActivity implements OnCl
 	private RajawaliMD2Renderer mRenderer;
 	private LinearLayout mLinearLayout;
 	
-	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mRenderer = new RajawaliMD2Renderer(this);
@@ -63,18 +62,15 @@ public class RajawaliMD2Activity extends RajawaliExampleActivity implements OnCl
 		initLoader();
 	}
 	
-	@Override
 	public void hideLoader() {
 		super.hideLoader();
 		mLayout.post(new Runnable() {
-			@Override
 			public void run() {
 				mLinearLayout.setVisibility(LinearLayout.VISIBLE);				
 			}
 		});
 	}
 
-	@Override
 	public void onClick(View v) {
 		switch(((Button)v).getId()) {
 		case 0:		mRenderer.playAnimation("salute");		break;

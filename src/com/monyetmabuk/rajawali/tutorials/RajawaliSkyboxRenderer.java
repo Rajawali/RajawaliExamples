@@ -36,7 +36,6 @@ public class RajawaliSkyboxRenderer extends RajawaliRenderer {
 		((RajawaliExampleActivity)mContext).hideLoader();
 	}
 
-	@Override
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
 		mSkybox.setRotY(mSkybox.getRotY() + .5f);

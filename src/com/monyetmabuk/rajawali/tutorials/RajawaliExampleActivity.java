@@ -16,7 +16,6 @@ import android.widget.ImageView.ScaleType;
 public class RajawaliExampleActivity extends RajawaliActivity {
 	private ImageView mLoaderGraphic;
 
-	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -62,15 +61,12 @@ public class RajawaliExampleActivity extends RajawaliActivity {
 				anim.setRepeatCount(0);
 				anim.setDuration(500);
 				anim.setAnimationListener(new AnimationListener() {
-					@Override
 					public void onAnimationStart(Animation animation) {
 					}
 
-					@Override
 					public void onAnimationRepeat(Animation animation) {
 					}
 
-					@Override
 					public void onAnimationEnd(Animation animation) {
 						mLoaderGraphic.setVisibility(View.INVISIBLE);
 						mLayout.removeView(mLoaderGraphic);

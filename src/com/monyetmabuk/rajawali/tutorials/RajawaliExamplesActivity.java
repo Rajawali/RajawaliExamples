@@ -58,7 +58,6 @@ public class RajawaliExamplesActivity extends ListActivity {
 					RajawaliCollisionDetectionActivity.class, "RajawaliCollisionDetectionActivity")
 	};
 
-	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		String[] strings = new String[mItems.length];
 		for (int i = 0; i < mItems.length; i++) {
@@ -85,7 +84,6 @@ public class RajawaliExamplesActivity extends ListActivity {
 		linkView.setTypeface(font);
 	}
 
-	@Override
 	public void onListItemClick(ListView parent, View v, int position, long id) {
 		startActivity(new Intent(this, mItems[position].exampleClass));
 	}

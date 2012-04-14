@@ -5,7 +5,6 @@ import android.os.Bundle;
 public class RajawaliSkyboxActivity extends RajawaliExampleActivity {
 	private RajawaliSkyboxRenderer mRenderer;
 
-	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mRenderer = new RajawaliSkyboxRenderer(this);

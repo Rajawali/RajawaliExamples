@@ -21,7 +21,6 @@ public class ExampleParticleSystem extends Particle {
 		super();
 	}
 	
-	@Override
 	protected void init() {
 		mMaterial = new ParticleMaterial();
 		mParticleShader = (ParticleMaterial)mMaterial;
@@ -84,7 +83,6 @@ public class ExampleParticleSystem extends Particle {
 		return mTime;
 	}
 	
-	@Override
 	protected void setShaderParams(Camera camera) {
 		super.setShaderParams(camera);
 		mParticleShader.setFriction(mFriction);
@@ -93,7 +91,6 @@ public class ExampleParticleSystem extends Particle {
 		mParticleShader.setTime(mTime);
 	}
 	
-	@Override
 	public void render(Camera camera, float[] projMatrix, float[] vMatrix,
 			final float[] parentMatrix, ColorPickerInfo pickerInfo) {
 		super.render(camera, projMatrix, vMatrix, parentMatrix, pickerInfo);

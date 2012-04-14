@@ -5,7 +5,6 @@ import android.os.Bundle;
 public class RajawaliBasicExampleActivity extends RajawaliExampleActivity {
 	private RajawaliBasicExampleRenderer mRenderer;
 	
-	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mRenderer = new RajawaliBasicExampleRenderer(this);

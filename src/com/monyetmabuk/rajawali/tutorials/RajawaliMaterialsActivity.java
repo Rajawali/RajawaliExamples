@@ -5,7 +5,6 @@ import android.os.Bundle;
 public class RajawaliMaterialsActivity extends RajawaliExampleActivity {
 	private RajawaliMaterialsRenderer mRenderer;
 	
-	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mRenderer = new RajawaliMaterialsRenderer(this);

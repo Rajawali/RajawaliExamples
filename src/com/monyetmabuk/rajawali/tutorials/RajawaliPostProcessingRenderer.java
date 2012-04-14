@@ -28,7 +28,6 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 		setFrameRate(60);
 	}
 
-	@Override
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).showLoader();
@@ -92,7 +91,6 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 	}
 	
 
-	@Override
 	public void onSurfaceChanged(GL10 gl, int width, int height) {
 		super.onSurfaceChanged(gl, width, height);
 		mFilter.setScreenWidth(mViewportWidth);
@@ -101,7 +99,6 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 		mFilter.setRadius(mViewportWidth * .5f);
 	}
 
-	@Override
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
 		mTime += .05f * mDirection; 

@@ -23,7 +23,6 @@ public class RajawaliUIElementsRenderer extends RajawaliRenderer {
 		mClearChildren = false;
 	}
 	
-	@Override
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).showLoader();
@@ -55,7 +54,6 @@ public class RajawaliUIElementsRenderer extends RajawaliRenderer {
 		((RajawaliExampleActivity) mContext).hideLoader();
 	}
 	
-	@Override
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
 		mMonkey.setRotY(mMonkey.getRotY() + 1);

@@ -26,7 +26,6 @@ public class CustomMaterial extends SimpleMaterial {
 		super(mVShader, mCustomFShader);
 	}
 	
-	@Override
 	public void setShaders(String vertexShader, String fragmentShader)
 	{
 		super.setShaders(vertexShader, fragmentShader);

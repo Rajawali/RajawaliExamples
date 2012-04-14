@@ -27,7 +27,6 @@ public class RajawaliMD2Renderer extends RajawaliRenderer {
 		}
 	}
 	
-	@Override
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity)mContext).showLoader();

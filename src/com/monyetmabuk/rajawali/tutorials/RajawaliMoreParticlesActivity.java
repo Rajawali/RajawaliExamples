@@ -5,7 +5,6 @@ import android.os.Bundle;
 public class RajawaliMoreParticlesActivity extends RajawaliExampleActivity {
 	private RajawaliMoreParticlesRenderer mRenderer;
 	
-	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mRenderer = new RajawaliMoreParticlesRenderer(this);

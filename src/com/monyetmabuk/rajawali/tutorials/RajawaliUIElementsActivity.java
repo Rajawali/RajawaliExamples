@@ -9,7 +9,6 @@ import android.widget.TextView;
 public class RajawaliUIElementsActivity extends RajawaliExampleActivity {
 	private RajawaliUIElementsRenderer mRenderer;
 	
-	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mRenderer = new RajawaliUIElementsRenderer(this);

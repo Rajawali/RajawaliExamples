@@ -23,7 +23,6 @@ public class RajawaliBezierRenderer extends RajawaliRenderer {
 		setFrameRate(60);
 	}
 	
-	@Override
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity)mContext).showLoader();

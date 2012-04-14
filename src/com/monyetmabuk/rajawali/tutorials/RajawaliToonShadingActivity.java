@@ -5,7 +5,6 @@ import android.os.Bundle;
 public class RajawaliToonShadingActivity extends RajawaliExampleActivity {
 	private RajawaliToonShadingRenderer mRenderer;
 	
-	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mRenderer = new RajawaliToonShadingRenderer(this);

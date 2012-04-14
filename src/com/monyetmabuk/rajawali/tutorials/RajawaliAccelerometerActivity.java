@@ -17,7 +17,6 @@ public class RajawaliAccelerometerActivity extends RajawaliExampleActivity
 	private SensorManager mSensorManager;
 	private float mGravity[];
 
-	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		super.onCreate(savedInstanceState);
@@ -33,18 +32,15 @@ public class RajawaliAccelerometerActivity extends RajawaliExampleActivity
 				SensorManager.SENSOR_DELAY_FASTEST);
 	}
 
-	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		// ignore orientation/keyboard change
 		super.onConfigurationChanged(newConfig);
 	}
 
-	@Override
 	public void onAccuracyChanged(Sensor arg0, int arg1) {
 
 	}
 
-	@Override
 	public void onSensorChanged(SensorEvent event) {
 		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 			mGravity[0] = ALPHA * mGravity[0] + (1 - ALPHA) * event.values[0];
