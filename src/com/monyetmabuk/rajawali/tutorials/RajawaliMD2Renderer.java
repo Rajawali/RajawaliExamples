@@ -25,11 +25,8 @@ public class RajawaliMD2Renderer extends RajawaliRenderer {
 			mOgre.play(name, false);
 		}
 	}
-
-	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		super.onSurfaceCreated(gl, config);
-		((RajawaliExampleActivity) mContext).showLoader();
-
+	
+	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, 1);
 		mLight.setPosition(0, 0, -6);
 		mLight.setPower(2);
@@ -48,9 +45,11 @@ public class RajawaliMD2Renderer extends RajawaliRenderer {
 		addChild(mOgre);
 
 		mOgre.play();
+	}
 
-		startRendering();
-
+	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+		((RajawaliExampleActivity) mContext).showLoader();
+		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
 	}
 }

@@ -22,16 +22,14 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 	private SwirlFilter mFilter;
 	private float mTime;
 	private float mDirection = 1;
+	private Animation3D mAnimation;
 
 	public RajawaliPostProcessingRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
 	}
 
-	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		super.onSurfaceCreated(gl, config);
-		((RajawaliExampleActivity) mContext).showLoader();
-
+	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, 1);
 		mLight.setPosition(-2, -2, -5);
 		mCamera.setPosition(0, 0, -7);
@@ -60,7 +58,7 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 				monkey.getMaterial().setUseColor(true);
 				monkey.setRotation((int) (Math.random() * 360), (int) (Math.random() * 360), (int) (Math.random() * 360));
 				// -- since it is a cloned object it is important to set the
-				// second parameter to true or else all monkey will change
+				// second parameter to true or else all monkeys will change
 				// color.
 				monkey.setColor(0xff000000 + (int) (Math.random() * 0xffffff), true);
 				addChild(monkey);
@@ -71,18 +69,22 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 
 		startRendering();
 
-		Animation3D anim = new TranslateAnimation3D(new Number3D(0, 0, -2));
-		anim.setDuration(6000);
-		anim.setRepeatCount(Animation3D.INFINITE);
-		anim.setRepeatMode(Animation3D.REVERSE);
-		anim.setTransformable3D(mCamera);
-		anim.setInterpolator(new AccelerateDecelerateInterpolator());
-		anim.start();
+		mAnimation = new TranslateAnimation3D(new Number3D(0, 0, -2));
+		mAnimation.setDuration(6000);
+		mAnimation.setRepeatCount(Animation3D.INFINITE);
+		mAnimation.setRepeatMode(Animation3D.REVERSE);
+		mAnimation.setTransformable3D(mCamera);
+		mAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
 
 		mFilter = new SwirlFilter(mViewportWidth, mViewportHeight, 10, 1f);
 		addPostProcessingFilter(mFilter);
+	}
 
+	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+		((RajawaliExampleActivity) mContext).showLoader();
+		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
+		mAnimation.start();
 	}
 
 	public void onSurfaceChanged(GL10 gl, int width, int height) {

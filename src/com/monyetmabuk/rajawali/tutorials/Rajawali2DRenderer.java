@@ -18,18 +18,18 @@ public class Rajawali2DRenderer extends RajawaliRenderer {
 		setFrameRate(60);
 		mTime = 0;
 	}
-
-	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		super.onSurfaceCreated(gl, config);
-		((RajawaliExampleActivity) mContext).showLoader();
-
+	
+	protected void initScene() {
 		mCustomMaterial = new CustomMaterial();
 
 		Plane plane = new Plane(1, 1, 1, 1, 1);
 		plane.setMaterial(mCustomMaterial);
 		addChild(plane);
+	}
 
-		startRendering();
+	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+		((RajawaliExampleActivity) mContext).showLoader();
+		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
 	}
 

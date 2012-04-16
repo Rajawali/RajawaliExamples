@@ -29,16 +29,14 @@ public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 	private Bitmap mBumpTexture1;
 	private Bitmap mDiffuseTexture2;
 	private Bitmap mBumpTexture2;
+	private Animation3D mLightAnim;
 
 	public RajawaliBumpmapRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
 	}
 
-	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		super.onSurfaceCreated(gl, config);
-		((RajawaliExampleActivity) mContext).showLoader();
-
+	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, 1);
 		mLight.setPosition(-2, -2, -3);
 		mCamera.setPosition(0, 0, -6);
@@ -70,8 +68,6 @@ public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 		mDiffuseTexture2 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.monkey_texture);
 		mBumpTexture2 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.monkey_normal);
 
-		startRendering();
-
 		mHalfSphere1.setMaterial(new BumpmapMaterial());
 		mHalfSphere1.addTexture(mTextureManager.addTexture(mDiffuseTexture1, TextureType.DIFFUSE));
 		mHalfSphere1.addTexture(mTextureManager.addTexture(mBumpTexture1, TextureType.BUMP));
@@ -80,16 +76,16 @@ public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 		mHalfSphere2.addTexture(mTextureManager.addTexture(mDiffuseTexture2, TextureType.DIFFUSE));
 		mHalfSphere2.addTexture(mTextureManager.addTexture(mBumpTexture2, TextureType.BUMP));
 
-		Animation3D lightAnim = new RotateAroundAnimation3D(new Number3D(0, 0, 0), Axis.Z, 4);
-		lightAnim.setDuration(5000);
-		lightAnim.setRepeatCount(Animation3D.INFINITE);
-		lightAnim.setTransformable3D(mLight);
-		lightAnim.start();
-
-		((RajawaliExampleActivity) mContext).hideLoader();
+		mLightAnim = new RotateAroundAnimation3D(new Number3D(0, 0, 0), Axis.Z, 4);
+		mLightAnim.setDuration(5000);
+		mLightAnim.setRepeatCount(Animation3D.INFINITE);
+		mLightAnim.setTransformable3D(mLight);
 	}
-
-	public void onDrawFrame(GL10 glUnused) {
-		super.onDrawFrame(glUnused);
+	
+	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+		((RajawaliExampleActivity) mContext).showLoader();
+		super.onSurfaceCreated(gl, config);
+		((RajawaliExampleActivity) mContext).hideLoader();
+		mLightAnim.start();		
 	}
 }

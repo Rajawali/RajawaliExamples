@@ -5,15 +5,15 @@ import java.io.ObjectInputStream;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import rajawali.BaseObject3D;
 import rajawali.SerializedObject3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.CubeMapMaterial;
 import rajawali.math.Number3D;
 import rajawali.renderer.RajawaliRenderer;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 public class RajawaliAccelerometerRenderer extends RajawaliRenderer {
 	private DirectionalLight mLight;
@@ -25,11 +25,8 @@ public class RajawaliAccelerometerRenderer extends RajawaliRenderer {
 		setFrameRate(60);
 		mAccValues = new Number3D();
 	}
-
-	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		super.onSurfaceCreated(gl, config);
-		((RajawaliExampleActivity) mContext).showLoader();
-
+	
+	protected void initScene() {
 		mLight = new DirectionalLight(0.1f, 0.2f, -1.0f);
 		mLight.setColor(1.0f, 1.0f, 1.0f);
 		mLight.setPosition(.5f, 0, -2);
@@ -50,8 +47,6 @@ public class RajawaliAccelerometerRenderer extends RajawaliRenderer {
 
 		mCamera.setZ(-7);
 
-		startRendering();
-
 		Bitmap[] textures = new Bitmap[6];
 		textures[0] = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.posx);
 		textures[1] = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.negx);
@@ -62,7 +57,11 @@ public class RajawaliAccelerometerRenderer extends RajawaliRenderer {
 
 		mMonkey.setMaterial(new CubeMapMaterial());
 		mMonkey.addTexture(mTextureManager.addCubemapTextures(textures));
+	}
 
+	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+		((RajawaliExampleActivity) mContext).showLoader();
+		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
 	}
 

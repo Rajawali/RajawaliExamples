@@ -15,9 +15,7 @@ public class RajawaliSkyboxRenderer extends RajawaliRenderer {
 		setFrameRate(60);
 	}
 
-	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		super.onSurfaceCreated(gl, config);
-		((RajawaliExampleActivity) mContext).showLoader();
+	protected void initScene() {
 		mLight = new DirectionalLight();
 		mLight.setPosition(5f, 10, -10);
 		mCamera.setFarPlane(1000);
@@ -26,8 +24,11 @@ public class RajawaliSkyboxRenderer extends RajawaliRenderer {
 		 * humus@comhem.se
 		 */
 		setSkybox(R.drawable.posz, R.drawable.posx, R.drawable.negz, R.drawable.negx, R.drawable.posy, R.drawable.negy);
-
-		startRendering();
+	}
+	
+	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+		((RajawaliExampleActivity) mContext).showLoader();
+		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
 	}
 

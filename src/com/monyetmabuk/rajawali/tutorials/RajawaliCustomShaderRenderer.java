@@ -20,9 +20,7 @@ public class RajawaliCustomShaderRenderer extends RajawaliRenderer {
 		setFrameRate(60);
 	}
 
-	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		super.onSurfaceCreated(gl, config);
-		((RajawaliExampleActivity) mContext).showLoader();
+	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, 1);
 		mLight.setPosition(0, 0, -80);
 
@@ -36,8 +34,11 @@ public class RajawaliCustomShaderRenderer extends RajawaliRenderer {
 		mCamera.setPosition(0, 0, -10);
 
 		mTime = 0;
+	}
 
-		startRendering();
+	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+		((RajawaliExampleActivity) mContext).showLoader();
+		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
 	}
 

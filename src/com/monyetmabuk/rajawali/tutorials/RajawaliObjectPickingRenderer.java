@@ -29,10 +29,7 @@ public class RajawaliObjectPickingRenderer extends RajawaliRenderer implements O
 		setFrameRate(60);
 	}
 
-	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		super.onSurfaceCreated(gl, config);
-		((RajawaliExampleActivity) mContext).showLoader();
-
+	protected void initScene() {
 		mPicker = new ObjectColorPicker(this);
 		mPicker.setOnObjectPickedListener(this);
 		mLight = new DirectionalLight(0, 0, 1);
@@ -80,8 +77,6 @@ public class RajawaliObjectPickingRenderer extends RajawaliRenderer implements O
 			e.printStackTrace();
 		}
 
-		startRendering();
-
 		mMonkey1.setMaterial(new DiffuseMaterial());
 		mMonkey1.getMaterial().setUseColor(true);
 		mMonkey1.setColor(0xff00ff00);
@@ -104,7 +99,11 @@ public class RajawaliObjectPickingRenderer extends RajawaliRenderer implements O
 
 		mMonkey4.setMaterial(new CubeMapMaterial());
 		mMonkey4.addTexture(mTextureManager.addCubemapTextures(textures));
+	}
 
+	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+		((RajawaliExampleActivity) mContext).showLoader();
+		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
 	}
 

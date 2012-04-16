@@ -25,11 +25,8 @@ public class RajawaliMaterialsRenderer extends RajawaliRenderer {
 		super(context);
 		setFrameRate(60);
 	}
-
-	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		super.onSurfaceCreated(gl, config);
-		((RajawaliExampleActivity) mContext).showLoader();
-
+	
+	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, 1);
 		mLight.setPosition(-2, -2, -5);
 		mCamera.setPosition(0, 0, -7);
@@ -70,8 +67,6 @@ public class RajawaliMaterialsRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 
-		startRendering();
-
 		mMonkey1.setMaterial(new DiffuseMaterial());
 		mMonkey1.getMaterial().setUseColor(true);
 		mMonkey1.setColor(0xff00ff00);
@@ -93,8 +88,12 @@ public class RajawaliMaterialsRenderer extends RajawaliRenderer {
 		textures[5] = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.negz);
 
 		mMonkey4.setMaterial(new CubeMapMaterial());
-		mMonkey4.addTexture(mTextureManager.addCubemapTextures(textures));
+		mMonkey4.addTexture(mTextureManager.addCubemapTextures(textures));		
+	}
 
+	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+		((RajawaliExampleActivity) mContext).showLoader();
+		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
 	}
 

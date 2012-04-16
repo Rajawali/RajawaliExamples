@@ -21,10 +21,7 @@ public class RajawaliUIElementsRenderer extends RajawaliRenderer {
 		setFrameRate(60);
 	}
 
-	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		super.onSurfaceCreated(gl, config);
-		((RajawaliExampleActivity) mContext).showLoader();
-
+	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, 1);
 		mLight.setPosition(-2, -2, -5);
 		mCamera.setPosition(0, 0, -7);
@@ -40,12 +37,15 @@ public class RajawaliUIElementsRenderer extends RajawaliRenderer {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		startRendering();
 
 		mMonkey.setMaterial(new PhongMaterial());
 		mMonkey.getMaterial().setUseColor(true);
 		mMonkey.setColor(0xffcfb52b);
-
+	}
+	
+	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+		((RajawaliExampleActivity) mContext).showLoader();
+		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
 	}
 

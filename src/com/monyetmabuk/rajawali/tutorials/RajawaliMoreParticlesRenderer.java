@@ -4,14 +4,12 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.materials.ParticleMaterial;
-import rajawali.materials.TextureManager.TextureInfo;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 public class RajawaliMoreParticlesRenderer extends RajawaliRenderer {
-	private boolean mSceneInitialized;
 	private final int MAX_FRAMES = 200;
 	private int mFrameCount;
 	private ExampleParticleSystem mParticleSystem;
@@ -20,25 +18,24 @@ public class RajawaliMoreParticlesRenderer extends RajawaliRenderer {
 		super(context);
 		setFrameRate(60);
 	}
-
-	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		super.onSurfaceCreated(gl, config);
-		((RajawaliExampleActivity) mContext).showLoader();
+	
+	protected void initScene() {
 		mCamera.setPosition(0, 0, -10);
 
 		Bitmap particleBitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.particle);
-		TextureInfo particleTexture = mTextureManager.addTexture(particleBitmap);
+		rajawali.materials.TextureInfo particleTexture = mTextureManager.addTexture(particleBitmap);
 
-		if (!mSceneInitialized) {
-			mParticleSystem = new ExampleParticleSystem();
-			mParticleSystem.setPointSize(100);
-			addChild(mParticleSystem);
-			startRendering();
-		}
+		mParticleSystem = new ExampleParticleSystem();
+		mParticleSystem.setPointSize(100);
+		addChild(mParticleSystem);
 
 		mParticleSystem.setMaterial(new ParticleMaterial(), false);
 		mParticleSystem.addTexture(particleTexture);
+	}
 
+	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+		((RajawaliExampleActivity) mContext).showLoader();
+		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
 	}
 

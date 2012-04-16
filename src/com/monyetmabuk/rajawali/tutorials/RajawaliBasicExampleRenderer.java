@@ -20,24 +20,24 @@ public class RajawaliBasicExampleRenderer extends RajawaliRenderer {
 		setFrameRate(60);
 	}
 
-	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		super.onSurfaceCreated(gl, config);
-		((RajawaliExampleActivity) mContext).showLoader();
-
+	protected void initScene() {
 		mLight = new DirectionalLight(0.1f, 0.2f, -1.0f); // set the direction
 		mLight.setColor(1.0f, 1.0f, 1.0f);
 		mLight.setPosition(.5f, 0, -2);
 		mLight.setPower(2);
 
 		Bitmap bg = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.earthtruecolor_nasa_big);
-		mSphere = new Sphere(1, 12, 12);
+		mSphere = new Sphere(1, 18, 18);
 		mSphere.setLight(mLight);
 		mSphere.addTexture(mTextureManager.addTexture(bg));
 		addChild(mSphere);
 
 		mCamera.setZ(-4.2f);
-
-		startRendering();
+	}
+	
+	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+		((RajawaliExampleActivity) mContext).showLoader();
+		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
 	}
 
