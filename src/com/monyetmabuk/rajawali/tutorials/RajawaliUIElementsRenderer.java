@@ -32,7 +32,7 @@ public class RajawaliUIElementsRenderer extends RajawaliRenderer {
 			ois.close();
 
 			mMonkey = new BaseObject3D(serializedMonkey);
-			mMonkey.setLight(mLight);
+			mMonkey.addLight(mLight);
 			addChild(mMonkey);
 		} catch (Exception e) {
 			e.printStackTrace();

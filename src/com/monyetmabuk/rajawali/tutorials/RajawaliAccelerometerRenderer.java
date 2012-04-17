@@ -38,7 +38,7 @@ public class RajawaliAccelerometerRenderer extends RajawaliRenderer {
 			ois.close();
 
 			mMonkey = new BaseObject3D(serializedMonkey);
-			mMonkey.setLight(mLight);
+			mMonkey.addLight(mLight);
 			mMonkey.setRotY(0);
 			addChild(mMonkey);
 		} catch (Exception e) {

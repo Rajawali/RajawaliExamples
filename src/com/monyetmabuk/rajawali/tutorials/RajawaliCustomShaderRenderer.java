@@ -27,7 +27,7 @@ public class RajawaliCustomShaderRenderer extends RajawaliRenderer {
 		mCustomMaterial = new CustomMaterial();
 
 		mSphere = new Sphere(2, 32, 32);
-		mSphere.setLight(mLight);
+		mSphere.addLight(mLight);
 		mSphere.setMaterial(mCustomMaterial);
 		addChild(mSphere);
 

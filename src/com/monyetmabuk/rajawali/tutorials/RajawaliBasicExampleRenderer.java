@@ -28,7 +28,7 @@ public class RajawaliBasicExampleRenderer extends RajawaliRenderer {
 
 		Bitmap bg = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.earthtruecolor_nasa_big);
 		mSphere = new Sphere(1, 18, 18);
-		mSphere.setLight(mLight);
+		mSphere.addLight(mLight);
 		mSphere.addTexture(mTextureManager.addTexture(bg));
 		addChild(mSphere);
 

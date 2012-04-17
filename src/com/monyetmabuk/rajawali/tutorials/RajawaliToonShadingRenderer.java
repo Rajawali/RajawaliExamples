@@ -30,6 +30,7 @@ public class RajawaliToonShadingRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, 1);
 		mLight.setPosition(0, 0, -6);
+		mLight.setPower(1);
 		mCamera.setPosition(0, 0, -12);
 		
 		try {
@@ -42,7 +43,7 @@ public class RajawaliToonShadingRenderer extends RajawaliRenderer {
 			mMonkey1 = new BaseObject3D(serializedMonkey);
 			mMonkey1.setMaterial(toonMat);
 			mMonkey1.setPosition(-1.5f, 2, 0);
-			mMonkey1.setLight(mLight);
+			mMonkey1.addLight(mLight);
 			addChild(mMonkey1);
 			
 			toonMat = new ToonMaterial();
@@ -50,7 +51,7 @@ public class RajawaliToonShadingRenderer extends RajawaliRenderer {
 			mMonkey2 = mMonkey1.clone();
 			mMonkey2.setMaterial(toonMat);
 			mMonkey2.setPosition(1.5f, 2, 0);
-			mMonkey2.setLight(mLight);
+			mMonkey2.addLight(mLight);
 			addChild(mMonkey2);
 			
 			toonMat = new ToonMaterial();
@@ -58,7 +59,7 @@ public class RajawaliToonShadingRenderer extends RajawaliRenderer {
 			mMonkey3 = mMonkey1.clone();
 			mMonkey3.setMaterial(toonMat);
 			mMonkey3.setPosition(0, -2, 0);
-			mMonkey3.setLight(mLight);
+			mMonkey3.addLight(mLight);
 			addChild(mMonkey3);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -29,6 +29,7 @@ public class RajawaliMaterialsRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, 1);
 		mLight.setPosition(-2, -2, -5);
+		mLight.setPower(.5f);
 		mCamera.setPosition(0, 0, -7);
 
 		try {
@@ -37,28 +38,28 @@ public class RajawaliMaterialsRenderer extends RajawaliRenderer {
 			ois.close();
 
 			mMonkey1 = new BaseObject3D(serializedMonkey);
-			mMonkey1.setLight(mLight);
+			mMonkey1.addLight(mLight);
 			mMonkey1.setScale(.7f);
 			mMonkey1.setPosition(-1, 1, 0);
 			mMonkey1.setRotY(0);
 			addChild(mMonkey1);
 
 			mMonkey2 = mMonkey1.clone();
-			mMonkey2.setLight(mLight);
+			mMonkey2.addLight(mLight);
 			mMonkey2.setScale(.7f);
 			mMonkey2.setPosition(1, 1, 0);
 			mMonkey2.setRotY(45);
 			addChild(mMonkey2);
 
 			mMonkey3 = mMonkey1.clone();
-			mMonkey3.setLight(mLight);
+			mMonkey3.addLight(mLight);
 			mMonkey3.setScale(.7f);
 			mMonkey3.setPosition(-1, -1, 0);
 			mMonkey3.setRotY(90);
 			addChild(mMonkey3);
 
 			mMonkey4 = mMonkey1.clone();
-			mMonkey4.setLight(mLight);
+			mMonkey4.addLight(mLight);
 			mMonkey4.setScale(.7f);
 			mMonkey4.setPosition(1, -1, 0);
 			mMonkey4.setRotY(135);
@@ -67,11 +68,13 @@ public class RajawaliMaterialsRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 
-		mMonkey1.setMaterial(new DiffuseMaterial());
+		DiffuseMaterial diffuse = new DiffuseMaterial();
+		mMonkey1.setMaterial(diffuse);
 		mMonkey1.getMaterial().setUseColor(true);
 		mMonkey1.setColor(0xff00ff00);
 
-		mMonkey2.setMaterial(new GouraudMaterial());
+		GouraudMaterial gouraud = new GouraudMaterial();
+		mMonkey2.setMaterial(gouraud);
 		mMonkey2.getMaterial().setUseColor(true);
 		mMonkey2.setColor(0xff999900);
 

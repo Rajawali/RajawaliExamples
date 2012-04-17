@@ -42,28 +42,28 @@ public class RajawaliObjectPickingRenderer extends RajawaliRenderer implements O
 			ois.close();
 
 			mMonkey1 = new BaseObject3D(serializedMonkey);
-			mMonkey1.setLight(mLight);
+			mMonkey1.addLight(mLight);
 			mMonkey1.setScale(.7f);
 			mMonkey1.setPosition(-1, 1, 0);
 			mMonkey1.setRotY(0);
 			addChild(mMonkey1);
 
 			mMonkey2 = new BaseObject3D(serializedMonkey);
-			mMonkey2.setLight(mLight);
+			mMonkey2.addLight(mLight);
 			mMonkey2.setScale(.7f);
 			mMonkey2.setPosition(1, 1, 0);
 			mMonkey2.setRotY(45);
 			addChild(mMonkey2);
 
 			mMonkey3 = new BaseObject3D(serializedMonkey);
-			mMonkey3.setLight(mLight);
+			mMonkey3.addLight(mLight);
 			mMonkey3.setScale(.7f);
 			mMonkey3.setPosition(-1, -1, 0);
 			mMonkey3.setRotY(90);
 			addChild(mMonkey3);
 
 			mMonkey4 = new BaseObject3D(serializedMonkey);
-			mMonkey4.setLight(mLight);
+			mMonkey4.addLight(mLight);
 			mMonkey4.setScale(.7f);
 			mMonkey4.setPosition(1, -1, 0);
 			mMonkey4.setRotY(135);

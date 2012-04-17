@@ -35,6 +35,7 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, 1);
 		mLight.setPosition(-2, -2, -5);
+		mLight.setPower(1);
 		mCamera.setPosition(0, 0, -14);
 
 		ObjectInputStream ois;
@@ -43,7 +44,7 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 			SerializedObject3D serializedMonkey = (SerializedObject3D) ois.readObject();
 			ois.close();
 			mMonkey = new BaseObject3D(serializedMonkey);
-			mMonkey.setLight(mLight);
+			mMonkey.addLight(mLight);
 			addChild(mMonkey);
 		} catch (Exception e) {
 			e.printStackTrace();

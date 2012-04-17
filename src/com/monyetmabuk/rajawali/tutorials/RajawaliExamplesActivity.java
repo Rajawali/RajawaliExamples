@@ -55,7 +55,9 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("16. Post Processing",
 					RajawaliPostProcessingActivity.class, "RajawaliPostProcessingActivity"),
 			new ExampleItem("17. Collision Detection",
-					RajawaliCollisionDetectionActivity.class, "RajawaliCollisionDetectionActivity")
+					RajawaliCollisionDetectionActivity.class, "RajawaliCollisionDetectionActivity"),
+			new ExampleItem("18. Multiple Lights",
+					RajawaliMultipleLightsActivity.class, "RajawaliMultipleLightsActivity")
 	};
 
 	public void onCreate(Bundle savedInstanceState) {

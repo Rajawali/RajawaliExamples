@@ -32,6 +32,7 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, 1);
 		mLight.setPosition(-2, -2, -5);
+		mLight.setPower(1);
 		mCamera.setPosition(0, 0, -7);
 
 		try {
@@ -41,7 +42,7 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 
 			BaseObject3D uberMonkey = new BaseObject3D(serializedMonkey);
 			uberMonkey.setMaterial(new DiffuseMaterial());
-			uberMonkey.setLight(mLight);
+			uberMonkey.addLight(mLight);
 			uberMonkey.setScale(.7f);
 			uberMonkey.setPosition(0, 0, 0);
 			uberMonkey.setColor(0xff990000);
@@ -52,7 +53,7 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 			for (int i = 0; i < 7; i++) {
 				BaseObject3D monkey = uberMonkey.clone();
 				monkey.setMaterial(new DiffuseMaterial());
-				monkey.setLight(mLight);
+				monkey.addLight(mLight);
 				monkey.setScale(.7f);
 				monkey.setPosition(-4 + (int) (Math.random() * 8), -4 + (int) (Math.random() * 8), (int) (Math.random() * 20));
 				monkey.getMaterial().setUseColor(true);

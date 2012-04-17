@@ -31,7 +31,7 @@ public class RajawaliBezierRenderer extends RajawaliRenderer {
 		mCamera.setPosition(0, 0, -14);
 
 		BaseObject3D redSphere = new Sphere(1, 16, 16);
-		redSphere.setLight(mLight);
+		redSphere.addLight(mLight);
 		redSphere.setMaterial(new PhongMaterial());
 		redSphere.setPosition(0, -4, 0);
 		redSphere.setColor(0xffff0000);
@@ -39,7 +39,7 @@ public class RajawaliBezierRenderer extends RajawaliRenderer {
 		addChild(redSphere);
 
 		BaseObject3D yellowSphere = new Sphere(.6f, 16, 16);
-		yellowSphere.setLight(mLight);
+		yellowSphere.addLight(mLight);
 		yellowSphere.setPosition(2, 4, 0);
 		yellowSphere.setColor(0xffffff00);
 		yellowSphere.getMaterial().setUseColor(true);

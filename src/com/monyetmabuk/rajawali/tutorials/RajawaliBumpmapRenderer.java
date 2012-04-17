@@ -39,12 +39,13 @@ public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, 1);
 		mLight.setPosition(-2, -2, -3);
+		//mLight.setPower(.3f);
 		mCamera.setPosition(0, 0, -6);
 
 		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.half_sphere_obj);
 		objParser.parse();
 		mHalfSphere1 = objParser.getParsedObject();
-		mHalfSphere1.setLight(mLight);
+		mHalfSphere1.addLight(mLight);
 		mHalfSphere1.setRotX(-90);
 		mHalfSphere1.setY(-1.2f);
 		addChild(mHalfSphere1);
@@ -55,7 +56,7 @@ public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 			ois.close();
 
 			mHalfSphere2 = new BaseObject3D(serializedMonkey);
-			mHalfSphere2.setLight(mLight);
+			mHalfSphere2.addLight(mLight);
 			mHalfSphere2.setRotX(-90);
 			mHalfSphere2.setY(1.2f);
 			addChild(mHalfSphere2);

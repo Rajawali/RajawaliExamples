@@ -38,7 +38,7 @@ public class RajawaliCollisionDetectionRenderer extends RajawaliRenderer {
 		mCamera.setPosition(0, 0, -7);
 
 		mCubeBox = new Cube(1);
-		mCubeBox.setLight(mLight);
+		mCubeBox.addLight(mLight);
 		mCubeBox.getMaterial().setUseColor(true);
 		mCubeBox.setColor(0xff990000);
 		mCubeBox.setPosition(-1, -3, 0);
@@ -46,7 +46,7 @@ public class RajawaliCollisionDetectionRenderer extends RajawaliRenderer {
 		addChild(mCubeBox);
 
 		mCubeSphere = new Cube(1);
-		mCubeSphere.setLight(mLight);
+		mCubeSphere.addLight(mLight);
 		mCubeSphere.getMaterial().setUseColor(true);
 		mCubeSphere.setColor(0xff00bfff);
 		mCubeSphere.setPosition(1, -2, 0);
@@ -62,7 +62,7 @@ public class RajawaliCollisionDetectionRenderer extends RajawaliRenderer {
 			mBoxesBox.setMaterial(new PhongMaterial());
 			mBoxesBox.getMaterial().setUseColor(true);
 			mBoxesBox.setColor(0xff990000);
-			mBoxesBox.setLight(mLight);
+			mBoxesBox.addLight(mLight);
 			mBoxesBox.setScale(.2f);
 			mBoxesBox.setRotY(180);
 			mBoxesBox.setPosition(-1, 3, 0);
@@ -73,7 +73,7 @@ public class RajawaliCollisionDetectionRenderer extends RajawaliRenderer {
 			mBoxesSphere.setMaterial(new PhongMaterial());
 			mBoxesSphere.getMaterial().setUseColor(true);
 			mBoxesSphere.setColor(0xff00bfff);
-			mBoxesSphere.setLight(mLight);
+			mBoxesSphere.addLight(mLight);
 			mBoxesSphere.setScale(.3f);
 			mBoxesSphere.setRotX(180);
 			mBoxesSphere.setPosition(1, 2, 0);

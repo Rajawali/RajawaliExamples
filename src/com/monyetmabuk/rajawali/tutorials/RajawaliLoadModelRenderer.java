@@ -26,13 +26,12 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, 1);
 		mLight.setPosition(0, 0, -10);
-
 		mCamera.setLookAt(0, 0, 0);
 
 		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.multiobjects_obj);
 		objParser.parse();
 		mObjectGroup = objParser.getParsedObject();
-		mObjectGroup.setLight(mLight);
+		mObjectGroup.addLight(mLight);
 		addChild(mObjectGroup);
 
 		mCameraAnim = new RotateAroundAnimation3D(new Number3D(), Axis.Y, 18);
@@ -40,7 +39,7 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 		mCameraAnim.setRepeatCount(Animation3D.INFINITE);
 		mCameraAnim.setTransformable3D(mCamera);
 
-		mLightAnim = new RotateAroundAnimation3D(new Number3D(), Axis.X, 10);
+		mLightAnim = new RotateAroundAnimation3D(new Number3D(), Axis.Z, 10);
 		mLightAnim.setDuration(3000);
 		mLightAnim.setRepeatCount(Animation3D.INFINITE);
 		mLightAnim.setTransformable3D(mLight);
