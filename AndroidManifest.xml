@@ -35,5 +35,6 @@
         <activity android:name="RajawaliPostProcessingActivity"></activity>
         <activity android:name="RajawaliCollisionDetectionActivity"></activity>
         <activity android:name="RajawaliMultipleLightsActivity"></activity>
+        <activity android:name="RajawaliLinesActivity"></activity>
     </application>
 </manifest>
