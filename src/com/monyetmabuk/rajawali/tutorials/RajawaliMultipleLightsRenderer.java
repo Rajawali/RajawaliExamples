@@ -39,7 +39,7 @@ public class RajawaliMultipleLightsRenderer extends RajawaliRenderer {
 		ALight light2 = new DirectionalLight();
 		light2.setPower(1.5f);
 
-		mCamera.setPosition(8, 8, -8);
+		mCamera.setPosition(-8, 8, -8);
 		mCamera.setLookAt(0, 0, 0);
 		
 		try {

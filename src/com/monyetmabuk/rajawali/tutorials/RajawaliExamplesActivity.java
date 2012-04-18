@@ -59,7 +59,9 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("18. Multiple Lights",
 					RajawaliMultipleLightsActivity.class, "RajawaliMultipleLightsActivity"),
 			new ExampleItem("19. Lines",
-					RajawaliLinesActivity.class, "RajawaliLinesActivity")
+					RajawaliLinesActivity.class, "RajawaliLinesActivity"),
+			new ExampleItem("20. Catmull-Rom Splines",
+					RajawaliCatmullRomActivity.class, "RajawaliCatmullRomActivity")
 
 	};
 
