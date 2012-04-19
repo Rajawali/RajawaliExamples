@@ -129,15 +129,23 @@ public class PlanesGalore extends BaseObject3D {
 		mPlanePositions = ByteBuffer.allocateDirect(planePositions.length * Geometry3D.FLOAT_SIZE_BYTES).order(ByteOrder.nativeOrder()).asFloatBuffer();
 		mPlanePositions.put(planePositions).position(0);
 
-		mPlanePositionsBufferHandle = mGeometry.createBuffer(BufferType.FLOAT_BUFFER, mPlanePositions, GLES20.GL_ARRAY_BUFFER);
-		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, 0);
-
 		mRotationSpeeds = ByteBuffer.allocateDirect(rotationSpeeds.length * Geometry3D.FLOAT_SIZE_BYTES).order(ByteOrder.nativeOrder()).asFloatBuffer();
 		mRotationSpeeds.put(rotationSpeeds).position(0);
 
-		mRotationSpeedsBufferHandle = mGeometry.createBuffer(BufferType.FLOAT_BUFFER, mRotationSpeeds, GLES20.GL_ARRAY_BUFFER);
+		createBuffers();
+	}
+	
+	private void createBuffers() {
+		mPlanePositionsBufferHandle = mGeometry.createBuffer(BufferType.FLOAT_BUFFER, mPlanePositions, GLES20.GL_ARRAY_BUFFER);
 		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, 0);
 
+		mRotationSpeedsBufferHandle = mGeometry.createBuffer(BufferType.FLOAT_BUFFER, mRotationSpeeds, GLES20.GL_ARRAY_BUFFER);
+		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, 0);
+	}
+	
+	public void reload() {
+		super.reload();
+		createBuffers();
 	}
 
 	protected void setShaderParams(Camera camera) {
