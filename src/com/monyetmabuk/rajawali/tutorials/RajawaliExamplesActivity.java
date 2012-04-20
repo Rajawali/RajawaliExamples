@@ -63,7 +63,9 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("20. Catmull-Rom Splines",
 					RajawaliCatmullRomActivity.class, "RajawaliCatmullRomActivity"),
 			new ExampleItem("21. 2000 Textured Planes",
-					Rajawali2000PlanesActivity.class, "Rajawali2000PlanesActivity")
+					Rajawali2000PlanesActivity.class, "Rajawali2000PlanesActivity"),
+			new ExampleItem("22. Transparent GLSurfaceView",
+					RajawaliTransparentSurfaceActivity.class, "RajawaliTransparentSurfaceActivity")
 
 	};
 

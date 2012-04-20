@@ -38,5 +38,6 @@
         <activity android:name="RajawaliLinesActivity"></activity>
         <activity android:name="RajawaliCatmullRomActivity"></activity>
         <activity android:name="Rajawali2000PlanesActivity"></activity>
+        <activity android:name="RajawaliTransparentSurfaceActivity"></activity>
     </application>
 </manifest>
