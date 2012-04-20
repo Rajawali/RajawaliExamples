@@ -8,16 +8,11 @@ import javax.microedition.khronos.opengles.GL10;
 import rajawali.BaseObject3D;
 import rajawali.SerializedObject3D;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.CubeMapMaterial;
 import rajawali.materials.DiffuseMaterial;
-import rajawali.materials.GouraudMaterial;
-import rajawali.materials.PhongMaterial;
 import rajawali.renderer.RajawaliRenderer;
 import rajawali.util.ObjectColorPicker;
 import rajawali.util.OnObjectPickedListener;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 public class RajawaliObjectPickingRenderer extends RajawaliRenderer implements OnObjectPickedListener {
 	private DirectionalLight mLight;
@@ -32,8 +27,9 @@ public class RajawaliObjectPickingRenderer extends RajawaliRenderer implements O
 	protected void initScene() {
 		mPicker = new ObjectColorPicker(this);
 		mPicker.setOnObjectPickedListener(this);
-		mLight = new DirectionalLight(0, 0, 1);
+		mLight = new DirectionalLight();
 		mLight.setPosition(-2, -2, -5);
+		mLight.setPower(1);
 		mCamera.setPosition(0, 0, -7);
 
 		try {
@@ -48,21 +44,21 @@ public class RajawaliObjectPickingRenderer extends RajawaliRenderer implements O
 			mMonkey1.setRotY(0);
 			addChild(mMonkey1);
 
-			mMonkey2 = new BaseObject3D(serializedMonkey);
+			mMonkey2 = mMonkey1.clone();
 			mMonkey2.addLight(mLight);
 			mMonkey2.setScale(.7f);
 			mMonkey2.setPosition(1, 1, 0);
 			mMonkey2.setRotY(45);
 			addChild(mMonkey2);
 
-			mMonkey3 = new BaseObject3D(serializedMonkey);
+			mMonkey3 = mMonkey1.clone();
 			mMonkey3.addLight(mLight);
 			mMonkey3.setScale(.7f);
 			mMonkey3.setPosition(-1, -1, 0);
 			mMonkey3.setRotY(90);
 			addChild(mMonkey3);
 
-			mMonkey4 = new BaseObject3D(serializedMonkey);
+			mMonkey4 = mMonkey1.clone();
 			mMonkey4.addLight(mLight);
 			mMonkey4.setScale(.7f);
 			mMonkey4.setPosition(1, -1, 0);
@@ -79,26 +75,19 @@ public class RajawaliObjectPickingRenderer extends RajawaliRenderer implements O
 
 		mMonkey1.setMaterial(new DiffuseMaterial());
 		mMonkey1.getMaterial().setUseColor(true);
-		mMonkey1.setColor(0xff00ff00);
+		mMonkey1.setColor(0xff0000);
 
-		mMonkey2.setMaterial(new GouraudMaterial());
+		mMonkey2.setMaterial(new DiffuseMaterial());
 		mMonkey2.getMaterial().setUseColor(true);
-		mMonkey2.setColor(0xff999900);
+		mMonkey2.setColor(0x00ff00);
 
-		mMonkey3.setMaterial(new PhongMaterial());
+		mMonkey3.setMaterial(new DiffuseMaterial());
 		mMonkey3.getMaterial().setUseColor(true);
-		mMonkey3.setColor(0xff00ff00);
+		mMonkey3.setColor(0xcc1100);
 
-		Bitmap[] textures = new Bitmap[6];
-		textures[0] = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.posx);
-		textures[1] = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.negx);
-		textures[2] = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.posy);
-		textures[3] = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.negy);
-		textures[4] = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.posz);
-		textures[5] = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.negz);
-
-		mMonkey4.setMaterial(new CubeMapMaterial());
-		mMonkey4.addTexture(mTextureManager.addCubemapTextures(textures));
+		mMonkey4.setMaterial(new DiffuseMaterial());
+		mMonkey4.getMaterial().setUseColor(true);
+		mMonkey4.setColor(0xff9955);
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
