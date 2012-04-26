@@ -12,7 +12,7 @@ import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
-import rajawali.math.Number3D;
+import rajawali.math.Number3D.Axis;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -44,7 +44,7 @@ public class RajawaliTransparentSurfaceRenderer extends RajawaliRenderer {
 			monkey.setScale(2);
 			addChild(monkey);
 
-			mAnim = new RotateAnimation3D(new Number3D(0, 360, 0));
+			mAnim = new RotateAnimation3D(Axis.Y, 360);
 			mAnim.setDuration(6000);
 			mAnim.setRepeatCount(Animation3D.INFINITE);
 			mAnim.setInterpolator(new AccelerateDecelerateInterpolator());

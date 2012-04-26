@@ -12,7 +12,7 @@ import rajawali.animation.Animation3D;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.ToonMaterial;
-import rajawali.math.Number3D;
+import rajawali.math.Number3D.Axis;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
@@ -67,19 +67,19 @@ public class RajawaliToonShadingRenderer extends RajawaliRenderer {
 		
 		mAnimations = new Stack<Animation3D>();
 		
-		RotateAnimation3D anim = new RotateAnimation3D(new Number3D(0, 360, 0));
+		RotateAnimation3D anim = new RotateAnimation3D(Axis.Y, 360);
 		anim.setDuration(6000);
 		anim.setRepeatCount(RotateAnimation3D.INFINITE);
 		anim.setTransformable3D(mMonkey1);
 		mAnimations.add(anim);
 		
-		anim = new RotateAnimation3D(new Number3D(0, -360, 0));
+		anim = new RotateAnimation3D(Axis.Y, -360);
 		anim.setDuration(6000);
 		anim.setRepeatCount(RotateAnimation3D.INFINITE);
 		anim.setTransformable3D(mMonkey2);
 		mAnimations.add(anim);
 		
-		anim = new RotateAnimation3D(new Number3D(0, -360, 0));
+		anim = new RotateAnimation3D(Axis.Y, -360);
 		anim.setDuration(6000);
 		anim.setRepeatCount(RotateAnimation3D.INFINITE);
 		anim.setTransformable3D(mMonkey3);

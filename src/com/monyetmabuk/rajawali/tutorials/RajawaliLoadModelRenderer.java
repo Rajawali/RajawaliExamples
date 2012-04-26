@@ -6,9 +6,9 @@ import javax.microedition.khronos.opengles.GL10;
 import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.RotateAroundAnimation3D;
-import rajawali.animation.RotateAroundAnimation3D.Axis;
 import rajawali.lights.DirectionalLight;
 import rajawali.math.Number3D;
+import rajawali.math.Number3D.Axis;
 import rajawali.parser.ObjParser;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
@@ -26,6 +26,7 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, 1);
 		mLight.setPosition(0, 0, -10);
+		mLight.setPower(1);
 		mCamera.setLookAt(0, 0, 0);
 
 		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.multiobjects_obj);

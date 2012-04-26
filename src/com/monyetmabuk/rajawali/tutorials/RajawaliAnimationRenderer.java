@@ -11,12 +11,12 @@ import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3DQueue;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.animation.RotateAroundAnimation3D;
-import rajawali.animation.RotateAroundAnimation3D.Axis;
 import rajawali.animation.ScaleAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.math.Number3D;
+import rajawali.math.Number3D.Axis;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 import android.view.animation.BounceInterpolator;
@@ -64,7 +64,10 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 		anim.setTransformable3D(mMonkey);
 		mQueue.addAnimation(anim);
 
-		anim = new RotateAnimation3D(new Number3D(90, 180, 270));
+		Number3D axis = new Number3D(10, 5, 2);
+		axis.normalize();
+		
+		anim = new RotateAnimation3D(axis, 0, 360);
 		anim.setDuration(2000);
 		anim.setTransformable3D(mMonkey);
 		mQueue.addAnimation(anim);

@@ -93,7 +93,10 @@ public class RajawaliCollisionDetectionRenderer extends RajawaliRenderer {
 		anim.setTransformable3D(mCubeBox);
 		mAnimations.push(anim);
 
-		anim = new RotateAnimation3D(new Number3D(90, 30, 120));
+		Number3D axis = new Number3D(2, 1, 4);
+		axis.normalize();
+		
+		anim = new RotateAnimation3D(axis, 360);
 		anim.setDuration(4000);
 		anim.setRepeatMode(Animation3D.REVERSE);
 		anim.setRepeatCount(Animation3D.INFINITE);

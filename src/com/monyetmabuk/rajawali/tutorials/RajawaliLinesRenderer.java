@@ -15,7 +15,7 @@ import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
 public class RajawaliLinesRenderer extends RajawaliRenderer {
-	private Animation3D mYAnim, mZAnim;
+	private Animation3D mAnim;
 	
 	public RajawaliLinesRenderer(Context context) {
 		super(context);
@@ -36,23 +36,18 @@ public class RajawaliLinesRenderer extends RajawaliRenderer {
 		Line3D whirl = new Line3D(points, 1, 0xffffff00);
 		addChild(whirl);
 		
-		mYAnim = new RotateAnimation3D(new Number3D(0, 360, 0));
-		mYAnim.setDuration(8000);
-		mYAnim.setRepeatCount(Animation3D.INFINITE);
-		mYAnim.setRepeatMode(Animation3D.RESTART);
-		mYAnim.setTransformable3D(whirl);
-		
-		mZAnim = new RotateAnimation3D(new Number3D(0, 0, 360));
-		mZAnim.setDuration(10000);
-		mZAnim.setRepeatCount(Animation3D.INFINITE);
-		mZAnim.setRepeatMode(Animation3D.RESTART);
-		mZAnim.setTransformable3D(mCamera);
+		Number3D axis = new Number3D(2, .4f, 1);
+		axis.normalize();
+		mAnim = new RotateAnimation3D(axis, 360);
+		mAnim.setDuration(8000);
+		mAnim.setRepeatCount(Animation3D.INFINITE);
+		mAnim.setRepeatMode(Animation3D.RESTART);
+		mAnim.setTransformable3D(whirl);
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		super.onSurfaceCreated(gl, config);
-		mYAnim.start();
-		mZAnim.start();
+		mAnim.start();
 	}
 	
 	private Stack<Number3D> createWhirl(int numSides, float scaleFactor, float centerX, float centerY, float rotAngle) {

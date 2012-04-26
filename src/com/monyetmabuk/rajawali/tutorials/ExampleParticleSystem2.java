@@ -12,22 +12,24 @@ import rajawali.primitives.Particle;
 import rajawali.util.ObjectColorPicker.ColorPickerInfo;
 import android.opengl.GLES20;
 
-public class ExampleParticleSystem extends Particle {
+public class ExampleParticleSystem2 extends Particle {
 	protected Number3D mFriction;
 	protected FloatBuffer mVelocityBuffer;
+	protected FloatBuffer mAnimOffsetBuffer;
 	protected float mTime;
+	protected int mCurrentFrame;
 	
-	public ExampleParticleSystem() {
+	public ExampleParticleSystem2() {
 		super();
 	}
 	
 	protected void init() {
-		mMaterial = new ParticleMaterial();
+		mMaterial = new ParticleMaterial(true);
 		mParticleShader = (ParticleMaterial)mMaterial;
 		setDrawingMode(GLES20.GL_POINTS);
 		setTransparent(true);
 		
-		final int numParticles = 5000;
+		final int numParticles = 200;
 		
 		float[] vertices = new float[numParticles * 3];
 		float[] velocity = new float[numParticles * 3];
@@ -35,6 +37,7 @@ public class ExampleParticleSystem extends Particle {
 		float[] normals = new float[numParticles * 3];
 		float[] colors = new float[numParticles * 4];
 		short[] indices = new short[numParticles];
+		float[] animOffsets = new float[numParticles];
 		
 		int index = 0;
 		
@@ -44,9 +47,9 @@ public class ExampleParticleSystem extends Particle {
 			vertices[index + 1] = 0;
 			vertices[index + 2] = 0;
 			
-			velocity[index] = -.5f + ((float)Math.random() * 1f);
-			velocity[index + 1] = -.5f + ((float)Math.random() * 1f);
-			velocity[index + 2] = ((float)Math.random() * 1f);
+			velocity[index] = -.2f + ((float)Math.random() * .4f);
+			velocity[index + 1] = -.2f + ((float)Math.random() * .4f);
+			velocity[index + 2] = -.2f + ((float)Math.random() * .4f);
 			
 			normals[index] = 0;
 			normals[index + 1] = 0;
@@ -63,12 +66,19 @@ public class ExampleParticleSystem extends Particle {
 			colors[i + 3] = i;
 			
 			indices[i] = (short)i;
+			
+			animOffsets[i] = (float)Math.floor(Math.random() * 64);
 		}
 		
 		mVelocityBuffer = ByteBuffer
 				.allocateDirect(velocity.length * Geometry3D.FLOAT_SIZE_BYTES)
 				.order(ByteOrder.nativeOrder()).asFloatBuffer();
 		mVelocityBuffer.put(velocity).position(0);
+		
+		mAnimOffsetBuffer = ByteBuffer
+				.allocateDirect(animOffsets.length * Geometry3D.FLOAT_SIZE_BYTES)
+				.order(ByteOrder.nativeOrder()).asFloatBuffer();
+		mAnimOffsetBuffer.put(animOffsets).position(0);
 		
 		mFriction = new Number3D(.95f, .95f, .95f);
 		
@@ -83,8 +93,16 @@ public class ExampleParticleSystem extends Particle {
 		return mTime;
 	}
 	
+	public void setCurrentFrame(int currentFrame) {
+		mCurrentFrame = currentFrame;
+	}
+	
 	protected void setShaderParams(Camera camera) {
 		super.setShaderParams(camera);
+		mParticleShader.setCurrentFrame(mCurrentFrame);
+		mParticleShader.setTileSize(1 / 8f);
+		mParticleShader.setNumTileRows(8);
+		mParticleShader.setAnimOffsets(mAnimOffsetBuffer);
 		mParticleShader.setFriction(mFriction);
 		mParticleShader.setVelocity(mVelocityBuffer);
 		mParticleShader.setMultiParticlesEnabled(true);
@@ -94,6 +112,5 @@ public class ExampleParticleSystem extends Particle {
 	public void render(Camera camera, float[] projMatrix, float[] vMatrix,
 			final float[] parentMatrix, ColorPickerInfo pickerInfo) {
 		super.render(camera, projMatrix, vMatrix, parentMatrix, pickerInfo);
-		
 	}
 }
