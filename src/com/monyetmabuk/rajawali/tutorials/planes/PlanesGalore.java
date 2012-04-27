@@ -53,7 +53,7 @@ public class PlanesGalore extends BaseObject3D {
 		float[] planePositions = new float[numVertices * 3];
 		float[] rotationSpeeds = new float[numVertices];
 		float[] colors = new float[numVertices * 4];
-		short[] indices = new short[numPlanes * 6];
+		int[] indices = new int[numPlanes * 6];
 
 		for (int i = 0; i < numPlanes; ++i) {
 			Number3D r = new Number3D(-10f + (Math.random() * 20f), -10 + (Math.random() * 20f), (Math.random() * 80f));

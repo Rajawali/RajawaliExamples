@@ -67,7 +67,7 @@ public class RajawaliAccelerometerRenderer extends RajawaliRenderer {
 
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
-		mMonkey.setRotation(-mAccValues.x, 180 - mAccValues.y, mAccValues.z);
+		mMonkey.setRotation(mAccValues.y, mAccValues.x, mAccValues.z);
 	}
 
 	public void setAccelerometerValues(float x, float y, float z) {

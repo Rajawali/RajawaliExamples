@@ -47,7 +47,6 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 			uberMonkey.setPosition(0, 0, 0);
 			uberMonkey.setColor(0xff990000);
 			uberMonkey.getMaterial().setUseColor(true);
-			uberMonkey.setRotY(180);
 			addChild(uberMonkey);
 
 			for (int i = 0; i < 7; i++) {

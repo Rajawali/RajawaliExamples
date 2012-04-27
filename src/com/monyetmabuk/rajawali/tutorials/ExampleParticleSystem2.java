@@ -36,7 +36,7 @@ public class ExampleParticleSystem2 extends Particle {
 		float[] textureCoords = new float[numParticles * 2];
 		float[] normals = new float[numParticles * 3];
 		float[] colors = new float[numParticles * 4];
-		short[] indices = new short[numParticles];
+		int[] indices = new int[numParticles];
 		float[] animOffsets = new float[numParticles];
 		
 		int index = 0;
@@ -65,7 +65,7 @@ public class ExampleParticleSystem2 extends Particle {
 			colors[i + 2] = i;
 			colors[i + 3] = i;
 			
-			indices[i] = (short)i;
+			indices[i] = i;
 			
 			animOffsets[i] = (float)Math.floor(Math.random() * 64);
 		}

@@ -1,12 +1,9 @@
 package com.monyetmabuk.rajawali.tutorials;
 
-import java.io.ObjectInputStream;
-
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
-import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.RotateAroundAnimation3D;
 import rajawali.lights.DirectionalLight;
@@ -42,32 +39,27 @@ public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 		mLight.setPower(1);
 		mCamera.setPosition(0, 0, -6);
 
-		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.half_sphere_obj);
+		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.bumpsphere);
 		objParser.parse();
 		mHalfSphere1 = objParser.getParsedObject();
 		mHalfSphere1.addLight(mLight);
 		mHalfSphere1.setRotX(-90);
 		mHalfSphere1.setY(-1.2f);
 		addChild(mHalfSphere1);
+		
+		objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.bumptorus);
+		objParser.parse();
+		mHalfSphere2 = objParser.getParsedObject();
+		mHalfSphere2.addLight(mLight);
+		mHalfSphere2.setRotX(-45);
+		mHalfSphere2.setY(1.2f);
+		mHalfSphere2.setRotX(-45);
+		addChild(mHalfSphere2);
 
-		try {
-			ObjectInputStream ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_normal));
-			SerializedObject3D serializedMonkey = (SerializedObject3D) ois.readObject();
-			ois.close();
-
-			mHalfSphere2 = new BaseObject3D(serializedMonkey);
-			mHalfSphere2.addLight(mLight);
-			mHalfSphere2.setRotX(-90);
-			mHalfSphere2.setY(1.2f);
-			addChild(mHalfSphere2);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		mDiffuseTexture1 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.half_sphere_texture);
-		mBumpTexture1 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.half_sphere_normal);
-		mDiffuseTexture2 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.monkey_texture);
-		mBumpTexture2 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.monkey_normal);
+		mDiffuseTexture1 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.sphere_texture);
+		mBumpTexture1 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.sphere_normal);
+		mDiffuseTexture2 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.torus_texture);
+		mBumpTexture2 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.torus_normal);
 
 		mHalfSphere1.setMaterial(new BumpmapMaterial());
 		mHalfSphere1.addTexture(mTextureManager.addTexture(mDiffuseTexture1, TextureType.DIFFUSE));
