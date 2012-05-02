@@ -67,8 +67,6 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 
-		startRendering();
-
 		mAnimation = new TranslateAnimation3D(new Number3D(0, 0, -2));
 		mAnimation.setDuration(6000);
 		mAnimation.setRepeatCount(Animation3D.INFINITE);

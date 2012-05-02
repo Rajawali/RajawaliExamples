@@ -67,7 +67,9 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("22. Transparent GLSurfaceView",
 					RajawaliTransparentSurfaceActivity.class, "RajawaliTransparentSurfaceActivity"),
 			new ExampleItem("23. Animated Sprites",
-					RajawaliAnimatedSpritesActivity.class, "RajawaliAnimatedSpritesActivity")
+					RajawaliAnimatedSpritesActivity.class, "RajawaliAnimatedSpritesActivity"),
+			new ExampleItem("24. Fog",
+					RajawaliFogActivity.class, "RajawaliFogActivity")
 
 	};
 
