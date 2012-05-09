@@ -41,5 +41,6 @@
         <activity android:name="RajawaliTransparentSurfaceActivity"></activity>
         <activity android:name="RajawaliAnimatedSpritesActivity"></activity>
         <activity android:name="RajawaliFogActivity"></activity>
+        <activity android:name=".RajawaliFBXActivity"></activity>
     </application>
 </manifest>

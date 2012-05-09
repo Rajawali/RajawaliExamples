@@ -22,25 +22,27 @@ public final class R {
         public static final int listview_divider=0x7f020008;
         public static final int listview_selector=0x7f020009;
         public static final int loader=0x7f02000a;
-        public static final int metal_texture=0x7f02000b;
-        public static final int negx=0x7f02000c;
-        public static final int negy=0x7f02000d;
-        public static final int negz=0x7f02000e;
-        public static final int ogrobase=0x7f02000f;
-        public static final int particle=0x7f020010;
-        public static final int posx=0x7f020011;
-        public static final int posy=0x7f020012;
-        public static final int posz=0x7f020013;
-        public static final int rajawali=0x7f020014;
-        public static final int rajawali_outline=0x7f020015;
-        public static final int rajawali_tex=0x7f020016;
-        public static final int road=0x7f020017;
-        public static final int sign=0x7f020018;
-        public static final int sphere_normal=0x7f020019;
-        public static final int sphere_texture=0x7f02001a;
-        public static final int torus_normal=0x7f02001b;
-        public static final int torus_texture=0x7f02001c;
-        public static final int warning=0x7f02001d;
+        public static final int lowpolyrocks_char_col=0x7f02000b;
+        public static final int lowpolyrocks_kita=0x7f02000c;
+        public static final int metal_texture=0x7f02000d;
+        public static final int negx=0x7f02000e;
+        public static final int negy=0x7f02000f;
+        public static final int negz=0x7f020010;
+        public static final int ogrobase=0x7f020011;
+        public static final int particle=0x7f020012;
+        public static final int posx=0x7f020013;
+        public static final int posy=0x7f020014;
+        public static final int posz=0x7f020015;
+        public static final int rajawali=0x7f020016;
+        public static final int rajawali_outline=0x7f020017;
+        public static final int rajawali_tex=0x7f020018;
+        public static final int road=0x7f020019;
+        public static final int sign=0x7f02001a;
+        public static final int sphere_normal=0x7f02001b;
+        public static final int sphere_texture=0x7f02001c;
+        public static final int torus_normal=0x7f02001d;
+        public static final int torus_texture=0x7f02001e;
+        public static final int warning=0x7f02001f;
     }
     public static final class id {
         public static final int imageView1=0x7f070000;
@@ -55,12 +57,13 @@ public final class R {
         public static final int bumpsphere=0x7f040002;
         public static final int bumptorus=0x7f040003;
         public static final int jet=0x7f040004;
-        public static final int monkey=0x7f040005;
-        public static final int monkey_ser=0x7f040006;
-        public static final int multiobjects_mtl=0x7f040007;
-        public static final int multiobjects_obj=0x7f040008;
-        public static final int ogro=0x7f040009;
-        public static final int road=0x7f04000a;
+        public static final int lowpolyrocks_character_blendswap=0x7f040005;
+        public static final int monkey=0x7f040006;
+        public static final int monkey_ser=0x7f040007;
+        public static final int multiobjects_mtl=0x7f040008;
+        public static final int multiobjects_obj=0x7f040009;
+        public static final int ogro=0x7f04000a;
+        public static final int road=0x7f04000b;
     }
     public static final class string {
         public static final int app_name=0x7f050000;

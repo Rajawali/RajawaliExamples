@@ -69,8 +69,9 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("23. Animated Sprites",
 					RajawaliAnimatedSpritesActivity.class, "RajawaliAnimatedSpritesActivity"),
 			new ExampleItem("24. Fog",
-					RajawaliFogActivity.class, "RajawaliFogActivity")
-
+					RajawaliFogActivity.class, "RajawaliFogActivity"),
+			new ExampleItem("25. FBX Scene Importer",
+					RajawaliFBXActivity.class, "RajawaliFBXActivity")
 	};
 
 	public void onCreate(Bundle savedInstanceState) {
