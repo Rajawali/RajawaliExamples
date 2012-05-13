@@ -28,7 +28,6 @@ public class RajawaliMD2Renderer extends RajawaliRenderer {
 	
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, 1);
-		mLight.setPosition(0, 0, -6);
 		mLight.setPower(2);
 		mCamera.setPosition(0, 0, -8);
 

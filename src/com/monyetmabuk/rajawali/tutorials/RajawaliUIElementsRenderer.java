@@ -23,8 +23,7 @@ public class RajawaliUIElementsRenderer extends RajawaliRenderer {
 
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, 1);
-		mLight.setPosition(-2, -2, -5);
-		mLight.setPower(1);
+		mLight.setPower(.8f);
 		mCamera.setPosition(0, 0, -7);
 
 		try {

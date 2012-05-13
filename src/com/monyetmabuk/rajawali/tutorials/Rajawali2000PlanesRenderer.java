@@ -7,7 +7,6 @@ import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.CatmullRomPath3D;
 import rajawali.animation.TranslateAnimation3D;
-import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
 import rajawali.math.Number3D;
 import rajawali.renderer.RajawaliRenderer;
@@ -48,13 +47,12 @@ public class Rajawali2000PlanesRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
-		ALight mLight = new DirectionalLight(0, 0, 1);
-		mLight.setPosition(0, 0, -3);
+		DirectionalLight light = new DirectionalLight(0, 0, 1);
 		mCamera.setPosition(0, 0, -16);
 
 		mPlanes = new PlanesGalore();
 		mMaterial = (PlanesGaloreMaterial)mPlanes.getMaterial();
-		mPlanes.addLight(mLight);
+		mPlanes.addLight(light);
 		mPlanes.setDoubleSided(true);
 		mPlanes.setZ(4);
 		

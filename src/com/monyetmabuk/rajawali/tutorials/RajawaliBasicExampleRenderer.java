@@ -21,9 +21,8 @@ public class RajawaliBasicExampleRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
-		mLight = new DirectionalLight(0.1f, 0.2f, -1.0f); // set the direction
+		mLight = new DirectionalLight(1f, 0.2f, 1.0f); // set the direction
 		mLight.setColor(1.0f, 1.0f, 1.0f);
-		mLight.setPosition(.5f, 0, -2);
 		mLight.setPower(2);
 
 		Bitmap bg = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.earthtruecolor_nasa_big);

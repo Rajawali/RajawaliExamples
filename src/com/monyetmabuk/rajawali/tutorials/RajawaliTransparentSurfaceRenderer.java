@@ -9,7 +9,6 @@ import rajawali.BaseObject3D;
 import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.RotateAnimation3D;
-import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.math.Number3D.Axis;
@@ -26,9 +25,8 @@ public class RajawaliTransparentSurfaceRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
-		ALight mLight = new DirectionalLight(0, 0, 1);
-		mLight.setPosition(0, 0, -3);
-		mLight.setPower(1);
+		DirectionalLight light = new DirectionalLight(0, 0, 1);
+		light.setPower(1);
 		mCamera.setPosition(0, 0, -16);
 		
 		try {
@@ -38,7 +36,7 @@ public class RajawaliTransparentSurfaceRenderer extends RajawaliRenderer {
 
 			BaseObject3D monkey = new BaseObject3D(serializedMonkey);
 			monkey.setMaterial(new DiffuseMaterial());
-			monkey.addLight(mLight);
+			monkey.addLight(light);
 			monkey.getMaterial().setUseColor(true);
 			monkey.setColor(0xffff8C00);
 			monkey.setScale(2);

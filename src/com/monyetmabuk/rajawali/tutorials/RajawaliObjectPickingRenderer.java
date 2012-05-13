@@ -7,7 +7,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
 import rajawali.SerializedObject3D;
-import rajawali.lights.DirectionalLight;
+import rajawali.lights.PointLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.renderer.RajawaliRenderer;
 import rajawali.util.ObjectColorPicker;
@@ -15,7 +15,7 @@ import rajawali.util.OnObjectPickedListener;
 import android.content.Context;
 
 public class RajawaliObjectPickingRenderer extends RajawaliRenderer implements OnObjectPickedListener {
-	private DirectionalLight mLight;
+	private PointLight mLight;
 	private BaseObject3D mMonkey1, mMonkey2, mMonkey3, mMonkey4;
 	private ObjectColorPicker mPicker;
 
@@ -27,9 +27,9 @@ public class RajawaliObjectPickingRenderer extends RajawaliRenderer implements O
 	protected void initScene() {
 		mPicker = new ObjectColorPicker(this);
 		mPicker.setOnObjectPickedListener(this);
-		mLight = new DirectionalLight();
-		mLight.setPosition(-2, -2, -5);
-		mLight.setPower(1);
+		mLight = new PointLight();
+		mLight.setPosition(-2, 1, -4);
+		mLight.setPower(1.5f);
 		mCamera.setPosition(0, 0, -7);
 
 		try {

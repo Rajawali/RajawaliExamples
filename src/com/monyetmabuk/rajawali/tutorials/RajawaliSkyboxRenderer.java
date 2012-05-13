@@ -3,12 +3,10 @@ package com.monyetmabuk.rajawali.tutorials;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.lights.DirectionalLight;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
 public class RajawaliSkyboxRenderer extends RajawaliRenderer {
-	private DirectionalLight mLight;
 
 	public RajawaliSkyboxRenderer(Context context) {
 		super(context);
@@ -16,8 +14,6 @@ public class RajawaliSkyboxRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
-		mLight = new DirectionalLight();
-		mLight.setPosition(5f, 10, -10);
 		mCamera.setFarPlane(1000);
 		/*
 		 * Skybox images by Emil Persson, aka Humus. http://www.humus.name

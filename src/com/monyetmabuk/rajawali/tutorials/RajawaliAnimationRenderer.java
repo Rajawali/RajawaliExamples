@@ -13,7 +13,7 @@ import rajawali.animation.RotateAnimation3D;
 import rajawali.animation.RotateAroundAnimation3D;
 import rajawali.animation.ScaleAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
-import rajawali.lights.DirectionalLight;
+import rajawali.lights.PointLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.math.Number3D;
 import rajawali.math.Number3D.Axis;
@@ -23,7 +23,7 @@ import android.view.animation.BounceInterpolator;
 import android.view.animation.LinearInterpolator;
 
 public class RajawaliAnimationRenderer extends RajawaliRenderer {
-	private DirectionalLight mLight;
+	private PointLight mLight;
 	private BaseObject3D mMonkey;
 	private Animation3DQueue mQueue;
 
@@ -33,9 +33,9 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 	}
 	
 	protected void initScene() {
-		mLight = new DirectionalLight(0, 0, 1);
-		mLight.setPosition(-2, -2, -5);
-		mLight.setPower(1);
+		mLight = new PointLight();
+		mLight.setPosition(-2, 1, -4);
+		mLight.setPower(1.5f);
 		mCamera.setPosition(0, 0, -14);
 
 		ObjectInputStream ois;

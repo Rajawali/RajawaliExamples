@@ -26,8 +26,7 @@ public class RajawaliBezierRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
-		mLight = new DirectionalLight(0, 0, 1);
-		mLight.setPosition(0, 0, -6);
+		mLight = new DirectionalLight(0, 1, 1);
 		mLight.setPower(1);
 		mCamera.setPosition(0, 0, -14);
 

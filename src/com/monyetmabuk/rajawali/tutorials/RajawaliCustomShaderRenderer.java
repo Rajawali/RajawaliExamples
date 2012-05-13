@@ -21,8 +21,7 @@ public class RajawaliCustomShaderRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
-		mLight = new DirectionalLight(0, 0, 1);
-		mLight.setPosition(0, 0, -80);
+		mLight = new DirectionalLight(0, 1, 1);
 
 		mCustomMaterial = new CustomMaterial();
 

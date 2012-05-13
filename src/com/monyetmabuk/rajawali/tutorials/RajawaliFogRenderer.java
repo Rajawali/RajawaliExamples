@@ -26,8 +26,7 @@ public class RajawaliFogRenderer extends RajawaliRenderer {
 	}
 	
 	protected void initScene() {
-		mLight = new DirectionalLight();
-		mLight.setPosition(0, 4, 10);
+		mLight = new DirectionalLight(0, -1, 1);
 		mLight.setPower(.5f);
 		
 		mCamera.setPosition(0, 1, -4);

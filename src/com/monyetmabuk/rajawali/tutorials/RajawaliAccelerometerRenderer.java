@@ -27,10 +27,9 @@ public class RajawaliAccelerometerRenderer extends RajawaliRenderer {
 	}
 	
 	protected void initScene() {
-		mLight = new DirectionalLight(0.1f, 0.2f, -1.0f);
+		mLight = new DirectionalLight(0.1f, 0.2f, 1.0f);
 		mLight.setColor(1.0f, 1.0f, 1.0f);
-		mLight.setPosition(.5f, 0, -2);
-		mLight.setPower(2);
+		mLight.setPower(1);
 
 		try {
 			ObjectInputStream ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_ser));

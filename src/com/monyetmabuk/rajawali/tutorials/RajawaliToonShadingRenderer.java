@@ -29,7 +29,6 @@ public class RajawaliToonShadingRenderer extends RajawaliRenderer {
 
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, 1);
-		mLight.setPosition(0, 0, -6);
 		mLight.setPower(1);
 		mCamera.setPosition(0, 0, -12);
 		

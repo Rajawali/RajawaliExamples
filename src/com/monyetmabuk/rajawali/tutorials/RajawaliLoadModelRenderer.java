@@ -5,8 +5,9 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
+import rajawali.animation.RotateAnimation3D;
 import rajawali.animation.RotateAroundAnimation3D;
-import rajawali.lights.DirectionalLight;
+import rajawali.lights.PointLight;
 import rajawali.math.Number3D;
 import rajawali.math.Number3D.Axis;
 import rajawali.parser.ObjParser;
@@ -14,7 +15,7 @@ import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
 public class RajawaliLoadModelRenderer extends RajawaliRenderer {
-	private DirectionalLight mLight;
+	private PointLight mLight;
 	private BaseObject3D mObjectGroup;
 	private Animation3D mCameraAnim, mLightAnim;
 	
@@ -24,10 +25,11 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
-		mLight = new DirectionalLight(0, 0, 1);
-		mLight.setPosition(0, 0, -10);
-		mLight.setPower(1);
+		mLight = new PointLight();
+		mLight.setPosition(0, 0, -4);
+		mLight.setPower(2);
 		mCamera.setLookAt(0, 0, 0);
+		mCamera.setZ(-12);
 
 		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.multiobjects_obj);
 		objParser.parse();
@@ -35,10 +37,10 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 		mObjectGroup.addLight(mLight);
 		addChild(mObjectGroup);
 
-		mCameraAnim = new RotateAroundAnimation3D(new Number3D(), Axis.Y, 18);
+		mCameraAnim = new RotateAnimation3D(Axis.Y, 360);
 		mCameraAnim.setDuration(8000);
 		mCameraAnim.setRepeatCount(Animation3D.INFINITE);
-		mCameraAnim.setTransformable3D(mCamera);
+		mCameraAnim.setTransformable3D(mObjectGroup);
 
 		mLightAnim = new RotateAroundAnimation3D(new Number3D(), Axis.Z, 10);
 		mLightAnim.setDuration(3000);

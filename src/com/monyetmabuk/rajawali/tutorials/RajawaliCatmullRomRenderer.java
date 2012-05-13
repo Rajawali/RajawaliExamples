@@ -42,7 +42,6 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		super.initScene();
 		ALight light1 = new DirectionalLight(0, 0, 1);
 		light1.setPower(1);
-		light1.setPosition(0, 0, -5);
 		mCamera.setPosition(0, 0, -10);
 		mCamera.setLookAt(0, 0, 0);
 

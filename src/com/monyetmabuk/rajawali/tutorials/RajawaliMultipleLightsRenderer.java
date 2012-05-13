@@ -10,8 +10,7 @@ import rajawali.BaseObject3D;
 import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.TranslateAnimation3D;
-import rajawali.lights.ALight;
-import rajawali.lights.DirectionalLight;
+import rajawali.lights.PointLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.TextureManager.TextureType;
 import rajawali.math.Number3D;
@@ -34,10 +33,10 @@ public class RajawaliMultipleLightsRenderer extends RajawaliRenderer {
 		//    considerations.
 		setMaxLights(2);
 		
-		ALight light1 = new DirectionalLight();
-		light1.setPower(1.5f);
-		ALight light2 = new DirectionalLight();
-		light2.setPower(1.5f);
+		PointLight light1 = new PointLight();
+		light1.setPower(5);
+		PointLight light2 = new PointLight();
+		light2.setPower(5);
 
 		mCamera.setPosition(-8, 8, -8);
 		mCamera.setLookAt(0, 0, 0);

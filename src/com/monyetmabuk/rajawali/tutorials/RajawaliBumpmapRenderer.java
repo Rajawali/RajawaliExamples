@@ -6,7 +6,7 @@ import javax.microedition.khronos.opengles.GL10;
 import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.RotateAroundAnimation3D;
-import rajawali.lights.DirectionalLight;
+import rajawali.lights.PointLight;
 import rajawali.materials.BumpmapMaterial;
 import rajawali.materials.BumpmapPhongMaterial;
 import rajawali.materials.TextureManager.TextureType;
@@ -19,7 +19,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 public class RajawaliBumpmapRenderer extends RajawaliRenderer {
-	private DirectionalLight mLight;
+	private PointLight mLight;
 	private BaseObject3D mHalfSphere1;
 	private BaseObject3D mHalfSphere2;
 	private Bitmap mDiffuseTexture1;
@@ -34,9 +34,9 @@ public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
-		mLight = new DirectionalLight(0, 0, 1);
-		mLight.setPosition(-2, -2, -3);
-		mLight.setPower(1);
+		mLight = new PointLight();
+		mLight.setPosition(-2, -2, -8);
+		mLight.setPower(2f);
 		mCamera.setPosition(0, 0, -6);
 
 		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.bumpsphere);
@@ -69,7 +69,7 @@ public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 		mHalfSphere2.addTexture(mTextureManager.addTexture(mDiffuseTexture2, TextureType.DIFFUSE));
 		mHalfSphere2.addTexture(mTextureManager.addTexture(mBumpTexture2, TextureType.BUMP));
 
-		mLightAnim = new RotateAroundAnimation3D(new Number3D(0, 0, 0), Axis.Z, 4);
+		mLightAnim = new RotateAroundAnimation3D(new Number3D(0, 0, -4), Axis.Z, 4);
 		mLightAnim.setDuration(5000);
 		mLightAnim.setRepeatCount(Animation3D.INFINITE);
 		mLightAnim.setTransformable3D(mLight);
