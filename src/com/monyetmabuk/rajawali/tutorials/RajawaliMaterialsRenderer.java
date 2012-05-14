@@ -74,7 +74,7 @@ public class RajawaliMaterialsRenderer extends RajawaliRenderer {
 		mMonkey1.setColor(0xff00ff00);
 
 		GouraudMaterial gouraud = new GouraudMaterial();
-		gouraud.setSpecularIntensity(.1f, .1f, .1f, 1);
+		gouraud.setSpecularIntensity(.5f, .5f, .5f, 1);
 		mMonkey2.setMaterial(gouraud);
 		mMonkey2.getMaterial().setUseColor(true);
 		mMonkey2.setColor(0xff999900);
