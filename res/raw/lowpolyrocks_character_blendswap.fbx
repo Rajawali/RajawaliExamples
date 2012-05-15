@@ -39,7 +39,7 @@ Objects:  {
 		Properties60:  {
 			Property: "Visibility", "Visibility", "A+",1
 			Property: "Lcl Translation", "Lcl Translation", "A+",0.070537388324738,0.946461617946625,-0.110683023929596
-			Property: "Lcl Rotation", "Lcl Rotation", "A+",-0.000006007852228,179.999991348319355,-24.468244286375914
+			Property: "Lcl Rotation", "Lcl Rotation", "A+",0,180,-25
 			Property: "Lcl Scaling", "Lcl Scaling", "A+",0.096978768706322,0.096978768706322,0.096978783607483
 			Property: "Color", "Color", "A",0.8,0.8,0.8
 		}
@@ -61,7 +61,7 @@ Objects:  {
 		Properties60:  {
 			Property: "Visibility", "Visibility", "A+",1
 			Property: "Lcl Translation", "Lcl Translation", "A+",0.000347067601979,0.001074433326721,-0.030584240332246
-			Property: "Lcl Rotation", "Lcl Rotation", "A+",-89.999995674159678,-180.000005008697713,0
+			Property: "Lcl Rotation", "Lcl Rotation", "A+",90,-180,0
 			Property: "Lcl Scaling", "Lcl Scaling", "A+",0.151936352252960,0.151936352252960,0.151936352252960
 			Property: "Color", "Color", "A",0.8,0.8,0.8
 		}

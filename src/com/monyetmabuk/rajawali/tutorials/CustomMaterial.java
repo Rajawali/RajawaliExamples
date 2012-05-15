@@ -14,8 +14,8 @@ public class CustomMaterial extends SimpleMaterial {
 			"   vec4 newColor = vec4(1.0, 0, 0, 1.0);\n" +
 			"	float x = min(vTextureCoord.s, 1.0 - vTextureCoord.s);" +
 			"	float y = vTextureCoord.t;" + 
-			"	newColor.g = sin(x * cos(uTime/15.0) * 120.0) + " + 
-			"   	cos(y * sin(uTime/10.0) * 120.0) + " +
+			"	newColor.g = sin(x * cos(uTime*0.0666) * 120.0) + " + 
+			"   	cos(y * sin(uTime*0.1) * 120.0) + " +
 			"		sin(sqrt(y * y + x * x) * 40.0);\n" +
 			"	gl_FragColor = newColor;\n" +
 			"}\n";
