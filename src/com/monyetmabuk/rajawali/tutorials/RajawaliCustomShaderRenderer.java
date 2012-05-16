@@ -4,11 +4,13 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
+import rajawali.lights.DirectionalLight;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
 public class RajawaliCustomShaderRenderer extends RajawaliRenderer {
+	private DirectionalLight mLight;
 	private BaseObject3D mSphere;
 	private CustomMaterial mCustomMaterial;
 	private float mTime;
@@ -19,9 +21,12 @@ public class RajawaliCustomShaderRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
+		mLight = new DirectionalLight(0, 1, 1);
+
 		mCustomMaterial = new CustomMaterial();
 
 		mSphere = new Sphere(2, 32, 32);
+		mSphere.addLight(mLight);
 		mSphere.setMaterial(mCustomMaterial);
 		addChild(mSphere);
 

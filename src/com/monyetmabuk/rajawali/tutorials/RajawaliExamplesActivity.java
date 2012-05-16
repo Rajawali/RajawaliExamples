@@ -71,7 +71,9 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("24. Fog",
 					RajawaliFogActivity.class, "RajawaliFogActivity"),
 			new ExampleItem("25. FBX Scene Importer",
-					RajawaliFBXActivity.class, "RajawaliFBXActivity")
+					RajawaliFBXActivity.class, "RajawaliFBXActivity"),
+			new ExampleItem("26. Custom Vertex Shader",
+					RajawaliVertexShaderActivity.class, "RajawaliVertexShaderActivity")
 	};
 
 	public void onCreate(Bundle savedInstanceState) {
