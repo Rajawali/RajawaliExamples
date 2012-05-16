@@ -9,6 +9,7 @@ import rajawali.animation.Animation3D;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
+import rajawali.materials.SimpleMaterial;
 import rajawali.math.Number3D;
 import rajawali.primitives.Line3D;
 import rajawali.renderer.RajawaliRenderer;
@@ -34,6 +35,9 @@ public class RajawaliLinesRenderer extends RajawaliRenderer {
 		 * A Line3D takes a Stack of <Number3D>s, thickness and a color
 		 */
 		Line3D whirl = new Line3D(points, 1, 0xffffff00);
+		SimpleMaterial material = new SimpleMaterial();
+		material.setUseColor(true);
+		whirl.setMaterial(material);
 		addChild(whirl);
 		
 		Number3D axis = new Number3D(2, .4f, 1);

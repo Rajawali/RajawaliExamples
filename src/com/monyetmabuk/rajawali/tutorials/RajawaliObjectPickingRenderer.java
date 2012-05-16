@@ -73,20 +73,19 @@ public class RajawaliObjectPickingRenderer extends RajawaliRenderer implements O
 			e.printStackTrace();
 		}
 
-		mMonkey1.setMaterial(new DiffuseMaterial());
-		mMonkey1.getMaterial().setUseColor(true);
+		DiffuseMaterial material = new DiffuseMaterial();
+		material.setUseColor(true);
+		
+		mMonkey1.setMaterial(material);
 		mMonkey1.setColor(0xff0000);
 
-		mMonkey2.setMaterial(new DiffuseMaterial());
-		mMonkey2.getMaterial().setUseColor(true);
+		mMonkey2.setMaterial(material);
 		mMonkey2.setColor(0x00ff00);
 
-		mMonkey3.setMaterial(new DiffuseMaterial());
-		mMonkey3.getMaterial().setUseColor(true);
+		mMonkey3.setMaterial(material);
 		mMonkey3.setColor(0xcc1100);
 
-		mMonkey4.setMaterial(new DiffuseMaterial());
-		mMonkey4.getMaterial().setUseColor(true);
+		mMonkey4.setMaterial(material);
 		mMonkey4.setColor(0xff9955);
 	}
 

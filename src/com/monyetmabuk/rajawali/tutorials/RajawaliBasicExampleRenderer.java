@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import rajawali.BaseObject3D;
 import rajawali.lights.DirectionalLight;
+import rajawali.materials.DiffuseMaterial;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
 
@@ -26,7 +27,9 @@ public class RajawaliBasicExampleRenderer extends RajawaliRenderer {
 		mLight.setPower(2);
 
 		Bitmap bg = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.earthtruecolor_nasa_big);
+		DiffuseMaterial material = new DiffuseMaterial();
 		mSphere = new Sphere(1, 18, 18);
+		mSphere.setMaterial(material);
 		mSphere.addLight(mLight);
 		mSphere.addTexture(mTextureManager.addTexture(bg));
 		addChild(mSphere);

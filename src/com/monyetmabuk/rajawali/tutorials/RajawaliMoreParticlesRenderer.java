@@ -26,11 +26,11 @@ public class RajawaliMoreParticlesRenderer extends RajawaliRenderer {
 		rajawali.materials.TextureInfo particleTexture = mTextureManager.addTexture(particleBitmap);
 
 		mParticleSystem = new ExampleParticleSystem();
+		mParticleSystem.setMaterial(new ParticleMaterial(), false);
+		mParticleSystem.addTexture(particleTexture);
 		mParticleSystem.setPointSize(100);
 		addChild(mParticleSystem);
 
-		mParticleSystem.setMaterial(new ParticleMaterial(), false);
-		mParticleSystem.addTexture(particleTexture);
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {

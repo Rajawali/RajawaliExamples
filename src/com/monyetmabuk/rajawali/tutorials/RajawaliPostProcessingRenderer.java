@@ -39,22 +39,23 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 			SerializedObject3D serializedMonkey = (SerializedObject3D) ois.readObject();
 			ois.close();
 
+			DiffuseMaterial material = new DiffuseMaterial();
+			material.setUseColor(true);
+			
 			BaseObject3D uberMonkey = new BaseObject3D(serializedMonkey);
-			uberMonkey.setMaterial(new DiffuseMaterial());
+			uberMonkey.setMaterial(material);
 			uberMonkey.addLight(mLight);
 			uberMonkey.setScale(.7f);
 			uberMonkey.setPosition(0, 0, 0);
 			uberMonkey.setColor(0xff990000);
-			uberMonkey.getMaterial().setUseColor(true);
 			addChild(uberMonkey);
 
 			for (int i = 0; i < 7; i++) {
 				BaseObject3D monkey = uberMonkey.clone();
-				monkey.setMaterial(new DiffuseMaterial());
+				monkey.setMaterial(material);
 				monkey.addLight(mLight);
 				monkey.setScale(.7f);
 				monkey.setPosition(-4 + (int) (Math.random() * 8), -4 + (int) (Math.random() * 8), (int) (Math.random() * 20));
-				monkey.getMaterial().setUseColor(true);
 				monkey.setRotation((int) (Math.random() * 360), (int) (Math.random() * 360), (int) (Math.random() * 360));
 				// -- since it is a cloned object it is important to set the
 				// second parameter to true or else all monkeys will change

@@ -6,7 +6,6 @@ import java.nio.FloatBuffer;
 
 import rajawali.Camera;
 import rajawali.Geometry3D;
-import rajawali.materials.ParticleMaterial;
 import rajawali.math.Number3D;
 import rajawali.primitives.Particle;
 import rajawali.util.ObjectColorPicker.ColorPickerInfo;
@@ -22,8 +21,6 @@ public class ExampleParticleSystem extends Particle {
 	}
 	
 	protected void init() {
-		mMaterial = new ParticleMaterial();
-		mParticleShader = (ParticleMaterial)mMaterial;
 		setDrawingMode(GLES20.GL_POINTS);
 		setTransparent(true);
 		

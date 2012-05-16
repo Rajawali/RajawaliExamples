@@ -45,6 +45,9 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		mCamera.setPosition(0, 0, -10);
 		mCamera.setLookAt(0, 0, 0);
 
+		SimpleMaterial material = new SimpleMaterial();
+		material.setUseColor(true);
+		
 		// -- create a catmull-rom path. The first and the last point are control points.
 		CatmullRomPath3D path = new CatmullRomPath3D();
 		float r = 12;
@@ -57,9 +60,8 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		ObjParser parser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.arrow);
 		parser.parse();
 		BaseObject3D arrow = parser.getParsedObject();
-		arrow.setMaterial(new SimpleMaterial());
+		arrow.setMaterial(material);
 		arrow.setScale(.2f);
-		arrow.getMaterial().setUseColor(true);
 		arrow.setColor(0xffffff00);
 		arrow.addLight(light1);
 		addChild(arrow);
@@ -72,14 +74,13 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		mAnim.setOrientToPath(true);
 		mAnim.setTransformable3D(arrow);
 		mAnims.add(mAnim);
-
+		
 		int numPoints = path.getNumPoints();
 
 		for (int i = 0; i < numPoints; i++) {
 			Sphere s = new Sphere(.2f, 6, 6);
 			s.addLight(light1);
-			s.setMaterial(new SimpleMaterial());
-			s.getMaterial().setUseColor(true);
+			s.setMaterial(material);
 			s.setPosition(path.getPoint(i));
 
 			if (i == 0)
@@ -98,6 +99,7 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 			linePoints.add(path.calculatePoint(i / 100f));
 		}
 		Line3D line = new Line3D(linePoints, 1, 0xffffffff);
+		line.setMaterial(material);
 		addChild(line);
 
 		RotateAroundAnimation3D mCamAnim = new RotateAroundAnimation3D(new Number3D(), Axis.Y, 26);

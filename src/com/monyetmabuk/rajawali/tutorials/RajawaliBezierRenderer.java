@@ -11,6 +11,7 @@ import rajawali.animation.Animation3D;
 import rajawali.animation.BezierPath3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.DirectionalLight;
+import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.PhongMaterial;
 import rajawali.math.Number3D;
 import rajawali.primitives.Sphere;
@@ -32,17 +33,21 @@ public class RajawaliBezierRenderer extends RajawaliRenderer {
 
 		BaseObject3D redSphere = new Sphere(1, 16, 16);
 		redSphere.addLight(mLight);
-		redSphere.setMaterial(new PhongMaterial());
 		redSphere.setPosition(0, -4, 0);
 		redSphere.setColor(0xffff0000);
-		redSphere.getMaterial().setUseColor(true);
+		
+		PhongMaterial phong = new PhongMaterial();
+		phong.setUseColor(true);
+		redSphere.setMaterial(phong);
 		addChild(redSphere);
 
 		BaseObject3D yellowSphere = new Sphere(.6f, 16, 16);
 		yellowSphere.addLight(mLight);
 		yellowSphere.setPosition(2, 4, 0);
 		yellowSphere.setColor(0xffffff00);
-		yellowSphere.getMaterial().setUseColor(true);
+		DiffuseMaterial diffuse = new DiffuseMaterial();
+		diffuse.setUseColor(true);
+		yellowSphere.setMaterial(diffuse);
 		addChild(yellowSphere);
 
 		BezierPath3D redBezierPath = new BezierPath3D();

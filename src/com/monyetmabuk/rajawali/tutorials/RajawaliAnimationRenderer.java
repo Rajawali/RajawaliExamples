@@ -50,8 +50,9 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 
-		mMonkey.setMaterial(new DiffuseMaterial());
-		mMonkey.getMaterial().setUseColor(true);
+		DiffuseMaterial material = new DiffuseMaterial();
+		material.setUseColor(true);
+		mMonkey.setMaterial(material);
 		mMonkey.setColor(0xff00ff00);
 
 		mQueue = new Animation3DQueue();

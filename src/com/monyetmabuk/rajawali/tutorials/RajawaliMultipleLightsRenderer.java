@@ -28,11 +28,6 @@ public class RajawaliMultipleLightsRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
-		// -- It's important to set this up front, it cannot
-		//    be changed once set. This is because of performance 
-		//    considerations.
-		setMaxLights(2);
-		
 		PointLight light1 = new PointLight();
 		light1.setPower(5);
 		PointLight light2 = new PointLight();

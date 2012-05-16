@@ -13,7 +13,7 @@ import rajawali.animation.RotateAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.bounds.IBoundingVolume;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.PhongMaterial;
+import rajawali.materials.DiffuseMaterial;
 import rajawali.math.Number3D;
 import rajawali.primitives.Cube;
 import rajawali.renderer.RajawaliRenderer;
@@ -36,17 +36,20 @@ public class RajawaliCollisionDetectionRenderer extends RajawaliRenderer {
 		mLight = new DirectionalLight(0, 1, 1);
 		mCamera.setPosition(0, 0, -7);
 
+		DiffuseMaterial material = new DiffuseMaterial();
+		material.setUseColor(true);
+		
 		mCubeBox = new Cube(1);
+		mCubeBox.setMaterial(material);
 		mCubeBox.addLight(mLight);
-		mCubeBox.getMaterial().setUseColor(true);
 		mCubeBox.setColor(0xff990000);
 		mCubeBox.setPosition(-1, -3, 0);
 		mCubeBox.setShowBoundingVolume(true);
 		addChild(mCubeBox);
 
 		mCubeSphere = new Cube(1);
+		mCubeSphere.setMaterial(material);
 		mCubeSphere.addLight(mLight);
-		mCubeSphere.getMaterial().setUseColor(true);
 		mCubeSphere.setColor(0xff00bfff);
 		mCubeSphere.setPosition(1, -2, 0);
 		mCubeSphere.setShowBoundingVolume(true);
@@ -58,8 +61,7 @@ public class RajawaliCollisionDetectionRenderer extends RajawaliRenderer {
 			ois.close();
 
 			mBoxesBox = new BaseObject3D(serializedMonkey);
-			mBoxesBox.setMaterial(new PhongMaterial());
-			mBoxesBox.getMaterial().setUseColor(true);
+			mBoxesBox.setMaterial(material);
 			mBoxesBox.setColor(0xff990000);
 			mBoxesBox.addLight(mLight);
 			mBoxesBox.setScale(.2f);
@@ -69,8 +71,7 @@ public class RajawaliCollisionDetectionRenderer extends RajawaliRenderer {
 			addChild(mBoxesBox);
 
 			mBoxesSphere = new BaseObject3D(serializedMonkey);
-			mBoxesSphere.setMaterial(new PhongMaterial());
-			mBoxesSphere.getMaterial().setUseColor(true);
+			mBoxesSphere.setMaterial(material);
 			mBoxesSphere.setColor(0xff00bfff);
 			mBoxesSphere.addLight(mLight);
 			mBoxesSphere.setScale(.3f);
