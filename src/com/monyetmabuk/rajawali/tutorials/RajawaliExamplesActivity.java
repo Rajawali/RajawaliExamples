@@ -75,7 +75,9 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("26. Custom Vertex Shader",
 					RajawaliVertexShaderActivity.class, "RajawaliVertexShaderActivity"),
 			new ExampleItem("27. Touch Ripples Effect",
-					RajawaliRipplesActivity.class, "RajawaliRipplesActivity")
+					RajawaliRipplesActivity.class, "RajawaliRipplesActivity"),
+			new ExampleItem("28. Sphere Mapping",
+					RajawaliSphereMapActivity.class, "RajawaliSphereMapActivity")
 	};
 
 	public void onCreate(Bundle savedInstanceState) {
