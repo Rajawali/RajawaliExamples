@@ -37,8 +37,7 @@ public class RajawaliMD2Renderer extends RajawaliRenderer {
 		mOgre = (VertexAnimationObject3D) parser.getParsedAnimationObject();
 		mOgre.addLight(mLight);
 		mOgre.setScale(.07f);
-		mOgre.setRotZ(90);
-		mOgre.setRotY(180);
+		mOgre.setRotY(-90);
 		mOgre.setY(-1);
 
 		addChild(mOgre);
