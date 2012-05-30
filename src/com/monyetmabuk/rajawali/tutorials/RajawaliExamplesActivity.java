@@ -77,7 +77,9 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("27. Touch Ripples Effect",
 					RajawaliRipplesActivity.class, "RajawaliRipplesActivity"),
 			new ExampleItem("28. Sphere Mapping",
-					RajawaliSphereMapActivity.class, "RajawaliSphereMapActivity")
+					RajawaliSphereMapActivity.class, "RajawaliSphereMapActivity"),
+			new ExampleItem("29. Chase Camera",
+					RajawaliChaseCamActivity.class, "RajawaliChaseCamActivity")
 	};
 
 	public void onCreate(Bundle savedInstanceState) {
