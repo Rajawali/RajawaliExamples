@@ -70,6 +70,7 @@ public final class R {
         public static final int ogro=0x7f04000a;
         public static final int raptor=0x7f04000b;
         public static final int road=0x7f04000c;
+        public static final int spike=0x7f04000d;
     }
     public static final class string {
         public static final int app_name=0x7f050000;

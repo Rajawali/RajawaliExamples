@@ -45,5 +45,6 @@
         <activity android:name="RajawaliRipplesActivity"></activity>
         <activity android:name="RajawaliSphereMapActivity"></activity>
         <activity android:name="RajawaliChaseCamActivity"></activity>
+        <activity android:name="RajawaliUsingGeometryDataActivity"></activity>
     </application>
 </manifest>
