@@ -18,6 +18,7 @@ public class ExampleParticleSystem2 extends Particle {
 	protected FloatBuffer mAnimOffsetBuffer;
 	protected float mTime;
 	protected int mCurrentFrame;
+	protected int mVelocityBufferHandle;
 	
 	public ExampleParticleSystem2() {
 		super();
@@ -82,6 +83,14 @@ public class ExampleParticleSystem2 extends Particle {
 		
 		mFriction = new Number3D(.95f, .95f, .95f);
 		
+		int buff[] = new int[1];
+		GLES20.glGenBuffers(1, buff, 0);
+		mVelocityBufferHandle = buff[0];
+		
+		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, mVelocityBufferHandle);
+		GLES20.glBufferData(GLES20.GL_ARRAY_BUFFER, mVelocityBuffer.limit() * Geometry3D.FLOAT_SIZE_BYTES, mVelocityBuffer, GLES20.GL_DYNAMIC_DRAW);
+		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, 0);
+		
 		setData(vertices, normals, textureCoords, colors, indices);
 	}
 	
@@ -104,9 +113,10 @@ public class ExampleParticleSystem2 extends Particle {
 		mParticleShader.setNumTileRows(8);
 		mParticleShader.setAnimOffsets(mAnimOffsetBuffer);
 		mParticleShader.setFriction(mFriction);
-		mParticleShader.setVelocity(mVelocityBuffer);
+		mParticleShader.setVelocity(mVelocityBufferHandle);
 		mParticleShader.setMultiParticlesEnabled(true);
 		mParticleShader.setTime(mTime);
+		mParticleShader.setCameraPosition(camera.getPosition());
 	}
 	
 	public void render(Camera camera, float[] projMatrix, float[] vMatrix,

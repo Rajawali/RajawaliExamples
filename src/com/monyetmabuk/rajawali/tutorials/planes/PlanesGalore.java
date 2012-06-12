@@ -5,6 +5,7 @@ import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
 import rajawali.BaseObject3D;
+import rajawali.BufferInfo;
 import rajawali.Camera;
 import rajawali.Geometry3D;
 import rajawali.Geometry3D.BufferType;
@@ -32,12 +33,14 @@ import android.opengl.GLES20;
 public class PlanesGalore extends BaseObject3D {
 	protected FloatBuffer mPlanePositions;
 	protected FloatBuffer mRotationSpeeds;
-	protected int mPlanePositionsBufferHandle;
-	protected int mRotationSpeedsBufferHandle;
+	protected BufferInfo mPlanePositionsBufferInfo;
+	protected BufferInfo mRotationSpeedsBufferInfo;
 	protected PlanesGaloreMaterial mGaloreMat;
 
 	public PlanesGalore() {
 		super();
+		mPlanePositionsBufferInfo = new BufferInfo();
+		mRotationSpeedsBufferInfo = new BufferInfo();
 		init();
 	}
 
@@ -136,10 +139,10 @@ public class PlanesGalore extends BaseObject3D {
 	}
 	
 	private void createBuffers() {
-		mPlanePositionsBufferHandle = mGeometry.createBuffer(BufferType.FLOAT_BUFFER, mPlanePositions, GLES20.GL_ARRAY_BUFFER);
+		mGeometry.createBuffer(mPlanePositionsBufferInfo, BufferType.FLOAT_BUFFER, mPlanePositions, GLES20.GL_ARRAY_BUFFER);
 		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, 0);
 
-		mRotationSpeedsBufferHandle = mGeometry.createBuffer(BufferType.FLOAT_BUFFER, mRotationSpeeds, GLES20.GL_ARRAY_BUFFER);
+		mGeometry.createBuffer(mRotationSpeedsBufferInfo, BufferType.FLOAT_BUFFER, mRotationSpeeds, GLES20.GL_ARRAY_BUFFER);
 		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, 0);
 	}
 	
@@ -150,7 +153,7 @@ public class PlanesGalore extends BaseObject3D {
 
 	protected void setShaderParams(Camera camera) {
 		super.setShaderParams(camera);
-		mGaloreMat.setPlanePositions(mPlanePositionsBufferHandle);
-		mGaloreMat.setRotationSpeeds(mRotationSpeedsBufferHandle);
+		mGaloreMat.setPlanePositions(mPlanePositionsBufferInfo.bufferHandle);
+		mGaloreMat.setRotationSpeeds(mRotationSpeedsBufferInfo.bufferHandle);
 	}
 }

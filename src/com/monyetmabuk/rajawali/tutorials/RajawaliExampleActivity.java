@@ -33,7 +33,8 @@ public class RajawaliExampleActivity extends RajawaliActivity {
 				mLoaderGraphic.setId(1);
 				mLoaderGraphic.setScaleType(ScaleType.CENTER);
 				mLoaderGraphic.setImageResource(R.drawable.loader);
-				mLayout.addView(mLoaderGraphic);
+				if(mLoaderGraphic.getParent() == null)
+					mLayout.addView(mLoaderGraphic);
 				
 				AnimationSet animSet = new AnimationSet(false);
 		
