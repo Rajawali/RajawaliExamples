@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.monyetmabuk.rajawali.tutorials"
-      android:versionCode="23"
+      android:versionCode="24"
       android:versionName="1.0">
 
 	<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="8"/>
@@ -28,7 +28,6 @@
         <activity android:name="RajawaliBezierActivity"></activity>
         <activity android:name="RajawaliAnimationActivity"></activity>
         <activity android:name="RajawaliBumpmapActivity"></activity>
-        <activity android:name="RajawaliObjectPickingActivity"></activity>
         <activity android:name="RajawaliToonShadingActivity"></activity>
         <activity android:name="RajawaliMD2Activity"></activity>
         <activity android:name="RajawaliPostProcessingActivity"></activity>
@@ -40,11 +39,12 @@
         <activity android:name="RajawaliTransparentSurfaceActivity"></activity>
         <activity android:name="RajawaliAnimatedSpritesActivity"></activity>
         <activity android:name="RajawaliFogActivity"></activity>
-        <activity android:name=".RajawaliFBXActivity"></activity>
+        <activity android:name="RajawaliFBXActivity"></activity>
         <activity android:name="RajawaliVertexShaderActivity"></activity>
         <activity android:name="RajawaliRipplesActivity"></activity>
         <activity android:name="RajawaliSphereMapActivity"></activity>
         <activity android:name="RajawaliChaseCamActivity"></activity>
         <activity android:name="RajawaliUsingGeometryDataActivity"></activity>
+        <activity android:name="Rajawali360ImagesActivity"></activity>
     </application>
 </manifest>

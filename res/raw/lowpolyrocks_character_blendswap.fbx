@@ -61,7 +61,7 @@ Objects:  {
 		Properties60:  {
 			Property: "Visibility", "Visibility", "A+",1
 			Property: "Lcl Translation", "Lcl Translation", "A+",0.000347067601979,0.001074433326721,-0.030584240332246
-			Property: "Lcl Rotation", "Lcl Rotation", "A+",90,-180,0
+			Property: "Lcl Rotation", "Lcl Rotation", "A+",-90,-180,0
 			Property: "Lcl Scaling", "Lcl Scaling", "A+",0.151936352252960,0.151936352252960,0.151936352252960
 			Property: "Color", "Color", "A",0.8,0.8,0.8
 		}
