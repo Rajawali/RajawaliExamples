@@ -1,5 +1,6 @@
 package com.monyetmabuk.rajawali.tutorials;
 
+import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.materials.SimpleMaterial;
@@ -7,6 +8,7 @@ import rajawali.materials.TextureInfo;
 import rajawali.primitives.Plane;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 public class Rajawali360ImagesRenderer extends RajawaliRenderer {
@@ -24,24 +26,38 @@ public class Rajawali360ImagesRenderer extends RajawaliRenderer {
 	protected void initScene() {
     	setBackgroundColor(0xffffff);
     	
-    	// -- create an array that will contain all TextureInfo objects
-    	mTexInf = new TextureInfo[NUM_TEXTURES];
-    	
-    	for(int i=1; i<=NUM_TEXTURES; ++i) {
-    		// -- load all the textures from the drawable folder
-    		int identifier = mContext.getResources().getIdentifier(i < 10 ? "m0" + i : "m" + i, "drawable", "com.monyetmabuk.rajawali.tutorials");
-    		mTexInf[i-1] = mTextureManager.addTexture(BitmapFactory.decodeResource(mContext.getResources(), identifier), false, true);
-    	}
-    	
     	mMaterial = new SimpleMaterial();
     	
     	mCamera.setZ(-2);
     	
     	mPlane = new Plane(1, 1, 1, 1, 1);
     	mPlane.setMaterial(mMaterial);
-    	mMaterial.addTexture(mTexInf[0]);
-    	mPlane.addTexture(mTexInf[0]);
     	addChild(mPlane);
+	}
+	
+	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+		((RajawaliExampleActivity) mContext).showLoader();
+		super.onSurfaceCreated(gl, config);
+		
+		if(mTexInf == null) {
+			// -- create an array that will contain all TextureInfo objects
+	    	mTexInf = new TextureInfo[NUM_TEXTURES];
+	    	for(int i=1; i<=NUM_TEXTURES; ++i) {
+	    		// -- load all the textures from the drawable folder
+	    		int identifier = mContext.getResources().getIdentifier(i < 10 ? "m0" + i : "m" + i, "drawable", "com.monyetmabuk.rajawali.tutorials");
+	    		mTexInf[i-1] = mTextureManager.addTexture(BitmapFactory.decodeResource(mContext.getResources(), identifier), false, true);
+	    	}
+	    	mMaterial.addTexture(mTexInf[0]);
+		} else {
+			for(int i=1; i<=NUM_TEXTURES; ++i) {
+				int identifier = mContext.getResources().getIdentifier(i < 10 ? "m0" + i : "m" + i, "drawable", "com.monyetmabuk.rajawali.tutorials");
+				Bitmap bm = BitmapFactory.decodeResource(mContext.getResources(), identifier);
+				mTextureManager.updateTexture(mTexInf[i-1], bm);
+				bm.recycle();
+			}
+		}
+		
+		((RajawaliExampleActivity) mContext).hideLoader();
 	}
 	
     public void onDrawFrame(GL10 glUnused) {
