@@ -8,6 +8,7 @@ import rajawali.Camera;
 import rajawali.Geometry3D;
 import rajawali.math.Number3D;
 import rajawali.primitives.Particle;
+import rajawali.util.BufferUtil;
 import rajawali.util.ObjectColorPicker.ColorPickerInfo;
 import android.opengl.GLES20;
 
@@ -66,7 +67,8 @@ public class ExampleParticleSystem extends Particle {
 		mVelocityBuffer = ByteBuffer
 				.allocateDirect(velocity.length * Geometry3D.FLOAT_SIZE_BYTES)
 				.order(ByteOrder.nativeOrder()).asFloatBuffer();
-		mVelocityBuffer.put(velocity).position(0);
+		BufferUtil.copy(velocity, mVelocityBuffer, velocity.length, 0);
+		mVelocityBuffer.position(0);
 		
 		mFriction = new Number3D(.95f, .95f, .95f);
 		
