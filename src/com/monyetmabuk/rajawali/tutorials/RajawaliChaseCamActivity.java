@@ -55,17 +55,14 @@ public class RajawaliChaseCamActivity extends RajawaliExampleActivity implements
         initLoader();
 	}
 
-	@Override
 	public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 		mCameraOffset.setAll(mSeekBarX.getProgress()-10, mSeekBarY.getProgress()-10, mSeekBarZ.getProgress());
 		mRenderer.setCameraOffset(mCameraOffset);
 	}
 
-	@Override
 	public void onStartTrackingTouch(SeekBar seekBar) {
 	}
 
-	@Override
 	public void onStopTrackingTouch(SeekBar seekBar) {
 	}
 }

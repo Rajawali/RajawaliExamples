@@ -98,6 +98,18 @@ public class ExampleParticleSystem2 extends Particle {
 		setData(vertices, normals, textureCoords, colors, indices);
 	}
 	
+	public void reload() {
+		super.reload();
+
+		int buff[] = new int[1];
+		GLES20.glGenBuffers(1, buff, 0);
+		mVelocityBufferHandle = buff[0];
+		
+		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, mVelocityBufferHandle);
+		GLES20.glBufferData(GLES20.GL_ARRAY_BUFFER, mVelocityBuffer.limit() * Geometry3D.FLOAT_SIZE_BYTES, mVelocityBuffer, GLES20.GL_DYNAMIC_DRAW);
+		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, 0);
+	}
+	
 	public void setTime(float time) {
 		mTime = time;
 	}

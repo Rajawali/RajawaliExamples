@@ -40,7 +40,6 @@ public class RajawaliRipplesActivity extends RajawaliExampleActivity implements 
 		initLoader();
 	}
 
-	@Override
 	public boolean onTouch(View v, MotionEvent event) {
 		if(event.getAction() == MotionEvent.ACTION_DOWN)
 		{

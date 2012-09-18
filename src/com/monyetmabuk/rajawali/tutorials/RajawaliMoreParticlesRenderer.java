@@ -30,7 +30,6 @@ public class RajawaliMoreParticlesRenderer extends RajawaliRenderer {
 		mParticleSystem.addTexture(particleTexture);
 		mParticleSystem.setPointSize(100);
 		addChild(mParticleSystem);
-
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
