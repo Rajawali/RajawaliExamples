@@ -6,6 +6,7 @@ import java.nio.FloatBuffer;
 
 import rajawali.Camera;
 import rajawali.Geometry3D;
+import rajawali.materials.ParticleMaterial;
 import rajawali.math.Number3D;
 import rajawali.primitives.Particle;
 import rajawali.util.BufferUtil;
@@ -105,11 +106,12 @@ public class ExampleParticleSystem extends Particle {
 	
 	protected void setShaderParams(Camera camera) {
 		super.setShaderParams(camera);
-		mParticleShader.setFriction(mFriction);
-		mParticleShader.setVelocity(mVelocityBufferHandle);
-		mParticleShader.setMultiParticlesEnabled(true);
-		mParticleShader.setTime(mTime);
-		mParticleShader.setCameraPosition(camera.getPosition());
+		ParticleMaterial particleShader = (ParticleMaterial) mParticleShader;
+		particleShader.setFriction(mFriction);
+		particleShader.setVelocity(mVelocityBufferHandle);
+		particleShader.setMultiParticlesEnabled(true);
+		particleShader.setTime(mTime);
+		particleShader.setCameraPosition(camera.getPosition());
 	}
 	
 	public void render(Camera camera, float[] projMatrix, float[] vMatrix,

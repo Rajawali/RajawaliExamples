@@ -124,15 +124,16 @@ public class ExampleParticleSystem2 extends Particle {
 	
 	protected void setShaderParams(Camera camera) {
 		super.setShaderParams(camera);
-		mParticleShader.setCurrentFrame(mCurrentFrame);
-		mParticleShader.setTileSize(1 / 8f);
-		mParticleShader.setNumTileRows(8);
-		mParticleShader.setAnimOffsets(mAnimOffsetBuffer);
-		mParticleShader.setFriction(mFriction);
-		mParticleShader.setVelocity(mVelocityBufferHandle);
-		mParticleShader.setMultiParticlesEnabled(true);
-		mParticleShader.setTime(mTime);
-		mParticleShader.setCameraPosition(camera.getPosition());
+		ParticleMaterial particleShader = (ParticleMaterial) mParticleShader;
+		particleShader.setCurrentFrame(mCurrentFrame);
+		particleShader.setTileSize(1 / 8f);
+		particleShader.setNumTileRows(8);
+		particleShader.setAnimOffsets(mAnimOffsetBuffer);
+		particleShader.setFriction(mFriction);
+		particleShader.setVelocity(mVelocityBufferHandle);
+		particleShader.setMultiParticlesEnabled(true);
+		particleShader.setTime(mTime);
+		particleShader.setCameraPosition(camera.getPosition());
 	}
 	
 	public void render(Camera camera, float[] projMatrix, float[] vMatrix,
