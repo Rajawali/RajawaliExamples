@@ -20,7 +20,8 @@ public class RajawaliMD2Renderer extends RajawaliRenderer {
 
 	public void playAnimation(String name) {
 		if (name.equals("loop all")) {
-			mOgre.play();
+			mOgre.stop();
+			mOgre.play(true);
 		} else {
 			mOgre.play(name, false);
 		}
