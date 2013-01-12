@@ -1,5 +1,7 @@
 package com.monyetmabuk.rajawali.tutorials;
 
+import ie.cathalcoffey.android.rajawali.tutorials.FragmentsExampleActivity;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,34 +23,35 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("01. Basic Example", RajawaliBasicExampleActivity.class),
 			new ExampleItem("02. Load .obj model", RajawaliLoadModelActivity.class), 
 			new ExampleItem("03. Materials", RajawaliMaterialsActivity.class),
-			new ExampleItem("04. UI Elements", RajawaliUIElementsActivity.class), 
-			new ExampleItem("05. Skybox", RajawaliSkyboxActivity.class),
-			new ExampleItem("06. Custom Material/Shader", RajawaliCustomShaderActivity.class), 
-			new ExampleItem("07. 2D Renderer", Rajawali2DActivity.class),
-			new ExampleItem("08. Using The Accelerometer", RajawaliAccelerometerActivity.class),
-			new ExampleItem("09. Particles", RajawaliMoreParticlesActivity.class), 
-			new ExampleItem("10. Object Picking", RajawaliObjectPickingActivity.class),
-			new ExampleItem("11. Animation", RajawaliAnimationActivity.class), 
-			new ExampleItem("12. Bump Mapping", RajawaliBumpmapActivity.class),
-			new ExampleItem("13. Bezier Path Animation", RajawaliBezierActivity.class), 
-			new ExampleItem("14. Toon Shading", RajawaliToonShadingActivity.class),
-			new ExampleItem("15. MD2 Animation", RajawaliMD2Activity.class), 
-			new ExampleItem("16. Post Processing", RajawaliPostProcessingActivity.class),
-			new ExampleItem("17. Collision Detection", RajawaliCollisionDetectionActivity.class),
-			new ExampleItem("18. Multiple Lights", RajawaliMultipleLightsActivity.class), 
-			new ExampleItem("19. Lines", RajawaliLinesActivity.class),
-			new ExampleItem("20. Catmull-Rom Splines", RajawaliCatmullRomActivity.class),
-			new ExampleItem("21. 2000 Textured Planes", Rajawali2000PlanesActivity.class),
-			new ExampleItem("22. Transparent GLSurfaceView", RajawaliTransparentSurfaceActivity.class),
-			new ExampleItem("23. Animated Sprites", RajawaliAnimatedSpritesActivity.class), 
-			new ExampleItem("24. Fog", RajawaliFogActivity.class),
-			new ExampleItem("25. FBX Scene Importer", RajawaliFBXActivity.class),
-			new ExampleItem("26. Custom Vertex Shader", RajawaliVertexShaderActivity.class),
-			new ExampleItem("27. Touch Ripples Effect", RajawaliRipplesActivity.class), 
-			new ExampleItem("28. Sphere Mapping", RajawaliSphereMapActivity.class),
-			new ExampleItem("29. Chase Camera", RajawaliChaseCamActivity.class),
-			new ExampleItem("30. Using Geometry Data", RajawaliUsingGeometryDataActivity.class),
-			new ExampleItem("31. 360° Images", Rajawali360ImagesActivity.class) };
+			new ExampleItem("04. UI Elements", RajawaliUIElementsActivity.class),
+			new ExampleItem("05. UI Fragments", FragmentsExampleActivity.class),
+			new ExampleItem("06. Skybox", RajawaliSkyboxActivity.class),
+			new ExampleItem("07. Custom Material/Shader", RajawaliCustomShaderActivity.class), 
+			new ExampleItem("08. 2D Renderer", Rajawali2DActivity.class),
+			new ExampleItem("09. Using The Accelerometer", RajawaliAccelerometerActivity.class),
+			new ExampleItem("10. Particles", RajawaliMoreParticlesActivity.class), 
+			new ExampleItem("11. Object Picking", RajawaliObjectPickingActivity.class),
+			new ExampleItem("12. Animation", RajawaliAnimationActivity.class), 
+			new ExampleItem("13. Bump Mapping", RajawaliBumpmapActivity.class),
+			new ExampleItem("14. Bezier Path Animation", RajawaliBezierActivity.class), 
+			new ExampleItem("15. Toon Shading", RajawaliToonShadingActivity.class),
+			new ExampleItem("16. MD2 Animation", RajawaliMD2Activity.class), 
+			new ExampleItem("17. Post Processing", RajawaliPostProcessingActivity.class),
+			new ExampleItem("18. Collision Detection", RajawaliCollisionDetectionActivity.class),
+			new ExampleItem("19. Multiple Lights", RajawaliMultipleLightsActivity.class), 
+			new ExampleItem("20. Lines", RajawaliLinesActivity.class),
+			new ExampleItem("21. Catmull-Rom Splines", RajawaliCatmullRomActivity.class),
+			new ExampleItem("22. 2000 Textured Planes", Rajawali2000PlanesActivity.class),
+			new ExampleItem("23. Transparent GLSurfaceView", RajawaliTransparentSurfaceActivity.class),
+			new ExampleItem("24. Animated Sprites", RajawaliAnimatedSpritesActivity.class), 
+			new ExampleItem("25. Fog", RajawaliFogActivity.class),
+			new ExampleItem("26. FBX Scene Importer", RajawaliFBXActivity.class),
+			new ExampleItem("27. Custom Vertex Shader", RajawaliVertexShaderActivity.class),
+			new ExampleItem("28. Touch Ripples Effect", RajawaliRipplesActivity.class), 
+			new ExampleItem("29. Sphere Mapping", RajawaliSphereMapActivity.class),
+			new ExampleItem("30. Chase Camera", RajawaliChaseCamActivity.class),
+			new ExampleItem("31. Using Geometry Data", RajawaliUsingGeometryDataActivity.class),
+			new ExampleItem("32. 360ï¿½ Images", Rajawali360ImagesActivity.class) };
 
 	public void onCreate(Bundle savedInstanceState) {
 		String[] strings = new String[mItems.length];
