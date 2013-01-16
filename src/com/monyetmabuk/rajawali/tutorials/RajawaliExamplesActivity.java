@@ -1,5 +1,7 @@
 package com.monyetmabuk.rajawali.tutorials;
 
+import ie.cathalcoffey.android.rajawali.tutorials.FragmentsExampleActivity;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,7 +23,7 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("01. Basic Example", RajawaliBasicExampleActivity.class),
 			new ExampleItem("02. Load .obj model", RajawaliLoadModelActivity.class), 
 			new ExampleItem("03. Materials", RajawaliMaterialsActivity.class),
-			new ExampleItem("04. UI Elements", RajawaliUIElementsActivity.class), 
+			new ExampleItem("04. UI Elements", RajawaliUIElementsActivity.class),
 			new ExampleItem("05. Skybox", RajawaliSkyboxActivity.class),
 			new ExampleItem("06. Custom Material/Shader", RajawaliCustomShaderActivity.class), 
 			new ExampleItem("07. 2D Renderer", Rajawali2DActivity.class),
@@ -48,7 +50,8 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("28. Sphere Mapping", RajawaliSphereMapActivity.class),
 			new ExampleItem("29. Chase Camera", RajawaliChaseCamActivity.class),
 			new ExampleItem("30. Using Geometry Data", RajawaliUsingGeometryDataActivity.class),
-			new ExampleItem("31. 360° Images", Rajawali360ImagesActivity.class) };
+			new ExampleItem("31. 360" + (char) 0x00B0 + " Images", Rajawali360ImagesActivity.class),
+	        new ExampleItem("32. UI Fragments", FragmentsExampleActivity.class)};
 
 	public void onCreate(Bundle savedInstanceState) {
 		String[] strings = new String[mItems.length];
