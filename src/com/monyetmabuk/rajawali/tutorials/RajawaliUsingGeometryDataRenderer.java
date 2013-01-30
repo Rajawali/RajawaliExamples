@@ -33,7 +33,6 @@ public class RajawaliUsingGeometryDataRenderer extends RajawaliRenderer {
 		setBackgroundColor(0xffeeeeee);
 		
 		DirectionalLight light = new DirectionalLight(0, -.6f, .4f);
-		light.setColor(1, 1, 1);
 		
 		mCamera.setZ(-8);
 		
