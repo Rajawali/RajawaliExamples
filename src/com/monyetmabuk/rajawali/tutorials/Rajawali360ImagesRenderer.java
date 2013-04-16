@@ -3,6 +3,7 @@ package com.monyetmabuk.rajawali.tutorials;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
+import rajawali.Camera2D;
 import rajawali.materials.SimpleMaterial;
 import rajawali.materials.TextureInfo;
 import rajawali.primitives.Plane;
@@ -20,6 +21,7 @@ public class Rajawali360ImagesRenderer extends RajawaliRenderer {
 	public Rajawali360ImagesRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
+		setCamera(new Camera2D());
 	}
 	
 	protected void initScene() {
@@ -27,9 +29,7 @@ public class Rajawali360ImagesRenderer extends RajawaliRenderer {
     	
     	mMaterial = new SimpleMaterial();
     	
-    	mCamera.setZ(-2);
-    	
-    	mPlane = new Plane(1, 1, 1, 1, 1);
+    	mPlane = new Plane(1.5f, 1, 1, 1, 1);
     	mPlane.setMaterial(mMaterial);
     	addChild(mPlane);
 	}

@@ -22,7 +22,7 @@ public class RajawaliBasicExampleRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
-		mLight = new DirectionalLight(1f, 0.2f, 1.0f); // set the direction
+		mLight = new DirectionalLight(1f, 0.2f, -1.0f); // set the direction
 		mLight.setColor(1.0f, 1.0f, 1.0f);
 		mLight.setPower(2);
 
@@ -34,7 +34,7 @@ public class RajawaliBasicExampleRenderer extends RajawaliRenderer {
 		mSphere.addTexture(mTextureManager.addTexture(bg));
 		addChild(mSphere);
 
-		mCamera.setZ(-4.2f);
+		mCamera.setZ(4.2f);
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {

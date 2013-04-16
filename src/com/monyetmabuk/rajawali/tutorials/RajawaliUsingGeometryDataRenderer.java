@@ -32,9 +32,10 @@ public class RajawaliUsingGeometryDataRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		setBackgroundColor(0xffeeeeee);
 		
-		DirectionalLight light = new DirectionalLight(0, -.6f, .4f);
+		DirectionalLight light = new DirectionalLight(0, -.6f, -.4f);
+		light.setColor(1, 1, 1);
 		
-		mCamera.setZ(-8);
+		mCamera.setZ(8);
 		
 		BaseObject3D sphere = new Sphere(1, 16, 8);
 		
@@ -72,7 +73,7 @@ public class RajawaliUsingGeometryDataRenderer extends RajawaliRenderer {
 				// -- set the spike's position to the sphere's current vertex position
 				spike.setPosition(vertBuffer.get(i), vertBuffer.get(i+1), vertBuffer.get(i+2));
 				// -- get the normal so we can orient the spike to the normal 
-				Number3D normal = new Number3D(-normBuffer.get(i), normBuffer.get(i+1), normBuffer.get(i+2));
+				Number3D normal = new Number3D(normBuffer.get(i), normBuffer.get(i+1), normBuffer.get(i+2));
 				// -- get the rotation axis
 				Number3D axis = Number3D.cross(upAxis, normal);
 				// -- get the rotation angle

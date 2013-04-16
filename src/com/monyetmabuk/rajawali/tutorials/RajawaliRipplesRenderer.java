@@ -38,7 +38,7 @@ public class RajawaliRipplesRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		mAnims = new Animation3D[NUM_CUBES];
 		
-		mCamera.setPosition(0, 0, -10);
+		mCamera.setPosition(0, 0, 10);
 		
 		DirectionalLight light = new DirectionalLight(0, 0, 1);
 		light.setPower(1f);

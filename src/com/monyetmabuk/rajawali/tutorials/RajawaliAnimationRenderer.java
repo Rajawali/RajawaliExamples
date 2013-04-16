@@ -34,9 +34,9 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 	
 	protected void initScene() {
 		mLight = new PointLight();
-		mLight.setPosition(-2, 1, -4);
+		mLight.setPosition(-2, 1, 4);
 		mLight.setPower(1.5f);
-		mCamera.setPosition(0, 0, -14);
+		mCamera.setPosition(0, 0, 14);
 
 		ObjectInputStream ois;
 		try {

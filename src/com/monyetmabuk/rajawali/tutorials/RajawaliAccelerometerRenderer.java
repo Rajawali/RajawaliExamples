@@ -27,7 +27,7 @@ public class RajawaliAccelerometerRenderer extends RajawaliRenderer {
 	}
 	
 	protected void initScene() {
-		mLight = new DirectionalLight(0.1f, 0.2f, 1.0f);
+		mLight = new DirectionalLight(0.1f, 0.2f, -1.0f);
 		mLight.setColor(1.0f, 1.0f, 1.0f);
 		mLight.setPower(1);
 
@@ -38,13 +38,13 @@ public class RajawaliAccelerometerRenderer extends RajawaliRenderer {
 
 			mMonkey = new BaseObject3D(serializedMonkey);
 			mMonkey.addLight(mLight);
-			mMonkey.setRotY(0);
+			mMonkey.setRotY(180);
 			addChild(mMonkey);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		mCamera.setZ(-7);
+		mCamera.setZ(7);
 
 		Bitmap[] textures = new Bitmap[6];
 		textures[0] = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.posx);
@@ -66,7 +66,7 @@ public class RajawaliAccelerometerRenderer extends RajawaliRenderer {
 
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
-		mMonkey.setRotation(mAccValues.y, mAccValues.x, mAccValues.z);
+		mMonkey.setRotation(mAccValues.x, mAccValues.y + 180, mAccValues.z);
 	}
 
 	public void setAccelerometerValues(float x, float y, float z) {

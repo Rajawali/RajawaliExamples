@@ -19,7 +19,7 @@ public class RajawaliAnimatedSpritesRenderer extends RajawaliRenderer {
 	}
 	
 	protected void initScene() {
-		mCamera.setPosition(0, 0, -10);
+		mCamera.setPosition(0, 0, 10);
 
 		// -- explosion sprite sheet from:
 		//    http://gushh.net/blog/free-game-sprites-explosion-3/

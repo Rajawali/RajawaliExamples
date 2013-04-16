@@ -33,7 +33,7 @@ public class RajawaliMultipleLightsRenderer extends RajawaliRenderer {
 		PointLight light2 = new PointLight();
 		light2.setPower(5);
 
-		mCamera.setPosition(-8, 8, -8);
+		mCamera.setPosition(-8, 8, 8);
 		mCamera.setLookAt(0, 0, 0);
 		
 		try {
@@ -54,7 +54,7 @@ public class RajawaliMultipleLightsRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 		
-		Animation3D anim = new TranslateAnimation3D(new Number3D(-10, -10, -5), new Number3D(-10, 10, -5));
+		Animation3D anim = new TranslateAnimation3D(new Number3D(-10, -10, 5), new Number3D(-10, 10, 5));
 		anim.setDuration(4000);
 		anim.setRepeatCount(Animation3D.INFINITE);
 		anim.setRepeatMode(Animation3D.REVERSE);
@@ -63,7 +63,7 @@ public class RajawaliMultipleLightsRenderer extends RajawaliRenderer {
 		mAnimations = new Stack<Animation3D>();
 		mAnimations.add(anim);
 		
-		anim = new TranslateAnimation3D(new Number3D(10, 10, -5), new Number3D(10, -10, -5));
+		anim = new TranslateAnimation3D(new Number3D(10, 10, 5), new Number3D(10, -10, 5));
 		anim.setDuration(2000);
 		anim.setRepeatCount(Animation3D.INFINITE);
 		anim.setRepeatMode(Animation3D.REVERSE);

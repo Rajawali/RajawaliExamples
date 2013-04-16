@@ -28,9 +28,9 @@ public class RajawaliObjectPickingRenderer extends RajawaliRenderer implements O
 		mPicker = new ObjectColorPicker(this);
 		mPicker.setOnObjectPickedListener(this);
 		mLight = new PointLight();
-		mLight.setPosition(-2, 1, -4);
+		mLight.setPosition(-2, 1, 4);
 		mLight.setPower(1.5f);
-		mCamera.setPosition(0, 0, -7);
+		mCamera.setPosition(0, 0, 7);
 
 		try {
 			ObjectInputStream ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_ser));
@@ -108,6 +108,6 @@ public class RajawaliObjectPickingRenderer extends RajawaliRenderer implements O
 	}
 
 	public void onObjectPicked(BaseObject3D object) {
-		object.setZ(object.getZ() == 0 ? 2 : 0);
+		object.setZ(object.getZ() == 0 ? -2 : 0);
 	}
 }

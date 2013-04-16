@@ -35,7 +35,6 @@ public class RajawaliRipplesActivity extends RajawaliExampleActivity implements 
         tv.setText("Touch Me.");
         tv.setTextColor(0xffffffff);
         ll.addView(tv);
-//        mLayout.addView(ll);
         
 		initLoader();
 	}

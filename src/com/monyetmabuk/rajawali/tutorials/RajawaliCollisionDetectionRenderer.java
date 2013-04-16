@@ -33,8 +33,8 @@ public class RajawaliCollisionDetectionRenderer extends RajawaliRenderer {
 	}
 	
 	protected void initScene() {
-		mLight = new DirectionalLight(0, 1, 1);
-		mCamera.setPosition(0, 0, -7);
+		mLight = new DirectionalLight(0, 1, -1);
+		mCamera.setPosition(0, 0, 7);
 
 		DiffuseMaterial material = new DiffuseMaterial();
 		material.setUseColor(true);

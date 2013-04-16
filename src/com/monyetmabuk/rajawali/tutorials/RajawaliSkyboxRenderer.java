@@ -30,6 +30,8 @@ public class RajawaliSkyboxRenderer extends RajawaliRenderer {
 
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
-		mSkybox.setRotY(mSkybox.getRotY() + .5f);
+		mCamera.setRotX(mCamera.getRotX() + .1f);
+		mCamera.setRotY(mCamera.getRotY() + .2f);
+		mCamera.setRotZ(mCamera.getRotZ() + .3f);
 	}
 }

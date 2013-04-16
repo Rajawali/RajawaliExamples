@@ -30,9 +30,9 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
-		mLight = new DirectionalLight(0, 0, 1);
+		mLight = new DirectionalLight(0, 0, -1);
 		mLight.setPower(1);
-		mCamera.setPosition(0, 0, -7);
+		mCamera.setPosition(0, 0, 7);
 
 		try {
 			ObjectInputStream ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_ser));
@@ -47,6 +47,7 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 			uberMonkey.addLight(mLight);
 			uberMonkey.setScale(.7f);
 			uberMonkey.setPosition(0, 0, 0);
+			uberMonkey.setRotation(0, 180, 0);
 			uberMonkey.setColor(0xff990000);
 			addChild(uberMonkey);
 
@@ -55,7 +56,7 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 				monkey.setMaterial(material);
 				monkey.addLight(mLight);
 				monkey.setScale(.7f);
-				monkey.setPosition(-4 + (int) (Math.random() * 8), -4 + (int) (Math.random() * 8), (int) (Math.random() * 20));
+				monkey.setPosition(-4 + (int) (Math.random() * 8), -4 + (int) (Math.random() * 8), (int) (Math.random() * -20));
 				monkey.setRotation((int) (Math.random() * 360), (int) (Math.random() * 360), (int) (Math.random() * 360));
 				// -- since it is a cloned object it is important to set the
 				// second parameter to true or else all monkeys will change
@@ -67,7 +68,7 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 
-		mAnimation = new TranslateAnimation3D(new Number3D(0, 0, -2));
+		mAnimation = new TranslateAnimation3D(new Number3D(0, 0, 2));
 		mAnimation.setDuration(6000);
 		mAnimation.setRepeatCount(Animation3D.INFINITE);
 		mAnimation.setRepeatMode(Animation3D.REVERSE);

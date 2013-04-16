@@ -40,9 +40,9 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 	
 	protected void initScene() {
 		super.initScene();
-		ALight light1 = new DirectionalLight(0, 0, 1);
+		ALight light1 = new DirectionalLight(0, 0, -1);
 		light1.setPower(1);
-		mCamera.setPosition(0, 0, -10);
+		mCamera.setPosition(0, 0, 10);
 		mCamera.setLookAt(0, 0, 0);
 
 		SimpleMaterial material = new SimpleMaterial();
@@ -107,5 +107,9 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		mCamAnim.setRepeatCount(Animation3D.INFINITE);
 		mCamAnim.setTransformable3D(mCamera);
 		mAnims.add(mCamAnim);
+	}
+	
+	public void onDrawFrame(GL10 glUnused) {
+		super.onDrawFrame(glUnused);
 	}
 }

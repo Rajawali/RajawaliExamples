@@ -26,10 +26,10 @@ public class RajawaliFogRenderer extends RajawaliRenderer {
 	}
 	
 	protected void initScene() {
-		mLight = new DirectionalLight(0, -1, 1);
+		mLight = new DirectionalLight(0, -1, -1);
 		mLight.setPower(.5f);
 		
-		mCamera.setPosition(0, 1, -4);
+		mCamera.setPosition(0, 1, 4);
 		mCamera.setFogNear(1);
 		mCamera.setFogFar(15);
 		mCamera.setFogColor(0x999999);
@@ -41,7 +41,8 @@ public class RajawaliFogRenderer extends RajawaliRenderer {
 		objParser.parse();
 		mRoad = objParser.getParsedObject();
 		mRoad.addLight(mLight);
-		mRoad.setZ(2);
+		mRoad.setZ(-2);
+		mRoad.setRotY(180);
 		addChild(mRoad);
 		
 		Bitmap roadTexture = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.road);
@@ -53,7 +54,7 @@ public class RajawaliFogRenderer extends RajawaliRenderer {
 		Bitmap warningTexture = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.warning);
 		mRoad.getChildByName("Warning").addTexture(mTextureManager.addTexture(warningTexture));
 		
-		mCamAnim = new TranslateAnimation3D(new Number3D(0, 1, 23));
+		mCamAnim = new TranslateAnimation3D(new Number3D(0, 1, -23));
 		mCamAnim.setDuration(8000);
 		mCamAnim.setInterpolator(new AccelerateDecelerateInterpolator());
 		mCamAnim.setRepeatCount(Animation3D.INFINITE);

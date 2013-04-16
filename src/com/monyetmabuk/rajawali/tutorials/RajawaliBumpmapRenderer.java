@@ -35,9 +35,9 @@ public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 
 	protected void initScene() {
 		mLight = new PointLight();
-		mLight.setPosition(-2, -2, -8);
+		mLight.setPosition(-2, -2, 8);
 		mLight.setPower(2f);
-		mCamera.setPosition(0, 0, -6);
+		mCamera.setPosition(0, 0, 6);
 
 		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.bumpsphere);
 		objParser.parse();

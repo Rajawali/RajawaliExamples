@@ -20,17 +20,16 @@ public class RajawaliMD2Renderer extends RajawaliRenderer {
 
 	public void playAnimation(String name) {
 		if (name.equals("loop all")) {
-			mOgre.stop();
-			mOgre.play(true);
+			mOgre.play();
 		} else {
 			mOgre.play(name, false);
 		}
 	}
 	
 	protected void initScene() {
-		mLight = new DirectionalLight(0, 0, 1);
+		mLight = new DirectionalLight(0, 0, -1);
 		mLight.setPower(2);
-		mCamera.setPosition(0, 0, -8);
+		mCamera.setPosition(0, 0, 8);
 
 		MD2Parser parser = new MD2Parser(mContext.getResources(), mTextureManager, R.raw.ogro);
 		parser.parse();
@@ -38,7 +37,7 @@ public class RajawaliMD2Renderer extends RajawaliRenderer {
 		mOgre = (VertexAnimationObject3D) parser.getParsedAnimationObject();
 		mOgre.addLight(mLight);
 		mOgre.setScale(.07f);
-		mOgre.setRotY(-90);
+		mOgre.setRotY(90);
 		mOgre.setY(-1);
 
 		addChild(mOgre);

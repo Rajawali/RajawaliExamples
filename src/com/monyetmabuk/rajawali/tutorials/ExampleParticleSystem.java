@@ -46,7 +46,7 @@ public class ExampleParticleSystem extends Particle {
 			
 			velocity[index] = -.5f + ((float)Math.random() * 1f);
 			velocity[index + 1] = -.5f + ((float)Math.random() * 1f);
-			velocity[index + 2] = ((float)Math.random() * 1f);
+			velocity[index + 2] = ((float)Math.random() * -1f);
 			
 			normals[index] = 0;
 			normals[index + 1] = 0;

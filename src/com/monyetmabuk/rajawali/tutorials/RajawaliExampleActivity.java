@@ -1,6 +1,6 @@
 package com.monyetmabuk.rajawali.tutorials;
 
-import rajawali.RajawaliActivity;
+import rajawali.RajawaliFragmentActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -13,7 +13,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
-public class RajawaliExampleActivity extends RajawaliActivity {
+public class RajawaliExampleActivity extends RajawaliFragmentActivity {
 	private ImageView mLoaderGraphic;
 
 	public void onCreate(Bundle savedInstanceState) {

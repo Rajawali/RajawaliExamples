@@ -28,9 +28,9 @@ public class RajawaliToonShadingRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
-		mLight = new DirectionalLight(0, 0, 1);
+		mLight = new DirectionalLight(0, 0, -1);
 		mLight.setPower(1);
-		mCamera.setPosition(0, 0, -12);
+		mCamera.setPosition(0, 0, 12);
 		
 		try {
 			ObjectInputStream ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_ser));

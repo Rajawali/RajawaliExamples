@@ -24,6 +24,7 @@ public class Rajawali2DRenderer extends RajawaliRenderer {
 
 		Plane plane = new Plane(1, 1, 1, 1, 1);
 		plane.setMaterial(mCustomMaterial);
+		//plane.setDoubleSided(true);
 		addChild(plane);
 	}
 
