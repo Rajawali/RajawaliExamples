@@ -24,11 +24,12 @@ public class RajawaliMD5Renderer extends RajawaliRenderer {
 	
 	protected void initScene()
 	{
-		mLight = new DirectionalLight(1f, 0.2f, -1.0f); // set the direction
+		mLight = new DirectionalLight(1f, -0.2f, -1.0f); // set the direction
 		mLight.setColor(1.0f, 1.0f, 1.0f);
 		mLight.setPower(2);
 
-		mCamera.setZ(20);
+		mCamera.setY(1);
+		mCamera.setZ(6);
 		
 		try {
 			MD5MeshParser meshParser = new MD5MeshParser(this, R.raw.boblampclean_mesh);
@@ -42,7 +43,7 @@ public class RajawaliMD5Renderer extends RajawaliRenderer {
 			mObject = (AnimationSkeleton)meshParser.getParsedAnimationObject();
 			mObject.setAnimationSequence(sequence);
 			mObject.addLight(mLight);
-			mObject.setScale(.1f);
+			mObject.setScale(.04f);
 			mObject.setRotY(180);
 			mObject.play();
 			
