@@ -74,8 +74,6 @@ public class RajawaliExamplesActivity extends ListActivity {
 
 		Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Regular.ttf");
 		linkView.setTypeface(font);
-		
-		//ListView listView = findViewById(R.id.)
 	}
 
 	public void onListItemClick(ListView parent, View v, int position, long id) {

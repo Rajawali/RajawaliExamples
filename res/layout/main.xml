@@ -9,7 +9,7 @@
         android:contentDescription="@string/app_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/rajawali_outline" />
+        android:src="@drawable/rajawali_new" />
 
     <TextView
         android:id="@+id/textView1"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:listSelector="@drawable/listview_selector"
-        android:cacheColorHint="@android:color/transparent"
+        android:cacheColorHint="#ffff"
         android:divider="@drawable/divider"
         android:dividerHeight="1dp"
         >
