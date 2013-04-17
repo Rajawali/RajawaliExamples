@@ -6,6 +6,7 @@
 
     <ImageView
         android:id="@+id/imageView1"
+        android:contentDescription="@string/app_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/rajawali_outline" />
@@ -15,7 +16,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/github_link" />
+        android:text="@string/github_link"
+        android:textColor="@color/app_text_color" />
     
     <ListView
         android:id="@+id/android:list"

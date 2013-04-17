@@ -16,6 +16,7 @@ import rajawali.materials.SimpleMaterial;
 import rajawali.math.Number3D;
 import rajawali.math.Number3D.Axis;
 import rajawali.parser.ObjParser;
+import rajawali.parser.AParser.ParsingException;
 import rajawali.primitives.Line3D;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
@@ -57,23 +58,27 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 			path.addPoint(new Number3D(-rh + (Math.random() * r), -rh + (Math.random() * r), -rh + (Math.random() * r)));
 		}
 
-		ObjParser parser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.arrow);
-		parser.parse();
-		BaseObject3D arrow = parser.getParsedObject();
-		arrow.setMaterial(material);
-		arrow.setScale(.2f);
-		arrow.setColor(0xffffff00);
-		arrow.addLight(light1);
-		addChild(arrow);
+		try {
+			ObjParser parser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.arrow);
+			parser.parse();
+			BaseObject3D arrow = parser.getParsedObject();
+			arrow.setMaterial(material);
+			arrow.setScale(.2f);
+			arrow.setColor(0xffffff00);
+			arrow.addLight(light1);
+			addChild(arrow);
 
-		TranslateAnimation3D mAnim = new TranslateAnimation3D(path);
-		mAnim.setDuration(12000);
-		mAnim.setRepeatCount(Animation3D.INFINITE);
-		mAnim.setRepeatMode(Animation3D.REVERSE);
-		// -- orient to path 
-		mAnim.setOrientToPath(true);
-		mAnim.setTransformable3D(arrow);
-		mAnims.add(mAnim);
+			TranslateAnimation3D mAnim = new TranslateAnimation3D(path);
+			mAnim.setDuration(12000);
+			mAnim.setRepeatCount(Animation3D.INFINITE);
+			mAnim.setRepeatMode(Animation3D.REVERSE);
+			// -- orient to path 
+			mAnim.setOrientToPath(true);
+			mAnim.setTransformable3D(arrow);
+			mAnims.add(mAnim);
+		} catch(ParsingException e) {
+			e.printStackTrace();
+		}
 		
 		int numPoints = path.getNumPoints();
 

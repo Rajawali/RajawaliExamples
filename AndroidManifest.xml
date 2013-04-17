@@ -47,5 +47,6 @@
         <activity android:name=".RajawaliChaseCamActivity"></activity>
         <activity android:name=".RajawaliUsingGeometryDataActivity"></activity>
         <activity android:name=".Rajawali360ImagesActivity"></activity>
+        <activity android:name="RajawaliMD5Activity"></activity>
     </application>
 </manifest>

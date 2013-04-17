@@ -6,6 +6,7 @@ import javax.microedition.khronos.opengles.GL10;
 import rajawali.animation.mesh.VertexAnimationObject3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.parser.MD2Parser;
+import rajawali.parser.AParser.ParsingException;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
@@ -31,18 +32,22 @@ public class RajawaliMD2Renderer extends RajawaliRenderer {
 		mLight.setPower(2);
 		mCamera.setPosition(0, 0, 8);
 
-		MD2Parser parser = new MD2Parser(mContext.getResources(), mTextureManager, R.raw.ogro);
-		parser.parse();
-
-		mOgre = (VertexAnimationObject3D) parser.getParsedAnimationObject();
-		mOgre.addLight(mLight);
-		mOgre.setScale(.07f);
-		mOgre.setRotY(90);
-		mOgre.setY(-1);
-
-		addChild(mOgre);
-
-		mOgre.play();
+		try {
+			MD2Parser parser = new MD2Parser(mContext.getResources(), mTextureManager, R.raw.ogro);
+			parser.parse();
+	
+			mOgre = (VertexAnimationObject3D) parser.getParsedAnimationObject();
+			mOgre.addLight(mLight);
+			mOgre.setScale(.07f);
+			mOgre.setRotY(90);
+			mOgre.setY(-1);
+	
+			addChild(mOgre);
+	
+			mOgre.play();
+		} catch(ParsingException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {

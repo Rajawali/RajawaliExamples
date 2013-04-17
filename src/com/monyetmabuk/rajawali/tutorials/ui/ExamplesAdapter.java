@@ -41,7 +41,7 @@ public class ExamplesAdapter extends BaseAdapter {
 		tv.setGravity(Gravity.CENTER_HORIZONTAL);
 		tv.setTextSize(20);
 		tv.setText(obj.toString());
-		tv.setTextColor(0xaaffffff);
+		tv.setTextColor(0xff000000);
 		
 		Typeface font=Typeface.createFromAsset(context.getAssets(), "fonts/Roboto-Regular.ttf");
 	    tv.setTypeface(font);

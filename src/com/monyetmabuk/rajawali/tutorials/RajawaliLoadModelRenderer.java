@@ -11,6 +11,7 @@ import rajawali.lights.PointLight;
 import rajawali.math.Number3D;
 import rajawali.math.Number3D.Axis;
 import rajawali.parser.ObjParser;
+import rajawali.parser.AParser.ParsingException;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
@@ -30,17 +31,21 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 		mLight.setPower(3);
 		mCamera.setZ(12);
 
-		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.multiobjects_obj);
-		objParser.parse();
-		mObjectGroup = objParser.getParsedObject();
-		mObjectGroup.addLight(mLight);
-		addChild(mObjectGroup);
-
-		mCameraAnim = new RotateAnimation3D(Axis.Y, 360);
-		mCameraAnim.setDuration(8000);
-		mCameraAnim.setRepeatCount(Animation3D.INFINITE);
-		mCameraAnim.setTransformable3D(mObjectGroup);
-
+		try {
+			ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.multiobjects_obj);
+			objParser.parse();
+			mObjectGroup = objParser.getParsedObject();
+			mObjectGroup.addLight(mLight);
+			addChild(mObjectGroup);
+	
+			mCameraAnim = new RotateAnimation3D(Axis.Y, 360);
+			mCameraAnim.setDuration(8000);
+			mCameraAnim.setRepeatCount(Animation3D.INFINITE);
+			mCameraAnim.setTransformable3D(mObjectGroup);
+		} catch(ParsingException e) {
+			e.printStackTrace();
+		}
+			
 		mLightAnim = new RotateAroundAnimation3D(new Number3D(), Axis.Z, 10);
 		mLightAnim.setDuration(3000);
 		mLightAnim.setRepeatCount(Animation3D.INFINITE);

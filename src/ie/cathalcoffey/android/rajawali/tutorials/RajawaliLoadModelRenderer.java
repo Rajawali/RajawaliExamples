@@ -13,7 +13,9 @@ import rajawali.lights.PointLight;
 import rajawali.math.Number3D;
 import rajawali.math.Number3D.Axis;
 import rajawali.parser.ObjParser;
+import rajawali.parser.AParser.ParsingException;
 import rajawali.renderer.RajawaliRenderer;
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 public class RajawaliLoadModelRenderer extends RajawaliRenderer {
@@ -33,21 +35,26 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 		mCamera.setLookAt(0, 0, 0);
 		mCamera.setZ(-6);
 		
-		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.camaro_obj);
-		objParser.parse();
-		mObjectGroup = objParser.getParsedObject();
-		mObjectGroup.addLight(mLight);
-		mObjectGroup.setY(-1);
-		mObjectGroup.setRotation(90, 0, 0);
+		try {
+			ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.camaro_obj);
+			objParser.parse();
+			mObjectGroup = objParser.getParsedObject();
+			mObjectGroup.addLight(mLight);
+			mObjectGroup.setY(-1);
+			mObjectGroup.setRotation(90, 0, 0);
+			
+			addChild(mObjectGroup);
+		} catch(ParsingException e) {
+			e.printStackTrace();
+		}
 		
 		mLightAnim = new RotateAroundAnimation3D(new Number3D(), Axis.Z, 3);
 		mLightAnim.setDuration(5000);
 		mLightAnim.setRepeatCount(Animation3D.INFINITE);
 		mLightAnim.setTransformable3D(mLight);
-		
-		addChild(mObjectGroup);
 	}
 	
+	@SuppressLint("NewApi")
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		FragmentsExampleActivity mainActivity = ((FragmentsExampleActivity) mContext);
 		

@@ -4,5 +4,7 @@
     <style name="app_theme" parent="android:Theme">
         <item name="android:windowBackground">@drawable/app_background</item>
     </style>
-    
+    <style name="ListFont" parent="@android:style/Widget.ListView">
+    	<item name="android:textColor">#FF0000</item>
+    </style>
 </resources>

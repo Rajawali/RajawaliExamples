@@ -48,7 +48,8 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("28. Sphere Mapping", RajawaliSphereMapActivity.class),
 			new ExampleItem("29. Chase Camera", RajawaliChaseCamActivity.class),
 			new ExampleItem("30. Using Geometry Data", RajawaliUsingGeometryDataActivity.class),
-			new ExampleItem("31. 360° Images", Rajawali360ImagesActivity.class) };
+			new ExampleItem("31. 360° Images", Rajawali360ImagesActivity.class),
+			new ExampleItem("32. Skeletal Animation (MD5)", RajawaliMD5Activity.class) };
 
 	public void onCreate(Bundle savedInstanceState) {
 		String[] strings = new String[mItems.length];
@@ -66,13 +67,15 @@ public class RajawaliExamplesActivity extends ListActivity {
 		linkView.setPadding(10, 0, 10, 20);
 		linkView.setTextSize(20);
 		linkView.setText(getString(R.string.github_url));
-		linkView.setTextColor(0xaaffffff);
-		linkView.setLinkTextColor(0xaaffffff);
+		linkView.setTextColor(0xff000000);
+		linkView.setLinkTextColor(0xff000000);
 
 		Linkify.addLinks(linkView, Linkify.WEB_URLS);
 
 		Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Regular.ttf");
 		linkView.setTypeface(font);
+		
+		//ListView listView = findViewById(R.id.)
 	}
 
 	public void onListItemClick(ListView parent, View v, int position, long id) {

@@ -9,6 +9,7 @@ import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.math.Number3D;
 import rajawali.parser.ObjParser;
+import rajawali.parser.AParser.ParsingException;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -37,14 +38,18 @@ public class RajawaliFogRenderer extends RajawaliRenderer {
 		setFogEnabled(true);
 		setBackgroundColor(0x999999);
 		
-		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.road);
-		objParser.parse();
-		mRoad = objParser.getParsedObject();
-		mRoad.addLight(mLight);
-		mRoad.setZ(-2);
-		mRoad.setRotY(180);
-		addChild(mRoad);
-		
+		try {
+			ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.road);
+			objParser.parse();
+			mRoad = objParser.getParsedObject();
+			mRoad.addLight(mLight);
+			mRoad.setZ(-2);
+			mRoad.setRotY(180);
+			addChild(mRoad);
+		} catch(ParsingException e) {
+			e.printStackTrace();
+		}
+			
 		Bitmap roadTexture = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.road);
 		mRoad.getChildByName("Road").addTexture(mTextureManager.addTexture(roadTexture));
 		
