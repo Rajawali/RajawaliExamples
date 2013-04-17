@@ -2805,7 +2805,7 @@ mesh {
 }
 
 mesh {
-	shader "models/monsters/bob/iron_grill"
+	shader "iron_grill_color"
 
 	numverts 18
 	vert 0 ( 0.379416 0.167859 ) 0 1
@@ -2867,7 +2867,7 @@ mesh {
 }
 
 mesh {
-	shader "models/monsters/bob/round_grill"
+	shader "round_grill_color"
 
 	numverts 38
 	vert 0 ( 0.460938 0.136719 ) 0 1
@@ -2975,7 +2975,7 @@ mesh {
 }
 
 mesh {
-	shader "models/monsters/bob/guard1_body"
+	shader "guard1_body_color"
 
 	numverts 135
 	vert 0 ( 0.162109 0.550781 ) 0 1
