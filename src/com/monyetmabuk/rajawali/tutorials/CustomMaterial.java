@@ -4,26 +4,11 @@ import android.opengl.GLES20;
 import rajawali.materials.SimpleMaterial;
 
 public class CustomMaterial extends SimpleMaterial {
-	protected static final String mCustomFShader = 
-			"precision mediump float;\n" +
-
-			"uniform float uTime;\n" +
-			"varying vec2 vTextureCoord;\n" +
-
-			"void main() {\n" +
-			"   vec4 newColor = vec4(1.0, 0, 0, 1.0);\n" +
-			"	float x = min(vTextureCoord.s, 1.0 - vTextureCoord.s);" +
-			"	float y = vTextureCoord.t;" + 
-			"	newColor.g = sin(x * cos(uTime*0.0666) * 120.0) + " + 
-			"   	cos(y * sin(uTime*0.1) * 120.0) + " +
-			"		sin(sqrt(y * y + x * x) * 40.0);\n" +
-			"	gl_FragColor = newColor;\n" +
-			"}\n";
 	
 	protected int muTimeHandle;
 	
 	public CustomMaterial() {
-		super(mVShader, mCustomFShader);
+		super(R.raw.simple_material_vertex, R.raw.custom_material_fragment);
 		setShaders();
 	}
 	
