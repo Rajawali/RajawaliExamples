@@ -48,8 +48,9 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("28. Sphere Mapping", RajawaliSphereMapActivity.class),
 			new ExampleItem("29. Chase Camera", RajawaliChaseCamActivity.class),
 			new ExampleItem("30. Using Geometry Data", RajawaliUsingGeometryDataActivity.class),
-			new ExampleItem("31. 360° Images", Rajawali360ImagesActivity.class),
-			new ExampleItem("32. Skeletal Animation (MD5)", RajawaliMD5Activity.class) };
+			new ExampleItem("31. 360Â°Images", Rajawali360ImagesActivity.class),
+			new ExampleItem("32. Skeletal Animation (MD5)", RajawaliMD5Activity.class),
+			new ExampleItem("33. Texture Compression (ETC)", RajawaliTextureCompressionActivity.class)};
 
 	public void onCreate(Bundle savedInstanceState) {
 		String[] strings = new String[mItems.length];
