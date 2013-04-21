@@ -29,7 +29,7 @@ public class Rajawali360ImagesRenderer extends RajawaliRenderer {
     	
     	mMaterial = new SimpleMaterial();
     	
-    	mPlane = new Plane(1.5f, 1, 1, 1, 1);
+    	mPlane = new Plane(1.5f, 1, 1, 1);
     	mPlane.setMaterial(mMaterial);
     	addChild(mPlane);
 	}
