@@ -49,5 +49,6 @@
         <activity android:name=".Rajawali360ImagesActivity"></activity>
         <activity android:name="RajawaliMD5Activity"></activity>
         <activity android:name=".RajawaliTextureCompressionActivity"></activity>
+        <activity android:name="RajawaliColorAnimationActivity"></activity>
     </application>
 </manifest>

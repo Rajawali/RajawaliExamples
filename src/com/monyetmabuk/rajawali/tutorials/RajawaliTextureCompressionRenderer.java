@@ -6,13 +6,12 @@ package com.monyetmabuk.rajawali.tutorials;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import android.content.Context;
 import rajawali.BaseObject3D;
 import rajawali.materials.SimpleMaterial;
 import rajawali.materials.TextureManager.TextureType;
 import rajawali.primitives.Plane;
 import rajawali.renderer.RajawaliRenderer;
-import rajawali.util.RajLog;
+import android.content.Context;
 
 public class RajawaliTextureCompressionRenderer extends RajawaliRenderer {
 	private BaseObject3D mMipmappedPlane;
