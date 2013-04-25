@@ -4,21 +4,20 @@ package ie.cathalcoffey.android.rajawali.tutorials;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import com.monyetmabuk.rajawali.tutorials.R;
-
 import rajawali.BaseObject3D;
-import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
 import rajawali.lights.PointLight;
 import rajawali.math.Number3D;
 import rajawali.math.Number3D.Axis;
-import rajawali.parser.ObjParser;
 import rajawali.parser.AParser.ParsingException;
+import rajawali.parser.ObjParser;
 import rajawali.renderer.RajawaliRenderer;
 import android.annotation.SuppressLint;
 import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.R;
 
 public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 	private PointLight mLight;
