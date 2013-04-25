@@ -8,9 +8,11 @@ import javax.microedition.khronos.opengles.GL10;
 import rajawali.BaseObject3D;
 import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D;
+import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.Animation3DQueue;
+import rajawali.animation.EllipticalOrbitAnimation3D;
+import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
 import rajawali.animation.RotateAnimation3D;
-import rajawali.animation.RotateAroundAnimation3D;
 import rajawali.animation.ScaleAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.PointLight;
@@ -61,7 +63,7 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 		anim.setInterpolator(new LinearInterpolator());
 		anim.setDuration(1000);
 		anim.setRepeatCount(3);
-		anim.setRepeatMode(Animation3D.REVERSE);
+		anim.setRepeatMode(RepeatMode.REVERSE);
 		anim.setTransformable3D(mMonkey);
 		mQueue.addAnimation(anim);
 
@@ -71,11 +73,13 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 		anim = new RotateAnimation3D(axis, 0, 360);
 		anim.setDuration(2000);
 		anim.setTransformable3D(mMonkey);
+		registerAnimation(anim);
 		mQueue.addAnimation(anim);
 
 		anim = new TranslateAnimation3D(new Number3D(-2, -2, 0));
 		anim.setDuration(500);
 		anim.setTransformable3D(mMonkey);
+		registerAnimation(anim);
 		mQueue.addAnimation(anim);
 
 		anim = new TranslateAnimation3D(new Number3D(-2, -2, 0), new Number3D(2, 2, 0));
@@ -83,14 +87,15 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 		anim.setTransformable3D(mMonkey);
 		anim.setInterpolator(new BounceInterpolator());
 		anim.setRepeatCount(3);
+		registerAnimation(anim);
 		mQueue.addAnimation(anim);
 
-		anim = new RotateAroundAnimation3D(new Number3D(), Axis.Z, 3, 1);
+		anim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(0, 3, 0), Number3D.getAxisVector(Axis.Z), 0, OrbitDirection.CLOCKWISE);
 		anim.setInterpolator(new LinearInterpolator());
 		anim.setDuration(2000);
-		anim.setRepeatMode(Animation3D.REVERSE);
-		anim.setRepeatCount(Animation3D.INFINITE);
+		anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		anim.setTransformable3D(mMonkey);
+		registerAnimation(anim);
 		mQueue.addAnimation(anim);
 	}
 

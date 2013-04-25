@@ -39,7 +39,7 @@ public class RajawaliTextureCompressionRenderer extends RajawaliRenderer {
 		mMipmappedPlane.setPosition(0, 1.25f, 0);
 		mMipmappedPlane.setDoubleSided(true);
 		mMipmappedPlane.setRotZ(90);
-		mMipmappedPlane.addTexture(mTextureManager.addEtc1Texture(mContext, new int[] { 
+		mMipmappedPlane.addTexture(mTextureManager.addEtc1Texture(new int[] { 
 				R.raw.rajawali_tex_mip_0,
 				R.raw.rajawali_tex_mip_1,
 				R.raw.rajawali_tex_mip_2,

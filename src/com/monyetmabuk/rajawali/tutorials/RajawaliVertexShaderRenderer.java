@@ -8,6 +8,7 @@ import android.opengl.GLES20;
 
 import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
+import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.math.Number3D;
 import rajawali.primitives.Sphere;
@@ -36,7 +37,7 @@ public class RajawaliVertexShaderRenderer extends RajawaliRenderer {
 		axis.normalize();
 		
 		mAnim = new RotateAnimation3D(axis, 360);
-		mAnim.setRepeatCount(Animation3D.INFINITE);
+		mAnim.setRepeatMode(RepeatMode.INFINITE);
 		mAnim.setDuration(12000);
 		mAnim.setTransformable3D(mSphere);
 		
@@ -47,7 +48,8 @@ public class RajawaliVertexShaderRenderer extends RajawaliRenderer {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		mAnim.start();
+		registerAnimation(mAnim);
+		mAnim.play();
 	}
 
 	public void onDrawFrame(GL10 glUnused) {

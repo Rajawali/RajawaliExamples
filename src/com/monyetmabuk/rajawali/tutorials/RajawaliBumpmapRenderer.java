@@ -5,7 +5,9 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
-import rajawali.animation.RotateAroundAnimation3D;
+import rajawali.animation.Animation3D.RepeatMode;
+import rajawali.animation.EllipticalOrbitAnimation3D;
+import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
 import rajawali.lights.PointLight;
 import rajawali.materials.BumpmapMaterial;
 import rajawali.materials.BumpmapPhongMaterial;
@@ -74,16 +76,17 @@ public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 
-		mLightAnim = new RotateAroundAnimation3D(new Number3D(0, 0, -4), Axis.Z, 4);
+		mLightAnim = new EllipticalOrbitAnimation3D(new Number3D(0, 0, -4), new Number3D(0, 4, 0), Number3D.getAxisVector(Axis.Z), 0, OrbitDirection.CLOCKWISE);
 		mLightAnim.setDuration(5000);
-		mLightAnim.setRepeatCount(Animation3D.INFINITE);
+		mLightAnim.setRepeatMode(RepeatMode.INFINITE);
 		mLightAnim.setTransformable3D(mLight);
+		registerAnimation(mLightAnim);
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		mLightAnim.start();		
+		mLightAnim.play();		
 	}
 }

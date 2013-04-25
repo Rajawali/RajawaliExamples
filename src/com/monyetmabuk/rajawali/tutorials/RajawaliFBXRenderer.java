@@ -5,6 +5,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
+import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.math.Number3D.Axis;
 import rajawali.parser.AParser.ParsingException;
@@ -25,7 +26,8 @@ public class RajawaliFBXRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		mAnim = new RotateAnimation3D(Axis.Y, 360);
 		mAnim.setDuration(16000);
-		mAnim.setRepeatCount(Animation3D.INFINITE);
+		mAnim.setRepeatMode(RepeatMode.INFINITE);
+		registerAnimation(mAnim);
 		
 		try {
 			// -- Model by Sampo Rask (http://www.blendswap.com/blends/characters/low-poly-rocks-character/)
@@ -44,6 +46,6 @@ public class RajawaliFBXRenderer extends RajawaliRenderer {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		mAnim.start();	
+		mAnim.play();	
 	}
 }

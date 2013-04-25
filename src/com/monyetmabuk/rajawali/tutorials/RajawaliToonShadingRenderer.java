@@ -9,6 +9,7 @@ import javax.microedition.khronos.opengles.GL10;
 import rajawali.BaseObject3D;
 import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D;
+import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.ToonMaterial;
@@ -68,19 +69,19 @@ public class RajawaliToonShadingRenderer extends RajawaliRenderer {
 		
 		RotateAnimation3D anim = new RotateAnimation3D(Axis.Y, 360);
 		anim.setDuration(6000);
-		anim.setRepeatCount(RotateAnimation3D.INFINITE);
+		anim.setRepeatMode(RepeatMode.INFINITE);
 		anim.setTransformable3D(mMonkey1);
 		mAnimations.add(anim);
 		
 		anim = new RotateAnimation3D(Axis.Y, -360);
 		anim.setDuration(6000);
-		anim.setRepeatCount(RotateAnimation3D.INFINITE);
+		anim.setRepeatMode(RepeatMode.INFINITE);
 		anim.setTransformable3D(mMonkey2);
 		mAnimations.add(anim);
 		
 		anim = new RotateAnimation3D(Axis.Y, -360);
 		anim.setDuration(6000);
-		anim.setRepeatCount(RotateAnimation3D.INFINITE);
+		anim.setRepeatMode(RepeatMode.INFINITE);
 		anim.setTransformable3D(mMonkey3);
 		mAnimations.add(anim);
 	}
@@ -89,7 +90,10 @@ public class RajawaliToonShadingRenderer extends RajawaliRenderer {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		for(int i=0; i<mAnimations.size(); i++)
-			mAnimations.get(i).start();
+		for(int i=0; i<mAnimations.size(); i++) {
+			Animation3D anim = mAnimations.get(i);
+			registerAnimation(anim);
+			anim.play();
+		}
 	}
 }

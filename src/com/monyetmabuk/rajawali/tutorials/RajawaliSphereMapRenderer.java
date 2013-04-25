@@ -8,6 +8,7 @@ import javax.microedition.khronos.opengles.GL10;
 import rajawali.BaseObject3D;
 import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D;
+import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.PointLight;
 import rajawali.materials.SphereMapMaterial;
@@ -63,7 +64,7 @@ public class RajawaliSphereMapRenderer extends RajawaliRenderer {
 		mAnims = new Animation3D[2];
 		
 		Animation3D anim1 = new RotateAnimation3D(axis, 360);
-		anim1.setRepeatCount(Animation3D.INFINITE);
+		anim1.setRepeatMode(RepeatMode.INFINITE);
 		anim1.setDuration(12000);
 		anim1.setTransformable3D(jet1);
 		
@@ -86,7 +87,7 @@ public class RajawaliSphereMapRenderer extends RajawaliRenderer {
 		addChild(jet2);
 		
 		Animation3D anim2 = new RotateAnimation3D(axis, -360);
-		anim2.setRepeatCount(Animation3D.INFINITE);
+		anim2.setRepeatMode(RepeatMode.INFINITE);
 		anim2.setDuration(12000);
 		anim2.setTransformable3D(jet2);
 
@@ -99,8 +100,10 @@ public class RajawaliSphereMapRenderer extends RajawaliRenderer {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		mAnims[0].start();
-		mAnims[1].start();
+		registerAnimation(mAnims[0]);
+		registerAnimation(mAnims[1]);
+		mAnims[0].play();
+		mAnims[1].play();
 	}
 
 	public void onDrawFrame(GL10 glUnused) {
