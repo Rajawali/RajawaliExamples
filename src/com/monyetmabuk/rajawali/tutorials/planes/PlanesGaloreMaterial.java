@@ -104,14 +104,14 @@ public class PlanesGaloreMaterial extends AMaterial {
 	public void setPlanePositions(final int planePosBufferHandle) {
 		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, planePosBufferHandle);
 		GLES20.glEnableVertexAttribArray(maPlanePositionHandle);
-		fix.android.opengl.GLES20.glVertexAttribPointer(maPlanePositionHandle, 3, GLES20.GL_FLOAT,
+		GLES20.glVertexAttribPointer(maPlanePositionHandle, 3, GLES20.GL_FLOAT,
 				false, 0, 0);
 	}
 	
 	public void setRotationSpeeds(final int rotSpeedsBufferHandle) {
 		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, rotSpeedsBufferHandle);
 		GLES20.glEnableVertexAttribArray(maRotationSpeedHandle);
-		fix.android.opengl.GLES20.glVertexAttribPointer(maRotationSpeedHandle, 1, GLES20.GL_FLOAT,
+		GLES20.glVertexAttribPointer(maRotationSpeedHandle, 1, GLES20.GL_FLOAT,
 				false, 0, 0);
 	}
 
