@@ -10,7 +10,6 @@ import rajawali.Camera;
 import rajawali.Geometry3D;
 import rajawali.Geometry3D.BufferType;
 import rajawali.math.Number3D;
-import rajawali.util.BufferUtil;
 import android.graphics.Color;
 import android.opengl.GLES20;
 
@@ -131,10 +130,10 @@ public class PlanesGalore extends BaseObject3D {
 		setData(vertices, normals, textureCoords, colors, indices);
 
 		mPlanePositions = ByteBuffer.allocateDirect(planePositions.length * Geometry3D.FLOAT_SIZE_BYTES).order(ByteOrder.nativeOrder()).asFloatBuffer();
-		BufferUtil.copy(planePositions, mPlanePositions, planePositions.length, 0);
+		mPlanePositions.put(planePositions);
 
 		mRotationSpeeds = ByteBuffer.allocateDirect(rotationSpeeds.length * Geometry3D.FLOAT_SIZE_BYTES).order(ByteOrder.nativeOrder()).asFloatBuffer();
-		BufferUtil.copy(rotationSpeeds, mRotationSpeeds, rotationSpeeds.length, 0);
+		mRotationSpeeds.put(rotationSpeeds);
 
 		createBuffers();
 	}
