@@ -65,6 +65,7 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 		anim.setRepeatCount(3);
 		anim.setRepeatMode(RepeatMode.REVERSE);
 		anim.setTransformable3D(mMonkey);
+		registerAnimation(anim);
 		mQueue.addAnimation(anim);
 
 		Number3D axis = new Number3D(10, 5, 2);
