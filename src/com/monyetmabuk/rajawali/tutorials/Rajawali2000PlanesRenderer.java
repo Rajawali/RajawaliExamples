@@ -4,7 +4,7 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
-import rajawali.animation.Animation3D;
+import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.CatmullRomPath3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.DirectionalLight;
@@ -75,10 +75,10 @@ public class Rajawali2000PlanesRenderer extends RajawaliRenderer {
 		
 		mCamAnim = new TranslateAnimation3D(path);
 		mCamAnim.setDuration(20000);
-		mCamAnim.setRepeatCount(Animation3D.INFINITE);
-		mCamAnim.setRepeatMode(Animation3D.REVERSE);
+		mCamAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		mCamAnim.setTransformable3D(mCamera);
 		mCamAnim.setInterpolator(new AccelerateDecelerateInterpolator());
+		registerAnimation(mCamAnim);
 		
 		mCamera.setLookAt(new Number3D(0,0,30));		
 	}
@@ -88,7 +88,7 @@ public class Rajawali2000PlanesRenderer extends RajawaliRenderer {
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
 		mStartTime = System.currentTimeMillis();
-		mCamAnim.start();
+		mCamAnim.play();
 	}
 	
 	public void onDrawFrame(GL10 glUnused) {

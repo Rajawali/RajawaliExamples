@@ -2,7 +2,7 @@ package ie.cathalcoffey.android.rajawali.tutorials;
 
 
 import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3DListener;
+import rajawali.animation.IAnimation3DListener;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.math.Number3D.Axis;
 import android.app.ListFragment;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class RajawaliListFragment extends ListFragment 
+public class RajawaliListFragment extends ListFragment implements IAnimation3DListener
 {
 	  RajawaliLoadModel fragment;
 	  RajawaliLoadModelRenderer renderer; 
@@ -79,8 +79,8 @@ public class RajawaliListFragment extends ListFragment
 	    		return;
 	  				
 		    // If their is a current camera animation executing, cancel it.
-		    if(mCameraAnim != null && !mCameraAnim.isHasEnded())
-			    mCameraAnim.cancel();
+		    if(mCameraAnim != null && !mCameraAnim.isEnded())
+			    fragment.mRenderer.unregisterAnimation(mCameraAnim);
 		    
 	    	// Ok, we have decided to go to a new angle.
 	    	targetAngle = gotoAngle;
@@ -106,43 +106,35 @@ public class RajawaliListFragment extends ListFragment
 		     * another gracefully. Try pressing different options really fast 
 		     * without giving the animations time to complete.
 		     */
-		    mCameraAnim.setAnimationListener
-		    ( 
-	    		new Animation3DListener()
-	    		{
-					@Override
-					public void onAnimationEnd(Animation3D animation) 
-					{
-						// TODO Auto-generated method stub	
-					}
-		
-					@Override
-					public void onAnimationRepeat(Animation3D animation) 
-					{
-						// TODO Auto-generated method stub	
-					}
-		
-					@Override
-					public void onAnimationStart(Animation3D animation) 
-					{
-						// TODO Auto-generated method stub	
-					}
-		
-					@Override
-					public void onAnimationUpdate(Animation3D animation, float interpolatedTime) 
-					{
-						/* 
-						 * Keep track of the currentAngle.
-						 * We will continue from this angle if the animation is canceled before completion. 
-						 */
-						currentAngle = (startAngle + (interpolatedTime * moveThru)) % 360;
-					}
-	    		}
-		    );
+		    mCameraAnim.registerListener(this);
 		    
 		    // Start the animation.
   		  	mCameraAnim.setDuration(1000);
   		  	mCameraAnim.setTransformable3D(renderer.mObjectGroup);	
-  		  	mCameraAnim.start();
+  		  	mCameraAnim.play();
 	  }
+
+	@Override
+	public void onAnimationEnd(Animation3D animation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onAnimationRepeat(Animation3D animation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onAnimationStart(Animation3D animation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onAnimationUpdate(Animation3D animation, double interpolatedTime) {
+		// TODO Auto-generated method stub
+		currentAngle = (startAngle + ((float)interpolatedTime * moveThru)) % 360;
+	}
 } 

@@ -8,6 +8,7 @@ import javax.microedition.khronos.opengles.GL10;
 import android.content.Context;
 import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
+import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.BezierPath3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.DirectionalLight;
@@ -62,15 +63,13 @@ public class RajawaliBezierRenderer extends RajawaliRenderer {
 		
 		Animation3D redAnim = new TranslateAnimation3D(redBezierPath);
 		redAnim.setDuration(2000);
-		redAnim.setRepeatCount(Animation3D.INFINITE);
-		redAnim.setRepeatMode(Animation3D.REVERSE);
+		redAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		redAnim.setTransformable3D(redSphere);
 		mAnimations.add(redAnim);
 
 		Animation3D yellowAnim = new TranslateAnimation3D(yellowBezierPath);
 		yellowAnim.setDuration(3800);
-		yellowAnim.setRepeatCount(Animation3D.INFINITE);
-		yellowAnim.setRepeatMode(Animation3D.REVERSE);
+		yellowAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		yellowAnim.setTransformable3D(yellowSphere);
 		mAnimations.add(yellowAnim);
 	}
@@ -79,7 +78,10 @@ public class RajawaliBezierRenderer extends RajawaliRenderer {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		for(int i=0; i<mAnimations.size(); i++)
-			mAnimations.get(i).start();
+		for(int i=0; i<mAnimations.size(); i++) {
+			Animation3D anim = mAnimations.get(i);
+			registerAnimation(anim);
+			anim.play();
+		}
 	}
 }

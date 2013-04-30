@@ -5,6 +5,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
+import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.math.Number3D;
@@ -62,8 +63,7 @@ public class RajawaliFogRenderer extends RajawaliRenderer {
 		mCamAnim = new TranslateAnimation3D(new Number3D(0, 1, -23));
 		mCamAnim.setDuration(8000);
 		mCamAnim.setInterpolator(new AccelerateDecelerateInterpolator());
-		mCamAnim.setRepeatCount(Animation3D.INFINITE);
-		mCamAnim.setRepeatMode(Animation3D.REVERSE);
+		mCamAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		mCamAnim.setTransformable3D(mCamera);
 	}
 
@@ -71,7 +71,8 @@ public class RajawaliFogRenderer extends RajawaliRenderer {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		mCamAnim.start();
+		registerAnimation(mCamAnim);
+		mCamAnim.play();
 	}
 
 	public void onDrawFrame(GL10 glUnused) {

@@ -9,7 +9,7 @@ public class CustomVertexShaderMaterial extends SimpleMaterial {
 	protected float mTime;
 	
 	public CustomVertexShaderMaterial() {
-		super(R.raw.custom_vertex_shader_material, R.raw.simple_material_fragment);
+		super(R.raw.custom_vertex_shader_material, com.monyetmabuk.livewallpapers.photosdof.R.raw.simple_material_fragment);
 	}
 	
 	public CustomVertexShaderMaterial(String vertexShader, String fragmentShader) {

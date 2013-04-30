@@ -8,6 +8,7 @@ import javax.microedition.khronos.opengles.GL10;
 import rajawali.BaseObject3D;
 import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D;
+import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.filters.SwirlFilter;
 import rajawali.lights.DirectionalLight;
@@ -70,10 +71,10 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 
 		mAnimation = new TranslateAnimation3D(new Number3D(0, 0, 2));
 		mAnimation.setDuration(6000);
-		mAnimation.setRepeatCount(Animation3D.INFINITE);
-		mAnimation.setRepeatMode(Animation3D.REVERSE);
+		mAnimation.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		mAnimation.setTransformable3D(mCamera);
 		mAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+		registerAnimation(mAnimation);
 
 		mFilter = new SwirlFilter(mViewportWidth, mViewportHeight, 10, 1f);
 		addPostProcessingFilter(mFilter);
@@ -83,7 +84,7 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		mAnimation.start();
+		mAnimation.play();
 	}
 
 	public void onSurfaceChanged(GL10 gl, int width, int height) {

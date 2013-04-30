@@ -5,8 +5,10 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
+import rajawali.animation.Animation3D.RepeatMode;
+import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
+import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.RotateAnimation3D;
-import rajawali.animation.RotateAroundAnimation3D;
 import rajawali.lights.PointLight;
 import rajawali.math.Number3D;
 import rajawali.math.Number3D.Axis;
@@ -40,24 +42,28 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 	
 			mCameraAnim = new RotateAnimation3D(Axis.Y, 360);
 			mCameraAnim.setDuration(8000);
-			mCameraAnim.setRepeatCount(Animation3D.INFINITE);
+			mCameraAnim.setRepeatMode(RepeatMode.INFINITE);
 			mCameraAnim.setTransformable3D(mObjectGroup);
 		} catch(ParsingException e) {
 			e.printStackTrace();
 		}
 			
-		mLightAnim = new RotateAroundAnimation3D(new Number3D(), Axis.Z, 10);
+		mLightAnim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(0, 10, 0), Number3D.getAxisVector(Axis.Z), 0, OrbitDirection.CLOCKWISE);
+		
 		mLightAnim.setDuration(3000);
-		mLightAnim.setRepeatCount(Animation3D.INFINITE);
+		mLightAnim.setRepeatMode(RepeatMode.INFINITE);
 		mLightAnim.setTransformable3D(mLight);
+		
+		registerAnimation(mCameraAnim);
+		registerAnimation(mLightAnim);
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		mCameraAnim.start();
-		mLightAnim.start();		
+		mCameraAnim.play();
+		mLightAnim.play();		
 	}
 
 	public void onDrawFrame(GL10 glUnused) {
