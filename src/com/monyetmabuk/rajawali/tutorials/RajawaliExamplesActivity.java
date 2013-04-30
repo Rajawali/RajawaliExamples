@@ -50,7 +50,8 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("30. Using Geometry Data", RajawaliUsingGeometryDataActivity.class),
 			new ExampleItem("31. 360°Images", Rajawali360ImagesActivity.class),
 			new ExampleItem("32. Skeletal Animation (MD5)", RajawaliMD5Activity.class),
-			new ExampleItem("33. Texture Compression (ETC)", RajawaliTextureCompressionActivity.class)};
+			new ExampleItem("33. Texture Compression (ETC)", RajawaliTextureCompressionActivity.class),
+			new ExampleItem("34. Color Animation", RajawaliColorAnimationActivity.class)};
 
 	public void onCreate(Bundle savedInstanceState) {
 		String[] strings = new String[mItems.length];

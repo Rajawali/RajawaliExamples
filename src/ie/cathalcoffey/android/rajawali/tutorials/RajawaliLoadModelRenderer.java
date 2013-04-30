@@ -4,24 +4,25 @@ package ie.cathalcoffey.android.rajawali.tutorials;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import com.monyetmabuk.rajawali.tutorials.R;
-
 import rajawali.BaseObject3D;
-import rajawali.animation.Animation3D;
-import rajawali.animation.RotateAroundAnimation3D;
+import rajawali.animation.Animation3D.RepeatMode;
+import rajawali.animation.EllipticalOrbitAnimation3D;
+import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
 import rajawali.lights.PointLight;
 import rajawali.math.Number3D;
 import rajawali.math.Number3D.Axis;
-import rajawali.parser.ObjParser;
 import rajawali.parser.AParser.ParsingException;
+import rajawali.parser.ObjParser;
 import rajawali.renderer.RajawaliRenderer;
 import android.annotation.SuppressLint;
 import android.content.Context;
 
+import com.monyetmabuk.rajawali.tutorials.R;
+
 public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 	private PointLight mLight;
 	BaseObject3D mObjectGroup;
-	RotateAroundAnimation3D mLightAnim;
+	EllipticalOrbitAnimation3D mLightAnim;
 	
 	public RajawaliLoadModelRenderer(Context context) {
 		super(context);
@@ -48,9 +49,9 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 		
-		mLightAnim = new RotateAroundAnimation3D(new Number3D(), Axis.Z, 3);
+		mLightAnim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(0, 3, 0), Number3D.getAxisVector(Axis.Z), 0, OrbitDirection.CLOCKWISE);
 		mLightAnim.setDuration(5000);
-		mLightAnim.setRepeatCount(Animation3D.INFINITE);
+		mLightAnim.setRepeatMode(RepeatMode.INFINITE);
 		mLightAnim.setTransformable3D(mLight);
 	}
 	
@@ -64,7 +65,8 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleFragment) rlmf).hideLoader();
 		
-		mLightAnim.start();	
+		registerAnimation(mLightAnim);
+		mLightAnim.play();	
 	}
 
 	public void onDrawFrame(GL10 glUnused) {

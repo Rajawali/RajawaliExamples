@@ -8,7 +8,7 @@ public class CustomMaterial extends SimpleMaterial {
 	protected int muTimeHandle;
 	
 	public CustomMaterial() {
-		super(R.raw.simple_material_vertex, R.raw.custom_material_fragment);
+		super(com.monyetmabuk.livewallpapers.photosdof.R.raw.simple_material_vertex, R.raw.custom_material_fragment);
 		setShaders();
 	}
 	

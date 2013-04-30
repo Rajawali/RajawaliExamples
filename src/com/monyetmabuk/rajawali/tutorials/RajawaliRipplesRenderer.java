@@ -7,6 +7,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
+import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.filters.TouchRippleFilter;
 import rajawali.lights.DirectionalLight;
@@ -59,7 +60,7 @@ public class RajawaliRipplesRenderer extends RajawaliRenderer {
 				group.addChild(cube);
 				Number3D axis = new Number3D(rnd.nextFloat(), rnd.nextFloat(), rnd.nextFloat());
 				Animation3D anim = new RotateAnimation3D(axis, 360);
-				anim.setRepeatCount(Animation3D.INFINITE);
+				anim.setRepeatMode(RepeatMode.INFINITE);
 				anim.setDuration(8000);
 				anim.setTransformable3D(cube);
 				
@@ -94,7 +95,8 @@ public class RajawaliRipplesRenderer extends RajawaliRenderer {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		for(int i=0; i<NUM_CUBES; ++i) {
-			mAnims[i].start();
+			registerAnimation(mAnims[i]);
+			mAnims[i].play();
 		}
 		mFilter.setScreenSize(mViewportWidth, mViewportHeight);
 		((RajawaliExampleActivity) mContext).hideLoader();

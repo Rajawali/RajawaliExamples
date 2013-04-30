@@ -9,6 +9,7 @@ import javax.microedition.khronos.opengles.GL10;
 import rajawali.BaseObject3D;
 import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D;
+import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.PointLight;
 import rajawali.materials.DiffuseMaterial;
@@ -56,8 +57,7 @@ public class RajawaliMultipleLightsRenderer extends RajawaliRenderer {
 		
 		Animation3D anim = new TranslateAnimation3D(new Number3D(-10, -10, 5), new Number3D(-10, 10, 5));
 		anim.setDuration(4000);
-		anim.setRepeatCount(Animation3D.INFINITE);
-		anim.setRepeatMode(Animation3D.REVERSE);
+		anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		anim.setTransformable3D(light1);
 		
 		mAnimations = new Stack<Animation3D>();
@@ -65,8 +65,7 @@ public class RajawaliMultipleLightsRenderer extends RajawaliRenderer {
 		
 		anim = new TranslateAnimation3D(new Number3D(10, 10, 5), new Number3D(10, -10, 5));
 		anim.setDuration(2000);
-		anim.setRepeatCount(Animation3D.INFINITE);
-		anim.setRepeatMode(Animation3D.REVERSE);
+		anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		anim.setTransformable3D(light2);
 		
 		mAnimations.add(anim);
@@ -76,7 +75,10 @@ public class RajawaliMultipleLightsRenderer extends RajawaliRenderer {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		for(int i=0; i<2; i++)
-			mAnimations.get(i).start();
+		for(int i=0; i<2; i++) {
+			Animation3D anim = mAnimations.get(i);
+			registerAnimation(anim);
+			anim.play();
+		}
 	}
 }

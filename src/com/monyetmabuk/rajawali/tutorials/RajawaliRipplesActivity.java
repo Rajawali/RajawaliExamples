@@ -14,6 +14,7 @@ public class RajawaliRipplesActivity extends RajawaliExampleActivity implements 
 	private RajawaliRipplesRenderer mRenderer;
 	private Point mScreenSize;
 	
+	@SuppressWarnings("deprecation")
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mRenderer = new RajawaliRipplesRenderer(this);

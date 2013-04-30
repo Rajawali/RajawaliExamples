@@ -7,14 +7,15 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
+import rajawali.animation.Animation3D.RepeatMode;
+import rajawali.animation.EllipticalOrbitAnimation3D;
+import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
 import rajawali.animation.CatmullRomPath3D;
-import rajawali.animation.RotateAroundAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.SimpleMaterial;
 import rajawali.math.Number3D;
-import rajawali.math.Number3D.Axis;
 import rajawali.parser.ObjParser;
 import rajawali.parser.AParser.ParsingException;
 import rajawali.primitives.Line3D;
@@ -35,8 +36,11 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		for (int i = 0; i < mAnims.size(); i++)
-			mAnims.get(i).start();
+		for (int i = 0; i < mAnims.size(); i++) {
+			Animation3D anim = mAnims.get(i);
+			registerAnimation(anim);
+			anim.play();
+		}
 	}
 	
 	protected void initScene() {
@@ -70,8 +74,7 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 
 			TranslateAnimation3D mAnim = new TranslateAnimation3D(path);
 			mAnim.setDuration(12000);
-			mAnim.setRepeatCount(Animation3D.INFINITE);
-			mAnim.setRepeatMode(Animation3D.REVERSE);
+			mAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			// -- orient to path 
 			mAnim.setOrientToPath(true);
 			mAnim.setTransformable3D(arrow);
@@ -107,9 +110,9 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		line.setMaterial(material);
 		addChild(line);
 
-		RotateAroundAnimation3D mCamAnim = new RotateAroundAnimation3D(new Number3D(), Axis.Y, 26);
+		EllipticalOrbitAnimation3D mCamAnim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(26, 0, 0), 0, OrbitDirection.CLOCKWISE);
 		mCamAnim.setDuration(10000);
-		mCamAnim.setRepeatCount(Animation3D.INFINITE);
+		mCamAnim.setRepeatMode(RepeatMode.INFINITE);
 		mCamAnim.setTransformable3D(mCamera);
 		mAnims.add(mCamAnim);
 	}

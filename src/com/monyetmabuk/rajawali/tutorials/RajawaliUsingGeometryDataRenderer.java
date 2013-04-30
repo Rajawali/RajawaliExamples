@@ -10,6 +10,7 @@ import javax.microedition.khronos.opengles.GL10;
 import rajawali.BaseObject3D;
 import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D;
+import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.PhongMaterial;
@@ -94,7 +95,7 @@ public class RajawaliUsingGeometryDataRenderer extends RajawaliRenderer {
 		
 		mAnim = new RotateAnimation3D(rotationAxis, 360);
 		mAnim.setDuration(8000);
-		mAnim.setRepeatCount(Animation3D.INFINITE);
+		mAnim.setRepeatMode(RepeatMode.INFINITE);
 		mAnim.setTransformable3D(mRootSpike);
 	}
 	
@@ -102,6 +103,7 @@ public class RajawaliUsingGeometryDataRenderer extends RajawaliRenderer {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		mAnim.start();
+		registerAnimation(mAnim);
+		mAnim.play();
 	}
 }
