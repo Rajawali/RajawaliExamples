@@ -48,7 +48,7 @@ public class Rajawali2000PlanesRenderer extends RajawaliRenderer {
 
 	protected void initScene() {
 		DirectionalLight light = new DirectionalLight(0, 0, 1);
-		mCamera.setPosition(0, 0, -16);
+		getCurrentCamera().setPosition(0, 0, -16);
 
 		mPlanes = new PlanesGalore();
 		mMaterial = (PlanesGaloreMaterial)mPlanes.getMaterial();
@@ -76,11 +76,11 @@ public class Rajawali2000PlanesRenderer extends RajawaliRenderer {
 		mCamAnim = new TranslateAnimation3D(path);
 		mCamAnim.setDuration(20000);
 		mCamAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
-		mCamAnim.setTransformable3D(mCamera);
+		mCamAnim.setTransformable3D(getCurrentCamera());
 		mCamAnim.setInterpolator(new AccelerateDecelerateInterpolator());
 		registerAnimation(mCamAnim);
 		
-		mCamera.setLookAt(new Number3D(0,0,30));		
+		getCurrentCamera().setLookAt(new Number3D(0,0,30));		
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {

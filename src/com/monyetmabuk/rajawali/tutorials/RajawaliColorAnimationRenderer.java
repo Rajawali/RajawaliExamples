@@ -17,7 +17,7 @@ public class RajawaliColorAnimationRenderer extends RajawaliRenderer {
 	public RajawaliColorAnimationRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
-		setCamera(new Camera2D());
+		getCurrentScene().switchCamera(new Camera2D());
 	}
 	
 	@Override

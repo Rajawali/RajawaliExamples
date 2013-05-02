@@ -23,7 +23,7 @@ public class RajawaliTextureCompressionRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
-		mCamera.setPosition(0, 0, 7);
+		getCurrentCamera().setPosition(0, 0, 7);
 		
 		mPlane = new Plane(2, 2, 1, 1);
 		mPlane.setMaterial(new SimpleMaterial());

@@ -41,7 +41,7 @@ public class RajawaliVertexShaderRenderer extends RajawaliRenderer {
 		mAnim.setDuration(12000);
 		mAnim.setTransformable3D(mSphere);
 		
-		mCamera.setPosition(0, 0, 10);
+		getCurrentCamera().setPosition(0, 0, 10);
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {

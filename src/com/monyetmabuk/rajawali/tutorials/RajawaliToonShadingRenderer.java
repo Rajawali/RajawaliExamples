@@ -24,14 +24,14 @@ public class RajawaliToonShadingRenderer extends RajawaliRenderer {
 
 	public RajawaliToonShadingRenderer(Context context) {
 		super(context);
-		setBackgroundColor(0xffeeeeee);
+		getCurrentScene().setBackgroundColor(0xffeeeeee);
 		setFrameRate(60);
 	}
 
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, -1);
 		mLight.setPower(1);
-		mCamera.setPosition(0, 0, 12);
+		getCurrentCamera().setPosition(0, 0, 12);
 		
 		try {
 			ObjectInputStream ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_ser));

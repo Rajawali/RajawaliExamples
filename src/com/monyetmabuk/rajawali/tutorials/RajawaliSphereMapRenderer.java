@@ -93,7 +93,7 @@ public class RajawaliSphereMapRenderer extends RajawaliRenderer {
 
 		mAnims[1] = anim2;
 		
-		mCamera.setPosition(0, 0, 14);
+		getCurrentCamera().setPosition(0, 0, 14);
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {

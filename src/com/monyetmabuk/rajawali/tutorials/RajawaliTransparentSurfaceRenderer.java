@@ -28,7 +28,7 @@ public class RajawaliTransparentSurfaceRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		DirectionalLight light = new DirectionalLight(0, 0, -1);
 		light.setPower(1);
-		mCamera.setPosition(0, 0, 16);
+		getCurrentCamera().setPosition(0, 0, 16);
 		
 		try {
 			ObjectInputStream ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_ser));
@@ -56,7 +56,7 @@ public class RajawaliTransparentSurfaceRenderer extends RajawaliRenderer {
 		// -- set the background color to be transparent
 		//    you need to have called setGLBackgroundTransparent(true); in the activity
 		//    for this to work.
-		setBackgroundColor(0);
+		getCurrentScene().setBackgroundColor(0);
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {

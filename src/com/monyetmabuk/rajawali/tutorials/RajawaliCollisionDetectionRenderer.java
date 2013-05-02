@@ -35,7 +35,7 @@ public class RajawaliCollisionDetectionRenderer extends RajawaliRenderer {
 	
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 1, -1);
-		mCamera.setPosition(0, 0, 7);
+		getCurrentCamera().setPosition(0, 0, 7);
 
 		DiffuseMaterial material = new DiffuseMaterial();
 		material.setUseColor(true);
@@ -151,12 +151,12 @@ public class RajawaliCollisionDetectionRenderer extends RajawaliRenderer {
 		mSphereIntersect = bsphere.intersectsWith(bsphere2);
 
 		if (mSphereIntersect && !mBoxIntersect)
-			setBackgroundColor(0xff00bfff);
+			getCurrentScene().setBackgroundColor(0xff00bfff);
 		else if (!mSphereIntersect && mBoxIntersect)
-			setBackgroundColor(0xff990000);
+			getCurrentScene().setBackgroundColor(0xff990000);
 		else if (mSphereIntersect && mBoxIntersect)
-			setBackgroundColor(0xff999999);
+			getCurrentScene().setBackgroundColor(0xff999999);
 		else
-			setBackgroundColor(0xff000000);
+			getCurrentScene().setBackgroundColor(0xff000000);
 	}
 }

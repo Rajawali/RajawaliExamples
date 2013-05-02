@@ -8,16 +8,16 @@ import javax.microedition.khronos.opengles.GL10;
 import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
+import rajawali.animation.CatmullRomPath3D;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
-import rajawali.animation.CatmullRomPath3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.SimpleMaterial;
 import rajawali.math.Number3D;
-import rajawali.parser.ObjParser;
 import rajawali.parser.AParser.ParsingException;
+import rajawali.parser.ObjParser;
 import rajawali.primitives.Line3D;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
@@ -47,8 +47,8 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		super.initScene();
 		ALight light1 = new DirectionalLight(0, 0, -1);
 		light1.setPower(1);
-		mCamera.setPosition(0, 0, 10);
-		mCamera.setLookAt(0, 0, 0);
+		getCurrentCamera().setPosition(0, 0, 10);
+		getCurrentCamera().setLookAt(0, 0, 0);
 
 		SimpleMaterial material = new SimpleMaterial();
 		material.setUseColor(true);
@@ -113,7 +113,7 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		EllipticalOrbitAnimation3D mCamAnim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(26, 0, 0), 0, OrbitDirection.CLOCKWISE);
 		mCamAnim.setDuration(10000);
 		mCamAnim.setRepeatMode(RepeatMode.INFINITE);
-		mCamAnim.setTransformable3D(mCamera);
+		mCamAnim.setTransformable3D(getCurrentCamera());
 		mAnims.add(mCamAnim);
 	}
 	

@@ -4,6 +4,7 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
+import rajawali.Camera;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
@@ -31,16 +32,17 @@ public class RajawaliFogRenderer extends RajawaliRenderer {
 		mLight = new DirectionalLight(0, -1, -1);
 		mLight.setPower(.5f);
 		
-		mCamera.setPosition(0, 1, 4);
-		mCamera.setFogNear(1);
-		mCamera.setFogFar(15);
-		mCamera.setFogColor(0x999999);
+		Camera camera = getCurrentCamera();
+		camera.setPosition(0, 1, 4);
+		camera.setFogNear(1);
+		camera.setFogFar(15);
+		camera.setFogColor(0x999999);
 		
 		setFogEnabled(true);
-		setBackgroundColor(0x999999);
+		getCurrentScene().setBackgroundColor(0x999999);
 		
+		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.road);
 		try {
-			ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.road);
 			objParser.parse();
 			mRoad = objParser.getParsedObject();
 			mRoad.addLight(mLight);
@@ -50,7 +52,12 @@ public class RajawaliFogRenderer extends RajawaliRenderer {
 		} catch(ParsingException e) {
 			e.printStackTrace();
 		}
-			
+		mRoad = objParser.getParsedObject();
+		mRoad.addLight(mLight);
+		mRoad.setZ(-2);
+		mRoad.setRotY(180);
+		addChild(mRoad);
+		
 		Bitmap roadTexture = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.road);
 		mRoad.getChildByName("Road").addTexture(mTextureManager.addTexture(roadTexture));
 		
@@ -64,7 +71,7 @@ public class RajawaliFogRenderer extends RajawaliRenderer {
 		mCamAnim.setDuration(8000);
 		mCamAnim.setInterpolator(new AccelerateDecelerateInterpolator());
 		mCamAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
-		mCamAnim.setTransformable3D(mCamera);
+		mCamAnim.setTransformable3D(getCurrentCamera());
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
@@ -77,6 +84,6 @@ public class RajawaliFogRenderer extends RajawaliRenderer {
 
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
-		mLight.setZ(mCamera.getZ());
+		mLight.setZ(getCurrentCamera().getZ());
 	}
 }

@@ -24,7 +24,7 @@ public class RajawaliUIElementsRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, -1);
 		mLight.setPower(.8f);
-		mCamera.setPosition(0, 0, 7);
+		getCurrentCamera().setPosition(0, 0, 7);
 
 		try {
 			ObjectInputStream ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_ser));

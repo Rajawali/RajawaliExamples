@@ -14,7 +14,7 @@ public class Rajawali2DRenderer extends RajawaliRenderer {
 
 	public Rajawali2DRenderer(Context context) {
 		super(context);
-		setCamera(new Camera2D());
+		getCurrentScene().switchCamera(new Camera2D());
 		setFrameRate(60);
 		mTime = 0;
 	}

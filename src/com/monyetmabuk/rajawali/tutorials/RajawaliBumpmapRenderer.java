@@ -40,10 +40,10 @@ public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 		mLight = new PointLight();
 		mLight.setPosition(-2, -2, 8);
 		mLight.setPower(2f);
-		mCamera.setPosition(0, 0, 6);
+		getCurrentCamera().setPosition(0, 0, 6);
 
+		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.bumpsphere);
 		try {
-			ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.bumpsphere);
 			objParser.parse();
 			mHalfSphere1 = objParser.getParsedObject();
 			mHalfSphere1.addLight(mLight);
@@ -75,6 +75,25 @@ public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 		} catch(ParsingException e) {
 			e.printStackTrace();
 		}
+		mHalfSphere2 = objParser.getParsedObject();
+		mHalfSphere2.addLight(mLight);
+		mHalfSphere2.setRotX(-45);
+		mHalfSphere2.setY(1.2f);
+		mHalfSphere2.setRotX(-45);
+		addChild(mHalfSphere2);
+
+		mDiffuseTexture1 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.sphere_texture);
+		mBumpTexture1 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.sphere_normal);
+		mDiffuseTexture2 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.torus_texture);
+		mBumpTexture2 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.torus_normal);
+
+		mHalfSphere1.setMaterial(new BumpmapMaterial());
+		mHalfSphere1.addTexture(mTextureManager.addTexture(mDiffuseTexture1, TextureType.DIFFUSE));
+		mHalfSphere1.addTexture(mTextureManager.addTexture(mBumpTexture1, TextureType.BUMP));
+
+		mHalfSphere2.setMaterial(new BumpmapPhongMaterial());
+		mHalfSphere2.addTexture(mTextureManager.addTexture(mDiffuseTexture2, TextureType.DIFFUSE));
+		mHalfSphere2.addTexture(mTextureManager.addTexture(mBumpTexture2, TextureType.BUMP));
 
 		mLightAnim = new EllipticalOrbitAnimation3D(new Number3D(0, 0, -4), new Number3D(0, 4, 0), Number3D.getAxisVector(Axis.Z), 0, OrbitDirection.CLOCKWISE);
 		mLightAnim.setDuration(5000);
