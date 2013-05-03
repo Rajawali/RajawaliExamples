@@ -60,26 +60,31 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
-		mCamera1 = getCurrentCamera();
+		mCamera1 = getCurrentCamera(); //We will utilize the initial camera
 		mCamera1.setPosition(0, 0, 20);
 		mCamera1.setFieldOfView(60);
 		mCamera1.setFarPlane(50);
-		mCamera2 = new Camera();
-		mCamera2.setPosition(5, 5, -5);
+		
+		mCamera2 = new Camera(); //Lets create a second camera for the scene.
+		mCamera2.setPosition(5, 0, -10);
 		mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
 		mCamera2.setFarPlane(50);
 		mCamera2.setFieldOfView(60);
-		mCamera2.updateFrustum(mPMatrix,mVMatrix); //update frustum plane
+		mCamera2.updateFrustum(mPMatrix,mVMatrix);
 		
-		mScene1 = new RajawaliScene(this, GRAPH_TYPE.OCTREE);
+		//We are going to use our own scene, not the default
+		mScene1 = new RajawaliScene(this, GRAPH_TYPE.OCTREE); 
 		mScene1.displaySceneGraph(true);
-		mScene1.replaceAndSwitchCamera(mCamera1, 0);
-		mScene1.addCamera(mCamera2);
+		//Since we created a new scene, it has a default camera we need to replace
+		mScene1.replaceAndSwitchCamera(mCamera1, 0); 
+		mScene1.addCamera(mCamera2); //Add our second camera to the scene
 		
-		mScene2 = new RajawaliScene(this, GRAPH_TYPE.OCTREE);
+		//We are creating a second scene
+		mScene2 = new RajawaliScene(this, GRAPH_TYPE.OCTREE); 
 		mScene2.displaySceneGraph(true);
+		//Since we created a new scene, it has a default camera we need to replace
 		mScene2.replaceAndSwitchCamera(mCamera1, 0);
-		mScene2.addCamera(mCamera2);
+		mScene2.addCamera(mCamera2); //Add our second camera to the scene
 		
 		mLight1 = new DirectionalLight(0, 1, -1);
 		mLight2 = new DirectionalLight(0, -1, -1);
@@ -116,11 +121,12 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 
 		mSpheres.add(mInitialSphere);
 		mCubes.add(mInitialCube);
-		mScene1.addChild(mInitialCube);
-		mScene2.addChild(mInitialSphere);
+		mScene1.addChild(mInitialCube); //Add our cube to scene 1
+		mScene2.addChild(mInitialSphere); //Add our sphere to scene 2
 
 		Animation3D anim = new EllipticalOrbitAnimation3D(new Number3D(0, 0, -5), new Number3D(0, 0, 5), 0.0,
 				OrbitDirection.CLOCKWISE);
+		//Create a camera animation for camera 1
 		mFocal = new Number3D(0, 0, 0);
 		mPeriapsis = new Number3D(0, 0, 20);
 		mCameraAnim = new EllipticalOrbitAnimation3D(mFocal, mPeriapsis, 0.0,
@@ -129,6 +135,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mCameraAnim.setRepeatMode(Animation3D.RepeatMode.INFINITE);
 		mCameraAnim.setTransformable3D(mCamera1);
 		mCameraAnim.play();
+		//Register the animation with BOTH scenes
 		mScene1.registerAnimation(mCameraAnim);
 		mScene2.registerAnimation(mCameraAnim);
 		anim.setDuration(10000);
@@ -137,7 +144,9 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		//anim.play();
 		mScene2.registerAnimation(anim);
 		
+		//Replace the default scene with our scene 1 and switch to it
 		replaceAndSwitchScene(getCurrentScene(), mScene1);
+		//Add scene 2 to the renderer
 		addScene(mScene2);
 	}
 
@@ -156,7 +165,6 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mFocal.z = tMin.z + (tMax.z - tMin.z) * .5f;
 		mPeriapsis.y = mFocal.y;
 		mPeriapsis.x = mFocal.x;
-		//mPeriapsis.z = mFocal.z + Math.signum(mFocal.z)*20.0f;
 		getCurrentCamera().setLookAt(mFocal);
 		/*float[] model = new float[16];
 		Matrix.setIdentityM(model, 0);
