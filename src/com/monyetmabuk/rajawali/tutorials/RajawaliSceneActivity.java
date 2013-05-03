@@ -17,6 +17,8 @@ public class RajawaliSceneActivity extends RajawaliExampleActivity implements On
 	
 	private Button mAddObject;
 	private Button mRemoveObject;
+	private Button mSwitchCamera;
+	private Button mSwitchScene;
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,22 @@ public class RajawaliSceneActivity extends RajawaliExampleActivity implements On
         mRemoveObject.setOnClickListener(this);
         mRemoveObject.setText("Remove Object");
         ll.addView(mRemoveObject);
+        
+        mSwitchCamera = new Button(getApplicationContext());
+        mSwitchCamera.setGravity(Gravity.CENTER);
+        mSwitchCamera.setHeight(50);
+        mSwitchCamera.setWidth(200);
+        mSwitchCamera.setOnClickListener(this);
+        mSwitchCamera.setText("Switch Camera");
+        ll.addView(mSwitchCamera);
+        
+        mSwitchScene = new Button(getApplicationContext());
+        mSwitchScene.setGravity(Gravity.CENTER);
+        mSwitchScene.setHeight(50);
+        mSwitchScene.setWidth(200);
+        mSwitchScene.setOnClickListener(this);
+        mSwitchScene.setText("Switch Scene");
+        ll.addView(mSwitchScene);
         
         TextView objectCount = new TextView(getApplicationContext());
         objectCount.setGravity(Gravity.CENTER);
@@ -71,6 +89,10 @@ public class RajawaliSceneActivity extends RajawaliExampleActivity implements On
 			mRenderer.addObject(0, 0);
 		} else if (arg0.equals(mRemoveObject)) {
 			mRenderer.removeObject();
+		} else if (arg0.equals(mSwitchCamera)) {
+			mRenderer.nextCamera();
+		} else if (arg0.equals(mSwitchScene)) {
+			mRenderer.nextScene();
 		}
 	}
 }

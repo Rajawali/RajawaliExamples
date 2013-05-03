@@ -18,6 +18,7 @@ import rajawali.math.Number3D;
 import rajawali.parser.AParser.ParsingException;
 import rajawali.parser.ObjParser;
 import rajawali.primitives.Cube;
+import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
 import rajawali.scene.RajawaliScene;
 import rajawali.scenegraph.IGraphNode.GRAPH_TYPE;
@@ -28,23 +29,27 @@ import android.os.Handler;
 import android.widget.TextView;
 
 public class RajawaliSceneRenderer extends RajawaliRenderer {
-	private DirectionalLight mLight, mLight2;
+	private DirectionalLight mLight1, mLight2;
 	private DiffuseMaterial mMaterial;
-	private BaseObject3D mInitialTeapot;
+	private BaseObject3D mInitialSphere;
+	private BaseObject3D mInitialCube;
 	private EllipticalOrbitAnimation3D mCameraAnim;
 	private Number3D mFocal;
 	private Number3D mPeriapsis;
 	
-	private RajawaliScene mScene;
+	private RajawaliScene mScene1;
+	private RajawaliScene mScene2; 
 	
 	private Handler mHandler;
 	private TextView mObjectCount;
 	private TextView mTriCount;
 	
-	private Camera mCam2;
+	private Camera mCamera1;
+	private Camera mCamera2;
 
 	private Random mRandom = new Random();
-	private ArrayList<BaseObject3D> teapots = new ArrayList<BaseObject3D>();
+	private ArrayList<BaseObject3D> mSpheres = new ArrayList<BaseObject3D>();
+	private ArrayList<BaseObject3D> mCubes = new ArrayList<BaseObject3D>();
 
 	public RajawaliSceneRenderer(Context context, Handler handler, TextView obj, TextView tri) {
 		super(context);
@@ -55,21 +60,29 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
-		mScene = new RajawaliScene(this, GRAPH_TYPE.OCTREE);
-		mScene.displaySceneGraph(true);
-
-		mCam2 = new Camera();
-		mCam2.setPosition(5, 5, -5);
-		mCam2.setLookAt(0.0f, 0.0f, 0.0f);
-		mCam2.setFarPlane(50);
-		mCam2.setFieldOfView(60);
-		mCam2.updateFrustum(mPMatrix,mVMatrix); //update frustum plane
+		mCamera1 = getCurrentCamera();
+		mCamera1.setPosition(0, 0, 20);
+		mCamera1.setFieldOfView(60);
+		mCamera1.setFarPlane(50);
+		mCamera2 = new Camera();
+		mCamera2.setPosition(5, 5, -5);
+		mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
+		mCamera2.setFarPlane(50);
+		mCamera2.setFieldOfView(60);
+		mCamera2.updateFrustum(mPMatrix,mVMatrix); //update frustum plane
 		
-		mLight = new DirectionalLight(0, 1, -1);
+		mScene1 = new RajawaliScene(this, GRAPH_TYPE.OCTREE);
+		mScene1.displaySceneGraph(true);
+		mScene1.replaceAndSwitchCamera(mCamera1, 0);
+		mScene1.addCamera(mCamera2);
+		
+		mScene2 = new RajawaliScene(this, GRAPH_TYPE.OCTREE);
+		mScene2.displaySceneGraph(true);
+		mScene2.replaceAndSwitchCamera(mCamera1, 0);
+		mScene2.addCamera(mCamera2);
+		
+		mLight1 = new DirectionalLight(0, 1, -1);
 		mLight2 = new DirectionalLight(0, -1, -1);
-		getCurrentCamera().setPosition(0, 0, 20);
-		getCurrentCamera().setFieldOfView(60);
-		getCurrentCamera().setFarPlane(50);
 
 		mMaterial = new DiffuseMaterial();
 		mMaterial.setUseColor(true);
@@ -80,19 +93,31 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		} catch (ParsingException e) {
 			e.printStackTrace();
 		}
-		//mInitialTeapot = objParser.getParsedObject();
-		mInitialTeapot = new Cube(1);
-		mInitialTeapot.setScale(0.250f);
-		mInitialTeapot.setColor(0xFF00BFFF);
-		mInitialTeapot.setMaterial(mMaterial);
-		mInitialTeapot.addLight(mLight);
-		mInitialTeapot.addLight(mLight2);
-		mInitialTeapot.setPosition(0, 1, 0);
-		mInitialTeapot.setRotation(45f, 45f, 45f);
-		mInitialTeapot.setShowBoundingVolume(true);
+		//mInitialSphere = objParser.getParsedObject();
+		mInitialSphere = new Sphere(1, 10, 10);
+		mInitialSphere.setScale(0.250f);
+		mInitialSphere.setColor(0xFF00BFFF);
+		mInitialSphere.setMaterial(mMaterial);
+		mInitialSphere.addLight(mLight1);
+		mInitialSphere.addLight(mLight2);
+		mInitialSphere.setPosition(0, 1, 0);
+		mInitialSphere.setRotation(45f, 45f, 45f);
+		mInitialSphere.setShowBoundingVolume(true);
+		
+		mInitialCube = new Cube(1);
+		mInitialCube.setScale(0.250f);
+		mInitialCube.setColor(0xFF00BFFF);
+		mInitialCube.setMaterial(mMaterial);
+		mInitialCube.addLight(mLight1);
+		mInitialCube.addLight(mLight2);
+		mInitialCube.setPosition(0, 1, 0);
+		mInitialCube.setRotation(45f, 45f, 45f);
+		mInitialCube.setShowBoundingVolume(true);
 
-		teapots.add(mInitialTeapot);
-		mScene.addChild(mInitialTeapot);
+		mSpheres.add(mInitialSphere);
+		mCubes.add(mInitialCube);
+		mScene1.addChild(mInitialCube);
+		mScene2.addChild(mInitialSphere);
 
 		Animation3D anim = new EllipticalOrbitAnimation3D(new Number3D(0, 0, -5), new Number3D(0, 0, 5), 0.0,
 				OrbitDirection.CLOCKWISE);
@@ -102,16 +127,18 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 				OrbitDirection.CLOCKWISE);
 		mCameraAnim.setDuration(10000);
 		mCameraAnim.setRepeatMode(Animation3D.RepeatMode.INFINITE);
-		mCameraAnim.setTransformable3D(mScene.getCamera());
+		mCameraAnim.setTransformable3D(mCamera1);
 		mCameraAnim.play();
-		mScene.registerAnimation(mCameraAnim);
+		mScene1.registerAnimation(mCameraAnim);
+		mScene2.registerAnimation(mCameraAnim);
 		anim.setDuration(10000);
 		anim.setRepeatMode(Animation3D.RepeatMode.INFINITE);
-		anim.setTransformable3D(mInitialTeapot);
+		anim.setTransformable3D(mInitialSphere);
 		//anim.play();
-		mScene.registerAnimation(anim);
+		mScene2.registerAnimation(anim);
 		
-		replaceAndSwitchScene(getCurrentScene(), mScene);
+		replaceAndSwitchScene(getCurrentScene(), mScene1);
+		addScene(mScene2);
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
@@ -131,28 +158,43 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mPeriapsis.x = mFocal.x;
 		//mPeriapsis.z = mFocal.z + Math.signum(mFocal.z)*20.0f;
 		getCurrentCamera().setLookAt(mFocal);
-		float[] model = new float[16];
+		/*float[] model = new float[16];
 		Matrix.setIdentityM(model, 0);
-		mCam2.getTransformedBoundingVolume()
+		mCamera2.getTransformedBoundingVolume()
 			.drawBoundingVolume(getCurrentCamera(), mPMatrix, mVMatrix, model);
-		
-		int length = teapots.size();
-		for (int i = 0; i < length; ++i) {
-			IBoundingVolume bcube = teapots.get(i).getGeometry().getBoundingBox();
-			bcube.transform(teapots.get(i).getModelMatrix());
-		}
-		mHandler.post(new Runnable() {
-			public void run() {
-				mObjectCount.setText("Object Count: " + getCurrentScene().getNumChildren());
-				mTriCount.setText("   Triangle Count: " + getCurrentScene().getNumTriangles());
+		*/
+		int length;
+		if (getCurrentScene().equals(mScene2)) {
+			length = mSpheres.size();
+			for (int i = 0; i < length; ++i) {
+				IBoundingVolume bcube = mSpheres.get(i).getGeometry().getBoundingBox();
+				bcube.transform(mSpheres.get(i).getModelMatrix());
 			}
-		});
+		} else if (getCurrentScene().equals(mScene1)) {
+			length = mCubes.size();
+			for (int i = 0; i < length; ++i) {
+				IBoundingVolume bcube = mCubes.get(i).getGeometry().getBoundingBox();
+				bcube.transform(mCubes.get(i).getModelMatrix());
+			}
+		}
+		if (mFrameCount % 20 == 0) { 
+			mHandler.post(new Runnable() {
+				public void run() {
+					mObjectCount.setText("Object Count: " + getCurrentScene().getNumChildren());
+					mTriCount.setText("   Triangle Count: " + getCurrentScene().getNumTriangles());
+				}
+			});
+		}
 	}
 
 	public void addObject(float x, float y) {
-		BaseObject3D obj = new Cube(1);
-		//BaseObject3D obj = mInitialTeapot.clone();
-		obj.addLight(mLight);
+		BaseObject3D obj = null;
+		if (getCurrentScene().equals(mScene2)) {
+			obj = new Sphere(1, 10, 10);
+		} else if (getCurrentScene().equals(mScene1)) {
+			obj = new Cube(1);
+		}
+		obj.addLight(mLight1);
 		obj.addLight(mLight2);
 		obj.setMaterial(mMaterial);
 		obj.setShowBoundingVolume(true);
@@ -166,13 +208,35 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		if (positive) {sign2 = 1;} else {sign2 = -1;}
 		obj.setPosition(sign1*mRandom.nextFloat()*4, sign2*mRandom.nextFloat()*2, -mRandom.nextFloat()*10);
 		obj.setRotation(45f, 45f, 45f);
-		teapots.add(obj);
+		mSpheres.add(obj);
 		addChild(obj);
 	}
 	
 	public void removeObject() {
-		BaseObject3D child = teapots.get(0);
-		removeChild(child);
-		teapots.remove(child);
+		if (getCurrentScene().equals(mScene2)) {
+			BaseObject3D child = mSpheres.get(0);
+			removeChild(child);
+			mSpheres.remove(child);
+		} else if (getCurrentScene().equals(mScene1)) {
+			BaseObject3D child = mCubes.get(0);
+			removeChild(child);
+			mCubes.remove(child);
+		}
+	}
+	
+	public void nextCamera() {
+		if (getCurrentCamera().equals(mCamera1)) {
+			getCurrentScene().switchCamera(mCamera2);
+		} else {
+			getCurrentScene().switchCamera(mCamera1);
+		}
+	}
+	
+	public void nextScene() {
+		if (getCurrentScene().equals(mScene1)) {
+			switchScene(mScene2);
+		} else {
+			switchScene(mScene1);
+		}
 	}
 }
