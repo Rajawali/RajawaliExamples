@@ -19,6 +19,7 @@ public class RajawaliSceneActivity extends RajawaliExampleActivity implements On
 	private Button mRemoveObject;
 	private Button mSwitchCamera;
 	private Button mSwitchScene;
+	private Button mNextFrame; 
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +59,14 @@ public class RajawaliSceneActivity extends RajawaliExampleActivity implements On
         mSwitchScene.setText("Switch Scene");
         ll.addView(mSwitchScene);
         
+        mNextFrame = new Button(getApplicationContext());
+        mNextFrame.setGravity(Gravity.CENTER);
+        mNextFrame.setHeight(50);
+        mNextFrame.setWidth(200);
+        mNextFrame.setOnClickListener(this);
+        mNextFrame.setText("Next Frame");
+        ll.addView(mNextFrame);
+        
         TextView objectCount = new TextView(getApplicationContext());
         objectCount.setGravity(Gravity.CENTER);
         objectCount.setText("Object Count: 0");
@@ -93,6 +102,8 @@ public class RajawaliSceneActivity extends RajawaliExampleActivity implements On
 			mRenderer.nextCamera();
 		} else if (arg0.equals(mSwitchScene)) {
 			mRenderer.nextScene();
+		} else if (arg0.equals(mNextFrame)) {
+			mRenderer.nextFrame();
 		}
 	}
 }

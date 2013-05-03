@@ -15,16 +15,12 @@ import rajawali.bounds.IBoundingVolume;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.math.Number3D;
-import rajawali.parser.AParser.ParsingException;
-import rajawali.parser.ObjParser;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
 import rajawali.scene.RajawaliScene;
 import rajawali.scenegraph.IGraphNode.GRAPH_TYPE;
-import rajawali.scenegraph.Octree;
 import android.content.Context;
-import android.opengl.Matrix;
 import android.os.Handler;
 import android.widget.TextView;
 
@@ -53,7 +49,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 
 	public RajawaliSceneRenderer(Context context, Handler handler, TextView obj, TextView tri) {
 		super(context);
-		setFrameRate(60);
+		setFrameRate(0);
 		mHandler = handler;
 		mObjectCount = obj;
 		mTriCount = tri;
@@ -92,13 +88,6 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mMaterial = new DiffuseMaterial();
 		mMaterial.setUseColor(true);
 
-		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.teapot_obj);
-		try {
-			objParser.parse();
-		} catch (ParsingException e) {
-			e.printStackTrace();
-		}
-		//mInitialSphere = objParser.getParsedObject();
 		mInitialSphere = new Sphere(1, 10, 10);
 		mInitialSphere.setScale(0.250f);
 		mInitialSphere.setColor(0xFF00BFFF);
@@ -246,5 +235,9 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		} else {
 			switchScene(mScene1);
 		}
+	}
+	
+	public void nextFrame() {
+		mSurfaceView.requestRender();
 	}
 }
