@@ -14,12 +14,12 @@ public class RajawaliSkyboxRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
-		mCamera.setFarPlane(1000);
+		getCurrentCamera().setFarPlane(1000);
 		/*
 		 * Skybox images by Emil Persson, aka Humus. http://www.humus.name
 		 * humus@comhem.se
 		 */
-		setSkybox(R.drawable.posz, R.drawable.posx, R.drawable.negz, R.drawable.negx, R.drawable.posy, R.drawable.negy);
+		getCurrentScene().setSkybox(R.drawable.posz, R.drawable.posx, R.drawable.negz, R.drawable.negx, R.drawable.posy, R.drawable.negy);
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
@@ -30,8 +30,8 @@ public class RajawaliSkyboxRenderer extends RajawaliRenderer {
 
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
-		mCamera.setRotX(mCamera.getRotX() + .1f);
-		mCamera.setRotY(mCamera.getRotY() + .2f);
-		mCamera.setRotZ(mCamera.getRotZ() + .3f);
+		getCurrentCamera().setRotX(getCurrentCamera().getRotX() + .1f);
+		getCurrentCamera().setRotY(getCurrentCamera().getRotY() + .2f);
+		getCurrentCamera().setRotZ(getCurrentCamera().getRotZ() + .3f);
 	}
 }

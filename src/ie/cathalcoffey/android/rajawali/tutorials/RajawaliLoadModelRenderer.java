@@ -33,11 +33,11 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 		mLight = new PointLight();
 		mLight.setPosition(0, 1, -6);
 		mLight.setPower(3);
-		mCamera.setLookAt(0, 0, 0);
-		mCamera.setZ(-6);
+		getCurrentCamera().setLookAt(0, 0, 0);
+		getCurrentCamera().setZ(-6);
 		
+		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.camaro_obj);
 		try {
-			ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.camaro_obj);
 			objParser.parse();
 			mObjectGroup = objParser.getParsedObject();
 			mObjectGroup.addLight(mLight);
@@ -48,6 +48,10 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 		} catch(ParsingException e) {
 			e.printStackTrace();
 		}
+		mObjectGroup = objParser.getParsedObject();
+		mObjectGroup.addLight(mLight);
+		mObjectGroup.setY(-1);
+		mObjectGroup.setRotation(90, 0, 0);
 		
 		mLightAnim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(0, 3, 0), Number3D.getAxisVector(Axis.Z), 0, OrbitDirection.CLOCKWISE);
 		mLightAnim.setDuration(5000);

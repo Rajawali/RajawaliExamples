@@ -20,7 +20,7 @@ public class RajawaliMoreParticlesRenderer extends RajawaliRenderer {
 	}
 	
 	protected void initScene() {
-		mCamera.setPosition(0, 0, 10);
+		getCurrentCamera().setPosition(0, 0, 10);
 
 		Bitmap particleBitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.particle);
 		rajawali.materials.TextureInfo particleTexture = mTextureManager.addTexture(particleBitmap);

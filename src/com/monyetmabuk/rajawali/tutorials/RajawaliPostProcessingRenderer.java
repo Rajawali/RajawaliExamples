@@ -33,7 +33,7 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, -1);
 		mLight.setPower(1);
-		mCamera.setPosition(0, 0, 7);
+		getCurrentCamera().setPosition(0, 0, 7);
 
 		try {
 			ObjectInputStream ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_ser));
@@ -72,12 +72,12 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 		mAnimation = new TranslateAnimation3D(new Number3D(0, 0, 2));
 		mAnimation.setDuration(6000);
 		mAnimation.setRepeatMode(RepeatMode.REVERSE_INFINITE);
-		mAnimation.setTransformable3D(mCamera);
+		mAnimation.setTransformable3D(getCurrentCamera());
 		mAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
 		registerAnimation(mAnimation);
 
 		mFilter = new SwirlFilter(mViewportWidth, mViewportHeight, 10, 1f);
-		addPostProcessingFilter(mFilter);
+		//addPostProcessingFilter(mFilter);
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {

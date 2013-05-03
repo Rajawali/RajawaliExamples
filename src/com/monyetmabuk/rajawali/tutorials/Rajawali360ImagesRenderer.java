@@ -21,11 +21,11 @@ public class Rajawali360ImagesRenderer extends RajawaliRenderer {
 	public Rajawali360ImagesRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
-		setCamera(new Camera2D());
+		getCurrentScene().switchCamera(new Camera2D());
 	}
 	
 	protected void initScene() {
-    	setBackgroundColor(0xffffff);
+    	getCurrentScene().setBackgroundColor(0xffffff);
     	
     	mMaterial = new SimpleMaterial();
     	

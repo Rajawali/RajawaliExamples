@@ -28,7 +28,7 @@ public class RajawaliLinesRenderer extends RajawaliRenderer {
 		super.initScene();
 		ALight light1 = new DirectionalLight(0, 0, -1);
 		light1.setPower(.3f);
-		mCamera.setPosition(0, 0, 27);
+		getCurrentCamera().setPosition(0, 0, 27);
 		
 		Stack<Number3D> points = createWhirl(6, 6f, 0, 0, .05f);
 		

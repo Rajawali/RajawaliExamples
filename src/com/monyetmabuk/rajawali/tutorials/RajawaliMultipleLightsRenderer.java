@@ -34,8 +34,8 @@ public class RajawaliMultipleLightsRenderer extends RajawaliRenderer {
 		PointLight light2 = new PointLight();
 		light2.setPower(5);
 
-		mCamera.setPosition(-8, 8, 8);
-		mCamera.setLookAt(0, 0, 0);
+		getCurrentCamera().setPosition(-8, 8, 8);
+		getCurrentCamera().setLookAt(0, 0, 0);
 		
 		try {
 			ObjectInputStream ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.jet));

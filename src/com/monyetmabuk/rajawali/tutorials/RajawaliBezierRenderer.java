@@ -30,7 +30,7 @@ public class RajawaliBezierRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 1, -1);
 		mLight.setPower(1);
-		mCamera.setPosition(0, 0, 14);
+		getCurrentCamera().setPosition(0, 0, 14);
 
 		BaseObject3D redSphere = new Sphere(1, 16, 16);
 		redSphere.addLight(mLight);

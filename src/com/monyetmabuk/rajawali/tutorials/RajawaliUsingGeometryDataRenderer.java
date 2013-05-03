@@ -31,12 +31,12 @@ public class RajawaliUsingGeometryDataRenderer extends RajawaliRenderer {
 	}
 
 	protected void initScene() {
-		setBackgroundColor(0xffeeeeee);
+		getCurrentScene().setBackgroundColor(0xffeeeeee);
 		
 		DirectionalLight light = new DirectionalLight(0, -.6f, -.4f);
 		light.setColor(1, 1, 1);
 		
-		mCamera.setZ(8);
+		getCurrentCamera().setZ(8);
 		
 		BaseObject3D sphere = new Sphere(1, 16, 8);
 		
