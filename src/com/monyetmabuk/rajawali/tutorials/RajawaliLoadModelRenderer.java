@@ -31,10 +31,10 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 		mLight = new PointLight();
 		mLight.setPosition(0, 0, 4);
 		mLight.setPower(3);
-		mCamera.setZ(12);
+		getCurrentCamera().setZ(12);
 
+		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.multiobjects_obj);
 		try {
-			ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.multiobjects_obj);
 			objParser.parse();
 			mObjectGroup = objParser.getParsedObject();
 			mObjectGroup.addLight(mLight);

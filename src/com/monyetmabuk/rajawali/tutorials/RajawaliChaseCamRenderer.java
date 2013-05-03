@@ -82,16 +82,17 @@ public class RajawaliChaseCamRenderer extends RajawaliRenderer {
 		// -- create a chase camera
 		//    the first parameter is the camera offset
 		//    the second parameter is the interpolation factor
-		mCamera = new ChaseCamera(new Number3D(0, 3, 16), .1f);
+		ChaseCamera chaseCamera = new ChaseCamera(new Number3D(0, 3, 16), .1f);
 		// -- tell the camera which object to chase
-		((ChaseCamera)mCamera).setObjectToChase(mRaptor);
+		chaseCamera.setObjectToChase(mRaptor);
 		// -- set the far plane to 1000 so that we actually see the sky sphere
-		mCamera.setFarPlane(1000);
+		chaseCamera.setFarPlane(1000);
+		replaceAndSwitchCamera(chaseCamera, 0);
 	}
 	
 	public void setCameraOffset(Number3D offset) {
 		// -- change the camera offset
-		((ChaseCamera)mCamera).setCameraOffset(offset);
+		((ChaseCamera) getCurrentCamera()).setCameraOffset(offset);
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {

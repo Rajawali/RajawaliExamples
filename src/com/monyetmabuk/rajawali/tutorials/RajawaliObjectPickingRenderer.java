@@ -30,7 +30,7 @@ public class RajawaliObjectPickingRenderer extends RajawaliRenderer implements O
 		mLight = new PointLight();
 		mLight.setPosition(-2, 1, 4);
 		mLight.setPower(1.5f);
-		mCamera.setPosition(0, 0, 7);
+		getCurrentCamera().setPosition(0, 0, 7);
 
 		try {
 			ObjectInputStream ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_ser));

@@ -28,8 +28,8 @@ public class RajawaliMD5Renderer extends RajawaliRenderer {
 		mLight.setColor(1.0f, 1.0f, 1.0f);
 		mLight.setPower(2);
 
-		mCamera.setY(1);
-		mCamera.setZ(6);
+		getCurrentCamera().setY(1);
+		getCurrentCamera().setZ(6);
 		
 		try {
 			MD5MeshParser meshParser = new MD5MeshParser(this, R.raw.boblampclean_mesh);

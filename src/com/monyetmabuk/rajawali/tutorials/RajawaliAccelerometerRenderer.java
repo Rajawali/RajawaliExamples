@@ -44,7 +44,7 @@ public class RajawaliAccelerometerRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 
-		mCamera.setZ(7);
+		getCurrentCamera().setZ(7);
 
 		Bitmap[] textures = new Bitmap[6];
 		textures[0] = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.posx);

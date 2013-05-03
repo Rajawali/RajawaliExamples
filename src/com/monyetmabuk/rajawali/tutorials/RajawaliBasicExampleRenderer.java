@@ -32,9 +32,9 @@ public class RajawaliBasicExampleRenderer extends RajawaliRenderer {
 		mSphere.setMaterial(material);
 		mSphere.addLight(mLight);
 		mSphere.addTexture(mTextureManager.addTexture(bg));
-		addChild(mSphere);
+		addChild(mSphere); //Queue an addition task for mSphere
 
-		mCamera.setZ(4.2f);
+		getCurrentCamera().setZ(4.2f);
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {

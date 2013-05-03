@@ -39,7 +39,7 @@ public class RajawaliRipplesRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		mAnims = new Animation3D[NUM_CUBES];
 		
-		mCamera.setPosition(0, 0, 10);
+		getCurrentCamera().setPosition(0, 0, 10);
 		
 		DirectionalLight light = new DirectionalLight(0, 0, 1);
 		light.setPower(1f);
@@ -86,9 +86,9 @@ public class RajawaliRipplesRenderer extends RajawaliRenderer {
 		
 		mFilter = new TouchRippleFilter();
 		mFilter.setRippleSize(62);
-		mPostProcessingRenderer.setQuadSegments(QUAD_SEGMENTS);
-		mPostProcessingRenderer.setQuality(PostProcessingQuality.LOW);
-		addPostProcessingFilter(mFilter);
+		//mPostProcessingRenderer.setQuadSegments(QUAD_SEGMENTS);
+		//mPostProcessingRenderer.setQuality(PostProcessingQuality.LOW);
+		//addPostProcessingFilter(mFilter);
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {

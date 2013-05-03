@@ -30,7 +30,7 @@ public class RajawaliCustomShaderRenderer extends RajawaliRenderer {
 		mSphere.setMaterial(mCustomMaterial);
 		addChild(mSphere);
 
-		mCamera.setPosition(0, 0, 10);
+		getCurrentCamera().setPosition(0, 0, 10);
 
 		mTime = 0;
 	}
