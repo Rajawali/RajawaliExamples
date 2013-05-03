@@ -65,7 +65,7 @@ public class RajawaliSceneActivity extends RajawaliExampleActivity implements On
         mNextFrame.setWidth(200);
         mNextFrame.setOnClickListener(this);
         mNextFrame.setText("Next Frame");
-        ll.addView(mNextFrame);
+        //ll.addView(mNextFrame);
         
         TextView objectCount = new TextView(getApplicationContext());
         objectCount.setGravity(Gravity.CENTER);

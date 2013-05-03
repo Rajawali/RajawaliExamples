@@ -49,7 +49,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 
 	public RajawaliSceneRenderer(Context context, Handler handler, TextView obj, TextView tri) {
 		super(context);
-		setFrameRate(0);
+		setFrameRate(60);
 		mHandler = handler;
 		mObjectCount = obj;
 		mTriCount = tri;
@@ -188,8 +188,10 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		BaseObject3D obj = null;
 		if (getCurrentScene().equals(mScene2)) {
 			obj = new Sphere(1, 10, 10);
+			mSpheres.add(obj);
 		} else if (getCurrentScene().equals(mScene1)) {
 			obj = new Cube(1);
+			mCubes.add(obj);
 		}
 		obj.addLight(mLight1);
 		obj.addLight(mLight2);
@@ -205,19 +207,22 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		if (positive) {sign2 = 1;} else {sign2 = -1;}
 		obj.setPosition(sign1*mRandom.nextFloat()*4, sign2*mRandom.nextFloat()*2, -mRandom.nextFloat()*10);
 		obj.setRotation(45f, 45f, 45f);
-		mSpheres.add(obj);
 		addChild(obj);
 	}
 	
 	public void removeObject() {
 		if (getCurrentScene().equals(mScene2)) {
-			BaseObject3D child = mSpheres.get(0);
-			removeChild(child);
-			mSpheres.remove(child);
+			if (!mCubes.isEmpty()) {
+				BaseObject3D child = mSpheres.get(0);
+				removeChild(child);
+				mSpheres.remove(child);
+			}
 		} else if (getCurrentScene().equals(mScene1)) {
-			BaseObject3D child = mCubes.get(0);
-			removeChild(child);
-			mCubes.remove(child);
+			if (!mCubes.isEmpty()) {
+				BaseObject3D child = mCubes.get(0);
+				removeChild(child);
+				mCubes.remove(child);
+			}
 		}
 	}
 	
