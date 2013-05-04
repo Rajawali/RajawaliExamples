@@ -49,7 +49,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 
 	public RajawaliSceneRenderer(Context context, Handler handler, TextView obj, TextView tri) {
 		super(context);
-		setFrameRate(60);
+		setFrameRate(0);
 		mHandler = handler;
 		mObjectCount = obj;
 		mTriCount = tri;
@@ -62,7 +62,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mCamera1.setFarPlane(50);
 		
 		mCamera2 = new Camera(); //Lets create a second camera for the scene.
-		mCamera2.setPosition(5, 0, -10);
+		mCamera2.setPosition(20, 0, -20);
 		mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
 		mCamera2.setFarPlane(50);
 		mCamera2.setFieldOfView(60);
@@ -74,6 +74,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		//Since we created a new scene, it has a default camera we need to replace
 		mScene1.replaceAndSwitchCamera(mCamera1, 0); 
 		mScene1.addCamera(mCamera2); //Add our second camera to the scene
+		mScene1.switchCamera(mCamera2);
 		
 		//We are creating a second scene
 		mScene2 = new RajawaliScene(this, GRAPH_TYPE.OCTREE); 
@@ -113,7 +114,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mScene1.addChild(mInitialCube); //Add our cube to scene 1
 		mScene2.addChild(mInitialSphere); //Add our sphere to scene 2
 
-		Animation3D anim = new EllipticalOrbitAnimation3D(new Number3D(0, 0, -5), new Number3D(0, 0, 5), 0.0,
+		Animation3D anim_cube = new EllipticalOrbitAnimation3D(new Number3D(0, 0, -5), new Number3D(0, 0, 5), 0.0,
 				OrbitDirection.CLOCKWISE);
 		//Create a camera animation for camera 1
 		mFocal = new Number3D(0, 0, 0);
@@ -127,11 +128,11 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		//Register the animation with BOTH scenes
 		mScene1.registerAnimation(mCameraAnim);
 		mScene2.registerAnimation(mCameraAnim);
-		anim.setDuration(10000);
-		anim.setRepeatMode(Animation3D.RepeatMode.INFINITE);
-		anim.setTransformable3D(mInitialSphere);
-		//anim.play();
-		mScene2.registerAnimation(anim);
+		anim_cube.setDuration(10000);
+		anim_cube.setRepeatMode(Animation3D.RepeatMode.INFINITE);
+		anim_cube.setTransformable3D(mInitialCube);
+		anim_cube.play();
+		mScene1.registerAnimation(anim_cube);
 		
 		//Replace the default scene with our scene 1 and switch to it
 		replaceAndSwitchScene(getCurrentScene(), mScene1);
@@ -154,12 +155,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mFocal.z = tMin.z + (tMax.z - tMin.z) * .5f;
 		mPeriapsis.y = mFocal.y;
 		mPeriapsis.x = mFocal.x;
-		getCurrentCamera().setLookAt(mFocal);
-		/*float[] model = new float[16];
-		Matrix.setIdentityM(model, 0);
-		mCamera2.getTransformedBoundingVolume()
-			.drawBoundingVolume(getCurrentCamera(), mPMatrix, mVMatrix, model);
-		*/
+		mCamera1.setLookAt(mFocal);
 		int length;
 		if (getCurrentScene().equals(mScene2)) {
 			length = mSpheres.size();
