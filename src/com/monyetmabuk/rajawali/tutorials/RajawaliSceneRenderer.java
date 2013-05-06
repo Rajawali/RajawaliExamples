@@ -49,7 +49,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 
 	public RajawaliSceneRenderer(Context context, Handler handler, TextView obj, TextView tri) {
 		super(context);
-		setFrameRate(0);
+		setFrameRate(5);
 		mHandler = handler;
 		mObjectCount = obj;
 		mTriCount = tri;
@@ -114,7 +114,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mScene1.addChild(mInitialCube); //Add our cube to scene 1
 		mScene2.addChild(mInitialSphere); //Add our sphere to scene 2
 
-		Animation3D anim_cube = new EllipticalOrbitAnimation3D(new Number3D(0, 0, -5), new Number3D(0, 0, 5), 0.0,
+		Animation3D anim_cube = new EllipticalOrbitAnimation3D(new Number3D(0, 0, -5), new Number3D(0, 5, -5), 0.0,
 				OrbitDirection.CLOCKWISE);
 		//Create a camera animation for camera 1
 		mFocal = new Number3D(0, 0, 0);
