@@ -11,6 +11,7 @@ import rajawali.Camera;
 import rajawali.animation.Animation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
+import rajawali.animation.TranslateAnimation3D;
 import rajawali.bounds.IBoundingVolume;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
@@ -62,7 +63,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mCamera1.setFarPlane(50);
 		
 		mCamera2 = new Camera(); //Lets create a second camera for the scene.
-		mCamera2.setPosition(20, 0, -20);
+		mCamera2.setPosition(0, 0, -15);
 		mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
 		mCamera2.setFarPlane(50);
 		mCamera2.setFieldOfView(60);
@@ -100,7 +101,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mInitialSphere.setShowBoundingVolume(true);
 		
 		mInitialCube = new Cube(1);
-		mInitialCube.setScale(0.250f);
+		mInitialCube.setScale(0.150f);
 		mInitialCube.setColor(0xFF00BFFF);
 		mInitialCube.setMaterial(mMaterial);
 		mInitialCube.addLight(mLight1);
@@ -114,8 +115,9 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mScene1.addChild(mInitialCube); //Add our cube to scene 1
 		mScene2.addChild(mInitialSphere); //Add our sphere to scene 2
 
-		Animation3D anim_cube = new EllipticalOrbitAnimation3D(new Number3D(0, 0, -5), new Number3D(0, 5, -5), 0.0,
-				OrbitDirection.CLOCKWISE);
+		/*Animation3D anim_cube = new EllipticalOrbitAnimation3D(new Number3D(0, 0, -5), new Number3D(0, 5, -5), 0.0,
+				OrbitDirection.CLOCKWISE);*/
+		Animation3D anim_cube = new TranslateAnimation3D(new Number3D(5, 1.5, -4), new Number3D(-5, 1.5, -4));
 		//Create a camera animation for camera 1
 		mFocal = new Number3D(0, 0, 0);
 		mPeriapsis = new Number3D(0, 0, 20);
@@ -129,7 +131,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mScene1.registerAnimation(mCameraAnim);
 		mScene2.registerAnimation(mCameraAnim);
 		anim_cube.setDuration(10000);
-		anim_cube.setRepeatMode(Animation3D.RepeatMode.INFINITE);
+		anim_cube.setRepeatMode(Animation3D.RepeatMode.REVERSE_INFINITE);
 		anim_cube.setTransformable3D(mInitialCube);
 		anim_cube.play();
 		mScene1.registerAnimation(anim_cube);
