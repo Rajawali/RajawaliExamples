@@ -15,13 +15,16 @@ import rajawali.animation.TranslateAnimation3D;
 import rajawali.bounds.IBoundingVolume;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
+import rajawali.materials.SimpleMaterial;
 import rajawali.math.Number3D;
 import rajawali.primitives.Cube;
+import rajawali.primitives.NPrism;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
 import rajawali.scene.RajawaliScene;
 import rajawali.scenegraph.IGraphNode.GRAPH_TYPE;
 import android.content.Context;
+import android.opengl.GLES20;
 import android.os.Handler;
 import android.widget.TextView;
 
@@ -50,7 +53,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 
 	public RajawaliSceneRenderer(Context context, Handler handler, TextView obj, TextView tri) {
 		super(context);
-		setFrameRate(5);
+		setFrameRate(60);
 		mHandler = handler;
 		mObjectCount = obj;
 		mTriCount = tri;
@@ -63,15 +66,15 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mCamera1.setFarPlane(50);
 		
 		mCamera2 = new Camera(); //Lets create a second camera for the scene.
-		mCamera2.setPosition(0, 0, -15);
-		mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
+		mCamera2.setPosition(0, 0, 15);
+		//mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
 		mCamera2.setFarPlane(50);
 		mCamera2.setFieldOfView(60);
 		mCamera2.updateFrustum(mPMatrix,mVMatrix);
 		
 		//We are going to use our own scene, not the default
 		mScene1 = new RajawaliScene(this, GRAPH_TYPE.OCTREE); 
-		mScene1.displaySceneGraph(true);
+		//mScene1.displaySceneGraph(true);
 		//Since we created a new scene, it has a default camera we need to replace
 		mScene1.replaceAndSwitchCamera(mCamera1, 0); 
 		mScene1.addCamera(mCamera2); //Add our second camera to the scene
@@ -101,7 +104,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mInitialSphere.setShowBoundingVolume(true);
 		
 		mInitialCube = new Cube(1);
-		mInitialCube.setScale(0.150f);
+		//mInitialCube.setScale(0.150f);
 		mInitialCube.setColor(0xFF00BFFF);
 		mInitialCube.setMaterial(mMaterial);
 		mInitialCube.addLight(mLight1);
@@ -109,6 +112,24 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mInitialCube.setPosition(0, 1, 0);
 		mInitialCube.setRotation(45f, 45f, 45f);
 		mInitialCube.setShowBoundingVolume(true);
+		
+		//mInitialCube = new NCone(3, 2, 5);
+		mInitialCube = new NPrism(3, 1, 3, 1, 5);
+		mInitialCube.setPosition(0, 0, -10);
+		mInitialCube.setColor(0xFF00BFFF);
+		SimpleMaterial simpleMat = new SimpleMaterial();
+		simpleMat.setUseColor(true);
+		mInitialCube.setMaterial(simpleMat);
+		mInitialCube.setRotation(20, 45, 0);
+		mInitialCube.setDrawingMode(GLES20.GL_LINE_LOOP);
+		//mInitialCube.setDoubleSided(true);
+		
+		//RotateAnimation3D mAnimation3D = new RotateAnimation3D(0, 0, 45); 
+	    //mAnimation3D.setTransformable3D(mCamera2);
+	    //mAnimation3D.setDuration(4000);
+	    //mAnimation3D.setInterpolator(new DecelerateInterpolator(val));
+	    //registerAnimation(mAnimation3D);
+	    //mAnimation3D.play();
 
 		mSpheres.add(mInitialSphere);
 		mCubes.add(mInitialCube);
@@ -120,7 +141,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		Animation3D anim_cube = new TranslateAnimation3D(new Number3D(5, 1.5, -4), new Number3D(-5, 1.5, -4));
 		//Create a camera animation for camera 1
 		mFocal = new Number3D(0, 0, 0);
-		mPeriapsis = new Number3D(0, 0, 20);
+		mPeriapsis = new Number3D(0, 0, 10);
 		mCameraAnim = new EllipticalOrbitAnimation3D(mFocal, mPeriapsis, 0.0,
 				OrbitDirection.CLOCKWISE);
 		mCameraAnim.setDuration(10000);
@@ -133,8 +154,8 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		anim_cube.setDuration(10000);
 		anim_cube.setRepeatMode(Animation3D.RepeatMode.REVERSE_INFINITE);
 		anim_cube.setTransformable3D(mInitialCube);
-		anim_cube.play();
-		mScene1.registerAnimation(anim_cube);
+		//anim_cube.play();
+		//mScene1.registerAnimation(anim_cube);
 		
 		//Replace the default scene with our scene 1 and switch to it
 		replaceAndSwitchScene(getCurrentScene(), mScene1);
@@ -158,6 +179,10 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mPeriapsis.y = mFocal.y;
 		mPeriapsis.x = mFocal.x;
 		mCamera1.setLookAt(mFocal);
+		/*Quaternion quat = mCamera1.getOrientation();
+		quat.y += 5;
+		quat.z += 5;
+		mCamera2.setOrientation(quat);*/
 		int length;
 		if (getCurrentScene().equals(mScene2)) {
 			length = mSpheres.size();
