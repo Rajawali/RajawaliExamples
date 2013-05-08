@@ -1,11 +1,5 @@
 package com.monyetmabuk.rajawali.tutorials;
 
-import java.util.Stack;
-
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
-
-import android.content.Context;
 import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
@@ -17,10 +11,10 @@ import rajawali.materials.PhongMaterial;
 import rajawali.math.Number3D;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
+import android.content.Context;
 
 public class RajawaliBezierRenderer extends RajawaliRenderer {
 	private DirectionalLight mLight;
-	private Stack<Animation3D> mAnimations;
 
 	public RajawaliBezierRenderer(Context context) {
 		super(context);
@@ -30,7 +24,7 @@ public class RajawaliBezierRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 1, -1);
 		mLight.setPower(1);
-		getCurrentCamera().setPosition(0, 0, 14);
+		getCurrentCamera().setPosition(0, 0, 20);
 
 		BaseObject3D redSphere = new Sphere(1, 16, 16);
 		redSphere.addLight(mLight);
@@ -59,29 +53,18 @@ public class RajawaliBezierRenderer extends RajawaliRenderer {
 		yellowBezierPath.addPoint(new Number3D(2, 4, 0), new Number3D(-8, 3, 4), new Number3D(-4, 0, -2), new Number3D(4, -3, 30));
 		yellowBezierPath.addPoint(new Number3D(4, -3, 30), new Number3D(6, 1, 2), new Number3D(4, 2, 3), new Number3D(-3, -3, -4.5f));
 
-		mAnimations = new Stack<Animation3D>();
-		
 		Animation3D redAnim = new TranslateAnimation3D(redBezierPath);
 		redAnim.setDuration(2000);
 		redAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		redAnim.setTransformable3D(redSphere);
-		mAnimations.add(redAnim);
+		registerAnimation(redAnim);
+		redAnim.play();
 
 		Animation3D yellowAnim = new TranslateAnimation3D(yellowBezierPath);
 		yellowAnim.setDuration(3800);
 		yellowAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		yellowAnim.setTransformable3D(yellowSphere);
-		mAnimations.add(yellowAnim);
-	}
-	
-	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		((RajawaliExampleActivity) mContext).showLoader();
-		super.onSurfaceCreated(gl, config);
-		((RajawaliExampleActivity) mContext).hideLoader();
-		for(int i=0; i<mAnimations.size(); i++) {
-			Animation3D anim = mAnimations.get(i);
-			registerAnimation(anim);
-			anim.play();
-		}
+		registerAnimation(yellowAnim);
+		yellowAnim.play();
 	}
 }
