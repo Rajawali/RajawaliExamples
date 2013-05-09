@@ -113,8 +113,8 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mInitialCube.setRotation(45f, 45f, 45f);
 		mInitialCube.setShowBoundingVolume(true);
 		
-		//mInitialCube = new NCone(3, 2, 5);
-		mInitialCube = new NPrism(3, 1, 3, 1, 5);
+		mInitialCube = new NPrism(6, 2, 5);
+		mInitialCube = new NPrism(15, 1, 3, 1, 5);
 		mInitialCube.setPosition(0, 0, -10);
 		mInitialCube.setColor(0xFF00BFFF);
 		SimpleMaterial simpleMat = new SimpleMaterial();
@@ -123,13 +123,6 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mInitialCube.setRotation(20, 45, 0);
 		mInitialCube.setDrawingMode(GLES20.GL_LINE_LOOP);
 		//mInitialCube.setDoubleSided(true);
-		
-		//RotateAnimation3D mAnimation3D = new RotateAnimation3D(0, 0, 45); 
-	    //mAnimation3D.setTransformable3D(mCamera2);
-	    //mAnimation3D.setDuration(4000);
-	    //mAnimation3D.setInterpolator(new DecelerateInterpolator(val));
-	    //registerAnimation(mAnimation3D);
-	    //mAnimation3D.play();
 
 		mSpheres.add(mInitialSphere);
 		mCubes.add(mInitialCube);
@@ -179,10 +172,6 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mPeriapsis.y = mFocal.y;
 		mPeriapsis.x = mFocal.x;
 		mCamera1.setLookAt(mFocal);
-		/*Quaternion quat = mCamera1.getOrientation();
-		quat.y += 5;
-		quat.z += 5;
-		mCamera2.setOrientation(quat);*/
 		int length;
 		if (getCurrentScene().equals(mScene2)) {
 			length = mSpheres.size();
