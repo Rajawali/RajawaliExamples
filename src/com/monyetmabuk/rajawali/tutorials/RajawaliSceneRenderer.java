@@ -14,6 +14,7 @@ import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.bounds.IBoundingVolume;
 import rajawali.lights.DirectionalLight;
+import rajawali.lights.PointLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.SimpleMaterial;
 import rajawali.math.Number3D;
@@ -23,6 +24,8 @@ import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
 import rajawali.scene.RajawaliScene;
 import rajawali.scenegraph.IGraphNode.GRAPH_TYPE;
+import rajawali.util.MeshExporter;
+import rajawali.util.MeshExporter.ExportType;
 import android.content.Context;
 import android.opengl.GLES20;
 import android.os.Handler;
@@ -87,8 +90,12 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mScene2.replaceAndSwitchCamera(mCamera1, 0);
 		mScene2.addCamera(mCamera2); //Add our second camera to the scene
 		
-		mLight1 = new DirectionalLight(0, 1, -1);
-		mLight2 = new DirectionalLight(0, -1, -1);
+		mLight1 = new DirectionalLight(1, 0, -1);
+		mLight2 = new DirectionalLight(0, 0, -1);
+		
+		PointLight light = new PointLight();
+		light.setColor(0xFFFFFFFF);
+		light.setPosition(0, 10, 5);
 
 		mMaterial = new DiffuseMaterial();
 		mMaterial.setUseColor(true);
@@ -113,17 +120,26 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mInitialCube.setRotation(45f, 45f, 45f);
 		mInitialCube.setShowBoundingVolume(true);
 		
-		mInitialCube = new NPrism(6, 2, 5);
-		mInitialCube = new NPrism(15, 1, 3, 1, 5);
-		mInitialCube.setPosition(0, 0, -10);
+		MeshExporter exporter = new MeshExporter(mInitialCube);
+        exporter.export("cube.obj", ExportType.OBJ);
+		
+		//mInitialCube = new NPrism(6, 2, 5);
+		mInitialCube = new NPrism(4, 1, 1, 3, 5);
+		mInitialCube.setPosition(0, 0, 0);
 		mInitialCube.setColor(0xFF00BFFF);
 		SimpleMaterial simpleMat = new SimpleMaterial();
 		simpleMat.setUseColor(true);
-		mInitialCube.setMaterial(simpleMat);
-		mInitialCube.setRotation(20, 45, 0);
-		mInitialCube.setDrawingMode(GLES20.GL_LINE_LOOP);
+		mInitialCube.addLight(mLight1);
+		mInitialCube.addLight(mLight2);
+		mInitialCube.setMaterial(mMaterial);
+		//mInitialCube.setMaterial(simpleMat);
+		//mInitialCube.setRotation(20, 0, 0);
+		//mInitialCube.setDrawingMode(GLES20.GL_LINE_LOOP);
 		//mInitialCube.setDoubleSided(true);
-
+		
+		exporter = new MeshExporter(mInitialCube);
+        exporter.export("prism.obj", ExportType.OBJ);
+		
 		mSpheres.add(mInitialSphere);
 		mCubes.add(mInitialCube);
 		mScene1.addChild(mInitialCube); //Add our cube to scene 1
@@ -164,13 +180,13 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
-		Number3D tMin = getCurrentScene().getSceneMinBound();
+		/*Number3D tMin = getCurrentScene().getSceneMinBound();
 		Number3D tMax = getCurrentScene().getSceneMaxBound();
 		mFocal.x = tMin.x + (tMax.x - tMin.x) * .5f;
 		mFocal.y = tMin.y + (tMax.y - tMin.y) * .5f;
-		mFocal.z = tMin.z + (tMax.z - tMin.z) * .5f;
-		mPeriapsis.y = mFocal.y;
-		mPeriapsis.x = mFocal.x;
+		mFocal.z = tMin.z + (tMax.z - tMin.z) * .5f;*/
+		//mPeriapsis.y = mFocal.y;
+		//mPeriapsis.x = mFocal.x;
 		mCamera1.setLookAt(mFocal);
 		int length;
 		if (getCurrentScene().equals(mScene2)) {
