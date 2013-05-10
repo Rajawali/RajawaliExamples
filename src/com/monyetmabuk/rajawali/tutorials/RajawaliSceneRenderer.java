@@ -124,17 +124,17 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
         exporter.export("cube.obj", ExportType.OBJ);
 		
 		//mInitialCube = new NPrism(6, 2, 5);
-		mInitialCube = new NPrism(3, 1, 3, 5);
+		mInitialCube = new NPrism(4, 1, 3, 5);
 		mInitialCube.setPosition(0, 0, 0);
 		mInitialCube.setColor(0xFF00BFFF);
 		SimpleMaterial simpleMat = new SimpleMaterial();
 		simpleMat.setUseColor(true);
 		mInitialCube.addLight(mLight1);
 		mInitialCube.addLight(mLight2);
-		mInitialCube.setMaterial(mMaterial);
-		//mInitialCube.setMaterial(simpleMat);
+		//mInitialCube.setMaterial(mMaterial);
+		mInitialCube.setMaterial(simpleMat);
 		mInitialCube.setRotation(20, 45, 0);
-		//mInitialCube.setDrawingMode(GLES20.GL_LINE_LOOP);
+		mInitialCube.setDrawingMode(GLES20.GL_LINE_LOOP);
 		//mInitialCube.setDoubleSided(true);
 		
 		exporter = new MeshExporter(mInitialCube);
