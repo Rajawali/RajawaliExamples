@@ -16,7 +16,7 @@ import rajawali.bounds.IBoundingVolume;
 import rajawali.lights.DirectionalLight;
 import rajawali.lights.PointLight;
 import rajawali.materials.DiffuseMaterial;
-import rajawali.materials.SimpleMaterial;
+import rajawali.materials.TextureManager.TextureType;
 import rajawali.math.Number3D;
 import rajawali.primitives.Cube;
 import rajawali.primitives.NPrism;
@@ -24,15 +24,14 @@ import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
 import rajawali.scene.RajawaliScene;
 import rajawali.scenegraph.IGraphNode.GRAPH_TYPE;
-import rajawali.util.MeshExporter;
-import rajawali.util.MeshExporter.ExportType;
 import android.content.Context;
-import android.opengl.GLES20;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.widget.TextView;
 
 public class RajawaliSceneRenderer extends RajawaliRenderer {
-	private DirectionalLight mLight1, mLight2;
+	private DirectionalLight mLight1, mLight2, mLight3, mLight4;
 	private DiffuseMaterial mMaterial;
 	private BaseObject3D mInitialSphere;
 	private BaseObject3D mInitialCube;
@@ -66,7 +65,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mCamera1 = getCurrentCamera(); //We will utilize the initial camera
 		mCamera1.setPosition(0, 0, 20);
 		mCamera1.setFieldOfView(60);
-		mCamera1.setFarPlane(50);
+		mCamera1.setFarPlane(1000);
 		
 		mCamera2 = new Camera(); //Lets create a second camera for the scene.
 		mCamera2.setPosition(0, 0, 15);
@@ -90,8 +89,10 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mScene2.replaceAndSwitchCamera(mCamera1, 0);
 		mScene2.addCamera(mCamera2); //Add our second camera to the scene
 		
-		mLight1 = new DirectionalLight(1, 0, -1);
-		mLight2 = new DirectionalLight(0, 0, -1);
+		mLight1 = new DirectionalLight(0.75f, 0, 1);
+		mLight2 = new DirectionalLight(0.75f, 0, -1);
+		mLight3 = new DirectionalLight(-0.75f, 0, 1);
+		mLight4 = new DirectionalLight(-0.75f, 0, -1);
 		
 		PointLight light = new PointLight();
 		light.setColor(0xFFFFFFFF);
@@ -120,25 +121,18 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mInitialCube.setRotation(45f, 45f, 45f);
 		mInitialCube.setShowBoundingVolume(true);
 		
-		MeshExporter exporter = new MeshExporter(mInitialCube);
-        exporter.export("cube.obj", ExportType.OBJ);
-		
 		//mInitialCube = new NPrism(6, 2, 5);
-		mInitialCube = new NPrism(4, 1, 3, 5);
-		mInitialCube.setPosition(0, 0, 0);
+		mInitialCube = new NPrism(30, 3, 3, 5);
+		mInitialCube.setPosition(0, -2.50f, 0);
 		mInitialCube.setColor(0xFF00BFFF);
-		SimpleMaterial simpleMat = new SimpleMaterial();
-		simpleMat.setUseColor(true);
+		Bitmap bg = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.flickrpics);
+		mMaterial.addTexture(mTextureManager.addTexture(bg, TextureType.DIFFUSE));
 		mInitialCube.addLight(mLight1);
 		mInitialCube.addLight(mLight2);
-		//mInitialCube.setMaterial(mMaterial);
-		mInitialCube.setMaterial(simpleMat);
-		mInitialCube.setRotation(20, 45, 0);
-		mInitialCube.setDrawingMode(GLES20.GL_LINE_LOOP);
-		//mInitialCube.setDoubleSided(true);
-		
-		exporter = new MeshExporter(mInitialCube);
-        exporter.export("prism.obj", ExportType.OBJ);
+		mInitialCube.addLight(mLight3);
+		mInitialCube.addLight(mLight4);
+		mInitialCube.setMaterial(mMaterial);
+		mInitialCube.setRotation(-45, 0, 0);
 		
 		mSpheres.add(mInitialSphere);
 		mCubes.add(mInitialCube);
