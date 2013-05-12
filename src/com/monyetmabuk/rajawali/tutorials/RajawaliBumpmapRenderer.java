@@ -71,17 +71,17 @@ public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 			tme.printStackTrace();
 		}
 
-		mLightAnim = new EllipticalOrbitAnimation3D(new Number3D(0, 0, 4), new Number3D(0, 4, 0), Number3D.getAxisVector(Axis.Z), 0, OrbitDirection.CLOCKWISE);
+		mLightAnim = new EllipticalOrbitAnimation3D(new Number3D(0, 0, 4), new Number3D(0, 4, 0), Number3D.getAxisVector(Axis.Z), 0, 360, OrbitDirection.CLOCKWISE);
 		mLightAnim.setDuration(5000);
 		mLightAnim.setRepeatMode(RepeatMode.INFINITE);
 		mLightAnim.setTransformable3D(mLight);
 		registerAnimation(mLightAnim);
+		mLightAnim.play();
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		mLightAnim.play();		
 	}
 }

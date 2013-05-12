@@ -102,7 +102,7 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		line.setMaterial(material);
 		addChild(line);
 
-		EllipticalOrbitAnimation3D camAnim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(26, 0, 0), 0, OrbitDirection.CLOCKWISE);
+		EllipticalOrbitAnimation3D camAnim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(26, 0, 0), 0, 360, OrbitDirection.CLOCKWISE);
 		camAnim.setDuration(10000);
 		camAnim.setRepeatMode(RepeatMode.INFINITE);
 		camAnim.setTransformable3D(getCurrentCamera());

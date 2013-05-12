@@ -91,7 +91,7 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 		registerAnimation(anim);
 		mQueue.addAnimation(anim);
 
-		anim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(0, 3, 0), Number3D.getAxisVector(Axis.Z), 0, OrbitDirection.CLOCKWISE);
+		anim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(0, 3, 0), Number3D.getAxisVector(Axis.Z), 0, 360, OrbitDirection.CLOCKWISE);
 		anim.setInterpolator(new LinearInterpolator());
 		anim.setDuration(2000);
 		anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);

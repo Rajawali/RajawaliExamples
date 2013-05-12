@@ -48,7 +48,7 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 			
-		mLightAnim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(0, 10, 0), Number3D.getAxisVector(Axis.Z), 0, OrbitDirection.CLOCKWISE);
+		mLightAnim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(0, 10, 0), Number3D.getAxisVector(Axis.Z), 0, 360, OrbitDirection.CLOCKWISE);
 		
 		mLightAnim.setDuration(3000);
 		mLightAnim.setRepeatMode(RepeatMode.INFINITE);
@@ -56,14 +56,15 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 		
 		registerAnimation(mCameraAnim);
 		registerAnimation(mLightAnim);
+
+		mCameraAnim.play();
+		mLightAnim.play();		
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		mCameraAnim.play();
-		mLightAnim.play();		
 	}
 
 	public void onDrawFrame(GL10 glUnused) {

@@ -53,7 +53,7 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 		mObjectGroup.setY(-1);
 		mObjectGroup.setRotation(90, 0, 0);
 		
-		mLightAnim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(0, 3, 0), Number3D.getAxisVector(Axis.Z), 0, OrbitDirection.CLOCKWISE);
+		mLightAnim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(0, 3, 0), Number3D.getAxisVector(Axis.Z), 0, 0, OrbitDirection.CLOCKWISE);
 		mLightAnim.setDuration(5000);
 		mLightAnim.setRepeatMode(RepeatMode.INFINITE);
 		mLightAnim.setTransformable3D(mLight);

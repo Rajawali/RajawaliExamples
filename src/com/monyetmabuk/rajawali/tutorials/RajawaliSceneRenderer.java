@@ -114,12 +114,12 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mScene2.addChild(mInitialSphere); //Add our sphere to scene 2
 
 		Animation3D anim = new EllipticalOrbitAnimation3D(new Number3D(0, 0, -5), new Number3D(0, 0, 5), 0.0,
-				OrbitDirection.CLOCKWISE);
+				360, OrbitDirection.CLOCKWISE);
 		//Create a camera animation for camera 1
 		mFocal = new Number3D(0, 0, 0);
 		mPeriapsis = new Number3D(0, 0, 20);
 		mCameraAnim = new EllipticalOrbitAnimation3D(mFocal, mPeriapsis, 0.0,
-				OrbitDirection.CLOCKWISE);
+				360, OrbitDirection.CLOCKWISE);
 		mCameraAnim.setDuration(10000);
 		mCameraAnim.setRepeatMode(Animation3D.RepeatMode.INFINITE);
 		mCameraAnim.setTransformable3D(mCamera1);
