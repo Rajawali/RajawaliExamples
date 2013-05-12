@@ -5,14 +5,15 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.Camera2D;
 import rajawali.materials.SimpleMaterial;
-import rajawali.materials.TextureInfo;
+import rajawali.materials.textures.ATexture;
+import rajawali.materials.textures.ATexture.TextureException;
+import rajawali.materials.textures.Texture;
 import rajawali.primitives.Plane;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
-import android.graphics.BitmapFactory;
 
 public class Rajawali360ImagesRenderer extends RajawaliRenderer {
-	private TextureInfo[] mTexInf;
+	private ATexture[] mTextures;
 	private Plane mPlane;
 	private int mFrameCount;
 	private SimpleMaterial mMaterial;
@@ -30,27 +31,34 @@ public class Rajawali360ImagesRenderer extends RajawaliRenderer {
     	mMaterial = new SimpleMaterial();
     	
     	mPlane = new Plane(1.5f, 1, 1, 1);
-    	mPlane.setMaterial(mMaterial);
+		mPlane.setMaterial(mMaterial);
     	addChild(mPlane);
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		((RajawaliExampleActivity) mContext).showLoader();
 		if(mTextureManager != null) mTextureManager.reset();
-		if(mMaterial != null) mMaterial.getTextureInfoList().clear();
+		if(mMaterial != null) mMaterial.getTextureList().clear();
 		super.onSurfaceCreated(gl, config);
 		
-		if(mTexInf == null) {
+		if(mTextures == null) {
 			// -- create an array that will contain all TextureInfo objects
-	    	mTexInf = new TextureInfo[NUM_TEXTURES];
+	    	mTextures = new ATexture[NUM_TEXTURES];
 		}
 		mFrameCount = 0;
     	for(int i=1; i<=NUM_TEXTURES; ++i) {
     		// -- load all the textures from the drawable folder
-    		int identifier = mContext.getResources().getIdentifier(i < 10 ? "m0" + i : "m" + i, "drawable", "com.monyetmabuk.rajawali.tutorials");
-    		mTexInf[i-1] = mTextureManager.addTexture(BitmapFactory.decodeResource(mContext.getResources(), identifier), false, true);
+    		int resourceId = mContext.getResources().getIdentifier(i < 10 ? "m0" + i : "m" + i, "drawable", "com.monyetmabuk.rajawali.tutorials");
+    		ATexture texture = new Texture(resourceId);
+    		texture.setMipmap(false);
+    		texture.shouldRecycle(true);
+    		mTextures[i-1] = mTextureManager.addTexture(texture);
     	}
-    	mMaterial.addTexture(mTexInf[0]);
+    	try {
+			mMaterial.addTexture(mTextures[0]);
+		} catch (TextureException e) {
+			e.printStackTrace();
+		}
 		
 		((RajawaliExampleActivity) mContext).hideLoader();
 	}
@@ -58,8 +66,8 @@ public class Rajawali360ImagesRenderer extends RajawaliRenderer {
     public void onDrawFrame(GL10 glUnused) {
         super.onDrawFrame(glUnused);
         // -- get the texture info list and remove the previous TextureInfo object
-        mMaterial.getTextureInfoList().remove(mTexInf[mFrameCount++ % NUM_TEXTURES]);
+        mMaterial.getTextureList().remove(mTextures[mFrameCount++ % NUM_TEXTURES]);
         // -- add a new TextureInfo object
-        mMaterial.getTextureInfoList().add(mTexInf[mFrameCount % NUM_TEXTURES]);
+        mMaterial.getTextureList().add(mTextures[mFrameCount % NUM_TEXTURES]);
     }
 }

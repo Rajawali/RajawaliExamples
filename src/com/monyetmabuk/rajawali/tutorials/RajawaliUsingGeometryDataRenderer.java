@@ -36,7 +36,7 @@ public class RajawaliUsingGeometryDataRenderer extends RajawaliRenderer {
 		DirectionalLight light = new DirectionalLight(0, -.6f, -.4f);
 		light.setColor(1, 1, 1);
 		
-		getCurrentCamera().setZ(8);
+		getCurrentCamera().setZ(16);
 		
 		BaseObject3D sphere = new Sphere(1, 16, 8);
 		
@@ -51,7 +51,7 @@ public class RajawaliUsingGeometryDataRenderer extends RajawaliRenderer {
 			mRootSpike.setMaterial(spikeMaterial);
 			mRootSpike.addLight(light);
 			mRootSpike.setColor(0xff33ff33);
-			mRootSpike.setScale(.5f);
+			mRootSpike.setVisible(false);
 			// -- objects that share the same geometry and material,
 			//    so batch rendering gives a performance boost.
 			mRootSpike.setRenderChildrenAsBatch(true);

@@ -11,24 +11,20 @@ import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
 import rajawali.lights.PointLight;
 import rajawali.materials.BumpmapMaterial;
 import rajawali.materials.BumpmapPhongMaterial;
-import rajawali.materials.TextureManager.TextureType;
+import rajawali.materials.textures.ATexture.TextureException;
+import rajawali.materials.textures.BumpmapTexture;
+import rajawali.materials.textures.Texture;
 import rajawali.math.Number3D;
 import rajawali.math.Number3D.Axis;
-import rajawali.parser.ObjParser;
 import rajawali.parser.AParser.ParsingException;
+import rajawali.parser.ObjParser;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 	private PointLight mLight;
 	private BaseObject3D mHalfSphere1;
 	private BaseObject3D mHalfSphere2;
-	private Bitmap mDiffuseTexture1;
-	private Bitmap mBumpTexture1;
-	private Bitmap mDiffuseTexture2;
-	private Bitmap mBumpTexture2;
 	private Animation3D mLightAnim;
 
 	public RajawaliBumpmapRenderer(Context context) {
@@ -60,42 +56,22 @@ public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 			mHalfSphere2.setRotX(-45);
 			addChild(mHalfSphere2);
 	
-			mDiffuseTexture1 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.sphere_texture);
-			mBumpTexture1 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.sphere_normal);
-			mDiffuseTexture2 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.torus_texture);
-			mBumpTexture2 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.torus_normal);
+			BumpmapMaterial material1 = new BumpmapMaterial();
+			material1.addTexture(new Texture(R.drawable.sphere_texture));
+			material1.addTexture(new BumpmapTexture(R.drawable.sphere_normal));
+			mHalfSphere1.setMaterial(material1);
 	
-			mHalfSphere1.setMaterial(new BumpmapMaterial());
-			mHalfSphere1.addTexture(mTextureManager.addTexture(mDiffuseTexture1, TextureType.DIFFUSE));
-			mHalfSphere1.addTexture(mTextureManager.addTexture(mBumpTexture1, TextureType.BUMP));
-	
-			mHalfSphere2.setMaterial(new BumpmapPhongMaterial());
-			mHalfSphere2.addTexture(mTextureManager.addTexture(mDiffuseTexture2, TextureType.DIFFUSE));
-			mHalfSphere2.addTexture(mTextureManager.addTexture(mBumpTexture2, TextureType.BUMP));
+			BumpmapPhongMaterial material2 = new BumpmapPhongMaterial();
+			material2.addTexture(new Texture(R.drawable.torus_texture));
+			material2.addTexture(new BumpmapTexture(R.drawable.torus_normal));
+			mHalfSphere2.setMaterial(material2);
 		} catch(ParsingException e) {
 			e.printStackTrace();
+		} catch(TextureException tme) {
+			tme.printStackTrace();
 		}
-		mHalfSphere2 = objParser.getParsedObject();
-		mHalfSphere2.addLight(mLight);
-		mHalfSphere2.setRotX(-45);
-		mHalfSphere2.setY(1.2f);
-		mHalfSphere2.setRotX(-45);
-		addChild(mHalfSphere2);
 
-		mDiffuseTexture1 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.sphere_texture);
-		mBumpTexture1 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.sphere_normal);
-		mDiffuseTexture2 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.torus_texture);
-		mBumpTexture2 = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.torus_normal);
-
-		mHalfSphere1.setMaterial(new BumpmapMaterial());
-		mHalfSphere1.addTexture(mTextureManager.addTexture(mDiffuseTexture1, TextureType.DIFFUSE));
-		mHalfSphere1.addTexture(mTextureManager.addTexture(mBumpTexture1, TextureType.BUMP));
-
-		mHalfSphere2.setMaterial(new BumpmapPhongMaterial());
-		mHalfSphere2.addTexture(mTextureManager.addTexture(mDiffuseTexture2, TextureType.DIFFUSE));
-		mHalfSphere2.addTexture(mTextureManager.addTexture(mBumpTexture2, TextureType.BUMP));
-
-		mLightAnim = new EllipticalOrbitAnimation3D(new Number3D(0, 0, -4), new Number3D(0, 4, 0), Number3D.getAxisVector(Axis.Z), 0, OrbitDirection.CLOCKWISE);
+		mLightAnim = new EllipticalOrbitAnimation3D(new Number3D(0, 0, 4), new Number3D(0, 4, 0), Number3D.getAxisVector(Axis.Z), 0, OrbitDirection.CLOCKWISE);
 		mLightAnim.setDuration(5000);
 		mLightAnim.setRepeatMode(RepeatMode.INFINITE);
 		mLightAnim.setTransformable3D(mLight);

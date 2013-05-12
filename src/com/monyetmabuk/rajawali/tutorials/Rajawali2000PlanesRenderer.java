@@ -8,11 +8,11 @@ import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.CatmullRomPath3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.DirectionalLight;
+import rajawali.materials.textures.ATexture.TextureException;
+import rajawali.materials.textures.Texture;
 import rajawali.math.Number3D;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
 import com.monyetmabuk.rajawali.tutorials.planes.PlanesGalore;
@@ -51,13 +51,15 @@ public class Rajawali2000PlanesRenderer extends RajawaliRenderer {
 		getCurrentCamera().setPosition(0, 0, -16);
 
 		mPlanes = new PlanesGalore();
-		mMaterial = (PlanesGaloreMaterial)mPlanes.getMaterial();
+		try {
+			mMaterial = (PlanesGaloreMaterial)mPlanes.getMaterial();
+			mMaterial.addTexture(new Texture(R.drawable.flickrpics));
+		} catch(TextureException e) {
+			e.printStackTrace();
+		}
 		mPlanes.addLight(light);
 		mPlanes.setDoubleSided(true);
 		mPlanes.setZ(4);
-		
-		Bitmap b = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.flickrpics);
-		mPlanes.addTexture(mTextureManager.addTexture(b));
 		addChild(mPlanes);
 		
 		BaseObject3D empty = new BaseObject3D();

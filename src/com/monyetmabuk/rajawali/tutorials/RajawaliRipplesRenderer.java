@@ -13,14 +13,13 @@ import rajawali.filters.TouchRippleFilter;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.SimpleMaterial;
+import rajawali.materials.textures.ATexture.TextureException;
+import rajawali.materials.textures.Texture;
 import rajawali.math.Number3D;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Plane;
-import rajawali.renderer.PostProcessingRenderer.PostProcessingQuality;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 public class RajawaliRipplesRenderer extends RajawaliRenderer {
 	private final int NUM_CUBES_H = 2;
@@ -76,8 +75,11 @@ public class RajawaliRipplesRenderer extends RajawaliRenderer {
 		addChild(group);
 		
 		SimpleMaterial planeMat = new SimpleMaterial();
-		Bitmap texture = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.utrecht);
-		planeMat.addTexture(mTextureManager.addTexture(texture));
+		try {
+			planeMat.addTexture(new Texture(R.drawable.utrecht));
+		} catch (TextureException e) {
+			e.printStackTrace();
+		}
 		Plane plane = new Plane(4, 4, 1, 1);
 		plane.setRotZ(-90);
 		plane.setScale(3.7f);

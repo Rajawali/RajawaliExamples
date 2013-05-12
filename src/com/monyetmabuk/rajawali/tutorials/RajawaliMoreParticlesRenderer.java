@@ -4,10 +4,10 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.materials.ParticleMaterial;
+import rajawali.materials.textures.ATexture.TextureException;
+import rajawali.materials.textures.Texture;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 public class RajawaliMoreParticlesRenderer extends RajawaliRenderer {
 	private final int MAX_FRAMES = 200;
@@ -22,12 +22,14 @@ public class RajawaliMoreParticlesRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		getCurrentCamera().setPosition(0, 0, 10);
 
-		Bitmap particleBitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.particle);
-		rajawali.materials.TextureInfo particleTexture = mTextureManager.addTexture(particleBitmap);
-
 		mParticleSystem = new ExampleParticleSystem();
-		mParticleSystem.setMaterial(new ParticleMaterial(), false);
-		mParticleSystem.addTexture(particleTexture);
+		ParticleMaterial material = new ParticleMaterial();
+		try {
+			material.addTexture(new Texture(R.drawable.particle));
+		} catch (TextureException e) {
+			e.printStackTrace();
+		}
+		mParticleSystem.setMaterial(material);
 		mParticleSystem.setPointSize(100);
 		addChild(mParticleSystem);
 	}

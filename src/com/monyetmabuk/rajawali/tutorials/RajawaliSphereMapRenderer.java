@@ -12,17 +12,14 @@ import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.PointLight;
 import rajawali.materials.SphereMapMaterial;
-import rajawali.materials.TextureInfo;
-import rajawali.materials.TextureManager.TextureType;
+import rajawali.materials.textures.ATexture.TextureException;
+import rajawali.materials.textures.SphereMapTexture;
+import rajawali.materials.textures.Texture;
 import rajawali.math.Number3D;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 public class RajawaliSphereMapRenderer extends RajawaliRenderer {
-	private Animation3D[] mAnims;
-
 	public RajawaliSphereMapRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
@@ -33,25 +30,23 @@ public class RajawaliSphereMapRenderer extends RajawaliRenderer {
 		light.setZ(6);
 		light.setPower(2);
 
-		Bitmap sphereMap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.manila_sphere_map);
-		Bitmap texture = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.jettexture);
-		TextureInfo sphereMapTextureInfo = mTextureManager.addTexture(sphereMap, TextureType.SPHERE_MAP);
+		Texture jetTexture = new Texture(R.drawable.jettexture);
+		SphereMapTexture sphereMapTexture = new SphereMapTexture(R.drawable.manila_sphere_map);
 
 		BaseObject3D jet1 = null;
 		// -- sphere map with texture
-		SphereMapMaterial material1 = new SphereMapMaterial();
-		material1.setSphereMapStrength(.5f);
 		
 		try {
+			SphereMapMaterial material1 = new SphereMapMaterial();
+			material1.setSphereMapStrength(.5f);
+			material1.addTexture(jetTexture);
+			material1.addTexture(sphereMapTexture);
+
 			ObjectInputStream ois;
 			ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.jet));
 			jet1 = new BaseObject3D((SerializedObject3D)ois.readObject());
 			jet1.setMaterial(material1);
 			jet1.addLight(light);
-			// -- add sphere map texture
-			jet1.addTexture(sphereMapTextureInfo);
-			// -- add diffuse texture
-			jet1.addTexture(mTextureManager.addTexture(texture, TextureType.DIFFUSE));
 			jet1.setY(2.5f);
 			addChild(jet1);
 		} catch(Exception e) {
@@ -61,26 +56,27 @@ public class RajawaliSphereMapRenderer extends RajawaliRenderer {
 		Number3D axis = new Number3D(2, -4, 1);
 		axis.normalize();
 		
-		mAnims = new Animation3D[2];
-		
 		Animation3D anim1 = new RotateAnimation3D(axis, 360);
 		anim1.setRepeatMode(RepeatMode.INFINITE);
 		anim1.setDuration(12000);
 		anim1.setTransformable3D(jet1);
-		
-		mAnims[0] = anim1;
-		
+		registerAnimation(anim1);
+		anim1.play();
+
 		SphereMapMaterial material2 = new SphereMapMaterial();
 		// -- set strength to 1
 		material2.setSphereMapStrength(2);
 		// -- important, indicate that we want to mix the sphere map with a color
 		material2.setUseColor(true);		
+		try {
+			material2.addTexture(sphereMapTexture);
+		} catch (TextureException e) {
+			e.printStackTrace();
+		}
 		
 		BaseObject3D jet2 = jet1.clone(false);
 		jet2.setMaterial(material2);
 		jet2.addLight(light);
-		// -- add sphere map texture only
-		jet2.addTexture(sphereMapTextureInfo);
 		// -- also specify a color
 		jet2.setColor(0xff666666, true);
 		jet2.setY(-2.5f);
@@ -90,9 +86,9 @@ public class RajawaliSphereMapRenderer extends RajawaliRenderer {
 		anim2.setRepeatMode(RepeatMode.INFINITE);
 		anim2.setDuration(12000);
 		anim2.setTransformable3D(jet2);
+		registerAnimation(anim2);
+		anim2.play();
 
-		mAnims[1] = anim2;
-		
 		getCurrentCamera().setPosition(0, 0, 14);
 	}
 	
@@ -100,10 +96,6 @@ public class RajawaliSphereMapRenderer extends RajawaliRenderer {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		registerAnimation(mAnims[0]);
-		registerAnimation(mAnims[1]);
-		mAnims[0].play();
-		mAnims[1].play();
 	}
 
 	public void onDrawFrame(GL10 glUnused) {

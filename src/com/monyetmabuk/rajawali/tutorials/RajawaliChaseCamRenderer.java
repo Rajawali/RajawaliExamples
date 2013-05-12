@@ -12,12 +12,13 @@ import rajawali.SerializedObject3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.SimpleMaterial;
+import rajawali.materials.textures.ATexture.TextureException;
+import rajawali.materials.textures.Texture;
 import rajawali.math.Number3D;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
-import android.graphics.BitmapFactory;
 import android.util.FloatMath;
 
 public class RajawaliChaseCamRenderer extends RajawaliRenderer {
@@ -37,8 +38,13 @@ public class RajawaliChaseCamRenderer extends RajawaliRenderer {
 		
 		// -- create sky sphere
 		mSphere = new Sphere(400, 8, 8);
-		mSphere.setMaterial(new SimpleMaterial());
-		mSphere.addTexture(mTextureManager.addTexture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.skysphere)));
+		SimpleMaterial sphereMaterial = new SimpleMaterial();
+		try {
+			sphereMaterial.addTexture(new Texture(R.drawable.skysphere));
+		} catch (TextureException e1) {
+			e1.printStackTrace();
+		}
+		mSphere.setMaterial(sphereMaterial);
 		mSphere.setDoubleSided(true);
 		addChild(mSphere);
 
@@ -48,9 +54,10 @@ public class RajawaliChaseCamRenderer extends RajawaliRenderer {
 			GZIPInputStream zis = new GZIPInputStream(mContext.getResources().openRawResource(R.raw.raptor));
 			ois = new ObjectInputStream(zis);
 			mRaptor = new BaseObject3D((SerializedObject3D)ois.readObject());
-			mRaptor.setMaterial(new DiffuseMaterial());
+			DiffuseMaterial raptorMaterial = new DiffuseMaterial();
+			raptorMaterial.addTexture(new Texture(R.drawable.raptor_texture));
+			mRaptor.setMaterial(raptorMaterial);
 			mRaptor.addLight(light);
-			mRaptor.addTexture(mTextureManager.addTexture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.raptor_texture)));
 			mRaptor.setScale(.5f);
 			addChild(mRaptor);
 		} catch(Exception e) {
@@ -62,8 +69,13 @@ public class RajawaliChaseCamRenderer extends RajawaliRenderer {
 		mCubes = new BaseObject3D[30];
 		
 		mRootCube = new Cube(1);
-		mRootCube.setMaterial(new DiffuseMaterial());
-		mRootCube.addTexture(mTextureManager.addTexture(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.camouflage)));
+		DiffuseMaterial rootCubeMaterial = new DiffuseMaterial();
+		try {
+			rootCubeMaterial.addTexture(new Texture(R.drawable.camouflage));
+		} catch (TextureException e) {
+			e.printStackTrace();
+		}
+		mRootCube.setMaterial(rootCubeMaterial);
 		mRootCube.addLight(light);
 		mRootCube.setY(-1f);
 		// -- similar objects with the same material, optimize

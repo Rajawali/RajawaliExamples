@@ -29,7 +29,7 @@ public class RajawaliMD2Renderer extends RajawaliRenderer {
 	
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, -1);
-		mLight.setPower(2);
+		mLight.setPower(1);
 		getCurrentCamera().setPosition(0, 0, 8);
 
 		MD2Parser parser = new MD2Parser(mContext.getResources(), mTextureManager, R.raw.ogro);
