@@ -14,24 +14,19 @@ import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.bounds.IBoundingVolume;
 import rajawali.lights.DirectionalLight;
-import rajawali.lights.PointLight;
 import rajawali.materials.DiffuseMaterial;
-import rajawali.materials.TextureManager.TextureType;
 import rajawali.math.Number3D;
 import rajawali.primitives.Cube;
-import rajawali.primitives.NPrism;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
 import rajawali.scene.RajawaliScene;
 import rajawali.scenegraph.IGraphNode.GRAPH_TYPE;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.widget.TextView;
 
 public class RajawaliSceneRenderer extends RajawaliRenderer {
-	private DirectionalLight mLight1, mLight2, mLight3, mLight4;
+	private DirectionalLight mLight1, mLight2;
 	private DiffuseMaterial mMaterial;
 	private BaseObject3D mInitialSphere;
 	private BaseObject3D mInitialCube;
@@ -91,13 +86,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		
 		mLight1 = new DirectionalLight(0.75f, 0, 1);
 		mLight2 = new DirectionalLight(0.75f, 0, -1);
-		mLight3 = new DirectionalLight(-0.75f, 0, 1);
-		mLight4 = new DirectionalLight(-0.75f, 0, -1);
 		
-		PointLight light = new PointLight();
-		light.setColor(0xFFFFFFFF);
-		light.setPosition(0, 10, 5);
-
 		mMaterial = new DiffuseMaterial();
 		mMaterial.setUseColor(true);
 
@@ -121,18 +110,11 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mInitialCube.setRotation(45f, 45f, 45f);
 		mInitialCube.setShowBoundingVolume(true);
 		
-		//mInitialCube = new NPrism(6, 2, 5);
-		mInitialCube = new NPrism(30, 3, 3, 5);
-		mInitialCube.setPosition(0, -2.50f, 0);
-		mInitialCube.setColor(0xFF00BFFF);
-		Bitmap bg = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.flickrpics);
-		mMaterial.addTexture(mTextureManager.addTexture(bg, TextureType.DIFFUSE));
-		mInitialCube.addLight(mLight1);
-		mInitialCube.addLight(mLight2);
-		mInitialCube.addLight(mLight3);
-		mInitialCube.addLight(mLight4);
+		/*mInitialCube = new NPrism(20, 1, 3, 0.9, 5);
+		mInitialCube.setColor(0XFF00BFFF);
 		mInitialCube.setMaterial(mMaterial);
-		mInitialCube.setRotation(-45, 0, 0);
+		mInitialCube.addLight(mLight1);
+		mInitialCube.addLight(mLight2);*/
 		
 		mSpheres.add(mInitialSphere);
 		mCubes.add(mInitialCube);
@@ -174,14 +156,16 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
-		/*Number3D tMin = getCurrentScene().getSceneMinBound();
+		Number3D tMin = getCurrentScene().getSceneMinBound();
 		Number3D tMax = getCurrentScene().getSceneMaxBound();
 		mFocal.x = tMin.x + (tMax.x - tMin.x) * .5f;
 		mFocal.y = tMin.y + (tMax.y - tMin.y) * .5f;
-		mFocal.z = tMin.z + (tMax.z - tMin.z) * .5f;*/
+		mFocal.z = tMin.z + (tMax.z - tMin.z) * .5f;
 		//mPeriapsis.y = mFocal.y;
 		//mPeriapsis.x = mFocal.x;
 		mCamera1.setLookAt(mFocal);
+		mCamera1.getTransformedBoundingVolume().drawBoundingVolume(getCurrentCamera(), 
+				getCurrentCamera().getProjectionMatrix(), getCurrentCamera().getViewMatrix(), null);
 		int length;
 		if (getCurrentScene().equals(mScene2)) {
 			length = mSpheres.size();
