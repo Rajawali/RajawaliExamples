@@ -53,7 +53,8 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("33. Texture Compression (ETC)", RajawaliTextureCompressionActivity.class),
 			new ExampleItem("34. Color Animation", RajawaliColorAnimationActivity.class),
 			new ExampleItem("35. Scenes", RajawaliSceneActivity.class),
-			new ExampleItem("36. Specular and Alpha Maps", RajawaliSpecularAndAlphaActivity.class)};
+			new ExampleItem("36. Specular and Alpha Maps", RajawaliSpecularAndAlphaActivity.class),
+			new ExampleItem("37. Video Texture", RajawaliVideoTextureActivity.class)};
 
 	public void onCreate(Bundle savedInstanceState) {
 		String[] strings = new String[mItems.length];

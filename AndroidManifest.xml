@@ -52,5 +52,6 @@
         <activity android:name=".RajawaliColorAnimationActivity"></activity>
         <activity android:name=".RajawaliSceneActivity"></activity>
         <activity android:name="RajawaliSpecularAndAlphaActivity"></activity>
+        <activity android:name="RajawaliVideoTextureActivity"></activity>
     </application>
 </manifest>

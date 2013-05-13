@@ -9,10 +9,10 @@ import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
 import rajawali.lights.PointLight;
-import rajawali.materials.BumpmapMaterial;
-import rajawali.materials.BumpmapPhongMaterial;
+import rajawali.materials.NormalMapMaterial;
+import rajawali.materials.NormalMapPhongMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.BumpmapTexture;
+import rajawali.materials.textures.NormalMapTexture;
 import rajawali.materials.textures.Texture;
 import rajawali.math.Number3D;
 import rajawali.math.Number3D.Axis;
@@ -56,14 +56,14 @@ public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 			mHalfSphere2.setRotX(-45);
 			addChild(mHalfSphere2);
 	
-			BumpmapMaterial material1 = new BumpmapMaterial();
+			NormalMapMaterial material1 = new NormalMapMaterial();
 			material1.addTexture(new Texture(R.drawable.sphere_texture));
-			material1.addTexture(new BumpmapTexture(R.drawable.sphere_normal));
+			material1.addTexture(new NormalMapTexture(R.drawable.sphere_normal));
 			mHalfSphere1.setMaterial(material1);
 	
-			BumpmapPhongMaterial material2 = new BumpmapPhongMaterial();
+			NormalMapPhongMaterial material2 = new NormalMapPhongMaterial();
 			material2.addTexture(new Texture(R.drawable.torus_texture));
-			material2.addTexture(new BumpmapTexture(R.drawable.torus_normal));
+			material2.addTexture(new NormalMapTexture(R.drawable.torus_normal));
 			mHalfSphere2.setMaterial(material2);
 		} catch(ParsingException e) {
 			e.printStackTrace();
