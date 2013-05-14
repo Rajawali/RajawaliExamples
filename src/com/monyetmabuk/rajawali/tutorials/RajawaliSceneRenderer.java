@@ -90,7 +90,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mMaterial = new DiffuseMaterial();
 		mMaterial.setUseColor(true);
 
-		mInitialSphere = new Sphere(1, 10, 10);
+		mInitialSphere = new Cube(1);// (1, 10, 10);
 		mInitialSphere.setScale(0.250f);
 		mInitialSphere.setColor(0xFF00BFFF);
 		mInitialSphere.setMaterial(mMaterial);
@@ -109,12 +109,6 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mInitialCube.setPosition(0, 1, 0);
 		mInitialCube.setRotation(45f, 45f, 45f);
 		mInitialCube.setShowBoundingVolume(true);
-		
-		/*mInitialCube = new NPrism(20, 1, 3, 0.9, 5);
-		mInitialCube.setColor(0XFF00BFFF);
-		mInitialCube.setMaterial(mMaterial);
-		mInitialCube.addLight(mLight1);
-		mInitialCube.addLight(mLight2);*/
 		
 		mSpheres.add(mInitialSphere);
 		mCubes.add(mInitialCube);
@@ -249,8 +243,6 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 	}
 	
 	public void nextFrame() {
-		//mSurfaceView.requestRender();
-		BaseObject3D obj = mSpheres.get(0);
-		mInitialCube.getGeometry().addFromGeometry3D(new Number3D(2, 1, 2), obj.getGeometry());
+		mSurfaceView.requestRender();
 	}
 }
