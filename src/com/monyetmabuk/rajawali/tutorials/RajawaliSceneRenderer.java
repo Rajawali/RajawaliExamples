@@ -17,10 +17,11 @@ import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.math.Number3D;
 import rajawali.primitives.Cube;
+import rajawali.primitives.NPrism;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
 import rajawali.scene.RajawaliScene;
-import rajawali.scenegraph.IGraphNode.GRAPH_TYPE;
+import rajawali.scene.scenegraph.IGraphNode.GRAPH_TYPE;
 import android.content.Context;
 import android.os.Handler;
 import android.widget.TextView;
@@ -50,7 +51,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 
 	public RajawaliSceneRenderer(Context context, Handler handler, TextView obj, TextView tri) {
 		super(context);
-		setFrameRate(60);
+		setFrameRate(1);
 		mHandler = handler;
 		mObjectCount = obj;
 		mTriCount = tri;
@@ -90,7 +91,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mMaterial = new DiffuseMaterial();
 		mMaterial.setUseColor(true);
 
-		mInitialSphere = new Cube(1);// (1, 10, 10);
+		mInitialSphere = new Sphere(1, 10, 10);
 		mInitialSphere.setScale(0.250f);
 		mInitialSphere.setColor(0xFF00BFFF);
 		mInitialSphere.setMaterial(mMaterial);
@@ -120,7 +121,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		Animation3D anim_cube = new TranslateAnimation3D(new Number3D(5, 1.5, -4), new Number3D(-5, 1.5, -4));
 		//Create a camera animation for camera 1
 		mFocal = new Number3D(0, 0, 0);
-		mPeriapsis = new Number3D(0, 0, 10);
+		mPeriapsis = new Number3D(0, 0, 20);
 		mCameraAnim = new EllipticalOrbitAnimation3D(mFocal, mPeriapsis, 0.0,
 				OrbitDirection.CLOCKWISE);
 		mCameraAnim.setDuration(10000);
@@ -158,7 +159,8 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		//mPeriapsis.y = mFocal.y;
 		//mPeriapsis.x = mFocal.x;
 		mCamera1.setLookAt(mFocal);
-		mCamera1.getTransformedBoundingVolume().drawBoundingVolume(getCurrentCamera(), 
+		mCamera2.updateFrustum(mCamera2.getProjectionMatrix(), mCamera2.getViewMatrix());
+		mCamera2.getTransformedBoundingVolume().drawBoundingVolume(getCurrentCamera(), 
 				getCurrentCamera().getProjectionMatrix(), getCurrentCamera().getViewMatrix(), null);
 		int length;
 		if (getCurrentScene().equals(mScene2)) {
