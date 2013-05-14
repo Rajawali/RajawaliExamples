@@ -265,6 +265,8 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 	}
 	
 	public void nextFrame() {
-		mSurfaceView.requestRender();
+		//mSurfaceView.requestRender();
+		BaseObject3D obj = mSpheres.get(0);
+		mInitialCube.getGeometry().addFromGeometry3D(new Number3D(2, 1, 2), obj.getGeometry());
 	}
 }
