@@ -17,13 +17,13 @@ import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.math.Number3D;
 import rajawali.primitives.Cube;
-import rajawali.primitives.NPrism;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
 import rajawali.scene.RajawaliScene;
 import rajawali.scene.scenegraph.IGraphNode.GRAPH_TYPE;
 import android.content.Context;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.TextView;
 
 public class RajawaliSceneRenderer extends RajawaliRenderer {
@@ -66,9 +66,8 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mCamera2 = new Camera(); //Lets create a second camera for the scene.
 		mCamera2.setPosition(0, 0, 15);
 		//mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
-		mCamera2.setFarPlane(50);
+		mCamera2.setFarPlane(5);
 		mCamera2.setFieldOfView(60);
-		mCamera2.updateFrustum(mPMatrix,mVMatrix);
 		
 		//We are going to use our own scene, not the default
 		mScene1 = new RajawaliScene(this, GRAPH_TYPE.OCTREE); 
@@ -76,7 +75,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		//Since we created a new scene, it has a default camera we need to replace
 		mScene1.replaceAndSwitchCamera(mCamera1, 0); 
 		mScene1.addCamera(mCamera2); //Add our second camera to the scene
-		mScene1.switchCamera(mCamera2);
+		//mScene1.switchCamera(mCamera2);
 		
 		//We are creating a second scene
 		mScene2 = new RajawaliScene(this, GRAPH_TYPE.OCTREE); 
@@ -158,10 +157,11 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mFocal.z = tMin.z + (tMax.z - tMin.z) * .5f;
 		//mPeriapsis.y = mFocal.y;
 		//mPeriapsis.x = mFocal.x;
+		Log.i("Model Matrix", "Camera Model Matrix: ");
 		mCamera1.setLookAt(mFocal);
 		mCamera2.updateFrustum(mCamera2.getProjectionMatrix(), mCamera2.getViewMatrix());
 		mCamera2.getTransformedBoundingVolume().drawBoundingVolume(getCurrentCamera(), 
-				getCurrentCamera().getProjectionMatrix(), getCurrentCamera().getViewMatrix(), null);
+				getCurrentCamera().getProjectionMatrix(), getCurrentCamera().getViewMatrix(), mCamera2.getModelMatrix());
 		int length;
 		if (getCurrentScene().equals(mScene2)) {
 			length = mSpheres.size();
