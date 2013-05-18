@@ -11,7 +11,7 @@ import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import rajawali.parser.AParser.ParsingException;
 import rajawali.parser.ObjParser;
 import rajawali.renderer.RajawaliRenderer;
@@ -73,7 +73,7 @@ public class RajawaliFogRenderer extends RajawaliRenderer {
 			tme.printStackTrace();
 		}
 		
-		TranslateAnimation3D camAnim = new TranslateAnimation3D(new Number3D(0, 1, -23));
+		TranslateAnimation3D camAnim = new TranslateAnimation3D(new Vector3(0, 1, -23));
 		camAnim.setDuration(8000);
 		camAnim.setInterpolator(new AccelerateDecelerateInterpolator());
 		camAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);

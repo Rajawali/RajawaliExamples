@@ -14,8 +14,8 @@ import rajawali.materials.NormalMapPhongMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.NormalMapTexture;
 import rajawali.materials.textures.Texture;
-import rajawali.math.Number3D;
-import rajawali.math.Number3D.Axis;
+import rajawali.math.Vector3;
+import rajawali.math.Vector3.Axis;
 import rajawali.parser.AParser.ParsingException;
 import rajawali.parser.ObjParser;
 import rajawali.renderer.RajawaliRenderer;
@@ -71,7 +71,7 @@ public class RajawaliBumpmapRenderer extends RajawaliRenderer {
 			tme.printStackTrace();
 		}
 
-		mLightAnim = new EllipticalOrbitAnimation3D(new Number3D(0, 0, 4), new Number3D(0, 4, 0), Number3D.getAxisVector(Axis.Z), 0, 360, OrbitDirection.CLOCKWISE);
+		mLightAnim = new EllipticalOrbitAnimation3D(new Vector3(0, 0, 4), new Vector3(0, 4, 0), Vector3.getAxisVector(Axis.Z), 0, 360, OrbitDirection.CLOCKWISE);
 		mLightAnim.setDuration(5000);
 		mLightAnim.setRepeatMode(RepeatMode.INFINITE);
 		mLightAnim.setTransformable3D(mLight);

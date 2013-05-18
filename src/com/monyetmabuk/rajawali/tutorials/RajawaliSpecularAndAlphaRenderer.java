@@ -13,8 +13,8 @@ import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.AlphaMapTexture;
 import rajawali.materials.textures.SpecularMapTexture;
 import rajawali.materials.textures.Texture;
-import rajawali.math.Number3D;
-import rajawali.math.Number3D.Axis;
+import rajawali.math.Vector3;
+import rajawali.math.Vector3.Axis;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
@@ -74,7 +74,7 @@ public class RajawaliSpecularAndAlphaRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 		
-		TranslateAnimation3D lightAnim = new TranslateAnimation3D(new Number3D(-2, 3, 3), new Number3D(2, -1, 3));
+		TranslateAnimation3D lightAnim = new TranslateAnimation3D(new Vector3(-2, 3, 3), new Vector3(2, -1, 3));
 		lightAnim.setDuration(3000);
 		lightAnim.setInterpolator(new AccelerateDecelerateInterpolator());
 		lightAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);

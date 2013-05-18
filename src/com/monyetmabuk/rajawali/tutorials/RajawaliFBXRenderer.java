@@ -7,7 +7,7 @@ import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
-import rajawali.math.Number3D.Axis;
+import rajawali.math.Vector3.Axis;
 import rajawali.parser.AParser.ParsingException;
 import rajawali.parser.fbx.FBXParser;
 import rajawali.renderer.RajawaliRenderer;

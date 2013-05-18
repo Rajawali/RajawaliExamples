@@ -9,7 +9,7 @@ import rajawali.BufferInfo;
 import rajawali.Camera;
 import rajawali.Geometry3D;
 import rajawali.Geometry3D.BufferType;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import android.graphics.Color;
 import android.opengl.GLES20;
 
@@ -59,7 +59,7 @@ public class PlanesGalore extends BaseObject3D {
 		int[] indices = new int[numPlanes * 6];
 
 		for (int i = 0; i < numPlanes; ++i) {
-			Number3D r = new Number3D(-10f + (Math.random() * 20f), -10 + (Math.random() * 20f), (Math.random() * 80f));
+			Vector3 r = new Vector3(-10f + (Math.random() * 20f), -10 + (Math.random() * 20f), (Math.random() * 80f));
 			int randColor = 0xff000000 + (int) (0xffffff * Math.random());
 
 			int vIndex = i * 4 * 3;

@@ -10,7 +10,7 @@ import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -66,14 +66,14 @@ public class Rajawali2000PlanesRenderer extends RajawaliRenderer {
 		addChild(empty);
 		
 		CatmullRomPath3D path = new CatmullRomPath3D();
-		path.addPoint(new Number3D(-4, 0, -20));
-		path.addPoint(new Number3D(2, 1, -10));
-		path.addPoint(new Number3D(-2, 0, 10));
-		path.addPoint(new Number3D(0, -4, 20));
-		path.addPoint(new Number3D(5, 10, 30));
-		path.addPoint(new Number3D(-2, 5, 40));
-		path.addPoint(new Number3D(3, -1, 60));
-		path.addPoint(new Number3D(5, -1, 70));
+		path.addPoint(new Vector3(-4, 0, -20));
+		path.addPoint(new Vector3(2, 1, -10));
+		path.addPoint(new Vector3(-2, 0, 10));
+		path.addPoint(new Vector3(0, -4, 20));
+		path.addPoint(new Vector3(5, 10, 30));
+		path.addPoint(new Vector3(-2, 5, 40));
+		path.addPoint(new Vector3(3, -1, 60));
+		path.addPoint(new Vector3(5, -1, 70));
 		
 		mCamAnim = new TranslateAnimation3D(path);
 		mCamAnim.setDuration(20000);
@@ -82,7 +82,7 @@ public class Rajawali2000PlanesRenderer extends RajawaliRenderer {
 		mCamAnim.setInterpolator(new AccelerateDecelerateInterpolator());
 		registerAnimation(mCamAnim);
 		
-		getCurrentCamera().setLookAt(new Number3D(0,0,30));		
+		getCurrentCamera().setLookAt(new Vector3(0,0,30));		
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {

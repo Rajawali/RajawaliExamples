@@ -15,7 +15,7 @@ import rajawali.materials.SphereMapMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.SphereMapTexture;
 import rajawali.materials.textures.Texture;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
@@ -53,7 +53,7 @@ public class RajawaliSphereMapRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 		
-		Number3D axis = new Number3D(2, -4, 1);
+		Vector3 axis = new Vector3(2, -4, 1);
 		axis.normalize();
 		
 		Animation3D anim1 = new RotateAnimation3D(axis, 360);

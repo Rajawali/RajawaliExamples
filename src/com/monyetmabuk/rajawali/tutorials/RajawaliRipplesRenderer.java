@@ -15,7 +15,7 @@ import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.SimpleMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Plane;
 import rajawali.renderer.RajawaliRenderer;
@@ -57,7 +57,7 @@ public class RajawaliRipplesRenderer extends RajawaliRenderer {
 				cube.setMaterial(material);
 				cube.setColor((int)(0xffffff * rnd.nextFloat()));
 				group.addChild(cube);
-				Number3D axis = new Number3D(rnd.nextFloat(), rnd.nextFloat(), rnd.nextFloat());
+				Vector3 axis = new Vector3(rnd.nextFloat(), rnd.nextFloat(), rnd.nextFloat());
 				Animation3D anim = new RotateAnimation3D(axis, 360);
 				anim.setRepeatMode(RepeatMode.INFINITE);
 				anim.setDuration(8000);

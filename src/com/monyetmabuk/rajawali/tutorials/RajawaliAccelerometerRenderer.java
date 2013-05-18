@@ -11,19 +11,19 @@ import rajawali.lights.DirectionalLight;
 import rajawali.materials.CubeMapMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.CubeMapTexture;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
 public class RajawaliAccelerometerRenderer extends RajawaliRenderer {
 	private DirectionalLight mLight;
 	private BaseObject3D mMonkey;
-	private Number3D mAccValues;
+	private Vector3 mAccValues;
 
 	public RajawaliAccelerometerRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
-		mAccValues = new Number3D();
+		mAccValues = new Vector3();
 	}
 	
 	protected void initScene() {

@@ -12,7 +12,7 @@ import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
-import rajawali.math.Number3D.Axis;
+import rajawali.math.Vector3.Axis;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 import android.view.animation.AccelerateDecelerateInterpolator;

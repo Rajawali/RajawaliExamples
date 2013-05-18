@@ -14,7 +14,7 @@ import rajawali.animation.TranslateAnimation3D;
 import rajawali.bounds.IBoundingVolume;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import rajawali.primitives.Cube;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
@@ -83,14 +83,14 @@ public class RajawaliCollisionDetectionRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 
-		Animation3D anim = new TranslateAnimation3D(new Number3D(-1, 3, 0));
+		Animation3D anim = new TranslateAnimation3D(new Vector3(-1, 3, 0));
 		anim.setDuration(4000);
 		anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		anim.setTransformable3D(mCubeBox);
 		registerAnimation(anim);
 		anim.play();
 
-		Number3D axis = new Number3D(2, 1, 4);
+		Vector3 axis = new Vector3(2, 1, 4);
 		axis.normalize();
 		
 		anim = new RotateAnimation3D(axis, 360);
@@ -100,21 +100,21 @@ public class RajawaliCollisionDetectionRenderer extends RajawaliRenderer {
 		registerAnimation(anim);
 		anim.play();
 
-		anim = new TranslateAnimation3D(new Number3D(-1, -3, 0));
+		anim = new TranslateAnimation3D(new Vector3(-1, -3, 0));
 		anim.setDuration(4000);
 		anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		anim.setTransformable3D(mBoxesBox);
 		registerAnimation(anim);
 		anim.play();
 
-		anim = new TranslateAnimation3D(new Number3D(1, 2, 0));
+		anim = new TranslateAnimation3D(new Vector3(1, 2, 0));
 		anim.setDuration(2000);
 		anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		anim.setTransformable3D(mCubeSphere);
 		registerAnimation(anim);
 		anim.play();
 
-		anim = new TranslateAnimation3D(new Number3D(1, -2, 0));
+		anim = new TranslateAnimation3D(new Vector3(1, -2, 0));
 		anim.setDuration(2000);
 		anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		anim.setTransformable3D(mBoxesSphere);

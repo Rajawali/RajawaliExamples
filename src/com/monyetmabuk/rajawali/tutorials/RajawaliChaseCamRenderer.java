@@ -14,7 +14,7 @@ import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.SimpleMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
@@ -94,7 +94,7 @@ public class RajawaliChaseCamRenderer extends RajawaliRenderer {
 		// -- create a chase camera
 		//    the first parameter is the camera offset
 		//    the second parameter is the interpolation factor
-		ChaseCamera chaseCamera = new ChaseCamera(new Number3D(0, 3, 16), .1f);
+		ChaseCamera chaseCamera = new ChaseCamera(new Vector3(0, 3, 16), .1f);
 		// -- tell the camera which object to chase
 		chaseCamera.setObjectToChase(mRaptor);
 		// -- set the far plane to 1000 so that we actually see the sky sphere
@@ -102,7 +102,7 @@ public class RajawaliChaseCamRenderer extends RajawaliRenderer {
 		replaceAndSwitchCamera(chaseCamera, 0);
 	}
 	
-	public void setCameraOffset(Number3D offset) {
+	public void setCameraOffset(Vector3 offset) {
 		// -- change the camera offset
 		((ChaseCamera) getCurrentCamera()).setCameraOffset(offset);
 	}

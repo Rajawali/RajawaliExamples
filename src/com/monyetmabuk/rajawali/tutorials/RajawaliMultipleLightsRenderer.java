@@ -13,7 +13,7 @@ import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.PointLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.textures.Texture;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
@@ -50,14 +50,14 @@ public class RajawaliMultipleLightsRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 		
-		Animation3D anim = new TranslateAnimation3D(new Number3D(-10, -10, 5), new Number3D(-10, 10, 5));
+		Animation3D anim = new TranslateAnimation3D(new Vector3(-10, -10, 5), new Vector3(-10, 10, 5));
 		anim.setDuration(4000);
 		anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		anim.setTransformable3D(light1);
 		registerAnimation(anim);
 		anim.play();
 		
-		anim = new TranslateAnimation3D(new Number3D(10, 10, 5), new Number3D(10, -10, 5));
+		anim = new TranslateAnimation3D(new Vector3(10, 10, 5), new Vector3(10, -10, 5));
 		anim.setDuration(2000);
 		anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		anim.setTransformable3D(light2);

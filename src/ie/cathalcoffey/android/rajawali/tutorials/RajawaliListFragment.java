@@ -4,7 +4,7 @@ package ie.cathalcoffey.android.rajawali.tutorials;
 import rajawali.animation.Animation3D;
 import rajawali.animation.IAnimation3DListener;
 import rajawali.animation.RotateAnimation3D;
-import rajawali.math.Number3D.Axis;
+import rajawali.math.Vector3.Axis;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.View;

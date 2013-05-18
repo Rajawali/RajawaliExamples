@@ -15,7 +15,7 @@ import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.PhongMaterial;
 import rajawali.math.MathUtil;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import rajawali.math.Quaternion;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
@@ -65,7 +65,7 @@ public class RajawaliUsingGeometryDataRenderer extends RajawaliRenderer {
 			
 			// -- define the up axis. we will use this to rotate
 			//    the spikes
-			Number3D upAxis = new Number3D(0, 1, 0);
+			Vector3 upAxis = new Vector3(0, 1, 0);
 			
 			// -- now loop through the sphere's vertices and place
 			//    a spike on each vertex
@@ -74,11 +74,11 @@ public class RajawaliUsingGeometryDataRenderer extends RajawaliRenderer {
 				// -- set the spike's position to the sphere's current vertex position
 				spike.setPosition(vertBuffer.get(i), vertBuffer.get(i+1), vertBuffer.get(i+2));
 				// -- get the normal so we can orient the spike to the normal 
-				Number3D normal = new Number3D(normBuffer.get(i), normBuffer.get(i+1), normBuffer.get(i+2));
+				Vector3 normal = new Vector3(normBuffer.get(i), normBuffer.get(i+1), normBuffer.get(i+2));
 				// -- get the rotation axis
-				Number3D axis = Number3D.cross(upAxis, normal);
+				Vector3 axis = Vector3.cross(upAxis, normal);
 				// -- get the rotation angle
-				float angle = MathUtil.radiansToDegrees((float)Math.acos(Number3D.dot(upAxis, normal)));
+				float angle = MathUtil.radiansToDegrees((float)Math.acos(Vector3.dot(upAxis, normal)));
 				// -- create the quaternion
 				Quaternion q = new Quaternion();
 				q.fromAngleAxis(angle, axis);
@@ -90,7 +90,7 @@ public class RajawaliUsingGeometryDataRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 		
-		Number3D rotationAxis = new Number3D(.3f, .9f, .15f);
+		Vector3 rotationAxis = new Vector3(.3f, .9f, .15f);
 		rotationAxis.normalize();
 		
 		mAnim = new RotateAnimation3D(rotationAxis, 360);

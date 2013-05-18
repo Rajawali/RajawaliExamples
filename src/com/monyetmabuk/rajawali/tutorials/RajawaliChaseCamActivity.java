@@ -1,6 +1,6 @@
 package com.monyetmabuk.rajawali.tutorials;
 
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Window;
@@ -12,7 +12,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 public class RajawaliChaseCamActivity extends RajawaliExampleActivity implements OnSeekBarChangeListener {
 	private RajawaliChaseCamRenderer mRenderer;
 	private SeekBar mSeekBarX, mSeekBarY, mSeekBarZ;
-	private Number3D mCameraOffset;
+	private Vector3 mCameraOffset;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class RajawaliChaseCamActivity extends RajawaliExampleActivity implements
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		mMultisamplingEnabled = false;
-		mCameraOffset = new Number3D();
+		mCameraOffset = new Vector3();
 		super.onCreate(savedInstanceState);
 
 		mRenderer = new RajawaliChaseCamRenderer(this);

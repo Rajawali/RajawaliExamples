@@ -13,7 +13,7 @@ import rajawali.animation.TranslateAnimation3D;
 import rajawali.filters.SwirlFilter;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -69,7 +69,7 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 
-		mAnimation = new TranslateAnimation3D(new Number3D(0, 0, 2));
+		mAnimation = new TranslateAnimation3D(new Vector3(0, 0, 2));
 		mAnimation.setDuration(6000);
 		mAnimation.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		mAnimation.setTransformable3D(getCurrentCamera());

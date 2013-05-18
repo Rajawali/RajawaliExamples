@@ -14,7 +14,7 @@ import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.SimpleMaterial;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import rajawali.parser.AParser.ParsingException;
 import rajawali.parser.ObjParser;
 import rajawali.primitives.Line3D;
@@ -50,7 +50,7 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		float rh = r * .5f;
 
 		for (int i = 0; i < 16; i++) {
-			path.addPoint(new Number3D(-rh + (Math.random() * r), -rh + (Math.random() * r), -rh + (Math.random() * r)));
+			path.addPoint(new Vector3(-rh + (Math.random() * r), -rh + (Math.random() * r), -rh + (Math.random() * r)));
 		}
 
 		try {
@@ -94,7 +94,7 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		}
 
 		// -- visualize the line
-		Stack<Number3D> linePoints = new Stack<Number3D>();
+		Stack<Vector3> linePoints = new Stack<Vector3>();
 		for (int i = 0; i < 100; i++) {
 			linePoints.add(path.calculatePoint(i / 100f));
 		}
@@ -102,7 +102,7 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		line.setMaterial(material);
 		addChild(line);
 
-		EllipticalOrbitAnimation3D camAnim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(26, 0, 0), 0, 360, OrbitDirection.CLOCKWISE);
+		EllipticalOrbitAnimation3D camAnim = new EllipticalOrbitAnimation3D(new Vector3(), new Vector3(26, 0, 0), 0, 360, OrbitDirection.CLOCKWISE);
 		camAnim.setDuration(10000);
 		camAnim.setRepeatMode(RepeatMode.INFINITE);
 		camAnim.setTransformable3D(getCurrentCamera());

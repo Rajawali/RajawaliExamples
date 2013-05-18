@@ -10,7 +10,7 @@ import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
 
@@ -33,7 +33,7 @@ public class RajawaliVertexShaderRenderer extends RajawaliRenderer {
 		mSphere.setMaterial(mMaterial);
 		addChild(mSphere);
 		
-		Number3D axis = new Number3D(2, 4, 1);
+		Vector3 axis = new Vector3(2, 4, 1);
 		axis.normalize();
 		
 		mAnim = new RotateAnimation3D(axis, 360);
