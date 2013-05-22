@@ -3,8 +3,8 @@ package com.monyetmabuk.rajawali.tutorials;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.animation.mesh.AnimationSkeleton;
-import rajawali.animation.mesh.BoneAnimationSequence;
+import rajawali.animation.mesh.SkeletalAnimationObject3D;
+import rajawali.animation.mesh.SkeletalAnimationSequence;
 import rajawali.lights.DirectionalLight;
 import rajawali.parser.AParser.ParsingException;
 import rajawali.parser.md5.MD5AnimParser;
@@ -14,7 +14,7 @@ import android.content.Context;
 
 public class RajawaliMD5Renderer extends RajawaliRenderer {
 	private DirectionalLight mLight;
-	private AnimationSkeleton mObject;
+	private SkeletalAnimationObject3D mObject;
 	
 	public RajawaliMD5Renderer(Context context)
 	{
@@ -38,9 +38,9 @@ public class RajawaliMD5Renderer extends RajawaliRenderer {
 			MD5AnimParser animParser = new MD5AnimParser("attack2", this, R.raw.boblampclean_anim);
 			animParser.parse();
 			
-			BoneAnimationSequence sequence = (BoneAnimationSequence)animParser.getParsedAnimationSequence();
+			SkeletalAnimationSequence sequence = (SkeletalAnimationSequence)animParser.getParsedAnimationSequence();
 			
-			mObject = (AnimationSkeleton)meshParser.getParsedAnimationObject();
+			mObject = (SkeletalAnimationObject3D)meshParser.getParsedAnimationObject();
 			mObject.setAnimationSequence(sequence);
 			mObject.addLight(mLight);
 			mObject.setScale(.04f);
