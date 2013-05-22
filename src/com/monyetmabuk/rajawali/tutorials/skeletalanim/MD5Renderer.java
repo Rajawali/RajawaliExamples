@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.skeletalanim;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -12,11 +12,14 @@ import rajawali.parser.md5.MD5MeshParser;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
-public class RajawaliMD5Renderer extends RajawaliRenderer {
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
+
+public class MD5Renderer extends RajawaliRenderer {
 	private DirectionalLight mLight;
 	private SkeletalAnimationObject3D mObject;
 	
-	public RajawaliMD5Renderer(Context context)
+	public MD5Renderer(Context context)
 	{
 		super(context);
 		setFrameRate(60);

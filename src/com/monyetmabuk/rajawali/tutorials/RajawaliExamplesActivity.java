@@ -14,6 +14,8 @@ import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.monyetmabuk.rajawali.tutorials.skeletalanim.BlendTransitionActivity;
+import com.monyetmabuk.rajawali.tutorials.skeletalanim.MD5Activity;
 import com.monyetmabuk.rajawali.tutorials.ui.ExamplesAdapter;
 
 public class RajawaliExamplesActivity extends ListActivity {
@@ -49,12 +51,13 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("29. Chase Camera", RajawaliChaseCamActivity.class),
 			new ExampleItem("30. Using Geometry Data", RajawaliUsingGeometryDataActivity.class),
 			new ExampleItem("31. 360° Images", Rajawali360ImagesActivity.class),
-			new ExampleItem("32. Skeletal Animation (MD5)", RajawaliMD5Activity.class),
+			new ExampleItem("32. Skeletal Animation (MD5)", MD5Activity.class),
 			new ExampleItem("33. Texture Compression (ETC)", RajawaliTextureCompressionActivity.class),
 			new ExampleItem("34. Color Animation", RajawaliColorAnimationActivity.class),
 			new ExampleItem("35. Scenes", RajawaliSceneActivity.class),
 			new ExampleItem("36. Specular and Alpha Maps", RajawaliSpecularAndAlphaActivity.class),
-			new ExampleItem("37. Video Texture", RajawaliVideoTextureActivity.class)};
+			new ExampleItem("37. Video Texture", RajawaliVideoTextureActivity.class),
+			new ExampleItem("38. Skeletal Animation Transition Blending", BlendTransitionActivity.class)};
 
 	public void onCreate(Bundle savedInstanceState) {
 		String[] strings = new String[mItems.length];

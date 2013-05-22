@@ -47,11 +47,12 @@
         <activity android:name=".RajawaliChaseCamActivity"></activity>
         <activity android:name=".RajawaliUsingGeometryDataActivity"></activity>
         <activity android:name=".Rajawali360ImagesActivity"></activity>
-        <activity android:name=".RajawaliMD5Activity"></activity>
+        <activity android:name="com.monyetmabuk.rajawali.tutorials.skeletalanim.MD5Activity"></activity>
         <activity android:name=".RajawaliTextureCompressionActivity"></activity>
         <activity android:name=".RajawaliColorAnimationActivity"></activity>
         <activity android:name=".RajawaliSceneActivity"></activity>
         <activity android:name="RajawaliSpecularAndAlphaActivity"></activity>
         <activity android:name="RajawaliVideoTextureActivity"></activity>
+        <activity android:name=".skeletalanim.BlendTransitionActivity"></activity>
     </application>
 </manifest>
