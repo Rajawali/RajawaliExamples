@@ -13,14 +13,13 @@ import rajawali.filters.TouchRippleFilter;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.SimpleMaterial;
-import rajawali.math.Number3D;
+import rajawali.materials.textures.ATexture.TextureException;
+import rajawali.materials.textures.Texture;
+import rajawali.math.Vector3;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Plane;
-import rajawali.renderer.PostProcessingRenderer.PostProcessingQuality;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 public class RajawaliRipplesRenderer extends RajawaliRenderer {
 	private final int NUM_CUBES_H = 2;
@@ -58,7 +57,7 @@ public class RajawaliRipplesRenderer extends RajawaliRenderer {
 				cube.setMaterial(material);
 				cube.setColor((int)(0xffffff * rnd.nextFloat()));
 				group.addChild(cube);
-				Number3D axis = new Number3D(rnd.nextFloat(), rnd.nextFloat(), rnd.nextFloat());
+				Vector3 axis = new Vector3(rnd.nextFloat(), rnd.nextFloat(), rnd.nextFloat());
 				Animation3D anim = new RotateAnimation3D(axis, 360);
 				anim.setRepeatMode(RepeatMode.INFINITE);
 				anim.setDuration(8000);
@@ -76,8 +75,11 @@ public class RajawaliRipplesRenderer extends RajawaliRenderer {
 		addChild(group);
 		
 		SimpleMaterial planeMat = new SimpleMaterial();
-		Bitmap texture = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.utrecht);
-		planeMat.addTexture(mTextureManager.addTexture(texture));
+		try {
+			planeMat.addTexture(new Texture(R.drawable.utrecht));
+		} catch (TextureException e) {
+			e.printStackTrace();
+		}
 		Plane plane = new Plane(4, 4, 1, 1);
 		plane.setRotZ(-90);
 		plane.setScale(3.7f);

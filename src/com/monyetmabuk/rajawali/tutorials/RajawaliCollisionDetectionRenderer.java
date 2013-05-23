@@ -1,7 +1,6 @@
 package com.monyetmabuk.rajawali.tutorials;
 
 import java.io.ObjectInputStream;
-import java.util.Stack;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -15,7 +14,7 @@ import rajawali.animation.TranslateAnimation3D;
 import rajawali.bounds.IBoundingVolume;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import rajawali.primitives.Cube;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
@@ -26,7 +25,6 @@ public class RajawaliCollisionDetectionRenderer extends RajawaliRenderer {
 	private BaseObject3D mCubeSphere, mBoxesSphere;
 	private boolean mBoxIntersect = false;
 	private boolean mSphereIntersect = false;
-	private Stack<Animation3D> mAnimations;
 
 	public RajawaliCollisionDetectionRenderer(Context context) {
 		super(context);
@@ -85,51 +83,49 @@ public class RajawaliCollisionDetectionRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 
-		mAnimations = new Stack<Animation3D>();
-		
-		Animation3D anim = new TranslateAnimation3D(new Number3D(-1, 3, 0));
+		Animation3D anim = new TranslateAnimation3D(new Vector3(-1, 3, 0));
 		anim.setDuration(4000);
 		anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		anim.setTransformable3D(mCubeBox);
-		mAnimations.push(anim);
+		registerAnimation(anim);
+		anim.play();
 
-		Number3D axis = new Number3D(2, 1, 4);
+		Vector3 axis = new Vector3(2, 1, 4);
 		axis.normalize();
 		
 		anim = new RotateAnimation3D(axis, 360);
 		anim.setDuration(4000);
 		anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		anim.setTransformable3D(mCubeBox);
-		mAnimations.push(anim);
+		registerAnimation(anim);
+		anim.play();
 
-		anim = new TranslateAnimation3D(new Number3D(-1, -3, 0));
+		anim = new TranslateAnimation3D(new Vector3(-1, -3, 0));
 		anim.setDuration(4000);
 		anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		anim.setTransformable3D(mBoxesBox);
-		mAnimations.push(anim);
+		registerAnimation(anim);
+		anim.play();
 
-		anim = new TranslateAnimation3D(new Number3D(1, 2, 0));
+		anim = new TranslateAnimation3D(new Vector3(1, 2, 0));
 		anim.setDuration(2000);
 		anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		anim.setTransformable3D(mCubeSphere);
-		mAnimations.push(anim);
+		registerAnimation(anim);
+		anim.play();
 
-		anim = new TranslateAnimation3D(new Number3D(1, -2, 0));
+		anim = new TranslateAnimation3D(new Vector3(1, -2, 0));
 		anim.setDuration(2000);
 		anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		anim.setTransformable3D(mBoxesSphere);
-		mAnimations.push(anim);
+		registerAnimation(anim);
+		anim.play();
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		for(int i=0; i<mAnimations.size(); i++) {
-			Animation3D anim = mAnimations.get(i);
-			registerAnimation(anim);
-			anim.play();
-		}
 	}
 
 	public void onDrawFrame(GL10 glUnused) {

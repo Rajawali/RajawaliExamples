@@ -5,22 +5,21 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
 import rajawali.Camera;
-import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.DirectionalLight;
-import rajawali.math.Number3D;
-import rajawali.parser.ObjParser;
+import rajawali.materials.DiffuseMaterial;
+import rajawali.materials.textures.ATexture.TextureException;
+import rajawali.materials.textures.Texture;
+import rajawali.math.Vector3;
 import rajawali.parser.AParser.ParsingException;
+import rajawali.parser.ObjParser;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
 public class RajawaliFogRenderer extends RajawaliRenderer {
 	private DirectionalLight mLight;
-	private Animation3D mCamAnim;
 	private BaseObject3D mRoad;
 
 	public RajawaliFogRenderer(Context context) {
@@ -58,28 +57,35 @@ public class RajawaliFogRenderer extends RajawaliRenderer {
 		mRoad.setRotY(180);
 		addChild(mRoad);
 		
-		Bitmap roadTexture = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.road);
-		mRoad.getChildByName("Road").addTexture(mTextureManager.addTexture(roadTexture));
+		try {
+			DiffuseMaterial roadMaterial = new DiffuseMaterial();
+			roadMaterial.addTexture(new Texture(R.drawable.road));
+			mRoad.getChildByName("Road").setMaterial(roadMaterial);
+			
+			DiffuseMaterial signMaterial = new DiffuseMaterial();
+			signMaterial.addTexture(new Texture(R.drawable.sign));
+			mRoad.getChildByName("Sign").setMaterial(signMaterial);
+			
+			DiffuseMaterial warningMaterial = new DiffuseMaterial();
+			warningMaterial.addTexture(new Texture(R.drawable.warning));
+			mRoad.getChildByName("Warning").setMaterial(warningMaterial);
+		} catch(TextureException tme) {
+			tme.printStackTrace();
+		}
 		
-		Bitmap signTexture = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.sign);
-		mRoad.getChildByName("Sign").addTexture(mTextureManager.addTexture(signTexture));
-		
-		Bitmap warningTexture = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.warning);
-		mRoad.getChildByName("Warning").addTexture(mTextureManager.addTexture(warningTexture));
-		
-		mCamAnim = new TranslateAnimation3D(new Number3D(0, 1, -23));
-		mCamAnim.setDuration(8000);
-		mCamAnim.setInterpolator(new AccelerateDecelerateInterpolator());
-		mCamAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
-		mCamAnim.setTransformable3D(getCurrentCamera());
+		TranslateAnimation3D camAnim = new TranslateAnimation3D(new Vector3(0, 1, -23));
+		camAnim.setDuration(8000);
+		camAnim.setInterpolator(new AccelerateDecelerateInterpolator());
+		camAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+		camAnim.setTransformable3D(getCurrentCamera());
+		registerAnimation(camAnim);
+		camAnim.play();
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		registerAnimation(mCamAnim);
-		mCamAnim.play();
 	}
 
 	public void onDrawFrame(GL10 glUnused) {

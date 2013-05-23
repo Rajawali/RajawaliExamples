@@ -9,8 +9,8 @@ import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
 import rajawali.lights.PointLight;
-import rajawali.math.Number3D;
-import rajawali.math.Number3D.Axis;
+import rajawali.math.Vector3;
+import rajawali.math.Vector3.Axis;
 import rajawali.parser.AParser.ParsingException;
 import rajawali.parser.ObjParser;
 import rajawali.renderer.RajawaliRenderer;
@@ -53,7 +53,7 @@ public class RajawaliLoadModelRenderer extends RajawaliRenderer {
 		mObjectGroup.setY(-1);
 		mObjectGroup.setRotation(90, 0, 0);
 		
-		mLightAnim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(0, 3, 0), Number3D.getAxisVector(Axis.Z), 0, OrbitDirection.CLOCKWISE);
+		mLightAnim = new EllipticalOrbitAnimation3D(new Vector3(), new Vector3(0, 3, 0), Vector3.getAxisVector(Axis.Z), 0, 0, OrbitDirection.CLOCKWISE);
 		mLightAnim.setDuration(5000);
 		mLightAnim.setRepeatMode(RepeatMode.INFINITE);
 		mLightAnim.setTransformable3D(mLight);

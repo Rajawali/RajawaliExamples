@@ -7,19 +7,16 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
 import rajawali.SerializedObject3D;
-import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
-import rajawali.math.Number3D.Axis;
+import rajawali.math.Vector3.Axis;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
 public class RajawaliTransparentSurfaceRenderer extends RajawaliRenderer {
-	private Animation3D mAnim;
-	
 	public RajawaliTransparentSurfaceRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
@@ -44,11 +41,13 @@ public class RajawaliTransparentSurfaceRenderer extends RajawaliRenderer {
 			monkey.setScale(2);
 			addChild(monkey);
 
-			mAnim = new RotateAnimation3D(Axis.Y, 360);
-			mAnim.setDuration(6000);
-			mAnim.setRepeatMode(RepeatMode.INFINITE);
-			mAnim.setInterpolator(new AccelerateDecelerateInterpolator());
-			mAnim.setTransformable3D(monkey);
+			RotateAnimation3D anim = new RotateAnimation3D(Axis.Y, 360);
+			anim.setDuration(6000);
+			anim.setRepeatMode(RepeatMode.INFINITE);
+			anim.setInterpolator(new AccelerateDecelerateInterpolator());
+			anim.setTransformable3D(monkey);
+			registerAnimation(anim);
+			anim.play();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -63,7 +62,5 @@ public class RajawaliTransparentSurfaceRenderer extends RajawaliRenderer {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		registerAnimation(mAnim);
-		mAnim.play();
 	}
 }

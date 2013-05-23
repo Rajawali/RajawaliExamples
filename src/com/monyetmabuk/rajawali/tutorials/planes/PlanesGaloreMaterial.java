@@ -1,7 +1,7 @@
 package com.monyetmabuk.rajawali.tutorials.planes;
 
 import rajawali.materials.AMaterial;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import android.opengl.GLES20;
 
 /**
@@ -115,7 +115,7 @@ public class PlanesGaloreMaterial extends AMaterial {
 				false, 0, 0);
 	}
 
-	public void setCameraPosition(Number3D cameraPos) {
+	public void setCameraPosition(Vector3 cameraPos) {
 		mCamPos[0] = cameraPos.x; mCamPos[1] = cameraPos.y; mCamPos[2] = cameraPos.z;
 		GLES20.glUniform3fv(muCamPosHandle, 1, mCamPos, 0);
 	}

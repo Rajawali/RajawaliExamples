@@ -3,14 +3,14 @@ package com.monyetmabuk.rajawali.tutorials;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import rajawali.BaseObject3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
+import rajawali.materials.textures.ATexture.TextureException;
+import rajawali.materials.textures.Texture;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
+import android.content.Context;
 
 public class RajawaliBasicExampleRenderer extends RajawaliRenderer {
 	private DirectionalLight mLight;
@@ -26,13 +26,16 @@ public class RajawaliBasicExampleRenderer extends RajawaliRenderer {
 		mLight.setColor(1.0f, 1.0f, 1.0f);
 		mLight.setPower(2);
 
-		Bitmap bg = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.earthtruecolor_nasa_big);
-		DiffuseMaterial material = new DiffuseMaterial();
-		mSphere = new Sphere(1, 18, 18);
-		mSphere.setMaterial(material);
-		mSphere.addLight(mLight);
-		mSphere.addTexture(mTextureManager.addTexture(bg));
-		addChild(mSphere); //Queue an addition task for mSphere
+		try {
+			DiffuseMaterial material = new DiffuseMaterial();
+			material.addTexture(new Texture(R.drawable.earthtruecolor_nasa_big));
+			mSphere = new Sphere(1, 24, 24);
+			mSphere.setMaterial(material);
+			mSphere.addLight(mLight);
+			addChild(mSphere); //Queue an addition task for mSphere
+		} catch (TextureException e) {
+			e.printStackTrace();
+		}
 
 		getCurrentCamera().setZ(4.2f);
 	}

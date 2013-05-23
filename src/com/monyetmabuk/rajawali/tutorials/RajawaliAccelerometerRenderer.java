@@ -9,21 +9,21 @@ import rajawali.BaseObject3D;
 import rajawali.SerializedObject3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.CubeMapMaterial;
-import rajawali.math.Number3D;
+import rajawali.materials.textures.ATexture.TextureException;
+import rajawali.materials.textures.CubeMapTexture;
+import rajawali.math.Vector3;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 public class RajawaliAccelerometerRenderer extends RajawaliRenderer {
 	private DirectionalLight mLight;
 	private BaseObject3D mMonkey;
-	private Number3D mAccValues;
+	private Vector3 mAccValues;
 
 	public RajawaliAccelerometerRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
-		mAccValues = new Number3D();
+		mAccValues = new Vector3();
 	}
 	
 	protected void initScene() {
@@ -46,16 +46,15 @@ public class RajawaliAccelerometerRenderer extends RajawaliRenderer {
 
 		getCurrentCamera().setZ(7);
 
-		Bitmap[] textures = new Bitmap[6];
-		textures[0] = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.posx);
-		textures[1] = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.negx);
-		textures[2] = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.posy);
-		textures[3] = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.negy);
-		textures[4] = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.posz);
-		textures[5] = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.negz);
-
-		mMonkey.setMaterial(new CubeMapMaterial());
-		mMonkey.addTexture(mTextureManager.addCubemapTextures(textures));
+		int[] resourceIds = new int[] { R.drawable.posx, R.drawable.negx, R.drawable.posy, R.drawable.negy, R.drawable.posz, R.drawable.negz};
+		
+		CubeMapMaterial material = new CubeMapMaterial();
+		try {
+			material.addTexture(new CubeMapTexture("environmentMap", resourceIds));
+			mMonkey.setMaterial(material);
+		} catch (TextureException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {

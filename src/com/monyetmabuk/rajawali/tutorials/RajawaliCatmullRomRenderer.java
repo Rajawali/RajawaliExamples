@@ -6,7 +6,6 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
-import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.CatmullRomPath3D;
 import rajawali.animation.EllipticalOrbitAnimation3D;
@@ -15,7 +14,7 @@ import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.SimpleMaterial;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import rajawali.parser.AParser.ParsingException;
 import rajawali.parser.ObjParser;
 import rajawali.primitives.Line3D;
@@ -24,23 +23,15 @@ import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
 public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
-	private Stack<Animation3D> mAnims;
-	
 	public RajawaliCatmullRomRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
-		mAnims = new Stack<Animation3D>();
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		for (int i = 0; i < mAnims.size(); i++) {
-			Animation3D anim = mAnims.get(i);
-			registerAnimation(anim);
-			anim.play();
-		}
 	}
 	
 	protected void initScene() {
@@ -59,7 +50,7 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		float rh = r * .5f;
 
 		for (int i = 0; i < 16; i++) {
-			path.addPoint(new Number3D(-rh + (Math.random() * r), -rh + (Math.random() * r), -rh + (Math.random() * r)));
+			path.addPoint(new Vector3(-rh + (Math.random() * r), -rh + (Math.random() * r), -rh + (Math.random() * r)));
 		}
 
 		try {
@@ -72,13 +63,14 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 			arrow.addLight(light1);
 			addChild(arrow);
 
-			TranslateAnimation3D mAnim = new TranslateAnimation3D(path);
-			mAnim.setDuration(12000);
-			mAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			TranslateAnimation3D anim = new TranslateAnimation3D(path);
+			anim.setDuration(12000);
+			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			// -- orient to path 
-			mAnim.setOrientToPath(true);
-			mAnim.setTransformable3D(arrow);
-			mAnims.add(mAnim);
+			anim.setOrientToPath(true);
+			anim.setTransformable3D(arrow);
+			registerAnimation(anim);
+			anim.play();
 		} catch(ParsingException e) {
 			e.printStackTrace();
 		}
@@ -102,7 +94,7 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		}
 
 		// -- visualize the line
-		Stack<Number3D> linePoints = new Stack<Number3D>();
+		Stack<Vector3> linePoints = new Stack<Vector3>();
 		for (int i = 0; i < 100; i++) {
 			linePoints.add(path.calculatePoint(i / 100f));
 		}
@@ -110,11 +102,12 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		line.setMaterial(material);
 		addChild(line);
 
-		EllipticalOrbitAnimation3D mCamAnim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(26, 0, 0), 0, OrbitDirection.CLOCKWISE);
-		mCamAnim.setDuration(10000);
-		mCamAnim.setRepeatMode(RepeatMode.INFINITE);
-		mCamAnim.setTransformable3D(getCurrentCamera());
-		mAnims.add(mCamAnim);
+		EllipticalOrbitAnimation3D camAnim = new EllipticalOrbitAnimation3D(new Vector3(), new Vector3(26, 0, 0), 0, 360, OrbitDirection.CLOCKWISE);
+		camAnim.setDuration(10000);
+		camAnim.setRepeatMode(RepeatMode.INFINITE);
+		camAnim.setTransformable3D(getCurrentCamera());
+		registerAnimation(camAnim);
+		camAnim.play();
 	}
 	
 	public void onDrawFrame(GL10 glUnused) {

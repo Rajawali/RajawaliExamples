@@ -7,14 +7,14 @@ import java.nio.FloatBuffer;
 import rajawali.Camera;
 import rajawali.Geometry3D;
 import rajawali.materials.ParticleMaterial;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import rajawali.primitives.Particle;
 import rajawali.util.ObjectColorPicker.ColorPickerInfo;
 import android.opengl.GLES20;
 import android.util.FloatMath;
 
 public class ExampleParticleSystem2 extends Particle {
-	protected Number3D mFriction;
+	protected Vector3 mFriction;
 	protected FloatBuffer mVelocityBuffer;
 	protected FloatBuffer mAnimOffsetBuffer;
 	protected float mTime;
@@ -84,7 +84,7 @@ public class ExampleParticleSystem2 extends Particle {
 		mAnimOffsetBuffer.put(animOffsets);
 		mAnimOffsetBuffer.position(0);
 		
-		mFriction = new Number3D(.95f, .95f, .95f);
+		mFriction = new Vector3(.95f, .95f, .95f);
 		
 		int buff[] = new int[1];
 		GLES20.glGenBuffers(1, buff, 0);

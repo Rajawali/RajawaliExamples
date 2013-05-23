@@ -15,7 +15,7 @@ import rajawali.animation.TranslateAnimation3D;
 import rajawali.bounds.IBoundingVolume;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
-import rajawali.math.Number3D;
+import rajawali.math.Vector3;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
@@ -32,8 +32,8 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 	private BaseObject3D mInitialSphere;
 	private BaseObject3D mInitialCube;
 	private EllipticalOrbitAnimation3D mCameraAnim;
-	private Number3D mFocal;
-	private Number3D mPeriapsis;
+	private Vector3 mFocal;
+	private Vector3 mPeriapsis;
 	
 	private RajawaliScene mScene1;
 	private RajawaliScene mScene2; 
@@ -115,14 +115,13 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mScene1.addChild(mInitialCube); //Add our cube to scene 1
 		mScene2.addChild(mInitialSphere); //Add our sphere to scene 2
 
-		/*Animation3D anim_cube = new EllipticalOrbitAnimation3D(new Number3D(0, 0, -5), new Number3D(0, 5, -5), 0.0,
-				OrbitDirection.CLOCKWISE);*/
-		Animation3D anim_cube = new TranslateAnimation3D(new Number3D(5, 1.5, -4), new Number3D(-5, 1.5, -4));
+		Animation3D anim = new EllipticalOrbitAnimation3D(new Vector3(5, 1.5, -4), new Vector3(-5, 1.5, -4), 0.0,
+				360, OrbitDirection.CLOCKWISE);
 		//Create a camera animation for camera 1
-		mFocal = new Number3D(0, 0, 0);
-		mPeriapsis = new Number3D(0, 0, 20);
+		mFocal = new Vector3(0, 0, 0);
+		mPeriapsis = new Vector3(0, 0, 20);
 		mCameraAnim = new EllipticalOrbitAnimation3D(mFocal, mPeriapsis, 0.0,
-				OrbitDirection.CLOCKWISE);
+				360, OrbitDirection.CLOCKWISE);
 		mCameraAnim.setDuration(10000);
 		mCameraAnim.setRepeatMode(Animation3D.RepeatMode.INFINITE);
 		mCameraAnim.setTransformable3D(mCamera1);
@@ -130,10 +129,10 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		//Register the animation with BOTH scenes
 		mScene1.registerAnimation(mCameraAnim);
 		mScene2.registerAnimation(mCameraAnim);
-		anim_cube.setDuration(10000);
-		anim_cube.setRepeatMode(Animation3D.RepeatMode.REVERSE_INFINITE);
-		anim_cube.setTransformable3D(mInitialCube);
-		//anim_cube.play();
+		anim.setDuration(10000);
+		anim.setRepeatMode(Animation3D.RepeatMode.REVERSE_INFINITE);
+		anim.setTransformable3D(mInitialCube);
+		//anim.play();
 		//mScene1.registerAnimation(anim_cube);
 		
 		//Replace the default scene with our scene 1 and switch to it
@@ -150,8 +149,8 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
-		Number3D tMin = getCurrentScene().getSceneMinBound();
-		Number3D tMax = getCurrentScene().getSceneMaxBound();
+		Vector3 tMin = getCurrentScene().getSceneMinBound();
+		Vector3 tMax = getCurrentScene().getSceneMaxBound();
 		mFocal.x = tMin.x + (tMax.x - tMin.x) * .5f;
 		mFocal.y = tMin.y + (tMax.y - tMin.y) * .5f;
 		mFocal.z = tMin.z + (tMax.z - tMin.z) * .5f;
@@ -200,7 +199,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		obj.setMaterial(mMaterial);
 		obj.setShowBoundingVolume(true);
 		obj.setScale(mRandom.nextFloat()*0.5f+0.1f);
-		obj.setColor(new Number3D(mRandom.nextInt(255), mRandom.nextInt(255), mRandom.nextInt(255)));
+		obj.setColor(new Vector3(mRandom.nextInt(255), mRandom.nextInt(255), mRandom.nextInt(255)));
 		boolean positive = mRandom.nextBoolean();
 		int sign1 = 1;
 		int sign2 = 1;

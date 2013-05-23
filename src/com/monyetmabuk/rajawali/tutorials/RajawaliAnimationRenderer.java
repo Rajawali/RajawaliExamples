@@ -17,8 +17,8 @@ import rajawali.animation.ScaleAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.PointLight;
 import rajawali.materials.DiffuseMaterial;
-import rajawali.math.Number3D;
-import rajawali.math.Number3D.Axis;
+import rajawali.math.Vector3;
+import rajawali.math.Vector3.Axis;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 import android.view.animation.BounceInterpolator;
@@ -59,7 +59,7 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 
 		mQueue = new Animation3DQueue();
 
-		Animation3D anim = new ScaleAnimation3D(new Number3D(1.6f, .8f, 1));
+		Animation3D anim = new ScaleAnimation3D(new Vector3(1.6f, .8f, 1));
 		anim.setInterpolator(new LinearInterpolator());
 		anim.setDuration(1000);
 		anim.setRepeatCount(3);
@@ -68,7 +68,7 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 		registerAnimation(anim);
 		mQueue.addAnimation(anim);
 
-		Number3D axis = new Number3D(10, 5, 2);
+		Vector3 axis = new Vector3(10, 5, 2);
 		axis.normalize();
 		
 		anim = new RotateAnimation3D(axis, 0, 360);
@@ -77,13 +77,13 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 		registerAnimation(anim);
 		mQueue.addAnimation(anim);
 
-		anim = new TranslateAnimation3D(new Number3D(-2, -2, 0));
+		anim = new TranslateAnimation3D(new Vector3(-2, -2, 0));
 		anim.setDuration(500);
 		anim.setTransformable3D(mMonkey);
 		registerAnimation(anim);
 		mQueue.addAnimation(anim);
 
-		anim = new TranslateAnimation3D(new Number3D(-2, -2, 0), new Number3D(2, 2, 0));
+		anim = new TranslateAnimation3D(new Vector3(-2, -2, 0), new Vector3(2, 2, 0));
 		anim.setDuration(2000);
 		anim.setTransformable3D(mMonkey);
 		anim.setInterpolator(new BounceInterpolator());
@@ -91,7 +91,7 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 		registerAnimation(anim);
 		mQueue.addAnimation(anim);
 
-		anim = new EllipticalOrbitAnimation3D(new Number3D(), new Number3D(0, 3, 0), Number3D.getAxisVector(Axis.Z), 0, OrbitDirection.CLOCKWISE);
+		anim = new EllipticalOrbitAnimation3D(new Vector3(), new Vector3(0, 3, 0), Vector3.getAxisVector(Axis.Z), 0, 360, OrbitDirection.CLOCKWISE);
 		anim.setInterpolator(new LinearInterpolator());
 		anim.setDuration(2000);
 		anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);

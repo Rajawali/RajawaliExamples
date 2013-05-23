@@ -1,26 +1,23 @@
 package com.monyetmabuk.rajawali.tutorials;
 
 import java.io.ObjectInputStream;
-import java.util.Stack;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
 import rajawali.SerializedObject3D;
-import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.ToonMaterial;
-import rajawali.math.Number3D.Axis;
+import rajawali.math.Vector3.Axis;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
 public class RajawaliToonShadingRenderer extends RajawaliRenderer {
 	private DirectionalLight mLight;
 	private BaseObject3D mMonkey1, mMonkey2, mMonkey3;
-	private Stack<Animation3D> mAnimations;
 
 	public RajawaliToonShadingRenderer(Context context) {
 		super(context);
@@ -65,35 +62,31 @@ public class RajawaliToonShadingRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 		
-		mAnimations = new Stack<Animation3D>();
-		
 		RotateAnimation3D anim = new RotateAnimation3D(Axis.Y, 360);
 		anim.setDuration(6000);
 		anim.setRepeatMode(RepeatMode.INFINITE);
 		anim.setTransformable3D(mMonkey1);
-		mAnimations.add(anim);
+		registerAnimation(anim);
+		anim.play();
 		
 		anim = new RotateAnimation3D(Axis.Y, -360);
 		anim.setDuration(6000);
 		anim.setRepeatMode(RepeatMode.INFINITE);
 		anim.setTransformable3D(mMonkey2);
-		mAnimations.add(anim);
+		registerAnimation(anim);
+		anim.play();
 		
 		anim = new RotateAnimation3D(Axis.Y, -360);
 		anim.setDuration(6000);
 		anim.setRepeatMode(RepeatMode.INFINITE);
 		anim.setTransformable3D(mMonkey3);
-		mAnimations.add(anim);
+		registerAnimation(anim);
+		anim.play();
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		for(int i=0; i<mAnimations.size(); i++) {
-			Animation3D anim = mAnimations.get(i);
-			registerAnimation(anim);
-			anim.play();
-		}
 	}
 }
