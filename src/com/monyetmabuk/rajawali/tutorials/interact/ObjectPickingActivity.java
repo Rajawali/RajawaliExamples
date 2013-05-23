@@ -1,4 +1,6 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.interact;
+
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
 
 import android.os.Bundle;
 import android.view.Gravity;
@@ -8,12 +10,12 @@ import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class RajawaliObjectPickingActivity extends RajawaliExampleActivity implements OnTouchListener {
-	private RajawaliObjectPickingRenderer mRenderer;
+public class ObjectPickingActivity extends RajawaliExampleActivity implements OnTouchListener {
+	private ObjectPickingRenderer mRenderer;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mRenderer = new RajawaliObjectPickingRenderer(this);
+		mRenderer = new ObjectPickingRenderer(this);
 		mRenderer.setSurfaceView(mSurfaceView);
 		super.setRenderer(mRenderer);
 		mSurfaceView.setOnTouchListener(this);

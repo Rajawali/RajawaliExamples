@@ -25,7 +25,7 @@
         <activity android:name=".Rajawali2DActivity"></activity>
         <activity android:name=".RajawaliAccelerometerActivity"></activity>
         <activity android:name=".RajawaliMoreParticlesActivity"></activity>
-        <activity android:name=".RajawaliObjectPickingActivity"></activity>
+        <activity android:name="com.monyetmabuk.rajawali.tutorials.interact.ObjectPickingActivity"></activity>
         <activity android:name=".RajawaliBezierActivity"></activity>
         <activity android:name=".RajawaliAnimationActivity"></activity>
         <activity android:name=".RajawaliBumpmapActivity"></activity>
@@ -54,5 +54,6 @@
         <activity android:name="RajawaliSpecularAndAlphaActivity"></activity>
         <activity android:name="RajawaliVideoTextureActivity"></activity>
         <activity android:name=".skeletalanim.BlendTransitionActivity"></activity>
+        <activity android:name=".interact.ObjectDraggingActivity"></activity>
     </application>
 </manifest>

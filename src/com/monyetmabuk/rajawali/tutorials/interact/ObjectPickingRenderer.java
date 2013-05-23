@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.interact;
 
 import java.io.ObjectInputStream;
 
@@ -14,12 +14,15 @@ import rajawali.util.ObjectColorPicker;
 import rajawali.util.OnObjectPickedListener;
 import android.content.Context;
 
-public class RajawaliObjectPickingRenderer extends RajawaliRenderer implements OnObjectPickedListener {
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
+
+public class ObjectPickingRenderer extends RajawaliRenderer implements OnObjectPickedListener {
 	private PointLight mLight;
 	private BaseObject3D mMonkey1, mMonkey2, mMonkey3, mMonkey4;
 	private ObjectColorPicker mPicker;
 
-	public RajawaliObjectPickingRenderer(Context context) {
+	public ObjectPickingRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
 	}
