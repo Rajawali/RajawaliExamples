@@ -42,7 +42,7 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		getCurrentCamera().setLookAt(0, 0, 0);
 
 		SimpleMaterial material = new SimpleMaterial();
-		material.setUseColor(true);
+		material.setUseSingleColor(true);
 		
 		// -- create a catmull-rom path. The first and the last point are control points.
 		CatmullRomPath3D path = new CatmullRomPath3D();

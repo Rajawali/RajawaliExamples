@@ -50,7 +50,7 @@ public class ObjectDraggingRenderer extends RajawaliRenderer implements OnObject
 
 		try {
 			SimpleMaterial material = new SimpleMaterial();
-			material.setUseColor(true);
+			material.setUseSingleColor(true);
 
 			for (int i = 0; i < 20; i++) {
 				Sphere sphere = new Sphere(.3f, 12, 12);

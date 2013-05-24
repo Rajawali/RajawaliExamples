@@ -86,7 +86,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mLight2 = new DirectionalLight(0, -1, -1);
 
 		mMaterial = new DiffuseMaterial();
-		mMaterial.setUseColor(true);
+		mMaterial.setUseSingleColor(true);
 
 		mInitialSphere = new Sphere(1, 10, 10);
 		mInitialSphere.setScale(0.250f);

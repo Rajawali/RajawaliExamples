@@ -34,9 +34,11 @@ public class RajawaliFBXRenderer extends RajawaliRenderer {
 			FBXParser parser = new FBXParser(this, R.raw.lowpolyrocks_character_blendswap);
 			parser.parse();
 			BaseObject3D o = parser.getParsedObject();
+			o.setY(-.5f);
 			addChild(o);
 			
 			mAnim.setTransformable3D(o);
+			mAnim.play();
 		} catch(ParsingException e) {
 			e.printStackTrace();
 		}
@@ -46,6 +48,5 @@ public class RajawaliFBXRenderer extends RajawaliRenderer {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		mAnim.play();	
 	}
 }

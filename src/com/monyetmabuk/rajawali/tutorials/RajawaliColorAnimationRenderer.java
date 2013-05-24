@@ -23,7 +23,7 @@ public class RajawaliColorAnimationRenderer extends RajawaliRenderer {
 	@Override
 	protected void initScene() {
 		final SimpleMaterial material = new SimpleMaterial();
-		material.setUseColor(true);
+		material.setUseSingleColor(true);
 		
 		final Plane plane = new Plane(1, 1, 1, 1);
 		plane.setMaterial(material);

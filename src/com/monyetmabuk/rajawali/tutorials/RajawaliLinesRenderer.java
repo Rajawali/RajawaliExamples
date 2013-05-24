@@ -37,7 +37,7 @@ public class RajawaliLinesRenderer extends RajawaliRenderer {
 		 */
 		Line3D whirl = new Line3D(points, 1, 0xffffff00);
 		SimpleMaterial material = new SimpleMaterial();
-		material.setUseColor(true);
+		material.setUseSingleColor(true);
 		whirl.setMaterial(material);
 		addChild(whirl);
 		

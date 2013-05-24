@@ -36,7 +36,7 @@ public class RajawaliCollisionDetectionRenderer extends RajawaliRenderer {
 		getCurrentCamera().setPosition(0, 0, 7);
 
 		DiffuseMaterial material = new DiffuseMaterial();
-		material.setUseColor(true);
+		material.setUseSingleColor(true);
 		
 		mCubeBox = new Cube(1);
 		mCubeBox.setMaterial(material);

@@ -32,7 +32,7 @@ public class RajawaliBezierRenderer extends RajawaliRenderer {
 		redSphere.setColor(0xffff0000);
 		
 		PhongMaterial phong = new PhongMaterial();
-		phong.setUseColor(true);
+		phong.setUseSingleColor(true);
 		redSphere.setMaterial(phong);
 		addChild(redSphere);
 
@@ -41,7 +41,7 @@ public class RajawaliBezierRenderer extends RajawaliRenderer {
 		yellowSphere.setPosition(2, 4, 0);
 		yellowSphere.setColor(0xffffff00);
 		DiffuseMaterial diffuse = new DiffuseMaterial();
-		diffuse.setUseColor(true);
+		diffuse.setUseSingleColor(true);
 		yellowSphere.setMaterial(diffuse);
 		addChild(yellowSphere);
 

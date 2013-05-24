@@ -27,7 +27,7 @@ public class RajawaliVertexShaderRenderer extends RajawaliRenderer {
 
 	protected void initScene() {
 		mMaterial = new CustomVertexShaderMaterial();
-		mMaterial.setUseColor(true);
+		mMaterial.setUseVertexColors(true);
 		
 		mSphere = new Sphere(2, 60, 60);
 		mSphere.setMaterial(mMaterial);

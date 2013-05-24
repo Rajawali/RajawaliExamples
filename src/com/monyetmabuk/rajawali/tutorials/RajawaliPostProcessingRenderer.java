@@ -41,7 +41,7 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 			ois.close();
 
 			DiffuseMaterial material = new DiffuseMaterial();
-			material.setUseColor(true);
+			material.setUseSingleColor(true);
 			
 			BaseObject3D uberMonkey = new BaseObject3D(serializedMonkey);
 			uberMonkey.setMaterial(material);
@@ -62,7 +62,7 @@ public class RajawaliPostProcessingRenderer extends RajawaliRenderer {
 				// -- since it is a cloned object it is important to set the
 				// second parameter to true or else all monkeys will change
 				// color.
-				monkey.setColor(0xff000000 + (int) (Math.random() * 0xffffff), true);
+				monkey.setColor(0xff000000 + (int) (Math.random() * 0xffffff));
 				addChild(monkey);
 			}
 		} catch (Exception e) {

@@ -77,10 +77,10 @@ public class ObjectPickingRenderer extends RajawaliRenderer implements OnObjectP
 		}
 
 		DiffuseMaterial material = new DiffuseMaterial();
-		material.setUseColor(true);
+		material.setUseSingleColor(true);
 		
 		mMonkey1.setMaterial(material);
-		mMonkey1.setColor(0xff0000);
+		mMonkey1.setColor(0x0000ff);
 
 		mMonkey2.setMaterial(material);
 		mMonkey2.setColor(0x00ff00);

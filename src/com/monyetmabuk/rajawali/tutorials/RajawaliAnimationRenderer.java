@@ -53,7 +53,7 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 		}
 
 		DiffuseMaterial material = new DiffuseMaterial();
-		material.setUseColor(true);
+		material.setUseSingleColor(true);
 		mMonkey.setMaterial(material);
 		mMonkey.setColor(0xff00ff00);
 

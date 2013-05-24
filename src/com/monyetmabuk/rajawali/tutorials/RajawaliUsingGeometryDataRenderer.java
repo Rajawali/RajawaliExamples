@@ -41,7 +41,7 @@ public class RajawaliUsingGeometryDataRenderer extends RajawaliRenderer {
 		BaseObject3D sphere = new Sphere(1, 16, 8);
 		
 		PhongMaterial spikeMaterial = new PhongMaterial();
-		spikeMaterial.setUseColor(true);
+		spikeMaterial.setUseSingleColor(true);
 		
 		try {
 			// -- open gzipped serialized file

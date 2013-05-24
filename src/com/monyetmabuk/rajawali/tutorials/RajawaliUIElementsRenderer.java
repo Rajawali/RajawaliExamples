@@ -39,7 +39,7 @@ public class RajawaliUIElementsRenderer extends RajawaliRenderer {
 		}
 
 		PhongMaterial material = new PhongMaterial();
-		material.setUseColor(true);
+		material.setUseSingleColor(true);
 		mMonkey.setMaterial(material);
 		mMonkey.setColor(0xffcfb52b);
 	}
