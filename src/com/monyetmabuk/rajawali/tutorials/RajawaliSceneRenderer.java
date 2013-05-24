@@ -158,7 +158,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		//mPeriapsis.x = mFocal.x;
 		Log.i("Model Matrix", "Camera Model Matrix: ");
 		mCamera1.setLookAt(mFocal);
-		mCamera2.updateFrustum(mCamera2.getProjectionMatrix(), mCamera2.getViewMatrix());
+		mCamera2.updateFrustum();//mCamera2.getProjectionMatrix(), mCamera2.getViewMatrix());
 		mCamera2.getTransformedBoundingVolume().drawBoundingVolume(getCurrentCamera(), 
 				getCurrentCamera().getProjectionMatrix(), getCurrentCamera().getViewMatrix(), mCamera2.getModelMatrix());
 		int length;
