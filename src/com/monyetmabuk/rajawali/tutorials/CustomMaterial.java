@@ -9,7 +9,6 @@ public class CustomMaterial extends SimpleMaterial {
 	
 	public CustomMaterial() {
 		super(com.monyetmabuk.livewallpapers.photosdof.R.raw.simple_material_vertex, R.raw.custom_material_fragment);
-		setShaders();
 	}
 	
 	public void setShaders(String vertexShader, String fragmentShader)

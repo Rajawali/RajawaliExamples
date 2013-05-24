@@ -7,7 +7,6 @@ import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.PointLight;
-import rajawali.materials.AMaterial;
 import rajawali.materials.PhongMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.AlphaMapTexture;
@@ -53,7 +52,8 @@ public class RajawaliSpecularAndAlphaRenderer extends RajawaliRenderer {
 			registerAnimation(sphereAnim);
 			sphereAnim.play();
 
-			material = new PhongMaterial(AMaterial.ALPHA_MASKING);
+			material = new PhongMaterial();
+			material.setAlphaMaskingEnabled(true);
 			material.addTexture(earthTexture);
 			material.addTexture(new AlphaMapTexture(R.drawable.camden_town_alpha));
 			

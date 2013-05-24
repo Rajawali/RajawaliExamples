@@ -11,6 +11,8 @@ import rajawali.materials.textures.Texture;
 import rajawali.primitives.Plane;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 public class Rajawali360ImagesRenderer extends RajawaliRenderer {
 	private ATexture[] mTextures;
@@ -46,10 +48,18 @@ public class Rajawali360ImagesRenderer extends RajawaliRenderer {
 	    	mTextures = new ATexture[NUM_TEXTURES];
 		}
 		mFrameCount = 0;
-    	for(int i=1; i<=NUM_TEXTURES; ++i) {
+
+		BitmapFactory.Options options = new BitmapFactory.Options();
+		options.inPurgeable = true;
+		options.inInputShareable = true;
+		
+		for(int i=1; i<=NUM_TEXTURES; ++i) {
     		// -- load all the textures from the drawable folder
     		int resourceId = mContext.getResources().getIdentifier(i < 10 ? "m0" + i : "m" + i, "drawable", "com.monyetmabuk.rajawali.tutorials");
-    		ATexture texture = new Texture(resourceId);
+    		
+    		Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), resourceId, options);
+    		
+    		ATexture texture = new Texture("bm" + i, bitmap);
     		texture.setMipmap(false);
     		texture.shouldRecycle(true);
     		mTextures[i-1] = mTextureManager.addTexture(texture);

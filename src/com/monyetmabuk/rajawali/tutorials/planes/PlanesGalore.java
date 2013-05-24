@@ -9,6 +9,7 @@ import rajawali.BufferInfo;
 import rajawali.Camera;
 import rajawali.Geometry3D;
 import rajawali.Geometry3D.BufferType;
+import rajawali.materials.MaterialManager;
 import rajawali.math.Vector3;
 import android.graphics.Color;
 import android.opengl.GLES20;
@@ -45,7 +46,8 @@ public class PlanesGalore extends BaseObject3D {
 	}
 
 	public void init() {
-		mMaterial = mGaloreMat = new PlanesGaloreMaterial();
+		mGaloreMat = new PlanesGaloreMaterial();
+		setMaterial(mGaloreMat);
 		final int numPlanes = 2000;
 		final float planeSize = .3f;
 

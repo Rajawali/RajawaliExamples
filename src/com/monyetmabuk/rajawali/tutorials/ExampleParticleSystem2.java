@@ -11,7 +11,6 @@ import rajawali.math.Vector3;
 import rajawali.primitives.Particle;
 import rajawali.util.ObjectColorPicker.ColorPickerInfo;
 import android.opengl.GLES20;
-import android.util.FloatMath;
 
 public class ExampleParticleSystem2 extends Particle {
 	protected Vector3 mFriction;
@@ -26,7 +25,7 @@ public class ExampleParticleSystem2 extends Particle {
 	}
 	
 	protected void init() {
-		mMaterial = new ParticleMaterial(true);
+		setMaterial(new ParticleMaterial(true));
 		mParticleShader = (ParticleMaterial)mMaterial;
 		setDrawingMode(GLES20.GL_POINTS);
 		setTransparent(true);
@@ -69,7 +68,7 @@ public class ExampleParticleSystem2 extends Particle {
 			
 			indices[i] = i;
 			
-			animOffsets[i] = FloatMath.floor((float)Math.random() * 64);
+			animOffsets[i] = (float)Math.floor((float)Math.random() * 64);
 		}
 		
 		mVelocityBuffer = ByteBuffer
