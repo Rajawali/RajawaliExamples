@@ -14,6 +14,9 @@ import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.monyetmabuk.rajawali.tutorials.cameras.ChaseCamActivity;
+import com.monyetmabuk.rajawali.tutorials.cameras.OrthographiCamActivity;
+import com.monyetmabuk.rajawali.tutorials.cameras.TwoDActivity;
 import com.monyetmabuk.rajawali.tutorials.interact.ObjectDraggingActivity;
 import com.monyetmabuk.rajawali.tutorials.interact.ObjectPickingActivity;
 import com.monyetmabuk.rajawali.tutorials.primitives.ColoredLineSegmentsActivity;
@@ -30,7 +33,7 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("UI Elements", RajawaliUIElementsActivity.class), 
 			new ExampleItem("Skybox", RajawaliSkyboxActivity.class),
 			new ExampleItem("Custom Material/Shader", RajawaliCustomShaderActivity.class), 
-			new ExampleItem("2D Renderer", Rajawali2DActivity.class),
+			new ExampleItem("2D Renderer", TwoDActivity.class),
 			new ExampleItem("Using The Accelerometer", RajawaliAccelerometerActivity.class),
 			new ExampleItem("Particles", RajawaliMoreParticlesActivity.class), 
 			new ExampleItem("Object Picking", ObjectPickingActivity.class),
@@ -53,7 +56,8 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("Custom Vertex Shader", RajawaliVertexShaderActivity.class),
 			new ExampleItem("Touch Ripples Effect", RajawaliRipplesActivity.class), 
 			new ExampleItem("Sphere Mapping", RajawaliSphereMapActivity.class),
-			new ExampleItem("Chase Camera", RajawaliChaseCamActivity.class),
+			new ExampleItem("Chase Camera", ChaseCamActivity.class),
+			new ExampleItem("Orthographic Camera", OrthographiCamActivity.class),
 			new ExampleItem("Using Geometry Data", RajawaliUsingGeometryDataActivity.class),
 			new ExampleItem("360° Images", Rajawali360ImagesActivity.class),
 			new ExampleItem("Skeletal Animation (MD5)", MD5Activity.class),

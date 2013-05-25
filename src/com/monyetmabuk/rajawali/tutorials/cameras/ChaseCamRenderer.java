@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.cameras;
 
 import java.io.ObjectInputStream;
 import java.util.zip.GZIPInputStream;
@@ -19,15 +19,17 @@ import rajawali.primitives.Cube;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
-import android.util.FloatMath;
 
-public class RajawaliChaseCamRenderer extends RajawaliRenderer {
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
+
+public class ChaseCamRenderer extends RajawaliRenderer {
 	private BaseObject3D mRaptor, mSphere;
 	private BaseObject3D[] mCubes;
 	private BaseObject3D mRootCube;
 	private float mTime;
 	
-	public RajawaliChaseCamRenderer(Context context) {
+	public ChaseCamRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
 	}
@@ -118,12 +120,12 @@ public class RajawaliChaseCamRenderer extends RajawaliRenderer {
 		// -- no proper physics here, just a bad approximation to keep
 		//    this example as short as possible ;-)
 		mRaptor.setZ(mRaptor.getZ() + 2f);
-		mRaptor.setX(FloatMath.sin(mTime) * 20f);
-		mRaptor.setRotZ(FloatMath.sin(mTime + 8f) * -30f);
+		mRaptor.setX((float)Math.sin(mTime) * 20f);
+		mRaptor.setRotZ((float)Math.sin(mTime + 8f) * -30f);
 		mRaptor.setRotY(180 + (mRaptor.getRotZ() * .1f));
 		mRaptor.setRotY(180);
-		mRaptor.setY(FloatMath.cos(mTime) * 10f);
-		mRaptor.setRotX(FloatMath.cos(mTime + 1f) * -20f);
+		mRaptor.setY((float)Math.cos(mTime) * 10f);
+		mRaptor.setRotX((float)Math.cos(mTime + 1f) * -20f);
 		
 		mSphere.setZ(mRaptor.getZ());
 		mTime += .01f;

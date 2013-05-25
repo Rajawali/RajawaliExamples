@@ -1,19 +1,21 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.cameras;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.Camera2D;
-import rajawali.primitives.Plane;
 import rajawali.primitives.ScreenQuad;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
-public class Rajawali2DRenderer extends RajawaliRenderer {
+import com.monyetmabuk.rajawali.tutorials.CustomMaterial;
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
+
+public class TwoDRenderer extends RajawaliRenderer {
 	private float mTime;
 	private CustomMaterial mCustomMaterial;
 
-	public Rajawali2DRenderer(Context context) {
+	public TwoDRenderer(Context context) {
 		super(context);
 		getCurrentScene().switchCamera(new Camera2D());
 		setFrameRate(60);
