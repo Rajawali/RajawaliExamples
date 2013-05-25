@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.primitives;
 
 import java.util.Stack;
 
@@ -16,10 +16,10 @@ import rajawali.primitives.Line3D;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
-public class RajawaliLinesRenderer extends RajawaliRenderer {
+public class LinesRenderer extends RajawaliRenderer {
 	private Animation3D mAnim;
 	
-	public RajawaliLinesRenderer(Context context) {
+	public LinesRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
 	}
@@ -48,11 +48,11 @@ public class RajawaliLinesRenderer extends RajawaliRenderer {
 		mAnim.setRepeatMode(RepeatMode.INFINITE);
 		mAnim.setTransformable3D(whirl);
 		registerAnimation(mAnim);
+		mAnim.play();
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		super.onSurfaceCreated(gl, config);
-		mAnim.play();
 	}
 	
 	private Stack<Vector3> createWhirl(int numSides, float scaleFactor, float centerX, float centerY, float rotAngle) {

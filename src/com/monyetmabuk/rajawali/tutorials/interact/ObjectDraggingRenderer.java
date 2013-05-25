@@ -101,7 +101,7 @@ public class ObjectDraggingRenderer extends RajawaliRenderer implements OnObject
 		int result = GLU.gluUnProject(x, mViewportHeight - y, 0, mViewMatrix,
 				0, mProjectionMatrix, 0, mViewport, 0, mNearPos4, 0);
 		if(result != GLES10.GL_NO_ERROR)
-			RajLog.e("Could not unproject near plane");
+			return;
 		
 		//
 		// -- unproject the screen coordinate (2D) to the camera's far plane
@@ -110,7 +110,7 @@ public class ObjectDraggingRenderer extends RajawaliRenderer implements OnObject
 		result = GLU.gluUnProject(x, mViewportHeight - y, 1.f, mViewMatrix,
 				0, mProjectionMatrix, 0, mViewport, 0, mFarPos4, 0);
 		if(result != GLES10.GL_NO_ERROR)
-			RajLog.e("Could not unproject far plane");
+			return;
 
 		//
 		// -- transform 4D coordinates (x, y, z, w) to 3D (x, y, z) by dividing

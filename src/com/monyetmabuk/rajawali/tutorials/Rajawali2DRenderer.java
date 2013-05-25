@@ -5,6 +5,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.Camera2D;
 import rajawali.primitives.Plane;
+import rajawali.primitives.ScreenQuad;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
@@ -22,9 +23,9 @@ public class Rajawali2DRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		mCustomMaterial = new CustomMaterial();
 
-		Plane plane = new Plane(1, 1, 1, 1);
-		plane.setMaterial(mCustomMaterial);
-		addChild(plane);
+		ScreenQuad screenQuad = new ScreenQuad();
+		screenQuad.setMaterial(mCustomMaterial);
+		addChild(screenQuad);
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
