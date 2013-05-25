@@ -28,8 +28,8 @@ public class RajawaliMaterialsRenderer extends RajawaliRenderer {
 	
 	protected void initScene() {
 		mLight = new DirectionalLight(.3f, -.3f, -1);
-		mLight.setPower(.8f);
-		getCurrentCamera().setPosition(0, 0, 7);
+		mLight.setPower(.6f);
+		getCurrentCamera().setPosition(0, 0, 9);
 
 		try {
 			ObjectInputStream ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_ser));

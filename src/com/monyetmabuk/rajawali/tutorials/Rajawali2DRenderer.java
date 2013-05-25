@@ -35,7 +35,7 @@ public class Rajawali2DRenderer extends RajawaliRenderer {
 
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
-		mTime += .2f;
+		mTime += .007f;
 		mCustomMaterial.setTime(mTime);
 	}
 }

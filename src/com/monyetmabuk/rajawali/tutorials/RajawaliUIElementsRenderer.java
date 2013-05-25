@@ -1,6 +1,7 @@
 package com.monyetmabuk.rajawali.tutorials;
 
 import java.io.ObjectInputStream;
+import java.util.zip.GZIPInputStream;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -14,7 +15,7 @@ import android.content.Context;
 
 public class RajawaliUIElementsRenderer extends RajawaliRenderer {
 	private DirectionalLight mLight;
-	private BaseObject3D mMonkey;
+	private BaseObject3D mAndroid;
 
 	public RajawaliUIElementsRenderer(Context context) {
 		super(context);
@@ -24,24 +25,26 @@ public class RajawaliUIElementsRenderer extends RajawaliRenderer {
 	protected void initScene() {
 		mLight = new DirectionalLight(0, 0, -1);
 		mLight.setPower(.8f);
-		getCurrentCamera().setPosition(0, 0, 7);
+		getCurrentCamera().setPosition(0, 0, 13);
 
+		GZIPInputStream gzi;
 		try {
-			ObjectInputStream ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_ser));
-			SerializedObject3D serializedMonkey = (SerializedObject3D) ois.readObject();
-			ois.close();
+			gzi = new GZIPInputStream(mContext.getResources().openRawResource(R.raw.android));
+			ObjectInputStream fis = new ObjectInputStream(gzi);
+			SerializedObject3D serializedAndroid = (SerializedObject3D) fis.readObject();
+			fis.close();
 
-			mMonkey = new BaseObject3D(serializedMonkey);
-			mMonkey.addLight(mLight);
-			addChild(mMonkey);
+			mAndroid = new BaseObject3D(serializedAndroid);
+			mAndroid.addLight(mLight);
+			addChild(mAndroid);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		PhongMaterial material = new PhongMaterial();
 		material.setUseSingleColor(true);
-		mMonkey.setMaterial(material);
-		mMonkey.setColor(0xffcfb52b);
+		mAndroid.setMaterial(material);
+		mAndroid.setColor(0xff99C224);
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
@@ -52,6 +55,6 @@ public class RajawaliUIElementsRenderer extends RajawaliRenderer {
 
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
-		mMonkey.setRotY(mMonkey.getRotY() + 1);
+		mAndroid.setRotY(mAndroid.getRotY() + 1);
 	}
 }
