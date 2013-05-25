@@ -11,10 +11,10 @@ import rajawali.Camera;
 import rajawali.animation.Animation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
-import rajawali.animation.TranslateAnimation3D;
 import rajawali.bounds.IBoundingVolume;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
+import rajawali.math.Matrix4;
 import rajawali.math.Vector3;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Sphere;
@@ -23,7 +23,6 @@ import rajawali.scene.RajawaliScene;
 import rajawali.scene.scenegraph.IGraphNode.GRAPH_TYPE;
 import android.content.Context;
 import android.os.Handler;
-import android.util.Log;
 import android.widget.TextView;
 
 public class RajawaliSceneRenderer extends RajawaliRenderer {
@@ -31,6 +30,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 	private DiffuseMaterial mMaterial;
 	private BaseObject3D mInitialSphere;
 	private BaseObject3D mInitialCube;
+	private BaseObject3D mPoint;
 	private EllipticalOrbitAnimation3D mCameraAnim;
 	private Vector3 mFocal;
 	private Vector3 mPeriapsis;
@@ -51,7 +51,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 
 	public RajawaliSceneRenderer(Context context, Handler handler, TextView obj, TextView tri) {
 		super(context);
-		setFrameRate(1);
+		setFrameRate(60);
 		mHandler = handler;
 		mObjectCount = obj;
 		mTriCount = tri;
@@ -59,15 +59,16 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 
 	protected void initScene() {
 		mCamera1 = getCurrentCamera(); //We will utilize the initial camera
-		mCamera1.setPosition(0, 0, 20);
+		mCamera1.setPosition(20, 0, 20);
 		mCamera1.setFieldOfView(60);
 		mCamera1.setFarPlane(1000);
 		
 		mCamera2 = new Camera(); //Lets create a second camera for the scene.
 		mCamera2.setPosition(0, 0, 15);
-		//mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
+		mCamera2.setLookAt(0.0f, 5.0f, 0.0f);
 		mCamera2.setFarPlane(5);
 		mCamera2.setFieldOfView(60);
+		mCamera2.mFrustum.setBoundingColor(0xFFFFFF00);
 		
 		//We are going to use our own scene, not the default
 		mScene1 = new RajawaliScene(this, GRAPH_TYPE.OCTREE); 
@@ -110,10 +111,20 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mInitialCube.setRotation(45f, 45f, 45f);
 		mInitialCube.setShowBoundingVolume(true);
 		
+		mPoint = new Sphere(1, 4, 4);
+		mPoint.setPosition(mCamera2.getPosition());
+		mPoint.setColor(0xFF00FF00);
+		mPoint.setMaterial(mMaterial);
+		mPoint.addLight(mLight1);
+		mPoint.addLight(mLight2);
+		mPoint.setScale(0.125f);
+		
 		mSpheres.add(mInitialSphere);
 		mCubes.add(mInitialCube);
 		mScene1.addChild(mInitialCube); //Add our cube to scene 1
 		mScene2.addChild(mInitialSphere); //Add our sphere to scene 2
+		
+		mScene1.addChild(mPoint);
 
 		Animation3D anim = new EllipticalOrbitAnimation3D(new Vector3(5, 1.5, -4), new Vector3(-5, 1.5, -4), 0.0,
 				360, OrbitDirection.CLOCKWISE);
@@ -133,7 +144,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		anim.setRepeatMode(Animation3D.RepeatMode.REVERSE_INFINITE);
 		anim.setTransformable3D(mInitialCube);
 		//anim.play();
-		//mScene1.registerAnimation(anim_cube);
+		//mScene1.registerAnimation(anim);
 		
 		//Replace the default scene with our scene 1 and switch to it
 		replaceAndSwitchScene(getCurrentScene(), mScene1);
@@ -151,16 +162,18 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		super.onDrawFrame(glUnused);
 		Vector3 tMin = getCurrentScene().getSceneMinBound();
 		Vector3 tMax = getCurrentScene().getSceneMaxBound();
-		mFocal.x = tMin.x + (tMax.x - tMin.x) * .5f;
+		/*mFocal.x = tMin.x + (tMax.x - tMin.x) * .5f;
 		mFocal.y = tMin.y + (tMax.y - tMin.y) * .5f;
-		mFocal.z = tMin.z + (tMax.z - tMin.z) * .5f;
+		mFocal.z = tMin.z + (tMax.z - tMin.z) * .5f;*/
 		//mPeriapsis.y = mFocal.y;
 		//mPeriapsis.x = mFocal.x;
-		Log.i("Model Matrix", "Camera Model Matrix: ");
 		mCamera1.setLookAt(mFocal);
-		mCamera2.updateFrustum();//mCamera2.getProjectionMatrix(), mCamera2.getViewMatrix());
+		mCamera2.updateFrustum();
 		mCamera2.getTransformedBoundingVolume().drawBoundingVolume(getCurrentCamera(), 
 				getCurrentCamera().getProjectionMatrix(), getCurrentCamera().getViewMatrix(), mCamera2.getModelMatrix());
+		Matrix4 model = new Matrix4();
+		model.set(mCamera2.getModelMatrix());
+		//Log.i("Model Matrix", "Camera Model Matrix: \n" + model);
 		int length;
 		if (getCurrentScene().equals(mScene2)) {
 			length = mSpheres.size();
@@ -244,6 +257,6 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 	}
 	
 	public void nextFrame() {
-		mSurfaceView.requestRender();
+		this.stopRendering();
 	}
 }
