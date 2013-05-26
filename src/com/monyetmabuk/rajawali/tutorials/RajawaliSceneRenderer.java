@@ -65,8 +65,8 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		
 		mCamera2 = new Camera(); //Lets create a second camera for the scene.
 		mCamera2.setPosition(0, 0, 15);
-		mCamera2.setLookAt(0.0f, 5.0f, 0.0f);
-		mCamera2.setFarPlane(5);
+		//mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
+		mCamera2.setFarPlane(15);
 		mCamera2.setFieldOfView(60);
 		mCamera2.mFrustum.setBoundingColor(0xFFFFFF00);
 		
@@ -170,10 +170,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mCamera1.setLookAt(mFocal);
 		mCamera2.updateFrustum();
 		mCamera2.getTransformedBoundingVolume().drawBoundingVolume(getCurrentCamera(), 
-				getCurrentCamera().getProjectionMatrix(), getCurrentCamera().getViewMatrix(), mCamera2.getModelMatrix());
-		Matrix4 model = new Matrix4();
-		model.set(mCamera2.getModelMatrix());
-		//Log.i("Model Matrix", "Camera Model Matrix: \n" + model);
+				getCurrentCamera().getProjectionMatrix(), getCurrentCamera().getViewMatrix(), null);
 		int length;
 		if (getCurrentScene().equals(mScene2)) {
 			length = mSpheres.size();
