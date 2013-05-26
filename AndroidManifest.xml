@@ -57,5 +57,6 @@
         <activity android:name=".interact.ObjectDraggingActivity"></activity>
         <activity android:name=".primitives.ColoredLineSegmentsActivity"></activity>
         <activity android:name=".cameras.OrthographiCamActivity"></activity>
+        <activity android:name=".cameras.CameraFollowPathActivity"></activity>
     </application>
 </manifest>
