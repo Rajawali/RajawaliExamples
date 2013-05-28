@@ -8,13 +8,15 @@ import rajawali.materials.SimpleMaterial;
 import rajawali.materials.textures.ATexture;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
-import rajawali.primitives.Plane;
+import rajawali.primitives.ScreenQuad;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 public class Rajawali360ImagesRenderer extends RajawaliRenderer {
 	private ATexture[] mTextures;
-	private Plane mPlane;
+	private ScreenQuad mScreenQuad;
 	private int mFrameCount;
 	private SimpleMaterial mMaterial;
 	private final static int NUM_TEXTURES = 80;
@@ -30,9 +32,9 @@ public class Rajawali360ImagesRenderer extends RajawaliRenderer {
     	
     	mMaterial = new SimpleMaterial();
     	
-    	mPlane = new Plane(1.5f, 1, 1, 1);
-		mPlane.setMaterial(mMaterial);
-    	addChild(mPlane);
+    	mScreenQuad = new ScreenQuad();
+		mScreenQuad.setMaterial(mMaterial);
+    	addChild(mScreenQuad);
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
@@ -46,10 +48,18 @@ public class Rajawali360ImagesRenderer extends RajawaliRenderer {
 	    	mTextures = new ATexture[NUM_TEXTURES];
 		}
 		mFrameCount = 0;
-    	for(int i=1; i<=NUM_TEXTURES; ++i) {
+
+		BitmapFactory.Options options = new BitmapFactory.Options();
+		options.inPurgeable = true;
+		options.inInputShareable = true;
+		
+		for(int i=1; i<=NUM_TEXTURES; ++i) {
     		// -- load all the textures from the drawable folder
     		int resourceId = mContext.getResources().getIdentifier(i < 10 ? "m0" + i : "m" + i, "drawable", "com.monyetmabuk.rajawali.tutorials");
-    		ATexture texture = new Texture(resourceId);
+    		
+    		Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), resourceId, options);
+    		
+    		ATexture texture = new Texture("bm" + i, bitmap);
     		texture.setMipmap(false);
     		texture.shouldRecycle(true);
     		mTextures[i-1] = mTextureManager.addTexture(texture);

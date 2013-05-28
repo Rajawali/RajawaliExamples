@@ -36,9 +36,10 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 	
 	protected void initScene() {
 		mLight = new PointLight();
-		mLight.setPosition(-2, 1, 4);
+		mLight.setPosition(-2, 1, -4);
 		mLight.setPower(1.5f);
-		getCurrentCamera().setPosition(0, 0, 14);
+		getCurrentCamera().setPosition(0, 0, -14);
+		getCurrentCamera().setLookAt(0, 0, 0);
 
 		ObjectInputStream ois;
 		try {
@@ -53,7 +54,7 @@ public class RajawaliAnimationRenderer extends RajawaliRenderer {
 		}
 
 		DiffuseMaterial material = new DiffuseMaterial();
-		material.setUseColor(true);
+		material.setUseSingleColor(true);
 		mMonkey.setMaterial(material);
 		mMonkey.setColor(0xff00ff00);
 

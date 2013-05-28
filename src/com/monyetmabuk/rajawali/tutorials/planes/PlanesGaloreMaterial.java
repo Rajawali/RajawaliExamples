@@ -82,14 +82,12 @@ public class PlanesGaloreMaterial extends AMaterial {
 	protected int maRotationSpeedHandle;
 	
 	public PlanesGaloreMaterial() {
-		super(mVShader, mFShader, false);
+		super(mVShader, mFShader);
 		mCamPos = new float[3];
-		setShaders(mUntouchedVertexShader, mUntouchedFragmentShader);
 	}
 	
 	public PlanesGaloreMaterial(String vertexShader, String fragmentShader) {
-		super(vertexShader, fragmentShader, false);
-		setShaders(mUntouchedVertexShader, mUntouchedFragmentShader);
+		super(vertexShader, fragmentShader);
 	}
 	
 	public void setShaders(String vertexShader, String fragmentShader)

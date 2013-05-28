@@ -11,7 +11,6 @@ uniform float uTime;
 
 attribute vec4 aPosition;
 attribute vec2 aTextureCoord;
-attribute vec4 aColor;
 
 varying vec2 vTextureCoord;
 varying vec4 vColor;

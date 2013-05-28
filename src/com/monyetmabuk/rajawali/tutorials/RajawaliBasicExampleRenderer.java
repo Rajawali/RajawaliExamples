@@ -37,7 +37,7 @@ public class RajawaliBasicExampleRenderer extends RajawaliRenderer {
 			e.printStackTrace();
 		}
 
-		getCurrentCamera().setZ(4.2f);
+		getCurrentCamera().setZ(6);
 	}
 	
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {

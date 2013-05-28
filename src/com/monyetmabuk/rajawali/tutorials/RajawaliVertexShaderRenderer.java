@@ -27,7 +27,7 @@ public class RajawaliVertexShaderRenderer extends RajawaliRenderer {
 
 	protected void initScene() {
 		mMaterial = new CustomVertexShaderMaterial();
-		mMaterial.setUseColor(true);
+		mMaterial.setUseVertexColors(true);
 		
 		mSphere = new Sphere(2, 60, 60);
 		mSphere.setMaterial(mMaterial);
@@ -40,6 +40,8 @@ public class RajawaliVertexShaderRenderer extends RajawaliRenderer {
 		mAnim.setRepeatMode(RepeatMode.INFINITE);
 		mAnim.setDuration(12000);
 		mAnim.setTransformable3D(mSphere);
+		registerAnimation(mAnim);
+		mAnim.play();
 		
 		getCurrentCamera().setPosition(0, 0, 10);
 	}
@@ -48,8 +50,6 @@ public class RajawaliVertexShaderRenderer extends RajawaliRenderer {
 		((RajawaliExampleActivity) mContext).showLoader();
 		super.onSurfaceCreated(gl, config);
 		((RajawaliExampleActivity) mContext).hideLoader();
-		registerAnimation(mAnim);
-		mAnim.play();
 	}
 
 	public void onDrawFrame(GL10 glUnused) {

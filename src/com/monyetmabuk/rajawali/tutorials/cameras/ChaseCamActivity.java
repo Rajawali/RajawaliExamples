@@ -1,4 +1,6 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.cameras;
+
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
 
 import rajawali.math.Vector3;
 import android.os.Bundle;
@@ -9,8 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
-public class RajawaliChaseCamActivity extends RajawaliExampleActivity implements OnSeekBarChangeListener {
-	private RajawaliChaseCamRenderer mRenderer;
+public class ChaseCamActivity extends RajawaliExampleActivity implements OnSeekBarChangeListener {
+	private ChaseCamRenderer mRenderer;
 	private SeekBar mSeekBarX, mSeekBarY, mSeekBarZ;
 	private Vector3 mCameraOffset;
 
@@ -23,7 +25,7 @@ public class RajawaliChaseCamActivity extends RajawaliExampleActivity implements
 		mCameraOffset = new Vector3();
 		super.onCreate(savedInstanceState);
 
-		mRenderer = new RajawaliChaseCamRenderer(this);
+		mRenderer = new ChaseCamRenderer(this);
 		mRenderer.setSurfaceView(mSurfaceView);
 		mRenderer.setUsesCoverageAa(mUsesCoverageAa);
 		super.setRenderer(mRenderer);

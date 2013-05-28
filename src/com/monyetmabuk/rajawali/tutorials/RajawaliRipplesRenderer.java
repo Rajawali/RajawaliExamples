@@ -45,7 +45,7 @@ public class RajawaliRipplesRenderer extends RajawaliRenderer {
 				
 		BaseObject3D group = new BaseObject3D();
 		DiffuseMaterial material = new DiffuseMaterial();
-		material.setUseColor(true);
+		material.setUseSingleColor(true);
 		
 		Random rnd = new Random();		
 		

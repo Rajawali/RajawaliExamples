@@ -34,7 +34,7 @@ public class RajawaliTransparentSurfaceRenderer extends RajawaliRenderer {
 
 			BaseObject3D monkey = new BaseObject3D(serializedMonkey);
 			DiffuseMaterial material = new DiffuseMaterial();
-			material.setUseColor(true);
+			material.setUseSingleColor(true);
 			monkey.setMaterial(material);
 			monkey.addLight(light);
 			monkey.setColor(0xffff8C00);

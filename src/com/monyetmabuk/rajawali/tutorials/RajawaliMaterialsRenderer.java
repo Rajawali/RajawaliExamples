@@ -28,8 +28,8 @@ public class RajawaliMaterialsRenderer extends RajawaliRenderer {
 	
 	protected void initScene() {
 		mLight = new DirectionalLight(.3f, -.3f, -1);
-		mLight.setPower(.8f);
-		getCurrentCamera().setPosition(0, 0, 7);
+		mLight.setPower(.6f);
+		getCurrentCamera().setPosition(0, 0, 9);
 
 		try {
 			ObjectInputStream ois = new ObjectInputStream(mContext.getResources().openRawResource(R.raw.monkey_ser));
@@ -68,19 +68,19 @@ public class RajawaliMaterialsRenderer extends RajawaliRenderer {
 		}
 
 		DiffuseMaterial diffuse = new DiffuseMaterial();
-		diffuse.setUseColor(true);
+		diffuse.setUseSingleColor(true);
 		mMonkey1.setMaterial(diffuse);
 		mMonkey1.setColor(0xff00ff00);
 
 		GouraudMaterial gouraud = new GouraudMaterial();
-		gouraud.setUseColor(true);
+		gouraud.setUseSingleColor(true);
 		gouraud.setSpecularIntensity(.1f, .1f, .1f, 1);
 		mMonkey2.setMaterial(gouraud);
 		mMonkey2.setColor(0xff999900);
 
 		PhongMaterial phong = new PhongMaterial();
 		phong.setShininess(60);
-		phong.setUseColor(true);
+		phong.setUseSingleColor(true);
 		mMonkey3.setMaterial(phong);
 		mMonkey3.setColor(0xff00ff00);
 

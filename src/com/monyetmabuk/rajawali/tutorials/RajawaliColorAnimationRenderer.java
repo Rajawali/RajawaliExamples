@@ -10,6 +10,7 @@ import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.ColorAnimation3D;
 import rajawali.materials.SimpleMaterial;
 import rajawali.primitives.Plane;
+import rajawali.primitives.ScreenQuad;
 import rajawali.renderer.RajawaliRenderer;
 
 public class RajawaliColorAnimationRenderer extends RajawaliRenderer {
@@ -23,15 +24,15 @@ public class RajawaliColorAnimationRenderer extends RajawaliRenderer {
 	@Override
 	protected void initScene() {
 		final SimpleMaterial material = new SimpleMaterial();
-		material.setUseColor(true);
+		material.setUseSingleColor(true);
 		
-		final Plane plane = new Plane(1, 1, 1, 1);
-		plane.setMaterial(material);
-		plane.setTransparent(true);
-		addChild(plane);
+		final ScreenQuad screenQuad = new ScreenQuad();
+		screenQuad.setMaterial(material);
+		screenQuad.setTransparent(true);
+		addChild(screenQuad);
 		
 		final Animation3D anim = new ColorAnimation3D(0xaaff1111, 0xffffff11);
-		anim.setTransformable3D(plane);
+		anim.setTransformable3D(screenQuad);
 		anim.setDuration(2000);
 		anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 		registerAnimation(anim);

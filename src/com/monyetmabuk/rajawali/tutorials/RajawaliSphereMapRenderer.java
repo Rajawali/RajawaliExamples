@@ -67,7 +67,7 @@ public class RajawaliSphereMapRenderer extends RajawaliRenderer {
 		// -- set strength to 1
 		material2.setSphereMapStrength(2);
 		// -- important, indicate that we want to mix the sphere map with a color
-		material2.setUseColor(true);		
+		material2.setUseSingleColor(true);		
 		try {
 			material2.addTexture(sphereMapTexture);
 		} catch (TextureException e) {
@@ -78,7 +78,7 @@ public class RajawaliSphereMapRenderer extends RajawaliRenderer {
 		jet2.setMaterial(material2);
 		jet2.addLight(light);
 		// -- also specify a color
-		jet2.setColor(0xff666666, true);
+		jet2.setColor(0xff666666);
 		jet2.setY(-2.5f);
 		addChild(jet2);
 		

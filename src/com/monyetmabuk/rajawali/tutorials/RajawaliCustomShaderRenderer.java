@@ -5,13 +5,13 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
 import rajawali.lights.DirectionalLight;
-import rajawali.primitives.Sphere;
+import rajawali.primitives.Cube;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
 public class RajawaliCustomShaderRenderer extends RajawaliRenderer {
 	private DirectionalLight mLight;
-	private BaseObject3D mSphere;
+	private BaseObject3D mCube;
 	private CustomMaterial mCustomMaterial;
 	private float mTime;
 
@@ -25,10 +25,10 @@ public class RajawaliCustomShaderRenderer extends RajawaliRenderer {
 
 		mCustomMaterial = new CustomMaterial();
 
-		mSphere = new Sphere(2, 32, 32);
-		mSphere.addLight(mLight);
-		mSphere.setMaterial(mCustomMaterial);
-		addChild(mSphere);
+		mCube = new Cube(2);
+		mCube.addLight(mLight);
+		mCube.setMaterial(mCustomMaterial);
+		addChild(mCube);
 
 		getCurrentCamera().setPosition(0, 0, 10);
 
@@ -43,9 +43,9 @@ public class RajawaliCustomShaderRenderer extends RajawaliRenderer {
 
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
-		mTime += .1f;
+		mTime += .007f;
 		mCustomMaterial.setTime(mTime);
-		mSphere.setRotX(mSphere.getRotX() + 1);
-		mSphere.setRotY(mSphere.getRotY() + 1);
+		mCube.setRotX(mCube.getRotX() + .5f);
+		mCube.setRotY(mCube.getRotY() + .5f);
 	}
 }
