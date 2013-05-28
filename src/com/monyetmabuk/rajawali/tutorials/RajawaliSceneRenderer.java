@@ -99,7 +99,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mInitialSphere.addLight(mLight2);
 		mInitialSphere.setPosition(0, 1, 0);
 		mInitialSphere.setRotation(45f, 45f, 45f);
-		mInitialSphere.setShowBoundingVolume(true);
+		//mInitialSphere.setShowBoundingVolume(true);
 		
 		mInitialCube = new Cube(1);
 		//mInitialCube.setScale(0.150f);
@@ -109,7 +109,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mInitialCube.addLight(mLight2);
 		mInitialCube.setPosition(0, 1, 0);
 		mInitialCube.setRotation(45f, 45f, 45f);
-		mInitialCube.setShowBoundingVolume(true);
+		//mInitialCube.setShowBoundingVolume(true);
 		
 		mPoint = new Sphere(1, 4, 4);
 		mPoint.setPosition(mCamera2.getPosition());
@@ -168,11 +168,11 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		//mPeriapsis.y = mFocal.y;
 		//mPeriapsis.x = mFocal.x;
 		mCamera1.setLookAt(mFocal);
-		mCamera2.updateFrustum();
+		/*mCamera2.updateFrustum();
 		mCamera2.getTransformedBoundingVolume().drawBoundingVolume(getCurrentCamera(), 
 				getCurrentCamera().getProjectionMatrix(), getCurrentCamera().getViewMatrix(), null);
-		int length;
-		if (getCurrentScene().equals(mScene2)) {
+		int length;*/
+		/*if (getCurrentScene().equals(mScene2)) {
 			length = mSpheres.size();
 			for (int i = 0; i < length; ++i) {
 				IBoundingVolume bcube = mSpheres.get(i).getGeometry().getBoundingBox();
@@ -184,7 +184,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 				IBoundingVolume bcube = mCubes.get(i).getGeometry().getBoundingBox();
 				bcube.transform(mCubes.get(i).getModelMatrix());
 			}
-		}
+		}*/
 		if (mFrameCount % 20 == 0) { 
 			mHandler.post(new Runnable() {
 				public void run() {
@@ -207,7 +207,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		obj.addLight(mLight1);
 		obj.addLight(mLight2);
 		obj.setMaterial(mMaterial);
-		obj.setShowBoundingVolume(true);
+		//obj.setShowBoundingVolume(true);
 		obj.setScale(mRandom.nextFloat()*0.5f+0.1f);
 		obj.setColor(new Vector3(mRandom.nextInt(255), mRandom.nextInt(255), mRandom.nextInt(255)));
 		boolean positive = mRandom.nextBoolean();
