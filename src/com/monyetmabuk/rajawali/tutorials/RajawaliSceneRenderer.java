@@ -11,10 +11,8 @@ import rajawali.Camera;
 import rajawali.animation.Animation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
-import rajawali.bounds.IBoundingVolume;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
-import rajawali.math.Matrix4;
 import rajawali.math.Vector3;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Sphere;
@@ -51,7 +49,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 
 	public RajawaliSceneRenderer(Context context, Handler handler, TextView obj, TextView tri) {
 		super(context);
-		setFrameRate(60);
+		setFrameRate(1);
 		mHandler = handler;
 		mObjectCount = obj;
 		mTriCount = tri;
@@ -65,14 +63,14 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		
 		mCamera2 = new Camera(); //Lets create a second camera for the scene.
 		mCamera2.setPosition(0, 0, 15);
-		//mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
+		mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
 		mCamera2.setFarPlane(15);
 		mCamera2.setFieldOfView(60);
 		mCamera2.mFrustum.setBoundingColor(0xFFFFFF00);
 		
 		//We are going to use our own scene, not the default
 		mScene1 = new RajawaliScene(this, GRAPH_TYPE.OCTREE); 
-		//mScene1.displaySceneGraph(true);
+		mScene1.displaySceneGraph(true);
 		//Since we created a new scene, it has a default camera we need to replace
 		mScene1.replaceAndSwitchCamera(mCamera1, 0); 
 		mScene1.addCamera(mCamera2); //Add our second camera to the scene
