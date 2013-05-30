@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.materials;
 
 import java.io.ObjectInputStream;
 
@@ -17,11 +17,14 @@ import rajawali.materials.textures.CubeMapTexture;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
-public class RajawaliMaterialsRenderer extends RajawaliRenderer {
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
+
+public class MaterialsRenderer extends RajawaliRenderer {
 	private DirectionalLight mLight;
 	private BaseObject3D mMonkey1, mMonkey2, mMonkey3, mMonkey4;
 
-	public RajawaliMaterialsRenderer(Context context) {
+	public MaterialsRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
 	}

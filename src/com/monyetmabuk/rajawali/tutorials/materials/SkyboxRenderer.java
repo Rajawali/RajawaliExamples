@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.materials;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -7,9 +7,12 @@ import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
-public class RajawaliSkyboxRenderer extends RajawaliRenderer {
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
 
-	public RajawaliSkyboxRenderer(Context context) {
+public class SkyboxRenderer extends RajawaliRenderer {
+
+	public SkyboxRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
 	}

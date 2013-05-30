@@ -3,6 +3,8 @@ package com.monyetmabuk.rajawali.tutorials;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
+import com.monyetmabuk.rajawali.tutorials.materials.CustomMaterial;
+
 import rajawali.BaseObject3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.primitives.Cube;

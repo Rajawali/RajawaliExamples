@@ -8,8 +8,8 @@ import rajawali.primitives.ScreenQuad;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
-import com.monyetmabuk.rajawali.tutorials.CustomMaterial;
 import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
+import com.monyetmabuk.rajawali.tutorials.materials.CustomMaterial;
 
 public class TwoDRenderer extends RajawaliRenderer {
 	private float mTime;

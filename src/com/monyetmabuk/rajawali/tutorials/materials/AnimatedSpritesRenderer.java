@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.materials;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -8,12 +8,16 @@ import rajawali.materials.textures.Texture;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
-public class RajawaliAnimatedSpritesRenderer extends RajawaliRenderer {
+import com.monyetmabuk.rajawali.tutorials.ExampleParticleSystem2;
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
+
+public class AnimatedSpritesRenderer extends RajawaliRenderer {
 	private final int MAX_FRAMES = 200;
 	private int mFrameCount;
 	private ExampleParticleSystem2 mParticleSystem;
 
-	public RajawaliAnimatedSpritesRenderer(Context context) {
+	public AnimatedSpritesRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
 	}

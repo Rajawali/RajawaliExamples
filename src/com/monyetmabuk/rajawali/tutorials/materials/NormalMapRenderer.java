@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.materials;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -22,12 +22,15 @@ import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
-public class RajawaliBumpmapRenderer extends RajawaliRenderer {
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
+
+public class NormalMapRenderer extends RajawaliRenderer {
 	private PointLight mLight;
 	private BaseObject3D mEarth;
 	private Animation3D mLightAnim;
 
-	public RajawaliBumpmapRenderer(Context context) {
+	public NormalMapRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
 	}

@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.materials;
 
 import java.io.ObjectInputStream;
 
@@ -19,8 +19,11 @@ import rajawali.math.Vector3;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
-public class RajawaliSphereMapRenderer extends RajawaliRenderer {
-	public RajawaliSphereMapRenderer(Context context) {
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
+
+public class SphereMapRenderer extends RajawaliRenderer {
+	public SphereMapRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
 	}

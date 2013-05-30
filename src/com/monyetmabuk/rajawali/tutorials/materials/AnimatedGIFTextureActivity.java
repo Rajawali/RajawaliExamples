@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials.interact;
+package com.monyetmabuk.rajawali.tutorials.materials;
 
 import android.os.Bundle;
 import android.view.Gravity;
@@ -10,37 +10,37 @@ import android.widget.TextView;
 
 import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
 
-public class ObjectPickingActivity extends RajawaliExampleActivity implements OnTouchListener {
-	private ObjectPickingRenderer mRenderer;
+public class AnimatedGIFTextureActivity extends RajawaliExampleActivity implements OnTouchListener {
+	private AnimatedGIFTextureRenderer mRenderer;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mRenderer = new ObjectPickingRenderer(this);
+		mRenderer = new AnimatedGIFTextureRenderer(this);
 		mRenderer.setSurfaceView(mSurfaceView);
 		super.setRenderer(mRenderer);
 		mSurfaceView.setOnTouchListener(this);
 		
 		LinearLayout ll = new LinearLayout(this);
         ll.setOrientation(LinearLayout.VERTICAL);
-        ll.setGravity(Gravity.CENTER);
+        ll.setGravity(Gravity.BOTTOM);
 
         TextView label = new TextView(this);
-        label.setText("Touch a monkey :)");
+        label.setText("Touch the screen to load the next GIF");
         label.setTextSize(20);
         label.setGravity(Gravity.CENTER);
         label.setHeight(100);
         ll.addView(label);
-        
+
         mLayout.addView(ll);
 		
 		initLoader();
 	}
-	
-	public boolean onTouch(View v, MotionEvent event) {
+
+	public boolean onTouch(View view, MotionEvent event) {
 		if(event.getAction() == MotionEvent.ACTION_DOWN)
 		{
-			mRenderer.getObjectAt(event.getX(), event.getY());
+			mRenderer.nextGIF();
 		}
-		return super.onTouchEvent(event);
+		return true;
 	}
 }

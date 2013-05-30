@@ -1,7 +1,9 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.materials;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
+
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
 
 import rajawali.Camera2D;
 import rajawali.materials.SimpleMaterial;
@@ -14,14 +16,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-public class Rajawali360ImagesRenderer extends RajawaliRenderer {
+public class ThreeSixtyImagesRenderer extends RajawaliRenderer {
 	private ATexture[] mTextures;
 	private ScreenQuad mScreenQuad;
 	private int mFrameCount;
 	private SimpleMaterial mMaterial;
 	private final static int NUM_TEXTURES = 80;
 	
-	public Rajawali360ImagesRenderer(Context context) {
+	public ThreeSixtyImagesRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
 		getCurrentScene().switchCamera(new Camera2D());

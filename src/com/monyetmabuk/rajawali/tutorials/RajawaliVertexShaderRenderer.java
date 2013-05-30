@@ -3,6 +3,8 @@ package com.monyetmabuk.rajawali.tutorials;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
+import com.monyetmabuk.rajawali.tutorials.materials.CustomVertexShaderMaterial;
+
 import android.content.Context;
 import android.opengl.GLES20;
 

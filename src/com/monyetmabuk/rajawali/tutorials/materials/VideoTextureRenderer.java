@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.materials;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -25,11 +25,14 @@ import android.content.res.Resources.NotFoundException;
 import android.media.MediaPlayer;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
-public class RajawaliVideoTextureRenderer extends RajawaliRenderer {
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
+
+public class VideoTextureRenderer extends RajawaliRenderer {
 	private MediaPlayer mMediaPlayer;
 	private VideoTexture mVideoTexture;
 	
-	public RajawaliVideoTextureRenderer(Context context) {
+	public VideoTextureRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
 	}
