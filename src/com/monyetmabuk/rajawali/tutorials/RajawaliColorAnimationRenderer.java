@@ -3,7 +3,6 @@ package com.monyetmabuk.rajawali.tutorials;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.Camera2D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.ColorAnimation3D;
@@ -17,7 +16,6 @@ public class RajawaliColorAnimationRenderer extends RajawaliRenderer {
 	public RajawaliColorAnimationRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
-		getCurrentScene().switchCamera(new Camera2D());
 	}
 	
 	@Override

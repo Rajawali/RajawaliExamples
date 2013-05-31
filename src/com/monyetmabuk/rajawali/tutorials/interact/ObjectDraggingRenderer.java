@@ -11,7 +11,6 @@ import rajawali.renderer.RajawaliRenderer;
 import rajawali.util.ObjectColorPicker;
 import rajawali.util.OnObjectPickedListener;
 import android.content.Context;
-import android.opengl.GLES10;
 import android.opengl.GLES20;
 import android.opengl.GLU;
 

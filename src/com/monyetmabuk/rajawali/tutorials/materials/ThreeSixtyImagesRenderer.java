@@ -3,9 +3,6 @@ package com.monyetmabuk.rajawali.tutorials.materials;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
-
-import rajawali.Camera2D;
 import rajawali.materials.SimpleMaterial;
 import rajawali.materials.textures.ATexture;
 import rajawali.materials.textures.ATexture.TextureException;
@@ -15,6 +12,8 @@ import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
 
 public class ThreeSixtyImagesRenderer extends RajawaliRenderer {
 	private ATexture[] mTextures;
@@ -26,7 +25,6 @@ public class ThreeSixtyImagesRenderer extends RajawaliRenderer {
 	public ThreeSixtyImagesRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
-		getCurrentScene().switchCamera(new Camera2D());
 	}
 	
 	protected void initScene() {

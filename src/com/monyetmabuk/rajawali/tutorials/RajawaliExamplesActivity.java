@@ -21,6 +21,7 @@ import com.monyetmabuk.rajawali.tutorials.cameras.TwoDActivity;
 import com.monyetmabuk.rajawali.tutorials.interact.ObjectDraggingActivity;
 import com.monyetmabuk.rajawali.tutorials.interact.ObjectPickingActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.AnimatedGIFTextureActivity;
+import com.monyetmabuk.rajawali.tutorials.materials.CameraVideoTextureActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.ThreeSixtyImagesActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.AnimatedSpritesActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.NormalMapActivity;
@@ -79,6 +80,7 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("Scenes", RajawaliSceneActivity.class),
 			new ExampleItem("Specular and Alpha Maps", SpecularAndAlphaActivity.class),
 			new ExampleItem("Video Texture", VideoTextureActivity.class),
+			//new ExampleItem("Camera Video Texture", CameraVideoTextureActivity.class),
 			new ExampleItem("Skeletal Animation Transition Blending", BlendTransitionActivity.class),
 			new ExampleItem("Touching and Dragging Objects", ObjectDraggingActivity.class),
 			new ExampleItem("Animated GIF Texture", AnimatedGIFTextureActivity.class)};
