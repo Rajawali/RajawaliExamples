@@ -49,7 +49,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 
 	public RajawaliSceneRenderer(Context context, Handler handler, TextView obj, TextView tri) {
 		super(context);
-		setFrameRate(1);
+		setFrameRate(60);
 		mHandler = handler;
 		mObjectCount = obj;
 		mTriCount = tri;
@@ -66,7 +66,6 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
 		mCamera2.setFarPlane(15);
 		mCamera2.setFieldOfView(60);
-		mCamera2.mFrustum.setBoundingColor(0xFFFFFF00);
 		
 		//We are going to use our own scene, not the default
 		mScene1 = new RajawaliScene(this, GRAPH_TYPE.OCTREE); 
@@ -109,20 +108,20 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mInitialCube.setRotation(45f, 45f, 45f);
 		//mInitialCube.setShowBoundingVolume(true);
 		
-		mPoint = new Sphere(1, 4, 4);
+		/*mPoint = new Sphere(1, 4, 4);
 		mPoint.setPosition(mCamera2.getPosition());
 		mPoint.setColor(0xFF00FF00);
 		mPoint.setMaterial(mMaterial);
 		mPoint.addLight(mLight1);
 		mPoint.addLight(mLight2);
-		mPoint.setScale(0.125f);
+		mPoint.setScale(0.125f);*/
 		
 		mSpheres.add(mInitialSphere);
 		mCubes.add(mInitialCube);
 		mScene1.addChild(mInitialCube); //Add our cube to scene 1
 		mScene2.addChild(mInitialSphere); //Add our sphere to scene 2
 		
-		mScene1.addChild(mPoint);
+		//mScene1.addChild(mPoint);
 
 		Animation3D anim = new EllipticalOrbitAnimation3D(new Vector3(5, 1.5, -4), new Vector3(-5, 1.5, -4), 0.0,
 				360, OrbitDirection.CLOCKWISE);
