@@ -72,7 +72,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mScene1.displaySceneGraph(true);
 		//Since we created a new scene, it has a default camera we need to replace
 		mScene1.replaceAndSwitchCamera(mCamera1, 0); 
-		mScene1.addCamera(mCamera2); //Add our second camera to the scene
+		//mScene1.addCamera(mCamera2); //Add our second camera to the scene
 		//mScene1.switchCamera(mCamera2);
 		
 		//We are creating a second scene
@@ -96,7 +96,6 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mInitialSphere.addLight(mLight2);
 		mInitialSphere.setPosition(0, 1, 0);
 		mInitialSphere.setRotation(45f, 45f, 45f);
-		//mInitialSphere.setShowBoundingVolume(true);
 		
 		mInitialCube = new Cube(1);
 		//mInitialCube.setScale(0.150f);
@@ -106,15 +105,6 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mInitialCube.addLight(mLight2);
 		mInitialCube.setPosition(0, 1, 0);
 		mInitialCube.setRotation(45f, 45f, 45f);
-		//mInitialCube.setShowBoundingVolume(true);
-		
-		/*mPoint = new Sphere(1, 4, 4);
-		mPoint.setPosition(mCamera2.getPosition());
-		mPoint.setColor(0xFF00FF00);
-		mPoint.setMaterial(mMaterial);
-		mPoint.addLight(mLight1);
-		mPoint.addLight(mLight2);
-		mPoint.setScale(0.125f);*/
 		
 		mSpheres.add(mInitialSphere);
 		mCubes.add(mInitialCube);
@@ -165,23 +155,6 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		//mPeriapsis.y = mFocal.y;
 		//mPeriapsis.x = mFocal.x;
 		mCamera1.setLookAt(mFocal);
-		/*mCamera2.updateFrustum();
-		mCamera2.getTransformedBoundingVolume().drawBoundingVolume(getCurrentCamera(), 
-				getCurrentCamera().getProjectionMatrix(), getCurrentCamera().getViewMatrix(), null);
-		int length;*/
-		/*if (getCurrentScene().equals(mScene2)) {
-			length = mSpheres.size();
-			for (int i = 0; i < length; ++i) {
-				IBoundingVolume bcube = mSpheres.get(i).getGeometry().getBoundingBox();
-				bcube.transform(mSpheres.get(i).getModelMatrix());
-			}
-		} else if (getCurrentScene().equals(mScene1)) {
-			length = mCubes.size();
-			for (int i = 0; i < length; ++i) {
-				IBoundingVolume bcube = mCubes.get(i).getGeometry().getBoundingBox();
-				bcube.transform(mCubes.get(i).getModelMatrix());
-			}
-		}*/
 		if (mFrameCount % 20 == 0) { 
 			mHandler.post(new Runnable() {
 				public void run() {
@@ -204,7 +177,6 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		obj.addLight(mLight1);
 		obj.addLight(mLight2);
 		obj.setMaterial(mMaterial);
-		//obj.setShowBoundingVolume(true);
 		obj.setScale(mRandom.nextFloat()*0.5f+0.1f);
 		obj.setColor(new Vector3(mRandom.nextInt(255), mRandom.nextInt(255), mRandom.nextInt(255)));
 		boolean positive = mRandom.nextBoolean();
