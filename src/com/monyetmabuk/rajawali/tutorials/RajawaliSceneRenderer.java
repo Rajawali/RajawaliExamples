@@ -49,7 +49,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 
 	public RajawaliSceneRenderer(Context context, Handler handler, TextView obj, TextView tri) {
 		super(context);
-		setFrameRate(60);
+		setFrameRate(0);
 		mHandler = handler;
 		mObjectCount = obj;
 		mTriCount = tri;
