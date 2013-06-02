@@ -32,7 +32,10 @@
         <activity android:name=".RajawaliMD2Activity"></activity>
         <activity android:name=".RajawaliPostProcessingActivity"></activity>
         <activity android:name=".RajawaliCollisionDetectionActivity"></activity>
-        <activity android:name=".RajawaliMultipleLightsActivity"></activity>
+        <activity android:name=".lights.PointLightActivity"></activity>
+        <activity android:name=".lights.DirectionalLightActivity"></activity>
+        <activity android:name=".lights.SpotLightActivity"></activity>
+        <activity android:name=".lights.MultipleLightsActivity"></activity>
         <activity android:name=".primitives.LinesActivity"></activity>
         <activity android:name=".RajawaliCatmullRomActivity"></activity>
         <activity android:name=".Rajawali2000PlanesActivity"></activity>

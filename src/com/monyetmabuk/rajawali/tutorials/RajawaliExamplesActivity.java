@@ -20,16 +20,19 @@ import com.monyetmabuk.rajawali.tutorials.cameras.OrthographiCamActivity;
 import com.monyetmabuk.rajawali.tutorials.cameras.TwoDActivity;
 import com.monyetmabuk.rajawali.tutorials.interact.ObjectDraggingActivity;
 import com.monyetmabuk.rajawali.tutorials.interact.ObjectPickingActivity;
+import com.monyetmabuk.rajawali.tutorials.lights.DirectionalLightActivity;
+import com.monyetmabuk.rajawali.tutorials.lights.MultipleLightsActivity;
+import com.monyetmabuk.rajawali.tutorials.lights.PointLightActivity;
+import com.monyetmabuk.rajawali.tutorials.lights.SpotLightActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.AnimatedGIFTextureActivity;
-import com.monyetmabuk.rajawali.tutorials.materials.CameraVideoTextureActivity;
-import com.monyetmabuk.rajawali.tutorials.materials.ThreeSixtyImagesActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.AnimatedSpritesActivity;
-import com.monyetmabuk.rajawali.tutorials.materials.NormalMapActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.MaterialsActivity;
+import com.monyetmabuk.rajawali.tutorials.materials.NormalMapActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.SkyboxActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.SpecularAndAlphaActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.SphereMapActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.TextureCompressionActivity;
+import com.monyetmabuk.rajawali.tutorials.materials.ThreeSixtyImagesActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.ToonShadingActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.VideoTextureActivity;
 import com.monyetmabuk.rajawali.tutorials.primitives.ColoredLineSegmentsActivity;
@@ -57,7 +60,10 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("MD2 Animation", RajawaliMD2Activity.class), 
 			new ExampleItem("Post Processing", RajawaliPostProcessingActivity.class),
 			new ExampleItem("Collision Detection", RajawaliCollisionDetectionActivity.class),
-			new ExampleItem("Multiple Lights", RajawaliMultipleLightsActivity.class), 
+			new ExampleItem("Point Light", PointLightActivity.class),
+			new ExampleItem("Directional Light", DirectionalLightActivity.class),
+			new ExampleItem("Spot Light", SpotLightActivity.class),
+			new ExampleItem("Multiple Lights", MultipleLightsActivity.class),
 			new ExampleItem("Lines", LinesActivity.class),
 			new ExampleItem("Colored Line Segments", ColoredLineSegmentsActivity.class),
 			new ExampleItem("Catmull-Rom Splines", RajawaliCatmullRomActivity.class),
