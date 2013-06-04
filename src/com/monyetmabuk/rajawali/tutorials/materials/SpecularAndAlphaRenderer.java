@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.materials;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -19,8 +19,11 @@ import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
-public class RajawaliSpecularAndAlphaRenderer extends RajawaliRenderer {
-	public RajawaliSpecularAndAlphaRenderer(Context context)
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
+
+public class SpecularAndAlphaRenderer extends RajawaliRenderer {
+	public SpecularAndAlphaRenderer(Context context)
 	{
 		super(context);
 		setFrameRate(60);

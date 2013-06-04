@@ -2,7 +2,7 @@
  * @author Andrew Jo (andrewjo@gmail.com)
  * www.andrewjo.com
  */
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.materials;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -15,11 +15,13 @@ import rajawali.primitives.Plane;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
-public class RajawaliTextureCompressionRenderer extends RajawaliRenderer {
+import com.monyetmabuk.rajawali.tutorials.R;
+
+public class TextureCompressionRenderer extends RajawaliRenderer {
 	private BaseObject3D mMipmappedPlane;
 	private BaseObject3D mPlane;
 
-	public RajawaliTextureCompressionRenderer(Context context) {
+	public TextureCompressionRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
 	}

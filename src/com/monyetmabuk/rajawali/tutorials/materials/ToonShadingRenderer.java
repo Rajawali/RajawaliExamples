@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.materials;
 
 import java.io.ObjectInputStream;
 
@@ -15,11 +15,14 @@ import rajawali.math.Vector3.Axis;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
-public class RajawaliToonShadingRenderer extends RajawaliRenderer {
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
+
+public class ToonShadingRenderer extends RajawaliRenderer {
 	private DirectionalLight mLight;
 	private BaseObject3D mMonkey1, mMonkey2, mMonkey3;
 
-	public RajawaliToonShadingRenderer(Context context) {
+	public ToonShadingRenderer(Context context) {
 		super(context);
 		getCurrentScene().setBackgroundColor(0xffeeeeee);
 		setFrameRate(60);

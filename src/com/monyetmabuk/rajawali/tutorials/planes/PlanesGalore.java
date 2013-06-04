@@ -9,7 +9,6 @@ import rajawali.BufferInfo;
 import rajawali.Camera;
 import rajawali.Geometry3D;
 import rajawali.Geometry3D.BufferType;
-import rajawali.materials.MaterialManager;
 import rajawali.math.Vector3;
 import android.graphics.Color;
 import android.opengl.GLES20;

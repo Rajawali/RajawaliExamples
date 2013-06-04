@@ -1,7 +1,9 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.materials;
 
 import rajawali.materials.SimpleMaterial;
 import android.opengl.GLES20;
+
+import com.monyetmabuk.rajawali.tutorials.R;
 
 public class CustomVertexShaderMaterial extends SimpleMaterial {
 	

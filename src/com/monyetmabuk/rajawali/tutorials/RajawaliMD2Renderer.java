@@ -48,16 +48,6 @@ public class RajawaliMD2Renderer extends RajawaliRenderer {
 		} catch(ParsingException e) {
 			e.printStackTrace();
 		}
-
-		mOgre = (VertexAnimationObject3D) parser.getParsedAnimationObject();
-		mOgre.addLight(mLight);
-		mOgre.setScale(.07f);
-		mOgre.setRotY(90);
-		mOgre.setY(-1);
-
-		addChild(mOgre);
-
-		mOgre.play();
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {

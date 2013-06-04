@@ -3,22 +3,19 @@ package com.monyetmabuk.rajawali.tutorials;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import android.content.Context;
-import rajawali.Camera2D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.ColorAnimation3D;
 import rajawali.materials.SimpleMaterial;
-import rajawali.primitives.Plane;
 import rajawali.primitives.ScreenQuad;
 import rajawali.renderer.RajawaliRenderer;
+import android.content.Context;
 
 public class RajawaliColorAnimationRenderer extends RajawaliRenderer {
 
 	public RajawaliColorAnimationRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
-		getCurrentScene().switchCamera(new Camera2D());
 	}
 	
 	@Override
