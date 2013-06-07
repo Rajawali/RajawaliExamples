@@ -132,7 +132,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mCameraAnim.setDuration(20000);
 		mCameraAnim.setRepeatMode(Animation3D.RepeatMode.INFINITE);
 		mCameraAnim.setTransformable3D(mCamera1);
-		//mCameraAnim.play();
+		mCameraAnim.play();
 		//Register the animation with BOTH scenes
 		mScene1.registerAnimation(mCameraAnim);
 		mScene2.registerAnimation(mCameraAnim);
@@ -163,7 +163,7 @@ public class RajawaliSceneRenderer extends RajawaliRenderer {
 		mFocal.z = tMin.z + (tMax.z - tMin.z) * .5f;*/
 		//mPeriapsis.y = mFocal.y;
 		//mPeriapsis.x = mFocal.x;
-		//mCamera1.setLookAt(mFocal);
+		mCamera1.setLookAt(mFocal);
 		if (mFrameCount % 20 == 0) { 
 			mHandler.post(new Runnable() {
 				public void run() {
