@@ -3,4 +3,13 @@
     <string name="app_name">Rajawali Examples</string>
     <string name="github_link">Visit Rajawali on Github</string>
     <string name="github_url"><![CDATA[https://github.com/MasDennis/Rajawali]]></string>
+    <string name="place_san_francisco">San Francisco</string>
+    <string name="place_london">London</string>
+    <string name="place_jakarta">Jakarta</string>
+    <string name="place_buenos_aires">Buenos Aires</string>
+    <string name="place_seoul">Seoul</string>
+    <string name="place_moscow">Moscow</string>
+    <string name="place_ankara">Ankara</string>
+    <string name="place_cape_town">Cape Town</string>
+    <string name="place_toronto">Toronto</string>
 </resources>

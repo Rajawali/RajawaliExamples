@@ -18,6 +18,7 @@ import com.monyetmabuk.rajawali.tutorials.cameras.CameraFollowPathActivity;
 import com.monyetmabuk.rajawali.tutorials.cameras.ChaseCamActivity;
 import com.monyetmabuk.rajawali.tutorials.cameras.OrthographiCamActivity;
 import com.monyetmabuk.rajawali.tutorials.cameras.TwoDActivity;
+import com.monyetmabuk.rajawali.tutorials.fragment.FragmentActivity;
 import com.monyetmabuk.rajawali.tutorials.interact.ObjectDraggingActivity;
 import com.monyetmabuk.rajawali.tutorials.interact.ObjectPickingActivity;
 import com.monyetmabuk.rajawali.tutorials.lights.DirectionalLightActivity;
@@ -47,6 +48,7 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("Load .obj model", RajawaliLoadModelActivity.class), 
 			new ExampleItem("Materials", MaterialsActivity.class),
 			new ExampleItem("UI Elements", RajawaliUIElementsActivity.class), 
+			new ExampleItem("Using Fragments", FragmentActivity.class),
 			new ExampleItem("Skybox", SkyboxActivity.class),
 			new ExampleItem("Custom Material/Shader", RajawaliCustomShaderActivity.class), 
 			new ExampleItem("2D Renderer", TwoDActivity.class),

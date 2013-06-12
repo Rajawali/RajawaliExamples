@@ -13,7 +13,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ie.cathalcoffey.android.rajawali.tutorials.FragmentsExampleActivity"></activity>
         <activity android:name=".RajawaliCustomShaderActivity"></activity>
         <activity android:name=".RajawaliSimpleParticlesActivity"></activity>
         <activity android:name=".materials.SkyboxActivity"></activity>
@@ -61,5 +60,6 @@
         <activity android:name=".cameras.OrthographiCamActivity"></activity>
         <activity android:name=".cameras.CameraFollowPathActivity"></activity>
         <activity android:name=".materials.AnimatedGIFTextureActivity"></activity>
+        <activity android:name=".fragment.FragmentActivity"></activity>
     </application>
 </manifest>
