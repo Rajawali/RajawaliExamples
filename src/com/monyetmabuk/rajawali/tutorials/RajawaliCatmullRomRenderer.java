@@ -7,10 +7,10 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.CatmullRomPath3D;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
 import rajawali.animation.TranslateAnimation3D;
+import rajawali.curves.CatmullRomCurve3D;
 import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.SimpleMaterial;
@@ -45,7 +45,7 @@ public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
 		material.setUseSingleColor(true);
 		
 		// -- create a catmull-rom path. The first and the last point are control points.
-		CatmullRomPath3D path = new CatmullRomPath3D();
+		CatmullRomCurve3D path = new CatmullRomCurve3D();
 		float r = 12;
 		float rh = r * .5f;
 

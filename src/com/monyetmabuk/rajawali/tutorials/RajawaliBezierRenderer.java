@@ -3,8 +3,9 @@ package com.monyetmabuk.rajawali.tutorials;
 import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.BezierPath3D;
 import rajawali.animation.TranslateAnimation3D;
+import rajawali.curves.CompoundCurve3D;
+import rajawali.curves.CubicBezierCurve3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.PhongMaterial;
@@ -45,13 +46,13 @@ public class RajawaliBezierRenderer extends RajawaliRenderer {
 		yellowSphere.setMaterial(diffuse);
 		addChild(yellowSphere);
 
-		BezierPath3D redBezierPath = new BezierPath3D();
-		redBezierPath.addPoint(new Vector3(0, -4, 0), new Vector3(-2, -4, .2f), new Vector3(4, 4, 4), new Vector3(-2, 4, 4.5f));
-		redBezierPath.addPoint(new Vector3(-2, 4, 4.5f), new Vector3(2, -2, -2), new Vector3(4, 4, 4), new Vector3(-2, 4, 4.5f));
+		CompoundCurve3D redBezierPath = new CompoundCurve3D();
+		redBezierPath.addCurve(new CubicBezierCurve3D(new Vector3(0, -4, 0), new Vector3(-2, -4, .2f), new Vector3(4, 4, 4), new Vector3(-2, 4, 4.5f)));
+		redBezierPath.addCurve(new CubicBezierCurve3D(new Vector3(-2, 4, 4.5f), new Vector3(2, -2, -2), new Vector3(4, 4, 4), new Vector3(-2, 4, 4.5f)));
 
-		BezierPath3D yellowBezierPath = new BezierPath3D();
-		yellowBezierPath.addPoint(new Vector3(2, 4, 0), new Vector3(-8, 3, 4), new Vector3(-4, 0, -2), new Vector3(4, -3, 30));
-		yellowBezierPath.addPoint(new Vector3(4, -3, 30), new Vector3(6, 1, 2), new Vector3(4, 2, 3), new Vector3(-3, -3, -4.5f));
+		CompoundCurve3D yellowBezierPath = new CompoundCurve3D();
+		yellowBezierPath.addCurve(new CubicBezierCurve3D(new Vector3(2, 4, 0), new Vector3(-8, 3, 4), new Vector3(-4, 0, -2), new Vector3(4, -3, 30)));
+		yellowBezierPath.addCurve(new CubicBezierCurve3D(new Vector3(4, -3, 30), new Vector3(6, 1, 2), new Vector3(4, 2, 3), new Vector3(-3, -3, -4.5f)));
 
 		Animation3D redAnim = new TranslateAnimation3D(redBezierPath);
 		redAnim.setDuration(2000);

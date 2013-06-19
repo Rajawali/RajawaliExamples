@@ -5,8 +5,8 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.CatmullRomPath3D;
 import rajawali.animation.TranslateAnimation3D;
+import rajawali.curves.CatmullRomCurve3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
@@ -65,7 +65,7 @@ public class Rajawali2000PlanesRenderer extends RajawaliRenderer {
 		BaseObject3D empty = new BaseObject3D();
 		addChild(empty);
 		
-		CatmullRomPath3D path = new CatmullRomPath3D();
+		CatmullRomCurve3D path = new CatmullRomCurve3D();
 		path.addPoint(new Vector3(-4, 0, -20));
 		path.addPoint(new Vector3(2, 1, -10));
 		path.addPoint(new Vector3(-2, 0, 10));
