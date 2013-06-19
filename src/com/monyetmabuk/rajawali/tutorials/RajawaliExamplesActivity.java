@@ -18,6 +18,9 @@ import com.monyetmabuk.rajawali.tutorials.cameras.CameraFollowPathActivity;
 import com.monyetmabuk.rajawali.tutorials.cameras.ChaseCamActivity;
 import com.monyetmabuk.rajawali.tutorials.cameras.OrthographiCamActivity;
 import com.monyetmabuk.rajawali.tutorials.cameras.TwoDActivity;
+import com.monyetmabuk.rajawali.tutorials.curves.BezierActivity;
+import com.monyetmabuk.rajawali.tutorials.curves.CatmullRomActivity;
+import com.monyetmabuk.rajawali.tutorials.curves.CurvesActivity;
 import com.monyetmabuk.rajawali.tutorials.fragment.FragmentActivity;
 import com.monyetmabuk.rajawali.tutorials.interact.ObjectDraggingActivity;
 import com.monyetmabuk.rajawali.tutorials.interact.ObjectPickingActivity;
@@ -57,7 +60,8 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("Object Picking", ObjectPickingActivity.class),
 			new ExampleItem("Animation", RajawaliAnimationActivity.class), 
 			new ExampleItem("Bump Mapping", NormalMapActivity.class),
-			new ExampleItem("Bezier Path Animation", RajawaliBezierActivity.class), 
+			new ExampleItem("Bezier Path Animation", BezierActivity.class),
+			new ExampleItem("Curves", CurvesActivity.class),
 			new ExampleItem("Toon Shading", ToonShadingActivity.class),
 			new ExampleItem("MD2 Animation", RajawaliMD2Activity.class), 
 			new ExampleItem("Post Processing", RajawaliPostProcessingActivity.class),
@@ -68,7 +72,7 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("Multiple Lights", MultipleLightsActivity.class),
 			new ExampleItem("Lines", LinesActivity.class),
 			new ExampleItem("Colored Line Segments", ColoredLineSegmentsActivity.class),
-			new ExampleItem("Catmull-Rom Splines", RajawaliCatmullRomActivity.class),
+			new ExampleItem("Catmull-Rom Splines", CatmullRomActivity.class),
 			new ExampleItem("2000 Textured Planes", Rajawali2000PlanesActivity.class),
 			new ExampleItem("Transparent GLSurfaceView", RajawaliTransparentSurfaceActivity.class),
 			new ExampleItem("Animated Sprites", AnimatedSpritesActivity.class), 

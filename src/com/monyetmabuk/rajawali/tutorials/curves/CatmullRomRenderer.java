@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.curves;
 
 import java.util.Stack;
 
@@ -22,8 +22,11 @@ import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
-public class RajawaliCatmullRomRenderer extends RajawaliRenderer {
-	public RajawaliCatmullRomRenderer(Context context) {
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
+
+public class CatmullRomRenderer extends RajawaliRenderer {
+	public CatmullRomRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
 	}

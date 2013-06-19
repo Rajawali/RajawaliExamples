@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.curves;
 
 import rajawali.BaseObject3D;
 import rajawali.animation.Animation3D;
@@ -14,10 +14,10 @@ import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
-public class RajawaliBezierRenderer extends RajawaliRenderer {
+public class BezierRenderer extends RajawaliRenderer {
 	private DirectionalLight mLight;
 
-	public RajawaliBezierRenderer(Context context) {
+	public BezierRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
 	}
