@@ -62,5 +62,6 @@
         <activity android:name=".materials.AnimatedGIFTextureActivity"></activity>
         <activity android:name=".fragment.FragmentActivity"></activity>
         <activity android:name=".curves.CurvesActivity"></activity>
+        <activity android:name=".curves.SVGPathActivity"></activity>
     </application>
 </manifest>
