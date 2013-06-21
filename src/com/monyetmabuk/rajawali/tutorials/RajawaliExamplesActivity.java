@@ -14,6 +14,8 @@ import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.monyetmabuk.rajawali.tutorials.buffers.UpdateVertexBufferActivity;
+import com.monyetmabuk.rajawali.tutorials.buffers.UsingGeometryDataActivity;
 import com.monyetmabuk.rajawali.tutorials.cameras.CameraFollowPathActivity;
 import com.monyetmabuk.rajawali.tutorials.cameras.ChaseCamActivity;
 import com.monyetmabuk.rajawali.tutorials.cameras.OrthographiCamActivity;
@@ -86,7 +88,8 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("Chase Camera", ChaseCamActivity.class),
 			new ExampleItem("Orthographic Camera", OrthographiCamActivity.class),
 			new ExampleItem("Camera Follow Path Animation", CameraFollowPathActivity.class),
-			new ExampleItem("Using Geometry Data", RajawaliUsingGeometryDataActivity.class),
+			new ExampleItem("Using Geometry Data", UsingGeometryDataActivity.class),
+			new ExampleItem("Updating Vertex Buffer Data", UpdateVertexBufferActivity.class),
 			new ExampleItem("360° Images", ThreeSixtyImagesActivity.class),
 			new ExampleItem("Skeletal Animation (MD5)", MD5Activity.class),
 			new ExampleItem("Texture Compression (ETC)", TextureCompressionActivity.class),

@@ -46,7 +46,7 @@
         <activity android:name=".RajawaliRipplesActivity"></activity>
         <activity android:name=".materials.SphereMapActivity"></activity>
         <activity android:name=".cameras.ChaseCamActivity"></activity>
-        <activity android:name=".RajawaliUsingGeometryDataActivity"></activity>
+        <activity android:name=".buffers.UsingGeometryDataActivity"></activity>
         <activity android:name=".materials.ThreeSixtyImagesActivity"></activity>
         <activity android:name=".skeletalanim.MD5Activity"></activity>
         <activity android:name=".materials.TextureCompressionActivity"></activity>
@@ -63,5 +63,6 @@
         <activity android:name=".fragment.FragmentActivity"></activity>
         <activity android:name=".curves.CurvesActivity"></activity>
         <activity android:name=".curves.SVGPathActivity"></activity>
+        <activity android:name=".buffers.UpdateVertexBufferActivity"></activity>
     </application>
 </manifest>

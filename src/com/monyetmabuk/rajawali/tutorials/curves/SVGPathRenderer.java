@@ -58,7 +58,7 @@ public class SVGPathRenderer extends RajawaliRenderer {
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(line);
 			registerAnimation(anim);
-			anim.play();	
+			anim.play();
 		}		
 		getCurrentCamera().setFarPlane(2000);
 		getCurrentCamera().setY(50);
