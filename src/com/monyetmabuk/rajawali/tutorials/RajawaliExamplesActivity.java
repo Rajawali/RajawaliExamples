@@ -24,6 +24,7 @@ import com.monyetmabuk.rajawali.tutorials.curves.BezierActivity;
 import com.monyetmabuk.rajawali.tutorials.curves.CatmullRomActivity;
 import com.monyetmabuk.rajawali.tutorials.curves.CurvesActivity;
 import com.monyetmabuk.rajawali.tutorials.curves.SVGPathActivity;
+import com.monyetmabuk.rajawali.tutorials.curves.UniformDistributionActivity;
 import com.monyetmabuk.rajawali.tutorials.fragment.FragmentActivity;
 import com.monyetmabuk.rajawali.tutorials.interact.ObjectDraggingActivity;
 import com.monyetmabuk.rajawali.tutorials.interact.ObjectPickingActivity;
@@ -77,6 +78,7 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("Lines", LinesActivity.class),
 			new ExampleItem("Colored Line Segments", ColoredLineSegmentsActivity.class),
 			new ExampleItem("Catmull-Rom Splines", CatmullRomActivity.class),
+			new ExampleItem("Uniform point distribution & constant speed", UniformDistributionActivity.class),
 			new ExampleItem("2000 Textured Planes", Rajawali2000PlanesActivity.class),
 			new ExampleItem("Transparent GLSurfaceView", RajawaliTransparentSurfaceActivity.class),
 			new ExampleItem("Animated Sprites", AnimatedSpritesActivity.class), 

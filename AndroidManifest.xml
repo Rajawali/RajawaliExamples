@@ -64,5 +64,6 @@
         <activity android:name=".curves.CurvesActivity"></activity>
         <activity android:name=".curves.SVGPathActivity"></activity>
         <activity android:name=".buffers.UpdateVertexBufferActivity"></activity>
+        <activity android:name=".curves.UniformDistributionActivity"></activity>
     </application>
 </manifest>
