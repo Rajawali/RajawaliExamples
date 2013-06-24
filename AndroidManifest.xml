@@ -13,7 +13,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ie.cathalcoffey.android.rajawali.tutorials.FragmentsExampleActivity"></activity>
         <activity android:name=".RajawaliCustomShaderActivity"></activity>
         <activity android:name=".RajawaliSimpleParticlesActivity"></activity>
         <activity android:name=".materials.SkyboxActivity"></activity>
@@ -25,7 +24,7 @@
         <activity android:name=".RajawaliAccelerometerActivity"></activity>
         <activity android:name=".RajawaliMoreParticlesActivity"></activity>
         <activity android:name=".interact.ObjectPickingActivity"></activity>
-        <activity android:name=".RajawaliBezierActivity"></activity>
+        <activity android:name=".curves.BezierActivity"></activity>
         <activity android:name=".RajawaliAnimationActivity"></activity>
         <activity android:name=".materials.NormalMapActivity"></activity>
         <activity android:name=".materials.ToonShadingActivity"></activity>
@@ -37,7 +36,7 @@
         <activity android:name=".lights.SpotLightActivity"></activity>
         <activity android:name=".lights.MultipleLightsActivity"></activity>
         <activity android:name=".primitives.LinesActivity"></activity>
-        <activity android:name=".RajawaliCatmullRomActivity"></activity>
+        <activity android:name=".curves.CatmullRomActivity"></activity>
         <activity android:name=".Rajawali2000PlanesActivity"></activity>
         <activity android:name=".RajawaliTransparentSurfaceActivity"></activity>
         <activity android:name=".materials.AnimatedSpritesActivity"></activity>
@@ -47,7 +46,7 @@
         <activity android:name=".RajawaliRipplesActivity"></activity>
         <activity android:name=".materials.SphereMapActivity"></activity>
         <activity android:name=".cameras.ChaseCamActivity"></activity>
-        <activity android:name=".RajawaliUsingGeometryDataActivity"></activity>
+        <activity android:name=".buffers.UsingGeometryDataActivity"></activity>
         <activity android:name=".materials.ThreeSixtyImagesActivity"></activity>
         <activity android:name=".skeletalanim.MD5Activity"></activity>
         <activity android:name=".materials.TextureCompressionActivity"></activity>
@@ -61,5 +60,10 @@
         <activity android:name=".cameras.OrthographiCamActivity"></activity>
         <activity android:name=".cameras.CameraFollowPathActivity"></activity>
         <activity android:name=".materials.AnimatedGIFTextureActivity"></activity>
+        <activity android:name=".fragment.FragmentActivity"></activity>
+        <activity android:name=".curves.CurvesActivity"></activity>
+        <activity android:name=".curves.SVGPathActivity"></activity>
+        <activity android:name=".buffers.UpdateVertexBufferActivity"></activity>
+        <activity android:name=".curves.UniformDistributionActivity"></activity>
     </application>
 </manifest>

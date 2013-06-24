@@ -14,10 +14,18 @@ import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.monyetmabuk.rajawali.tutorials.buffers.UpdateVertexBufferActivity;
+import com.monyetmabuk.rajawali.tutorials.buffers.UsingGeometryDataActivity;
 import com.monyetmabuk.rajawali.tutorials.cameras.CameraFollowPathActivity;
 import com.monyetmabuk.rajawali.tutorials.cameras.ChaseCamActivity;
 import com.monyetmabuk.rajawali.tutorials.cameras.OrthographiCamActivity;
 import com.monyetmabuk.rajawali.tutorials.cameras.TwoDActivity;
+import com.monyetmabuk.rajawali.tutorials.curves.BezierActivity;
+import com.monyetmabuk.rajawali.tutorials.curves.CatmullRomActivity;
+import com.monyetmabuk.rajawali.tutorials.curves.CurvesActivity;
+import com.monyetmabuk.rajawali.tutorials.curves.SVGPathActivity;
+import com.monyetmabuk.rajawali.tutorials.curves.UniformDistributionActivity;
+import com.monyetmabuk.rajawali.tutorials.fragment.FragmentActivity;
 import com.monyetmabuk.rajawali.tutorials.interact.ObjectDraggingActivity;
 import com.monyetmabuk.rajawali.tutorials.interact.ObjectPickingActivity;
 import com.monyetmabuk.rajawali.tutorials.lights.DirectionalLightActivity;
@@ -47,6 +55,7 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("Load .obj model", RajawaliLoadModelActivity.class), 
 			new ExampleItem("Materials", MaterialsActivity.class),
 			new ExampleItem("UI Elements", RajawaliUIElementsActivity.class), 
+			new ExampleItem("Using Fragments", FragmentActivity.class),
 			new ExampleItem("Skybox", SkyboxActivity.class),
 			new ExampleItem("Custom Material/Shader", RajawaliCustomShaderActivity.class), 
 			new ExampleItem("2D Renderer", TwoDActivity.class),
@@ -55,7 +64,9 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("Object Picking", ObjectPickingActivity.class),
 			new ExampleItem("Animation", RajawaliAnimationActivity.class), 
 			new ExampleItem("Bump Mapping", NormalMapActivity.class),
-			new ExampleItem("Bezier Path Animation", RajawaliBezierActivity.class), 
+			new ExampleItem("Bezier Path Animation", BezierActivity.class),
+			new ExampleItem("Curves", CurvesActivity.class),
+			new ExampleItem("SVG Path", SVGPathActivity.class),
 			new ExampleItem("Toon Shading", ToonShadingActivity.class),
 			new ExampleItem("MD2 Animation", RajawaliMD2Activity.class), 
 			new ExampleItem("Post Processing", RajawaliPostProcessingActivity.class),
@@ -66,7 +77,8 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("Multiple Lights", MultipleLightsActivity.class),
 			new ExampleItem("Lines", LinesActivity.class),
 			new ExampleItem("Colored Line Segments", ColoredLineSegmentsActivity.class),
-			new ExampleItem("Catmull-Rom Splines", RajawaliCatmullRomActivity.class),
+			new ExampleItem("Catmull-Rom Splines", CatmullRomActivity.class),
+			new ExampleItem("Uniform point distribution & constant speed", UniformDistributionActivity.class),
 			new ExampleItem("2000 Textured Planes", Rajawali2000PlanesActivity.class),
 			new ExampleItem("Transparent GLSurfaceView", RajawaliTransparentSurfaceActivity.class),
 			new ExampleItem("Animated Sprites", AnimatedSpritesActivity.class), 
@@ -78,7 +90,8 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("Chase Camera", ChaseCamActivity.class),
 			new ExampleItem("Orthographic Camera", OrthographiCamActivity.class),
 			new ExampleItem("Camera Follow Path Animation", CameraFollowPathActivity.class),
-			new ExampleItem("Using Geometry Data", RajawaliUsingGeometryDataActivity.class),
+			new ExampleItem("Using Geometry Data", UsingGeometryDataActivity.class),
+			new ExampleItem("Updating Vertex Buffer Data", UpdateVertexBufferActivity.class),
 			new ExampleItem("360° Images", ThreeSixtyImagesActivity.class),
 			new ExampleItem("Skeletal Animation (MD5)", MD5Activity.class),
 			new ExampleItem("Texture Compression (ETC)", TextureCompressionActivity.class),

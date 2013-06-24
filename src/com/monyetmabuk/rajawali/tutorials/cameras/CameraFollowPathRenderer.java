@@ -3,9 +3,9 @@ package com.monyetmabuk.rajawali.tutorials.cameras;
 import java.util.Stack;
 
 import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.CatmullRomPath3D;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
+import rajawali.curves.CatmullRomCurve3D;
 import rajawali.materials.SimpleMaterial;
 import rajawali.math.Vector3;
 import rajawali.math.Vector3.Axis;
@@ -20,7 +20,7 @@ import com.monyetmabuk.rajawali.tutorials.R;
 
 public class CameraFollowPathRenderer extends RajawaliRenderer {
 	private EllipticalOrbitAnimation3D mOrbitAnimation;
-	private CatmullRomPath3D mPath;
+	private CatmullRomCurve3D mPath;
 	private Line3D mLine;
 
 	public CameraFollowPathRenderer(Context context)
@@ -43,7 +43,7 @@ public class CameraFollowPathRenderer extends RajawaliRenderer {
 		getCurrentCamera().setLookAt(0, 0, 0);
 		getCurrentCamera().setFarPlane(400);
 
-		mPath = new CatmullRomPath3D();
+		mPath = new CatmullRomCurve3D();
 		mPath.addPoint(new Vector3(-100, 100, 100));
 		mPath.addPoint(new Vector3(-90, 80, 6));
 		mPath.addPoint(new Vector3(-20, 60, 30));

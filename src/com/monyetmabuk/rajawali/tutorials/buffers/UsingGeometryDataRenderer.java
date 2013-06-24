@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials;
+package com.monyetmabuk.rajawali.tutorials.buffers;
 
 import java.io.ObjectInputStream;
 import java.nio.FloatBuffer;
@@ -15,17 +15,20 @@ import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.PhongMaterial;
 import rajawali.math.MathUtil;
-import rajawali.math.Vector3;
 import rajawali.math.Quaternion;
+import rajawali.math.Vector3;
 import rajawali.primitives.Sphere;
 import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
 
-public class RajawaliUsingGeometryDataRenderer extends RajawaliRenderer {
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.RajawaliExampleActivity;
+
+public class UsingGeometryDataRenderer extends RajawaliRenderer {
 	private Animation3D mAnim;
 	private BaseObject3D mRootSpike;
 	
-	public RajawaliUsingGeometryDataRenderer(Context context) {
+	public UsingGeometryDataRenderer(Context context) {
 		super(context);
 		setFrameRate(60);
 	}
