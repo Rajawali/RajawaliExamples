@@ -1,0 +1,28 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
+    android:padding="1dp" >
+
+    <ImageView
+        android:id="@+id/item_color"
+        android:layout_width="16dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="14dp"
+        android:background="@android:color/holo_red_dark"
+        android:contentDescription="@string/empty" />
+
+    <TextView
+        android:id="@+id/item_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/activatedBackgroundIndicator"
+        android:gravity="center_vertical"
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        android:paddingLeft="34dp"
+        android:paddingRight="14dp"
+        android:text="@string/placeholder"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:textColor="#fff" />
+
+</FrameLayout>

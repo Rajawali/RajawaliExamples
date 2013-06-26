@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">Rajawali Examples</string>
-    <string name="github_link">Visit Rajawali on Github</string>
-    <string name="github_url"><![CDATA[https://github.com/MasDennis/Rajawali]]></string>
+    <string name="empty"></string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="placeholder">Placeholder</string>
+
 </resources>
