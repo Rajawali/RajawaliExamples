@@ -102,7 +102,8 @@ public class RajawaliExamplesActivity extends ListActivity {
 			//new ExampleItem("Camera Video Texture", CameraVideoTextureActivity.class),
 			new ExampleItem("Skeletal Animation Transition Blending", BlendTransitionActivity.class),
 			new ExampleItem("Touching and Dragging Objects", ObjectDraggingActivity.class),
-			new ExampleItem("Animated GIF Texture", AnimatedGIFTextureActivity.class)};
+			new ExampleItem("Animated GIF Texture", AnimatedGIFTextureActivity.class),
+			new ExampleItem("Terrain", TerrainActivity.class)};
 
 	public void onCreate(Bundle savedInstanceState) {
 		String[] strings = new String[mItems.length];
