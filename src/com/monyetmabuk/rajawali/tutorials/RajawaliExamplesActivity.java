@@ -34,6 +34,7 @@ import com.monyetmabuk.rajawali.tutorials.lights.PointLightActivity;
 import com.monyetmabuk.rajawali.tutorials.lights.SpotLightActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.AnimatedGIFTextureActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.AnimatedSpritesActivity;
+import com.monyetmabuk.rajawali.tutorials.materials.CanvasTextActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.MaterialsActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.NormalMapActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.SkyboxActivity;
@@ -54,6 +55,7 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("Basic Example", RajawaliBasicExampleActivity.class),
 			new ExampleItem("Load .obj model", RajawaliLoadModelActivity.class), 
 			new ExampleItem("Materials", MaterialsActivity.class),
+			new ExampleItem("Android Canvas/Text to Texture", CanvasTextActivity.class),
 			new ExampleItem("UI Elements", RajawaliUIElementsActivity.class), 
 			new ExampleItem("Using Fragments", FragmentActivity.class),
 			new ExampleItem("Skybox", SkyboxActivity.class),
