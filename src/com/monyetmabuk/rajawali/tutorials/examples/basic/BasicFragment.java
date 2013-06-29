@@ -1,6 +1,5 @@
 package com.monyetmabuk.rajawali.tutorials.examples.basic;
 
-import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
@@ -9,9 +8,7 @@ import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
 import rajawali.primitives.Sphere;
-import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
-import android.os.Bundle;
 
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
@@ -19,12 +16,11 @@ import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 public class BasicFragment extends AExampleFragment {
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		mRenderer = new BasicRenderer(getActivity());
-		super.onCreate(savedInstanceState);
+	protected ARajawaliRenderer createRenderer() {
+		return new BasicRenderer(getActivity());
 	}
 
-	private static final class BasicRenderer extends RajawaliRenderer {
+	private final class BasicRenderer extends ARajawaliRenderer {
 
 		private DirectionalLight mLight;
 		private BaseObject3D mSphere;
@@ -51,12 +47,6 @@ public class BasicFragment extends AExampleFragment {
 			}
 
 			getCurrentCamera().setZ(6);
-		}
-
-		public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-			// ((RajawaliExampleActivity) mContext).showLoader();
-			super.onSurfaceCreated(gl, config);
-			// ((RajawaliExampleActivity) mContext).hideLoader();
 		}
 
 		public void onDrawFrame(GL10 glUnused) {

@@ -19,9 +19,7 @@ import rajawali.lights.PointLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.math.Vector3;
 import rajawali.math.Vector3.Axis;
-import rajawali.renderer.RajawaliRenderer;
 import android.content.Context;
-import android.os.Bundle;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.LinearInterpolator;
 
@@ -29,22 +27,21 @@ import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class AnimationFragment extends AExampleFragment {
-
+	
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		mRenderer = new AnimationRenderer(getActivity());
-		super.onCreate(savedInstanceState);
+	protected ARajawaliRenderer createRenderer() {
+		return new AnimationRenderer(getActivity());
 	}
 
-	public static class AnimationRenderer extends RajawaliRenderer {
+	public class AnimationRenderer extends ARajawaliRenderer {
+		
+		public AnimationRenderer(Context context) {
+			super(context);
+		}
+
 		private PointLight mLight;
 		private BaseObject3D mMonkey;
 		private Animation3DQueue mQueue;
-
-		public AnimationRenderer(Context context) {
-			super(context);
-			setFrameRate(60);
-		}
 
 		protected void initScene() {
 			mLight = new PointLight();
@@ -119,9 +116,7 @@ public class AnimationFragment extends AExampleFragment {
 		}
 
 		public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-			// ((RajawaliExampleActivity) mContext).showLoader();
 			super.onSurfaceCreated(gl, config);
-			// ((RajawaliExampleActivity) mContext).hideLoader();
 			mQueue.start();
 		}
 

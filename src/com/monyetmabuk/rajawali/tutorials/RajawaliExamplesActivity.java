@@ -119,7 +119,7 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 
 		return true;
 	}
-	
+
 	@Override
 	public void onGroupExpand(int groupPosition) {
 		closeOtherGroups(groupPosition);
@@ -203,7 +203,6 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			System.out.println(COLORS[groupPosition % COLORS.length]);
 			holder.imageViewItemColor.setBackgroundColor(COLORS[groupPosition
 					% COLORS.length]);
 			holder.textViewItemTitle.setText(item.title);
@@ -260,6 +259,7 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		public boolean isChildSelectable(int groupPosition, int childPosition) {
 			return true;
 		}
+		
 	}
 
 	private static final class ViewHolder {
