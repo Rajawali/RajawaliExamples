@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- App Base -->
     <string name="app_name">Rajawali Examples</string>
     <string name="empty"></string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="placeholder">Placeholder</string>
+    <!-- FBX Fragment -->
+    <string name="fbx_fragment_button_model_by">Model by Sampo Rask</string>
+    <!-- MD2 Fragment -->
+    <string name="md2_fragment_button_salute">Salute</string>
+    <string name="md2_fragment_button_death">Death</string>
+    <string name="md2_fragment_button_walk">Walk</string>
+    <string name="md2_fragment_button_wave">Wave</string>
+    <string name="md2_fragment_button_loop_all">Loop All</string>
+    <!-- Object Picking Fragment -->
+    <string name="object_picking_fragment">Touch a monkey :)</string>
+    <!-- Touch Ripples Fragment -->
+    <string name="touch_ripples_fragment_button_touch_me">Touch Me</string>
+    <!-- UIElements Fragment -->
+    <string name="ui_elements_fragment_text_view_halo_dunia">Halo Dunia!</string>
 
 </resources>

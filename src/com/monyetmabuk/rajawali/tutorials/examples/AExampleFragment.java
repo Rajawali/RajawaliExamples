@@ -24,6 +24,10 @@ public abstract class AExampleFragment extends RajawaliFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		if(isTransparentSurfaceView())
+			setGLBackgroundTransparent(true);
+		
 		mRenderer = createRenderer();
 		mRenderer.setSurfaceView(mSurfaceView);
 		setRenderer(mRenderer);
@@ -32,7 +36,6 @@ public abstract class AExampleFragment extends RajawaliFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
 		mLayout = (FrameLayout) inflater.inflate(R.layout.rajawali_fragment,
 				container, false);
 
@@ -55,9 +58,9 @@ public abstract class AExampleFragment extends RajawaliFragment {
 		mRenderer.onSurfaceDestroyed();
 	}
 
-	protected abstract ARajawaliRenderer createRenderer();
+	protected abstract AExampleRenderer createRenderer();
 
-	public void hideLoader() {
+	protected void hideLoader() {
 		mImageViewLoader.post(new Runnable() {
 			@Override
 			public void run() {
@@ -65,8 +68,12 @@ public abstract class AExampleFragment extends RajawaliFragment {
 			}
 		});
 	}
+	
+	protected boolean isTransparentSurfaceView() {
+		return false;
+	}
 
-	public void showLoader() {
+	protected void showLoader() {
 		mImageViewLoader.post(new Runnable() {
 			@Override
 			public void run() {
@@ -75,10 +82,11 @@ public abstract class AExampleFragment extends RajawaliFragment {
 		});
 	}
 
-	protected abstract class ARajawaliRenderer extends RajawaliRenderer {
+	protected abstract class AExampleRenderer extends RajawaliRenderer {
 
-		public ARajawaliRenderer(Context context) {
+		public AExampleRenderer(Context context) {
 			super(context);
+			setFrameRate(60);
 		}
 
 		public void onSurfaceCreated(GL10 gl, EGLConfig config) {

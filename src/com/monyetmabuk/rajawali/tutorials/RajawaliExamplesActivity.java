@@ -25,7 +25,7 @@ import android.widget.TextView;
 
 import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem;
 import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem.Categories;
-import com.monyetmabuk.rajawali.tutorials.examples.basic.BasicFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.general.BasicFragment;
 
 public class RajawaliExamplesActivity extends RajawaliActivity implements
 		OnChildClickListener, OnGroupExpandListener {
