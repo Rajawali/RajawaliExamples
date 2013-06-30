@@ -60,7 +60,6 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 				R.string.drawer_close) {
 			@Override
 			public void onDrawerClosed(View drawerView) {
-				closeOtherGroups(-1);
 				invalidateOptionsMenu();
 			}
 
@@ -203,8 +202,6 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			holder.imageViewItemColor.setBackgroundColor(COLORS[groupPosition
-					% COLORS.length]);
 			holder.textViewItemTitle.setText(item.title);
 
 			return convertView;
@@ -245,6 +242,8 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 				holder = (ViewHolder) convertView.getTag();
 			}
 
+			holder.imageViewItemColor.setBackgroundColor(COLORS[groupPosition
+					% COLORS.length]);
 			holder.textViewItemTitle.setText(groupName);
 
 			return convertView;
@@ -259,7 +258,7 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		public boolean isChildSelectable(int groupPosition, int childPosition) {
 			return true;
 		}
-		
+
 	}
 
 	private static final class ViewHolder {

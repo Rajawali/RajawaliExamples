@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials.examples.general;
+package com.monyetmabuk.rajawali.tutorials.examples.lights;
 
 import java.io.ObjectInputStream;
 
