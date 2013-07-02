@@ -19,7 +19,6 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
-import android.widget.ExpandableListView.OnGroupExpandListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,7 +27,7 @@ import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem.Catego
 import com.monyetmabuk.rajawali.tutorials.examples.general.BasicFragment;
 
 public class RajawaliExamplesActivity extends RajawaliActivity implements
-		OnChildClickListener, OnGroupExpandListener {
+		OnChildClickListener {
 
 	private static final String FRAGMENT_TAG = "rajawali";
 
@@ -52,7 +51,6 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		mDrawerList.setAdapter(new ExampleAdapter(getApplicationContext(),
 				ExamplesApplication.ITEMS));
 		mDrawerList.setOnChildClickListener(this);
-		mDrawerList.setOnGroupExpandListener(this);
 
 		// Configure the drawer toggle
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
@@ -112,28 +110,8 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 
 		// Close the drawer
 		mDrawerLayout.closeDrawers();
-
-		// Close any groups that may still be open
-		closeOtherGroups(groupPosition);
-
+		
 		return true;
-	}
-
-	@Override
-	public void onGroupExpand(int groupPosition) {
-		closeOtherGroups(groupPosition);
-	}
-
-	/**
-	 * Close all open groups in the drawer other than the currently selected group.
-	 * 
-	 * @param groupToKeepOpen
-	 */
-	private void closeOtherGroups(int groupToKeepOpen) {
-		for (int i = 0, j = mDrawerList.getCount(); i < j; i++) {
-			if (i != groupToKeepOpen)
-				mDrawerList.collapseGroup(i);
-		}
 	}
 
 	/**
@@ -178,7 +156,7 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		}
 
 		@Override
-		public Object getChild(int groupPosition, int childPosition) {
+		public ExampleItem getChild(int groupPosition, int childPosition) {
 			return mItems.get(mKeys[groupPosition])[childPosition];
 		}
 
@@ -190,8 +168,7 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		@Override
 		public View getChildView(int groupPosition, int childPosition,
 				boolean isLastChild, View convertView, ViewGroup parent) {
-			final ExampleItem item = (ExampleItem) getChild(groupPosition,
-					childPosition);
+			final ExampleItem item = getChild(groupPosition, childPosition);
 			final ViewHolder holder;
 
 			if (convertView == null) {
@@ -213,7 +190,7 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		}
 
 		@Override
-		public Object getGroup(int groupPosition) {
+		public Categories getGroup(int groupPosition) {
 			return mKeys[groupPosition];
 		}
 
@@ -230,8 +207,7 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		@Override
 		public View getGroupView(int groupPosition, boolean isExpanded,
 				View convertView, ViewGroup parent) {
-			final String groupName = ((Categories) getGroup(groupPosition))
-					.getName();
+			final String groupName = getGroup(groupPosition).getName();
 			final ViewHolder holder;
 
 			if (convertView == null) {
@@ -251,7 +227,7 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 
 		@Override
 		public boolean hasStableIds() {
-			return true;
+			return false;
 		}
 
 		@Override
