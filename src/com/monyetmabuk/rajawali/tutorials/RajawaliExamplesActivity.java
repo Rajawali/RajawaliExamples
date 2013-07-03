@@ -34,6 +34,7 @@ import com.monyetmabuk.rajawali.tutorials.lights.PointLightActivity;
 import com.monyetmabuk.rajawali.tutorials.lights.SpotLightActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.AnimatedGIFTextureActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.AnimatedSpritesActivity;
+import com.monyetmabuk.rajawali.tutorials.materials.CanvasTextActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.MaterialsActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.NormalMapActivity;
 import com.monyetmabuk.rajawali.tutorials.materials.SkyboxActivity;
@@ -54,6 +55,7 @@ public class RajawaliExamplesActivity extends ListActivity {
 			new ExampleItem("Basic Example", RajawaliBasicExampleActivity.class),
 			new ExampleItem("Load .obj model", RajawaliLoadModelActivity.class), 
 			new ExampleItem("Materials", MaterialsActivity.class),
+			new ExampleItem("Android Canvas/Text to Texture", CanvasTextActivity.class),
 			new ExampleItem("UI Elements", RajawaliUIElementsActivity.class), 
 			new ExampleItem("Using Fragments", FragmentActivity.class),
 			new ExampleItem("Skybox", SkyboxActivity.class),
@@ -102,7 +104,8 @@ public class RajawaliExamplesActivity extends ListActivity {
 			//new ExampleItem("Camera Video Texture", CameraVideoTextureActivity.class),
 			new ExampleItem("Skeletal Animation Transition Blending", BlendTransitionActivity.class),
 			new ExampleItem("Touching and Dragging Objects", ObjectDraggingActivity.class),
-			new ExampleItem("Animated GIF Texture", AnimatedGIFTextureActivity.class)};
+			new ExampleItem("Animated GIF Texture", AnimatedGIFTextureActivity.class),
+			new ExampleItem("Terrain", TerrainActivity.class)};
 
 	public void onCreate(Bundle savedInstanceState) {
 		String[] strings = new String[mItems.length];

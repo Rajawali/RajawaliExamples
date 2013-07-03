@@ -65,5 +65,7 @@
         <activity android:name=".curves.SVGPathActivity"></activity>
         <activity android:name=".buffers.UpdateVertexBufferActivity"></activity>
         <activity android:name=".curves.UniformDistributionActivity"></activity>
+        <activity android:name="TerrainActivity"></activity>
+        <activity android:name=".materials.CanvasTextActivity"></activity>
     </application>
 </manifest>
