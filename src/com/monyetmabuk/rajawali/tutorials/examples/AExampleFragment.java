@@ -5,6 +5,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.RajawaliFragment;
 import rajawali.renderer.RajawaliRenderer;
+import rajawali.util.RajLog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,11 +25,14 @@ public abstract class AExampleFragment extends RajawaliFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		if(isTransparentSurfaceView())
+
+		if (isTransparentSurfaceView())
 			setGLBackgroundTransparent(true);
-		
+
 		mRenderer = createRenderer();
+		if (mRenderer == null)
+			mRenderer = new NullRenderer(getActivity());
+
 		mRenderer.setSurfaceView(mSurfaceView);
 		setRenderer(mRenderer);
 	}
@@ -54,10 +58,20 @@ public abstract class AExampleFragment extends RajawaliFragment {
 
 	@Override
 	public void onDestroy() {
-		super.onDestroy();
+		try {
+			super.onDestroy();
+		} catch (Exception e) {
+		}
 		mRenderer.onSurfaceDestroyed();
 	}
 
+	/**
+	 * Create a renderer to be used by the fragment. Optionally null can be returned by fragments
+	 * that do not intend to display a rendered scene. Returning null will cause a warning to be
+	 * logged to the console in the event null is in error.
+	 * 
+	 * @return
+	 */
 	protected abstract AExampleRenderer createRenderer();
 
 	protected void hideLoader() {
@@ -68,7 +82,7 @@ public abstract class AExampleFragment extends RajawaliFragment {
 			}
 		});
 	}
-	
+
 	protected boolean isTransparentSurfaceView() {
 		return false;
 	}
@@ -95,6 +109,19 @@ public abstract class AExampleFragment extends RajawaliFragment {
 			hideLoader();
 		}
 
+	}
+
+	private static final class NullRenderer extends RajawaliRenderer {
+
+		public NullRenderer(Context context) {
+			super(context);
+			RajLog.w(this + ": Fragment created without renderer!");
+		}
+
+		@Override
+		public void onSurfaceDestroyed() {
+			super.onSurfaceDestroyed();
+		}
 	}
 
 }

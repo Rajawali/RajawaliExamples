@@ -1,5 +1,6 @@
 package com.monyetmabuk.rajawali.tutorials;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -8,6 +9,7 @@ import android.app.Application;
 
 import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem.Categories;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.about.MeetTheTeamFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.AnimatedSpritesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.AnimationFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.BezierFragment;
@@ -58,6 +60,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.ui.UIElementsFragment;
 public class ExamplesApplication extends Application {
 
 	public static final Map<ExampleItem.Categories, ExampleItem[]> ITEMS = new HashMap<ExampleItem.Categories, ExamplesApplication.ExampleItem[]>();
+	public static final ArrayList<TeamMember> TEAM_MEMBERS = new ArrayList<ExamplesApplication.TeamMember>();
 
 	@Override
 	public void onCreate() {
@@ -134,13 +137,59 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Specular Alpha", SpecularAndAlphaFragment.class)
 				, new ExampleItem("Video Texture", VideoTextureFragment.class)
 			});
+		ITEMS.put(Categories.ABOUT, new ExampleItem[] {
+			new ExampleItem("Meet The Team", MeetTheTeamFragment.class)
+		});
+		
+		TEAM_MEMBERS.add(new TeamMember(
+				R.drawable.photo_rajawali3dcommunity
+				, "Rajawali 3D Community"
+				, null
+				, "https://plus.google.com/communities/116529974266844528013"
+			));
+		TEAM_MEMBERS.add(new TeamMember(
+				R.drawable.photo_andrewjo
+				, "Andrew Jo"
+				, null
+				, "https://plus.google.com/103571530640762510321/posts"
+			));
+		TEAM_MEMBERS.add(new TeamMember(
+				R.drawable.photo_davidtroustine
+				, "David Trounstine"
+				, null
+				, "https://plus.google.com/100061339163339558529/posts"
+			));
+		TEAM_MEMBERS.add(new TeamMember(
+				R.drawable.photo_dennisippel
+				, "Dennis Ippel"
+				, null
+				, "https://plus.google.com/110899192955767806500/posts"
+			));
+		TEAM_MEMBERS.add(new TeamMember(
+				R.drawable.photo_ianthomas
+				, "Ian Thomas"
+				, "New Castle, "
+				, "https://plus.google.com/117877053554468827150/posts"
+			));
+		TEAM_MEMBERS.add(new TeamMember(
+				R.drawable.photo_jaredwoolston
+				, "Jared Woolston"
+				, null
+				, "https://plus.google.com/111355740389558136627/posts"
+			));
+		TEAM_MEMBERS.add(new TeamMember(
+				R.drawable.photo_jayweisskopf
+				, "Jay Weisskopf"
+				, null
+				, "https://plus.google.com/101121628537383400065/posts"
+			));
 		// @formatter:on
 	}
 
 	public static final class ExampleItem {
 
 		public enum Categories {
-			GENERAL, LIGHTS, EFFECTS, INTERACTIVE, UI("UI"), OPTIMIZATIONS, PARSERS, ANIMATION, MATERIALS;
+			GENERAL, LIGHTS, EFFECTS, INTERACTIVE, UI("UI"), OPTIMIZATIONS, PARSERS, ANIMATION, MATERIALS, ABOUT;
 
 			private String name;
 
@@ -167,6 +216,20 @@ public class ExamplesApplication extends Application {
 				Class<? extends AExampleFragment> exampleClass) {
 			this.title = title;
 			this.exampleClass = exampleClass;
+		}
+	}
+
+	public static final class TeamMember {
+		public int photo;
+		public String name;
+		public String favoriteBeer;
+		public String link;
+
+		protected TeamMember(int photo, String name, String about, String link) {
+			this.photo = photo;
+			this.name = name;
+			this.favoriteBeer = about;
+			this.link = link;
 		}
 	}
 

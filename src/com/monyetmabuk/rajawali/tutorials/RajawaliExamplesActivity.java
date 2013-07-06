@@ -3,7 +3,6 @@ package com.monyetmabuk.rajawali.tutorials;
 import java.util.Map;
 
 import rajawali.RajawaliActivity;
-import rajawali.RajawaliFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -24,7 +23,7 @@ import android.widget.TextView;
 
 import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem;
 import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem.Categories;
-import com.monyetmabuk.rajawali.tutorials.examples.general.BasicFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class RajawaliExamplesActivity extends RajawaliActivity implements
 		OnChildClickListener {
@@ -69,7 +68,7 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
 		if (savedInstanceState == null)
-			launchFragment(BasicFragment.class);
+			onChildClick(null, null, 0, 0, 0);
 	}
 
 	@Override
@@ -111,6 +110,8 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		// Close the drawer
 		mDrawerLayout.closeDrawers();
 		
+		setTitle(item.title);
+		
 		return true;
 	}
 
@@ -119,7 +120,7 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 	 * 
 	 * @param fragClass
 	 */
-	private void launchFragment(Class<? extends RajawaliFragment> fragClass) {
+	private void launchFragment(Class<? extends AExampleFragment> fragClass) {
 		final FragmentManager fragmentManager = getFragmentManager();
 		final Fragment fragment;
 
