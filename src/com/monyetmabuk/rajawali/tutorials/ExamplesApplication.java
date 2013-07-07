@@ -156,7 +156,7 @@ public class ExamplesApplication extends Application {
 		TEAM_MEMBERS.add(new TeamMember(
 				R.drawable.photo_davidtroustine
 				, "David Trounstine"
-				, null
+				, "Blue Moon, Spaten, Dos Equis"
 				, "https://plus.google.com/100061339163339558529/posts"
 			));
 		TEAM_MEMBERS.add(new TeamMember(
@@ -168,19 +168,19 @@ public class ExamplesApplication extends Application {
 		TEAM_MEMBERS.add(new TeamMember(
 				R.drawable.photo_ianthomas
 				, "Ian Thomas"
-				, "New Castle, "
+				, "New Castle, Sapporo, Hopsecutioner"
 				, "https://plus.google.com/117877053554468827150/posts"
 			));
 		TEAM_MEMBERS.add(new TeamMember(
 				R.drawable.photo_jaredwoolston
 				, "Jared Woolston"
-				, null
+				, "Guinness, Smithwicks, Batch 19, Hoegaarden"
 				, "https://plus.google.com/111355740389558136627/posts"
 			));
 		TEAM_MEMBERS.add(new TeamMember(
 				R.drawable.photo_jayweisskopf
 				, "Jay Weisskopf"
-				, null
+				, " Allagash, Corona, Hoegaarden"
 				, "https://plus.google.com/101121628537383400065/posts"
 			));
 		// @formatter:on

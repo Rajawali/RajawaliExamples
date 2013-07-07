@@ -120,7 +120,7 @@ public abstract class AExampleFragment extends RajawaliFragment {
 
 		@Override
 		public void onSurfaceDestroyed() {
-			super.onSurfaceDestroyed();
+			stopRendering();
 		}
 	}
 
