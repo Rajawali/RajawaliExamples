@@ -1,0 +1,169 @@
+package com.monyetmabuk.rajawali.tutorials.examples.animation;
+
+import rajawali.animation.mesh.SkeletalAnimationObject3D;
+import rajawali.animation.mesh.SkeletalAnimationSequence;
+import rajawali.lights.DirectionalLight;
+import rajawali.parser.AParser.ParsingException;
+import rajawali.parser.md5.MD5AnimParser;
+import rajawali.parser.md5.MD5MeshParser;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
+public class SkeletalAnimationBlendingFragment extends AExampleFragment implements
+		OnClickListener {
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		super.onCreateView(inflater, container, savedInstanceState);
+
+		LinearLayout ll = new LinearLayout(getActivity());
+		ll.setOrientation(LinearLayout.HORIZONTAL);
+		ll.setGravity(Gravity.BOTTOM);
+
+		Button button1 = new Button(getActivity());
+		button1.setText(R.string.skeletal_animation_blending_button_idle);
+		button1.setOnClickListener(this);
+		button1.setId(0);
+		ll.addView(button1);
+
+		Button button2 = new Button(getActivity());
+		button2.setText(R.string.skeletal_animation_blending_button_walk);
+		button2.setOnClickListener(this);
+		button2.setId(1);
+		ll.addView(button2);
+
+		Button button3 = new Button(getActivity());
+		button3.setText(R.string.skeletal_animation_blending_button_arm_stretch);
+		button3.setOnClickListener(this);
+		button3.setId(2);
+		ll.addView(button3);
+
+		Button button4 = new Button(getActivity());
+		button4.setText(R.string.skeletal_animation_blending_button_bend);
+		button4.setOnClickListener(this);
+		button4.setId(3);
+		ll.addView(button4);
+
+		mLayout.addView(ll);
+
+		ll = new LinearLayout(getActivity());
+		ll.setOrientation(LinearLayout.HORIZONTAL);
+		ll.setGravity(Gravity.TOP);
+
+		TextView creatorText = new TextView(getActivity());
+		creatorText
+				.setText(R.string.skeletal_animation_blending_button_arm_stretch);
+		ll.addView(creatorText);
+
+		mLayout.addView(ll);
+
+		return mLayout;
+	}
+
+	@Override
+	protected AExampleRenderer createRenderer() {
+		return new SkeletalAnimationBlendingRenderer(getActivity());
+	}
+
+	@Override
+	public void onClick(View v) {
+		((SkeletalAnimationBlendingRenderer) mRenderer).transitionAnimation(v.getId());
+	}
+
+	private final class SkeletalAnimationBlendingRenderer extends AExampleRenderer {
+		private DirectionalLight mLight;
+		private SkeletalAnimationObject3D mObject;
+		private SkeletalAnimationSequence mSequenceWalk;
+		private SkeletalAnimationSequence mSequenceIdle;
+		private SkeletalAnimationSequence mSequenceArmStretch;
+		private SkeletalAnimationSequence mSequenceBend;
+
+		public SkeletalAnimationBlendingRenderer(Context context) {
+			super(context);
+		}
+
+		protected void initScene() {
+			mLight = new DirectionalLight(1f, -0.2f, -1.0f); // set the direction
+			mLight.setColor(1.0f, 1.0f, .8f);
+			mLight.setPower(1);
+
+			getCurrentCamera().setZ(8);
+
+			try {
+				MD5MeshParser meshParser = new MD5MeshParser(this,
+						R.raw.ingrid_mesh);
+				meshParser.parse();
+
+				MD5AnimParser animParser = new MD5AnimParser("idle", this,
+						R.raw.ingrid_idle);
+				animParser.parse();
+
+				mSequenceIdle = (SkeletalAnimationSequence) animParser
+						.getParsedAnimationSequence();
+
+				animParser = new MD5AnimParser("walk", this, R.raw.ingrid_walk);
+				animParser.parse();
+
+				mSequenceWalk = (SkeletalAnimationSequence) animParser
+						.getParsedAnimationSequence();
+
+				animParser = new MD5AnimParser("armstretch", this,
+						R.raw.ingrid_arm_stretch);
+				animParser.parse();
+
+				mSequenceArmStretch = (SkeletalAnimationSequence) animParser
+						.getParsedAnimationSequence();
+
+				animParser = new MD5AnimParser("bend", this, R.raw.ingrid_bend);
+				animParser.parse();
+
+				mSequenceBend = (SkeletalAnimationSequence) animParser
+						.getParsedAnimationSequence();
+
+				mObject = (SkeletalAnimationObject3D) meshParser
+						.getParsedAnimationObject();
+				mObject.setAnimationSequence(mSequenceIdle);
+				mObject.setFps(24);
+				mObject.addLight(mLight);
+				mObject.setScale(.8f);
+				mObject.setRotY(180);
+				mObject.play();
+
+				addChild(mObject);
+			} catch (ParsingException e) {
+				e.printStackTrace();
+			}
+		}
+
+		public void transitionAnimation(int id) {
+			switch (id) {
+			case 0:
+				mObject.transitionToAnimationSequence(mSequenceIdle, 1000);
+				break;
+			case 1:
+				mObject.transitionToAnimationSequence(mSequenceWalk, 1000);
+				break;
+			case 2:
+				mObject.transitionToAnimationSequence(mSequenceArmStretch, 1000);
+				break;
+			case 3:
+				mObject.transitionToAnimationSequence(mSequenceBend, 1000);
+				break;
+			}
+		}
+
+	}
+
+}

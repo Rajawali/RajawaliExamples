@@ -1,10 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="app_theme" parent="android:Theme">
-        <item name="android:windowBackground">@drawable/app_background</item>
-    </style>
-    <style name="ListFont" parent="@android:style/Widget.ListView">
-    	<item name="android:textColor">#FF0000</item>
-    </style>
+    <style name="AppBaseTheme" parent="android:Theme.Light"></style>
+
+    <style name="AppTheme" parent="AppBaseTheme"></style>
+
 </resources>
