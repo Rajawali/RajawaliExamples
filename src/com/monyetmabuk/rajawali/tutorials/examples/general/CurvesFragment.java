@@ -139,7 +139,9 @@ public class CurvesFragment extends AExampleFragment {
 
 			Stack<Vector3> points = new Stack<Vector3>();
 			for (int i = 0; i <= NUM_POINTS; i++) {
-				points.add(curve.calculatePoint((float) i / (float) NUM_POINTS));
+				Vector3 point = new Vector3();
+				curve.calculatePoint(point, (float) i / (float) NUM_POINTS);
+				points.add(point);
 			}
 
 			Line3D line = new Line3D(points, 1, color);

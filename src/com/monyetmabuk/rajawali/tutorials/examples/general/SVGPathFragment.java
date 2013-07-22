@@ -46,8 +46,9 @@ public class SVGPathFragment extends AExampleFragment {
 				Stack<Vector3> points = new Stack<Vector3>();
 				int subdiv = 1000;
 				for (int j = 0; j <= subdiv; j++) {
-					points.add(subPath.calculatePoint((float) j
-							/ (float) subdiv));
+					Vector3 point = new Vector3();
+					subPath.calculatePoint(point, (float) j	/ (float) subdiv);
+					points.add(point);
 				}
 
 				pathPoints.add(points);
