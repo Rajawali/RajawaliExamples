@@ -148,8 +148,8 @@ public class UniformDistributionFragment extends AExampleFragment {
 
 			Stack<Vector3> points = new Stack<Vector3>();
 			for (int i = 0; i <= NUM_POINTS; i++) {
-				Vector3 pos = curve.calculatePoint((float) i
-						/ (float) NUM_POINTS);
+				Vector3 pos = new Vector3();
+				curve.calculatePoint(pos, (float) i / (float) NUM_POINTS);
 				points.add(pos);
 			}
 

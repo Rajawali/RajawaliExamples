@@ -98,7 +98,9 @@ public class CatmullRomFragment extends AExampleFragment {
 			// -- visualize the line
 			Stack<Vector3> linePoints = new Stack<Vector3>();
 			for (int i = 0; i < 100; i++) {
-				linePoints.add(path.calculatePoint(i / 100f));
+				Vector3 point = new Vector3();
+				path.calculatePoint(point, i / 100f);
+				linePoints.add(point);
 			}
 			Line3D line = new Line3D(linePoints, 1, 0xffffffff);
 			line.setMaterial(material);
