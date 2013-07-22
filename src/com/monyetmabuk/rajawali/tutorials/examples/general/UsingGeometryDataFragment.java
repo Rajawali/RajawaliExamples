@@ -85,7 +85,7 @@ public class UsingGeometryDataFragment extends AExampleFragment {
 					Vector3 normal = new Vector3(normBuffer.get(i),
 							normBuffer.get(i + 1), normBuffer.get(i + 2));
 					// -- get the rotation axis
-					Vector3 axis = Vector3.cross(upAxis, normal);
+					Vector3 axis = Vector3.crossAndCreate(upAxis, normal);
 					// -- get the rotation angle
 					float angle = MathUtil.radiansToDegrees((float) Math
 							.acos(Vector3.dot(upAxis, normal)));

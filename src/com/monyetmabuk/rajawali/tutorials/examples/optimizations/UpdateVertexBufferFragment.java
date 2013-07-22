@@ -185,7 +185,8 @@ public class UpdateVertexBufferFragment extends AExampleFragment {
 
 			// -- Get the current curve position
 
-			Vector3 point = mCurve.calculatePoint(mInterpolation);
+			Vector3 point = new Vector3();
+			mCurve.calculatePoint(point, mInterpolation);
 
 			if (mPrevVec1 == null) {
 				// -- This is the first triangle.
