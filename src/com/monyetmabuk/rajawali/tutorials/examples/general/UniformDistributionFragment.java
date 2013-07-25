@@ -9,7 +9,7 @@ import rajawali.animation.TranslateAnimation3D;
 import rajawali.curves.CatmullRomCurve3D;
 import rajawali.curves.ICurve3D;
 import rajawali.materials.SimpleMaterial;
-import rajawali.math.Vector3;
+import rajawali.math.vector.Vector3;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Line3D;
 import rajawali.primitives.Sphere;

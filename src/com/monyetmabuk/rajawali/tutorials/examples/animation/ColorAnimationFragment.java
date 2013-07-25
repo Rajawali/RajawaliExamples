@@ -7,7 +7,7 @@ import rajawali.animation.RotateAnimation3D;
 import rajawali.materials.SimpleMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
-import rajawali.math.Vector3.Axis;
+import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Cube;
 import android.content.Context;
 

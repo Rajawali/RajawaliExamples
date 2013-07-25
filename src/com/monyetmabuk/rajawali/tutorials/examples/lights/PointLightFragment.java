@@ -6,7 +6,7 @@ import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.lights.PointLight;
 import rajawali.materials.PhongMaterial;
 import rajawali.math.MathUtil;
-import rajawali.math.Vector3;
+import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
 import android.content.Context;
 
