@@ -11,7 +11,7 @@ import rajawali.curves.CatmullRomCurve3D;
 import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.SimpleMaterial;
-import rajawali.math.Vector3;
+import rajawali.math.vector.Vector3;
 import rajawali.parser.AParser.ParsingException;
 import rajawali.parser.ObjParser;
 import rajawali.primitives.Line3D;

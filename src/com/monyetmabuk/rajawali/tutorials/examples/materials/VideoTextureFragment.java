@@ -16,7 +16,7 @@ import rajawali.materials.PhongMaterial;
 import rajawali.materials.VideoMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.VideoTexture;
-import rajawali.math.Vector3;
+import rajawali.math.vector.Vector3;
 import rajawali.primitives.Plane;
 import android.content.Context;
 import android.content.res.Resources.NotFoundException;

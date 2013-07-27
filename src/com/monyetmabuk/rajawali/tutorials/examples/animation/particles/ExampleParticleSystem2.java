@@ -7,7 +7,7 @@ import java.nio.FloatBuffer;
 import rajawali.Camera;
 import rajawali.Geometry3D;
 import rajawali.materials.ParticleMaterial;
-import rajawali.math.Vector3;
+import rajawali.math.vector.Vector3;
 import rajawali.primitives.Particle;
 import rajawali.util.ObjectColorPicker.ColorPickerInfo;
 import android.opengl.GLES20;

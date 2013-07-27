@@ -10,7 +10,7 @@ import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.PointLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.textures.Texture;
-import rajawali.math.Vector3;
+import rajawali.math.vector.Vector3;
 import android.content.Context;
 
 import com.monyetmabuk.rajawali.tutorials.R;

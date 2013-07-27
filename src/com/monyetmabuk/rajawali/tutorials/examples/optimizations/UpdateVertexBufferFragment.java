@@ -13,8 +13,8 @@ import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAroundAnimation3D;
 import rajawali.curves.CatmullRomCurve3D;
 import rajawali.materials.SimpleMaterial;
-import rajawali.math.Vector3;
-import rajawali.math.Vector3.Axis;
+import rajawali.math.vector.Vector3;
+import rajawali.math.vector.Vector3.Axis;
 import android.content.Context;
 import android.opengl.GLES20;
 import android.os.SystemClock;
@@ -221,8 +221,8 @@ public class UpdateVertexBufferFragment extends AExampleFragment {
 				mCurrentVertexIndex = 0;
 			mStartTime = SystemClock.elapsedRealtime();
 
-			mPrevVec1.setAllFrom(mPrevVec2);
-			mPrevVec2.setAllFrom(mTmpVec);
+			mPrevVec1.setAll(mPrevVec2);
+			mPrevVec2.setAll(mTmpVec);
 		}
 
 		private void generateRandomVertex(Vector3 vertex, float size) {

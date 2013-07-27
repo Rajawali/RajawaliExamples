@@ -9,7 +9,7 @@ import rajawali.curves.CubicBezierCurve3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.PhongMaterial;
-import rajawali.math.Vector3;
+import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
 import android.content.Context;
 

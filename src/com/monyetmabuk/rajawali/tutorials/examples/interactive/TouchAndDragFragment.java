@@ -4,7 +4,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
 import rajawali.materials.SimpleMaterial;
-import rajawali.math.Vector3;
+import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
 import rajawali.util.ObjectColorPicker;
 import rajawali.util.OnObjectPickedListener;
@@ -178,7 +178,7 @@ public class TouchAndDragFragment extends AExampleFragment implements
 					/ (getCurrentCamera().getFarPlane() - getCurrentCamera()
 							.getNearPlane());
 
-			mNewObjPos.setAllFrom(mFarPos);
+			mNewObjPos.setAll(mFarPos);
 			mNewObjPos.subtract(mNearPos);
 			mNewObjPos.multiply(factor);
 			mNewObjPos.add(mNearPos);
