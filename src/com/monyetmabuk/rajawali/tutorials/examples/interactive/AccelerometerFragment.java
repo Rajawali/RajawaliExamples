@@ -10,7 +10,7 @@ import rajawali.lights.DirectionalLight;
 import rajawali.materials.CubeMapMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.CubeMapTexture;
-import rajawali.math.Vector3;
+import rajawali.math.vector.Vector3;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;

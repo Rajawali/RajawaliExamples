@@ -9,7 +9,7 @@ import rajawali.curves.CompoundCurve3D;
 import rajawali.curves.ICurve3D;
 import rajawali.curves.SVGPath;
 import rajawali.materials.SimpleMaterial;
-import rajawali.math.Vector3;
+import rajawali.math.vector.Vector3;
 import rajawali.primitives.Line3D;
 import android.content.Context;
 import android.view.animation.BounceInterpolator;

@@ -8,7 +8,7 @@ import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
-import rajawali.math.Vector3.Axis;
+import rajawali.math.vector.Vector3.Axis;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;

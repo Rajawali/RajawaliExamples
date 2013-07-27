@@ -1,7 +1,7 @@
 package com.monyetmabuk.rajawali.tutorials.examples.interactive.planes;
 
 import rajawali.materials.AMaterial;
-import rajawali.math.Vector3;
+import rajawali.math.vector.Vector3;
 import android.opengl.GLES20;
 
 /**

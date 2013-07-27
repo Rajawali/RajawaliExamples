@@ -11,7 +11,7 @@ import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.NormalMapTexture;
 import rajawali.materials.textures.Texture;
 import rajawali.math.MathUtil;
-import rajawali.math.Vector3;
+import rajawali.math.vector.Vector3;
 import rajawali.terrain.SquareTerrain;
 import rajawali.terrain.TerrainGenerator;
 import android.content.Context;

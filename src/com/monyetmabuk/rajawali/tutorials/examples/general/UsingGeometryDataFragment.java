@@ -13,7 +13,7 @@ import rajawali.lights.DirectionalLight;
 import rajawali.materials.PhongMaterial;
 import rajawali.math.MathUtil;
 import rajawali.math.Quaternion;
-import rajawali.math.Vector3;
+import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
 import android.content.Context;
 

@@ -12,7 +12,7 @@ import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.AlphaMapTexture;
-import rajawali.math.Vector3.Axis;
+import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Sphere;
 import android.content.Context;
 import android.graphics.Bitmap;

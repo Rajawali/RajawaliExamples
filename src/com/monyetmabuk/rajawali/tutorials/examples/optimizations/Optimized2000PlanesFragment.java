@@ -10,7 +10,7 @@ import rajawali.curves.CatmullRomCurve3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
-import rajawali.math.Vector3;
+import rajawali.math.vector.Vector3;
 import android.content.Context;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
