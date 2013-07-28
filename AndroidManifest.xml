@@ -1,71 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.monyetmabuk.rajawali.tutorials"
-      android:versionCode="26"
-      android:versionName="1.1" xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.monyetmabuk.rajawali.tutorials"
+    android:versionCode="1"
+    android:versionName="1.0" >
 
-	<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="17"/>
-	<uses-feature android:glEsVersion="0x00020000" android:required="true" />
-    <application android:allowBackup="false" android:icon="@drawable/icon" android:label="@string/app_name" android:theme="@style/app_theme" android:hardwareAccelerated="false">
-        <activity android:name=".RajawaliExamplesActivity"
-                  android:label="@string/app_name">
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="17" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <application
+        android:name="com.monyetmabuk.rajawali.tutorials.ExamplesApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.monyetmabuk.rajawali.tutorials.RajawaliExamplesActivity"
+            android:hardwareAccelerated="false"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RajawaliCustomShaderActivity"></activity>
-        <activity android:name=".RajawaliSimpleParticlesActivity"></activity>
-        <activity android:name=".materials.SkyboxActivity"></activity>
-        <activity android:name=".RajawaliBasicExampleActivity"></activity>
-        <activity android:name=".RajawaliLoadModelActivity"></activity>
-        <activity android:name=".materials.MaterialsActivity"></activity>
-        <activity android:name=".RajawaliUIElementsActivity"></activity>
-        <activity android:name=".cameras.TwoDActivity"></activity>
-        <activity android:name=".RajawaliAccelerometerActivity"></activity>
-        <activity android:name=".RajawaliMoreParticlesActivity"></activity>
-        <activity android:name=".interact.ObjectPickingActivity"></activity>
-        <activity android:name=".curves.BezierActivity"></activity>
-        <activity android:name=".RajawaliAnimationActivity"></activity>
-        <activity android:name=".materials.NormalMapActivity"></activity>
-        <activity android:name=".materials.ToonShadingActivity"></activity>
-        <activity android:name=".RajawaliMD2Activity"></activity>
-        <activity android:name=".RajawaliPostProcessingActivity"></activity>
-        <activity android:name=".RajawaliCollisionDetectionActivity"></activity>
-        <activity android:name=".lights.PointLightActivity"></activity>
-        <activity android:name=".lights.DirectionalLightActivity"></activity>
-        <activity android:name=".lights.SpotLightActivity"></activity>
-        <activity android:name=".lights.MultipleLightsActivity"></activity>
-        <activity android:name=".primitives.LinesActivity"></activity>
-        <activity android:name=".curves.CatmullRomActivity"></activity>
-        <activity android:name=".Rajawali2000PlanesActivity"></activity>
-        <activity android:name=".RajawaliTransparentSurfaceActivity"></activity>
-        <activity android:name=".materials.AnimatedSpritesActivity"></activity>
-        <activity android:name=".RajawaliFogActivity"></activity>
-        <activity android:name=".RajawaliFBXActivity"></activity>
-        <activity android:name=".RajawaliVertexShaderActivity"></activity>
-        <activity android:name=".RajawaliRipplesActivity"></activity>
-        <activity android:name=".materials.SphereMapActivity"></activity>
-        <activity android:name=".cameras.ChaseCamActivity"></activity>
-        <activity android:name=".buffers.UsingGeometryDataActivity"></activity>
-        <activity android:name=".materials.ThreeSixtyImagesActivity"></activity>
-        <activity android:name=".skeletalanim.MD5Activity"></activity>
-        <activity android:name=".materials.TextureCompressionActivity"></activity>
-        <activity android:name=".RajawaliColorAnimationActivity"></activity>
-        <activity android:name=".RajawaliSceneActivity"></activity>
-        <activity android:name=".materials.SpecularAndAlphaActivity"></activity>
-        <activity android:name=".materials.VideoTextureActivity"></activity>
-        <activity android:name=".skeletalanim.BlendTransitionActivity"></activity>
-        <activity android:name=".interact.ObjectDraggingActivity"></activity>
-        <activity android:name=".primitives.ColoredLineSegmentsActivity"></activity>
-        <activity android:name=".cameras.OrthographiCamActivity"></activity>
-        <activity android:name=".cameras.CameraFollowPathActivity"></activity>
-        <activity android:name=".materials.AnimatedGIFTextureActivity"></activity>
-        <activity android:name=".fragment.FragmentActivity"></activity>
-        <activity android:name=".curves.CurvesActivity"></activity>
-        <activity android:name=".curves.SVGPathActivity"></activity>
-        <activity android:name=".buffers.UpdateVertexBufferActivity"></activity>
-        <activity android:name=".curves.UniformDistributionActivity"></activity>
-        <activity android:name="TerrainActivity"></activity>
-        <activity android:name=".materials.CanvasTextActivity"></activity>
     </application>
+
 </manifest>

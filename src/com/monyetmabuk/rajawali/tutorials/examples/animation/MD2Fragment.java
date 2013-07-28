@@ -1,0 +1,140 @@
+package com.monyetmabuk.rajawali.tutorials.examples.animation;
+
+import rajawali.animation.mesh.VertexAnimationObject3D;
+import rajawali.lights.DirectionalLight;
+import rajawali.parser.AParser.ParsingException;
+import rajawali.parser.MD2Parser;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
+public class MD2Fragment extends AExampleFragment implements OnClickListener {
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		super.onCreateView(inflater, container, savedInstanceState);
+
+		LinearLayout mLinearLayout = new LinearLayout(getActivity());
+		mLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
+		mLinearLayout.setGravity(Gravity.TOP);
+
+		Button button = new Button(getActivity());
+		button.setId(R.id.md2_fragment_button_salute);
+		button.setOnClickListener(this);
+		button.setText(R.string.md2_fragment_button_salute);
+		button.setTextSize(10);
+		mLinearLayout.addView(button);
+
+		button = new Button(getActivity());
+		button.setId(R.id.md2_fragment_button_death);
+		button.setOnClickListener(this);
+		button.setText(R.string.md2_fragment_button_death);
+		button.setTextSize(10);
+		mLinearLayout.addView(button);
+
+		button = new Button(getActivity());
+		button.setId(R.id.md2_fragment_button_walk);
+		button.setOnClickListener(this);
+		button.setText(R.string.md2_fragment_button_walk);
+		button.setTextSize(10);
+		mLinearLayout.addView(button);
+
+		button = new Button(getActivity());
+		button.setId(R.id.md2_fragment_button_wave);
+		button.setOnClickListener(this);
+		button.setText(R.string.md2_fragment_button_wave);
+		button.setTextSize(10);
+		mLinearLayout.addView(button);
+
+		button = new Button(getActivity());
+		button.setId(R.id.md2_fragment_button_loop_all);
+		button.setOnClickListener(this);
+		button.setText(R.string.md2_fragment_button_loop_all);
+		button.setTextSize(10);
+		mLinearLayout.addView(button);
+
+		mLayout.addView(mLinearLayout);
+
+		return mLayout;
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (((Button) v).getId()) {
+		case R.id.md2_fragment_button_salute:
+			((MD2Renderer) mRenderer).playAnimation("salute");
+			break;
+		case R.id.md2_fragment_button_death:
+			((MD2Renderer) mRenderer).playAnimation("death1");
+			break;
+		case R.id.md2_fragment_button_walk:
+			((MD2Renderer) mRenderer).playAnimation("crwalk");
+			break;
+		case R.id.md2_fragment_button_wave:
+			((MD2Renderer) mRenderer).playAnimation("wave");
+			break;
+		case R.id.md2_fragment_button_loop_all:
+			((MD2Renderer) mRenderer).playAnimation("loop all");
+			break;
+		}
+	}
+
+	@Override
+	protected AExampleRenderer createRenderer() {
+		return new MD2Renderer(getActivity());
+	}
+
+	private final class MD2Renderer extends AExampleRenderer {
+		private DirectionalLight mLight;
+		private VertexAnimationObject3D mOgre;
+
+		public MD2Renderer(Context context) {
+			super(context);
+		}
+
+		public void playAnimation(String name) {
+			if (name.equals("loop all")) {
+				mOgre.play();
+			} else {
+				mOgre.play(name, false);
+			}
+		}
+
+		protected void initScene() {
+			mLight = new DirectionalLight(0, 0, -1);
+			mLight.setPower(1);
+			getCurrentCamera().setPosition(0, 0, 8);
+
+			MD2Parser parser = new MD2Parser(mContext.getResources(),
+					mTextureManager, R.raw.ogro);
+			try {
+				parser.parse();
+
+				mOgre = (VertexAnimationObject3D) parser
+						.getParsedAnimationObject();
+				mOgre.addLight(mLight);
+				mOgre.setScale(.07f);
+				mOgre.setRotY(90);
+				mOgre.setY(-1);
+
+				addChild(mOgre);
+
+				mOgre.play();
+			} catch (ParsingException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+}
