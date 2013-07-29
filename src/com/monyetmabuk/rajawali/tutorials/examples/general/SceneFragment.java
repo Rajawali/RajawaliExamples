@@ -17,10 +17,14 @@ import rajawali.primitives.Cube;
 import rajawali.primitives.Sphere;
 import rajawali.scene.RajawaliScene;
 import rajawali.scene.scenegraph.IGraphNode.GRAPH_TYPE;
+import rajawali.util.RajLog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -30,98 +34,103 @@ import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class SceneFragment extends AExampleFragment implements OnClickListener {
 
-private SceneRenderer mRenderer;
-	
 	private Button mAddObject;
 	private Button mRemoveObject;
 	private Button mSwitchCamera;
 	private Button mSwitchScene;
-	private Button mNextFrame; 
-	
+	private Button mNextFrame;
 	private TextView mObjectCount;
 	private TextView mTriCount;
-	
-	private LinearLayout mLL;
-	
+
 	@Override
 	protected AExampleRenderer createRenderer() {
-		return new SceneRenderer(getActivity(), new Handler(), mObjectCount, mTriCount);
+		return new SceneRenderer(getActivity(), new Handler());
 	}
-	
-	public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        /*LinearLayout ll = new LinearLayout(this.getActivity());
-        ll.setOrientation(LinearLayout.HORIZONTAL);
-        ll.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
 
-        mAddObject = new Button(getApplicationContext());
-        mAddObject.setGravity(Gravity.CENTER);
-        mAddObject.setHeight(50);
-        mAddObject.setWidth(200);
-        mAddObject.setOnClickListener(this);
-        mAddObject.setText("Add Object");
-        ll.addView(mAddObject);
-        
-        mRemoveObject = new Button(getApplicationContext());
-        mRemoveObject.setGravity(Gravity.CENTER);
-        mRemoveObject.setHeight(50);
-        mRemoveObject.setWidth(200);
-        mRemoveObject.setOnClickListener(this);
-        mRemoveObject.setText("Remove Object");
-        ll.addView(mRemoveObject);
-        
-        mSwitchCamera = new Button(getApplicationContext());
-        mSwitchCamera.setGravity(Gravity.CENTER);
-        mSwitchCamera.setHeight(50);
-        mSwitchCamera.setWidth(200);
-        mSwitchCamera.setOnClickListener(this);
-        mSwitchCamera.setText("Switch Camera");
-        ll.addView(mSwitchCamera);
-        
-        mSwitchScene = new Button(getApplicationContext());
-        mSwitchScene.setGravity(Gravity.CENTER);
-        mSwitchScene.setHeight(50);
-        mSwitchScene.setWidth(200);
-        mSwitchScene.setOnClickListener(this);
-        mSwitchScene.setText("Switch Scene");
-        ll.addView(mSwitchScene);
-        
-        mNextFrame = new Button(getApplicationContext());
-        mNextFrame.setGravity(Gravity.CENTER);
-        mNextFrame.setHeight(50);
-        mNextFrame.setWidth(200);
-        mNextFrame.setOnClickListener(this);
-        mNextFrame.setText("Next Frame");
-        ll.addView(mNextFrame);
-        
-        TextView objectCount = new TextView(getApplicationContext());
-        objectCount.setGravity(Gravity.CENTER);
-        objectCount.setText("Object Count: 0");
-        ll.addView(objectCount);
-        
-        TextView triCount = new TextView(getApplicationContext());
-        triCount.setGravity(Gravity.CENTER);
-        triCount.setText("   Triangle Count: 0");
-        ll.addView(triCount);
-        
-        mLayout.addView(ll);
-        
-        mSurfaceView.setOnTouchListener(this);*/
-    }
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+	}
 
 	@Override
-	public void onClick(View arg0) {
-		if (arg0.equals(mAddObject)) {
-			//Add an object
-			mRenderer.addObject(0, 0);
-		} else if (arg0.equals(mRemoveObject)) {
-			mRenderer.removeObject();
-		} else if (arg0.equals(mSwitchCamera)) {
-			mRenderer.nextCamera();
-		} else if (arg0.equals(mSwitchScene)) {
-			mRenderer.nextScene();
-		} else if (arg0.equals(mNextFrame)) {
-			mRenderer.nextFrame();
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		super.onCreateView(inflater, container, savedInstanceState);
+
+		LinearLayout ll = new LinearLayout(getActivity());
+		ll.setOrientation(LinearLayout.HORIZONTAL);
+		ll.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
+
+		mAddObject = new Button(getActivity());
+		mAddObject.setGravity(Gravity.CENTER);
+		mAddObject.setHeight(50);
+		mAddObject.setWidth(200);
+		mAddObject.setOnClickListener(this);
+		mAddObject.setText("Add Object");
+		mAddObject.setId(0);
+		ll.addView(mAddObject);
+
+		mRemoveObject = new Button(getActivity());
+		mRemoveObject.setGravity(Gravity.CENTER);
+		mRemoveObject.setHeight(50);
+		mRemoveObject.setWidth(200);
+		mRemoveObject.setOnClickListener(this);
+		mRemoveObject.setText("Remove Object");
+		mAddObject.setId(1);
+		ll.addView(mRemoveObject);
+
+		mSwitchCamera = new Button(getActivity());
+		mSwitchCamera.setGravity(Gravity.CENTER);
+		mSwitchCamera.setHeight(50);
+		mSwitchCamera.setWidth(200);
+		mSwitchCamera.setOnClickListener(this);
+		mSwitchCamera.setText("Switch Camera");
+		mAddObject.setId(2);
+		ll.addView(mSwitchCamera);
+
+		mSwitchScene = new Button(getActivity());
+		mSwitchScene.setGravity(Gravity.CENTER);
+		mSwitchScene.setHeight(50);
+		mSwitchScene.setWidth(200);
+		mSwitchScene.setOnClickListener(this);
+		mSwitchScene.setText("Switch Scene");
+		mAddObject.setId(3);
+		ll.addView(mSwitchScene);
+
+		mNextFrame = new Button(getActivity());
+		mNextFrame.setGravity(Gravity.CENTER);
+		mNextFrame.setHeight(50);
+		mNextFrame.setWidth(200);
+		mNextFrame.setOnClickListener(this);
+		mNextFrame.setText("Next Frame");
+		mAddObject.setId(4);
+		ll.addView(mNextFrame);
+
+		mObjectCount = new TextView(getActivity());
+		mObjectCount.setGravity(Gravity.CENTER);
+		mObjectCount.setText("Object Count: 0");
+		ll.addView(mObjectCount);
+
+		mTriCount = new TextView(getActivity());
+		mTriCount.setGravity(Gravity.CENTER);
+		mTriCount.setText("   Triangle Count: 0");
+		ll.addView(mTriCount);
+
+		mLayout.addView(ll);
+		return mLayout;
+	}
+
+	@Override
+	public void onClick(View v) {
+		if (v == mAddObject) {
+			((SceneRenderer) mRenderer).addObject(0, 0);
+		} else if (v == mRemoveObject) {
+			((SceneRenderer) mRenderer).removeObject();
+		} else if (v == mSwitchCamera) {
+			((SceneRenderer) mRenderer).nextCamera();
+		} else if (v == mSwitchScene) {
+			((SceneRenderer) mRenderer).nextScene();
+		} else if (v == mNextFrame) {
+			((SceneRenderer) mRenderer).nextFrame();
 		}
 	}
 
@@ -139,10 +148,6 @@ private SceneRenderer mRenderer;
 		private RajawaliScene mScene1;
 		private RajawaliScene mScene2; 
 
-		private Handler mHandler;
-		private TextView mObjectCount;
-		private TextView mTriCount;
-
 		private Camera mCamera1;
 		private Camera mCamera2;
 
@@ -150,12 +155,12 @@ private SceneRenderer mRenderer;
 		private ArrayList<BaseObject3D> mSpheres = new ArrayList<BaseObject3D>();
 		private ArrayList<BaseObject3D> mCubes = new ArrayList<BaseObject3D>();
 
-		public SceneRenderer(Context context, Handler handler, TextView obj, TextView tri) {
+		private Handler mHandler;
+
+		public SceneRenderer(Context context, Handler handler) {
 			super(context);
-			setFrameRate(60);
+			setFrameRate(10);
 			mHandler = handler;
-			mObjectCount = obj;
-			mTriCount = tri;
 		}
 
 		protected void initScene() {
@@ -261,14 +266,14 @@ private SceneRenderer mRenderer;
 			//mPeriapsis.y = mFocal.y;
 			//mPeriapsis.x = mFocal.x;
 			mCamera1.setLookAt(mFocal);
-			/*if (mFrameCount % 20 == 0) { 
+			if (mFrameCount % 20 == 0) { 
 				mHandler.post(new Runnable() {
 					public void run() {
 						mObjectCount.setText("Object Count: " + getCurrentScene().getNumChildren());
 						mTriCount.setText("   Triangle Count: " + getCurrentScene().getNumTriangles());
 					}
 				});
-			}*/
+			}
 		}
 
 		public void addObject(float x, float y) {
@@ -284,7 +289,7 @@ private SceneRenderer mRenderer;
 			obj.addLight(mLight2);
 			obj.setMaterial(mMaterial);
 			obj.setScale(mRandom.nextFloat()*0.5f+0.1f);
-			obj.setColor(new Vector3(mRandom.nextInt(255), mRandom.nextInt(255), mRandom.nextInt(255)));
+			obj.setColor(mRandom.nextInt());
 			boolean positive = mRandom.nextBoolean();
 			int sign1 = 1;
 			int sign2 = 1;
