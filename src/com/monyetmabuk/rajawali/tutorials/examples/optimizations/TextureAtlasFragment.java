@@ -1,27 +1,17 @@
 package com.monyetmabuk.rajawali.tutorials.examples.optimizations;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.StreamCorruptedException;
-
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
-import rajawali.SerializedObject3D;
 import rajawali.materials.SimpleMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
 import rajawali.materials.textures.TextureAtlas;
 import rajawali.materials.textures.TexturePacker;
 import rajawali.primitives.Cube;
-import rajawali.primitives.NPrism;
 import rajawali.primitives.Plane;
 import rajawali.primitives.Sphere;
 
 import android.content.Context;
-import android.content.res.Resources.NotFoundException;
-
-import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class TextureAtlasFragment extends AExampleFragment {
