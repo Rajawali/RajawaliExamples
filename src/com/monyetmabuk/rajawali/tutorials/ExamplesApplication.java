@@ -164,7 +164,7 @@ public class ExamplesApplication extends Application {
 		TEAM_MEMBERS.add(new TeamMember(
 				R.drawable.photo_dennisippel
 				, "Dennis Ippel"
-				, null
+				, "Innis & Gunn, La Chouffe, Duvel"
 				, "https://plus.google.com/110899192955767806500/posts"
 			));
 		TEAM_MEMBERS.add(new TeamMember(
