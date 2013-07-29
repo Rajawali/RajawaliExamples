@@ -48,6 +48,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.materials.SphereMapFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.ToonShadingFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.VideoTextureFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.optimizations.Optimized2000PlanesFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.optimizations.TextureAtlasFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.optimizations.TextureCompressionFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.optimizations.UpdateVertexBufferFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.parsers.FBXFragment;
@@ -111,6 +112,7 @@ public class ExamplesApplication extends Application {
 				new ExampleItem("2000 Textured Planes", Optimized2000PlanesFragment.class)
 				, new ExampleItem("Update Vertex Buffer", UpdateVertexBufferFragment.class)
 				, new ExampleItem("Texture Compression (ETC)", TextureCompressionFragment.class)
+				, new ExampleItem("Texture Atlas", TextureAtlasFragment.class)
 			});
 		ITEMS.put(Categories.PARSERS, new ExampleItem[] {
 				new ExampleItem("Load OBJ Model", LoadModelFragment.class)
