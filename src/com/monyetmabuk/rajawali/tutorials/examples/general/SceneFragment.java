@@ -12,11 +12,13 @@ import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
+import rajawali.math.Quaternion;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Sphere;
 import rajawali.scene.RajawaliScene;
 import rajawali.scene.scenegraph.IGraphNode.GRAPH_TYPE;
+import rajawali.util.RajLog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -158,23 +160,27 @@ public class SceneFragment extends AExampleFragment implements OnClickListener {
 
 		public SceneRenderer(Context context, Handler handler) {
 			super(context);
-			setFrameRate(10);
+			setFrameRate(1);
 			mHandler = handler;
 		}
 
 		protected void initScene() {
 			mCamera1 = getCurrentCamera(); //We will utilize the initial camera
-			mCamera1.setPosition(10, 0, 10);
-			mCamera1.setLookAt(0, 0, 10);
+			mCamera1.setPosition(15, 0, 5);
+			mCamera1.setLookAt(0, 0, 5);
 			mCamera1.setFieldOfView(60);
 			mCamera1.setNearPlane(1);
 			mCamera1.setFarPlane(50);
 
 			mCamera2 = new Camera(); //Lets create a second camera for the scene.
 			mCamera2.setPosition(0, 3, 10);
-			mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
+			//mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
 			mCamera2.setFarPlane(15);
 			mCamera2.setFieldOfView(30);
+			Quaternion orient = Quaternion.createFromRotationBetween(Vector3.Y, Vector3.Z);
+			RajLog.i("Quaternion: " + orient);
+			mCamera2.setLookAt(null);
+			mCamera2.setOrientation(orient);
 
 			//We are going to use our own scene, not the default
 			mScene1 = new RajawaliScene(this, GRAPH_TYPE.OCTREE); 
@@ -204,7 +210,7 @@ public class SceneFragment extends AExampleFragment implements OnClickListener {
 			mInitialSphere.addLight(mLight1);
 			mInitialSphere.addLight(mLight2);
 			mInitialSphere.setPosition(0, 1, 0);
-			mInitialSphere.setRotation(45f, 45f, 45f);
+			//mInitialSphere.setRotation(45f, 45f, 45f);
 
 			mInitialCube = new Cube(1);
 			//mInitialCube.setScale(0.150f);
@@ -213,7 +219,7 @@ public class SceneFragment extends AExampleFragment implements OnClickListener {
 			mInitialCube.addLight(mLight1);
 			mInitialCube.addLight(mLight2);
 			mInitialCube.setPosition(0, 0, 0);
-			mInitialCube.setRotation(45f, 45f, 45f);
+			//mInitialCube.setRotation(45f, 45f, 45f);
 
 			mPoint = new Sphere(1, 10, 10);
 			mPoint.setScale(0.1250f);
@@ -239,7 +245,7 @@ public class SceneFragment extends AExampleFragment implements OnClickListener {
 			mCameraAnim.setDuration(20000);
 			mCameraAnim.setRepeatMode(Animation3D.RepeatMode.INFINITE);
 			mCameraAnim.setTransformable3D(mCamera1);
-			mCameraAnim.play();
+			//mCameraAnim.play();
 			//Register the animation with BOTH scenes
 			mScene1.registerAnimation(mCameraAnim);
 			mScene2.registerAnimation(mCameraAnim);
