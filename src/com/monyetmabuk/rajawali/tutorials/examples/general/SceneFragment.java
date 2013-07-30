@@ -12,6 +12,7 @@ import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
+import rajawali.math.Matrix4;
 import rajawali.math.Quaternion;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Cube;
@@ -166,21 +167,24 @@ public class SceneFragment extends AExampleFragment implements OnClickListener {
 
 		protected void initScene() {
 			mCamera1 = getCurrentCamera(); //We will utilize the initial camera
-			mCamera1.setPosition(15, 0, 5);
-			mCamera1.setLookAt(0, 0, 5);
-			mCamera1.setFieldOfView(60);
+			mCamera1.setPosition(15, 0, 0);
+			mCamera1.setLookAt(0, 0, 0);
+			mCamera1.setFieldOfView(90);
 			mCamera1.setNearPlane(1);
-			mCamera1.setFarPlane(50);
+			mCamera1.setFarPlane(100);
 
 			mCamera2 = new Camera(); //Lets create a second camera for the scene.
 			mCamera2.setPosition(0, 3, 10);
 			//mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
 			mCamera2.setFarPlane(15);
 			mCamera2.setFieldOfView(30);
-			Quaternion orient = Quaternion.createFromRotationBetween(Vector3.Y, Vector3.Z);
-			RajLog.i("Quaternion: " + orient);
+			double angle = Math.atan2(-3, 10);
+			RajLog.i("Rotation Angle: " + Math.toDegrees(angle));
+			/*Quaternion orient = new Quaternion((float) angle, 1, 0, 0);
+			orient.normalize();*/
 			mCamera2.setLookAt(null);
-			mCamera2.setOrientation(orient);
+			//mCamera2.setOrientation(orient);
+			mCamera2.setRotX((float) angle);
 
 			//We are going to use our own scene, not the default
 			mScene1 = new RajawaliScene(this, GRAPH_TYPE.OCTREE); 
