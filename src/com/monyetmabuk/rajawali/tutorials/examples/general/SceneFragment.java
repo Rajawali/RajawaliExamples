@@ -7,6 +7,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
 import rajawali.Camera;
+import rajawali.OrthographicCamera;
 import rajawali.animation.Animation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
@@ -174,17 +175,13 @@ public class SceneFragment extends AExampleFragment implements OnClickListener {
 			mCamera1.setFarPlane(100);
 
 			mCamera2 = new Camera(); //Lets create a second camera for the scene.
-			mCamera2.setPosition(0, 3, 10);
-			//mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
+			mCamera2.setPosition(0, 5, 10);
+			mCamera2.setLookAt(0.0f, 0.0f, 0.0f);
 			mCamera2.setFarPlane(15);
 			mCamera2.setFieldOfView(30);
-			double angle = Math.atan2(-3, 10);
-			RajLog.i("Rotation Angle: " + Math.toDegrees(angle));
-			/*Quaternion orient = new Quaternion((float) angle, 1, 0, 0);
-			orient.normalize();*/
+			/*double angle = Math.toDegrees(Math.atan2(-3, 10));
 			mCamera2.setLookAt(null);
-			//mCamera2.setOrientation(orient);
-			mCamera2.setRotX((float) angle);
+			mCamera2.setRotX((float) -angle);*/
 
 			//We are going to use our own scene, not the default
 			mScene1 = new RajawaliScene(this, GRAPH_TYPE.OCTREE); 
