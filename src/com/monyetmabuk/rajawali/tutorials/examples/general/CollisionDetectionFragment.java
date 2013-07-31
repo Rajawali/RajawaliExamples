@@ -10,7 +10,7 @@ import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
-import rajawali.bounds.IBoundingVolume;
+import rajawali.bounds.volumes.IBoundingVolume;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.math.vector.Vector3;
