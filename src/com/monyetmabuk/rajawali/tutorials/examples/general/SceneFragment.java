@@ -17,6 +17,7 @@ import rajawali.primitives.Cube;
 import rajawali.primitives.Sphere;
 import rajawali.scene.RajawaliScene;
 import rajawali.scene.scenegraph.IGraphNode.GRAPH_TYPE;
+import rajawali.util.RajLog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -163,6 +164,9 @@ public class SceneFragment extends AExampleFragment implements OnClickListener {
 		}
 
 		protected void initScene() {
+			
+			RajLog.systemInformation();
+			
 			mCamera1 = getCurrentCamera(); //We will utilize the initial camera
 			mCamera1.setPosition(15, 0, 0);
 			mCamera1.setLookAt(0, 0, 0);

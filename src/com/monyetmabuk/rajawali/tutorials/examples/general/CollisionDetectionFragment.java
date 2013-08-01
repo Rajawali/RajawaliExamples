@@ -10,6 +10,7 @@ import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
+import rajawali.bounds.BoundingVolumeTester;
 import rajawali.bounds.volumes.IBoundingVolume;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
@@ -140,7 +141,7 @@ public class CollisionDetectionFragment extends AExampleFragment {
 			IBoundingVolume bbox2 = mCubeBox.getGeometry().getBoundingBox();
 			bbox2.transform(mCubeBox.getModelMatrix());
 
-			mBoxIntersect = bbox.intersectsWith(bbox2);
+			mBoxIntersect = BoundingVolumeTester.testIntersection(bbox, bbox2);
 
 			IBoundingVolume bsphere = mBoxesSphere.getGeometry()
 					.getBoundingSphere();
@@ -150,7 +151,7 @@ public class CollisionDetectionFragment extends AExampleFragment {
 					.getBoundingSphere();
 			bsphere2.transform(mCubeSphere.getModelMatrix());
 
-			mSphereIntersect = bsphere.intersectsWith(bsphere2);
+			mSphereIntersect = BoundingVolumeTester.testIntersection(bsphere, bsphere2);
 
 			if (mSphereIntersect && !mBoxIntersect)
 				getCurrentScene().setBackgroundColor(0xff00bfff);
