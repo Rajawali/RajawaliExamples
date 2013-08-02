@@ -164,14 +164,11 @@ public class SceneFragment extends AExampleFragment implements OnClickListener {
 		}
 
 		protected void initScene() {
-			
-			RajLog.systemInformation();
-			
 			mCamera1 = getCurrentCamera(); //We will utilize the initial camera
-			mCamera1.setPosition(15, 0, 0);
+			mCamera1.setPosition(30, 0, 0);
 			mCamera1.setLookAt(0, 0, 0);
-			mCamera1.setFieldOfView(90);
-			mCamera1.setNearPlane(1);
+			mCamera1.setFieldOfView(60);
+			mCamera1.setNearPlane(0.01f);
 			mCamera1.setFarPlane(100);
 
 			mCamera2 = new Camera(); //Lets create a second camera for the scene.
@@ -220,16 +217,16 @@ public class SceneFragment extends AExampleFragment implements OnClickListener {
 			mInitialCube.addLight(mLight1);
 			mInitialCube.addLight(mLight2);
 			mInitialCube.setPosition(0, 0, 0);
-			//mInitialCube.setRotation(45f, 45f, 45f);
+			mInitialCube.setRotation(45f, 45f, 45f);
 
-			mPoint = new Sphere(1, 10, 10);
+			/*mPoint = new Sphere(1, 10, 10);
 			mPoint.setScale(0.1250f);
 			mPoint.setColor(0xFF00FFFF);
 			mPoint.setMaterial(mMaterial);
 			mPoint.addLight(mLight1);
 			mPoint.addLight(mLight2);
 			mPoint.setPosition(mCamera2.getPosition());
-			mScene1.addChild(mPoint);
+			mScene1.addChild(mPoint);*/
 
 			mSpheres.add(mInitialSphere);
 			mCubes.add(mInitialCube);
@@ -240,13 +237,13 @@ public class SceneFragment extends AExampleFragment implements OnClickListener {
 					360, OrbitDirection.CLOCKWISE);
 			//Create a camera animation for camera 1
 			mFocal = new Vector3(0, 0, 0);
-			mPeriapsis = new Vector3(0, 0, 20);
+			mPeriapsis = new Vector3(0, 0, 30);
 			mCameraAnim = new EllipticalOrbitAnimation3D(mFocal, mPeriapsis, 0.0,
 					360, OrbitDirection.CLOCKWISE);
 			mCameraAnim.setDuration(20000);
 			mCameraAnim.setRepeatMode(Animation3D.RepeatMode.INFINITE);
 			mCameraAnim.setTransformable3D(mCamera1);
-			//mCameraAnim.play();
+			mCameraAnim.play();
 			//Register the animation with BOTH scenes
 			mScene1.registerAnimation(mCameraAnim);
 			mScene2.registerAnimation(mCameraAnim);
@@ -264,6 +261,7 @@ public class SceneFragment extends AExampleFragment implements OnClickListener {
 
 		public void onDrawFrame(GL10 glUnused) {
 			super.onDrawFrame(glUnused);
+			RajLog.i("Camera Node: " + getCurrentScene().getCamera().getGraphNode());
 			Vector3 tMin = getCurrentScene().getSceneMinBound();
 			Vector3 tMax = getCurrentScene().getSceneMaxBound();
 			/*mFocal.x = tMin.x + (tMax.x - tMin.x) * .5f;
