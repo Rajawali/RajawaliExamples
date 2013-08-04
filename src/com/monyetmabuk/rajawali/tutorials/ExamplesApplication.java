@@ -9,6 +9,7 @@ import android.app.Application;
 
 import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem.Categories;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.about.CommunityFeedFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.about.MeetTheTeamFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.AnimatedSpritesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.AnimationFragment;
@@ -66,9 +67,6 @@ public class ExamplesApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-
-		if (ITEMS.size() > 0)
-			return;
 
 		// @formatter:off
 		ITEMS.put(Categories.GENERAL, new ExampleItem[] { 
@@ -140,7 +138,8 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Video Texture", VideoTextureFragment.class)
 			});
 		ITEMS.put(Categories.ABOUT, new ExampleItem[] {
-			new ExampleItem("Meet The Team", MeetTheTeamFragment.class)
+			new ExampleItem("Community Stream", CommunityFeedFragment.class)
+			, new ExampleItem("Meet The Team", MeetTheTeamFragment.class)
 		});
 		
 		TEAM_MEMBERS.add(new TeamMember(

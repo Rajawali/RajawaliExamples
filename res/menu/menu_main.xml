@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_item_community_stream"
+        android:showAsAction="never"
+        android:title="@string/menu_main_community_stream"/>
+    <item
+        android:id="@+id/menu_item_meet_the_team"
+        android:showAsAction="never"
+        android:title="@string/menu_main_meet_the_team"/>
+
+</menu>

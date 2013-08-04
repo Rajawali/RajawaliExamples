@@ -7,11 +7,14 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,12 +26,12 @@ import android.widget.TextView;
 
 import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem;
 import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem.Categories;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class RajawaliExamplesActivity extends RajawaliActivity implements
 		OnChildClickListener {
 
 	private static final String FRAGMENT_TAG = "rajawali";
+	private static final String PREF_FIRST_RUN = "RajawaliExamplesActivity.PREF_FIRST_RUN";
 
 	private DrawerLayout mDrawerLayout;
 	private ExpandableListView mDrawerList;
@@ -69,6 +72,13 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 
 		if (savedInstanceState == null)
 			onChildClick(null, null, 0, 0, 0);
+		
+		// Open the drawer the very first run.
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+		if (!prefs.contains(PREF_FIRST_RUN)) {
+			prefs.edit().putBoolean(PREF_FIRST_RUN, false).apply();
+			mDrawerLayout.openDrawer(mDrawerList);
+		}
 	}
 
 	@Override
@@ -80,9 +90,29 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 	}
 
 	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.menu_main, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if (mDrawerToggle.onOptionsItemSelected(item))
+		final ExampleItem exampleItem;
+
+		switch (item.getItemId()) {
+		case R.id.menu_item_community_stream:
+			exampleItem = ExamplesApplication.ITEMS.get(Categories.ABOUT)[0];
+			launchFragment(exampleItem);
 			return true;
+		case R.id.menu_item_meet_the_team:
+			exampleItem = ExamplesApplication.ITEMS.get(Categories.ABOUT)[1];
+			launchFragment(exampleItem);
+			return true;
+		case android.R.id.home:
+			if (mDrawerToggle.onOptionsItemSelected(item))
+				return true;
+			break;
+		}
 
 		return super.onOptionsItemSelected(item);
 	}
@@ -102,16 +132,10 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 	@Override
 	public boolean onChildClick(ExpandableListView parent, View v,
 			int groupPosition, int childPosition, long id) {
-		final ExampleItem item = ExamplesApplication.ITEMS.get(Categories
-				.values()[groupPosition])[childPosition];
+		final ExampleItem exampleItem = ExamplesApplication.ITEMS
+				.get(Categories.values()[groupPosition])[childPosition];
+		launchFragment(exampleItem);
 
-		launchFragment(item.exampleClass);
-
-		// Close the drawer
-		mDrawerLayout.closeDrawers();
-		
-		setTitle(item.title);
-		
 		return true;
 	}
 
@@ -120,9 +144,15 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 	 * 
 	 * @param fragClass
 	 */
-	private void launchFragment(Class<? extends AExampleFragment> fragClass) {
+	private void launchFragment(ExampleItem exampleItem) {
 		final FragmentManager fragmentManager = getFragmentManager();
 		final Fragment fragment;
+
+		// Close the drawer
+		mDrawerLayout.closeDrawers();
+
+		// Set fragment title
+		setTitle(exampleItem.title);
 
 		final FragmentTransaction transaction = fragmentManager
 				.beginTransaction();
@@ -131,7 +161,8 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 			if (oldFrag != null)
 				transaction.remove(oldFrag);
 
-			fragment = (Fragment) fragClass.getConstructors()[0].newInstance();
+			fragment = (Fragment) exampleItem.exampleClass.getConstructors()[0]
+					.newInstance();
 			transaction.add(R.id.content_frame, fragment, FRAGMENT_TAG);
 			transaction.commit();
 		} catch (Exception e) {
