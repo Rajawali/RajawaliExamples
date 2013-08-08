@@ -6,11 +6,11 @@ import rajawali.BaseObject3D;
 import rajawali.materials.SimpleMaterial;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
+import rajawali.util.GLU;
 import rajawali.util.ObjectColorPicker;
 import rajawali.util.OnObjectPickedListener;
 import android.content.Context;
 import android.opengl.GLES20;
-import android.opengl.GLU;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -81,13 +81,13 @@ public class TouchAndDragFragment extends AExampleFragment implements
 		private ObjectColorPicker mPicker;
 		private BaseObject3D mSelectedObject;
 		private int[] mViewport;
-		private float[] mNearPos4;
-		private float[] mFarPos4;
+		private double[] mNearPos4;
+		private double[] mFarPos4;
 		private Vector3 mNearPos;
 		private Vector3 mFarPos;
 		private Vector3 mNewObjPos;
-		private float[] mViewMatrix;
-		private float[] mProjectionMatrix;
+		private double[] mViewMatrix;
+		private double[] mProjectionMatrix;
 
 		public TouchAndDragRenderer(Context context) {
 			super(context);
@@ -95,8 +95,8 @@ public class TouchAndDragFragment extends AExampleFragment implements
 
 		protected void initScene() {
 			mViewport = new int[] { 0, 0, mViewportWidth, mViewportHeight };
-			mNearPos4 = new float[4];
-			mFarPos4 = new float[4];
+			mNearPos4 = new double[4];
+			mFarPos4 = new double[4];
 			mNearPos = new Vector3();
 			mFarPos = new Vector3();
 			mNewObjPos = new Vector3();
@@ -114,9 +114,9 @@ public class TouchAndDragFragment extends AExampleFragment implements
 					Sphere sphere = new Sphere(.3f, 12, 12);
 					sphere.setMaterial(material);
 					sphere.setColor(0x333333 + (int) (Math.random() * 0xcccccc));
-					sphere.setX(-4 + (float) (Math.random() * 8));
-					sphere.setY(-4 + (float) (Math.random() * 8));
-					sphere.setZ(-2 + (float) (Math.random() * -6));
+					sphere.setX(-4 + (Math.random() * 8));
+					sphere.setY(-4 + (Math.random() * 8));
+					sphere.setZ(-2 + (Math.random() * -6));
 					sphere.setDrawingMode(GLES20.GL_LINE_LOOP);
 					mPicker.registerObject(sphere);
 					addChild(sphere);
@@ -174,7 +174,7 @@ public class TouchAndDragFragment extends AExampleFragment implements
 			// -- now get the coordinates for the selected object
 			//
 
-			float factor = (Math.abs(mSelectedObject.getZ()) + mNearPos.z)
+			double factor = (Math.abs(mSelectedObject.getZ()) + mNearPos.z)
 					/ (getCurrentCamera().getFarPlane() - getCurrentCamera()
 							.getNearPlane());
 
