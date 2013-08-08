@@ -53,7 +53,7 @@ public class DirectionalLightFragment extends AExampleFragment {
 			int count = 0;
 
 			for (int i = 0; i < 360; i += 36) {
-				float radians = MathUtil.degreesToRadians(i);
+				double radians = MathUtil.degreesToRadians(i);
 				int color = 0xfed14f;
 				if (count % 3 == 0)
 					color = 0x10a962;
@@ -76,7 +76,7 @@ public class DirectionalLightFragment extends AExampleFragment {
 			count = 0;
 
 			for (int i = 0; i < 360; i += 12) {
-				float radians = MathUtil.degreesToRadians(i);
+				double radians = MathUtil.degreesToRadians(i);
 				int color = 0xfed14f;
 				if (count % 3 == 0)
 					color = 0x10a962;

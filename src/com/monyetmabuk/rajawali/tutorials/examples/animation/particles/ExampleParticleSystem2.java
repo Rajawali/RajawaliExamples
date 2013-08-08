@@ -139,8 +139,8 @@ public class ExampleParticleSystem2 extends Particle {
 		particleShader.setCameraPosition(camera.getPosition());
 	}
 
-	public void render(Camera camera, float[] projMatrix, float[] vMatrix,
-			final float[] parentMatrix, ColorPickerInfo pickerInfo) {
+	public void render(Camera camera, double[] projMatrix, double[] vMatrix,
+			final double[] parentMatrix, ColorPickerInfo pickerInfo) {
 		super.render(camera, projMatrix, vMatrix, parentMatrix, pickerInfo);
 	}
 }
