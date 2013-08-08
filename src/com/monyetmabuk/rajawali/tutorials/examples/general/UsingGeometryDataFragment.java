@@ -91,7 +91,7 @@ public class UsingGeometryDataFragment extends AExampleFragment {
 							.acos(Vector3.dot(upAxis, normal)));
 					// -- create the quaternion
 					Quaternion q = new Quaternion();
-					q.fromAngleAxis(angle, axis);
+					q.fromAngleAxis(axis, angle);
 					// -- set the orientation so that it is aligned with the current normal
 					spike.setOrientation(q);
 					mRootSpike.addChild(spike);
