@@ -240,9 +240,9 @@ public class UpdateVertexBufferFragment extends AExampleFragment {
 		private void addVertexToBuffer(Vector3 vertex, int index) {
 			int vertIndex = index * 3;
 
-			mVertexBuffer.put(vertIndex, vertex.x);
-			mVertexBuffer.put(vertIndex + 1, vertex.y);
-			mVertexBuffer.put(vertIndex + 2, vertex.z);
+			mVertexBuffer.put(vertIndex, (float) vertex.x);
+			mVertexBuffer.put(vertIndex + 1, (float) vertex.y);
+			mVertexBuffer.put(vertIndex + 2, (float) vertex.z);
 		}
 
 	}
