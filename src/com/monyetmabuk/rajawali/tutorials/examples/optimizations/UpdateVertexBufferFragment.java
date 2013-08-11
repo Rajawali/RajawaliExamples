@@ -6,7 +6,7 @@ import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.BufferInfo;
 import rajawali.Geometry3D;
 import rajawali.animation.Animation3D.RepeatMode;
@@ -51,7 +51,7 @@ public class UpdateVertexBufferFragment extends AExampleFragment {
 		/**
 		 * The dynamic object
 		 */
-		private BaseObject3D mCurveTris;
+		private Object3D mCurveTris;
 		/**
 		 * The dynamic object's vertex buffer info. We'll need this reference to update the vertex
 		 * buffer on each frame.
@@ -127,7 +127,7 @@ public class UpdateVertexBufferFragment extends AExampleFragment {
 			// -- Create an empty object
 			//
 
-			mCurveTris = new BaseObject3D();
+			mCurveTris = new Object3D();
 			mCurveTris.setData(vertices, null, null, colors, indices);
 			// -- We need to set this or else we won't see anyting
 			mCurveTris.isContainer(false);

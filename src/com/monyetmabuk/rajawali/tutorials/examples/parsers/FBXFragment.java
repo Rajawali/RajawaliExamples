@@ -1,6 +1,6 @@
 package com.monyetmabuk.rajawali.tutorials.examples.parsers;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
@@ -66,7 +66,7 @@ public class FBXFragment extends AExampleFragment {
 				FBXParser parser = new FBXParser(this,
 						R.raw.lowpolyrocks_character_blendswap);
 				parser.parse();
-				BaseObject3D o = parser.getParsedObject();
+				Object3D o = parser.getParsedObject();
 				o.setY(-.5f);
 				addChild(o);
 

@@ -1,6 +1,6 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.OrthographicCamera;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
@@ -53,12 +53,12 @@ public class OrthographicFragment extends AExampleFragment {
 				e.printStackTrace();
 			}
 
-			BaseObject3D group = new BaseObject3D();
+			Object3D group = new Object3D();
 			group.setRotX(-45);
 			group.setRotY(-45);
 			group.setY(-.8f);
 
-			BaseObject3D innerGroup = new BaseObject3D();
+			Object3D innerGroup = new Object3D();
 			group.addChild(innerGroup);
 
 			Plane plane = new Plane(Axis.Y);

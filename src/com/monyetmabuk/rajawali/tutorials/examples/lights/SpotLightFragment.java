@@ -1,6 +1,6 @@
 package com.monyetmabuk.rajawali.tutorials.examples.lights;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
@@ -61,7 +61,7 @@ public class SpotLightFragment extends AExampleFragment {
 					color = 0x4184fa;
 				count++;
 
-				BaseObject3D sphere = rootSphere.clone(false);
+				Object3D sphere = rootSphere.clone(false);
 				sphere.setPosition((float) Math.sin(radians) * radius, 0,
 						(float) Math.cos(radians) * radius);
 				sphere.setMaterial(sphereMaterial);
@@ -84,7 +84,7 @@ public class SpotLightFragment extends AExampleFragment {
 					color = 0x4184fa;
 				count++;
 
-				BaseObject3D sphere = rootSphere.clone(false);
+				Object3D sphere = rootSphere.clone(false);
 				sphere.setPosition((float) Math.sin(radians) * radius, 0,
 						(float) Math.cos(radians) * radius);
 				sphere.setMaterial(sphereMaterial);
@@ -93,7 +93,7 @@ public class SpotLightFragment extends AExampleFragment {
 				addChild(sphere);
 			}
 
-			final BaseObject3D target = new BaseObject3D();
+			final Object3D target = new Object3D();
 
 			EllipticalOrbitAnimation3D anim = new EllipticalOrbitAnimation3D(
 					new Vector3(0, .2f, 0), new Vector3(1, .2f, 1), 0, 359);

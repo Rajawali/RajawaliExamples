@@ -2,7 +2,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.optimizations;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.materials.SimpleMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Etc1Texture;
@@ -21,8 +21,8 @@ public class TextureCompressionFragment extends AExampleFragment {
 	}
 
 	private final class TextureCompressionRenderer extends AExampleRenderer {
-		private BaseObject3D mMipmappedPlane;
-		private BaseObject3D mPlane;
+		private Object3D mMipmappedPlane;
+		private Object3D mPlane;
 
 		public TextureCompressionRenderer(Context context) {
 			super(context);

@@ -3,7 +3,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.optimizations;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.curves.CatmullRomCurve3D;
@@ -53,7 +53,7 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 			mPlanes.setZ(4);
 			addChild(mPlanes);
 
-			BaseObject3D empty = new BaseObject3D();
+			Object3D empty = new Object3D();
 			addChild(empty);
 
 			CatmullRomCurve3D path = new CatmullRomCurve3D();

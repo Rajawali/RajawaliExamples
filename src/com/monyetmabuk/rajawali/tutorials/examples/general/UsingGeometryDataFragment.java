@@ -4,7 +4,7 @@ import java.io.ObjectInputStream;
 import java.nio.FloatBuffer;
 import java.util.zip.GZIPInputStream;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
@@ -29,7 +29,7 @@ public class UsingGeometryDataFragment extends AExampleFragment {
 
 	private final class UsingGeometryDataRenderer extends AExampleRenderer {
 		private Animation3D mAnim;
-		private BaseObject3D mRootSpike;
+		private Object3D mRootSpike;
 
 		public UsingGeometryDataRenderer(Context context) {
 			super(context);
@@ -43,7 +43,7 @@ public class UsingGeometryDataFragment extends AExampleFragment {
 
 			getCurrentCamera().setZ(16);
 
-			BaseObject3D sphere = new Sphere(1, 16, 8);
+			Object3D sphere = new Sphere(1, 16, 8);
 
 			PhongMaterial spikeMaterial = new PhongMaterial();
 			spikeMaterial.setUseSingleColor(true);
@@ -53,7 +53,7 @@ public class UsingGeometryDataFragment extends AExampleFragment {
 				GZIPInputStream gzi = new GZIPInputStream(mContext
 						.getResources().openRawResource(R.raw.spike));
 				ObjectInputStream fis = new ObjectInputStream(gzi);
-				mRootSpike = new BaseObject3D(
+				mRootSpike = new Object3D(
 						(SerializedObject3D) fis.readObject());
 				mRootSpike.setMaterial(spikeMaterial);
 				mRootSpike.addLight(light);
@@ -77,7 +77,7 @@ public class UsingGeometryDataFragment extends AExampleFragment {
 				// -- now loop through the sphere's vertices and place
 				// a spike on each vertex
 				for (int i = 0; i < numVerts; i += 3) {
-					BaseObject3D spike = mRootSpike.clone();
+					Object3D spike = mRootSpike.clone();
 					// -- set the spike's position to the sphere's current vertex position
 					spike.setPosition(vertBuffer.get(i), vertBuffer.get(i + 1),
 							vertBuffer.get(i + 2));

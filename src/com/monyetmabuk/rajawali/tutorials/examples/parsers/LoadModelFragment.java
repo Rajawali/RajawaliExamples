@@ -1,6 +1,6 @@
 package com.monyetmabuk.rajawali.tutorials.examples.parsers;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
@@ -25,7 +25,7 @@ public class LoadModelFragment extends AExampleFragment {
 
 	private final class LoadModelRenderer extends AExampleRenderer {
 		private PointLight mLight;
-		private BaseObject3D mObjectGroup;
+		private Object3D mObjectGroup;
 		private Animation3D mCameraAnim, mLightAnim;
 
 		public LoadModelRenderer(Context context) {

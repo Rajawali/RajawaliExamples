@@ -3,7 +3,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.general;
 import java.util.List;
 import java.util.Stack;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.curves.CatmullRomCurve3D;
@@ -95,7 +95,7 @@ public class UniformDistributionFragment extends AExampleFragment {
 			// -- draw the first curve
 			drawCurve(curve1, CURVE1_COLOR, new Vector3());
 
-			BaseObject3D pathFollowObject = new Sphere(.04f, 16, 16);
+			Object3D pathFollowObject = new Sphere(.04f, 16, 16);
 			pathFollowObject.setColor(CURVE1_COLOR);
 			pathFollowObject.setMaterial(material);
 			addChild(pathFollowObject);

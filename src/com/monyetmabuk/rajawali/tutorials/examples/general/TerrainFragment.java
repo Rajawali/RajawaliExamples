@@ -1,6 +1,6 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.ChaseCamera;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
@@ -123,7 +123,7 @@ public class TerrainFragment extends AExampleFragment {
 			// -- The empty object that will move along a curve and that
 			//    will be follow by the camera
 			//
-			BaseObject3D empty = new BaseObject3D();
+			Object3D empty = new Object3D();
 			empty.setVisible(false);
 
 			//

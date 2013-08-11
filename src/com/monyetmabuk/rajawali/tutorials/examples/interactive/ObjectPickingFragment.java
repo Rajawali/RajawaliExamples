@@ -4,7 +4,7 @@ import java.io.ObjectInputStream;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.lights.PointLight;
 import rajawali.materials.DiffuseMaterial;
@@ -67,7 +67,7 @@ public class ObjectPickingFragment extends AExampleFragment implements
 	private final class ObjectPickingRenderer extends AExampleRenderer
 			implements OnObjectPickedListener {
 		private PointLight mLight;
-		private BaseObject3D mMonkey1, mMonkey2, mMonkey3, mMonkey4;
+		private Object3D mMonkey1, mMonkey2, mMonkey3, mMonkey4;
 		private ObjectColorPicker mPicker;
 
 		public ObjectPickingRenderer(Context context) {
@@ -89,7 +89,7 @@ public class ObjectPickingFragment extends AExampleFragment implements
 						.readObject();
 				ois.close();
 
-				mMonkey1 = new BaseObject3D(serializedMonkey);
+				mMonkey1 = new Object3D(serializedMonkey);
 				mMonkey1.addLight(mLight);
 				mMonkey1.setScale(.7f);
 				mMonkey1.setPosition(-1, 1, 0);
@@ -153,7 +153,7 @@ public class ObjectPickingFragment extends AExampleFragment implements
 			mPicker.getObjectAt(x, y);
 		}
 
-		public void onObjectPicked(BaseObject3D object) {
+		public void onObjectPicked(Object3D object) {
 			object.setZ(object.getZ() == 0 ? -2 : 0);
 		}
 

@@ -2,7 +2,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.interactive;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.materials.SimpleMaterial;
 import rajawali.math.Matrix4;
 import rajawali.math.vector.Vector3;
@@ -80,7 +80,7 @@ public class TouchAndDragFragment extends AExampleFragment implements
 	private final class TouchAndDragRenderer extends AExampleRenderer implements
 			OnObjectPickedListener {
 		private ObjectColorPicker mPicker;
-		private BaseObject3D mSelectedObject;
+		private Object3D mSelectedObject;
 		private int[] mViewport;
 		private double[] mNearPos4;
 		private double[] mFarPos4;
@@ -139,7 +139,7 @@ public class TouchAndDragFragment extends AExampleFragment implements
 			mPicker.getObjectAt(x, y);
 		}
 
-		public void onObjectPicked(BaseObject3D object) {
+		public void onObjectPicked(Object3D object) {
 			mSelectedObject = object;
 		}
 

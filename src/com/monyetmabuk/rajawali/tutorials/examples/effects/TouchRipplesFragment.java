@@ -5,7 +5,7 @@ import java.util.Random;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
@@ -95,7 +95,7 @@ public class TouchRipplesFragment extends AExampleFragment implements
 			DirectionalLight light = new DirectionalLight(0, 0, 1);
 			light.setPower(1f);
 
-			BaseObject3D group = new BaseObject3D();
+			Object3D group = new Object3D();
 			DiffuseMaterial material = new DiffuseMaterial();
 			material.setUseSingleColor(true);
 

@@ -4,7 +4,7 @@ import java.io.ObjectInputStream;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.CubeMapMaterial;
@@ -27,7 +27,7 @@ public class MaterialsFragment extends AExampleFragment {
 
 	private final class MaterialsRenderer extends AExampleRenderer {
 		private DirectionalLight mLight;
-		private BaseObject3D mMonkey1, mMonkey2, mMonkey3, mMonkey4;
+		private Object3D mMonkey1, mMonkey2, mMonkey3, mMonkey4;
 
 		public MaterialsRenderer(Context context) {
 			super(context);
@@ -45,7 +45,7 @@ public class MaterialsFragment extends AExampleFragment {
 						.readObject();
 				ois.close();
 
-				mMonkey1 = new BaseObject3D(serializedMonkey);
+				mMonkey1 = new Object3D(serializedMonkey);
 				mMonkey1.addLight(mLight);
 				mMonkey1.setScale(.7f);
 				mMonkey1.setPosition(-1, 1, 0);
