@@ -12,8 +12,8 @@ import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.SimpleMaterial;
 import rajawali.math.vector.Vector3;
-import rajawali.parser.AParser.ParsingException;
-import rajawali.parser.ObjParser;
+import rajawali.parser.ALoader.ParsingException;
+import rajawali.parser.LoaderOBJ;
 import rajawali.primitives.Line3D;
 import rajawali.primitives.Sphere;
 import android.content.Context;
@@ -55,7 +55,7 @@ public class CatmullRomFragment extends AExampleFragment {
 			}
 
 			try {
-				ObjParser parser = new ObjParser(mContext.getResources(),
+				LoaderOBJ parser = new LoaderOBJ(mContext.getResources(),
 						mTextureManager, R.raw.arrow);
 				parser.parse();
 				Object3D arrow = parser.getParsedObject();

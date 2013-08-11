@@ -3,9 +3,9 @@ package com.monyetmabuk.rajawali.tutorials.examples.animation;
 import rajawali.animation.mesh.SkeletalAnimationObject3D;
 import rajawali.animation.mesh.SkeletalAnimationSequence;
 import rajawali.lights.DirectionalLight;
-import rajawali.parser.AParser.ParsingException;
-import rajawali.parser.md5.MD5AnimParser;
-import rajawali.parser.md5.MD5MeshParser;
+import rajawali.parser.ALoader.ParsingException;
+import rajawali.parser.md5.LoaderMD5Anim;
+import rajawali.parser.md5.LoaderMD5Mesh;
 import android.content.Context;
 
 import com.monyetmabuk.rajawali.tutorials.R;
@@ -35,11 +35,11 @@ public class SkeletalAnimationMD5Fragment extends AExampleFragment {
 			getCurrentCamera().setZ(6);
 
 			try {
-				MD5MeshParser meshParser = new MD5MeshParser(this,
+				LoaderMD5Mesh meshParser = new LoaderMD5Mesh(this,
 						R.raw.boblampclean_mesh);
 				meshParser.parse();
 
-				MD5AnimParser animParser = new MD5AnimParser("attack2", this,
+				LoaderMD5Anim animParser = new LoaderMD5Anim("attack2", this,
 						R.raw.boblampclean_anim);
 				animParser.parse();
 

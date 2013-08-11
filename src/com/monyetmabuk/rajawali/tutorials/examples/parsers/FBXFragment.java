@@ -5,8 +5,8 @@ import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.math.vector.Vector3.Axis;
-import rajawali.parser.AParser.ParsingException;
-import rajawali.parser.fbx.FBXParser;
+import rajawali.parser.ALoader.ParsingException;
+import rajawali.parser.fbx.LoaderFBX;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -63,7 +63,7 @@ public class FBXFragment extends AExampleFragment {
 			try {
 				// -- Model by Sampo Rask
 				// (http://www.blendswap.com/blends/characters/low-poly-rocks-character/)
-				FBXParser parser = new FBXParser(this,
+				LoaderFBX parser = new LoaderFBX(this,
 						R.raw.lowpolyrocks_character_blendswap);
 				parser.parse();
 				Object3D o = parser.getParsedObject();

@@ -2,8 +2,8 @@ package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
 import rajawali.animation.mesh.VertexAnimationObject3D;
 import rajawali.lights.DirectionalLight;
-import rajawali.parser.AParser.ParsingException;
-import rajawali.parser.MD2Parser;
+import rajawali.parser.ALoader.ParsingException;
+import rajawali.parser.LoaderMD2;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -115,7 +115,7 @@ public class MD2Fragment extends AExampleFragment implements OnClickListener {
 			mLight.setPower(1);
 			getCurrentCamera().setPosition(0, 0, 8);
 
-			MD2Parser parser = new MD2Parser(mContext.getResources(),
+			LoaderMD2 parser = new LoaderMD2(mContext.getResources(),
 					mTextureManager, R.raw.ogro);
 			try {
 				parser.parse();
