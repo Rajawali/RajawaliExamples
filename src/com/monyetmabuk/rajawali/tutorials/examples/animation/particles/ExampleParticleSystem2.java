@@ -7,6 +7,7 @@ import java.nio.FloatBuffer;
 import rajawali.Camera;
 import rajawali.Geometry3D;
 import rajawali.materials.ParticleMaterial;
+import rajawali.math.Matrix4;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Particle;
 import rajawali.util.ObjectColorPicker.ColorPickerInfo;
@@ -139,8 +140,8 @@ public class ExampleParticleSystem2 extends Particle {
 		particleShader.setCameraPosition(camera.getPosition());
 	}
 
-	public void render(Camera camera, double[] projMatrix, double[] vMatrix,
-			final double[] parentMatrix, ColorPickerInfo pickerInfo) {
+	public void render(Camera camera, final Matrix4 projMatrix, final Matrix4 vMatrix,
+			final Matrix4 parentMatrix, ColorPickerInfo pickerInfo) {
 		super.render(camera, projMatrix, vMatrix, parentMatrix, pickerInfo);
 	}
 }
