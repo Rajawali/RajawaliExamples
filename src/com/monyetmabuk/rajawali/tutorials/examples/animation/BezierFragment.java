@@ -1,6 +1,6 @@
 package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
@@ -34,7 +34,7 @@ public class BezierFragment extends AExampleFragment {
 			mLight.setPower(1);
 			getCurrentCamera().setPosition(0, 0, 20);
 
-			BaseObject3D redSphere = new Sphere(1, 16, 16);
+			Object3D redSphere = new Sphere(1, 16, 16);
 			redSphere.addLight(mLight);
 			redSphere.setPosition(0, -4, 0);
 			redSphere.setColor(0xffff0000);
@@ -44,7 +44,7 @@ public class BezierFragment extends AExampleFragment {
 			redSphere.setMaterial(phong);
 			addChild(redSphere);
 
-			BaseObject3D yellowSphere = new Sphere(.6f, 16, 16);
+			Object3D yellowSphere = new Sphere(.6f, 16, 16);
 			yellowSphere.addLight(mLight);
 			yellowSphere.setPosition(2, 4, 0);
 			yellowSphere.setColor(0xffffff00);

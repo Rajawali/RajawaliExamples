@@ -2,7 +2,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
 import java.util.Stack;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
@@ -58,7 +58,7 @@ public class CatmullRomFragment extends AExampleFragment {
 				ObjParser parser = new ObjParser(mContext.getResources(),
 						mTextureManager, R.raw.arrow);
 				parser.parse();
-				BaseObject3D arrow = parser.getParsedObject();
+				Object3D arrow = parser.getParsedObject();
 				arrow.setMaterial(material);
 				arrow.setScale(.2f);
 				arrow.setColor(0xffffff00);

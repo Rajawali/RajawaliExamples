@@ -5,7 +5,7 @@ import java.io.ObjectInputStream;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
@@ -40,7 +40,7 @@ public class AnimationFragment extends AExampleFragment {
 		}
 
 		private PointLight mLight;
-		private BaseObject3D mMonkey;
+		private Object3D mMonkey;
 		private Animation3DQueue mQueue;
 
 		protected void initScene() {
@@ -57,7 +57,7 @@ public class AnimationFragment extends AExampleFragment {
 				SerializedObject3D serializedMonkey = (SerializedObject3D) ois
 						.readObject();
 				ois.close();
-				mMonkey = new BaseObject3D(serializedMonkey);
+				mMonkey = new Object3D(serializedMonkey);
 				mMonkey.addLight(mLight);
 				addChild(mMonkey);
 			} catch (Exception e) {

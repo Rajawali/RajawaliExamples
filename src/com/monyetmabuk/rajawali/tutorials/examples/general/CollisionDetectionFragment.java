@@ -4,7 +4,7 @@ import java.io.ObjectInputStream;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
@@ -30,8 +30,8 @@ public class CollisionDetectionFragment extends AExampleFragment {
 	private final class CollisionDetectionRenderer extends AExampleRenderer {
 
 		private DirectionalLight mLight;
-		private BaseObject3D mCubeBox, mBoxesBox;
-		private BaseObject3D mCubeSphere, mBoxesSphere;
+		private Object3D mCubeBox, mBoxesBox;
+		private Object3D mCubeSphere, mBoxesSphere;
 		private boolean mBoxIntersect = false;
 		private boolean mSphereIntersect = false;
 
@@ -69,7 +69,7 @@ public class CollisionDetectionFragment extends AExampleFragment {
 						.readObject();
 				ois.close();
 
-				mBoxesBox = new BaseObject3D(serializedMonkey);
+				mBoxesBox = new Object3D(serializedMonkey);
 				mBoxesBox.setMaterial(material);
 				mBoxesBox.setColor(0xff990000);
 				mBoxesBox.addLight(mLight);
@@ -79,7 +79,7 @@ public class CollisionDetectionFragment extends AExampleFragment {
 				mBoxesBox.setShowBoundingVolume(true);
 				addChild(mBoxesBox);
 
-				mBoxesSphere = new BaseObject3D(serializedMonkey);
+				mBoxesSphere = new Object3D(serializedMonkey);
 				mBoxesSphere.setMaterial(material);
 				mBoxesSphere.setColor(0xff00bfff);
 				mBoxesSphere.addLight(mLight);

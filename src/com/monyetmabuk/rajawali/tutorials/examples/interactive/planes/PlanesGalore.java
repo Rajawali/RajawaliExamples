@@ -4,7 +4,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.BufferInfo;
 import rajawali.Camera;
 import rajawali.Geometry3D;
@@ -30,7 +30,7 @@ import android.opengl.GLES20;
  * @author dennis.ippel
  *
  */
-public class PlanesGalore extends BaseObject3D {
+public class PlanesGalore extends Object3D {
 	protected FloatBuffer mPlanePositions;
 	protected FloatBuffer mRotationSpeeds;
 	protected BufferInfo mPlanePositionsBufferInfo;

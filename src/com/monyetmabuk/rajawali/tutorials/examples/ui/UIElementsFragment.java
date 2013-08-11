@@ -5,7 +5,7 @@ import java.util.zip.GZIPInputStream;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.PhongMaterial;
@@ -56,7 +56,7 @@ public class UIElementsFragment extends AExampleFragment {
 
 	private final class UIElementsRenderer extends AExampleRenderer {
 		private DirectionalLight mLight;
-		private BaseObject3D mAndroid;
+		private Object3D mAndroid;
 
 		public UIElementsRenderer(Context context) {
 			super(context);
@@ -76,7 +76,7 @@ public class UIElementsFragment extends AExampleFragment {
 						.readObject();
 				fis.close();
 
-				mAndroid = new BaseObject3D(serializedAndroid);
+				mAndroid = new Object3D(serializedAndroid);
 				mAndroid.addLight(mLight);
 				addChild(mAndroid);
 			} catch (Exception e) {

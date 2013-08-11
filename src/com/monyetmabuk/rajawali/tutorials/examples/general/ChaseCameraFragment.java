@@ -5,7 +5,7 @@ import java.util.zip.GZIPInputStream;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.ChaseCamera;
 import rajawali.SerializedObject3D;
 import rajawali.lights.DirectionalLight;
@@ -94,9 +94,9 @@ public class ChaseCameraFragment extends AExampleFragment implements
 
 	private final class ChaseCameraRenderer extends AExampleRenderer {
 
-		private BaseObject3D mRaptor, mSphere;
-		private BaseObject3D[] mCubes;
-		private BaseObject3D mRootCube;
+		private Object3D mRaptor, mSphere;
+		private Object3D[] mCubes;
+		private Object3D mRootCube;
 		private float mTime;
 
 		public ChaseCameraRenderer(Context context) {
@@ -125,7 +125,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
 				GZIPInputStream zis = new GZIPInputStream(mContext
 						.getResources().openRawResource(R.raw.raptor));
 				ois = new ObjectInputStream(zis);
-				mRaptor = new BaseObject3D(
+				mRaptor = new Object3D(
 						(SerializedObject3D) ois.readObject());
 				DiffuseMaterial raptorMaterial = new DiffuseMaterial();
 				raptorMaterial
@@ -140,7 +140,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
 
 			// -- create a bunch of cubes that will serve as orientation helpers
 
-			mCubes = new BaseObject3D[30];
+			mCubes = new Object3D[30];
 
 			mRootCube = new Cube(1);
 			DiffuseMaterial rootCubeMaterial = new DiffuseMaterial();
@@ -158,7 +158,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
 			mCubes[0] = mRootCube;
 
 			for (int i = 1; i < mCubes.length; ++i) {
-				BaseObject3D cube = mRootCube.clone(true);
+				Object3D cube = mRootCube.clone(true);
 				cube.setY(-1f);
 				cube.setZ(i * 30);
 				mRootCube.addChild(cube);

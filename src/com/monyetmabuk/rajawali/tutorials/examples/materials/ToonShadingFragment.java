@@ -2,7 +2,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.materials;
 
 import java.io.ObjectInputStream;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
@@ -23,7 +23,7 @@ public class ToonShadingFragment extends AExampleFragment {
 
 	private final class ToonShadingRenderer extends AExampleRenderer {
 		private DirectionalLight mLight;
-		private BaseObject3D mMonkey1, mMonkey2, mMonkey3;
+		private Object3D mMonkey1, mMonkey2, mMonkey3;
 
 		public ToonShadingRenderer(Context context) {
 			super(context);
@@ -44,7 +44,7 @@ public class ToonShadingFragment extends AExampleFragment {
 
 				ToonMaterial toonMat = new ToonMaterial();
 
-				mMonkey1 = new BaseObject3D(serializedMonkey);
+				mMonkey1 = new Object3D(serializedMonkey);
 				mMonkey1.setMaterial(toonMat);
 				mMonkey1.setPosition(-1.5f, 2, 0);
 				mMonkey1.addLight(mLight);

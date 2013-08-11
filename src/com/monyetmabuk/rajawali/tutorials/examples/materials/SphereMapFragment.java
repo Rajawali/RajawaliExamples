@@ -2,7 +2,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.materials;
 
 import java.io.ObjectInputStream;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
@@ -40,7 +40,7 @@ public class SphereMapFragment extends AExampleFragment {
 			SphereMapTexture sphereMapTexture = new SphereMapTexture(
 					R.drawable.manila_sphere_map);
 
-			BaseObject3D jet1 = null;
+			Object3D jet1 = null;
 			// -- sphere map with texture
 
 			try {
@@ -52,7 +52,7 @@ public class SphereMapFragment extends AExampleFragment {
 				ObjectInputStream ois;
 				ois = new ObjectInputStream(mContext.getResources()
 						.openRawResource(R.raw.jet));
-				jet1 = new BaseObject3D((SerializedObject3D) ois.readObject());
+				jet1 = new Object3D((SerializedObject3D) ois.readObject());
 				jet1.setMaterial(material1);
 				jet1.addLight(light);
 				jet1.setY(2.5f);
@@ -82,7 +82,7 @@ public class SphereMapFragment extends AExampleFragment {
 				e.printStackTrace();
 			}
 
-			BaseObject3D jet2 = jet1.clone(false);
+			Object3D jet2 = jet1.clone(false);
 			jet2.setMaterial(material2);
 			jet2.addLight(light);
 			// -- also specify a color

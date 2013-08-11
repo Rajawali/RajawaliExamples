@@ -2,7 +2,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.ui;
 
 import java.io.ObjectInputStream;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
@@ -63,7 +63,7 @@ public class TransparentSurfaceFragment extends AExampleFragment {
 						.readObject();
 				ois.close();
 
-				BaseObject3D monkey = new BaseObject3D(serializedMonkey);
+				Object3D monkey = new Object3D(serializedMonkey);
 				DiffuseMaterial material = new DiffuseMaterial();
 				material.setUseSingleColor(true);
 				monkey.setMaterial(material);

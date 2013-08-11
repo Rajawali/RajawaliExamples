@@ -2,7 +2,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.effects;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.Camera;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
@@ -28,7 +28,7 @@ public class FogFragment extends AExampleFragment {
 
 	private final class FogRenderer extends AExampleRenderer {
 		private DirectionalLight mLight;
-		private BaseObject3D mRoad;
+		private Object3D mRoad;
 
 		public FogRenderer(Context context) {
 			super(context);
