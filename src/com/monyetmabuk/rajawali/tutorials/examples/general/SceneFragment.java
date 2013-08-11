@@ -5,8 +5,8 @@ import java.util.Random;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
 import rajawali.Camera;
+import rajawali.Object3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
@@ -138,9 +138,9 @@ public class SceneFragment extends AExampleFragment implements OnClickListener {
 
 		private DirectionalLight mLight1, mLight2;
 		private DiffuseMaterial mMaterial;
-		private BaseObject3D mInitialSphere;
-		private BaseObject3D mInitialCube;
-		private BaseObject3D mPoint;
+		private Object3D mInitialSphere;
+		private Object3D mInitialCube;
+		private Object3D mPoint;
 		private EllipticalOrbitAnimation3D mCameraAnim;
 		private Vector3 mFocal;
 		private Vector3 mPeriapsis;
@@ -152,8 +152,8 @@ public class SceneFragment extends AExampleFragment implements OnClickListener {
 		private Camera mCamera2;
 
 		private Random mRandom = new Random();
-		private ArrayList<BaseObject3D> mSpheres = new ArrayList<BaseObject3D>();
-		private ArrayList<BaseObject3D> mCubes = new ArrayList<BaseObject3D>();
+		private ArrayList<Object3D> mSpheres = new ArrayList<Object3D>();
+		private ArrayList<Object3D> mCubes = new ArrayList<Object3D>();
 
 		private Handler mHandler;
 
@@ -281,7 +281,7 @@ public class SceneFragment extends AExampleFragment implements OnClickListener {
 		}
 
 		public void addObject(float x, float y) {
-			BaseObject3D obj = null;
+			Object3D obj = null;
 			if (getCurrentScene().equals(mScene2)) {
 				obj = new Sphere(1, 10, 10);
 				mSpheres.add(obj);
@@ -308,13 +308,13 @@ public class SceneFragment extends AExampleFragment implements OnClickListener {
 		public void removeObject() {
 			if (getCurrentScene().equals(mScene2)) {
 				if (!mCubes.isEmpty()) {
-					BaseObject3D child = mSpheres.get(0);
+					Object3D child = mSpheres.get(0);
 					removeChild(child);
 					mSpheres.remove(child);
 				}
 			} else if (getCurrentScene().equals(mScene1)) {
 				if (!mCubes.isEmpty()) {
-					BaseObject3D child = mCubes.get(0);
+					Object3D child = mCubes.get(0);
 					removeChild(child);
 					mCubes.remove(child);
 				}
