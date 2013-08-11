@@ -4,6 +4,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
 import rajawali.materials.SimpleMaterial;
+import rajawali.math.Matrix4;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
 import rajawali.util.GLU;
@@ -86,8 +87,8 @@ public class TouchAndDragFragment extends AExampleFragment implements
 		private Vector3 mNearPos;
 		private Vector3 mFarPos;
 		private Vector3 mNewObjPos;
-		private double[] mViewMatrix;
-		private double[] mProjectionMatrix;
+		private Matrix4 mViewMatrix;
+		private Matrix4 mProjectionMatrix;
 
 		public TouchAndDragRenderer(Context context) {
 			super(context);
@@ -150,15 +151,15 @@ public class TouchAndDragFragment extends AExampleFragment implements
 			// -- unproject the screen coordinate (2D) to the camera's near plane
 			//
 
-			GLU.gluUnProject(x, mViewportHeight - y, 0, mViewMatrix, 0,
-					mProjectionMatrix, 0, mViewport, 0, mNearPos4, 0);
+			GLU.gluUnProject(x, mViewportHeight - y, 0, mViewMatrix.getDoubleValues(), 0,
+					mProjectionMatrix.getDoubleValues(), 0, mViewport, 0, mNearPos4, 0);
 
 			//
 			// -- unproject the screen coordinate (2D) to the camera's far plane
 			//
 
-			GLU.gluUnProject(x, mViewportHeight - y, 1.f, mViewMatrix, 0,
-					mProjectionMatrix, 0, mViewport, 0, mFarPos4, 0);
+			GLU.gluUnProject(x, mViewportHeight - y, 1.f, mViewMatrix.getDoubleValues(), 0,
+					mProjectionMatrix.getDoubleValues(), 0, mViewport, 0, mFarPos4, 0);
 
 			//
 			// -- transform 4D coordinates (x, y, z, w) to 3D (x, y, z) by dividing
