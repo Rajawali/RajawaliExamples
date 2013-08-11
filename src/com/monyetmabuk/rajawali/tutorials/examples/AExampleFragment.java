@@ -20,7 +20,7 @@ public abstract class AExampleFragment extends RajawaliFragment {
 
 	protected RajawaliRenderer mRenderer;
 
-	private ProgressBar mImageViewLoader;
+	protected ProgressBar mImageViewLoader;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

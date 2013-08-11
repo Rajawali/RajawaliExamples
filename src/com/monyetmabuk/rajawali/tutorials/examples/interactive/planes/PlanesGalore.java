@@ -82,9 +82,9 @@ public class PlanesGalore extends BaseObject3D {
 				normals[vIndex + j + 1] = 0;
 				normals[vIndex + j + 2] = 1;
 
-				planePositions[vIndex + j] = r.x;
-				planePositions[vIndex + j + 1] = r.y;
-				planePositions[vIndex + j + 2] = r.z;
+				planePositions[vIndex + j] = (float) r.x;
+				planePositions[vIndex + j + 1] = (float) r.y;
+				planePositions[vIndex + j + 2] = (float) r.z;
 			}
 
 			vIndex = i * 4 * 4;
