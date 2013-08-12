@@ -36,8 +36,9 @@ public class DirectionalLightFragment extends AExampleFragment {
 			directionalLight.setPower(1.5f);
 			getCurrentScene().addLight(directionalLight);
 
-			getCurrentCamera().setPosition(0, 2, 6);
-			getCurrentCamera().setLookAt(0, 0, 0);
+            getCurrentCamera().enableLookAt();
+            getCurrentCamera().setPosition(0, 2, 6);
+            getCurrentCamera().setLookAt(0, 0, 0);
 
 			Material sphereMaterial = new Material();
 			SpecularMethod.Phong phongMethod = new SpecularMethod.Phong();

@@ -80,7 +80,7 @@ public class UsingGeometryDataFragment extends AExampleFragment {
 				// -- now loop through the sphere's vertices and place
 				// a spike on each vertex
 				for (int i = 0; i < numVerts; i += 3) {
-					Object3D spike = mRootSpike.clone();
+					Object3D spike = mRootSpike.clone(true, false);
 					// -- set the spike's position to the sphere's current vertex position
 					spike.setPosition(vertBuffer.get(i), vertBuffer.get(i + 1),
 							vertBuffer.get(i + 2));
