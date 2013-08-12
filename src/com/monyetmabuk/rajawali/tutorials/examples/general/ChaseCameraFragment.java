@@ -97,7 +97,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
 		private Object3D mRaptor, mSphere;
 		private Object3D[] mCubes;
 		private Object3D mRootCube;
-		private float mTime;
+		private double mTime;
 
 		public ChaseCameraRenderer(Context context) {
 			super(context);
@@ -186,16 +186,16 @@ public class ChaseCameraFragment extends AExampleFragment implements
 			super.onDrawFrame(glUnused);
 			// -- no proper physics here, just a bad approximation to keep
 			// this example as short as possible ;-)
-			mRaptor.setZ(mRaptor.getZ() + 2f);
-			mRaptor.setX((float) Math.sin(mTime) * 20f);
-			mRaptor.setRotZ((float) Math.sin(mTime + 8f) * -30f);
-			mRaptor.setRotY(180 + (mRaptor.getRotZ() * .1f));
+			mRaptor.setZ(mRaptor.getZ() + 2.0);
+			mRaptor.setX(Math.sin(mTime) * 20.0);
+			mRaptor.setRotZ(Math.sin(mTime + 8.0) * -30.0);
+			mRaptor.setRotY(180 + (mRaptor.getRotZ() * 0.1));
 			mRaptor.setRotY(180);
-			mRaptor.setY((float) Math.cos(mTime) * 10f);
-			mRaptor.setRotX((float) Math.cos(mTime + 1f) * -20f);
+			mRaptor.setY(Math.cos(mTime) * 10.0);
+			mRaptor.setRotX(Math.cos(mTime + 1.0) * -20.0);
 
 			mSphere.setZ(mRaptor.getZ());
-			mTime += .01f;
+			mTime += 0.01;
 
 			if (mRootCube.getZ() - mRaptor.getZ() <= (30 * -6)) {
 				mRootCube.setZ(mRaptor.getZ());

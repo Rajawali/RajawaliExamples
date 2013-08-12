@@ -7,6 +7,7 @@ import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
+import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Sphere;
 import android.content.Context;
 
@@ -51,9 +52,8 @@ public class BasicFragment extends AExampleFragment {
 
 		public void onDrawFrame(GL10 glUnused) {
 			super.onDrawFrame(glUnused);
-			mSphere.setRotY(mSphere.getRotY() + 1);
+			mSphere.rotate(Axis.Y, 1.0);
 		}
-
 	}
 
 }
