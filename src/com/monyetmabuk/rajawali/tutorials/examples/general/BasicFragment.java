@@ -7,8 +7,10 @@ import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
+import rajawali.math.Quaternion;
 import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Sphere;
+import rajawali.util.RajLog;
 import android.content.Context;
 
 import com.monyetmabuk.rajawali.tutorials.R;
@@ -31,7 +33,8 @@ public class BasicFragment extends AExampleFragment {
 		}
 
 		protected void initScene() {
-			mLight = new DirectionalLight(1f, 0.2f, -1.0f); // set the direction
+			setFrameRate(1);
+			mLight = new DirectionalLight(1.0, 0.2, -1.0); // set the direction
 			mLight.setColor(1.0f, 1.0f, 1.0f);
 			mLight.setPower(2);
 
@@ -47,12 +50,21 @@ public class BasicFragment extends AExampleFragment {
 				e.printStackTrace();
 			}
 
+			/*RajLog.i("Camera Position: " + getCurrentCamera().getPosition());
+			RajLog.i("Camera LookAt: " + getCurrentCamera().getLookAt());
+			RajLog.i("Camera LookAt Enabled: " + getCurrentCamera().isLookAtEnabled());
+			RajLog.i("Camera LookAt Valid: " + getCurrentCamera().isLookAtValid());
+			RajLog.i("Camera Orientation: " + getCurrentCamera().getOrientation(new Quaternion()));*/
+			getCurrentCamera().setLookAt(0, 0, 0);
 			getCurrentCamera().setZ(6);
+			getCurrentCamera().setY(1);
 		}
 
 		public void onDrawFrame(GL10 glUnused) {
 			super.onDrawFrame(glUnused);
 			mSphere.rotate(Axis.Y, 1.0);
+			RajLog.i("Camera View Matrix: " + getCurrentCamera().getViewMatrix());
+			RajLog.v("Sphere Model Matrix: \n" + mSphere.getModelMatrix());
 		}
 	}
 
