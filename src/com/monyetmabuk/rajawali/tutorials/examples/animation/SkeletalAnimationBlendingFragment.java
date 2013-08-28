@@ -99,6 +99,7 @@ public class SkeletalAnimationBlendingFragment extends AExampleFragment implemen
 			mLight.setColor(1.0f, 1.0f, .8f);
 			mLight.setPower(1);
 
+			getCurrentScene().addLight(mLight);
 			getCurrentCamera().setZ(8);
 
 			try {
@@ -136,7 +137,6 @@ public class SkeletalAnimationBlendingFragment extends AExampleFragment implemen
 						.getParsedAnimationObject();
 				mObject.setAnimationSequence(mSequenceIdle);
 				mObject.setFps(24);
-				mObject.addLight(mLight);
 				mObject.setScale(.8f);
 				mObject.setRotY(180);
 				mObject.play();

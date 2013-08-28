@@ -2,11 +2,8 @@ package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.Texture;
 import android.content.Context;
 
-import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.particles.ExampleParticleSystem2;
 

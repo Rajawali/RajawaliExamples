@@ -12,7 +12,8 @@ import rajawali.animation.RotateAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.bounds.IBoundingVolume;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.DiffuseMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Cube;
 import android.content.Context;
@@ -41,14 +42,15 @@ public class CollisionDetectionFragment extends AExampleFragment {
 
 		protected void initScene() {
 			mLight = new DirectionalLight(0, 1, -1);
+			getCurrentScene().addLight(mLight);
 			getCurrentCamera().setPosition(0, 0, 7);
 
-			DiffuseMaterial material = new DiffuseMaterial();
-			material.setUseSingleColor(true);
+			Material material = new Material();
+			material.enableLighting(true);
+			material.setDiffuseMethod(new DiffuseMethod.Lambert());
 
 			mCubeBox = new Cube(1);
 			mCubeBox.setMaterial(material);
-			mCubeBox.addLight(mLight);
 			mCubeBox.setColor(0xff990000);
 			mCubeBox.setPosition(-1, -3, 0);
 			mCubeBox.setShowBoundingVolume(true);
@@ -56,7 +58,6 @@ public class CollisionDetectionFragment extends AExampleFragment {
 
 			mCubeSphere = new Cube(1);
 			mCubeSphere.setMaterial(material);
-			mCubeSphere.addLight(mLight);
 			mCubeSphere.setColor(0xff00bfff);
 			mCubeSphere.setPosition(1, -2, 0);
 			mCubeSphere.setShowBoundingVolume(true);
@@ -72,7 +73,6 @@ public class CollisionDetectionFragment extends AExampleFragment {
 				mBoxesBox = new Object3D(serializedMonkey);
 				mBoxesBox.setMaterial(material);
 				mBoxesBox.setColor(0xff990000);
-				mBoxesBox.addLight(mLight);
 				mBoxesBox.setScale(.2f);
 				mBoxesBox.setRotY(180);
 				mBoxesBox.setPosition(-1, 3, 0);
@@ -82,7 +82,6 @@ public class CollisionDetectionFragment extends AExampleFragment {
 				mBoxesSphere = new Object3D(serializedMonkey);
 				mBoxesSphere.setMaterial(material);
 				mBoxesSphere.setColor(0xff00bfff);
-				mBoxesSphere.addLight(mLight);
 				mBoxesSphere.setScale(.3f);
 				mBoxesSphere.setRotX(180);
 				mBoxesSphere.setPosition(1, 2, 0);

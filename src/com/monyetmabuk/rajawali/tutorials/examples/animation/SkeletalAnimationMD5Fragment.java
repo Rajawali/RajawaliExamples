@@ -31,6 +31,7 @@ public class SkeletalAnimationMD5Fragment extends AExampleFragment {
 			mLight.setColor(1.0f, 1.0f, 1.0f);
 			mLight.setPower(2);
 
+			getCurrentScene().addLight(mLight);
 			getCurrentCamera().setY(1);
 			getCurrentCamera().setZ(6);
 
@@ -49,7 +50,6 @@ public class SkeletalAnimationMD5Fragment extends AExampleFragment {
 				mObject = (SkeletalAnimationObject3D) meshParser
 						.getParsedAnimationObject();
 				mObject.setAnimationSequence(sequence);
-				mObject.addLight(mLight);
 				mObject.setScale(.04f);
 				mObject.setRotY(180);
 				mObject.play();

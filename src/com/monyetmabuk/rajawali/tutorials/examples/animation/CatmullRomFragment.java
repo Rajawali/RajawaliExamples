@@ -10,7 +10,8 @@ import rajawali.animation.TranslateAnimation3D;
 import rajawali.curves.CatmullRomCurve3D;
 import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.SimpleMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
 import rajawali.math.vector.Vector3;
 import rajawali.parser.ALoader.ParsingException;
 import rajawali.parser.LoaderOBJ;
@@ -36,14 +37,18 @@ public class CatmullRomFragment extends AExampleFragment {
 
 		protected void initScene() {
 			super.initScene();
-			ALight light1 = new DirectionalLight(0, 0, -1);
-			light1.setPower(1);
+			ALight light = new DirectionalLight(0, 0, -1);
+			light.setPower(1);
+			
+			getCurrentScene().addLight(light);
+			
 			getCurrentCamera().setPosition(0, 0, 10);
 			getCurrentCamera().setLookAt(0, 0, 0);
 
-			SimpleMaterial material = new SimpleMaterial();
-			material.setUseSingleColor(true);
-
+			Material material = new Material();
+			material.enableLighting(true);
+			material.setDiffuseMethod(new DiffuseMethod.Lambert());
+			
 			// -- create a catmull-rom path. The first and the last point are control points.
 			CatmullRomCurve3D path = new CatmullRomCurve3D();
 			float r = 12;
@@ -62,7 +67,6 @@ public class CatmullRomFragment extends AExampleFragment {
 				arrow.setMaterial(material);
 				arrow.setScale(.2f);
 				arrow.setColor(0xffffff00);
-				arrow.addLight(light1);
 				addChild(arrow);
 
 				TranslateAnimation3D anim = new TranslateAnimation3D(path);
@@ -81,7 +85,6 @@ public class CatmullRomFragment extends AExampleFragment {
 
 			for (int i = 0; i < numPoints; i++) {
 				Sphere s = new Sphere(.2f, 6, 6);
-				s.addLight(light1);
 				s.setMaterial(material);
 				s.setPosition(path.getPoint(i));
 

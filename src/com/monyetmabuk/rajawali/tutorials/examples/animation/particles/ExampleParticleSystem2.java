@@ -1,19 +1,14 @@
 package com.monyetmabuk.rajawali.tutorials.examples.animation.particles;
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
 import rajawali.Camera;
-import rajawali.Geometry3D;
-import rajawali.materials.ParticleMaterial;
+import rajawali.Object3D;
 import rajawali.math.Matrix4;
 import rajawali.math.vector.Vector3;
-import rajawali.primitives.Particle;
 import rajawali.util.ObjectColorPicker.ColorPickerInfo;
-import android.opengl.GLES20;
 
-public class ExampleParticleSystem2 extends Particle {
+public class ExampleParticleSystem2 extends Object3D {
 	protected Vector3 mFriction;
 	protected FloatBuffer mVelocityBuffer;
 	protected FloatBuffer mAnimOffsetBuffer;
@@ -26,6 +21,8 @@ public class ExampleParticleSystem2 extends Particle {
 	}
 
 	protected void init() {
+		// TODO add particle system
+		/*
 		setMaterial(new ParticleMaterial(true));
 		mParticleShader = (ParticleMaterial) mMaterial;
 		setDrawingMode(GLES20.GL_POINTS);
@@ -111,7 +108,7 @@ public class ExampleParticleSystem2 extends Particle {
 		GLES20.glBufferData(GLES20.GL_ARRAY_BUFFER, mVelocityBuffer.limit()
 				* Geometry3D.FLOAT_SIZE_BYTES, mVelocityBuffer,
 				GLES20.GL_DYNAMIC_DRAW);
-		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, 0);
+		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, 0);*/
 	}
 
 	public void setTime(float time) {
@@ -128,6 +125,7 @@ public class ExampleParticleSystem2 extends Particle {
 
 	protected void setShaderParams(Camera camera) {
 		super.setShaderParams(camera);
+		/*
 		ParticleMaterial particleShader = (ParticleMaterial) mParticleShader;
 		particleShader.setCurrentFrame(mCurrentFrame);
 		particleShader.setTileSize(1 / 8f);
@@ -138,6 +136,7 @@ public class ExampleParticleSystem2 extends Particle {
 		particleShader.setMultiParticlesEnabled(true);
 		particleShader.setTime(mTime);
 		particleShader.setCameraPosition(camera.getPosition());
+		*/
 	}
 
 	public void render(Camera camera, final Matrix4 projMatrix, final Matrix4 vMatrix,

@@ -7,7 +7,8 @@ import javax.microedition.khronos.opengles.GL10;
 import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.lights.PointLight;
-import rajawali.materials.DiffuseMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
 import rajawali.util.ObjectColorPicker;
 import rajawali.util.OnObjectPickedListener;
 import android.content.Context;
@@ -16,8 +17,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -80,6 +81,7 @@ public class ObjectPickingFragment extends AExampleFragment implements
 			mLight = new PointLight();
 			mLight.setPosition(-2, 1, 4);
 			mLight.setPower(1.5f);
+			getCurrentScene().addLight(mLight);
 			getCurrentCamera().setPosition(0, 0, 7);
 
 			try {
@@ -90,28 +92,24 @@ public class ObjectPickingFragment extends AExampleFragment implements
 				ois.close();
 
 				mMonkey1 = new Object3D(serializedMonkey);
-				mMonkey1.addLight(mLight);
 				mMonkey1.setScale(.7f);
 				mMonkey1.setPosition(-1, 1, 0);
 				mMonkey1.setRotY(0);
 				addChild(mMonkey1);
 
 				mMonkey2 = mMonkey1.clone();
-				mMonkey2.addLight(mLight);
 				mMonkey2.setScale(.7f);
 				mMonkey2.setPosition(1, 1, 0);
 				mMonkey2.setRotY(45);
 				addChild(mMonkey2);
 
 				mMonkey3 = mMonkey1.clone();
-				mMonkey3.addLight(mLight);
 				mMonkey3.setScale(.7f);
 				mMonkey3.setPosition(-1, -1, 0);
 				mMonkey3.setRotY(90);
 				addChild(mMonkey3);
 
 				mMonkey4 = mMonkey1.clone();
-				mMonkey4.addLight(mLight);
 				mMonkey4.setScale(.7f);
 				mMonkey4.setPosition(1, -1, 0);
 				mMonkey4.setRotY(135);
@@ -125,8 +123,9 @@ public class ObjectPickingFragment extends AExampleFragment implements
 				e.printStackTrace();
 			}
 
-			DiffuseMaterial material = new DiffuseMaterial();
-			material.setUseSingleColor(true);
+			Material material = new Material();
+			material.enableLighting(true);
+			material.setDiffuseMethod(new DiffuseMethod.Lambert());
 
 			mMonkey1.setMaterial(material);
 			mMonkey1.setColor(0x0000ff);

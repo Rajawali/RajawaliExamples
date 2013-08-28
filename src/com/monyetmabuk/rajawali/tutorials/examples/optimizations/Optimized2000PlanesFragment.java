@@ -8,6 +8,8 @@ import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.curves.CatmullRomCurve3D;
 import rajawali.lights.DirectionalLight;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
 import rajawali.math.vector.Vector3;
@@ -17,7 +19,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.interactive.planes.PlanesGalore;
-import com.monyetmabuk.rajawali.tutorials.examples.interactive.planes.PlanesGaloreMaterial;
+import com.monyetmabuk.rajawali.tutorials.examples.interactive.planes.PlanesGaloreMaterialPlugin;
 
 public class Optimized2000PlanesFragment extends AExampleFragment {
 
@@ -26,12 +28,12 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 		return new Optimized2000PlanesRenderer(getActivity());
 	}
 
-	private final class Optimized2000PlanesRenderer extends AExampleRenderer {
+	public class Optimized2000PlanesRenderer extends AExampleRenderer {
 
 		private PlanesGalore mPlanes;
-		private PlanesGaloreMaterial mMaterial;
 		private long mStartTime;
 		private TranslateAnimation3D mCamAnim;
+		private PlanesGaloreMaterialPlugin mMaterialPlugin;
 
 		public Optimized2000PlanesRenderer(Context context) {
 			super(context);
@@ -39,16 +41,22 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 
 		protected void initScene() {
 			DirectionalLight light = new DirectionalLight(0, 0, 1);
+			
+			getCurrentScene().addLight(light);
 			getCurrentCamera().setPosition(0, 0, -16);
 
 			mPlanes = new PlanesGalore();
+			Material material = mPlanes.getMaterial();
+			material.enableLighting(true);
+			material.setDiffuseMethod(new DiffuseMethod.Lambert());
 			try {
-				mMaterial = (PlanesGaloreMaterial) mPlanes.getMaterial();
-				mMaterial.addTexture(new Texture(R.drawable.flickrpics));
+				material.addTexture(new Texture("flickrPics", R.drawable.flickrpics));
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}
-			mPlanes.addLight(light);
+			
+			mMaterialPlugin = mPlanes.getMaterialPlugin();
+			
 			mPlanes.setDoubleSided(true);
 			mPlanes.setZ(4);
 			addChild(mPlanes);
@@ -72,6 +80,7 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 			mCamAnim.setTransformable3D(getCurrentCamera());
 			mCamAnim.setInterpolator(new AccelerateDecelerateInterpolator());
 			registerAnimation(mCamAnim);
+			mCamAnim.play();
 
 			getCurrentCamera().setLookAt(new Vector3(0, 0, 30));
 		}
@@ -79,16 +88,14 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 		@Override
 		public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 			super.onSurfaceCreated(gl, config);
-			mStartTime = System.currentTimeMillis();
-			mCamAnim.play();
+			mStartTime = System.currentTimeMillis();		
 		}
 
 		public void onDrawFrame(GL10 glUnused) {
 			super.onDrawFrame(glUnused);
-			mMaterial
-					.setTime((System.currentTimeMillis() - mStartTime) / 1000f);
+			mMaterialPlugin.setTime((System.currentTimeMillis() - mStartTime) / 1000f);
+			mMaterialPlugin.setCameraPosition(getCurrentCamera().getPosition());
 		}
 
 	}
-
 }

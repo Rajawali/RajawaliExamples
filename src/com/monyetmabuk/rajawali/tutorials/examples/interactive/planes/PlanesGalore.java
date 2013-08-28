@@ -4,11 +4,12 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
-import rajawali.Object3D;
 import rajawali.BufferInfo;
-import rajawali.Camera;
 import rajawali.Geometry3D;
 import rajawali.Geometry3D.BufferType;
+import rajawali.Object3D;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
 import rajawali.math.vector.Vector3;
 import android.graphics.Color;
 import android.opengl.GLES20;
@@ -35,7 +36,8 @@ public class PlanesGalore extends Object3D {
 	protected FloatBuffer mRotationSpeeds;
 	protected BufferInfo mPlanePositionsBufferInfo;
 	protected BufferInfo mRotationSpeedsBufferInfo;
-	protected PlanesGaloreMaterial mGaloreMat;
+	protected Material mGaloreMat;
+	protected PlanesGaloreMaterialPlugin mMaterialPlugin;
 
 	public PlanesGalore() {
 		super();
@@ -45,7 +47,13 @@ public class PlanesGalore extends Object3D {
 	}
 
 	public void init() {
-		mGaloreMat = new PlanesGaloreMaterial();
+		mGaloreMat = new Material();
+		mGaloreMat.enableLighting(true);
+		mGaloreMat.setDiffuseMethod(new DiffuseMethod.Lambert());
+		
+		mMaterialPlugin = new PlanesGaloreMaterialPlugin();
+		mGaloreMat.addPlugin(mMaterialPlugin);
+
 		setMaterial(mGaloreMat);
 		final int numPlanes = 2000;
 		final float planeSize = .3f;
@@ -141,20 +149,19 @@ public class PlanesGalore extends Object3D {
 	
 	private void createBuffers() {
 		mGeometry.createBuffer(mPlanePositionsBufferInfo, BufferType.FLOAT_BUFFER, mPlanePositions, GLES20.GL_ARRAY_BUFFER);
-		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, 0);
-
 		mGeometry.createBuffer(mRotationSpeedsBufferInfo, BufferType.FLOAT_BUFFER, mRotationSpeeds, GLES20.GL_ARRAY_BUFFER);
-		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, 0);
+		
+		mMaterialPlugin.setPlanePositions(mPlanePositionsBufferInfo.bufferHandle);
+		mMaterialPlugin.setRotationSpeeds(mRotationSpeedsBufferInfo.bufferHandle);
 	}
 	
 	public void reload() {
 		super.reload();
 		createBuffers();
 	}
-
-	protected void setShaderParams(Camera camera) {
-		super.setShaderParams(camera);
-		mGaloreMat.setPlanePositions(mPlanePositionsBufferInfo.bufferHandle);
-		mGaloreMat.setRotationSpeeds(mRotationSpeedsBufferInfo.bufferHandle);
+	
+	public PlanesGaloreMaterialPlugin getMaterialPlugin()
+	{
+		return mMaterialPlugin;
 	}
 }
