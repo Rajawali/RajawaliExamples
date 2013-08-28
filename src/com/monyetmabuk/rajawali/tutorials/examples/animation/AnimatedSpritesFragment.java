@@ -28,7 +28,8 @@ public class AnimatedSpritesFragment extends AExampleFragment {
 
 		protected void initScene() {
 			getCurrentCamera().setPosition(0, 0, 10);
-
+// TODO add particle system
+			/*
 			// -- explosion sprite sheet from:
 			// http://gushh.net/blog/free-game-sprites-explosion-3/
 			mParticleSystem = new ExampleParticleSystem2();
@@ -39,17 +40,18 @@ public class AnimatedSpritesFragment extends AExampleFragment {
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}
-			addChild(mParticleSystem);
+			addChild(mParticleSystem);*/
 		}
 
 		@Override
 		public void onDrawFrame(GL10 glUnused) {
 			super.onDrawFrame(glUnused);
+			/*
 			mParticleSystem.setCurrentFrame(mFrameCount);
 			mParticleSystem.setTime((float) mFrameCount * .1f);
 
 			if (mFrameCount++ >= MAX_FRAMES)
-				mFrameCount = 0;
+				mFrameCount = 0;*/
 		}
 
 	}
