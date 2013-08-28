@@ -1,6 +1,6 @@
 package com.monyetmabuk.rajawali.tutorials.examples.materials;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
@@ -30,7 +30,7 @@ public class BumpMappingFragment extends AExampleFragment {
 
 	private final class BumpMappingRenderer extends AExampleRenderer {
 		private PointLight mLight;
-		private BaseObject3D mEarth;
+		private Object3D mEarth;
 		private Animation3D mLightAnim;
 
 		public BumpMappingRenderer(Context context) {

@@ -2,7 +2,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.materials;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
@@ -34,7 +34,7 @@ public class CustomVertexShaderFragment extends AExampleFragment implements
 		private int mFrameCount = 0;
 		private CustomVertexShaderMaterial mMaterial;
 		private Animation3D mAnim;
-		private BaseObject3D mSphere;
+		private Object3D mSphere;
 
 		public VertexShaderRenderer(Context context) {
 			super(context);

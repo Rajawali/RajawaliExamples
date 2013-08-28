@@ -86,7 +86,7 @@ public class LinesFragment extends AExampleFragment {
 				}
 				for (int m = 0; m < numSides; m++) {
 					Vector3 p = sidePoints[m];
-					float z = p.x;
+					double z = p.x;
 					p.x = (p.x * rotAngleCos - p.y * rotAngleSin) * c;
 					p.y = (z * rotAngleSin + p.y * rotAngleCos) * c;
 				}

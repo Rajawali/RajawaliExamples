@@ -2,7 +2,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.general;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
@@ -23,7 +23,7 @@ public class BasicFragment extends AExampleFragment {
 	private final class BasicRenderer extends AExampleRenderer {
 
 		private DirectionalLight mLight;
-		private BaseObject3D mSphere;
+		private Object3D mSphere;
 
 		public BasicRenderer(Context context) {
 			super(context);

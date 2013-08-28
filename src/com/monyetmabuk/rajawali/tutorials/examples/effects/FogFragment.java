@@ -2,7 +2,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.effects;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.Camera;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
@@ -11,8 +11,8 @@ import rajawali.materials.DiffuseMaterial;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
 import rajawali.math.vector.Vector3;
-import rajawali.parser.AParser.ParsingException;
-import rajawali.parser.ObjParser;
+import rajawali.parser.ALoader.ParsingException;
+import rajawali.parser.LoaderOBJ;
 import android.content.Context;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
@@ -28,7 +28,7 @@ public class FogFragment extends AExampleFragment {
 
 	private final class FogRenderer extends AExampleRenderer {
 		private DirectionalLight mLight;
-		private BaseObject3D mRoad;
+		private Object3D mRoad;
 
 		public FogRenderer(Context context) {
 			super(context);
@@ -47,7 +47,7 @@ public class FogFragment extends AExampleFragment {
 			setFogEnabled(true);
 			getCurrentScene().setBackgroundColor(0x999999);
 
-			ObjParser objParser = new ObjParser(mContext.getResources(),
+			LoaderOBJ objParser = new LoaderOBJ(mContext.getResources(),
 					mTextureManager, R.raw.road);
 			try {
 				objParser.parse();

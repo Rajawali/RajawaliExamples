@@ -4,8 +4,10 @@ import java.io.ObjectInputStream;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.lights.PointLight;
+import rajawali.materials.DiffuseMaterial;
 import rajawali.util.ObjectColorPicker;
 import rajawali.util.OnObjectPickedListener;
 import android.content.Context;
@@ -14,8 +16,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -65,7 +67,7 @@ public class ObjectPickingFragment extends AExampleFragment implements
 	private final class ObjectPickingRenderer extends AExampleRenderer
 			implements OnObjectPickedListener {
 		private PointLight mLight;
-		private BaseObject3D mMonkey1, mMonkey2, mMonkey3, mMonkey4;
+		private Object3D mMonkey1, mMonkey2, mMonkey3, mMonkey4;
 		private ObjectColorPicker mPicker;
 
 		public ObjectPickingRenderer(Context context) {
@@ -87,7 +89,7 @@ public class ObjectPickingFragment extends AExampleFragment implements
 						.readObject();
 				ois.close();
 
-				mMonkey1 = new BaseObject3D(serializedMonkey);
+				mMonkey1 = new Object3D(serializedMonkey);
 				mMonkey1.addLight(mLight);
 				mMonkey1.setScale(.7f);
 				mMonkey1.setPosition(-1, 1, 0);
@@ -151,7 +153,7 @@ public class ObjectPickingFragment extends AExampleFragment implements
 			mPicker.getObjectAt(x, y);
 		}
 
-		public void onObjectPicked(BaseObject3D object) {
+		public void onObjectPicked(Object3D object) {
 			object.setZ(object.getZ() == 0 ? -2 : 0);
 		}
 

@@ -1,6 +1,6 @@
 package com.monyetmabuk.rajawali.tutorials.examples.parsers;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
@@ -9,8 +9,8 @@ import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.PointLight;
 import rajawali.math.vector.Vector3;
 import rajawali.math.vector.Vector3.Axis;
-import rajawali.parser.AParser.ParsingException;
-import rajawali.parser.ObjParser;
+import rajawali.parser.ALoader.ParsingException;
+import rajawali.parser.LoaderOBJ;
 import android.content.Context;
 
 import com.monyetmabuk.rajawali.tutorials.R;
@@ -25,7 +25,7 @@ public class LoadModelFragment extends AExampleFragment {
 
 	private final class LoadModelRenderer extends AExampleRenderer {
 		private PointLight mLight;
-		private BaseObject3D mObjectGroup;
+		private Object3D mObjectGroup;
 		private Animation3D mCameraAnim, mLightAnim;
 
 		public LoadModelRenderer(Context context) {
@@ -38,7 +38,7 @@ public class LoadModelFragment extends AExampleFragment {
 			mLight.setPower(3);
 			getCurrentCamera().setZ(16);
 
-			ObjParser objParser = new ObjParser(mContext.getResources(),
+			LoaderOBJ objParser = new LoaderOBJ(mContext.getResources(),
 					mTextureManager, R.raw.multiobjects_obj);
 			try {
 				objParser.parse();

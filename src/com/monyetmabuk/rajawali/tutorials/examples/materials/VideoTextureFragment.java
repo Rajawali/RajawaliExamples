@@ -6,7 +6,7 @@ import java.util.zip.GZIPInputStream;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
@@ -54,7 +54,7 @@ public class VideoTextureFragment extends AExampleFragment {
 						.openRawResource(R.raw.android));
 				ObjectInputStream fis = new ObjectInputStream(gzi);
 
-				BaseObject3D android = new BaseObject3D(
+				Object3D android = new Object3D(
 						(SerializedObject3D) fis.readObject());
 				PhongMaterial material = new PhongMaterial();
 				material.setUseSingleColor(true);

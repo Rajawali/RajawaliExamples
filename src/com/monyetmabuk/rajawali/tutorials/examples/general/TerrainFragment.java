@@ -1,6 +1,6 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.ChaseCamera;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
@@ -31,7 +31,7 @@ public class TerrainFragment extends AExampleFragment {
 	private final class TerrainRenderer extends AExampleRenderer {
 		
 		private SquareTerrain mTerrain;
-		private float mLastY = 0f;
+		private double mLastY = 0;
 
 		public TerrainRenderer(Context context) {
 			super(context);
@@ -123,7 +123,7 @@ public class TerrainFragment extends AExampleFragment {
 			// -- The empty object that will move along a curve and that
 			//    will be follow by the camera
 			//
-			BaseObject3D empty = new BaseObject3D();
+			Object3D empty = new Object3D();
 			empty.setVisible(false);
 
 			//
@@ -153,11 +153,11 @@ public class TerrainFragment extends AExampleFragment {
 			float distanceFromGround = 20;
 
 			for (int i = 0; i < 360; i += degreeStep) {
-				float radians = MathUtil.degreesToRadians(i);
-				float x = (float) Math.cos(radians) * (float) Math.sin(radians)
+				double radians = MathUtil.degreesToRadians(i);
+				double x = Math.cos(radians) * Math.sin(radians)
 						* radius;
-				float z = (float) Math.sin(radians) * radius;
-				float y = mTerrain.getAltitude(x, z) + distanceFromGround;
+				double z = Math.sin(radians) * radius;
+				double y = mTerrain.getAltitude(x, z) + distanceFromGround;
 
 				if (i > 0)
 					y = (y + mLastY) * .5f;

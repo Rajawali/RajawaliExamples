@@ -3,9 +3,9 @@ package com.monyetmabuk.rajawali.tutorials.examples.animation;
 import rajawali.animation.mesh.SkeletalAnimationObject3D;
 import rajawali.animation.mesh.SkeletalAnimationSequence;
 import rajawali.lights.DirectionalLight;
-import rajawali.parser.AParser.ParsingException;
-import rajawali.parser.md5.MD5AnimParser;
-import rajawali.parser.md5.MD5MeshParser;
+import rajawali.parser.ALoader.ParsingException;
+import rajawali.parser.md5.LoaderMD5Anim;
+import rajawali.parser.md5.LoaderMD5Mesh;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -102,31 +102,31 @@ public class SkeletalAnimationBlendingFragment extends AExampleFragment implemen
 			getCurrentCamera().setZ(8);
 
 			try {
-				MD5MeshParser meshParser = new MD5MeshParser(this,
+				LoaderMD5Mesh meshParser = new LoaderMD5Mesh(this,
 						R.raw.ingrid_mesh);
 				meshParser.parse();
 
-				MD5AnimParser animParser = new MD5AnimParser("idle", this,
+				LoaderMD5Anim animParser = new LoaderMD5Anim("idle", this,
 						R.raw.ingrid_idle);
 				animParser.parse();
 
 				mSequenceIdle = (SkeletalAnimationSequence) animParser
 						.getParsedAnimationSequence();
 
-				animParser = new MD5AnimParser("walk", this, R.raw.ingrid_walk);
+				animParser = new LoaderMD5Anim("walk", this, R.raw.ingrid_walk);
 				animParser.parse();
 
 				mSequenceWalk = (SkeletalAnimationSequence) animParser
 						.getParsedAnimationSequence();
 
-				animParser = new MD5AnimParser("armstretch", this,
+				animParser = new LoaderMD5Anim("armstretch", this,
 						R.raw.ingrid_arm_stretch);
 				animParser.parse();
 
 				mSequenceArmStretch = (SkeletalAnimationSequence) animParser
 						.getParsedAnimationSequence();
 
-				animParser = new MD5AnimParser("bend", this, R.raw.ingrid_bend);
+				animParser = new LoaderMD5Anim("bend", this, R.raw.ingrid_bend);
 				animParser.parse();
 
 				mSequenceBend = (SkeletalAnimationSequence) animParser

@@ -2,7 +2,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.lights;
 
 import java.io.ObjectInputStream;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
@@ -45,7 +45,7 @@ public class MultipleLightsFragment extends AExampleFragment {
 						.readObject();
 				ois.close();
 
-				BaseObject3D jet = new BaseObject3D(serializedJet);
+				Object3D jet = new Object3D(serializedJet);
 				DiffuseMaterial material = new DiffuseMaterial();
 				material.addTexture(new Texture(R.drawable.jettexture));
 				jet.setMaterial(material);

@@ -4,7 +4,7 @@ import java.io.ObjectInputStream;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.CubeMapMaterial;
@@ -66,7 +66,7 @@ public class AccelerometerFragment extends AExampleFragment implements
 
 	private final class AccelerometerRenderer extends AExampleRenderer {
 		private DirectionalLight mLight;
-		private BaseObject3D mMonkey;
+		private Object3D mMonkey;
 		private Vector3 mAccValues;
 
 		public AccelerometerRenderer(Context context) {
@@ -86,7 +86,7 @@ public class AccelerometerFragment extends AExampleFragment implements
 						.readObject();
 				ois.close();
 
-				mMonkey = new BaseObject3D(serializedMonkey);
+				mMonkey = new Object3D(serializedMonkey);
 				mMonkey.addLight(mLight);
 				mMonkey.setRotY(180);
 				addChild(mMonkey);

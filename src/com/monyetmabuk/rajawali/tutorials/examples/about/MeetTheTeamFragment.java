@@ -35,7 +35,7 @@ public class MeetTheTeamFragment extends AExampleFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		mGridView = (GridView) inflater.inflate(R.layout.meet_the_team, null,
+		mGridView = (GridView) inflater.inflate(R.layout.base_gridview, null,
 				false);
 		mTeamAdapter = new TeamAdapter(getActivity().getApplicationContext(),
 				ExamplesApplication.TEAM_MEMBERS);

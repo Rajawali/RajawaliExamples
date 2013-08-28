@@ -1,6 +1,6 @@
 package com.monyetmabuk.rajawali.tutorials.examples.lights;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.lights.PointLight;
@@ -52,7 +52,7 @@ public class PointLightFragment extends AExampleFragment {
 			int count = 0;
 
 			for (int i = 0; i < 360; i += 36) {
-				float radians = MathUtil.degreesToRadians(i);
+				double radians = MathUtil.degreesToRadians(i);
 				int color = 0xfed14f;
 				if (count % 3 == 0)
 					color = 0x10a962;
@@ -60,7 +60,7 @@ public class PointLightFragment extends AExampleFragment {
 					color = 0x4184fa;
 				count++;
 
-				BaseObject3D sphere = rootSphere.clone(false);
+				Object3D sphere = rootSphere.clone(false);
 				sphere.setPosition((float) Math.sin(radians) * radius, 0,
 						(float) Math.cos(radians) * radius);
 				sphere.setMaterial(sphereMaterial);
@@ -75,7 +75,7 @@ public class PointLightFragment extends AExampleFragment {
 			count = 0;
 
 			for (int i = 0; i < 360; i += 12) {
-				float radians = MathUtil.degreesToRadians(i);
+				double radians = MathUtil.degreesToRadians(i);
 				int color = 0xfed14f;
 				if (count % 3 == 0)
 					color = 0x10a962;
@@ -83,9 +83,9 @@ public class PointLightFragment extends AExampleFragment {
 					color = 0x4184fa;
 				count++;
 
-				BaseObject3D sphere = rootSphere.clone(false);
-				sphere.setPosition((float) Math.sin(radians) * radius, 0,
-						(float) Math.cos(radians) * radius);
+				Object3D sphere = rootSphere.clone(false);
+				sphere.setPosition(Math.sin(radians) * radius, 0,
+						Math.cos(radians) * radius);
 				sphere.setMaterial(sphereMaterial);
 				sphere.setColor(color);
 				sphere.addLight(pointLight);

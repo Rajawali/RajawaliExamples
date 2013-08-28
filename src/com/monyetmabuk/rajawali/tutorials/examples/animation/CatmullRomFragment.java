@@ -2,7 +2,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
 import java.util.Stack;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
@@ -12,8 +12,8 @@ import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.SimpleMaterial;
 import rajawali.math.vector.Vector3;
-import rajawali.parser.AParser.ParsingException;
-import rajawali.parser.ObjParser;
+import rajawali.parser.ALoader.ParsingException;
+import rajawali.parser.LoaderOBJ;
 import rajawali.primitives.Line3D;
 import rajawali.primitives.Sphere;
 import android.content.Context;
@@ -55,10 +55,10 @@ public class CatmullRomFragment extends AExampleFragment {
 			}
 
 			try {
-				ObjParser parser = new ObjParser(mContext.getResources(),
+				LoaderOBJ parser = new LoaderOBJ(mContext.getResources(),
 						mTextureManager, R.raw.arrow);
 				parser.parse();
-				BaseObject3D arrow = parser.getParsedObject();
+				Object3D arrow = parser.getParsedObject();
 				arrow.setMaterial(material);
 				arrow.setScale(.2f);
 				arrow.setColor(0xffffff00);

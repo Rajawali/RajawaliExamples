@@ -2,7 +2,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.materials;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.BaseObject3D;
+import rajawali.Object3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.primitives.Cube;
 import android.content.Context;
@@ -12,7 +12,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomMat
 
 public class CustomMaterialShaderFragment extends AExampleFragment {
 	private DirectionalLight mLight;
-	private BaseObject3D mCube;
+	private Object3D mCube;
 	private CustomMaterial mCustomMaterial;
 	private float mTime;
 
