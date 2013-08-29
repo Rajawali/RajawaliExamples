@@ -37,6 +37,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.general.UsingGeometryDataFrag
 import com.monyetmabuk.rajawali.tutorials.examples.interactive.AccelerometerFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.interactive.ObjectPickingFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.interactive.TouchAndDragFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.lights.DirectionalLightFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.lights.MultipleLightsFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.lights.PointLightFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.lights.SpotLightFragment;
@@ -85,7 +86,7 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Orthographic Camera", OrthographicFragment.class)
 			});
 		ITEMS.put(Categories.LIGHTS, new ExampleItem[]{
-				new ExampleItem("Directional Light", MultipleLightsFragment.class)
+				new ExampleItem("Directional Light", DirectionalLightFragment.class)
 				, new ExampleItem("Point Light", PointLightFragment.class)
 				, new ExampleItem("Spot Light", SpotLightFragment.class)
 				, new ExampleItem("Multiple Lights", MultipleLightsFragment.class)

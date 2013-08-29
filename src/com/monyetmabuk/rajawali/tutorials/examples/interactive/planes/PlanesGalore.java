@@ -48,8 +48,7 @@ public class PlanesGalore extends Object3D {
 
 	public void init() {
 		mGaloreMat = new Material();
-		mGaloreMat.enableLighting(true);
-		mGaloreMat.setDiffuseMethod(new DiffuseMethod.Lambert());
+		mGaloreMat.enableTime(true);
 		
 		mMaterialPlugin = new PlanesGaloreMaterialPlugin();
 		mGaloreMat.addPlugin(mMaterialPlugin);

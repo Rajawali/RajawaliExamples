@@ -49,8 +49,6 @@ public class OrthographicFragment extends AExampleFragment {
 				grid[i] = new int[10];
 
 			Material material = new Material();
-			material.enableLighting(true);
-			material.setDiffuseMethod(new DiffuseMethod.Lambert());
 			try {
 				material.addTexture(new Texture("checkerboard", R.drawable.checkerboard));
 			} catch (TextureException e) {
@@ -67,6 +65,7 @@ public class OrthographicFragment extends AExampleFragment {
 
 			Plane plane = new Plane(Axis.Y);
 			plane.setMaterial(material);
+			plane.setDoubleSided(true);
 			plane.setColor(0xff0000ff);
 			innerGroup.addChild(plane);
 

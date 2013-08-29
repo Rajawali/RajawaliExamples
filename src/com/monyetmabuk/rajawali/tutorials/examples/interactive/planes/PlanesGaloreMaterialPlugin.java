@@ -32,10 +32,6 @@ public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 		return mFragmentShader;
 	}
 	
-	public void setTime(float time) {
-		mVertexShader.setTime(time);
-	}
-	
 	public void setPlanePositions(final int planePositionBufferHandle) {
 		mVertexShader.setPlanePositions(planePositionBufferHandle);
 	}
@@ -53,20 +49,17 @@ public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 		public final static String SHADER_ID = "PLANES_GALORE_VERTEX";
 		
 		private final String U_CAMERA_POS = "uCameraPos";
-		private final String U_TIME = "uTime";
 		private final String A_ROTATION_SPEED = "aRotationSpeed";
 		private final String A_PLANE_POSITION = "aPlanePosition";
 		private final String V_FOG = "vFog";
 		
 		private RVec3 muCameraPosition;
-		private RFloat muTime;
 		private RFloat mvFog;
 		private RFloat maRotationSpeed;
 		private RVec4 maPlanePosition;
 		
-		private int muCameraPositionHandle, muTimeHandle, maRotationSpeedHandle, maPlanePositionHandle;
+		private int muCameraPositionHandle, maRotationSpeedHandle, maPlanePositionHandle;
 		private int mPlanePositionsBufferHandle, mRotationSpeedBufferHandle;
-		private float mTime;
 		private float[] mCameraPosition;
 		
 		public PlanesGaloreVertexShaderFragment()
@@ -82,8 +75,7 @@ public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 			super.initialize();
 			
 			muCameraPosition = (RVec3) addUniform(U_CAMERA_POS, DataType.VEC3);
-			muTime = (RFloat) addUniform(U_TIME, DataType.FLOAT);
-			
+		
 			maRotationSpeed = (RFloat) addAttribute(A_ROTATION_SPEED, DataType.FLOAT);
 			maPlanePosition = (RVec4) addAttribute(A_PLANE_POSITION, DataType.VEC4);
 			
@@ -92,8 +84,9 @@ public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 		
 		@Override
 		public void main() {
+			RFloat time = (RFloat) getGlobal(DefaultShaderVar.U_TIME);
 			RFloat rotation = new RFloat("rotation");
-			rotation.assign(muTime.multiply(maRotationSpeed));
+			rotation.assign(time.multiply(maRotationSpeed));
 			
 			//
 			// -- rotate around the z axis
@@ -127,7 +120,7 @@ public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 			// -- my[2][2] = cos(rotation);
 			my.elementAt(2).elementAt(2).assign(cos(rotation));
 			
-			RVec4 gPosition = (RVec4) getGlobal(DefaultVar.G_POSITION);
+			RVec4 gPosition = (RVec4) getGlobal(DefaultShaderVar.G_POSITION);
 			
 			// -- vec4 rotPos = gPosition * mz * my;
 			RVec4 rotPos = new RVec4("rotPos");
@@ -148,7 +141,6 @@ public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 		@Override
 		public void setLocations(int programHandle) {
 			muCameraPositionHandle = getUniformLocation(programHandle, U_CAMERA_POS);
-			muTimeHandle = getUniformLocation(programHandle, U_TIME);
 			maPlanePositionHandle = getAttribLocation(programHandle, A_PLANE_POSITION);
 			maRotationSpeedHandle = getAttribLocation(programHandle, A_ROTATION_SPEED);
 		}
@@ -167,7 +159,6 @@ public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 			GLES20.glVertexAttribPointer(maRotationSpeedHandle, 1, GLES20.GL_FLOAT,
 					false, 0, 0);
 			
-			GLES20.glUniform1f(muTimeHandle, mTime);
 			GLES20.glUniform3fv(muCameraPositionHandle, 1, mCameraPosition, 0);
 		}
 		
@@ -177,10 +168,6 @@ public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 		
 		public void setRotationSpeeds(final int rotSpeedsBufferHandle) {
 			mRotationSpeedBufferHandle = rotSpeedsBufferHandle;
-		}
-		
-		public void setTime(float time) {
-			mTime = time;
 		}
 		
 		public void setCameraPosition(Vector3 cameraPosition)
@@ -222,7 +209,7 @@ public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 		
 		@Override
 		public void main() {
-			RVec4 gColor = (RVec4) getGlobal(DefaultVar.G_COLOR);
+			RVec4 gColor = (RVec4) getGlobal(DefaultShaderVar.G_COLOR);
 			gColor.rgb().assignMultiply(mvFog);
 		}
 	}

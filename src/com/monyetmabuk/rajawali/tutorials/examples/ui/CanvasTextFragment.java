@@ -9,7 +9,8 @@ import javax.microedition.khronos.opengles.GL10;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.DiffuseMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.AlphaMapTexture;
 import rajawali.math.vector.Vector3.Axis;
@@ -46,9 +47,11 @@ public class CanvasTextFragment extends AExampleFragment {
 
 		public void initScene() {
 			DirectionalLight light = new DirectionalLight(.1f, .1f, -1);
+			getCurrentScene().addLight(light);
 
-			DiffuseMaterial timeSphereMaterial = new DiffuseMaterial();
-			timeSphereMaterial.setAlphaMaskingEnabled(true);
+			Material timeSphereMaterial = new Material();
+			timeSphereMaterial.enableLighting(true);
+			timeSphereMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
 			mTimeBitmap = Bitmap.createBitmap(256, 256, Config.ARGB_8888);
 			mTimeTexture = new AlphaMapTexture("timeTexture", mTimeBitmap);
 			try {
@@ -62,7 +65,6 @@ public class CanvasTextFragment extends AExampleFragment {
 			for (int i = 0; i < 20; i++) {
 				Sphere timeSphere = new Sphere(.6f, 12, 12);
 				timeSphere.setMaterial(timeSphereMaterial);
-				timeSphere.addLight(light);
 				timeSphere.setDoubleSided(true);
 
 				if (parentSphere == null) {

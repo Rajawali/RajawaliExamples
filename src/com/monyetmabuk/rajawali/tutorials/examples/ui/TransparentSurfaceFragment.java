@@ -7,7 +7,8 @@ import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.DiffuseMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
 import rajawali.math.vector.Vector3.Axis;
 import android.content.Context;
 import android.os.Bundle;
@@ -54,6 +55,8 @@ public class TransparentSurfaceFragment extends AExampleFragment {
 		protected void initScene() {
 			DirectionalLight light = new DirectionalLight(0, 0, -1);
 			light.setPower(1);
+			
+			getCurrentScene().addLight(light);
 			getCurrentCamera().setPosition(0, 0, 16);
 
 			try {
@@ -64,10 +67,10 @@ public class TransparentSurfaceFragment extends AExampleFragment {
 				ois.close();
 
 				Object3D monkey = new Object3D(serializedMonkey);
-				DiffuseMaterial material = new DiffuseMaterial();
-				material.setUseSingleColor(true);
+				Material material = new Material();
+				material.enableLighting(true);
+				material.setDiffuseMethod(new DiffuseMethod.Lambert());
 				monkey.setMaterial(material);
-				monkey.addLight(light);
 				monkey.setColor(0xffff8C00);
 				monkey.setScale(2);
 				addChild(monkey);

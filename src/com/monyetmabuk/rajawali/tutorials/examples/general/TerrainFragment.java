@@ -7,6 +7,7 @@ import rajawali.animation.TranslateAnimation3D;
 import rajawali.curves.CatmullRomCurve3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.NormalMapTexture;
 import rajawali.materials.textures.Texture;
@@ -102,6 +103,9 @@ public class TerrainFragment extends AExampleFragment {
 			// -- A normal map material will give the terrain a bit more detail.
 			//
 			Material material = new Material();
+			material.enableLighting(true);
+			material.useVertexColors(true);
+			material.setDiffuseMethod(new DiffuseMethod.Lambert());
 			try {
 				Texture groundTexture = new Texture("ground", R.drawable.ground);
 				groundTexture.setInfluence(.5f);

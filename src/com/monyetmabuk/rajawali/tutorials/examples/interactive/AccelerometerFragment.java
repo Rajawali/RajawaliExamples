@@ -105,8 +105,10 @@ public class AccelerometerFragment extends AExampleFragment implements
 			material.enableLighting(true);
 			material.setDiffuseMethod(new DiffuseMethod.Lambert());
 			try {
-				material.addTexture(new CubeMapTexture("environmentMap",
-						resourceIds));
+				CubeMapTexture envMap = new CubeMapTexture("environmentMap",
+						resourceIds);
+				envMap.isEnvironmentTexture(true);
+				material.addTexture(envMap);
 				mMonkey.setMaterial(material);
 			} catch (TextureException e) {
 				e.printStackTrace();

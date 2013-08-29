@@ -2,11 +2,12 @@ package com.monyetmabuk.rajawali.tutorials.examples.ui;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import rajawali.materials.Material;
 import rajawali.primitives.ScreenQuad;
 import android.content.Context;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomMaterial;
+import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomMaterialPlugin;
 
 public class TwoDimensionalFragment extends AExampleFragment {
 
@@ -18,14 +19,16 @@ public class TwoDimensionalFragment extends AExampleFragment {
 	private final class TwoDimensionalRenderer extends AExampleRenderer {
 
 		private float mTime;
-		private CustomMaterial mCustomMaterial;
+		private Material mCustomMaterial;
 
 		public TwoDimensionalRenderer(Context context) {
 			super(context);
 		}
 
 		protected void initScene() {
-			mCustomMaterial = new CustomMaterial();
+			mCustomMaterial = new Material();
+			mCustomMaterial.enableTime(true);
+			mCustomMaterial.addPlugin(new CustomMaterialPlugin());
 
 			ScreenQuad screenQuad = new ScreenQuad();
 			screenQuad.setMaterial(mCustomMaterial);

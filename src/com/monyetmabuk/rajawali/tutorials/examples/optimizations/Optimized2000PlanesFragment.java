@@ -9,7 +9,6 @@ import rajawali.animation.TranslateAnimation3D;
 import rajawali.curves.CatmullRomCurve3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
 import rajawali.math.vector.Vector3;
@@ -33,6 +32,7 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 		private PlanesGalore mPlanes;
 		private long mStartTime;
 		private TranslateAnimation3D mCamAnim;
+		private Material mMaterial;
 		private PlanesGaloreMaterialPlugin mMaterialPlugin;
 
 		public Optimized2000PlanesRenderer(Context context) {
@@ -46,11 +46,10 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 			getCurrentCamera().setPosition(0, 0, -16);
 
 			mPlanes = new PlanesGalore();
-			Material material = mPlanes.getMaterial();
-			material.enableLighting(true);
-			material.setDiffuseMethod(new DiffuseMethod.Lambert());
+			mMaterial = mPlanes.getMaterial();
+
 			try {
-				material.addTexture(new Texture("flickrPics", R.drawable.flickrpics));
+				mMaterial.addTexture(new Texture("flickrPics", R.drawable.flickrpics));
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}
@@ -93,9 +92,8 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 
 		public void onDrawFrame(GL10 glUnused) {
 			super.onDrawFrame(glUnused);
-			mMaterialPlugin.setTime((System.currentTimeMillis() - mStartTime) / 1000f);
+			mMaterial.setTime((System.currentTimeMillis() - mStartTime) / 1000f);
 			mMaterialPlugin.setCameraPosition(getCurrentCamera().getPosition());
 		}
-
 	}
 }
