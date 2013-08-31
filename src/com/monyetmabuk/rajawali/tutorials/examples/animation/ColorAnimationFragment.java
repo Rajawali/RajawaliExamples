@@ -6,7 +6,7 @@ import rajawali.animation.ColorAnimation3D;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.materials.Material;
 import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.Texture;
+import rajawali.materials.textures.AlphaMapTexture;
 import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Cube;
 import android.content.Context;
@@ -60,16 +60,19 @@ public class ColorAnimationFragment extends AExampleFragment {
 			//
 
 			Material material2 = new Material();
-			material2.setColorInfluence(.5f);
 			try {
-				material2.addTexture(new Texture("camdenTown", R.drawable.camden_town_alpha));
+				AlphaMapTexture alphaTex = new AlphaMapTexture("camdenTown", R.drawable.camden_town_alpha);
+				alphaTex.setInfluence(.5f);
+				material2.addTexture(alphaTex);
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}
+			material2.setColorInfluence(.5f);
 
 			Cube cube2 = new Cube(1);
 			cube2.setMaterial(material2);
 			cube2.setX(1);
+			cube2.setDoubleSided(true);
 			getCurrentScene().addChild(cube2);
 
 			anim = new ColorAnimation3D(0xaaff1111, 0xff0000ff);

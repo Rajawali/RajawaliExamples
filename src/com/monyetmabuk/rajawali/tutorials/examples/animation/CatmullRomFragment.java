@@ -11,7 +11,6 @@ import rajawali.curves.CatmullRomCurve3D;
 import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
 import rajawali.math.vector.Vector3;
 import rajawali.parser.ALoader.ParsingException;
 import rajawali.parser.LoaderOBJ;
@@ -46,8 +45,6 @@ public class CatmullRomFragment extends AExampleFragment {
 			getCurrentCamera().setLookAt(0, 0, 0);
 
 			Material material = new Material();
-			material.enableLighting(true);
-			material.setDiffuseMethod(new DiffuseMethod.Lambert());
 			
 			// -- create a catmull-rom path. The first and the last point are control points.
 			CatmullRomCurve3D path = new CatmullRomCurve3D();

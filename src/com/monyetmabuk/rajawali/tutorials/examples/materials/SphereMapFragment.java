@@ -42,6 +42,11 @@ public class SphereMapFragment extends AExampleFragment {
 			Texture jetTexture = new Texture("jetTexture", R.drawable.jettexture);
 			SphereMapTexture sphereMapTexture = new SphereMapTexture("manilaSphereMapTex", R.drawable.manila_sphere_map);
 			
+			jetTexture.setInfluence(.8f);
+			// -- important!
+			sphereMapTexture.isEnvironmentTexture(true);
+			sphereMapTexture.setInfluence(.2f);
+			
 			Object3D jet1 = null;
 			// -- sphere map with texture
 
@@ -74,11 +79,11 @@ public class SphereMapFragment extends AExampleFragment {
 			anim1.play();
 
 			sphereMapTexture = new SphereMapTexture("manilaSphereMapTex2", R.drawable.manila_sphere_map);
+			sphereMapTexture.isEnvironmentTexture(true);
 			sphereMapTexture.setInfluence(.5f);
 			
 			Material material2 = new Material();
 			// -- important, indicate that we want to mix the sphere map with a color
-			material2.setColorInfluence(.5f);
 			material2.enableLighting(true);
 			material2.setDiffuseMethod(new DiffuseMethod.Lambert());
 			try {
@@ -86,6 +91,7 @@ public class SphereMapFragment extends AExampleFragment {
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}
+			material2.setColorInfluence(.5f);
 
 			Object3D jet2 = jet1.clone(false);
 			jet2.setMaterial(material2);

@@ -17,6 +17,7 @@ import rajawali.animation.ScaleAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.PointLight;
 import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
 import rajawali.math.vector.Vector3;
 import rajawali.math.vector.Vector3.Axis;
 import android.content.Context;
@@ -65,6 +66,8 @@ public class AnimationFragment extends AExampleFragment {
 			}
 
 			Material material = new Material();
+			material.enableLighting(true);
+			material.setDiffuseMethod(new DiffuseMethod.Lambert());
 			mMonkey.setMaterial(material);
 			mMonkey.setColor(0xff00ff00);
 

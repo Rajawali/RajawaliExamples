@@ -47,6 +47,7 @@ public class CanvasTextFragment extends AExampleFragment {
 
 		public void initScene() {
 			DirectionalLight light = new DirectionalLight(.1f, .1f, -1);
+			light.setPower(2);
 			getCurrentScene().addLight(light);
 
 			Material timeSphereMaterial = new Material();
@@ -59,6 +60,7 @@ public class CanvasTextFragment extends AExampleFragment {
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}
+			timeSphereMaterial.setColorInfluence(1);
 
 			Sphere parentSphere = null;
 
@@ -66,6 +68,7 @@ public class CanvasTextFragment extends AExampleFragment {
 				Sphere timeSphere = new Sphere(.6f, 12, 12);
 				timeSphere.setMaterial(timeSphereMaterial);
 				timeSphere.setDoubleSided(true);
+				timeSphere.setColor((int)(Math.random() * 0xffffff));
 
 				if (parentSphere == null) {
 					timeSphere.setPosition(0, 0, -3);

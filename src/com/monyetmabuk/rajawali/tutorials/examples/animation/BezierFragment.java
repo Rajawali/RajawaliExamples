@@ -86,7 +86,5 @@ public class BezierFragment extends AExampleFragment {
 			registerAnimation(yellowAnim);
 			yellowAnim.play();
 		}
-
 	}
-
 }

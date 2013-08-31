@@ -19,7 +19,7 @@ Objects:  {
 			Property: "AspectW", "double", "",1280
 			Property: "AspectH", "double", "",720
 			Property: "PixelAspectRatio", "double", "",1
-			Property: "NearPlane", "double", "",0.100000
+			Property: "NearPlane", "double", "",1.00000
 			Property: "FarPlane", "double", "",99.999994
 		}
 		Position: 0,1,-5

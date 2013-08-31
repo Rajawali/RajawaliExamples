@@ -41,7 +41,7 @@ public class CollisionDetectionFragment extends AExampleFragment {
 		}
 
 		protected void initScene() {
-			mLight = new DirectionalLight(0, 1, -1);
+			mLight = new DirectionalLight(0, .2f, -1);
 			getCurrentScene().addLight(mLight);
 			getCurrentCamera().setPosition(0, 0, 7);
 
