@@ -3,7 +3,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.interactive;
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.Object3D;
-import rajawali.materials.SimpleMaterial;
+import rajawali.materials.Material;
 import rajawali.math.Matrix4;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
@@ -108,8 +108,7 @@ public class TouchAndDragFragment extends AExampleFragment implements
 			mPicker.setOnObjectPickedListener(this);
 
 			try {
-				SimpleMaterial material = new SimpleMaterial();
-				material.setUseSingleColor(true);
+				Material material = new Material();
 
 				for (int i = 0; i < 20; i++) {
 					Sphere sphere = new Sphere(.3f, 12, 12);

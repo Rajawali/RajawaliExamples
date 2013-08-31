@@ -1,12 +1,13 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
-import rajawali.Object3D;
 import rajawali.ChaseCamera;
+import rajawali.Object3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.curves.CatmullRomCurve3D;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.NormalMapMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.NormalMapTexture;
 import rajawali.materials.textures.Texture;
@@ -96,14 +97,20 @@ public class TerrainFragment extends AExampleFragment {
 
 			DirectionalLight light = new DirectionalLight(0.2f, -1f, 0f);
 			light.setPower(1f);
+			getCurrentScene().addLight(light);
 
 			//
 			// -- A normal map material will give the terrain a bit more detail.
 			//
-			NormalMapMaterial material = new NormalMapMaterial();
+			Material material = new Material();
+			material.enableLighting(true);
+			material.useVertexColors(true);
+			material.setDiffuseMethod(new DiffuseMethod.Lambert());
 			try {
-				material.addTexture(new Texture(R.drawable.ground));
-				material.addTexture(new NormalMapTexture(R.drawable.groundnor));
+				Texture groundTexture = new Texture("ground", R.drawable.ground);
+				groundTexture.setInfluence(.5f);
+				material.addTexture(groundTexture);
+				material.addTexture(new NormalMapTexture("groundNormalMap", R.drawable.groundnor));
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}
@@ -111,11 +118,9 @@ public class TerrainFragment extends AExampleFragment {
 			//
 			// -- Blend the texture with the vertex colors
 			//
-			material.setUseVertexColors(true);
-			material.setColorBlendFactor(.5f);
+			material.setColorInfluence(.5f);
 
 			mTerrain.setMaterial(material);
-			mTerrain.addLight(light);
 
 			getCurrentScene().addChild(mTerrain);
 

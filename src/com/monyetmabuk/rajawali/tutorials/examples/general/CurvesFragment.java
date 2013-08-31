@@ -8,7 +8,7 @@ import rajawali.curves.CubicBezierCurve3D;
 import rajawali.curves.ICurve3D;
 import rajawali.curves.LinearBezierCurve3D;
 import rajawali.curves.QuadraticBezierCurve3D;
-import rajawali.materials.SimpleMaterial;
+import rajawali.materials.Material;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Line3D;
 import android.content.Context;
@@ -134,8 +134,7 @@ public class CurvesFragment extends AExampleFragment {
 		}
 
 		private void drawCurve(ICurve3D curve, int color, Vector3 position) {
-			SimpleMaterial lineMaterial = new SimpleMaterial();
-			lineMaterial.setUseSingleColor(true);
+			Material lineMaterial = new Material();
 
 			Stack<Vector3> points = new Stack<Vector3>();
 			for (int i = 0; i <= NUM_POINTS; i++) {

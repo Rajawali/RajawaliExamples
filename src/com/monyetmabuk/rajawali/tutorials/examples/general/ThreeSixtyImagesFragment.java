@@ -2,7 +2,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.general;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.materials.SimpleMaterial;
+import rajawali.materials.Material;
 import rajawali.materials.textures.ATexture;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
@@ -24,7 +24,7 @@ public class ThreeSixtyImagesFragment extends AExampleFragment {
 		private ATexture[] mTextures;
 		private ScreenQuad mScreenQuad;
 		private int mFrameCount;
-		private SimpleMaterial mMaterial;
+		private Material mMaterial;
 		private final static int NUM_TEXTURES = 80;
 
 		public ThreeSixtyImagesRenderer(Context context) {
@@ -39,7 +39,7 @@ public class ThreeSixtyImagesFragment extends AExampleFragment {
 
 			getCurrentScene().setBackgroundColor(0xffffff);
 
-			mMaterial = new SimpleMaterial();
+			mMaterial = new Material();
 
 			mScreenQuad = new ScreenQuad();
 			mScreenQuad.setMaterial(mMaterial);

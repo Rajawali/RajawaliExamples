@@ -6,13 +6,13 @@ import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.Object3D;
 import rajawali.BufferInfo;
 import rajawali.Geometry3D;
+import rajawali.Object3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAroundAnimation3D;
 import rajawali.curves.CatmullRomCurve3D;
-import rajawali.materials.SimpleMaterial;
+import rajawali.materials.Material;
 import rajawali.math.vector.Vector3;
 import rajawali.math.vector.Vector3.Axis;
 import android.content.Context;
@@ -136,9 +136,8 @@ public class UpdateVertexBufferFragment extends AExampleFragment {
 			mCurveTris.setDoubleSided(true);
 			mCurveTris.setTransparent(true);
 
-			SimpleMaterial material = new SimpleMaterial();
-			material.setUseVertexColors(true);
-
+			Material material = new Material();
+			material.useVertexColors(true);
 			mCurveTris.setMaterial(material);
 			// -- Get the BufferInfo object. We'll need this reference to update the
 			// vertices on each frame.

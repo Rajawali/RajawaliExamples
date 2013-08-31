@@ -7,7 +7,7 @@ import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.SimpleMaterial;
+import rajawali.materials.Material;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Line3D;
 import android.content.Context;
@@ -47,8 +47,7 @@ public class LinesFragment extends AExampleFragment {
 			 * A Line3D takes a Stack of <Number3D>s, thickness and a color
 			 */
 			Line3D whirl = new Line3D(points, 1, 0xffffff00);
-			SimpleMaterial material = new SimpleMaterial();
-			material.setUseSingleColor(true);
+			Material material = new Material();
 			whirl.setMaterial(material);
 			addChild(whirl);
 

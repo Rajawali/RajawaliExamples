@@ -7,7 +7,8 @@ import javax.microedition.khronos.opengles.GL10;
 import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.CubeMapMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.CubeMapTexture;
 import rajawali.math.vector.Vector3;
@@ -78,6 +79,7 @@ public class AccelerometerFragment extends AExampleFragment implements
 			mLight = new DirectionalLight(0.1f, 0.2f, -1.0f);
 			mLight.setColor(1.0f, 1.0f, 1.0f);
 			mLight.setPower(1);
+			getCurrentScene().addLight(mLight);
 
 			try {
 				ObjectInputStream ois = new ObjectInputStream(mContext
@@ -87,7 +89,6 @@ public class AccelerometerFragment extends AExampleFragment implements
 				ois.close();
 
 				mMonkey = new Object3D(serializedMonkey);
-				mMonkey.addLight(mLight);
 				mMonkey.setRotY(180);
 				addChild(mMonkey);
 			} catch (Exception e) {
@@ -100,10 +101,14 @@ public class AccelerometerFragment extends AExampleFragment implements
 					R.drawable.posy, R.drawable.negy, R.drawable.posz,
 					R.drawable.negz };
 
-			CubeMapMaterial material = new CubeMapMaterial();
+			Material material = new Material();
+			material.enableLighting(true);
+			material.setDiffuseMethod(new DiffuseMethod.Lambert());
 			try {
-				material.addTexture(new CubeMapTexture("environmentMap",
-						resourceIds));
+				CubeMapTexture envMap = new CubeMapTexture("environmentMap",
+						resourceIds);
+				envMap.isEnvironmentTexture(true);
+				material.addTexture(envMap);
 				mMonkey.setMaterial(material);
 			} catch (TextureException e) {
 				e.printStackTrace();

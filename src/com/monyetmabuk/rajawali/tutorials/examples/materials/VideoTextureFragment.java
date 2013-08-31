@@ -12,8 +12,9 @@ import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.PointLight;
-import rajawali.materials.PhongMaterial;
-import rajawali.materials.VideoMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
+import rajawali.materials.methods.SpecularMethod;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.VideoTexture;
 import rajawali.math.vector.Vector3;
@@ -46,6 +47,7 @@ public class VideoTextureFragment extends AExampleFragment {
 			pointLight.setPower(1);
 			pointLight.setPosition(-1, 1, 4);
 
+			getCurrentScene().addLight(pointLight);
 			getCurrentScene().setBackgroundColor(0xff040404);
 
 			GZIPInputStream gzi;
@@ -56,10 +58,10 @@ public class VideoTextureFragment extends AExampleFragment {
 
 				Object3D android = new Object3D(
 						(SerializedObject3D) fis.readObject());
-				PhongMaterial material = new PhongMaterial();
-				material.setUseSingleColor(true);
+				Material material = new Material();
+				material.setDiffuseMethod(new DiffuseMethod.Lambert());
+				material.setSpecularMethod(new SpecularMethod.Phong());
 				android.setMaterial(material);
-				android.addLight(pointLight);
 				android.setColor(0xff99C224);
 				getCurrentScene().addChild(android);
 			} catch (NotFoundException e) {
@@ -75,7 +77,7 @@ public class VideoTextureFragment extends AExampleFragment {
 			mMediaPlayer.setLooping(true);
 
 			mVideoTexture = new VideoTexture("sintelTrailer", mMediaPlayer);
-			VideoMaterial material = new VideoMaterial();
+			Material material = new Material();
 			try {
 				material.addTexture(mVideoTexture);
 			} catch (TextureException e) {

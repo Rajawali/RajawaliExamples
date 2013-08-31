@@ -8,7 +8,7 @@ import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.curves.CatmullRomCurve3D;
 import rajawali.curves.ICurve3D;
-import rajawali.materials.SimpleMaterial;
+import rajawali.materials.Material;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Line3D;
@@ -66,8 +66,7 @@ public class UniformDistributionFragment extends AExampleFragment {
 		}
 
 		public void initScene() {
-			SimpleMaterial material = new SimpleMaterial();
-			material.setUseSingleColor(true);
+			Material material = new Material();
 
 			// -- "curve1" will be the original curve. Note that we create two curves for
 			// demonstration purposes only. You'd typically create one curve and then
@@ -143,8 +142,7 @@ public class UniformDistributionFragment extends AExampleFragment {
 		}
 
 		private void drawCurve(ICurve3D curve, int color, Vector3 position) {
-			SimpleMaterial lineMaterial = new SimpleMaterial();
-			lineMaterial.setUseSingleColor(true);
+			Material lineMaterial = new Material();
 
 			Stack<Vector3> points = new Stack<Vector3>();
 			for (int i = 0; i <= NUM_POINTS; i++) {

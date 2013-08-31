@@ -6,8 +6,9 @@ import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.PointLight;
-import rajawali.materials.NormalMapMaterial;
-import rajawali.materials.NormalMapPhongMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
+import rajawali.materials.methods.SpecularMethod;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.NormalMapTexture;
 import rajawali.materials.textures.Texture;
@@ -16,6 +17,7 @@ import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Plane;
 import rajawali.primitives.Sphere;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
 import com.monyetmabuk.rajawali.tutorials.R;
@@ -41,17 +43,18 @@ public class BumpMappingFragment extends AExampleFragment {
 			mLight = new PointLight();
 			mLight.setPosition(-2, -2, 0);
 			mLight.setPower(2f);
+			
+			getCurrentScene().addLight(mLight);
 			getCurrentCamera().setPosition(0, 0, 6);
 
 			try {
 				Plane cube = new Plane(18, 12, 2, 2);
-				NormalMapMaterial material1 = new NormalMapMaterial();
-				material1.addTexture(new Texture(
-						R.drawable.masonry_wall_texture));
-				material1.addTexture(new NormalMapTexture(
-						R.drawable.masonry_wall_normal_map));
+				Material material1 = new Material();
+				material1.setDiffuseMethod(new DiffuseMethod.Lambert());
+				material1.enableLighting(true);
+				material1.addTexture(new Texture("wallDiffuseTex", R.drawable.masonry_wall_texture));
+				material1.addTexture(new NormalMapTexture("wallNormalTex", R.drawable.masonry_wall_normal_map));
 				cube.setMaterial(material1);
-				cube.addLight(mLight);
 				cube.setZ(-2);
 				addChild(cube);
 
@@ -64,14 +67,14 @@ public class BumpMappingFragment extends AExampleFragment {
 
 				mEarth = new Sphere(1, 32, 32);
 				mEarth.setZ(-.5f);
-				mEarth.addLight(mLight);
 				addChild(mEarth);
 
-				NormalMapPhongMaterial material2 = new NormalMapPhongMaterial();
-				material2.addTexture(new Texture(R.drawable.earth_diffuse));
-				material2
-						.addTexture(new NormalMapTexture(R.drawable.earth_bump));
-				material2.setShininess(150);
+				Material material2 = new Material();
+				material2.setDiffuseMethod(new DiffuseMethod.Lambert());
+				material2.setSpecularMethod(new SpecularMethod.Phong(Color.WHITE, 150));
+				material2.enableLighting(true);
+				material2.addTexture(new Texture("earthDiffuseTex", R.drawable.earth_diffuse));
+				material2.addTexture(new NormalMapTexture("eartNormalTex", R.drawable.earth_normal));
 				mEarth.setMaterial(material2);
 
 				RotateAnimation3D earthAnim = new RotateAnimation3D(Axis.Y, 359);

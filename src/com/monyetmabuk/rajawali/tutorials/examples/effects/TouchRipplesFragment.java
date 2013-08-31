@@ -1,23 +1,10 @@
 package com.monyetmabuk.rajawali.tutorials.examples.effects;
 
-import java.util.Random;
-
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.Object3D;
 import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.RotateAnimation3D;
-import rajawali.filters.TouchRippleFilter;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.DiffuseMaterial;
-import rajawali.materials.SimpleMaterial;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.Texture;
-import rajawali.math.vector.Vector3;
-import rajawali.primitives.Cube;
-import rajawali.primitives.Plane;
 import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -26,8 +13,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -80,7 +67,7 @@ public class TouchRipplesFragment extends AExampleFragment implements
 		private final int NUM_CUBES_V = 2;
 		private final int NUM_CUBES = NUM_CUBES_H * NUM_CUBES_V;
 		private Animation3D[] mAnims;
-		private TouchRippleFilter mFilter;
+		//private TouchRippleFilter mFilter;
 		private long frameCount;
 
 		public TouchRipplesRenderer(Context context) {
@@ -95,6 +82,8 @@ public class TouchRipplesFragment extends AExampleFragment implements
 			DirectionalLight light = new DirectionalLight(0, 0, 1);
 			light.setPower(1f);
 
+			// TODO add post processing effects
+			/*
 			Object3D group = new Object3D();
 			DiffuseMaterial material = new DiffuseMaterial();
 			material.setUseSingleColor(true);
@@ -140,32 +129,33 @@ public class TouchRipplesFragment extends AExampleFragment implements
 			addChild(plane);
 
 			mFilter = new TouchRippleFilter();
-			mFilter.setRippleSize(62);
+			mFilter.setRippleSize(62);*/
 		}
 
 		public void onDrawFrame(GL10 glUnused) {
 			super.onDrawFrame(glUnused);
-			mFilter.setTime((float) frameCount++ * .05f);
+			//mFilter.setTime((float) frameCount++ * .05f);
 		}
 
 		@Override
 		public void onSurfaceChanged(GL10 gl, int width, int height) {
 			super.onSurfaceChanged(gl, width, height);
-			mFilter.setScreenSize(width, height);
+			//mFilter.setScreenSize(width, height);
 		}
 
 		@Override
 		public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 			super.onSurfaceCreated(gl, config);
+			/*
 			for (int i = 0; i < NUM_CUBES; ++i) {
 				registerAnimation(mAnims[i]);
 				mAnims[i].play();
 			}
-			mFilter.setScreenSize(mViewportWidth, mViewportHeight);
+			mFilter.setScreenSize(mViewportWidth, mViewportHeight);*/
 		}
 
 		public void setTouch(float x, float y) {
-			mFilter.addTouch(x, y, frameCount * .05f);
+			//mFilter.addTouch(x, y, frameCount * .05f);
 		}
 
 	}
