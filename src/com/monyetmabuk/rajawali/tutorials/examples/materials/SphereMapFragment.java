@@ -8,7 +8,8 @@ import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.PointLight;
-import rajawali.materials.SphereMapMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.SphereMapTexture;
 import rajawali.materials.textures.Texture;
@@ -35,17 +36,24 @@ public class SphereMapFragment extends AExampleFragment {
 			PointLight light = new PointLight();
 			light.setZ(6);
 			light.setPower(2);
+			
+			getCurrentScene().addLight(light);
 
-			Texture jetTexture = new Texture(R.drawable.jettexture);
-			SphereMapTexture sphereMapTexture = new SphereMapTexture(
-					R.drawable.manila_sphere_map);
-
+			Texture jetTexture = new Texture("jetTexture", R.drawable.jettexture);
+			SphereMapTexture sphereMapTexture = new SphereMapTexture("manilaSphereMapTex", R.drawable.manila_sphere_map);
+			
+			jetTexture.setInfluence(.8f);
+			// -- important!
+			sphereMapTexture.isEnvironmentTexture(true);
+			sphereMapTexture.setInfluence(.2f);
+			
 			Object3D jet1 = null;
 			// -- sphere map with texture
 
 			try {
-				SphereMapMaterial material1 = new SphereMapMaterial();
-				material1.setSphereMapStrength(.5f);
+				Material material1 = new Material();
+				material1.enableLighting(true);
+				material1.setDiffuseMethod(new DiffuseMethod.Lambert());
 				material1.addTexture(jetTexture);
 				material1.addTexture(sphereMapTexture);
 
@@ -54,7 +62,6 @@ public class SphereMapFragment extends AExampleFragment {
 						.openRawResource(R.raw.jet));
 				jet1 = new Object3D((SerializedObject3D) ois.readObject());
 				jet1.setMaterial(material1);
-				jet1.addLight(light);
 				jet1.setY(2.5f);
 				addChild(jet1);
 			} catch (Exception e) {
@@ -71,20 +78,23 @@ public class SphereMapFragment extends AExampleFragment {
 			registerAnimation(anim1);
 			anim1.play();
 
-			SphereMapMaterial material2 = new SphereMapMaterial();
-			// -- set strength to 1
-			material2.setSphereMapStrength(2);
+			sphereMapTexture = new SphereMapTexture("manilaSphereMapTex2", R.drawable.manila_sphere_map);
+			sphereMapTexture.isEnvironmentTexture(true);
+			sphereMapTexture.setInfluence(.5f);
+			
+			Material material2 = new Material();
 			// -- important, indicate that we want to mix the sphere map with a color
-			material2.setUseSingleColor(true);
+			material2.enableLighting(true);
+			material2.setDiffuseMethod(new DiffuseMethod.Lambert());
 			try {
 				material2.addTexture(sphereMapTexture);
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}
+			material2.setColorInfluence(.5f);
 
 			Object3D jet2 = jet1.clone(false);
 			jet2.setMaterial(material2);
-			jet2.addLight(light);
 			// -- also specify a color
 			jet2.setColor(0xff666666);
 			jet2.setY(-2.5f);

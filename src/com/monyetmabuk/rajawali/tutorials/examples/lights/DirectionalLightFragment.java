@@ -6,7 +6,9 @@ import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.IAnimation3DListener;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.PhongMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
+import rajawali.materials.methods.SpecularMethod;
 import rajawali.math.MathUtil;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
@@ -32,18 +34,21 @@ public class DirectionalLightFragment extends AExampleFragment {
 
 			final DirectionalLight directionalLight = new DirectionalLight();
 			directionalLight.setPower(1.5f);
+			getCurrentScene().addLight(directionalLight);
 
 			getCurrentCamera().setPosition(0, 2, 6);
 			getCurrentCamera().setLookAt(0, 0, 0);
 
-			PhongMaterial sphereMaterial = new PhongMaterial();
-			sphereMaterial.setShininess(180);
-			sphereMaterial.setUseSingleColor(true);
+			Material sphereMaterial = new Material();
+			SpecularMethod.Phong phongMethod = new SpecularMethod.Phong();
+			phongMethod.setShininess(180);
+			sphereMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
+			sphereMaterial.setSpecularMethod(phongMethod);
+			sphereMaterial.enableLighting(true);
 
 			Sphere rootSphere = new Sphere(.2f, 12, 12);
 			rootSphere.setMaterial(sphereMaterial);
 			rootSphere.setRenderChildrenAsBatch(true);
-			rootSphere.addLight(directionalLight);
 			rootSphere.setVisible(false);
 			addChild(rootSphere);
 
@@ -66,8 +71,7 @@ public class DirectionalLightFragment extends AExampleFragment {
 						(float) Math.cos(radians) * radius);
 				sphere.setMaterial(sphereMaterial);
 				sphere.setColor(color);
-				sphere.addLight(directionalLight);
-				addChild(sphere);
+				rootSphere.addChild(sphere);
 			}
 
 			// -- outer ring
@@ -89,8 +93,7 @@ public class DirectionalLightFragment extends AExampleFragment {
 						(float) Math.cos(radians) * radius);
 				sphere.setMaterial(sphereMaterial);
 				sphere.setColor(color);
-				sphere.addLight(directionalLight);
-				addChild(sphere);
+				rootSphere.addChild(sphere);
 			}
 
 			final Object3D target = new Object3D();

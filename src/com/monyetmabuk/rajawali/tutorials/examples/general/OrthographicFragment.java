@@ -6,7 +6,8 @@ import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.DiffuseMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
 import rajawali.math.vector.Vector3;
@@ -41,14 +42,15 @@ public class OrthographicFragment extends AExampleFragment {
 
 			DirectionalLight spotLight = new DirectionalLight(1f, -.1f, -.5f);
 			spotLight.setPower(2);
+			getCurrentScene().addLight(spotLight);
 
 			grid = new int[10][];
 			for (int i = 0; i < 10; i++)
 				grid[i] = new int[10];
 
-			DiffuseMaterial material = new DiffuseMaterial();
+			Material material = new Material();
 			try {
-				material.addTexture(new Texture(R.drawable.checkerboard));
+				material.addTexture(new Texture("checkerboard", R.drawable.checkerboard));
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}
@@ -63,19 +65,19 @@ public class OrthographicFragment extends AExampleFragment {
 
 			Plane plane = new Plane(Axis.Y);
 			plane.setMaterial(material);
+			plane.setDoubleSided(true);
 			plane.setColor(0xff0000ff);
-			plane.addLight(spotLight);
 			innerGroup.addChild(plane);
 
 			orthoCam.setZoom(1.5f);
 
-			DiffuseMaterial cubeMaterial = new DiffuseMaterial();
-			cubeMaterial.setUseSingleColor(true);
+			Material cubeMaterial = new Material();
+			cubeMaterial.enableLighting(true);
+			cubeMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
 
 			for (int i = 0; i < 40; i++) {
 				Cube cube = new Cube(.1f);
 				cube.setMaterial(cubeMaterial);
-				cube.addLight(spotLight);
 				cube.setY(100);
 				innerGroup.addChild(cube);
 

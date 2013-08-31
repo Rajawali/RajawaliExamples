@@ -36,6 +36,8 @@ public class LoadModelFragment extends AExampleFragment {
 			mLight = new PointLight();
 			mLight.setPosition(0, 0, 4);
 			mLight.setPower(3);
+			
+			getCurrentScene().addLight(mLight);
 			getCurrentCamera().setZ(16);
 
 			LoaderOBJ objParser = new LoaderOBJ(mContext.getResources(),
@@ -43,7 +45,6 @@ public class LoadModelFragment extends AExampleFragment {
 			try {
 				objParser.parse();
 				mObjectGroup = objParser.getParsedObject();
-				mObjectGroup.addLight(mLight);
 				addChild(mObjectGroup);
 
 				mCameraAnim = new RotateAnimation3D(Axis.Y, 360);

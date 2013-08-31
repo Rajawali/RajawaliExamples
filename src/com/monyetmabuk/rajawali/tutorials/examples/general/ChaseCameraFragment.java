@@ -5,12 +5,12 @@ import java.util.zip.GZIPInputStream;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.Object3D;
 import rajawali.ChaseCamera;
+import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.DiffuseMaterial;
-import rajawali.materials.SimpleMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
 import rajawali.math.vector.Vector3;
@@ -106,12 +106,13 @@ public class ChaseCameraFragment extends AExampleFragment implements
 		protected void initScene() {
 			DirectionalLight light = new DirectionalLight(0, -.6f, .4f);
 			light.setPower(1);
+			getCurrentScene().addLight(light);
 
 			// -- create sky sphere
 			mSphere = new Sphere(400, 8, 8);
-			SimpleMaterial sphereMaterial = new SimpleMaterial();
+			Material sphereMaterial = new Material();
 			try {
-				sphereMaterial.addTexture(new Texture(R.drawable.skysphere));
+				sphereMaterial.addTexture(new Texture("skySphere", R.drawable.skysphere));
 			} catch (TextureException e1) {
 				e1.printStackTrace();
 			}
@@ -127,11 +128,11 @@ public class ChaseCameraFragment extends AExampleFragment implements
 				ois = new ObjectInputStream(zis);
 				mRaptor = new Object3D(
 						(SerializedObject3D) ois.readObject());
-				DiffuseMaterial raptorMaterial = new DiffuseMaterial();
-				raptorMaterial
-						.addTexture(new Texture(R.drawable.raptor_texture));
+				Material raptorMaterial = new Material();
+				raptorMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
+				raptorMaterial.enableLighting(true);
+				raptorMaterial.addTexture(new Texture("raptorTex", R.drawable.raptor_texture));
 				mRaptor.setMaterial(raptorMaterial);
-				mRaptor.addLight(light);
 				mRaptor.setScale(.5f);
 				addChild(mRaptor);
 			} catch (Exception e) {
@@ -143,14 +144,15 @@ public class ChaseCameraFragment extends AExampleFragment implements
 			mCubes = new Object3D[30];
 
 			mRootCube = new Cube(1);
-			DiffuseMaterial rootCubeMaterial = new DiffuseMaterial();
+			Material rootCubeMaterial = new Material();
+			rootCubeMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
+			rootCubeMaterial.enableLighting(true);
 			try {
-				rootCubeMaterial.addTexture(new Texture(R.drawable.camouflage));
+				rootCubeMaterial.addTexture(new Texture("camouflage", R.drawable.camouflage));
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}
 			mRootCube.setMaterial(rootCubeMaterial);
-			mRootCube.addLight(light);
 			mRootCube.setY(-1f);
 			// -- similar objects with the same material, optimize
 			mRootCube.setRenderChildrenAsBatch(true);

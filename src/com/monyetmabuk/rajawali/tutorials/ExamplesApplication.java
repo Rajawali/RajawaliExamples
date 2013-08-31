@@ -11,7 +11,6 @@ import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem.Catego
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.about.CommunityFeedFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.about.MeetTheTeamFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.animation.AnimatedSpritesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.AnimationFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.BezierFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.CatmullRomFragment;
@@ -19,8 +18,6 @@ import com.monyetmabuk.rajawali.tutorials.examples.animation.ColorAnimationFragm
 import com.monyetmabuk.rajawali.tutorials.examples.animation.MD2Fragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.SkeletalAnimationBlendingFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.SkeletalAnimationMD5Fragment;
-import com.monyetmabuk.rajawali.tutorials.examples.effects.FogFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.effects.ParticlesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.BasicFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.ChaseCameraFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.CollisionDetectionFragment;
@@ -37,6 +34,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.general.UsingGeometryDataFrag
 import com.monyetmabuk.rajawali.tutorials.examples.interactive.AccelerometerFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.interactive.ObjectPickingFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.interactive.TouchAndDragFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.lights.DirectionalLightFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.lights.MultipleLightsFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.lights.PointLightFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.lights.SpotLightFragment;
@@ -85,17 +83,19 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Orthographic Camera", OrthographicFragment.class)
 			});
 		ITEMS.put(Categories.LIGHTS, new ExampleItem[]{
-				new ExampleItem("Directional Light", MultipleLightsFragment.class)
+				new ExampleItem("Directional Light", DirectionalLightFragment.class)
 				, new ExampleItem("Point Light", PointLightFragment.class)
 				, new ExampleItem("Spot Light", SpotLightFragment.class)
 				, new ExampleItem("Multiple Lights", MultipleLightsFragment.class)
 			});
+		/*
 		ITEMS.put(Categories.EFFECTS, new ExampleItem[] {
 				new ExampleItem("Particles", ParticlesFragment.class)
 				// Post processing is broken, removed until fixed.
 				//, new ExampleItem("Touch Ripples", TouchRipplesFragment.class)
 				, new ExampleItem("Fog", FogFragment.class)
 			});
+			*/
 		ITEMS.put(Categories.INTERACTIVE, new ExampleItem[] {
 				new ExampleItem("Using The Accelerometer", AccelerometerFragment.class)
 				, new ExampleItem("Object Picking", ObjectPickingFragment.class)
@@ -121,7 +121,7 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Bezier Path Animation", BezierFragment.class)
 				, new ExampleItem("MD2 Animation", MD2Fragment.class)
 				, new ExampleItem("Catmul-Rom Splines", CatmullRomFragment.class)
-				, new ExampleItem("Animated Sprites", AnimatedSpritesFragment.class)
+				//, new ExampleItem("Animated Sprites", AnimatedSpritesFragment.class)
 				, new ExampleItem("Skeletal Animation (MD5)", SkeletalAnimationMD5Fragment.class)
 				, new ExampleItem("Skeletal Animation Blending", SkeletalAnimationBlendingFragment.class)
 				, new ExampleItem("Color Animation", ColorAnimationFragment.class)
@@ -190,7 +190,7 @@ public class ExamplesApplication extends Application {
 	public static final class ExampleItem {
 
 		public enum Categories {
-			GENERAL, LIGHTS, EFFECTS, INTERACTIVE, UI("UI"), OPTIMIZATIONS, PARSERS, ANIMATION, MATERIALS, ABOUT;
+			GENERAL, LIGHTS, /*EFFECTS,*/ INTERACTIVE, UI("UI"), OPTIMIZATIONS, PARSERS, ANIMATION, MATERIALS, ABOUT;
 
 			private String name;
 

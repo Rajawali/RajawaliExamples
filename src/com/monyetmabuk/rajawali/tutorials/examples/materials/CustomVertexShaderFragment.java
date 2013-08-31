@@ -6,6 +6,7 @@ import rajawali.Object3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
+import rajawali.materials.Material;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
 import android.content.Context;
@@ -14,7 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomVertexShaderMaterial;
+import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomVertexShaderMaterialPlugin;
 
 public class CustomVertexShaderFragment extends AExampleFragment implements
 		OnClickListener {
@@ -29,10 +30,10 @@ public class CustomVertexShaderFragment extends AExampleFragment implements
 		((VertexShaderRenderer) mRenderer).toggleWireframe();
 	}
 
-	public final class VertexShaderRenderer extends AExampleRenderer {
+	private final class VertexShaderRenderer extends AExampleRenderer {
 
 		private int mFrameCount = 0;
-		private CustomVertexShaderMaterial mMaterial;
+		private Material mMaterial;
 		private Animation3D mAnim;
 		private Object3D mSphere;
 
@@ -42,9 +43,9 @@ public class CustomVertexShaderFragment extends AExampleFragment implements
 
 		@Override
 		protected void initScene() {
-			mMaterial = new CustomVertexShaderMaterial();
-			mMaterial.setUseVertexColors(true);
-
+			mMaterial = new Material();
+			mMaterial.enableTime(true);
+			mMaterial.addPlugin(new CustomVertexShaderMaterialPlugin());
 			mSphere = new Sphere(2, 60, 60);
 			mSphere.setMaterial(mMaterial);
 			addChild(mSphere);
@@ -73,5 +74,4 @@ public class CustomVertexShaderFragment extends AExampleFragment implements
 					: GLES20.GL_TRIANGLES);
 		}
 	}
-
 }

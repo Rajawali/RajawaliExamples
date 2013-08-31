@@ -4,7 +4,9 @@ import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.PointLight;
-import rajawali.materials.PhongMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
+import rajawali.materials.methods.SpecularMethod;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.AlphaMapTexture;
 import rajawali.materials.textures.SpecularMapTexture;
@@ -13,6 +15,7 @@ import rajawali.math.vector.Vector3;
 import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Sphere;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
 import com.monyetmabuk.rajawali.tutorials.R;
@@ -35,19 +38,21 @@ public class SpecularAndAlphaFragment extends AExampleFragment {
 			PointLight pointLight = new PointLight();
 			pointLight.setPower(1);
 			pointLight.setPosition(-1, 1, 4);
+			
+			getCurrentScene().addLight(pointLight);
 
 			try {
-				Texture earthTexture = new Texture(R.drawable.earth_diffuse);
+				Texture earthTexture = new Texture("earthDiffuseTex", R.drawable.earth_diffuse);
 
-				PhongMaterial material = new PhongMaterial();
+				Material material = new Material();
+				material.enableLighting(true);
+				material.setDiffuseMethod(new DiffuseMethod.Lambert());
+				material.setSpecularMethod(new SpecularMethod.Phong(Color.WHITE, 40));
 				material.addTexture(earthTexture);
-				material.addTexture(new SpecularMapTexture(
-						R.drawable.earth_specular));
-				material.setShininess(40);
+				material.addTexture(new SpecularMapTexture("earthSpecularTex", R.drawable.earth_specular));
 
 				Sphere sphere = new Sphere(1, 32, 24);
 				sphere.setMaterial(material);
-				sphere.addLight(pointLight);
 				sphere.setY(1.2f);
 				addChild(sphere);
 
@@ -59,16 +64,16 @@ public class SpecularAndAlphaFragment extends AExampleFragment {
 				registerAnimation(sphereAnim);
 				sphereAnim.play();
 
-				material = new PhongMaterial();
-				material.setAlphaMaskingEnabled(true);
+				material = new Material();
+				material.enableLighting(true);
+				material.setDiffuseMethod(new DiffuseMethod.Lambert());
+				material.setSpecularMethod(new SpecularMethod.Phong());
 				material.addTexture(earthTexture);
-				material.addTexture(new AlphaMapTexture(
-						R.drawable.camden_town_alpha));
+				material.addTexture(new AlphaMapTexture("alphaMapTex", R.drawable.camden_town_alpha));
 
 				sphere = new Sphere(1, 32, 24);
 				sphere.setMaterial(material);
 				sphere.setDoubleSided(true);
-				sphere.addLight(pointLight);
 				sphere.setY(-1.2f);
 				addChild(sphere);
 
