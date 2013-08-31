@@ -44,6 +44,7 @@ public class PointLightFragment extends AExampleFragment {
 			SpecularMethod.Phong phongMethod = new SpecularMethod.Phong();
 			phongMethod.setShininess(180);
 			sphereMaterial.setSpecularMethod(phongMethod);
+			sphereMaterial.setAmbientIntensity(0, 0, 0);
 			sphereMaterial.enableLighting(true);
 
 			Sphere rootSphere = new Sphere(.2f, 12, 12);
