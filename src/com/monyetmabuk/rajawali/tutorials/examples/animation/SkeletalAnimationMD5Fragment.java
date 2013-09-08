@@ -51,7 +51,6 @@ public class SkeletalAnimationMD5Fragment extends AExampleFragment {
 						.getParsedAnimationObject();
 				mObject.setAnimationSequence(sequence);
 				mObject.setScale(.04f);
-				mObject.setRotY(180);
 				mObject.play();
 
 				addChild(mObject);

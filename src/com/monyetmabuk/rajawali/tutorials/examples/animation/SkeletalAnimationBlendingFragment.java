@@ -138,7 +138,6 @@ public class SkeletalAnimationBlendingFragment extends AExampleFragment implemen
 				mObject.setAnimationSequence(mSequenceIdle);
 				mObject.setFps(24);
 				mObject.setScale(.8f);
-				mObject.setRotY(180);
 				mObject.play();
 
 				addChild(mObject);
