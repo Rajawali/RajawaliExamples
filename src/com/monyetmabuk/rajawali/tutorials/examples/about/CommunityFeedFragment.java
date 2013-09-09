@@ -38,6 +38,7 @@ import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.about.CommunityFeedFragment.Activity.FeedItem;
 import com.monyetmabuk.rajawali.tutorials.examples.about.dialogs.ExceptionDialog;
+import com.monyetmabuk.rajawali.tutorials.views.GithubLogoView;
 
 public class CommunityFeedFragment extends AExampleFragment implements
 		OnItemClickListener {
@@ -72,7 +73,7 @@ public class CommunityFeedFragment extends AExampleFragment implements
 				for (int i = 0; i < methods.length; i++) {
 					if (methods[i].getName().equals("getKey")) {
 						mQueryURL += (String) methods[i].invoke(null,
-								(Object[]) null);;
+								(Object[]) null);
 						break;
 					}
 				}
@@ -101,8 +102,8 @@ public class CommunityFeedFragment extends AExampleFragment implements
 				.bringToFront();
 
 		// Create the loader
-		mImageViewLoader = (ProgressBar) mLayout
-				.findViewById(R.id.image_view_loader);
+		mProgressBarLoader = (ProgressBar) mLayout
+				.findViewById(R.id.progress_bar_loader);
 
 		mGridView = (GridView) mLayout.findViewById(R.id.base_gridview);
 		mCommunityAdapter = new CommunityAdapter(getActivity()
@@ -110,6 +111,10 @@ public class CommunityFeedFragment extends AExampleFragment implements
 
 		mGridView.setAdapter(mCommunityAdapter);
 		mGridView.setOnItemClickListener(this);
+		
+		mImageViewExampleLink = (GithubLogoView) mLayout
+				.findViewById(R.id.image_view_example_link);
+		mImageViewExampleLink.setVisibility(View.GONE);
 
 		// Avoid the network call if the a response is cached.
 		if (savedInstanceState != null
