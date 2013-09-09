@@ -24,8 +24,9 @@ import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.Category;
 import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem;
-import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem.Categories;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class RajawaliExamplesActivity extends RajawaliActivity implements
 		OnChildClickListener {
@@ -72,9 +73,10 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 
 		if (savedInstanceState == null)
 			onChildClick(null, null, 0, 0, 0);
-		
+
 		// Open the drawer the very first run.
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(getApplicationContext());
 		if (!prefs.contains(PREF_FIRST_RUN)) {
 			prefs.edit().putBoolean(PREF_FIRST_RUN, false).apply();
 			mDrawerLayout.openDrawer(mDrawerList);
@@ -101,12 +103,12 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 
 		switch (item.getItemId()) {
 		case R.id.menu_item_community_stream:
-			exampleItem = ExamplesApplication.ITEMS.get(Categories.ABOUT)[0];
-			launchFragment(exampleItem);
+			exampleItem = ExamplesApplication.ITEMS.get(Category.ABOUT)[0];
+			launchFragment(Category.ABOUT, exampleItem);
 			return true;
 		case R.id.menu_item_meet_the_team:
-			exampleItem = ExamplesApplication.ITEMS.get(Categories.ABOUT)[1];
-			launchFragment(exampleItem);
+			exampleItem = ExamplesApplication.ITEMS.get(Category.ABOUT)[1];
+			launchFragment(Category.ABOUT, exampleItem);
 			return true;
 		case android.R.id.home:
 			if (mDrawerToggle.onOptionsItemSelected(item))
@@ -132,9 +134,9 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 	@Override
 	public boolean onChildClick(ExpandableListView parent, View v,
 			int groupPosition, int childPosition, long id) {
-		final ExampleItem exampleItem = ExamplesApplication.ITEMS
-				.get(Categories.values()[groupPosition])[childPosition];
-		launchFragment(exampleItem);
+		final Category category = Category.values()[groupPosition];
+		final ExampleItem exampleItem = ExamplesApplication.ITEMS.get(category)[childPosition];
+		launchFragment(category, exampleItem);
 
 		return true;
 	}
@@ -144,7 +146,7 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 	 * 
 	 * @param fragClass
 	 */
-	private void launchFragment(ExampleItem exampleItem) {
+	private void launchFragment(Category category, ExampleItem exampleItem) {
 		final FragmentManager fragmentManager = getFragmentManager();
 		final Fragment fragment;
 
@@ -163,6 +165,12 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 
 			fragment = (Fragment) exampleItem.exampleClass.getConstructors()[0]
 					.newInstance();
+
+			final Bundle bundle = new Bundle();
+			bundle.putString(AExampleFragment.BUNDLE_EXAMPLE_URL,
+					exampleItem.getUrl(category));
+			fragment.setArguments(bundle);
+
 			transaction.add(R.id.content_frame, fragment, FRAGMENT_TAG);
 			transaction.commit();
 		} catch (Exception e) {
@@ -175,16 +183,16 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		private static final int COLORS[] = new int[] { 0xFF0099CC, 0xFF9933CC,
 				0xFF669900, 0xFFFF8800, 0xFFCC0000 };
 
-		private final Map<ExampleItem.Categories, ExampleItem[]> mItems;
+		private final Map<Category, ExampleItem[]> mItems;
 		private final LayoutInflater mInflater;
-		private final Categories[] mKeys;
+		private final Category[] mKeys;
 
 		public ExampleAdapter(Context context,
-				Map<ExampleItem.Categories, ExampleItem[]> items) {
+				Map<Category, ExampleItem[]> items) {
 			mInflater = (LayoutInflater) context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			mItems = items;
-			mKeys = ExampleItem.Categories.values();
+			mKeys = Category.values();
 		}
 
 		@Override
@@ -222,7 +230,7 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		}
 
 		@Override
-		public Categories getGroup(int groupPosition) {
+		public Category getGroup(int groupPosition) {
 			return mKeys[groupPosition];
 		}
 
