@@ -41,6 +41,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.materials.BumpMappingFragment
 import com.monyetmabuk.rajawali.tutorials.examples.materials.CustomMaterialShaderFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.CustomVertexShaderFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.MaterialsFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.materials.RawShaderFilesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.SpecularAndAlphaFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.SphereMapFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.ToonShadingFragment;
@@ -162,6 +163,7 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Canvas Text to Material", CanvasTextFragment.class)
 				, new ExampleItem("Specular Alpha", SpecularAndAlphaFragment.class)
 				, new ExampleItem("Video Texture", VideoTextureFragment.class)
+				, new ExampleItem("Loading Shader Textfiles", RawShaderFilesFragment.class)
 			});
 		ITEMS.put(Category.ABOUT, new ExampleItem[] {
 			new ExampleItem("Community Stream", CommunityFeedFragment.class)
