@@ -7,7 +7,8 @@ import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.ToonMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
 import rajawali.math.vector.Vector3.Axis;
 import android.content.Context;
 
@@ -33,6 +34,8 @@ public class ToonShadingFragment extends AExampleFragment {
 		protected void initScene() {
 			mLight = new DirectionalLight(0, 0, -1);
 			mLight.setPower(1);
+			
+			getCurrentScene().addLight(mLight);
 			getCurrentCamera().setPosition(0, 0, 12);
 
 			try {
@@ -42,30 +45,32 @@ public class ToonShadingFragment extends AExampleFragment {
 						.readObject();
 				ois.close();
 
-				ToonMaterial toonMat = new ToonMaterial();
+				Material toonMat = new Material();
+				toonMat.enableLighting(true);
+				toonMat.setDiffuseMethod(new DiffuseMethod.Toon());
 
 				mMonkey1 = new Object3D(serializedMonkey);
 				mMonkey1.setMaterial(toonMat);
 				mMonkey1.setPosition(-1.5f, 2, 0);
-				mMonkey1.addLight(mLight);
 				addChild(mMonkey1);
 
-				toonMat = new ToonMaterial();
-				toonMat.setToonColors(0xffffffff, 0xff000000, 0xff666666,
-						0xff000000);
+				toonMat = new Material();
+				toonMat.enableLighting(true);
+				toonMat.setDiffuseMethod(new DiffuseMethod.Toon(0xffffffff, 0xff000000, 0xff666666,
+						0xff000000));
+
 				mMonkey2 = mMonkey1.clone();
 				mMonkey2.setMaterial(toonMat);
 				mMonkey2.setPosition(1.5f, 2, 0);
-				mMonkey2.addLight(mLight);
 				addChild(mMonkey2);
 
-				toonMat = new ToonMaterial();
-				toonMat.setToonColors(0xff999900, 0xff003300, 0xffff0000,
-						0xffa60000);
+				toonMat = new Material();
+				toonMat.enableLighting(true);
+				toonMat.setDiffuseMethod(new DiffuseMethod.Toon(0xff999900, 0xff003300, 0xffff0000,
+						0xffa60000));
 				mMonkey3 = mMonkey1.clone();
 				mMonkey3.setMaterial(toonMat);
 				mMonkey3.setPosition(0, -2, 0);
-				mMonkey3.addLight(mLight);
 				addChild(mMonkey3);
 			} catch (Exception e) {
 				e.printStackTrace();

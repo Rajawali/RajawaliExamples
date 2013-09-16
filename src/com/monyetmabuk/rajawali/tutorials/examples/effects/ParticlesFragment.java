@@ -2,13 +2,8 @@ package com.monyetmabuk.rajawali.tutorials.examples.effects;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.materials.ParticleMaterial;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.Texture;
-
 import android.content.Context;
 
-import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.effects.particles.ExampleParticleSystem;
 
@@ -30,7 +25,8 @@ public class ParticlesFragment extends AExampleFragment {
 
 		protected void initScene() {
 			getCurrentCamera().setPosition(0, 0, 10);
-
+			// TODO add particle system
+			/*
 			mParticleSystem = new ExampleParticleSystem();
 			ParticleMaterial material = new ParticleMaterial();
 			try {
@@ -41,15 +37,17 @@ public class ParticlesFragment extends AExampleFragment {
 			mParticleSystem.setMaterial(material);
 			mParticleSystem.setPointSize(100);
 			addChild(mParticleSystem);
+			*/
 		}
 
 		public void onDrawFrame(GL10 glUnused) {
 			super.onDrawFrame(glUnused);
-
+			/*
 			mParticleSystem.setTime((float) mFrameCount * .2f);
 
 			if (mFrameCount++ >= MAX_FRAMES)
 				mFrameCount = 0;
+				*/
 		}
 
 	}

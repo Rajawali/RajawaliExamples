@@ -8,7 +8,7 @@ import rajawali.animation.TranslateAnimation3D;
 import rajawali.curves.CompoundCurve3D;
 import rajawali.curves.ICurve3D;
 import rajawali.curves.SVGPath;
-import rajawali.materials.SimpleMaterial;
+import rajawali.materials.Material;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Line3D;
 import android.content.Context;
@@ -53,8 +53,7 @@ public class SVGPathFragment extends AExampleFragment {
 
 				pathPoints.add(points);
 				Line3D line = new Line3D(points, 1);
-				SimpleMaterial material = new SimpleMaterial();
-				material.setUseSingleColor(true);
+				Material material = new Material();
 				line.setMaterial(material);
 				getCurrentScene().addChild(line);
 

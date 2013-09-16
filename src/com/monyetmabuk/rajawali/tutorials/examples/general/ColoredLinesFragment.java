@@ -5,7 +5,7 @@ import java.util.Stack;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
-import rajawali.materials.SimpleMaterial;
+import rajawali.materials.Material;
 import rajawali.math.vector.Vector3;
 import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Line3D;
@@ -49,8 +49,8 @@ public class ColoredLinesFragment extends AExampleFragment {
 			}
 
 			Line3D line = new Line3D(points, 1, colors);
-			SimpleMaterial material = new SimpleMaterial();
-			material.setUseVertexColors(true);
+			Material material = new Material();
+			material.useVertexColors(true);
 			line.setMaterial(material);
 			getCurrentScene().addChild(line);
 

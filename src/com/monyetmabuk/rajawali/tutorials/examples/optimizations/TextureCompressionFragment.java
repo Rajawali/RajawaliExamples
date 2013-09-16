@@ -3,7 +3,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.optimizations;
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.Object3D;
-import rajawali.materials.SimpleMaterial;
+import rajawali.materials.Material;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Etc1Texture;
 import rajawali.materials.textures.Texture;
@@ -34,7 +34,7 @@ public class TextureCompressionFragment extends AExampleFragment {
 			try {
 				Texture texture1 = new Texture("texture1", new Etc1Texture(
 						"etc1Tex1", R.raw.rajawali_tex_mip_0, null));
-				SimpleMaterial material1 = new SimpleMaterial();
+				Material material1 = new Material();
 				material1.addTexture(texture1);
 				mPlane = new Plane(2, 2, 1, 1);
 				mPlane.setMaterial(material1);
@@ -56,7 +56,7 @@ public class TextureCompressionFragment extends AExampleFragment {
 				Texture texture2 = new Texture("texture2", new Etc1Texture(
 						"etc1Tex2", resourceIds));
 
-				SimpleMaterial material2 = new SimpleMaterial();
+				Material material2 = new Material();
 				material2.addTexture(texture2);
 
 				mMipmappedPlane = new Plane(2, 2, 1, 1);

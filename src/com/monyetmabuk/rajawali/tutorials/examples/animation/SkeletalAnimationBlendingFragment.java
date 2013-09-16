@@ -95,10 +95,11 @@ public class SkeletalAnimationBlendingFragment extends AExampleFragment implemen
 		}
 
 		protected void initScene() {
-			mLight = new DirectionalLight(1f, -0.2f, -1.0f); // set the direction
+			mLight = new DirectionalLight(0, -0.2f, -1.0f); // set the direction
 			mLight.setColor(1.0f, 1.0f, .8f);
 			mLight.setPower(1);
 
+			getCurrentScene().addLight(mLight);
 			getCurrentCamera().setZ(8);
 
 			try {
@@ -136,9 +137,7 @@ public class SkeletalAnimationBlendingFragment extends AExampleFragment implemen
 						.getParsedAnimationObject();
 				mObject.setAnimationSequence(mSequenceIdle);
 				mObject.setFps(24);
-				mObject.addLight(mLight);
 				mObject.setScale(.8f);
-				mObject.setRotY(180);
 				mObject.play();
 
 				addChild(mObject);

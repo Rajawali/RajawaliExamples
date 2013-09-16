@@ -113,6 +113,7 @@ public class MD2Fragment extends AExampleFragment implements OnClickListener {
 		protected void initScene() {
 			mLight = new DirectionalLight(0, 0, -1);
 			mLight.setPower(1);
+			getCurrentScene().addLight(mLight);
 			getCurrentCamera().setPosition(0, 0, 8);
 
 			LoaderMD2 parser = new LoaderMD2(mContext.getResources(),
@@ -122,7 +123,6 @@ public class MD2Fragment extends AExampleFragment implements OnClickListener {
 
 				mOgre = (VertexAnimationObject3D) parser
 						.getParsedAnimationObject();
-				mOgre.addLight(mLight);
 				mOgre.setScale(.07f);
 				mOgre.setRotY(90);
 				mOgre.setY(-1);

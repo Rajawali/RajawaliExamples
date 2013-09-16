@@ -8,7 +8,9 @@ import javax.microedition.khronos.opengles.GL10;
 import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.PhongMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
+import rajawali.materials.methods.SpecularMethod;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -65,6 +67,8 @@ public class UIElementsFragment extends AExampleFragment {
 		protected void initScene() {
 			mLight = new DirectionalLight(0, 0, -1);
 			mLight.setPower(.8f);
+			
+			getCurrentScene().addLight(mLight);
 			getCurrentCamera().setPosition(0, 0, 13);
 
 			GZIPInputStream gzi;
@@ -77,14 +81,15 @@ public class UIElementsFragment extends AExampleFragment {
 				fis.close();
 
 				mAndroid = new Object3D(serializedAndroid);
-				mAndroid.addLight(mLight);
 				addChild(mAndroid);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
-			PhongMaterial material = new PhongMaterial();
-			material.setUseSingleColor(true);
+			Material material = new Material();
+			material.enableLighting(true);
+			material.setDiffuseMethod(new DiffuseMethod.Lambert());
+			material.setSpecularMethod(new SpecularMethod.Phong());
 			mAndroid.setMaterial(material);
 			mAndroid.setColor(0xff99C224);
 		}

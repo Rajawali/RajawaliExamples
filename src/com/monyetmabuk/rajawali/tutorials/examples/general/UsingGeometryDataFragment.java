@@ -10,7 +10,9 @@ import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.PhongMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
+import rajawali.materials.methods.SpecularMethod;
 import rajawali.math.MathUtil;
 import rajawali.math.Quaternion;
 import rajawali.math.vector.Vector3;
@@ -36,17 +38,20 @@ public class UsingGeometryDataFragment extends AExampleFragment {
 		}
 
 		protected void initScene() {
-			getCurrentScene().setBackgroundColor(0xffeeeeee);
-
 			DirectionalLight light = new DirectionalLight(0, -.6f, -.4f);
 			light.setColor(1, 1, 1);
+			
+			getCurrentScene().addLight(light);
+			getCurrentScene().setBackgroundColor(0xffeeeeee);
 
 			getCurrentCamera().setZ(16);
 
 			Object3D sphere = new Sphere(1, 16, 8);
 
-			PhongMaterial spikeMaterial = new PhongMaterial();
-			spikeMaterial.setUseSingleColor(true);
+			Material spikeMaterial = new Material();
+			spikeMaterial.enableLighting(true);
+			spikeMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
+			spikeMaterial.setSpecularMethod(new SpecularMethod.Phong());
 
 			try {
 				// -- open gzipped serialized file
@@ -56,7 +61,6 @@ public class UsingGeometryDataFragment extends AExampleFragment {
 				mRootSpike = new Object3D(
 						(SerializedObject3D) fis.readObject());
 				mRootSpike.setMaterial(spikeMaterial);
-				mRootSpike.addLight(light);
 				mRootSpike.setColor(0xff33ff33);
 				mRootSpike.setVisible(false);
 				// -- objects that share the same geometry and material,

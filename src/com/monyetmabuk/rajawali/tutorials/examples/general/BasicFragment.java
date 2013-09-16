@@ -4,7 +4,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.Object3D;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.DiffuseMaterial;
+import rajawali.materials.Material;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
 import rajawali.math.Quaternion;
@@ -37,15 +37,16 @@ public class BasicFragment extends AExampleFragment {
 			mLight = new DirectionalLight(1.0, 0.2, -1.0); // set the direction
 			mLight.setColor(1.0f, 1.0f, 1.0f);
 			mLight.setPower(2);
+			
+			getCurrentScene().addLight(mLight);
 
 			try {
-				DiffuseMaterial material = new DiffuseMaterial();
-				material.addTexture(new Texture(
+				Material material = new Material();
+				material.addTexture(new Texture("earthColors",
 						R.drawable.earthtruecolor_nasa_big));
 				mSphere = new Sphere(1, 24, 24);
 				mSphere.setMaterial(material);
-				mSphere.addLight(mLight);
-				addChild(mSphere); // Queue an addition task for mSphere
+				getCurrentScene().addChild(mSphere);
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}
@@ -67,5 +68,4 @@ public class BasicFragment extends AExampleFragment {
 			RajLog.v("Sphere Model Matrix: \n" + mSphere.getModelMatrix());
 		}
 	}
-
 }

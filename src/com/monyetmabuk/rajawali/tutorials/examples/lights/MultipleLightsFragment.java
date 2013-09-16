@@ -8,7 +8,8 @@ import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.PointLight;
-import rajawali.materials.DiffuseMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
 import rajawali.materials.textures.Texture;
 import rajawali.math.vector.Vector3;
 import android.content.Context;
@@ -35,6 +36,9 @@ public class MultipleLightsFragment extends AExampleFragment {
 			PointLight light2 = new PointLight();
 			light2.setPower(5);
 
+			getCurrentScene().addLight(light1);
+			getCurrentScene().addLight(light2);
+			
 			getCurrentCamera().setPosition(-8, 8, 8);
 			getCurrentCamera().setLookAt(0, 0, 0);
 
@@ -46,12 +50,12 @@ public class MultipleLightsFragment extends AExampleFragment {
 				ois.close();
 
 				Object3D jet = new Object3D(serializedJet);
-				DiffuseMaterial material = new DiffuseMaterial();
-				material.addTexture(new Texture(R.drawable.jettexture));
+				Material material = new Material();
+				material.setDiffuseMethod(new DiffuseMethod.Lambert());
+				material.enableLighting(true);
+				material.addTexture(new Texture("jetTexture", R.drawable.jettexture));
 				jet.setMaterial(material);
 				jet.setPosition(1, 0, 0);
-				jet.addLight(light1);
-				jet.addLight(light2);
 				jet.setRotY(180);
 				addChild(jet);
 			} catch (Exception e) {

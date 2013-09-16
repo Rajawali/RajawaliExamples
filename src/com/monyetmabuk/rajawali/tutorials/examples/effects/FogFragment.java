@@ -2,12 +2,13 @@ package com.monyetmabuk.rajawali.tutorials.examples.effects;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.Object3D;
 import rajawali.Camera;
+import rajawali.Object3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.DirectionalLight;
-import rajawali.materials.DiffuseMaterial;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
 import rajawali.math.vector.Vector3;
@@ -38,6 +39,8 @@ public class FogFragment extends AExampleFragment {
 			mLight = new DirectionalLight(0, -1, -1);
 			mLight.setPower(.5f);
 
+			getCurrentScene().addLight(mLight);
+			
 			Camera camera = getCurrentCamera();
 			camera.setPosition(0, 1, 4);
 			camera.setFogNear(1);
@@ -52,7 +55,6 @@ public class FogFragment extends AExampleFragment {
 			try {
 				objParser.parse();
 				mRoad = objParser.getParsedObject();
-				mRoad.addLight(mLight);
 				mRoad.setZ(-2);
 				mRoad.setRotY(180);
 				addChild(mRoad);
@@ -60,22 +62,27 @@ public class FogFragment extends AExampleFragment {
 				e.printStackTrace();
 			}
 			mRoad = objParser.getParsedObject();
-			mRoad.addLight(mLight);
 			mRoad.setZ(-2);
 			mRoad.setRotY(180);
 			addChild(mRoad);
 
 			try {
-				DiffuseMaterial roadMaterial = new DiffuseMaterial();
-				roadMaterial.addTexture(new Texture(R.drawable.road));
+				Material roadMaterial = new Material();
+				roadMaterial.enableLighting(true);
+				roadMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
+				roadMaterial.addTexture(new Texture("road", R.drawable.road));
 				mRoad.getChildByName("Road").setMaterial(roadMaterial);
 
-				DiffuseMaterial signMaterial = new DiffuseMaterial();
-				signMaterial.addTexture(new Texture(R.drawable.sign));
+				Material signMaterial = new Material();
+				signMaterial.enableLighting(true);
+				signMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
+				signMaterial.addTexture(new Texture("sign", R.drawable.sign));
 				mRoad.getChildByName("Sign").setMaterial(signMaterial);
 
-				DiffuseMaterial warningMaterial = new DiffuseMaterial();
-				warningMaterial.addTexture(new Texture(R.drawable.warning));
+				Material warningMaterial = new Material();
+				warningMaterial.enableLighting(true);
+				warningMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
+				warningMaterial.addTexture(new Texture("warning", R.drawable.warning));
 				mRoad.getChildByName("Warning").setMaterial(warningMaterial);
 			} catch (TextureException tme) {
 				tme.printStackTrace();

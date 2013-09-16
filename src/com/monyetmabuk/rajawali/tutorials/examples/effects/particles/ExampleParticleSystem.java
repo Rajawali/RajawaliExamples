@@ -1,19 +1,12 @@
 package com.monyetmabuk.rajawali.tutorials.examples.effects.particles;
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
 import rajawali.Camera;
-import rajawali.Geometry3D;
-import rajawali.materials.ParticleMaterial;
-import rajawali.math.Matrix4;
+import rajawali.Object3D;
 import rajawali.math.vector.Vector3;
-import rajawali.primitives.Particle;
-import rajawali.util.ObjectColorPicker.ColorPickerInfo;
-import android.opengl.GLES20;
 
-public class ExampleParticleSystem extends Particle {
+public class ExampleParticleSystem extends Object3D {
 	protected Vector3 mFriction;
 	protected FloatBuffer mVelocityBuffer;
 	protected int mVelocityBufferHandle;
@@ -24,6 +17,8 @@ public class ExampleParticleSystem extends Particle {
 	}
 
 	protected void init() {
+		// TODO add particle system
+		/*
 		setDrawingMode(GLES20.GL_POINTS);
 		setTransparent(true);
 
@@ -63,6 +58,7 @@ public class ExampleParticleSystem extends Particle {
 			colors[i + 3] = i;
 
 			indices[i] = i;
+			
 		}
 
 		mVelocityBuffer = ByteBuffer
@@ -83,12 +79,12 @@ public class ExampleParticleSystem extends Particle {
 				GLES20.GL_DYNAMIC_DRAW);
 		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, 0);
 
-		setData(vertices, normals, textureCoords, colors, indices);
+		setData(vertices, normals, textureCoords, colors, indices);*/
 	}
 
 	public void reload() {
 		super.reload();
-
+/*
 		int buff[] = new int[1];
 		GLES20.glGenBuffers(1, buff, 0);
 		mVelocityBufferHandle = buff[0];
@@ -97,7 +93,7 @@ public class ExampleParticleSystem extends Particle {
 		GLES20.glBufferData(GLES20.GL_ARRAY_BUFFER, mVelocityBuffer.limit()
 				* Geometry3D.FLOAT_SIZE_BYTES, mVelocityBuffer,
 				GLES20.GL_DYNAMIC_DRAW);
-		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, 0);
+		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, 0);*/
 	}
 
 	public void setTime(float time) {
@@ -110,16 +106,12 @@ public class ExampleParticleSystem extends Particle {
 
 	protected void setShaderParams(Camera camera) {
 		super.setShaderParams(camera);
+		/*
 		ParticleMaterial particleShader = (ParticleMaterial) mParticleShader;
 		particleShader.setFriction(mFriction);
 		particleShader.setVelocity(mVelocityBufferHandle);
 		particleShader.setMultiParticlesEnabled(true);
 		particleShader.setTime(mTime);
-		particleShader.setCameraPosition(camera.getPosition());
-	}
-
-	public void render(Camera camera, final Matrix4 projMatrix, final Matrix4 vMatrix,
-			final Matrix4 parentMatrix, ColorPickerInfo pickerInfo) {
-		super.render(camera, projMatrix, vMatrix, parentMatrix, pickerInfo);
+		particleShader.setCameraPosition(camera.getPosition());*/
 	}
 }

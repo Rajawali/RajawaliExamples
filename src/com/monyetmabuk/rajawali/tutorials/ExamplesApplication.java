@@ -7,11 +7,9 @@ import java.util.Map;
 
 import android.app.Application;
 
-import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem.Categories;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.about.CommunityFeedFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.about.MeetTheTeamFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.animation.AnimatedSpritesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.AnimationFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.BezierFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.CatmullRomFragment;
@@ -19,8 +17,6 @@ import com.monyetmabuk.rajawali.tutorials.examples.animation.ColorAnimationFragm
 import com.monyetmabuk.rajawali.tutorials.examples.animation.MD2Fragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.SkeletalAnimationBlendingFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.SkeletalAnimationMD5Fragment;
-import com.monyetmabuk.rajawali.tutorials.examples.effects.FogFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.effects.ParticlesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.BasicFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.ChaseCameraFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.CollisionDetectionFragment;
@@ -37,6 +33,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.general.UsingGeometryDataFrag
 import com.monyetmabuk.rajawali.tutorials.examples.interactive.AccelerometerFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.interactive.ObjectPickingFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.interactive.TouchAndDragFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.lights.DirectionalLightFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.lights.MultipleLightsFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.lights.PointLightFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.lights.SpotLightFragment;
@@ -44,6 +41,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.materials.BumpMappingFragment
 import com.monyetmabuk.rajawali.tutorials.examples.materials.CustomMaterialShaderFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.CustomVertexShaderFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.MaterialsFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.materials.RawShaderFilesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.SpecularAndAlphaFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.SphereMapFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.ToonShadingFragment;
@@ -61,15 +59,42 @@ import com.monyetmabuk.rajawali.tutorials.examples.ui.UIElementsFragment;
 
 public class ExamplesApplication extends Application {
 
-	public static final Map<ExampleItem.Categories, ExampleItem[]> ITEMS = new HashMap<ExampleItem.Categories, ExamplesApplication.ExampleItem[]>();
+	static enum Category {
+
+		// @formatter:off
+		GENERAL("General")
+		, LIGHTS("Lights")
+		, INTERACTIVE("Interactive")
+		, UI("UI")
+		, OPTIMIZATIONS("Optimizations")
+		, PARSERS("Parsers")
+		, ANIMATION("Animation")
+		, MATERIALS("Materials")
+		, ABOUT("About");
+		// @formatter:on
+
+		private String name;
+
+		Category(String name) {
+			this.name = name;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+	}
+
+	public static final Map<Category, ExampleItem[]> ITEMS = new HashMap<Category, ExamplesApplication.ExampleItem[]>();
 	public static final ArrayList<TeamMember> TEAM_MEMBERS = new ArrayList<ExamplesApplication.TeamMember>();
+	public static final String BASE_EXAMPLES_URL = "https://github.com/MasDennis/RajawaliExamples/blob/master/src/com/monyetmabuk/rajawali/tutorials/examples";
 
 	@Override
 	public void onCreate() {
 		super.onCreate();
 
 		// @formatter:off
-		ITEMS.put(Categories.GENERAL, new ExampleItem[] { 
+		ITEMS.put(Category.GENERAL, new ExampleItem[] { 
 				new ExampleItem("Getting Started", BasicFragment.class) 
 				, new ExampleItem("Skybox", SkyboxFragment.class)
 				, new ExampleItem("Collision Detection", CollisionDetectionFragment.class)
@@ -84,49 +109,51 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Uniform Distribution", UniformDistributionFragment.class)
 				, new ExampleItem("Orthographic Camera", OrthographicFragment.class)
 			});
-		ITEMS.put(Categories.LIGHTS, new ExampleItem[]{
-				new ExampleItem("Directional Light", MultipleLightsFragment.class)
+		ITEMS.put(Category.LIGHTS, new ExampleItem[]{
+				new ExampleItem("Directional Light", DirectionalLightFragment.class)
 				, new ExampleItem("Point Light", PointLightFragment.class)
 				, new ExampleItem("Spot Light", SpotLightFragment.class)
 				, new ExampleItem("Multiple Lights", MultipleLightsFragment.class)
 			});
+		/*
 		ITEMS.put(Categories.EFFECTS, new ExampleItem[] {
 				new ExampleItem("Particles", ParticlesFragment.class)
 				// Post processing is broken, removed until fixed.
 				//, new ExampleItem("Touch Ripples", TouchRipplesFragment.class)
 				, new ExampleItem("Fog", FogFragment.class)
 			});
-		ITEMS.put(Categories.INTERACTIVE, new ExampleItem[] {
+			*/
+		ITEMS.put(Category.INTERACTIVE, new ExampleItem[] {
 				new ExampleItem("Using The Accelerometer", AccelerometerFragment.class)
 				, new ExampleItem("Object Picking", ObjectPickingFragment.class)
 				, new ExampleItem("Touch & Drag", TouchAndDragFragment.class)
 			});
-		ITEMS.put(Categories.UI, new ExampleItem[] {
+		ITEMS.put(Category.UI, new ExampleItem[] {
 				new ExampleItem("UI Elements", UIElementsFragment.class)
 				, new ExampleItem("2D Renderer", TwoDimensionalFragment.class)
 				, new ExampleItem("Transparent GLSurfaceView", TransparentSurfaceFragment.class)
 			});
-		ITEMS.put(Categories.OPTIMIZATIONS, new ExampleItem[] {
+		ITEMS.put(Category.OPTIMIZATIONS, new ExampleItem[] {
 				new ExampleItem("2000 Textured Planes", Optimized2000PlanesFragment.class)
 				, new ExampleItem("Update Vertex Buffer", UpdateVertexBufferFragment.class)
 				, new ExampleItem("Texture Compression (ETC)", TextureCompressionFragment.class)
 				, new ExampleItem("Texture Atlas", TextureAtlasFragment.class)
 			});
-		ITEMS.put(Categories.PARSERS, new ExampleItem[] {
+		ITEMS.put(Category.PARSERS, new ExampleItem[] {
 				new ExampleItem("Load OBJ Model", LoadModelFragment.class)
 				, new ExampleItem("FBX Scene Importer", FBXFragment.class)
 			});
-		ITEMS.put(Categories.ANIMATION, new ExampleItem[] {
+		ITEMS.put(Category.ANIMATION, new ExampleItem[] {
 				new ExampleItem("Animation", AnimationFragment.class)
 				, new ExampleItem("Bezier Path Animation", BezierFragment.class)
 				, new ExampleItem("MD2 Animation", MD2Fragment.class)
 				, new ExampleItem("Catmul-Rom Splines", CatmullRomFragment.class)
-				, new ExampleItem("Animated Sprites", AnimatedSpritesFragment.class)
+				//, new ExampleItem("Animated Sprites", AnimatedSpritesFragment.class)
 				, new ExampleItem("Skeletal Animation (MD5)", SkeletalAnimationMD5Fragment.class)
 				, new ExampleItem("Skeletal Animation Blending", SkeletalAnimationBlendingFragment.class)
 				, new ExampleItem("Color Animation", ColorAnimationFragment.class)
 			});
-		ITEMS.put(Categories.MATERIALS, new ExampleItem[] {
+		ITEMS.put(Category.MATERIALS, new ExampleItem[] {
 				new ExampleItem("Materials", MaterialsFragment.class)
 				, new ExampleItem("Custom Material", CustomMaterialShaderFragment.class)
 				, new ExampleItem("Bump Mapping", BumpMappingFragment.class)
@@ -136,8 +163,9 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Canvas Text to Material", CanvasTextFragment.class)
 				, new ExampleItem("Specular Alpha", SpecularAndAlphaFragment.class)
 				, new ExampleItem("Video Texture", VideoTextureFragment.class)
+				, new ExampleItem("Loading Shader Textfiles", RawShaderFilesFragment.class)
 			});
-		ITEMS.put(Categories.ABOUT, new ExampleItem[] {
+		ITEMS.put(Category.ABOUT, new ExampleItem[] {
 			new ExampleItem("Community Stream", CommunityFeedFragment.class)
 			, new ExampleItem("Meet The Team", MeetTheTeamFragment.class)
 		});
@@ -189,34 +217,26 @@ public class ExamplesApplication extends Application {
 
 	public static final class ExampleItem {
 
-		public enum Categories {
-			GENERAL, LIGHTS, EFFECTS, INTERACTIVE, UI("UI"), OPTIMIZATIONS, PARSERS, ANIMATION, MATERIALS, ABOUT;
-
-			private String name;
-
-			Categories() {
-				name = toString().toLowerCase(Locale.getDefault());
-				name = name.substring(0, 1).toUpperCase(Locale.getDefault())
-						+ name.substring(1, name.length());
-			}
-
-			Categories(String name) {
-				this.name = name;
-			}
-
-			public String getName() {
-				return name;
-			}
-
-		}
-
-		public Class<? extends AExampleFragment> exampleClass;
-		public String title;
+		public final Class<? extends AExampleFragment> exampleClass;
+		public final String title;
+		public final String url;
 
 		public ExampleItem(String title,
 				Class<? extends AExampleFragment> exampleClass) {
 			this.title = title;
 			this.exampleClass = exampleClass;
+			this.url = exampleClass.getSimpleName() + ".java";
+		}
+
+		public String getUrl(Category category) {
+			switch (category) {
+			case ABOUT:
+				// About category has no example links
+				return null;
+			default:
+				return BASE_EXAMPLES_URL + "/"
+						+ category.name.toLowerCase(Locale.US) + "/" + url;
+			}
 		}
 	}
 

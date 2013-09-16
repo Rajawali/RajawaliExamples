@@ -2,7 +2,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.optimizations;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.materials.SimpleMaterial;
+import rajawali.materials.Material;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
 import rajawali.materials.textures.TextureAtlas;
@@ -10,8 +10,8 @@ import rajawali.materials.textures.TexturePacker;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Plane;
 import rajawali.primitives.Sphere;
-
 import android.content.Context;
+
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class TextureAtlasFragment extends AExampleFragment {
@@ -23,7 +23,7 @@ public class TextureAtlasFragment extends AExampleFragment {
 
 	private final class TextureAtlasRenderer extends AExampleRenderer {
 		private TextureAtlas mAtlas;
-		private SimpleMaterial mAtlasMaterial, mSphereMaterial, mCubeMaterial, mPlaneMaterial;
+		private Material mAtlasMaterial, mSphereMaterial, mCubeMaterial, mPlaneMaterial;
 		private Plane mAtlasPlane, mTilePlane;
 		private Cube mTileCube;
 		private Sphere mTileSphere;
@@ -41,10 +41,10 @@ public class TextureAtlasFragment extends AExampleFragment {
 			//
 			mAtlas = new TexturePacker(mContext).packTexturesFromAssets(1024, 1024, 0, false, "atlas");
 			
-			mAtlasMaterial = new SimpleMaterial();
-			mSphereMaterial = new SimpleMaterial();
-			mCubeMaterial = new SimpleMaterial();
-			mPlaneMaterial = new SimpleMaterial();
+			mAtlasMaterial = new Material();
+			mSphereMaterial = new Material();
+			mCubeMaterial = new Material();
+			mPlaneMaterial = new Material();
 
 			try {
 				//

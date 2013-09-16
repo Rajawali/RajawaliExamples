@@ -4,7 +4,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
-import rajawali.materials.SimpleMaterial;
+import rajawali.materials.Material;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.AnimatedGIFTexture;
 import rajawali.math.vector.Vector3;
@@ -77,9 +77,9 @@ public class AnimatedGIFTextureFragment extends AExampleFragment implements
 
 		protected void initScene() {
 			mPlane = new Plane(Axis.Z);
-			SimpleMaterial material = new SimpleMaterial();
+			Material material = new Material();
 			try {
-				mGIFTexture = new AnimatedGIFTexture(mGifs[0]);
+				mGIFTexture = new AnimatedGIFTexture("animGif", mGifs[0]);
 				material.addTexture(mGIFTexture);
 				mGIFTexture.rewind();
 				mPlane.setScaleX((float) mGIFTexture.getWidth()
