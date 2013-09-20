@@ -42,6 +42,8 @@
     <string name="textview_favorite_beers">Favorite Beers</string>
     <!-- Community Fragment -->
     <string name="imageview_user_image">User Image</string>
+    <!-- GCode Fragment -->
+    <string name="gcode_fragment_by">Model by Terawatt Industries</string>
     <!-- ExceptionDialog -->
     <string name="exception_dialog_title">Exception Occurred</string>
     <string name="exception_dialog_message_unknown">Unknown error!</string>

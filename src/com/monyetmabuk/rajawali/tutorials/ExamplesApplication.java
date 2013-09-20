@@ -52,6 +52,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.optimizations.TextureCompress
 import com.monyetmabuk.rajawali.tutorials.examples.optimizations.UpdateVertexBufferFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.parsers.FBXFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.parsers.LoadModelFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.parsers.LoaderGCodeFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.CanvasTextFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.TransparentSurfaceFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.TwoDimensionalFragment;
@@ -142,6 +143,7 @@ public class ExamplesApplication extends Application {
 		ITEMS.put(Category.PARSERS, new ExampleItem[] {
 				new ExampleItem("Load OBJ Model", LoadModelFragment.class)
 				, new ExampleItem("FBX Scene Importer", FBXFragment.class)
+				, new ExampleItem("GCode Toolpaths", LoaderGCodeFragment.class)
 			});
 		ITEMS.put(Category.ANIMATION, new ExampleItem[] {
 				new ExampleItem("Animation", AnimationFragment.class)
