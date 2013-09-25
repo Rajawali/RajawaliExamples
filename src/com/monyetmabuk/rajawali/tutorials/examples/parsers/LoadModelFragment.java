@@ -9,8 +9,8 @@ import rajawali.animation.RotateAnimation3D;
 import rajawali.lights.PointLight;
 import rajawali.math.vector.Vector3;
 import rajawali.math.vector.Vector3.Axis;
-import rajawali.parser.ALoader.ParsingException;
 import rajawali.parser.LoaderOBJ;
+import rajawali.parser.ParsingException;
 import android.content.Context;
 
 import com.monyetmabuk.rajawali.tutorials.R;
