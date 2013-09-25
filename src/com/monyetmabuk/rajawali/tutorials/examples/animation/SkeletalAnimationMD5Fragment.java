@@ -3,7 +3,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.animation;
 import rajawali.animation.mesh.SkeletalAnimationObject3D;
 import rajawali.animation.mesh.SkeletalAnimationSequence;
 import rajawali.lights.DirectionalLight;
-import rajawali.parser.ALoader.ParsingException;
+import rajawali.parser.ParsingException;
 import rajawali.parser.md5.LoaderMD5Anim;
 import rajawali.parser.md5.LoaderMD5Mesh;
 import android.content.Context;
