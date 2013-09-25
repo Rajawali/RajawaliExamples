@@ -12,8 +12,8 @@ import rajawali.materials.methods.DiffuseMethod;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
 import rajawali.math.vector.Vector3;
-import rajawali.parser.ALoader.ParsingException;
 import rajawali.parser.LoaderOBJ;
+import rajawali.parser.ParsingException;
 import android.content.Context;
 import android.view.animation.AccelerateDecelerateInterpolator;
 

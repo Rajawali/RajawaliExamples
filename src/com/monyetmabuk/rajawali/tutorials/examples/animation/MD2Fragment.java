@@ -2,15 +2,15 @@ package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
 import rajawali.animation.mesh.VertexAnimationObject3D;
 import rajawali.lights.DirectionalLight;
-import rajawali.parser.ALoader.ParsingException;
 import rajawali.parser.LoaderMD2;
+import rajawali.parser.ParsingException;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
