@@ -78,6 +78,7 @@ public class VideoTextureFragment extends AExampleFragment {
 
 			mVideoTexture = new VideoTexture("sintelTrailer", mMediaPlayer);
 			Material material = new Material();
+			material.setColorInfluence(0);
 			try {
 				material.addTexture(mVideoTexture);
 			} catch (TextureException e) {

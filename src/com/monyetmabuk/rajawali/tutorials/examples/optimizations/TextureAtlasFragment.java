@@ -52,13 +52,17 @@ public class TextureAtlasFragment extends AExampleFragment {
 				// -- this is not necessary in typical use cases
 				//
 				mAtlasMaterial.addTexture(new Texture("atlasTexture", mAtlas.getPages()[0]));
+				mAtlasMaterial.setColorInfluence(0);
 				//
 				// -- Add each target texture to the material
 				// -- they are pulled from the atlas by their original resource name
 				//
 				mSphereMaterial.addTexture(new Texture("earthtruecolor_nasa_big", mAtlas));
+				mSphereMaterial.setColorInfluence(0);
 				mCubeMaterial.addTexture(new Texture("camden_town_alpha", mAtlas));
+				mCubeMaterial.setColorInfluence(0);
 				mPlaneMaterial.addTexture(new Texture("rajawali", mAtlas));
+				mPlaneMaterial.setColorInfluence(0);
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}

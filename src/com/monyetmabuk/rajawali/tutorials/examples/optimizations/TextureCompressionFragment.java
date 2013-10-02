@@ -36,6 +36,7 @@ public class TextureCompressionFragment extends AExampleFragment {
 						"etc1Tex1", R.raw.rajawali_tex_mip_0, null));
 				Material material1 = new Material();
 				material1.addTexture(texture1);
+				material1.setColorInfluence(0);
 				mPlane = new Plane(2, 2, 1, 1);
 				mPlane.setMaterial(material1);
 				mPlane.setPosition(0, -1.25f, 0);
@@ -58,6 +59,7 @@ public class TextureCompressionFragment extends AExampleFragment {
 
 				Material material2 = new Material();
 				material2.addTexture(texture2);
+				material2.setColorInfluence(0);
 
 				mMipmappedPlane = new Plane(2, 2, 1, 1);
 				mMipmappedPlane.setMaterial(material2);

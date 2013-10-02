@@ -47,7 +47,7 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 
 			mPlanes = new PlanesGalore();
 			mMaterial = mPlanes.getMaterial();
-
+			mMaterial.setColorInfluence(0);
 			try {
 				mMaterial.addTexture(new Texture("flickrPics", R.drawable.flickrpics));
 			} catch (TextureException e) {

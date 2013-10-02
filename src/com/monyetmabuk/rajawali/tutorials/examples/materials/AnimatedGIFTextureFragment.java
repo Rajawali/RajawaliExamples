@@ -81,6 +81,7 @@ public class AnimatedGIFTextureFragment extends AExampleFragment implements
 			try {
 				mGIFTexture = new AnimatedGIFTexture("animGif", mGifs[0]);
 				material.addTexture(mGIFTexture);
+				material.setColorInfluence(0);
 				mGIFTexture.rewind();
 				mPlane.setScaleX((float) mGIFTexture.getWidth()
 						/ (float) mGIFTexture.getHeight());

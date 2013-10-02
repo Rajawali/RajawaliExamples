@@ -71,18 +71,21 @@ public class FogFragment extends AExampleFragment {
 				roadMaterial.enableLighting(true);
 				roadMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
 				roadMaterial.addTexture(new Texture("road", R.drawable.road));
+				roadMaterial.setColorInfluence(0);
 				mRoad.getChildByName("Road").setMaterial(roadMaterial);
 
 				Material signMaterial = new Material();
 				signMaterial.enableLighting(true);
 				signMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
 				signMaterial.addTexture(new Texture("sign", R.drawable.sign));
+				signMaterial.setColorInfluence(0);
 				mRoad.getChildByName("Sign").setMaterial(signMaterial);
 
 				Material warningMaterial = new Material();
 				warningMaterial.enableLighting(true);
 				warningMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
 				warningMaterial.addTexture(new Texture("warning", R.drawable.warning));
+				warningMaterial.setColorInfluence(0);
 				mRoad.getChildByName("Warning").setMaterial(warningMaterial);
 			} catch (TextureException tme) {
 				tme.printStackTrace();

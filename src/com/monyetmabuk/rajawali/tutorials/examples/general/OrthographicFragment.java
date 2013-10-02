@@ -1,5 +1,7 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
+import java.util.Random;
+
 import rajawali.Object3D;
 import rajawali.OrthographicCamera;
 import rajawali.animation.Animation3D.RepeatMode;
@@ -51,6 +53,7 @@ public class OrthographicFragment extends AExampleFragment {
 			Material material = new Material();
 			try {
 				material.addTexture(new Texture("checkerboard", R.drawable.checkerboard));
+				material.setColorInfluence(0);
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}
@@ -75,10 +78,13 @@ public class OrthographicFragment extends AExampleFragment {
 			cubeMaterial.enableLighting(true);
 			cubeMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
 
+			Random random = new Random();
+			
 			for (int i = 0; i < 40; i++) {
 				Cube cube = new Cube(.1f);
 				cube.setMaterial(cubeMaterial);
 				cube.setY(100);
+				cube.setColor(0x666666 + random.nextInt(0x999999));
 				innerGroup.addChild(cube);
 
 				// find grid available grid cell
