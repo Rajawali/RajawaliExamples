@@ -156,7 +156,7 @@ public class ExamplesApplication extends Application {
 		ITEMS.put(Category.MATERIALS, new ExampleItem[] {
 				new ExampleItem("Materials", MaterialsFragment.class)
 				, new ExampleItem("Custom Material", CustomMaterialShaderFragment.class)
-				, new ExampleItem("Bump Mapping", BumpMappingFragment.class)
+				, new ExampleItem("Normal Mapping", BumpMappingFragment.class)
 				, new ExampleItem("Toon Shading", ToonShadingFragment.class)
 				, new ExampleItem("Custom Vertex Shader", CustomVertexShaderFragment.class)
 				, new ExampleItem("Sphere Mapping", SphereMapFragment.class)

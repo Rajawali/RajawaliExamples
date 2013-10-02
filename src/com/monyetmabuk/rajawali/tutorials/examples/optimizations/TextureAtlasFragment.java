@@ -7,6 +7,7 @@ import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
 import rajawali.materials.textures.TextureAtlas;
 import rajawali.materials.textures.TexturePacker;
+import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Plane;
 import rajawali.primitives.Sphere;
@@ -66,7 +67,7 @@ public class TextureAtlasFragment extends AExampleFragment {
 			//
 			// -- Show the full atlas for demonstration purposes
 			//
-			mAtlasPlane = new Plane(1,1,1,1);
+			mAtlasPlane = new Plane(Axis.Z);
 			mAtlasPlane.setMaterial(mAtlasMaterial);
 			mAtlasPlane.setY(1);
 			addChild(mAtlasPlane);
