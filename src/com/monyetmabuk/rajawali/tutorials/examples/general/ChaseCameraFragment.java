@@ -113,6 +113,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
 			Material sphereMaterial = new Material();
 			try {
 				sphereMaterial.addTexture(new Texture("skySphere", R.drawable.skysphere));
+				sphereMaterial.setColorInfluence(0);
 			} catch (TextureException e1) {
 				e1.printStackTrace();
 			}
@@ -132,6 +133,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
 				raptorMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
 				raptorMaterial.enableLighting(true);
 				raptorMaterial.addTexture(new Texture("raptorTex", R.drawable.raptor_texture));
+				raptorMaterial.setColorInfluence(0);
 				mRaptor.setMaterial(raptorMaterial);
 				mRaptor.setScale(.5f);
 				addChild(mRaptor);
@@ -149,6 +151,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
 			rootCubeMaterial.enableLighting(true);
 			try {
 				rootCubeMaterial.addTexture(new Texture("camouflage", R.drawable.camouflage));
+				rootCubeMaterial.setColorInfluence(0);
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}

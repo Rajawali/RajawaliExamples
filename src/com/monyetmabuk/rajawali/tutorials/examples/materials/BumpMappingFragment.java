@@ -54,6 +54,7 @@ public class BumpMappingFragment extends AExampleFragment {
 				material1.enableLighting(true);
 				material1.addTexture(new Texture("wallDiffuseTex", R.drawable.masonry_wall_texture));
 				material1.addTexture(new NormalMapTexture("wallNormalTex", R.drawable.masonry_wall_normal_map));
+				material1.setColorInfluence(0);
 				cube.setMaterial(material1);
 				cube.setZ(-2);
 				addChild(cube);
@@ -75,6 +76,7 @@ public class BumpMappingFragment extends AExampleFragment {
 				material2.enableLighting(true);
 				material2.addTexture(new Texture("earthDiffuseTex", R.drawable.earth_diffuse));
 				material2.addTexture(new NormalMapTexture("eartNormalTex", R.drawable.earth_normal));
+				material2.setColorInfluence(0);
 				mEarth.setMaterial(material2);
 
 				RotateAnimation3D earthAnim = new RotateAnimation3D(Axis.Y, 359);

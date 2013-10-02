@@ -71,6 +71,7 @@ public class ThreeSixtyImagesFragment extends AExampleFragment {
 			}
 			try {
 				mMaterial.addTexture(mTextures[0]);
+				mMaterial.setColorInfluence(0);
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}

@@ -50,6 +50,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.optimizations.Optimized2000Pl
 import com.monyetmabuk.rajawali.tutorials.examples.optimizations.TextureAtlasFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.optimizations.TextureCompressionFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.optimizations.UpdateVertexBufferFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.parsers.AwdFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.parsers.FBXFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.parsers.LoadModelFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.CanvasTextFragment;
@@ -140,7 +141,8 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Texture Atlas", TextureAtlasFragment.class)
 			});
 		ITEMS.put(Category.PARSERS, new ExampleItem[] {
-				new ExampleItem("Load OBJ Model", LoadModelFragment.class)
+				new ExampleItem("Load AWD Model", AwdFragment.class)
+				, new ExampleItem("Load OBJ Model", LoadModelFragment.class)
 				, new ExampleItem("FBX Scene Importer", FBXFragment.class)
 			});
 		ITEMS.put(Category.ANIMATION, new ExampleItem[] {

@@ -5,7 +5,7 @@ import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.RotateAnimation3D;
 import rajawali.math.vector.Vector3.Axis;
-import rajawali.parser.ALoader.ParsingException;
+import rajawali.parser.ParsingException;
 import rajawali.parser.fbx.LoaderFBX;
 import android.content.Context;
 import android.os.Bundle;
