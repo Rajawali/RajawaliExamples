@@ -52,20 +52,20 @@ public class ChaseCameraFragment extends AExampleFragment implements
 		ll.setGravity(Gravity.BOTTOM);
 
 		mSeekBarZ = new SeekBar(getActivity());
-		mSeekBarZ.setMax(40);
-		mSeekBarZ.setProgress(16);
+		mSeekBarZ.setMax(100);
+		mSeekBarZ.setProgress(70);
 		mSeekBarZ.setOnSeekBarChangeListener(this);
 		ll.addView(mSeekBarZ);
 
 		mSeekBarY = new SeekBar(getActivity());
-		mSeekBarY.setMax(20);
-		mSeekBarY.setProgress(13);
+		mSeekBarY.setMax(100);
+		mSeekBarY.setProgress(60);
 		mSeekBarY.setOnSeekBarChangeListener(this);
 		ll.addView(mSeekBarY);
 
 		mSeekBarX = new SeekBar(getActivity());
-		mSeekBarX.setMax(20);
-		mSeekBarX.setProgress(10);
+		mSeekBarX.setMax(100);
+		mSeekBarX.setProgress(50);
 		mSeekBarX.setOnSeekBarChangeListener(this);
 		ll.addView(mSeekBarX);
 
@@ -81,8 +81,8 @@ public class ChaseCameraFragment extends AExampleFragment implements
 
 	public void onProgressChanged(SeekBar seekBar, int progress,
 			boolean fromUser) {
-		mCameraOffset.setAll(mSeekBarX.getProgress() - 10,
-				mSeekBarY.getProgress() - 10, mSeekBarZ.getProgress());
+		mCameraOffset.setAll((mSeekBarX.getProgress() * 0.2f) - 10,
+				(mSeekBarY.getProgress() * 0.2f) - 10, (mSeekBarZ.getProgress() * 0.2f));
 		((ChaseCameraRenderer) mRenderer).setCameraOffset(mCameraOffset);
 	}
 
