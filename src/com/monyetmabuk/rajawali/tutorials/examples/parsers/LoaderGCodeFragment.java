@@ -33,7 +33,7 @@ public class LoaderGCodeFragment extends AExampleFragment {
 		protected void initScene() {
 			RajLog.systemInformation();
 			setFrameRate(60);
-			LoaderGCode gCodeParser = new LoaderGCode(this, R.raw.calibrationcube_404020_psm_pla35);
+			LoaderGCode gCodeParser = new LoaderGCode(getResources(), getTextureManager(), R.raw.calibrationcube_404020_psm_pla35);
 			try {
 				Object3D gCode3D = gCodeParser.parse().getParsedObject();
 				if (null != gCode3D) {
@@ -46,12 +46,12 @@ public class LoaderGCodeFragment extends AExampleFragment {
 								.getNumChildren() - 1);
 					}
 					getCurrentCamera().setPosition(0, 0,
-							lastPos.getmPoints().get(0).z + 150);
+							lastPos.getPoint(0).z + 150);
 					getCurrentCamera().setLookAt(0, 0, 0);
 					float scaleFactor = 0.7f;
 					gCode3D.setScale(scaleFactor);
-					gCode3D.setPosition(-firstPos.getmPoints().get(0).x
-							* scaleFactor, -firstPos.getmPoints().get(0).y
+					gCode3D.setPosition(-firstPos.getPoint(0).x
+							* scaleFactor, -firstPos.getPoint(0).y
 							* scaleFactor, 0);
 					gCode3D.setRotation(360 - 35, 0, 360 - 15);
 					Material mat = new Material();
