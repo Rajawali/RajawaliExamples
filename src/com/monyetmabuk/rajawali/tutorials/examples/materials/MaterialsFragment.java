@@ -105,6 +105,7 @@ public class MaterialsFragment extends AExampleFragment {
 						resourceIds);
 				envMap.isEnvironmentTexture(true);
 				cubeMapMaterial.addTexture(envMap);
+				cubeMapMaterial.setColorInfluence(0);
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}

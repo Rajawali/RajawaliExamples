@@ -32,7 +32,7 @@ public class ObjectPickingFragment extends AExampleFragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
-		
+
 		mSurfaceView.setOnTouchListener(this);
 
 		LinearLayout ll = new LinearLayout(getActivity());
@@ -62,13 +62,18 @@ public class ObjectPickingFragment extends AExampleFragment implements
 			((ObjectPickingRenderer) mRenderer).getObjectAt(event.getX(),
 					event.getY());
 		}
+		
 		return getActivity().onTouchEvent(event);
 	}
 
 	private final class ObjectPickingRenderer extends AExampleRenderer
 			implements OnObjectPickedListener {
+
 		private PointLight mLight;
-		private Object3D mMonkey1, mMonkey2, mMonkey3, mMonkey4;
+		private Object3D mMonkey1;
+		private Object3D mMonkey2;
+		private Object3D mMonkey3;
+		private Object3D mMonkey4;
 		private ObjectColorPicker mPicker;
 
 		public ObjectPickingRenderer(Context context) {
@@ -84,6 +89,10 @@ public class ObjectPickingFragment extends AExampleFragment implements
 			getCurrentScene().addLight(mLight);
 			getCurrentCamera().setPosition(0, 0, 7);
 
+			Material material = new Material();
+			material.enableLighting(true);
+			material.setDiffuseMethod(new DiffuseMethod.Lambert());
+
 			try {
 				ObjectInputStream ois = new ObjectInputStream(mContext
 						.getResources().openRawResource(R.raw.monkey_ser));
@@ -95,24 +104,32 @@ public class ObjectPickingFragment extends AExampleFragment implements
 				mMonkey1.setScale(.7f);
 				mMonkey1.setPosition(-1, 1, 0);
 				mMonkey1.setRotY(0);
+				mMonkey1.setMaterial(material);
+				mMonkey1.setColor(0x0000ff);
 				addChild(mMonkey1);
 
 				mMonkey2 = mMonkey1.clone();
 				mMonkey2.setScale(.7f);
 				mMonkey2.setPosition(1, 1, 0);
 				mMonkey2.setRotY(45);
+				mMonkey2.setMaterial(material);
+				mMonkey2.setColor(0x00ff00);
 				addChild(mMonkey2);
 
 				mMonkey3 = mMonkey1.clone();
 				mMonkey3.setScale(.7f);
 				mMonkey3.setPosition(-1, -1, 0);
 				mMonkey3.setRotY(90);
+				mMonkey3.setMaterial(material);
+				mMonkey3.setColor(0xcc1100);
 				addChild(mMonkey3);
 
 				mMonkey4 = mMonkey1.clone();
 				mMonkey4.setScale(.7f);
 				mMonkey4.setPosition(1, -1, 0);
 				mMonkey4.setRotY(135);
+				mMonkey4.setMaterial(material);
+				mMonkey4.setColor(0xff9955);
 				addChild(mMonkey4);
 
 				mPicker.registerObject(mMonkey1);
@@ -123,21 +140,6 @@ public class ObjectPickingFragment extends AExampleFragment implements
 				e.printStackTrace();
 			}
 
-			Material material = new Material();
-			material.enableLighting(true);
-			material.setDiffuseMethod(new DiffuseMethod.Lambert());
-
-			mMonkey1.setMaterial(material);
-			mMonkey1.setColor(0x0000ff);
-
-			mMonkey2.setMaterial(material);
-			mMonkey2.setColor(0x00ff00);
-
-			mMonkey3.setMaterial(material);
-			mMonkey3.setColor(0xcc1100);
-
-			mMonkey4.setMaterial(material);
-			mMonkey4.setColor(0xff9955);
 		}
 
 		public void onDrawFrame(GL10 glUnused) {

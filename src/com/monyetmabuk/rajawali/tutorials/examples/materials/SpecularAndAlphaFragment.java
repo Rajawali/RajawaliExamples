@@ -50,6 +50,7 @@ public class SpecularAndAlphaFragment extends AExampleFragment {
 				material.setSpecularMethod(new SpecularMethod.Phong(Color.WHITE, 40));
 				material.addTexture(earthTexture);
 				material.addTexture(new SpecularMapTexture("earthSpecularTex", R.drawable.earth_specular));
+				material.setColorInfluence(0);
 
 				Sphere sphere = new Sphere(1, 32, 24);
 				sphere.setMaterial(material);
@@ -70,6 +71,7 @@ public class SpecularAndAlphaFragment extends AExampleFragment {
 				material.setSpecularMethod(new SpecularMethod.Phong());
 				material.addTexture(earthTexture);
 				material.addTexture(new AlphaMapTexture("alphaMapTex", R.drawable.camden_town_alpha));
+				material.setColorInfluence(0);
 
 				sphere = new Sphere(1, 32, 24);
 				sphere.setMaterial(material);

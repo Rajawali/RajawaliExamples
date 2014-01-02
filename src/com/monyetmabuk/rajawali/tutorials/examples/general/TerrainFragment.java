@@ -111,6 +111,7 @@ public class TerrainFragment extends AExampleFragment {
 				groundTexture.setInfluence(.5f);
 				material.addTexture(groundTexture);
 				material.addTexture(new NormalMapTexture("groundNormalMap", R.drawable.groundnor));
+				material.setColorInfluence(0);
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}

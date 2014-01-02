@@ -18,6 +18,7 @@ import rajawali.materials.methods.SpecularMethod;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.VideoTexture;
 import rajawali.math.vector.Vector3;
+import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Plane;
 import android.content.Context;
 import android.content.res.Resources.NotFoundException;
@@ -59,6 +60,7 @@ public class VideoTextureFragment extends AExampleFragment {
 				Object3D android = new Object3D(
 						(SerializedObject3D) fis.readObject());
 				Material material = new Material();
+				material.enableLighting(true);
 				material.setDiffuseMethod(new DiffuseMethod.Lambert());
 				material.setSpecularMethod(new SpecularMethod.Phong());
 				android.setMaterial(material);
@@ -78,13 +80,14 @@ public class VideoTextureFragment extends AExampleFragment {
 
 			mVideoTexture = new VideoTexture("sintelTrailer", mMediaPlayer);
 			Material material = new Material();
+			material.setColorInfluence(0);
 			try {
 				material.addTexture(mVideoTexture);
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}
 
-			Plane screen = new Plane(3, 2, 2, 2);
+			Plane screen = new Plane(3, 2, 2, 2, Axis.Z);
 			screen.setMaterial(material);
 			screen.setX(.1f);
 			screen.setY(-.2f);

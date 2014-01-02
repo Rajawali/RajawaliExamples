@@ -50,8 +50,10 @@ import com.monyetmabuk.rajawali.tutorials.examples.optimizations.Optimized2000Pl
 import com.monyetmabuk.rajawali.tutorials.examples.optimizations.TextureAtlasFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.optimizations.TextureCompressionFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.optimizations.UpdateVertexBufferFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.parsers.AwdFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.parsers.FBXFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.parsers.LoadModelFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.parsers.LoaderGCodeFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.CanvasTextFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.TransparentSurfaceFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.TwoDimensionalFragment;
@@ -140,8 +142,10 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Texture Atlas", TextureAtlasFragment.class)
 			});
 		ITEMS.put(Category.PARSERS, new ExampleItem[] {
-				new ExampleItem("Load OBJ Model", LoadModelFragment.class)
+				new ExampleItem("Load AWD Model", AwdFragment.class)
+				, new ExampleItem("Load OBJ Model", LoadModelFragment.class)
 				, new ExampleItem("FBX Scene Importer", FBXFragment.class)
+				, new ExampleItem("GCode Toolpaths", LoaderGCodeFragment.class)
 			});
 		ITEMS.put(Category.ANIMATION, new ExampleItem[] {
 				new ExampleItem("Animation", AnimationFragment.class)
@@ -156,7 +160,7 @@ public class ExamplesApplication extends Application {
 		ITEMS.put(Category.MATERIALS, new ExampleItem[] {
 				new ExampleItem("Materials", MaterialsFragment.class)
 				, new ExampleItem("Custom Material", CustomMaterialShaderFragment.class)
-				, new ExampleItem("Bump Mapping", BumpMappingFragment.class)
+				, new ExampleItem("Normal Mapping", BumpMappingFragment.class)
 				, new ExampleItem("Toon Shading", ToonShadingFragment.class)
 				, new ExampleItem("Custom Vertex Shader", CustomVertexShaderFragment.class)
 				, new ExampleItem("Sphere Mapping", SphereMapFragment.class)

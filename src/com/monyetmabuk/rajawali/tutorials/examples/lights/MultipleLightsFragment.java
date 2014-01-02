@@ -54,6 +54,7 @@ public class MultipleLightsFragment extends AExampleFragment {
 				material.setDiffuseMethod(new DiffuseMethod.Lambert());
 				material.enableLighting(true);
 				material.addTexture(new Texture("jetTexture", R.drawable.jettexture));
+				material.setColorInfluence(0);
 				jet.setMaterial(material);
 				jet.setPosition(1, 0, 0);
 				jet.setRotY(180);

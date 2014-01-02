@@ -109,6 +109,7 @@ public class AccelerometerFragment extends AExampleFragment implements
 						resourceIds);
 				envMap.isEnvironmentTexture(true);
 				material.addTexture(envMap);
+				material.setColorInfluence(0);
 				mMonkey.setMaterial(material);
 			} catch (TextureException e) {
 				e.printStackTrace();

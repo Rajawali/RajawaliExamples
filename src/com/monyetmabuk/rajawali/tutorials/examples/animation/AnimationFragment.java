@@ -115,11 +115,12 @@ public class AnimationFragment extends AExampleFragment {
 			anim.setTransformable3D(mMonkey);
 			registerAnimation(anim);
 			mQueue.addAnimation(anim);
+			
+			mQueue.start();
 		}
 
 		public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 			super.onSurfaceCreated(gl, config);
-			mQueue.start();
 		}
 
 		public void onDrawFrame(GL10 glUnused) {

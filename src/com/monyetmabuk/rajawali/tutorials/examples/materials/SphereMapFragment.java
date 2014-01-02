@@ -56,6 +56,7 @@ public class SphereMapFragment extends AExampleFragment {
 				material1.setDiffuseMethod(new DiffuseMethod.Lambert());
 				material1.addTexture(jetTexture);
 				material1.addTexture(sphereMapTexture);
+				material1.setColorInfluence(0);
 
 				ObjectInputStream ois;
 				ois = new ObjectInputStream(mContext.getResources()

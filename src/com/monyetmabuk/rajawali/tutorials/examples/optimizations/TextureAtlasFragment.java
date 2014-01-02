@@ -7,6 +7,7 @@ import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
 import rajawali.materials.textures.TextureAtlas;
 import rajawali.materials.textures.TexturePacker;
+import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Plane;
 import rajawali.primitives.Sphere;
@@ -52,13 +53,17 @@ public class TextureAtlasFragment extends AExampleFragment {
 				// -- this is not necessary in typical use cases
 				//
 				mAtlasMaterial.addTexture(new Texture("atlasTexture", mAtlas.getPages()[0]));
+				mAtlasMaterial.setColorInfluence(0);
 				//
 				// -- Add each target texture to the material
 				// -- they are pulled from the atlas by their original resource name
 				//
 				mSphereMaterial.addTexture(new Texture("earthtruecolor_nasa_big", mAtlas));
+				mSphereMaterial.setColorInfluence(0);
 				mCubeMaterial.addTexture(new Texture("camden_town_alpha", mAtlas));
+				mCubeMaterial.setColorInfluence(0);
 				mPlaneMaterial.addTexture(new Texture("rajawali", mAtlas));
+				mPlaneMaterial.setColorInfluence(0);
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}
@@ -66,7 +71,7 @@ public class TextureAtlasFragment extends AExampleFragment {
 			//
 			// -- Show the full atlas for demonstration purposes
 			//
-			mAtlasPlane = new Plane(1,1,1,1);
+			mAtlasPlane = new Plane(Axis.Z);
 			mAtlasPlane.setMaterial(mAtlasMaterial);
 			mAtlasPlane.setY(1);
 			addChild(mAtlasPlane);
