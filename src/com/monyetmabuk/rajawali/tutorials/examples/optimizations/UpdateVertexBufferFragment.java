@@ -168,7 +168,7 @@ public class UpdateVertexBufferFragment extends AExampleFragment {
 			anim.setDuration(10000 * 20);
 			anim.setTransformable3D(getCurrentCamera());
 			anim.setRepeatMode(RepeatMode.INFINITE);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 		}
 

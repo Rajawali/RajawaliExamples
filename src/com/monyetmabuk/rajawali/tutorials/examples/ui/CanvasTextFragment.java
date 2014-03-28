@@ -90,7 +90,7 @@ public class CanvasTextFragment extends AExampleFragment {
 				anim.setDuration(i == 0 ? 12000
 						: 4000 + (int) (Math.random() * 4000));
 				anim.setTransformable3D(timeSphere);
-				registerAnimation(anim);
+				getCurrentScene().registerAnimation(anim);
 				anim.play();
 			}
 		}

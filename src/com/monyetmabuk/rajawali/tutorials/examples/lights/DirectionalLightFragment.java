@@ -50,7 +50,7 @@ public class DirectionalLightFragment extends AExampleFragment {
 			rootSphere.setMaterial(sphereMaterial);
 			rootSphere.setRenderChildrenAsBatch(true);
 			rootSphere.setVisible(false);
-			addChild(rootSphere);
+			getCurrentScene().addChild(rootSphere);
 
 			// -- inner ring
 
@@ -120,7 +120,7 @@ public class DirectionalLightFragment extends AExampleFragment {
 				public void onAnimationEnd(Animation3D animation) {
 				}
 			});
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 		}
 

@@ -119,7 +119,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
 			}
 			mSphere.setMaterial(sphereMaterial);
 			mSphere.setDoubleSided(true);
-			addChild(mSphere);
+			getCurrentScene().addChild(mSphere);
 
 			try {
 				// -- load gzipped serialized object
@@ -136,7 +136,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
 				raptorMaterial.setColorInfluence(0);
 				mRaptor.setMaterial(raptorMaterial);
 				mRaptor.setScale(.5f);
-				addChild(mRaptor);
+				getCurrentScene().addChild(mRaptor);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -159,7 +159,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
 			mRootCube.setY(-1f);
 			// -- similar objects with the same material, optimize
 			mRootCube.setRenderChildrenAsBatch(true);
-			addChild(mRootCube);
+			getCurrentScene().addChild(mRootCube);
 			mCubes[0] = mRootCube;
 
 			for (int i = 1; i < mCubes.length; ++i) {
@@ -179,7 +179,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
 			chaseCamera.setObjectToChase(mRaptor);
 			// -- set the far plane to 1000 so that we actually see the sky sphere
 			chaseCamera.setFarPlane(1000);
-			replaceAndSwitchCamera(chaseCamera, 0);
+			getCurrentScene().replaceAndSwitchCamera(chaseCamera, 0);
 		}
 
 		public void setCameraOffset(Vector3 offset) {

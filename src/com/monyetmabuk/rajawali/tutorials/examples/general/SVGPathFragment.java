@@ -65,7 +65,7 @@ public class SVGPathFragment extends AExampleFragment {
 				anim.setDelay(.5f + Math.random());
 				anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 				anim.setTransformable3D(line);
-				registerAnimation(anim);
+				getCurrentScene().registerAnimation(anim);
 				anim.play();
 			}
 			getCurrentCamera().setFarPlane(2000);

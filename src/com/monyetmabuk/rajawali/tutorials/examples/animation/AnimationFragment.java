@@ -60,7 +60,7 @@ public class AnimationFragment extends AExampleFragment {
 				ois.close();
 				mMonkey = new Object3D(serializedMonkey);
 				getCurrentScene().addLight(mLight);
-				addChild(mMonkey);
+				getCurrentScene().addChild(mMonkey);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -79,7 +79,7 @@ public class AnimationFragment extends AExampleFragment {
 			anim.setRepeatCount(3);
 			anim.setRepeatMode(RepeatMode.REVERSE);
 			anim.setTransformable3D(mMonkey);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			mQueue.addAnimation(anim);
 
 			Vector3 axis = new Vector3(10, 5, 2);
@@ -88,13 +88,13 @@ public class AnimationFragment extends AExampleFragment {
 			anim = new RotateAnimation3D(axis, 0, 360);
 			anim.setDuration(2000);
 			anim.setTransformable3D(mMonkey);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			mQueue.addAnimation(anim);
 
 			anim = new TranslateAnimation3D(new Vector3(-2, -2, 0));
 			anim.setDuration(500);
 			anim.setTransformable3D(mMonkey);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			mQueue.addAnimation(anim);
 
 			anim = new TranslateAnimation3D(new Vector3(-2, -2, 0),
@@ -103,7 +103,7 @@ public class AnimationFragment extends AExampleFragment {
 			anim.setTransformable3D(mMonkey);
 			anim.setInterpolator(new BounceInterpolator());
 			anim.setRepeatCount(3);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			mQueue.addAnimation(anim);
 
 			anim = new EllipticalOrbitAnimation3D(new Vector3(), new Vector3(0,
@@ -113,7 +113,7 @@ public class AnimationFragment extends AExampleFragment {
 			anim.setDuration(2000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(mMonkey);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			mQueue.addAnimation(anim);
 			
 			mQueue.start();

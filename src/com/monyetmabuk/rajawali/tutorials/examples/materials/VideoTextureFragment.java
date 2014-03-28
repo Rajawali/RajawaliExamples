@@ -92,7 +92,7 @@ public class VideoTextureFragment extends AExampleFragment {
 			screen.setX(.1f);
 			screen.setY(-.2f);
 			screen.setZ(1.5f);
-			addChild(screen);
+			getCurrentScene().addChild(screen);
 
 			getCurrentCamera().setLookAt(0, 0, 0);
 
@@ -105,7 +105,7 @@ public class VideoTextureFragment extends AExampleFragment {
 			lightAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			lightAnim.setTransformable3D(pointLight);
 			lightAnim.setInterpolator(new AccelerateDecelerateInterpolator());
-			registerAnimation(lightAnim);
+			getCurrentScene().registerAnimation(lightAnim);
 			lightAnim.play();
 
 			// -- animate the camera
@@ -115,7 +115,7 @@ public class VideoTextureFragment extends AExampleFragment {
 			camAnim.setDuration(20000);
 			camAnim.setRepeatMode(RepeatMode.INFINITE);
 			camAnim.setTransformable3D(getCurrentCamera());
-			registerAnimation(camAnim);
+			getCurrentScene().registerAnimation(camAnim);
 			camAnim.play();
 
 			mMediaPlayer.start();

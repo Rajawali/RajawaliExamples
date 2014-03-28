@@ -57,14 +57,14 @@ public class FogFragment extends AExampleFragment {
 				mRoad = objParser.getParsedObject();
 				mRoad.setZ(-2);
 				mRoad.setRotY(180);
-				addChild(mRoad);
+				getCurrentScene().addChild(mRoad);
 			} catch (ParsingException e) {
 				e.printStackTrace();
 			}
 			mRoad = objParser.getParsedObject();
 			mRoad.setZ(-2);
 			mRoad.setRotY(180);
-			addChild(mRoad);
+			getCurrentScene().addChild(mRoad);
 
 			try {
 				Material roadMaterial = new Material();
@@ -97,7 +97,7 @@ public class FogFragment extends AExampleFragment {
 			camAnim.setInterpolator(new AccelerateDecelerateInterpolator());
 			camAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			camAnim.setTransformable3D(getCurrentCamera());
-			registerAnimation(camAnim);
+			getCurrentScene().registerAnimation(camAnim);
 			camAnim.play();
 		}
 

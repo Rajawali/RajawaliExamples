@@ -37,7 +37,7 @@ public class CustomMaterialShaderFragment extends AExampleFragment {
 
 			mCube = new Cube(2);
 			mCube.setMaterial(mMaterial);
-			addChild(mCube);
+			getCurrentScene().addChild(mCube);
 
 			getCurrentCamera().setPosition(0, 0, 10);
 

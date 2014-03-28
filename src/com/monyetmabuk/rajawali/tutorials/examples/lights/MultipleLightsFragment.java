@@ -58,7 +58,7 @@ public class MultipleLightsFragment extends AExampleFragment {
 				jet.setMaterial(material);
 				jet.setPosition(1, 0, 0);
 				jet.setRotY(180);
-				addChild(jet);
+				getCurrentScene().addChild(jet);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -68,7 +68,7 @@ public class MultipleLightsFragment extends AExampleFragment {
 			anim.setDuration(4000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(light1);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			anim = new TranslateAnimation3D(new Vector3(10, 10, 5),
@@ -76,7 +76,7 @@ public class MultipleLightsFragment extends AExampleFragment {
 			anim.setDuration(2000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(light2);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 		}
 

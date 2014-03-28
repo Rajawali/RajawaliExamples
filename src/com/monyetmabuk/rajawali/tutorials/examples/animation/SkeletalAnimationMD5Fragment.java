@@ -53,7 +53,7 @@ public class SkeletalAnimationMD5Fragment extends AExampleFragment {
 				mObject.setScale(.04f);
 				mObject.play();
 
-				addChild(mObject);
+				getCurrentScene().addChild(mObject);
 			} catch (ParsingException e) {
 				e.printStackTrace();
 			}

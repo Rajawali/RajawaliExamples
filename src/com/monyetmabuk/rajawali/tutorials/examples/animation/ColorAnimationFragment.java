@@ -45,14 +45,14 @@ public class ColorAnimationFragment extends AExampleFragment {
 			anim.setTransformable3D(cube1);
 			anim.setDuration(2000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			anim = new RotateAnimation3D(Axis.Y, 359);
 			anim.setTransformable3D(cube1);
 			anim.setDuration(6000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			//
@@ -80,14 +80,14 @@ public class ColorAnimationFragment extends AExampleFragment {
 			anim.setTransformable3D(cube2);
 			anim.setDuration(2000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			anim = new RotateAnimation3D(Axis.Y, -359);
 			anim.setTransformable3D(cube2);
 			anim.setDuration(6000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			getCurrentCamera().setPosition(0, 4, 8);

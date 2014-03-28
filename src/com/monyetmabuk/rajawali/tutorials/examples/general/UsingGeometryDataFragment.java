@@ -66,7 +66,7 @@ public class UsingGeometryDataFragment extends AExampleFragment {
 				// -- objects that share the same geometry and material,
 				// so batch rendering gives a performance boost.
 				mRootSpike.setRenderChildrenAsBatch(true);
-				addChild(mRootSpike);
+				getCurrentScene().addChild(mRootSpike);
 
 				// -- get vertex buffer
 				FloatBuffer vertBuffer = sphere.getGeometry().getVertices();
@@ -111,7 +111,7 @@ public class UsingGeometryDataFragment extends AExampleFragment {
 			mAnim.setRepeatMode(RepeatMode.INFINITE);
 			mAnim.setTransformable3D(mRootSpike);
 
-			registerAnimation(mAnim);
+			getCurrentScene().registerAnimation(mAnim);
 			mAnim.play();
 		}
 
