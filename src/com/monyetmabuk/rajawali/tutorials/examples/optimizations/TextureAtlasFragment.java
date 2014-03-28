@@ -74,7 +74,7 @@ public class TextureAtlasFragment extends AExampleFragment {
 			mAtlasPlane = new Plane(Axis.Z);
 			mAtlasPlane.setMaterial(mAtlasMaterial);
 			mAtlasPlane.setY(1);
-			addChild(mAtlasPlane);
+			getCurrentScene().addChild(mAtlasPlane);
 		
 			mTileSphere = new Sphere(.35f, 20, 20);
 			mTileSphere.setMaterial(mAtlasMaterial);
@@ -84,20 +84,20 @@ public class TextureAtlasFragment extends AExampleFragment {
 			//
 			mTileSphere.setAtlasTile("earthtruecolor_nasa_big", mAtlas);
 			mTileSphere.setPosition(0, -.1f, 0);
-			addChild(mTileSphere);
+			getCurrentScene().addChild(mTileSphere);
 
 			mTileCube = new Cube(.5f);
 			mTileCube.setMaterial(mAtlasMaterial);
 			mTileCube.setAtlasTile("camden_town_alpha", mAtlas);
 			mTileCube.setPosition(-.5f, -1f, 0);
 			mTileCube.setRotX(-1);
-			addChild(mTileCube);
+			getCurrentScene().addChild(mTileCube);
 
 			mTilePlane = new Plane(.6f,.6f,1,1);
 			mTilePlane.setMaterial(mAtlasMaterial);
 			mTilePlane.setAtlasTile("rajawali", mAtlas);
 			mTilePlane.setPosition(.5f, -1f, 0);
-			addChild(mTilePlane);
+			getCurrentScene().addChild(mTilePlane);
 		}
 		
 		@Override

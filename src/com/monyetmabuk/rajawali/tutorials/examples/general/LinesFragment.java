@@ -49,7 +49,7 @@ public class LinesFragment extends AExampleFragment {
 			Line3D whirl = new Line3D(points, 1, 0xffffff00);
 			Material material = new Material();
 			whirl.setMaterial(material);
-			addChild(whirl);
+			getCurrentScene().addChild(whirl);
 
 			Vector3 axis = new Vector3(2, .4f, 1);
 			axis.normalize();
@@ -57,7 +57,7 @@ public class LinesFragment extends AExampleFragment {
 			mAnim.setDuration(8000);
 			mAnim.setRepeatMode(RepeatMode.INFINITE);
 			mAnim.setTransformable3D(whirl);
-			registerAnimation(mAnim);
+			getCurrentScene().registerAnimation(mAnim);
 			mAnim.play();
 		}
 

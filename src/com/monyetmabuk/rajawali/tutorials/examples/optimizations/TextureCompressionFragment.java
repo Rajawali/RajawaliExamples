@@ -42,7 +42,7 @@ public class TextureCompressionFragment extends AExampleFragment {
 				mPlane.setPosition(0, -1.25f, 0);
 				mPlane.setDoubleSided(true);
 				mPlane.setRotZ(90);
-				addChild(mPlane);
+				getCurrentScene().addChild(mPlane);
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}
@@ -66,7 +66,7 @@ public class TextureCompressionFragment extends AExampleFragment {
 				mMipmappedPlane.setPosition(0, 1.25f, 0);
 				mMipmappedPlane.setDoubleSided(true);
 				mMipmappedPlane.setRotZ(90);
-				addChild(mMipmappedPlane);
+				getCurrentScene().addChild(mMipmappedPlane);
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}

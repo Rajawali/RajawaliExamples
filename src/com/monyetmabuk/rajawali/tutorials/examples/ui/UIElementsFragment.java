@@ -81,7 +81,7 @@ public class UIElementsFragment extends AExampleFragment {
 				fis.close();
 
 				mAndroid = new Object3D(serializedAndroid);
-				addChild(mAndroid);
+				getCurrentScene().addChild(mAndroid);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

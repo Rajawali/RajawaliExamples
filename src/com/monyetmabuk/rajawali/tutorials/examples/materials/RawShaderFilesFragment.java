@@ -49,7 +49,7 @@ public class RawShaderFilesFragment extends AExampleFragment {
 			mMaterial.setColorInfluence(.5f);
 			mCube = new Sphere(2, 64, 64);
 			mCube.setMaterial(mMaterial);
-			addChild(mCube);
+			getCurrentScene().addChild(mCube);
 
 			getCurrentCamera().setPosition(0, 0, 10);
 

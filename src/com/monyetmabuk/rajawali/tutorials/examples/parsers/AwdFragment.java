@@ -33,7 +33,7 @@ public class AwdFragment extends AExampleFragment {
 
 				final Object3D obj = parser.getParsedObject();
 				obj.setScale(0.25f);
-				addChild(obj);
+				getCurrentScene().addChild(obj);
 
 				final RotateAnimation3D anim = new RotateAnimation3D(Axis.Y,
 						-360);
@@ -41,7 +41,7 @@ public class AwdFragment extends AExampleFragment {
 				anim.setRepeatMode(RepeatMode.INFINITE);
 				anim.setTransformable3D(obj);
 				anim.play();
-				registerAnimation(anim);
+				getCurrentScene().registerAnimation(anim);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

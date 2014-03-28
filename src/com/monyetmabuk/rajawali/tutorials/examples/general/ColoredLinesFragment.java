@@ -58,7 +58,7 @@ public class ColoredLinesFragment extends AExampleFragment {
 			lineAnim.setDuration(10000);
 			lineAnim.setRepeatMode(RepeatMode.INFINITE);
 			lineAnim.setTransformable3D(line);
-			registerAnimation(lineAnim);
+			getCurrentScene().registerAnimation(lineAnim);
 			lineAnim.play();
 
 			TranslateAnimation3D camAnim = new TranslateAnimation3D(
@@ -66,7 +66,7 @@ public class ColoredLinesFragment extends AExampleFragment {
 			camAnim.setDuration(12000);
 			camAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			camAnim.setTransformable3D(getCurrentCamera());
-			registerAnimation(camAnim);
+			getCurrentScene().registerAnimation(camAnim);
 			camAnim.play();
 		}
 

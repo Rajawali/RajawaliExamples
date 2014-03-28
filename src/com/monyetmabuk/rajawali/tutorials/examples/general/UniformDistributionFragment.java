@@ -88,7 +88,7 @@ public class UniformDistributionFragment extends AExampleFragment {
 				s.setColor(CURVE1_COLOR);
 				s.setPosition(pos);
 				s.setDrawingMode(GLES20.GL_LINES);
-				addChild(s);
+				getCurrentScene().addChild(s);
 			}
 
 			// -- draw the first curve
@@ -97,7 +97,7 @@ public class UniformDistributionFragment extends AExampleFragment {
 			Object3D pathFollowObject = new Sphere(.04f, 16, 16);
 			pathFollowObject.setColor(CURVE1_COLOR);
 			pathFollowObject.setMaterial(material);
-			addChild(pathFollowObject);
+			getCurrentScene().addChild(pathFollowObject);
 
 			// -- animate a sphere that follow the first curve.
 			// This shows the non constant speed of a non parametrized curve.
@@ -105,7 +105,7 @@ public class UniformDistributionFragment extends AExampleFragment {
 			anim.setDuration(ANIMATION_DURATION);
 			anim.setTransformable3D(pathFollowObject);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			// -- reparametrize the curve for uniform distribution
@@ -120,7 +120,7 @@ public class UniformDistributionFragment extends AExampleFragment {
 				s.setMaterial(material);
 				s.setColor(CURVE2_COLOR);
 				s.setPosition(pos);
-				addChild(s);
+				getCurrentScene().addChild(s);
 			}
 
 			// -- draw the second, reparametrized, curve
@@ -129,7 +129,7 @@ public class UniformDistributionFragment extends AExampleFragment {
 			pathFollowObject = new Sphere(.04f, 16, 16);
 			pathFollowObject.setColor(CURVE2_COLOR);
 			pathFollowObject.setMaterial(material);
-			addChild(pathFollowObject);
+			getCurrentScene().addChild(pathFollowObject);
 
 			// -- animate a sphere on the second curve.
 			// This shows a more or less constant speed of a parametrized curve.
@@ -137,7 +137,7 @@ public class UniformDistributionFragment extends AExampleFragment {
 			anim.setDuration(ANIMATION_DURATION);
 			anim.setTransformable3D(pathFollowObject);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 		}
 

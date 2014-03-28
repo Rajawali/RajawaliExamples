@@ -45,7 +45,7 @@ public class BezierFragment extends AExampleFragment {
 			phong.setDiffuseMethod(new DiffuseMethod.Lambert());
 			phong.setSpecularMethod(new SpecularMethod.Phong());
 			redSphere.setMaterial(phong);
-			addChild(redSphere);
+			getCurrentScene().addChild(redSphere);
 
 			Object3D yellowSphere = new Sphere(.6f, 16, 16);
 			yellowSphere.setPosition(2, 4, 0);
@@ -54,7 +54,7 @@ public class BezierFragment extends AExampleFragment {
 			diffuse.enableLighting(true);
 			diffuse.setDiffuseMethod(new DiffuseMethod.Lambert());
 			yellowSphere.setMaterial(diffuse);
-			addChild(yellowSphere);
+			getCurrentScene().addChild(yellowSphere);
 
 			CompoundCurve3D redBezierPath = new CompoundCurve3D();
 			redBezierPath.addCurve(new CubicBezierCurve3D(
@@ -76,14 +76,14 @@ public class BezierFragment extends AExampleFragment {
 			redAnim.setDuration(2000);
 			redAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			redAnim.setTransformable3D(redSphere);
-			registerAnimation(redAnim);
+			getCurrentScene().registerAnimation(redAnim);
 			redAnim.play();
 
 			Animation3D yellowAnim = new TranslateAnimation3D(yellowBezierPath);
 			yellowAnim.setDuration(3800);
 			yellowAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			yellowAnim.setTransformable3D(yellowSphere);
-			registerAnimation(yellowAnim);
+			getCurrentScene().registerAnimation(yellowAnim);
 			yellowAnim.play();
 		}
 	}

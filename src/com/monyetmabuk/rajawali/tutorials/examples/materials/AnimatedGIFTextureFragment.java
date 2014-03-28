@@ -99,7 +99,7 @@ public class AnimatedGIFTextureFragment extends AExampleFragment implements
 			anim.setDuration(12000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			anim.setTransformable3D(getCurrentCamera());
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 		}
 

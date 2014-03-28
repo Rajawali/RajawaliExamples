@@ -48,7 +48,7 @@ public class CustomVertexShaderFragment extends AExampleFragment implements
 			mMaterial.addPlugin(new CustomVertexShaderMaterialPlugin());
 			mSphere = new Sphere(2, 60, 60);
 			mSphere.setMaterial(mMaterial);
-			addChild(mSphere);
+			getCurrentScene().addChild(mSphere);
 
 			Vector3 axis = new Vector3(2, 4, 1);
 			axis.normalize();
@@ -57,7 +57,7 @@ public class CustomVertexShaderFragment extends AExampleFragment implements
 			mAnim.setRepeatMode(RepeatMode.INFINITE);
 			mAnim.setDuration(12000);
 			mAnim.setTransformable3D(mSphere);
-			registerAnimation(mAnim);
+			getCurrentScene().registerAnimation(mAnim);
 			mAnim.play();
 
 			getCurrentCamera().setPosition(0, 0, 10);

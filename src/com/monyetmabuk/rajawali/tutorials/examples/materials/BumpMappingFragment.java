@@ -57,18 +57,18 @@ public class BumpMappingFragment extends AExampleFragment {
 				material1.setColorInfluence(0);
 				cube.setMaterial(material1);
 				cube.setZ(-2);
-				addChild(cube);
+				getCurrentScene().addChild(cube);
 
 				RotateAnimation3D anim = new RotateAnimation3D(Axis.Y, -5, 5);
 				anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 				anim.setDuration(5000);
 				anim.setTransformable3D(cube);
-				registerAnimation(anim);
+				getCurrentScene().registerAnimation(anim);
 				anim.play();
 
 				mEarth = new Sphere(1, 32, 32);
 				mEarth.setZ(-.5f);
-				addChild(mEarth);
+				getCurrentScene().addChild(mEarth);
 
 				Material material2 = new Material();
 				material2.setDiffuseMethod(new DiffuseMethod.Lambert());
@@ -83,7 +83,7 @@ public class BumpMappingFragment extends AExampleFragment {
 				earthAnim.setDuration(6000);
 				earthAnim.setRepeatMode(RepeatMode.INFINITE);
 				earthAnim.setTransformable3D(mEarth);
-				registerAnimation(earthAnim);
+				getCurrentScene().registerAnimation(earthAnim);
 				earthAnim.play();
 
 			} catch (TextureException e) {
@@ -96,7 +96,7 @@ public class BumpMappingFragment extends AExampleFragment {
 			mLightAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			mLightAnim.setTransformable3D(mLight);
 			mLightAnim.setInterpolator(new AccelerateDecelerateInterpolator());
-			registerAnimation(mLightAnim);
+			getCurrentScene().registerAnimation(mLightAnim);
 			mLightAnim.play();
 		}
 

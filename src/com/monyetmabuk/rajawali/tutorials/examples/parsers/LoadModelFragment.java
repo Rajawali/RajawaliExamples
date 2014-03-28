@@ -45,7 +45,7 @@ public class LoadModelFragment extends AExampleFragment {
 			try {
 				objParser.parse();
 				mObjectGroup = objParser.getParsedObject();
-				addChild(mObjectGroup);
+				getCurrentScene().addChild(mObjectGroup);
 
 				mCameraAnim = new RotateAnimation3D(Axis.Y, 360);
 				mCameraAnim.setDuration(8000);
@@ -63,8 +63,8 @@ public class LoadModelFragment extends AExampleFragment {
 			mLightAnim.setRepeatMode(RepeatMode.INFINITE);
 			mLightAnim.setTransformable3D(mLight);
 
-			registerAnimation(mCameraAnim);
-			registerAnimation(mLightAnim);
+			getCurrentScene().registerAnimation(mCameraAnim);
+			getCurrentScene().registerAnimation(mLightAnim);
 
 			mCameraAnim.play();
 			mLightAnim.play();

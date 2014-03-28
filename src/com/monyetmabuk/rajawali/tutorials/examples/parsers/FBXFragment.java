@@ -58,7 +58,7 @@ public class FBXFragment extends AExampleFragment {
 			mAnim = new RotateAnimation3D(Axis.Y, 360);
 			mAnim.setDuration(16000);
 			mAnim.setRepeatMode(RepeatMode.INFINITE);
-			registerAnimation(mAnim);
+			getCurrentScene().registerAnimation(mAnim);
 
 			try {
 				// -- Model by Sampo Rask
@@ -68,7 +68,7 @@ public class FBXFragment extends AExampleFragment {
 				parser.parse();
 				Object3D o = parser.getParsedObject();
 				o.setY(-.5f);
-				addChild(o);
+				getCurrentScene().addChild(o);
 
 				mAnim.setTransformable3D(o);
 				mAnim.play();
