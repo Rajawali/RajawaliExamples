@@ -69,7 +69,9 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 				invalidateOptionsMenu();
 			}
 		};
+		
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
+		mDrawerLayout.setFocusable(false);
 
 		if (savedInstanceState == null)
 			onChildClick(null, null, 0, 0, 0);
@@ -113,6 +115,7 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		case android.R.id.home:
 			if (mDrawerToggle.onOptionsItemSelected(item))
 				return true;
+			
 			break;
 		}
 
