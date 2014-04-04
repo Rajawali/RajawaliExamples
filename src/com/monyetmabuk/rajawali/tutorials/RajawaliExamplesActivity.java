@@ -148,7 +148,6 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 	 */
 	private void launchFragment(Category category, ExampleItem exampleItem) {
 		final FragmentManager fragmentManager = getFragmentManager();
-		final Fragment fragment;
 
 		// Close the drawer
 		mDrawerLayout.closeDrawers();
@@ -156,22 +155,18 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		// Set fragment title
 		setTitle(exampleItem.title);
 
-		final FragmentTransaction transaction = fragmentManager
-				.beginTransaction();
+		final FragmentTransaction transaction = fragmentManager.beginTransaction();
 		try {
-			Fragment oldFrag = fragmentManager.findFragmentByTag(FRAGMENT_TAG);
-			if (oldFrag != null)
-				transaction.remove(oldFrag);
-
-			fragment = (Fragment) exampleItem.exampleClass.getConstructors()[0]
-					.newInstance();
+			final Fragment fragment = (Fragment) exampleItem.exampleClass.getConstructors()[0].newInstance();
 
 			final Bundle bundle = new Bundle();
-			bundle.putString(AExampleFragment.BUNDLE_EXAMPLE_URL,
-					exampleItem.getUrl(category));
+			bundle.putString(AExampleFragment.BUNDLE_EXAMPLE_URL, exampleItem.getUrl(category));
 			fragment.setArguments(bundle);
 
-			transaction.add(R.id.content_frame, fragment, FRAGMENT_TAG);
+			if (fragmentManager.findFragmentByTag(FRAGMENT_TAG) != null)
+				transaction.addToBackStack(null);
+			
+			transaction.replace(R.id.content_frame, fragment, FRAGMENT_TAG);
 			transaction.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
