@@ -64,7 +64,7 @@ public class CatmullRomFragment extends AExampleFragment {
 				arrow.setMaterial(material);
 				arrow.setScale(.2f);
 				arrow.setColor(0xffffff00);
-				addChild(arrow);
+				getCurrentScene().addChild(arrow);
 
 				TranslateAnimation3D anim = new TranslateAnimation3D(path);
 				anim.setDuration(12000);
@@ -72,7 +72,7 @@ public class CatmullRomFragment extends AExampleFragment {
 				// -- orient to path
 				anim.setOrientToPath(true);
 				anim.setTransformable3D(arrow);
-				registerAnimation(anim);
+				getCurrentScene().registerAnimation(anim);
 				anim.play();
 			} catch (ParsingException e) {
 				e.printStackTrace();
@@ -92,7 +92,7 @@ public class CatmullRomFragment extends AExampleFragment {
 				else
 					s.setColor(0xff999999);
 
-				addChild(s);
+				getCurrentScene().addChild(s);
 			}
 
 			// -- visualize the line
@@ -104,7 +104,7 @@ public class CatmullRomFragment extends AExampleFragment {
 			}
 			Line3D line = new Line3D(linePoints, 1, 0xffffffff);
 			line.setMaterial(material);
-			addChild(line);
+			getCurrentScene().addChild(line);
 
 			EllipticalOrbitAnimation3D camAnim = new EllipticalOrbitAnimation3D(
 					new Vector3(), new Vector3(26, 0, 0), 0, 360,
@@ -112,7 +112,7 @@ public class CatmullRomFragment extends AExampleFragment {
 			camAnim.setDuration(10000);
 			camAnim.setRepeatMode(RepeatMode.INFINITE);
 			camAnim.setTransformable3D(getCurrentCamera());
-			registerAnimation(camAnim);
+			getCurrentScene().registerAnimation(camAnim);
 			camAnim.play();
 		}
 

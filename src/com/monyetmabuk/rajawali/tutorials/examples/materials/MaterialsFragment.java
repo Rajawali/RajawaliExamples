@@ -51,25 +51,25 @@ public class MaterialsFragment extends AExampleFragment {
 				mMonkey1.setScale(.7f);
 				mMonkey1.setPosition(-1, 1, 0);
 				mMonkey1.setRotY(0);
-				addChild(mMonkey1);
+				getCurrentScene().addChild(mMonkey1);
 
 				mMonkey2 = mMonkey1.clone();
 				mMonkey2.setScale(.7f);
 				mMonkey2.setPosition(1, 1, 0);
 				mMonkey2.setRotY(45);
-				addChild(mMonkey2);
+				getCurrentScene().addChild(mMonkey2);
 
 				mMonkey3 = mMonkey1.clone();
 				mMonkey3.setScale(.7f);
 				mMonkey3.setPosition(-1, -1, 0);
 				mMonkey3.setRotY(90);
-				addChild(mMonkey3);
+				getCurrentScene().addChild(mMonkey3);
 
 				mMonkey4 = mMonkey1.clone();
 				mMonkey4.setScale(.7f);
 				mMonkey4.setPosition(1, -1, 0);
 				mMonkey4.setRotY(135);
-				addChild(mMonkey4);
+				getCurrentScene().addChild(mMonkey4);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

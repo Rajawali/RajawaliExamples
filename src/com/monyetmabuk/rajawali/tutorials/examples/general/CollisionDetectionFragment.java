@@ -54,14 +54,14 @@ public class CollisionDetectionFragment extends AExampleFragment {
 			mCubeBox.setColor(0xff990000);
 			mCubeBox.setPosition(-1, -3, 0);
 			mCubeBox.setShowBoundingVolume(true);
-			addChild(mCubeBox);
+			getCurrentScene().addChild(mCubeBox);
 
 			mCubeSphere = new Cube(1);
 			mCubeSphere.setMaterial(material);
 			mCubeSphere.setColor(0xff00bfff);
 			mCubeSphere.setPosition(1, -2, 0);
 			mCubeSphere.setShowBoundingVolume(true);
-			addChild(mCubeSphere);
+			getCurrentScene().addChild(mCubeSphere);
 
 			try {
 				ObjectInputStream ois = new ObjectInputStream(mContext
@@ -77,7 +77,7 @@ public class CollisionDetectionFragment extends AExampleFragment {
 				mBoxesBox.setRotY(180);
 				mBoxesBox.setPosition(-1, 3, 0);
 				mBoxesBox.setShowBoundingVolume(true);
-				addChild(mBoxesBox);
+				getCurrentScene().addChild(mBoxesBox);
 
 				mBoxesSphere = new Object3D(serializedMonkey);
 				mBoxesSphere.setMaterial(material);
@@ -86,7 +86,7 @@ public class CollisionDetectionFragment extends AExampleFragment {
 				mBoxesSphere.setRotX(180);
 				mBoxesSphere.setPosition(1, 2, 0);
 				mBoxesSphere.setShowBoundingVolume(true);
-				addChild(mBoxesSphere);
+				getCurrentScene().addChild(mBoxesSphere);
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -96,7 +96,7 @@ public class CollisionDetectionFragment extends AExampleFragment {
 			anim.setDuration(4000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(mCubeBox);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			Vector3 axis = new Vector3(2, 1, 4);
@@ -106,28 +106,28 @@ public class CollisionDetectionFragment extends AExampleFragment {
 			anim.setDuration(4000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(mCubeBox);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			anim = new TranslateAnimation3D(new Vector3(-1, -3, 0));
 			anim.setDuration(4000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(mBoxesBox);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			anim = new TranslateAnimation3D(new Vector3(1, 2, 0));
 			anim.setDuration(2000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(mCubeSphere);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			anim = new TranslateAnimation3D(new Vector3(1, -2, 0));
 			anim.setDuration(2000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(mBoxesSphere);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 		}
 

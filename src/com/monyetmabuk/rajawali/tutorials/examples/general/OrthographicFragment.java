@@ -112,7 +112,7 @@ public class OrthographicFragment extends AExampleFragment {
 				anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 				anim.setTransformable3D(cube);
 				anim.setDelay((int) (10000 * Math.random()));
-				registerAnimation(anim);
+				getCurrentScene().registerAnimation(anim);
 				anim.play();
 			}
 
@@ -120,10 +120,10 @@ public class OrthographicFragment extends AExampleFragment {
 			anim.setDuration(20000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			anim.setTransformable3D(innerGroup);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
-			addChild(group);
+			getCurrentScene().addChild(group);
 		}
 
 	}

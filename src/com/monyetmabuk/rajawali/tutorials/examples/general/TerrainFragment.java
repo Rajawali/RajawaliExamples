@@ -52,7 +52,7 @@ public class TerrainFragment extends AExampleFragment {
 			chaseCamera.setFogFar(100);
 			chaseCamera.setFogColor(0x999999);
 			chaseCamera.setFogEnabled(true);
-			replaceAndSwitchCamera(chaseCamera, 0);
+			getCurrentScene().replaceAndSwitchCamera(chaseCamera, 0);
 			setFogEnabled(true);
 
 			//
@@ -147,7 +147,7 @@ public class TerrainFragment extends AExampleFragment {
 			anim.setDuration(60000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			anim.setOrientToPath(true);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 		}
 		

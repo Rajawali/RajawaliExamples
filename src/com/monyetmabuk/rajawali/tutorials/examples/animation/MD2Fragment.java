@@ -127,7 +127,7 @@ public class MD2Fragment extends AExampleFragment implements OnClickListener {
 				mOgre.setRotY(90);
 				mOgre.setY(-1);
 
-				addChild(mOgre);
+				getCurrentScene().addChild(mOgre);
 
 				mOgre.play();
 			} catch (ParsingException e) {

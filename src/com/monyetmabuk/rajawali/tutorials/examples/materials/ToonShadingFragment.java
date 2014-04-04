@@ -52,7 +52,7 @@ public class ToonShadingFragment extends AExampleFragment {
 				mMonkey1 = new Object3D(serializedMonkey);
 				mMonkey1.setMaterial(toonMat);
 				mMonkey1.setPosition(-1.5f, 2, 0);
-				addChild(mMonkey1);
+				getCurrentScene().addChild(mMonkey1);
 
 				toonMat = new Material();
 				toonMat.enableLighting(true);
@@ -62,7 +62,7 @@ public class ToonShadingFragment extends AExampleFragment {
 				mMonkey2 = mMonkey1.clone();
 				mMonkey2.setMaterial(toonMat);
 				mMonkey2.setPosition(1.5f, 2, 0);
-				addChild(mMonkey2);
+				getCurrentScene().addChild(mMonkey2);
 
 				toonMat = new Material();
 				toonMat.enableLighting(true);
@@ -71,7 +71,7 @@ public class ToonShadingFragment extends AExampleFragment {
 				mMonkey3 = mMonkey1.clone();
 				mMonkey3.setMaterial(toonMat);
 				mMonkey3.setPosition(0, -2, 0);
-				addChild(mMonkey3);
+				getCurrentScene().addChild(mMonkey3);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -80,21 +80,21 @@ public class ToonShadingFragment extends AExampleFragment {
 			anim.setDuration(6000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			anim.setTransformable3D(mMonkey1);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			anim = new RotateAnimation3D(Axis.Y, -360);
 			anim.setDuration(6000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			anim.setTransformable3D(mMonkey2);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			anim = new RotateAnimation3D(Axis.Y, -360);
 			anim.setDuration(6000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			anim.setTransformable3D(mMonkey3);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 		}
 

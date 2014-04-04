@@ -55,14 +55,14 @@ public class SpecularAndAlphaFragment extends AExampleFragment {
 				Sphere sphere = new Sphere(1, 32, 24);
 				sphere.setMaterial(material);
 				sphere.setY(1.2f);
-				addChild(sphere);
+				getCurrentScene().addChild(sphere);
 
 				RotateAnimation3D sphereAnim = new RotateAnimation3D(Axis.Y,
 						359);
 				sphereAnim.setDuration(14000);
 				sphereAnim.setRepeatMode(RepeatMode.INFINITE);
 				sphereAnim.setTransformable3D(sphere);
-				registerAnimation(sphereAnim);
+				getCurrentScene().registerAnimation(sphereAnim);
 				sphereAnim.play();
 
 				material = new Material();
@@ -77,13 +77,13 @@ public class SpecularAndAlphaFragment extends AExampleFragment {
 				sphere.setMaterial(material);
 				sphere.setDoubleSided(true);
 				sphere.setY(-1.2f);
-				addChild(sphere);
+				getCurrentScene().addChild(sphere);
 
 				sphereAnim = new RotateAnimation3D(Axis.Y, -359);
 				sphereAnim.setDuration(10000);
 				sphereAnim.setRepeatMode(RepeatMode.INFINITE);
 				sphereAnim.setTransformable3D(sphere);
-				registerAnimation(sphereAnim);
+				getCurrentScene().registerAnimation(sphereAnim);
 				sphereAnim.play();
 			} catch (TextureException e) {
 				e.printStackTrace();
@@ -95,7 +95,7 @@ public class SpecularAndAlphaFragment extends AExampleFragment {
 			lightAnim.setInterpolator(new AccelerateDecelerateInterpolator());
 			lightAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			lightAnim.setTransformable3D(pointLight);
-			registerAnimation(lightAnim);
+			getCurrentScene().registerAnimation(lightAnim);
 			lightAnim.play();
 
 			getCurrentCamera().setZ(6);

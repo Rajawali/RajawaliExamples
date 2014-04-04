@@ -58,10 +58,10 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 			
 			mPlanes.setDoubleSided(true);
 			mPlanes.setZ(4);
-			addChild(mPlanes);
+			getCurrentScene().addChild(mPlanes);
 
 			Object3D empty = new Object3D();
-			addChild(empty);
+			getCurrentScene().addChild(empty);
 
 			CatmullRomCurve3D path = new CatmullRomCurve3D();
 			path.addPoint(new Vector3(-4, 0, -20));
@@ -78,7 +78,7 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 			mCamAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			mCamAnim.setTransformable3D(getCurrentCamera());
 			mCamAnim.setInterpolator(new AccelerateDecelerateInterpolator());
-			registerAnimation(mCamAnim);
+			getCurrentScene().registerAnimation(mCamAnim);
 			mCamAnim.play();
 
 			getCurrentCamera().setLookAt(new Vector3(0, 0, 30));

@@ -51,7 +51,7 @@ public class PointLightFragment extends AExampleFragment {
 			rootSphere.setMaterial(sphereMaterial);
 			rootSphere.setRenderChildrenAsBatch(true);
 			rootSphere.setVisible(false);
-			addChild(rootSphere);
+			getCurrentScene().addChild(rootSphere);
 
 			// -- inner ring
 
@@ -103,7 +103,7 @@ public class PointLightFragment extends AExampleFragment {
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			anim.setDuration(6000);
 			anim.setTransformable3D(pointLight);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 		}
 
