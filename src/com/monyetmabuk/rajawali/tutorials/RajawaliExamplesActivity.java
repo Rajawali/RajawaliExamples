@@ -54,6 +54,7 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		mDrawerList.setAdapter(new ExampleAdapter(getApplicationContext(),
 				ExamplesApplication.ITEMS));
 		mDrawerList.setOnChildClickListener(this);
+		mDrawerList.setDrawSelectorOnTop(true);
 
 		// Configure the drawer toggle
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
