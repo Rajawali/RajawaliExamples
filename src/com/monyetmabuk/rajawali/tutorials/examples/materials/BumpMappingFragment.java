@@ -1,9 +1,9 @@
 package com.monyetmabuk.rajawali.tutorials.examples.materials;
 
 import rajawali.Object3D;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.RotateAnimation3D;
+import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.PointLight;
 import rajawali.materials.Material;
@@ -59,7 +59,7 @@ public class BumpMappingFragment extends AExampleFragment {
 				cube.setZ(-2);
 				getCurrentScene().addChild(cube);
 
-				RotateAnimation3D anim = new RotateAnimation3D(Axis.Y, -5, 5);
+				RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Axis.Y, -5, 5);
 				anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 				anim.setDuration(5000);
 				anim.setTransformable3D(cube);
@@ -79,7 +79,7 @@ public class BumpMappingFragment extends AExampleFragment {
 				material2.setColorInfluence(0);
 				mEarth.setMaterial(material2);
 
-				RotateAnimation3D earthAnim = new RotateAnimation3D(Axis.Y, 359);
+				RotateOnAxisAnimation earthAnim = new RotateOnAxisAnimation(Axis.Y, 359);
 				earthAnim.setDuration(6000);
 				earthAnim.setRepeatMode(RepeatMode.INFINITE);
 				earthAnim.setTransformable3D(mEarth);

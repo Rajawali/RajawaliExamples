@@ -4,8 +4,8 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.Object3D;
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.TranslateAnimation3D;
+import rajawali.animation.Animation.RepeatMode;
+import rajawali.animation.SplineTranslateAnimation3D;
 import rajawali.curves.CatmullRomCurve3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.Material;
@@ -29,9 +29,7 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 
 	public class Optimized2000PlanesRenderer extends AExampleRenderer {
 
-		private PlanesGalore mPlanes;
 		private long mStartTime;
-		private TranslateAnimation3D mCamAnim;
 		private Material mMaterial;
 		private PlanesGaloreMaterialPlugin mMaterialPlugin;
 
@@ -45,8 +43,8 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 			getCurrentScene().addLight(light);
 			getCurrentCamera().setPosition(0, 0, -16);
 
-			mPlanes = new PlanesGalore();
-			mMaterial = mPlanes.getMaterial();
+			final PlanesGalore planes = new PlanesGalore();
+			mMaterial = planes.getMaterial();
 			mMaterial.setColorInfluence(0);
 			try {
 				mMaterial.addTexture(new Texture("flickrPics", R.drawable.flickrpics));
@@ -54,11 +52,11 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 				e.printStackTrace();
 			}
 			
-			mMaterialPlugin = mPlanes.getMaterialPlugin();
+			mMaterialPlugin = planes.getMaterialPlugin();
 			
-			mPlanes.setDoubleSided(true);
-			mPlanes.setZ(4);
-			getCurrentScene().addChild(mPlanes);
+			planes.setDoubleSided(true);
+			planes.setZ(4);
+			getCurrentScene().addChild(planes);
 
 			Object3D empty = new Object3D();
 			getCurrentScene().addChild(empty);
@@ -73,13 +71,13 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 			path.addPoint(new Vector3(3, -1, 60));
 			path.addPoint(new Vector3(5, -1, 70));
 
-			mCamAnim = new TranslateAnimation3D(path);
-			mCamAnim.setDuration(20000);
-			mCamAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
-			mCamAnim.setTransformable3D(getCurrentCamera());
-			mCamAnim.setInterpolator(new AccelerateDecelerateInterpolator());
-			getCurrentScene().registerAnimation(mCamAnim);
-			mCamAnim.play();
+			final SplineTranslateAnimation3D anim = new SplineTranslateAnimation3D(path);
+			anim.setDuration(20000);
+			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			anim.setTransformable3D(getCurrentCamera());
+			anim.setInterpolator(new AccelerateDecelerateInterpolator());
+			getCurrentScene().registerAnimation(anim);
+			anim.play();
 
 			getCurrentCamera().setLookAt(new Vector3(0, 0, 30));
 		}

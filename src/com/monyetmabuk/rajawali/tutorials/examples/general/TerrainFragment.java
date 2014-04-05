@@ -2,8 +2,8 @@ package com.monyetmabuk.rajawali.tutorials.examples.general;
 
 import rajawali.ChaseCamera;
 import rajawali.Object3D;
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.TranslateAnimation3D;
+import rajawali.animation.Animation.RepeatMode;
+import rajawali.animation.SplineTranslateAnimation3D;
 import rajawali.curves.CatmullRomCurve3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.Material;
@@ -142,7 +142,7 @@ public class TerrainFragment extends AExampleFragment {
 			//
 			CatmullRomCurve3D cameraPath = createCameraPath();
 
-			TranslateAnimation3D anim = new TranslateAnimation3D(cameraPath);
+			SplineTranslateAnimation3D anim = new SplineTranslateAnimation3D(cameraPath);
 			anim.setTransformable3D(empty);
 			anim.setDuration(60000);
 			anim.setRepeatMode(RepeatMode.INFINITE);

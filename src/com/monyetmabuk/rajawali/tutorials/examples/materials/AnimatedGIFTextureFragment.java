@@ -2,7 +2,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.materials;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.animation.Animation3D.RepeatMode;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.materials.Material;
 import rajawali.materials.textures.ATexture.TextureException;

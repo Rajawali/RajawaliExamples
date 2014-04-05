@@ -4,8 +4,8 @@ import java.util.Random;
 
 import rajawali.Object3D;
 import rajawali.OrthographicCamera;
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.RotateAnimation3D;
+import rajawali.animation.Animation.RepeatMode;
+import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.Material;
@@ -111,12 +111,12 @@ public class OrthographicFragment extends AExampleFragment {
 				anim.setInterpolator(new BounceInterpolator());
 				anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 				anim.setTransformable3D(cube);
-				anim.setDelay((int) (10000 * Math.random()));
+				anim.setDelayMilliseconds((int) (10000 * Math.random()));
 				getCurrentScene().registerAnimation(anim);
 				anim.play();
 			}
 
-			RotateAnimation3D anim = new RotateAnimation3D(Axis.Y, 359);
+			RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Axis.Y, 359);
 			anim.setDuration(20000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			anim.setTransformable3D(innerGroup);

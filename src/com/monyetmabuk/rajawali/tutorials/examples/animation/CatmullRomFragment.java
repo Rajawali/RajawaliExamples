@@ -3,10 +3,10 @@ package com.monyetmabuk.rajawali.tutorials.examples.animation;
 import java.util.Stack;
 
 import rajawali.Object3D;
-import rajawali.animation.Animation3D.RepeatMode;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
-import rajawali.animation.TranslateAnimation3D;
+import rajawali.animation.SplineTranslateAnimation3D;
 import rajawali.curves.CatmullRomCurve3D;
 import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
@@ -66,7 +66,7 @@ public class CatmullRomFragment extends AExampleFragment {
 				arrow.setColor(0xffffff00);
 				getCurrentScene().addChild(arrow);
 
-				TranslateAnimation3D anim = new TranslateAnimation3D(path);
+				final SplineTranslateAnimation3D anim = new SplineTranslateAnimation3D(path);
 				anim.setDuration(12000);
 				anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 				// -- orient to path

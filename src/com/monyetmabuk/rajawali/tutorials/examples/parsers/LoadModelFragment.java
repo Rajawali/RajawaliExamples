@@ -1,11 +1,11 @@
 package com.monyetmabuk.rajawali.tutorials.examples.parsers;
 
 import rajawali.Object3D;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
-import rajawali.animation.RotateAnimation3D;
+import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.lights.PointLight;
 import rajawali.math.vector.Vector3;
 import rajawali.math.vector.Vector3.Axis;
@@ -47,7 +47,7 @@ public class LoadModelFragment extends AExampleFragment {
 				mObjectGroup = objParser.getParsedObject();
 				getCurrentScene().addChild(mObjectGroup);
 
-				mCameraAnim = new RotateAnimation3D(Axis.Y, 360);
+				mCameraAnim = new RotateOnAxisAnimation(Axis.Y, 360);
 				mCameraAnim.setDuration(8000);
 				mCameraAnim.setRepeatMode(RepeatMode.INFINITE);
 				mCameraAnim.setTransformable3D(mObjectGroup);

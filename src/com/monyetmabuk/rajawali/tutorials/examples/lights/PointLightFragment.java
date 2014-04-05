@@ -1,7 +1,7 @@
 package com.monyetmabuk.rajawali.tutorials.examples.lights;
 
 import rajawali.Object3D;
-import rajawali.animation.Animation3D.RepeatMode;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.lights.PointLight;
 import rajawali.materials.Material;

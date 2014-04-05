@@ -1,9 +1,9 @@
 package com.monyetmabuk.rajawali.tutorials.examples.parsers;
 
 import rajawali.Object3D;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.RotateAnimation3D;
+import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.math.vector.Vector3.Axis;
 import rajawali.parser.ParsingException;
 import rajawali.parser.fbx.LoaderFBX;
@@ -55,7 +55,7 @@ public class FBXFragment extends AExampleFragment {
 		}
 
 		protected void initScene() {
-			mAnim = new RotateAnimation3D(Axis.Y, 360);
+			mAnim = new RotateOnAxisAnimation(Axis.Y, 360);
 			mAnim.setDuration(16000);
 			mAnim.setRepeatMode(RepeatMode.INFINITE);
 			getCurrentScene().registerAnimation(mAnim);

@@ -9,7 +9,7 @@ import javax.microedition.khronos.opengles.GL10;
 import rajawali.BufferInfo;
 import rajawali.Geometry3D;
 import rajawali.Object3D;
-import rajawali.animation.Animation3D.RepeatMode;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.RotateAroundAnimation3D;
 import rajawali.curves.CatmullRomCurve3D;
 import rajawali.materials.Material;

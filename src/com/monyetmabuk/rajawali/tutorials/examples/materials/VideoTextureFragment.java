@@ -8,7 +8,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.Object3D;
 import rajawali.SerializedObject3D;
-import rajawali.animation.Animation3D.RepeatMode;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.PointLight;

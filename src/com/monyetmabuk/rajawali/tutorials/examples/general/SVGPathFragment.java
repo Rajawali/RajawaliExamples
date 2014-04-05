@@ -3,7 +3,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.general;
 import java.util.List;
 import java.util.Stack;
 
-import rajawali.animation.Animation3D.RepeatMode;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.curves.CompoundCurve3D;
 import rajawali.curves.ICurve3D;
@@ -62,7 +62,7 @@ public class SVGPathFragment extends AExampleFragment {
 								line.getPosition().z - 80));
 				anim.setInterpolator(new BounceInterpolator());
 				anim.setDuration(1 + Math.random() * 5);
-				anim.setDelay(.5f + Math.random());
+				anim.setDelayDelta(.5f + Math.random());
 				anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 				anim.setTransformable3D(line);
 				getCurrentScene().registerAnimation(anim);

@@ -4,7 +4,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.Camera;
 import rajawali.Object3D;
-import rajawali.animation.Animation3D.RepeatMode;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.Material;

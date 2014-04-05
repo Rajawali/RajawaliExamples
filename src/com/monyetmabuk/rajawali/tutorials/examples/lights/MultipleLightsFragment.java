@@ -4,8 +4,8 @@ import java.io.ObjectInputStream;
 
 import rajawali.Object3D;
 import rajawali.SerializedObject3D;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.PointLight;
 import rajawali.materials.Material;
