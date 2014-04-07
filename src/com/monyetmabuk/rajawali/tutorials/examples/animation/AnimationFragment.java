@@ -2,13 +2,11 @@ package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
 import java.io.ObjectInputStream;
 
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
-
 import rajawali.Object3D;
 import rajawali.SerializedObject3D;
 import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
+import rajawali.animation.AnimationGroup;
 import rajawali.animation.AnimationQueue;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
@@ -42,7 +40,6 @@ public class AnimationFragment extends AExampleFragment {
 
 		private PointLight mLight;
 		private Object3D mMonkey;
-		private AnimationQueue mQueue;
 
 		protected void initScene() {
 			mLight = new PointLight();
@@ -71,16 +68,15 @@ public class AnimationFragment extends AExampleFragment {
 			mMonkey.setMaterial(material);
 			mMonkey.setColor(0xff00ff00);
 
-			mQueue = new AnimationQueue();
+			final AnimationQueue mAnimGroup = new AnimationQueue();
 
 			Animation3D anim = new ScaleAnimation3D(new Vector3(1.6f, .8f, 1));
 			anim.setInterpolator(new LinearInterpolator());
 			anim.setDuration(1000);
-			anim.setRepeatCount(3);
+			anim.setRepeatCount(2);
 			anim.setRepeatMode(RepeatMode.REVERSE);
 			anim.setTransformable3D(mMonkey);
-			getCurrentScene().registerAnimation(anim);
-			mQueue.addAnimation(anim);
+			mAnimGroup.addAnimation(anim);
 
 			Vector3 axis = new Vector3(10, 5, 2);
 			axis.normalize();
@@ -88,14 +84,12 @@ public class AnimationFragment extends AExampleFragment {
 			anim = new RotateOnAxisAnimation(axis, 0, 360);
 			anim.setDuration(2000);
 			anim.setTransformable3D(mMonkey);
-			getCurrentScene().registerAnimation(anim);
-			mQueue.addAnimation(anim);
+			mAnimGroup.addAnimation(anim);
 
 			anim = new TranslateAnimation3D(new Vector3(-2, -2, 0));
 			anim.setDuration(500);
 			anim.setTransformable3D(mMonkey);
-			getCurrentScene().registerAnimation(anim);
-			mQueue.addAnimation(anim);
+			mAnimGroup.addAnimation(anim);
 
 			anim = new TranslateAnimation3D(new Vector3(-2, -2, 0),
 					new Vector3(2, 2, 0));
@@ -103,8 +97,7 @@ public class AnimationFragment extends AExampleFragment {
 			anim.setTransformable3D(mMonkey);
 			anim.setInterpolator(new BounceInterpolator());
 			anim.setRepeatCount(3);
-			getCurrentScene().registerAnimation(anim);
-			mQueue.addAnimation(anim);
+			mAnimGroup.addAnimation(anim);
 
 			anim = new EllipticalOrbitAnimation3D(new Vector3(), new Vector3(0,
 					3, 0), Vector3.getAxisVector(Axis.Z), 0, 360,
@@ -113,18 +106,12 @@ public class AnimationFragment extends AExampleFragment {
 			anim.setDuration(2000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(mMonkey);
-			getCurrentScene().registerAnimation(anim);
-			mQueue.addAnimation(anim);
+			mAnimGroup.addAnimation(anim);
 			
-			mQueue.start();
+			getCurrentScene().registerAnimation(mAnimGroup);
+			mAnimGroup.play();
 		}
 
-		public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-			super.onSurfaceCreated(gl, config);
-		}
-
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
-		}
 	}
+	
 }
