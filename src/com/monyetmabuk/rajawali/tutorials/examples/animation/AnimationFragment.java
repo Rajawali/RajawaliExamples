@@ -7,7 +7,6 @@ import rajawali.SerializedObject3D;
 import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
 import rajawali.animation.AnimationGroup;
-import rajawali.animation.AnimationQueue;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
 import rajawali.animation.RotateOnAxisAnimation;
@@ -38,17 +37,15 @@ public class AnimationFragment extends AExampleFragment {
 			super(context);
 		}
 
-		private PointLight mLight;
-		private Object3D mMonkey;
-
 		protected void initScene() {
-			mLight = new PointLight();
+			PointLight mLight = new PointLight();
 			mLight.setPosition(-2, 1, -4);
 			mLight.setPower(1.5f);
 			getCurrentCamera().setPosition(0, 0, -14);
 			getCurrentCamera().setLookAt(0, 0, 0);
 
 			ObjectInputStream ois;
+			Object3D mMonkey = null;
 			try {
 				ois = new ObjectInputStream(mContext.getResources()
 						.openRawResource(R.raw.monkey_ser));
@@ -59,7 +56,7 @@ public class AnimationFragment extends AExampleFragment {
 				getCurrentScene().addLight(mLight);
 				getCurrentScene().addChild(mMonkey);
 			} catch (Exception e) {
-				e.printStackTrace();
+				throw new IllegalStateException(e);
 			}
 
 			Material material = new Material();
@@ -68,7 +65,9 @@ public class AnimationFragment extends AExampleFragment {
 			mMonkey.setMaterial(material);
 			mMonkey.setColor(0xff00ff00);
 
-			final AnimationQueue mAnimGroup = new AnimationQueue();
+			final AnimationGroup animGroup = new AnimationGroup();
+			animGroup.setRepeatMode(RepeatMode.INFINITE);
+			animGroup.setRepeatCount(1);
 
 			Animation3D anim = new ScaleAnimation3D(new Vector3(1.6f, .8f, 1));
 			anim.setInterpolator(new LinearInterpolator());
@@ -76,7 +75,7 @@ public class AnimationFragment extends AExampleFragment {
 			anim.setRepeatCount(2);
 			anim.setRepeatMode(RepeatMode.REVERSE);
 			anim.setTransformable3D(mMonkey);
-			mAnimGroup.addAnimation(anim);
+			animGroup.addAnimation(anim);
 
 			Vector3 axis = new Vector3(10, 5, 2);
 			axis.normalize();
@@ -84,12 +83,12 @@ public class AnimationFragment extends AExampleFragment {
 			anim = new RotateOnAxisAnimation(axis, 0, 360);
 			anim.setDuration(2000);
 			anim.setTransformable3D(mMonkey);
-			mAnimGroup.addAnimation(anim);
+			animGroup.addAnimation(anim);
 
 			anim = new TranslateAnimation3D(new Vector3(-2, -2, 0));
 			anim.setDuration(500);
 			anim.setTransformable3D(mMonkey);
-			mAnimGroup.addAnimation(anim);
+			animGroup.addAnimation(anim);
 
 			anim = new TranslateAnimation3D(new Vector3(-2, -2, 0),
 					new Vector3(2, 2, 0));
@@ -97,19 +96,20 @@ public class AnimationFragment extends AExampleFragment {
 			anim.setTransformable3D(mMonkey);
 			anim.setInterpolator(new BounceInterpolator());
 			anim.setRepeatCount(3);
-			mAnimGroup.addAnimation(anim);
+			animGroup.addAnimation(anim);
 
 			anim = new EllipticalOrbitAnimation3D(new Vector3(), new Vector3(0,
 					3, 0), Vector3.getAxisVector(Axis.Z), 0, 360,
 					OrbitDirection.CLOCKWISE);
 			anim.setInterpolator(new LinearInterpolator());
 			anim.setDuration(2000);
-			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			anim.setRepeatCount(3);
+			anim.setRepeatMode(RepeatMode.REVERSE);
 			anim.setTransformable3D(mMonkey);
-			mAnimGroup.addAnimation(anim);
+			animGroup.addAnimation(anim);
 			
-			getCurrentScene().registerAnimation(mAnimGroup);
-			mAnimGroup.play();
+			getCurrentScene().registerAnimation(animGroup);
+			animGroup.play();
 		}
 
 	}
