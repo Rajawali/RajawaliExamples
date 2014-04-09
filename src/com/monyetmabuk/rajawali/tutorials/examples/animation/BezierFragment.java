@@ -1,9 +1,9 @@
 package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
 import rajawali.Object3D;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.TranslateAnimation3D;
+import rajawali.animation.SplineTranslateAnimation3D;
 import rajawali.curves.CompoundCurve3D;
 import rajawali.curves.CubicBezierCurve3D;
 import rajawali.lights.DirectionalLight;
@@ -72,15 +72,15 @@ public class BezierFragment extends AExampleFragment {
 					30), new Vector3(6, 1, 2), new Vector3(4, 2, 3),
 					new Vector3(-3, -3, -4.5f)));
 
-			Animation3D redAnim = new TranslateAnimation3D(redBezierPath);
-			redAnim.setDuration(2000);
+			Animation3D redAnim = new SplineTranslateAnimation3D(redBezierPath);
+			redAnim.setDurationMilliseconds(2000);
 			redAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			redAnim.setTransformable3D(redSphere);
 			getCurrentScene().registerAnimation(redAnim);
 			redAnim.play();
 
-			Animation3D yellowAnim = new TranslateAnimation3D(yellowBezierPath);
-			yellowAnim.setDuration(3800);
+			Animation3D yellowAnim = new SplineTranslateAnimation3D(yellowBezierPath);
+			yellowAnim.setDurationMilliseconds(3800);
 			yellowAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			yellowAnim.setTransformable3D(yellowSphere);
 			getCurrentScene().registerAnimation(yellowAnim);

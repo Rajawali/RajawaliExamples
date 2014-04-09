@@ -4,9 +4,9 @@ import java.io.ObjectInputStream;
 
 import rajawali.Object3D;
 import rajawali.SerializedObject3D;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.RotateAnimation3D;
+import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.lights.PointLight;
 import rajawali.materials.Material;
 import rajawali.materials.methods.DiffuseMethod;
@@ -72,9 +72,9 @@ public class SphereMapFragment extends AExampleFragment {
 			Vector3 axis = new Vector3(2, -4, 1);
 			axis.normalize();
 
-			Animation3D anim1 = new RotateAnimation3D(axis, 360);
+			Animation3D anim1 = new RotateOnAxisAnimation(axis, 360);
 			anim1.setRepeatMode(RepeatMode.INFINITE);
-			anim1.setDuration(12000);
+			anim1.setDurationMilliseconds(12000);
 			anim1.setTransformable3D(jet1);
 			getCurrentScene().registerAnimation(anim1);
 			anim1.play();
@@ -101,9 +101,9 @@ public class SphereMapFragment extends AExampleFragment {
 			jet2.setY(-2.5f);
 			getCurrentScene().addChild(jet2);
 
-			Animation3D anim2 = new RotateAnimation3D(axis, -360);
+			Animation3D anim2 = new RotateOnAxisAnimation(axis, -360);
 			anim2.setRepeatMode(RepeatMode.INFINITE);
-			anim2.setDuration(12000);
+			anim2.setDurationMilliseconds(12000);
 			anim2.setTransformable3D(jet2);
 			getCurrentScene().registerAnimation(anim2);
 			anim2.play();

@@ -4,7 +4,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.Camera;
 import rajawali.Object3D;
-import rajawali.animation.Animation3D.RepeatMode;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.Material;
@@ -93,7 +93,7 @@ public class FogFragment extends AExampleFragment {
 
 			TranslateAnimation3D camAnim = new TranslateAnimation3D(
 					new Vector3(0, 1, -23));
-			camAnim.setDuration(8000);
+			camAnim.setDurationMilliseconds(8000);
 			camAnim.setInterpolator(new AccelerateDecelerateInterpolator());
 			camAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			camAnim.setTransformable3D(getCurrentCamera());

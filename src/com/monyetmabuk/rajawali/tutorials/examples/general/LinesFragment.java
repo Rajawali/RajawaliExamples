@@ -2,9 +2,8 @@ package com.monyetmabuk.rajawali.tutorials.examples.general;
 
 import java.util.Stack;
 
-import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.RotateAnimation3D;
+import rajawali.animation.Animation.RepeatMode;
+import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.Material;
@@ -29,7 +28,6 @@ public class LinesFragment extends AExampleFragment {
 	}
 
 	private final class LinesRenderer extends AExampleRenderer {
-		private Animation3D mAnim;
 
 		public LinesRenderer(Context context) {
 			super(context);
@@ -53,12 +51,12 @@ public class LinesFragment extends AExampleFragment {
 
 			Vector3 axis = new Vector3(2, .4f, 1);
 			axis.normalize();
-			mAnim = new RotateAnimation3D(axis, 360);
-			mAnim.setDuration(8000);
-			mAnim.setRepeatMode(RepeatMode.INFINITE);
-			mAnim.setTransformable3D(whirl);
-			getCurrentScene().registerAnimation(mAnim);
-			mAnim.play();
+			RotateOnAxisAnimation anim = new RotateOnAxisAnimation(axis, 360);
+			anim.setDurationMilliseconds(8000);
+			anim.setRepeatMode(RepeatMode.INFINITE);
+			anim.setTransformable3D(whirl);
+			getCurrentScene().registerAnimation(anim);
+			anim.play();
 		}
 
 		private Stack<Vector3> createWhirl(int numSides, float scaleFactor,

@@ -1,9 +1,9 @@
 package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.ColorAnimation3D;
-import rajawali.animation.RotateAnimation3D;
+import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.materials.Material;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.AlphaMapTexture;
@@ -43,14 +43,14 @@ public class ColorAnimationFragment extends AExampleFragment {
 
 			Animation3D anim = new ColorAnimation3D(0xaaff1111, 0xffffff11);
 			anim.setTransformable3D(cube1);
-			anim.setDuration(2000);
+			anim.setDurationMilliseconds(2000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
-			anim = new RotateAnimation3D(Axis.Y, 359);
+			anim = new RotateOnAxisAnimation(Axis.Y, 359);
 			anim.setTransformable3D(cube1);
-			anim.setDuration(6000);
+			anim.setDurationMilliseconds(6000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
@@ -78,14 +78,14 @@ public class ColorAnimationFragment extends AExampleFragment {
 
 			anim = new ColorAnimation3D(0xaaff1111, 0xff0000ff);
 			anim.setTransformable3D(cube2);
-			anim.setDuration(2000);
+			anim.setDurationMilliseconds(2000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
-			anim = new RotateAnimation3D(Axis.Y, -359);
+			anim = new RotateOnAxisAnimation(Axis.Y, -359);
 			anim.setTransformable3D(cube2);
-			anim.setDuration(6000);
+			anim.setDurationMilliseconds(6000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();

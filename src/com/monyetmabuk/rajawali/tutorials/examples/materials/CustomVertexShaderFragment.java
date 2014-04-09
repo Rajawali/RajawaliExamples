@@ -3,9 +3,8 @@ package com.monyetmabuk.rajawali.tutorials.examples.materials;
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.Object3D;
-import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.RotateAnimation3D;
+import rajawali.animation.Animation.RepeatMode;
+import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.materials.Material;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
@@ -34,7 +33,6 @@ public class CustomVertexShaderFragment extends AExampleFragment implements
 
 		private int mFrameCount = 0;
 		private Material mMaterial;
-		private Animation3D mAnim;
 		private Object3D mSphere;
 
 		public VertexShaderRenderer(Context context) {
@@ -53,9 +51,9 @@ public class CustomVertexShaderFragment extends AExampleFragment implements
 			Vector3 axis = new Vector3(2, 4, 1);
 			axis.normalize();
 
-			mAnim = new RotateAnimation3D(axis, 360);
+			RotateOnAxisAnimation mAnim = new RotateOnAxisAnimation(axis, 360);
 			mAnim.setRepeatMode(RepeatMode.INFINITE);
-			mAnim.setDuration(12000);
+			mAnim.setDurationMilliseconds(12000);
 			mAnim.setTransformable3D(mSphere);
 			getCurrentScene().registerAnimation(mAnim);
 			mAnim.play();

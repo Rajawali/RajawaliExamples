@@ -6,8 +6,8 @@ import java.util.Locale;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.RotateAnimation3D;
+import rajawali.animation.Animation.RepeatMode;
+import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.Material;
 import rajawali.materials.methods.DiffuseMethod;
@@ -84,10 +84,10 @@ public class CanvasTextFragment extends AExampleFragment {
 
 				int direction = Math.random() < .5 ? 1 : -1;
 
-				RotateAnimation3D anim = new RotateAnimation3D(Axis.Y, 0,
+				RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Axis.Y, 0,
 						360 * direction);
 				anim.setRepeatMode(RepeatMode.INFINITE);
-				anim.setDuration(i == 0 ? 12000
+				anim.setDurationMilliseconds(i == 0 ? 12000
 						: 4000 + (int) (Math.random() * 4000));
 				anim.setTransformable3D(timeSphere);
 				getCurrentScene().registerAnimation(anim);

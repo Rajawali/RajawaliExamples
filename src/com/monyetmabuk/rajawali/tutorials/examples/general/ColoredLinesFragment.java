@@ -2,8 +2,8 @@ package com.monyetmabuk.rajawali.tutorials.examples.general;
 
 import java.util.Stack;
 
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.RotateAnimation3D;
+import rajawali.animation.Animation.RepeatMode;
+import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.materials.Material;
 import rajawali.math.vector.Vector3;
@@ -54,8 +54,8 @@ public class ColoredLinesFragment extends AExampleFragment {
 			line.setMaterial(material);
 			getCurrentScene().addChild(line);
 
-			RotateAnimation3D lineAnim = new RotateAnimation3D(Axis.Y, 359);
-			lineAnim.setDuration(10000);
+			RotateOnAxisAnimation lineAnim = new RotateOnAxisAnimation(Axis.Y, 359);
+			lineAnim.setDurationMilliseconds(10000);
 			lineAnim.setRepeatMode(RepeatMode.INFINITE);
 			lineAnim.setTransformable3D(line);
 			getCurrentScene().registerAnimation(lineAnim);
@@ -63,7 +63,7 @@ public class ColoredLinesFragment extends AExampleFragment {
 
 			TranslateAnimation3D camAnim = new TranslateAnimation3D(
 					new Vector3(0, 0, 10), new Vector3(0, 0, -10));
-			camAnim.setDuration(12000);
+			camAnim.setDurationMilliseconds(12000);
 			camAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			camAnim.setTransformable3D(getCurrentCamera());
 			getCurrentScene().registerAnimation(camAnim);

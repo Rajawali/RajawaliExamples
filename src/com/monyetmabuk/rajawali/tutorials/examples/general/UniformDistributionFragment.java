@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Stack;
 
 import rajawali.Object3D;
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.TranslateAnimation3D;
+import rajawali.animation.Animation.RepeatMode;
+import rajawali.animation.Animation3D;
+import rajawali.animation.SplineTranslateAnimation3D;
 import rajawali.curves.CatmullRomCurve3D;
 import rajawali.curves.ICurve3D;
 import rajawali.materials.Material;
@@ -101,8 +102,8 @@ public class UniformDistributionFragment extends AExampleFragment {
 
 			// -- animate a sphere that follow the first curve.
 			// This shows the non constant speed of a non parametrized curve.
-			TranslateAnimation3D anim = new TranslateAnimation3D(curve1);
-			anim.setDuration(ANIMATION_DURATION);
+			Animation3D anim = new SplineTranslateAnimation3D(curve1);
+			anim.setDurationMilliseconds(ANIMATION_DURATION);
 			anim.setTransformable3D(pathFollowObject);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			getCurrentScene().registerAnimation(anim);
@@ -133,8 +134,8 @@ public class UniformDistributionFragment extends AExampleFragment {
 
 			// -- animate a sphere on the second curve.
 			// This shows a more or less constant speed of a parametrized curve.
-			anim = new TranslateAnimation3D(curve2);
-			anim.setDuration(ANIMATION_DURATION);
+			anim = new SplineTranslateAnimation3D(curve2);
+			anim.setDurationMilliseconds(ANIMATION_DURATION);
 			anim.setTransformable3D(pathFollowObject);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			getCurrentScene().registerAnimation(anim);
