@@ -61,7 +61,7 @@ public class BumpMappingFragment extends AExampleFragment {
 
 				RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Axis.Y, -5, 5);
 				anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
-				anim.setDuration(5000);
+				anim.setDurationMilliseconds(5000);
 				anim.setTransformable3D(cube);
 				getCurrentScene().registerAnimation(anim);
 				anim.play();
@@ -80,7 +80,7 @@ public class BumpMappingFragment extends AExampleFragment {
 				mEarth.setMaterial(material2);
 
 				RotateOnAxisAnimation earthAnim = new RotateOnAxisAnimation(Axis.Y, 359);
-				earthAnim.setDuration(6000);
+				earthAnim.setDurationMilliseconds(6000);
 				earthAnim.setRepeatMode(RepeatMode.INFINITE);
 				earthAnim.setTransformable3D(mEarth);
 				getCurrentScene().registerAnimation(earthAnim);
@@ -92,7 +92,7 @@ public class BumpMappingFragment extends AExampleFragment {
 
 			mLightAnim = new TranslateAnimation3D(new Vector3(-2, 2, 2),
 					new Vector3(2, -2, 2));
-			mLightAnim.setDuration(4000);
+			mLightAnim.setDurationMilliseconds(4000);
 			mLightAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			mLightAnim.setTransformable3D(mLight);
 			mLightAnim.setInterpolator(new AccelerateDecelerateInterpolator());

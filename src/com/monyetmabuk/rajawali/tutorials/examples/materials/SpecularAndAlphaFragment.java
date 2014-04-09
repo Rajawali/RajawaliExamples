@@ -59,7 +59,7 @@ public class SpecularAndAlphaFragment extends AExampleFragment {
 
 				RotateOnAxisAnimation sphereAnim = new RotateOnAxisAnimation(Axis.Y,
 						359);
-				sphereAnim.setDuration(14000);
+				sphereAnim.setDurationMilliseconds(14000);
 				sphereAnim.setRepeatMode(RepeatMode.INFINITE);
 				sphereAnim.setTransformable3D(sphere);
 				getCurrentScene().registerAnimation(sphereAnim);
@@ -80,7 +80,7 @@ public class SpecularAndAlphaFragment extends AExampleFragment {
 				getCurrentScene().addChild(sphere);
 
 				sphereAnim = new RotateOnAxisAnimation(Axis.Y, -359);
-				sphereAnim.setDuration(10000);
+				sphereAnim.setDurationMilliseconds(10000);
 				sphereAnim.setRepeatMode(RepeatMode.INFINITE);
 				sphereAnim.setTransformable3D(sphere);
 				getCurrentScene().registerAnimation(sphereAnim);
@@ -91,7 +91,7 @@ public class SpecularAndAlphaFragment extends AExampleFragment {
 
 			TranslateAnimation3D lightAnim = new TranslateAnimation3D(
 					new Vector3(-2, 3, 3), new Vector3(2, -1, 3));
-			lightAnim.setDuration(3000);
+			lightAnim.setDurationMilliseconds(3000);
 			lightAnim.setInterpolator(new AccelerateDecelerateInterpolator());
 			lightAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			lightAnim.setTransformable3D(pointLight);

@@ -72,7 +72,7 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 			path.addPoint(new Vector3(5, -1, 70));
 
 			final SplineTranslateAnimation3D anim = new SplineTranslateAnimation3D(path);
-			anim.setDuration(20000);
+			anim.setDurationMilliseconds(20000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(getCurrentCamera());
 			anim.setInterpolator(new AccelerateDecelerateInterpolator());

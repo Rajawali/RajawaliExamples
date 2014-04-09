@@ -76,7 +76,7 @@ public class TransparentSurfaceFragment extends AExampleFragment {
 				getCurrentScene().addChild(monkey);
 
 				RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Axis.Y, 360);
-				anim.setDuration(6000);
+				anim.setDurationMilliseconds(6000);
 				anim.setRepeatMode(RepeatMode.INFINITE);
 				anim.setInterpolator(new AccelerateDecelerateInterpolator());
 				anim.setTransformable3D(monkey);

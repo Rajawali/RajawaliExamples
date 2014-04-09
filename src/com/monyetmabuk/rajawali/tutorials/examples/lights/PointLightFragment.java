@@ -101,7 +101,7 @@ public class PointLightFragment extends AExampleFragment {
 			EllipticalOrbitAnimation3D anim = new EllipticalOrbitAnimation3D(
 					new Vector3(0, 1, 0), new Vector3(1, 1, 1), 0, 359);
 			anim.setRepeatMode(RepeatMode.INFINITE);
-			anim.setDuration(6000);
+			anim.setDurationMilliseconds(6000);
 			anim.setTransformable3D(pointLight);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();

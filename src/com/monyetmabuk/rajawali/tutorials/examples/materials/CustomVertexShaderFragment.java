@@ -53,7 +53,7 @@ public class CustomVertexShaderFragment extends AExampleFragment implements
 
 			RotateOnAxisAnimation mAnim = new RotateOnAxisAnimation(axis, 360);
 			mAnim.setRepeatMode(RepeatMode.INFINITE);
-			mAnim.setDuration(12000);
+			mAnim.setDurationMilliseconds(12000);
 			mAnim.setTransformable3D(mSphere);
 			getCurrentScene().registerAnimation(mAnim);
 			mAnim.play();

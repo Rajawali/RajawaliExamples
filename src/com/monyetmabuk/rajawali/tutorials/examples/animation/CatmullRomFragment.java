@@ -67,7 +67,7 @@ public class CatmullRomFragment extends AExampleFragment {
 				getCurrentScene().addChild(arrow);
 
 				final SplineTranslateAnimation3D anim = new SplineTranslateAnimation3D(path);
-				anim.setDuration(12000);
+				anim.setDurationMilliseconds(12000);
 				anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 				// -- orient to path
 				anim.setOrientToPath(true);
@@ -109,7 +109,7 @@ public class CatmullRomFragment extends AExampleFragment {
 			EllipticalOrbitAnimation3D camAnim = new EllipticalOrbitAnimation3D(
 					new Vector3(), new Vector3(26, 0, 0), 0, 360,
 					OrbitDirection.CLOCKWISE);
-			camAnim.setDuration(10000);
+			camAnim.setDurationMilliseconds(10000);
 			camAnim.setRepeatMode(RepeatMode.INFINITE);
 			camAnim.setTransformable3D(getCurrentCamera());
 			getCurrentScene().registerAnimation(camAnim);

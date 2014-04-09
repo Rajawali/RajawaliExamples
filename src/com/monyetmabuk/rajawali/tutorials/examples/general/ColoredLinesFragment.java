@@ -55,7 +55,7 @@ public class ColoredLinesFragment extends AExampleFragment {
 			getCurrentScene().addChild(line);
 
 			RotateOnAxisAnimation lineAnim = new RotateOnAxisAnimation(Axis.Y, 359);
-			lineAnim.setDuration(10000);
+			lineAnim.setDurationMilliseconds(10000);
 			lineAnim.setRepeatMode(RepeatMode.INFINITE);
 			lineAnim.setTransformable3D(line);
 			getCurrentScene().registerAnimation(lineAnim);
@@ -63,7 +63,7 @@ public class ColoredLinesFragment extends AExampleFragment {
 
 			TranslateAnimation3D camAnim = new TranslateAnimation3D(
 					new Vector3(0, 0, 10), new Vector3(0, 0, -10));
-			camAnim.setDuration(12000);
+			camAnim.setDurationMilliseconds(12000);
 			camAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			camAnim.setTransformable3D(getCurrentCamera());
 			getCurrentScene().registerAnimation(camAnim);

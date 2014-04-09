@@ -73,14 +73,14 @@ public class BezierFragment extends AExampleFragment {
 					new Vector3(-3, -3, -4.5f)));
 
 			Animation3D redAnim = new SplineTranslateAnimation3D(redBezierPath);
-			redAnim.setDuration(2000);
+			redAnim.setDurationMilliseconds(2000);
 			redAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			redAnim.setTransformable3D(redSphere);
 			getCurrentScene().registerAnimation(redAnim);
 			redAnim.play();
 
 			Animation3D yellowAnim = new SplineTranslateAnimation3D(yellowBezierPath);
-			yellowAnim.setDuration(3800);
+			yellowAnim.setDurationMilliseconds(3800);
 			yellowAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			yellowAnim.setTransformable3D(yellowSphere);
 			getCurrentScene().registerAnimation(yellowAnim);

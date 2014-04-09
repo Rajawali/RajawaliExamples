@@ -96,7 +96,7 @@ public class AnimatedGIFTextureFragment extends AExampleFragment implements
 
 			EllipticalOrbitAnimation3D anim = new EllipticalOrbitAnimation3D(
 					new Vector3(0, 0, 3), new Vector3(2, 1, 3), 0, 359);
-			anim.setDuration(12000);
+			anim.setDurationMilliseconds(12000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			anim.setTransformable3D(getCurrentCamera());
 			getCurrentScene().registerAnimation(anim);

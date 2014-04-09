@@ -77,21 +77,21 @@ public class ToonShadingFragment extends AExampleFragment {
 			}
 
 			RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Axis.Y, 360);
-			anim.setDuration(6000);
+			anim.setDurationMilliseconds(6000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			anim.setTransformable3D(mMonkey1);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			anim = new RotateOnAxisAnimation(Axis.Y, -360);
-			anim.setDuration(6000);
+			anim.setDurationMilliseconds(6000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			anim.setTransformable3D(mMonkey2);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			anim = new RotateOnAxisAnimation(Axis.Y, -360);
-			anim.setDuration(6000);
+			anim.setDurationMilliseconds(6000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			anim.setTransformable3D(mMonkey3);
 			getCurrentScene().registerAnimation(anim);

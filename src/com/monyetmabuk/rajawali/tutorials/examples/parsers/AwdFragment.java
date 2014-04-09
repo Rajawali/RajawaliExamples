@@ -36,7 +36,7 @@ public class AwdFragment extends AExampleFragment {
 				getCurrentScene().addChild(obj);
 
 				final Animation3D anim = new RotateOnAxisAnimation(Axis.Y, -360);
-				anim.setDuration(4d);
+				anim.setDurationDelta(4d);
 				anim.setRepeatMode(RepeatMode.INFINITE);
 				anim.setTransformable3D(obj);
 				anim.play();

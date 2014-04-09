@@ -52,7 +52,7 @@ public class LinesFragment extends AExampleFragment {
 			Vector3 axis = new Vector3(2, .4f, 1);
 			axis.normalize();
 			RotateOnAxisAnimation anim = new RotateOnAxisAnimation(axis, 360);
-			anim.setDuration(8000);
+			anim.setDurationMilliseconds(8000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			anim.setTransformable3D(whirl);
 			getCurrentScene().registerAnimation(anim);

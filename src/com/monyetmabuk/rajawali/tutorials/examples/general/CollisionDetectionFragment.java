@@ -93,7 +93,7 @@ public class CollisionDetectionFragment extends AExampleFragment {
 			}
 
 			Animation3D anim = new TranslateAnimation3D(new Vector3(-1, 3, 0));
-			anim.setDuration(4000);
+			anim.setDurationMilliseconds(4000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(mCubeBox);
 			getCurrentScene().registerAnimation(anim);
@@ -103,28 +103,28 @@ public class CollisionDetectionFragment extends AExampleFragment {
 			axis.normalize();
 
 			anim = new RotateOnAxisAnimation(axis, 360);
-			anim.setDuration(4000);
+			anim.setDurationMilliseconds(4000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(mCubeBox);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			anim = new TranslateAnimation3D(new Vector3(-1, -3, 0));
-			anim.setDuration(4000);
+			anim.setDurationMilliseconds(4000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(mBoxesBox);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			anim = new TranslateAnimation3D(new Vector3(1, 2, 0));
-			anim.setDuration(2000);
+			anim.setDurationMilliseconds(2000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(mCubeSphere);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			anim = new TranslateAnimation3D(new Vector3(1, -2, 0));
-			anim.setDuration(2000);
+			anim.setDurationMilliseconds(2000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(mBoxesSphere);
 			getCurrentScene().registerAnimation(anim);

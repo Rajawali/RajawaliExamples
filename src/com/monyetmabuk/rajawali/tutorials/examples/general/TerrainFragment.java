@@ -144,7 +144,7 @@ public class TerrainFragment extends AExampleFragment {
 
 			SplineTranslateAnimation3D anim = new SplineTranslateAnimation3D(cameraPath);
 			anim.setTransformable3D(empty);
-			anim.setDuration(60000);
+			anim.setDurationMilliseconds(60000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			anim.setOrientToPath(true);
 			getCurrentScene().registerAnimation(anim);

@@ -101,7 +101,7 @@ public class DirectionalLightFragment extends AExampleFragment {
 			EllipticalOrbitAnimation3D anim = new EllipticalOrbitAnimation3D(
 					new Vector3(0, .2f, 0), new Vector3(1, .2f, 1), 0, 359);
 			anim.setRepeatMode(RepeatMode.INFINITE);
-			anim.setDuration(6000);
+			anim.setDurationMilliseconds(6000);
 			anim.setTransformable3D(target);
 			anim.registerListener(new IAnimationListener() {
 				public void onAnimationUpdate(Animation animation,

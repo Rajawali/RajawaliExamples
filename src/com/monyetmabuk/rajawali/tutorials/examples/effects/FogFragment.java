@@ -93,7 +93,7 @@ public class FogFragment extends AExampleFragment {
 
 			TranslateAnimation3D camAnim = new TranslateAnimation3D(
 					new Vector3(0, 1, -23));
-			camAnim.setDuration(8000);
+			camAnim.setDurationMilliseconds(8000);
 			camAnim.setInterpolator(new AccelerateDecelerateInterpolator());
 			camAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			camAnim.setTransformable3D(getCurrentCamera());

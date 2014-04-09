@@ -87,7 +87,7 @@ public class CanvasTextFragment extends AExampleFragment {
 				RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Axis.Y, 0,
 						360 * direction);
 				anim.setRepeatMode(RepeatMode.INFINITE);
-				anim.setDuration(i == 0 ? 12000
+				anim.setDurationMilliseconds(i == 0 ? 12000
 						: 4000 + (int) (Math.random() * 4000));
 				anim.setTransformable3D(timeSphere);
 				getCurrentScene().registerAnimation(anim);

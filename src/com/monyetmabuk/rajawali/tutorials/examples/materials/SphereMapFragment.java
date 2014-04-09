@@ -74,7 +74,7 @@ public class SphereMapFragment extends AExampleFragment {
 
 			Animation3D anim1 = new RotateOnAxisAnimation(axis, 360);
 			anim1.setRepeatMode(RepeatMode.INFINITE);
-			anim1.setDuration(12000);
+			anim1.setDurationMilliseconds(12000);
 			anim1.setTransformable3D(jet1);
 			getCurrentScene().registerAnimation(anim1);
 			anim1.play();
@@ -103,7 +103,7 @@ public class SphereMapFragment extends AExampleFragment {
 
 			Animation3D anim2 = new RotateOnAxisAnimation(axis, -360);
 			anim2.setRepeatMode(RepeatMode.INFINITE);
-			anim2.setDuration(12000);
+			anim2.setDurationMilliseconds(12000);
 			anim2.setTransformable3D(jet2);
 			getCurrentScene().registerAnimation(anim2);
 			anim2.play();

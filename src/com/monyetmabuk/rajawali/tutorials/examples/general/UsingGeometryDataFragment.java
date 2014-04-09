@@ -105,7 +105,7 @@ public class UsingGeometryDataFragment extends AExampleFragment {
 			rotationAxis.normalize();
 
 			RotateOnAxisAnimation mAnim = new RotateOnAxisAnimation(rotationAxis, 360);
-			mAnim.setDuration(8000);
+			mAnim.setDurationMilliseconds(8000);
 			mAnim.setRepeatMode(RepeatMode.INFINITE);
 			mAnim.setTransformable3D(mRootSpike);
 

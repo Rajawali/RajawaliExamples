@@ -107,7 +107,7 @@ public class OrthographicFragment extends AExampleFragment {
 
 				TranslateAnimation3D anim = new TranslateAnimation3D(
 						fromPosition, toPosition);
-				anim.setDuration(4000 + (int) (4000 * Math.random()));
+				anim.setDurationMilliseconds(4000 + (int) (4000 * Math.random()));
 				anim.setInterpolator(new BounceInterpolator());
 				anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 				anim.setTransformable3D(cube);
@@ -117,7 +117,7 @@ public class OrthographicFragment extends AExampleFragment {
 			}
 
 			RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Axis.Y, 359);
-			anim.setDuration(20000);
+			anim.setDurationMilliseconds(20000);
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			anim.setTransformable3D(innerGroup);
 			getCurrentScene().registerAnimation(anim);

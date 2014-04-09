@@ -71,7 +71,7 @@ public class AnimationFragment extends AExampleFragment {
 
 			Animation3D anim = new ScaleAnimation3D(new Vector3(1.6f, .8f, 1));
 			anim.setInterpolator(new LinearInterpolator());
-			anim.setDuration(1000);
+			anim.setDurationMilliseconds(1000);
 			anim.setRepeatCount(2);
 			anim.setRepeatMode(RepeatMode.REVERSE);
 			anim.setTransformable3D(mMonkey);
@@ -81,18 +81,18 @@ public class AnimationFragment extends AExampleFragment {
 			axis.normalize();
 
 			anim = new RotateOnAxisAnimation(axis, 0, 360);
-			anim.setDuration(2000);
+			anim.setDurationMilliseconds(2000);
 			anim.setTransformable3D(mMonkey);
 			animGroup.addAnimation(anim);
 
 			anim = new TranslateAnimation3D(new Vector3(-2, -2, 0));
-			anim.setDuration(500);
+			anim.setDurationMilliseconds(500);
 			anim.setTransformable3D(mMonkey);
 			animGroup.addAnimation(anim);
 
 			anim = new TranslateAnimation3D(new Vector3(-2, -2, 0),
 					new Vector3(2, 2, 0));
-			anim.setDuration(2000);
+			anim.setDurationMilliseconds(2000);
 			anim.setTransformable3D(mMonkey);
 			anim.setInterpolator(new BounceInterpolator());
 			anim.setRepeatCount(3);
@@ -102,7 +102,7 @@ public class AnimationFragment extends AExampleFragment {
 					3, 0), Vector3.getAxisVector(Axis.Z), 0, 360,
 					OrbitDirection.CLOCKWISE);
 			anim.setInterpolator(new LinearInterpolator());
-			anim.setDuration(2000);
+			anim.setDurationMilliseconds(2000);
 			anim.setRepeatCount(3);
 			anim.setRepeatMode(RepeatMode.REVERSE);
 			anim.setTransformable3D(mMonkey);

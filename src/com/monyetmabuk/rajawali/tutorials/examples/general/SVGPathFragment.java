@@ -61,7 +61,7 @@ public class SVGPathFragment extends AExampleFragment {
 						new Vector3(line.getPosition().x, line.getPosition().y,
 								line.getPosition().z - 80));
 				anim.setInterpolator(new BounceInterpolator());
-				anim.setDuration(1 + Math.random() * 5);
+				anim.setDurationDelta(1 + Math.random() * 5);
 				anim.setDelayDelta(.5f + Math.random());
 				anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 				anim.setTransformable3D(line);

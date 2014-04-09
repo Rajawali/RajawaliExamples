@@ -165,7 +165,7 @@ public class UpdateVertexBufferFragment extends AExampleFragment {
 
 			RotateAroundAnimation3D anim = new RotateAroundAnimation3D(
 					new Vector3(), Axis.Y, 10);
-			anim.setDuration(10000 * 20);
+			anim.setDurationMilliseconds(200000);
 			anim.setTransformable3D(getCurrentCamera());
 			anim.setRepeatMode(RepeatMode.INFINITE);
 			getCurrentScene().registerAnimation(anim);

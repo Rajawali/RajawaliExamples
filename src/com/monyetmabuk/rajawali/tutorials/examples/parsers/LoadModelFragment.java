@@ -48,7 +48,7 @@ public class LoadModelFragment extends AExampleFragment {
 				getCurrentScene().addChild(mObjectGroup);
 
 				mCameraAnim = new RotateOnAxisAnimation(Axis.Y, 360);
-				mCameraAnim.setDuration(8000);
+				mCameraAnim.setDurationMilliseconds(8000);
 				mCameraAnim.setRepeatMode(RepeatMode.INFINITE);
 				mCameraAnim.setTransformable3D(mObjectGroup);
 			} catch (ParsingException e) {
@@ -59,7 +59,7 @@ public class LoadModelFragment extends AExampleFragment {
 					new Vector3(0, 10, 0), Vector3.getAxisVector(Axis.Z), 0,
 					360, OrbitDirection.CLOCKWISE);
 
-			mLightAnim.setDuration(3000);
+			mLightAnim.setDurationMilliseconds(3000);
 			mLightAnim.setRepeatMode(RepeatMode.INFINITE);
 			mLightAnim.setTransformable3D(mLight);
 
