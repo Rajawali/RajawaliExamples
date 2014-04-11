@@ -2,7 +2,8 @@ package com.monyetmabuk.rajawali.tutorials;
 
 import java.util.Map;
 
-import rajawali.RajawaliActivity;
+import rajawali.util.RajLog;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -28,7 +29,7 @@ import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.Category;
 import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-public class RajawaliExamplesActivity extends RajawaliActivity implements
+public class RajawaliExamplesActivity extends Activity implements
 		OnChildClickListener {
 
 	private static final String FRAGMENT_TAG = "rajawali";
