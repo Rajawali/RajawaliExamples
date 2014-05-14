@@ -43,7 +43,7 @@ public class ThreeSixtyImagesFragment extends AExampleFragment {
 
 			mScreenQuad = new ScreenQuad();
 			mScreenQuad.setMaterial(mMaterial);
-			addChild(mScreenQuad);
+			getCurrentScene().addChild(mScreenQuad);
 
 			if (mTextures == null) {
 				// -- create an array that will contain all TextureInfo objects

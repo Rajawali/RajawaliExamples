@@ -106,7 +106,7 @@ public class ObjectPickingFragment extends AExampleFragment implements
 				mMonkey1.setRotY(0);
 				mMonkey1.setMaterial(material);
 				mMonkey1.setColor(0x0000ff);
-				addChild(mMonkey1);
+				getCurrentScene().addChild(mMonkey1);
 
 				mMonkey2 = mMonkey1.clone();
 				mMonkey2.setScale(.7f);
@@ -114,7 +114,7 @@ public class ObjectPickingFragment extends AExampleFragment implements
 				mMonkey2.setRotY(45);
 				mMonkey2.setMaterial(material);
 				mMonkey2.setColor(0x00ff00);
-				addChild(mMonkey2);
+				getCurrentScene().addChild(mMonkey2);
 
 				mMonkey3 = mMonkey1.clone();
 				mMonkey3.setScale(.7f);
@@ -122,7 +122,7 @@ public class ObjectPickingFragment extends AExampleFragment implements
 				mMonkey3.setRotY(90);
 				mMonkey3.setMaterial(material);
 				mMonkey3.setColor(0xcc1100);
-				addChild(mMonkey3);
+				getCurrentScene().addChild(mMonkey3);
 
 				mMonkey4 = mMonkey1.clone();
 				mMonkey4.setScale(.7f);
@@ -130,7 +130,7 @@ public class ObjectPickingFragment extends AExampleFragment implements
 				mMonkey4.setRotY(135);
 				mMonkey4.setMaterial(material);
 				mMonkey4.setColor(0xff9955);
-				addChild(mMonkey4);
+				getCurrentScene().addChild(mMonkey4);
 
 				mPicker.registerObject(mMonkey1);
 				mPicker.registerObject(mMonkey2);

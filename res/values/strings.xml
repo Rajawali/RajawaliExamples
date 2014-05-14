@@ -36,8 +36,6 @@
     <string name="skeletal_animation_blending_created_by">Model by Tiziana Loni. Lame animations by MasDennis.</string>
     <!-- Touch and Drag Fragment -->
     <string name="touch_and_drag_fragment_info">Touch &amp; drag</string>
-    <!-- Animated GIF Texture Fragment -->
-    <string name="animated_gif_texture_fragment_info">Touch the screen to load the next GIF</string>
     <!-- Meet The Team Fragment -->
     <string name="textview_favorite_beers">Favorite Beers</string>
     <!-- Community Fragment -->

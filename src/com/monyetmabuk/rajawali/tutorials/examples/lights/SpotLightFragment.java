@@ -1,10 +1,10 @@
 package com.monyetmabuk.rajawali.tutorials.examples.lights;
 
 import rajawali.Object3D;
-import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3D.RepeatMode;
+import rajawali.animation.Animation;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
-import rajawali.animation.IAnimation3DListener;
+import rajawali.animation.IAnimationListener;
 import rajawali.lights.SpotLight;
 import rajawali.materials.Material;
 import rajawali.materials.methods.DiffuseMethod;
@@ -52,7 +52,7 @@ public class SpotLightFragment extends AExampleFragment {
 			rootSphere.setMaterial(sphereMaterial);
 			rootSphere.setRenderChildrenAsBatch(true);
 			rootSphere.setVisible(false);
-			addChild(rootSphere);
+			getCurrentScene().addChild(rootSphere);
 
 			// -- inner ring
 
@@ -103,24 +103,24 @@ public class SpotLightFragment extends AExampleFragment {
 			EllipticalOrbitAnimation3D anim = new EllipticalOrbitAnimation3D(
 					new Vector3(0, .2f, 0), new Vector3(1, .2f, 1), 0, 359);
 			anim.setRepeatMode(RepeatMode.INFINITE);
-			anim.setDuration(6000);
+			anim.setDurationMilliseconds(6000);
 			anim.setTransformable3D(target);
-			anim.registerListener(new IAnimation3DListener() {
-				public void onAnimationUpdate(Animation3D animation,
+			anim.registerListener(new IAnimationListener() {
+				public void onAnimationUpdate(Animation animation,
 						double interpolatedTime) {
 					spotLight.setLookAt(target.getPosition());
 				}
 
-				public void onAnimationStart(Animation3D animation) {
+				public void onAnimationStart(Animation animation) {
 				}
 
-				public void onAnimationRepeat(Animation3D animation) {
+				public void onAnimationRepeat(Animation animation) {
 				}
 
-				public void onAnimationEnd(Animation3D animation) {
+				public void onAnimationEnd(Animation animation) {
 				}
 			});
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 		}
 

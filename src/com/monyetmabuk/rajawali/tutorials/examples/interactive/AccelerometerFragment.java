@@ -90,7 +90,7 @@ public class AccelerometerFragment extends AExampleFragment implements
 
 				mMonkey = new Object3D(serializedMonkey);
 				mMonkey.setRotY(180);
-				addChild(mMonkey);
+				getCurrentScene().addChild(mMonkey);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

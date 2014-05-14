@@ -4,8 +4,8 @@ import java.io.ObjectInputStream;
 
 import rajawali.Object3D;
 import rajawali.SerializedObject3D;
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.RotateAnimation3D;
+import rajawali.animation.Animation.RepeatMode;
+import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.Material;
 import rajawali.materials.methods.DiffuseMethod;
@@ -73,14 +73,14 @@ public class TransparentSurfaceFragment extends AExampleFragment {
 				monkey.setMaterial(material);
 				monkey.setColor(0xffff8C00);
 				monkey.setScale(2);
-				addChild(monkey);
+				getCurrentScene().addChild(monkey);
 
-				RotateAnimation3D anim = new RotateAnimation3D(Axis.Y, 360);
-				anim.setDuration(6000);
+				RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Axis.Y, 360);
+				anim.setDurationMilliseconds(6000);
 				anim.setRepeatMode(RepeatMode.INFINITE);
 				anim.setInterpolator(new AccelerateDecelerateInterpolator());
 				anim.setTransformable3D(monkey);
-				registerAnimation(anim);
+				getCurrentScene().registerAnimation(anim);
 				anim.play();
 			} catch (Exception e) {
 				e.printStackTrace();

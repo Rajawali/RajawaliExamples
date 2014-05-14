@@ -2,7 +2,8 @@ package com.monyetmabuk.rajawali.tutorials;
 
 import java.util.Map;
 
-import rajawali.RajawaliActivity;
+import rajawali.util.RajLog;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -28,7 +29,7 @@ import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.Category;
 import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-public class RajawaliExamplesActivity extends RajawaliActivity implements
+public class RajawaliExamplesActivity extends Activity implements
 		OnChildClickListener {
 
 	private static final String FRAGMENT_TAG = "rajawali";
@@ -54,6 +55,7 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		mDrawerList.setAdapter(new ExampleAdapter(getApplicationContext(),
 				ExamplesApplication.ITEMS));
 		mDrawerList.setOnChildClickListener(this);
+		mDrawerList.setDrawSelectorOnTop(true);
 
 		// Configure the drawer toggle
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
@@ -69,7 +71,9 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 				invalidateOptionsMenu();
 			}
 		};
+		
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
+		mDrawerLayout.setFocusable(false);
 
 		if (savedInstanceState == null)
 			onChildClick(null, null, 0, 0, 0);
@@ -113,6 +117,7 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		case android.R.id.home:
 			if (mDrawerToggle.onOptionsItemSelected(item))
 				return true;
+			
 			break;
 		}
 
@@ -148,7 +153,6 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 	 */
 	private void launchFragment(Category category, ExampleItem exampleItem) {
 		final FragmentManager fragmentManager = getFragmentManager();
-		final Fragment fragment;
 
 		// Close the drawer
 		mDrawerLayout.closeDrawers();
@@ -156,22 +160,18 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		// Set fragment title
 		setTitle(exampleItem.title);
 
-		final FragmentTransaction transaction = fragmentManager
-				.beginTransaction();
+		final FragmentTransaction transaction = fragmentManager.beginTransaction();
 		try {
-			Fragment oldFrag = fragmentManager.findFragmentByTag(FRAGMENT_TAG);
-			if (oldFrag != null)
-				transaction.remove(oldFrag);
-
-			fragment = (Fragment) exampleItem.exampleClass.getConstructors()[0]
-					.newInstance();
+			final Fragment fragment = (Fragment) exampleItem.exampleClass.getConstructors()[0].newInstance();
 
 			final Bundle bundle = new Bundle();
-			bundle.putString(AExampleFragment.BUNDLE_EXAMPLE_URL,
-					exampleItem.getUrl(category));
+			bundle.putString(AExampleFragment.BUNDLE_EXAMPLE_URL, exampleItem.getUrl(category));
 			fragment.setArguments(bundle);
 
-			transaction.add(R.id.content_frame, fragment, FRAGMENT_TAG);
+			if (fragmentManager.findFragmentByTag(FRAGMENT_TAG) != null)
+				transaction.addToBackStack(null);
+			
+			transaction.replace(R.id.content_frame, fragment, FRAGMENT_TAG);
 			transaction.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

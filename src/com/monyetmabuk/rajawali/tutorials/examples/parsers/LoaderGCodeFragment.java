@@ -58,7 +58,7 @@ public class LoaderGCodeFragment extends AExampleFragment {
 					for (int i = 0; i < gCode3D.getNumChildren(); i++) {
 						gCode3D.getChildAt(i).setMaterial(mat);
 					}
-					addChild(gCode3D);
+					getCurrentScene().addChild(gCode3D);
 				}
 			} catch (Exception e) {
 				RajLog.e(new StringBuilder()

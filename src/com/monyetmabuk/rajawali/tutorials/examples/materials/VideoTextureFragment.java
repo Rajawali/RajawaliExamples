@@ -8,7 +8,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.Object3D;
 import rajawali.SerializedObject3D;
-import rajawali.animation.Animation3D.RepeatMode;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.PointLight;
@@ -92,7 +92,7 @@ public class VideoTextureFragment extends AExampleFragment {
 			screen.setX(.1f);
 			screen.setY(-.2f);
 			screen.setZ(1.5f);
-			addChild(screen);
+			getCurrentScene().addChild(screen);
 
 			getCurrentCamera().setLookAt(0, 0, 0);
 
@@ -101,21 +101,21 @@ public class VideoTextureFragment extends AExampleFragment {
 			TranslateAnimation3D lightAnim = new TranslateAnimation3D(
 					new Vector3(-3, 3, 10), // from
 					new Vector3(3, 1, 3)); // to
-			lightAnim.setDuration(5000);
+			lightAnim.setDurationMilliseconds(5000);
 			lightAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			lightAnim.setTransformable3D(pointLight);
 			lightAnim.setInterpolator(new AccelerateDecelerateInterpolator());
-			registerAnimation(lightAnim);
+			getCurrentScene().registerAnimation(lightAnim);
 			lightAnim.play();
 
 			// -- animate the camera
 
 			EllipticalOrbitAnimation3D camAnim = new EllipticalOrbitAnimation3D(
 					new Vector3(3, 2, 10), new Vector3(1, 0, 8), 0, 359);
-			camAnim.setDuration(20000);
+			camAnim.setDurationMilliseconds(20000);
 			camAnim.setRepeatMode(RepeatMode.INFINITE);
 			camAnim.setTransformable3D(getCurrentCamera());
-			registerAnimation(camAnim);
+			getCurrentScene().registerAnimation(camAnim);
 			camAnim.play();
 
 			mMediaPlayer.start();

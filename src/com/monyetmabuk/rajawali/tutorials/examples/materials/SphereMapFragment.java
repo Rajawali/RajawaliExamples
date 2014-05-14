@@ -4,9 +4,9 @@ import java.io.ObjectInputStream;
 
 import rajawali.Object3D;
 import rajawali.SerializedObject3D;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.RotateAnimation3D;
+import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.lights.PointLight;
 import rajawali.materials.Material;
 import rajawali.materials.methods.DiffuseMethod;
@@ -64,7 +64,7 @@ public class SphereMapFragment extends AExampleFragment {
 				jet1 = new Object3D((SerializedObject3D) ois.readObject());
 				jet1.setMaterial(material1);
 				jet1.setY(2.5f);
-				addChild(jet1);
+				getCurrentScene().addChild(jet1);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -72,11 +72,11 @@ public class SphereMapFragment extends AExampleFragment {
 			Vector3 axis = new Vector3(2, -4, 1);
 			axis.normalize();
 
-			Animation3D anim1 = new RotateAnimation3D(axis, 360);
+			Animation3D anim1 = new RotateOnAxisAnimation(axis, 360);
 			anim1.setRepeatMode(RepeatMode.INFINITE);
-			anim1.setDuration(12000);
+			anim1.setDurationMilliseconds(12000);
 			anim1.setTransformable3D(jet1);
-			registerAnimation(anim1);
+			getCurrentScene().registerAnimation(anim1);
 			anim1.play();
 
 			sphereMapTexture = new SphereMapTexture("manilaSphereMapTex2", R.drawable.manila_sphere_map);
@@ -99,13 +99,13 @@ public class SphereMapFragment extends AExampleFragment {
 			// -- also specify a color
 			jet2.setColor(0xff666666);
 			jet2.setY(-2.5f);
-			addChild(jet2);
+			getCurrentScene().addChild(jet2);
 
-			Animation3D anim2 = new RotateAnimation3D(axis, -360);
+			Animation3D anim2 = new RotateOnAxisAnimation(axis, -360);
 			anim2.setRepeatMode(RepeatMode.INFINITE);
-			anim2.setDuration(12000);
+			anim2.setDurationMilliseconds(12000);
 			anim2.setTransformable3D(jet2);
-			registerAnimation(anim2);
+			getCurrentScene().registerAnimation(anim2);
 			anim2.play();
 
 			getCurrentCamera().setPosition(0, 0, 14);

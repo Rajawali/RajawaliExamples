@@ -1,9 +1,9 @@
 package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
 import rajawali.Object3D;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.TranslateAnimation3D;
+import rajawali.animation.SplineTranslateAnimation3D;
 import rajawali.curves.CompoundCurve3D;
 import rajawali.curves.CubicBezierCurve3D;
 import rajawali.lights.DirectionalLight;
@@ -45,7 +45,7 @@ public class BezierFragment extends AExampleFragment {
 			phong.setDiffuseMethod(new DiffuseMethod.Lambert());
 			phong.setSpecularMethod(new SpecularMethod.Phong());
 			redSphere.setMaterial(phong);
-			addChild(redSphere);
+			getCurrentScene().addChild(redSphere);
 
 			Object3D yellowSphere = new Sphere(.6f, 16, 16);
 			yellowSphere.setPosition(2, 4, 0);
@@ -54,7 +54,7 @@ public class BezierFragment extends AExampleFragment {
 			diffuse.enableLighting(true);
 			diffuse.setDiffuseMethod(new DiffuseMethod.Lambert());
 			yellowSphere.setMaterial(diffuse);
-			addChild(yellowSphere);
+			getCurrentScene().addChild(yellowSphere);
 
 			CompoundCurve3D redBezierPath = new CompoundCurve3D();
 			redBezierPath.addCurve(new CubicBezierCurve3D(
@@ -72,18 +72,18 @@ public class BezierFragment extends AExampleFragment {
 					30), new Vector3(6, 1, 2), new Vector3(4, 2, 3),
 					new Vector3(-3, -3, -4.5f)));
 
-			Animation3D redAnim = new TranslateAnimation3D(redBezierPath);
-			redAnim.setDuration(2000);
+			Animation3D redAnim = new SplineTranslateAnimation3D(redBezierPath);
+			redAnim.setDurationMilliseconds(2000);
 			redAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			redAnim.setTransformable3D(redSphere);
-			registerAnimation(redAnim);
+			getCurrentScene().registerAnimation(redAnim);
 			redAnim.play();
 
-			Animation3D yellowAnim = new TranslateAnimation3D(yellowBezierPath);
-			yellowAnim.setDuration(3800);
+			Animation3D yellowAnim = new SplineTranslateAnimation3D(yellowBezierPath);
+			yellowAnim.setDurationMilliseconds(3800);
 			yellowAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			yellowAnim.setTransformable3D(yellowSphere);
-			registerAnimation(yellowAnim);
+			getCurrentScene().registerAnimation(yellowAnim);
 			yellowAnim.play();
 		}
 	}

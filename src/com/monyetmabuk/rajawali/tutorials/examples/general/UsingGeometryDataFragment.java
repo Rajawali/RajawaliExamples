@@ -6,9 +6,8 @@ import java.util.zip.GZIPInputStream;
 
 import rajawali.Object3D;
 import rajawali.SerializedObject3D;
-import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.RotateAnimation3D;
+import rajawali.animation.Animation.RepeatMode;
+import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.Material;
 import rajawali.materials.methods.DiffuseMethod;
@@ -30,7 +29,6 @@ public class UsingGeometryDataFragment extends AExampleFragment {
 	}
 
 	private final class UsingGeometryDataRenderer extends AExampleRenderer {
-		private Animation3D mAnim;
 		private Object3D mRootSpike;
 
 		public UsingGeometryDataRenderer(Context context) {
@@ -66,7 +64,7 @@ public class UsingGeometryDataFragment extends AExampleFragment {
 				// -- objects that share the same geometry and material,
 				// so batch rendering gives a performance boost.
 				mRootSpike.setRenderChildrenAsBatch(true);
-				addChild(mRootSpike);
+				getCurrentScene().addChild(mRootSpike);
 
 				// -- get vertex buffer
 				FloatBuffer vertBuffer = sphere.getGeometry().getVertices();
@@ -106,12 +104,12 @@ public class UsingGeometryDataFragment extends AExampleFragment {
 			Vector3 rotationAxis = new Vector3(.3f, .9f, .15f);
 			rotationAxis.normalize();
 
-			mAnim = new RotateAnimation3D(rotationAxis, 360);
-			mAnim.setDuration(8000);
+			RotateOnAxisAnimation mAnim = new RotateOnAxisAnimation(rotationAxis, 360);
+			mAnim.setDurationMilliseconds(8000);
 			mAnim.setRepeatMode(RepeatMode.INFINITE);
 			mAnim.setTransformable3D(mRootSpike);
 
-			registerAnimation(mAnim);
+			getCurrentScene().registerAnimation(mAnim);
 			mAnim.play();
 		}
 

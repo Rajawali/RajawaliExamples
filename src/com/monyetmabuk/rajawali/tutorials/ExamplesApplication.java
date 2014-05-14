@@ -37,6 +37,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.lights.DirectionalLightFragme
 import com.monyetmabuk.rajawali.tutorials.examples.lights.MultipleLightsFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.lights.PointLightFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.lights.SpotLightFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.materials.AnimatedGIFTextureFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.BumpMappingFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.CustomMaterialShaderFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.CustomVertexShaderFragment;
@@ -168,6 +169,7 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Specular Alpha", SpecularAndAlphaFragment.class)
 				, new ExampleItem("Video Texture", VideoTextureFragment.class)
 				, new ExampleItem("Loading Shader Textfiles", RawShaderFilesFragment.class)
+				, new ExampleItem("Animated GIF Texture", AnimatedGIFTextureFragment.class)
 			});
 		ITEMS.put(Category.ABOUT, new ExampleItem[] {
 			new ExampleItem("Community Stream", CommunityFeedFragment.class)

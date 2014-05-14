@@ -1,7 +1,7 @@
 package com.monyetmabuk.rajawali.tutorials.examples.materials;
 
-import rajawali.animation.Animation3D.RepeatMode;
-import rajawali.animation.RotateAnimation3D;
+import rajawali.animation.Animation.RepeatMode;
+import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.PointLight;
 import rajawali.materials.Material;
@@ -55,14 +55,14 @@ public class SpecularAndAlphaFragment extends AExampleFragment {
 				Sphere sphere = new Sphere(1, 32, 24);
 				sphere.setMaterial(material);
 				sphere.setY(1.2f);
-				addChild(sphere);
+				getCurrentScene().addChild(sphere);
 
-				RotateAnimation3D sphereAnim = new RotateAnimation3D(Axis.Y,
+				RotateOnAxisAnimation sphereAnim = new RotateOnAxisAnimation(Axis.Y,
 						359);
-				sphereAnim.setDuration(14000);
+				sphereAnim.setDurationMilliseconds(14000);
 				sphereAnim.setRepeatMode(RepeatMode.INFINITE);
 				sphereAnim.setTransformable3D(sphere);
-				registerAnimation(sphereAnim);
+				getCurrentScene().registerAnimation(sphereAnim);
 				sphereAnim.play();
 
 				material = new Material();
@@ -77,13 +77,13 @@ public class SpecularAndAlphaFragment extends AExampleFragment {
 				sphere.setMaterial(material);
 				sphere.setDoubleSided(true);
 				sphere.setY(-1.2f);
-				addChild(sphere);
+				getCurrentScene().addChild(sphere);
 
-				sphereAnim = new RotateAnimation3D(Axis.Y, -359);
-				sphereAnim.setDuration(10000);
+				sphereAnim = new RotateOnAxisAnimation(Axis.Y, -359);
+				sphereAnim.setDurationMilliseconds(10000);
 				sphereAnim.setRepeatMode(RepeatMode.INFINITE);
 				sphereAnim.setTransformable3D(sphere);
-				registerAnimation(sphereAnim);
+				getCurrentScene().registerAnimation(sphereAnim);
 				sphereAnim.play();
 			} catch (TextureException e) {
 				e.printStackTrace();
@@ -91,11 +91,11 @@ public class SpecularAndAlphaFragment extends AExampleFragment {
 
 			TranslateAnimation3D lightAnim = new TranslateAnimation3D(
 					new Vector3(-2, 3, 3), new Vector3(2, -1, 3));
-			lightAnim.setDuration(3000);
+			lightAnim.setDurationMilliseconds(3000);
 			lightAnim.setInterpolator(new AccelerateDecelerateInterpolator());
 			lightAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			lightAnim.setTransformable3D(pointLight);
-			registerAnimation(lightAnim);
+			getCurrentScene().registerAnimation(lightAnim);
 			lightAnim.play();
 
 			getCurrentCamera().setZ(6);

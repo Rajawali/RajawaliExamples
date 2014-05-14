@@ -4,8 +4,8 @@ import java.io.ObjectInputStream;
 
 import rajawali.Object3D;
 import rajawali.SerializedObject3D;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.PointLight;
 import rajawali.materials.Material;
@@ -58,25 +58,25 @@ public class MultipleLightsFragment extends AExampleFragment {
 				jet.setMaterial(material);
 				jet.setPosition(1, 0, 0);
 				jet.setRotY(180);
-				addChild(jet);
+				getCurrentScene().addChild(jet);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
 			Animation3D anim = new TranslateAnimation3D(
 					new Vector3(-10, -10, 5), new Vector3(-10, 10, 5));
-			anim.setDuration(4000);
+			anim.setDurationMilliseconds(4000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(light1);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
 			anim = new TranslateAnimation3D(new Vector3(10, 10, 5),
 					new Vector3(10, -10, 5));
-			anim.setDuration(2000);
+			anim.setDurationMilliseconds(2000);
 			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(light2);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 		}
 

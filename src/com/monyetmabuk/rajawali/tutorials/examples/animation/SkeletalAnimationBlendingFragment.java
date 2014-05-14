@@ -140,7 +140,7 @@ public class SkeletalAnimationBlendingFragment extends AExampleFragment implemen
 				mObject.setScale(.8f);
 				mObject.play();
 
-				addChild(mObject);
+				getCurrentScene().addChild(mObject);
 			} catch (ParsingException e) {
 				e.printStackTrace();
 			}

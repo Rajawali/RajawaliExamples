@@ -1,11 +1,11 @@
 package com.monyetmabuk.rajawali.tutorials.examples.parsers;
 
 import rajawali.Object3D;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
-import rajawali.animation.Animation3D.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
 import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
-import rajawali.animation.RotateAnimation3D;
+import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.lights.PointLight;
 import rajawali.math.vector.Vector3;
 import rajawali.math.vector.Vector3.Axis;
@@ -45,10 +45,10 @@ public class LoadModelFragment extends AExampleFragment {
 			try {
 				objParser.parse();
 				mObjectGroup = objParser.getParsedObject();
-				addChild(mObjectGroup);
+				getCurrentScene().addChild(mObjectGroup);
 
-				mCameraAnim = new RotateAnimation3D(Axis.Y, 360);
-				mCameraAnim.setDuration(8000);
+				mCameraAnim = new RotateOnAxisAnimation(Axis.Y, 360);
+				mCameraAnim.setDurationMilliseconds(8000);
 				mCameraAnim.setRepeatMode(RepeatMode.INFINITE);
 				mCameraAnim.setTransformable3D(mObjectGroup);
 			} catch (ParsingException e) {
@@ -59,12 +59,12 @@ public class LoadModelFragment extends AExampleFragment {
 					new Vector3(0, 10, 0), Vector3.getAxisVector(Axis.Z), 0,
 					360, OrbitDirection.CLOCKWISE);
 
-			mLightAnim.setDuration(3000);
+			mLightAnim.setDurationMilliseconds(3000);
 			mLightAnim.setRepeatMode(RepeatMode.INFINITE);
 			mLightAnim.setTransformable3D(mLight);
 
-			registerAnimation(mCameraAnim);
-			registerAnimation(mLightAnim);
+			getCurrentScene().registerAnimation(mCameraAnim);
+			getCurrentScene().registerAnimation(mLightAnim);
 
 			mCameraAnim.play();
 			mLightAnim.play();

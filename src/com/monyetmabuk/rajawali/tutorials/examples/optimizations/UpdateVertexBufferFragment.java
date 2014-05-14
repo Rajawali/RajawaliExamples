@@ -9,7 +9,7 @@ import javax.microedition.khronos.opengles.GL10;
 import rajawali.BufferInfo;
 import rajawali.Geometry3D;
 import rajawali.Object3D;
-import rajawali.animation.Animation3D.RepeatMode;
+import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.RotateAroundAnimation3D;
 import rajawali.curves.CatmullRomCurve3D;
 import rajawali.materials.Material;
@@ -165,10 +165,10 @@ public class UpdateVertexBufferFragment extends AExampleFragment {
 
 			RotateAroundAnimation3D anim = new RotateAroundAnimation3D(
 					new Vector3(), Axis.Y, 10);
-			anim.setDuration(10000 * 20);
+			anim.setDurationMilliseconds(200000);
 			anim.setTransformable3D(getCurrentCamera());
 			anim.setRepeatMode(RepeatMode.INFINITE);
-			registerAnimation(anim);
+			getCurrentScene().registerAnimation(anim);
 			anim.play();
 		}
 

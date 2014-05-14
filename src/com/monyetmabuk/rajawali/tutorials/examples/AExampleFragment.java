@@ -93,6 +93,14 @@ public abstract class AExampleFragment extends RajawaliFragment implements
 	}
 
 	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+
+		if (mLayout != null)
+			mLayout.removeView(mSurfaceView);
+	}
+
+	@Override
 	public void onDestroy() {
 		try {
 			super.onDestroy();

@@ -32,7 +32,7 @@ public class TwoDimensionalFragment extends AExampleFragment {
 
 			ScreenQuad screenQuad = new ScreenQuad();
 			screenQuad.setMaterial(mCustomMaterial);
-			addChild(screenQuad);
+			getCurrentScene().addChild(screenQuad);
 		}
 
 		public void onDrawFrame(GL10 glUnused) {
