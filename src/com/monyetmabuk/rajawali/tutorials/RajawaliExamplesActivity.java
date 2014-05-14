@@ -33,6 +33,7 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 
 	private static final String FRAGMENT_TAG = "rajawali";
 	private static final String PREF_FIRST_RUN = "RajawaliExamplesActivity.PREF_FIRST_RUN";
+	private static final String KEY_TITLE = RajawaliExamplesActivity.class.getSimpleName() + ".KEY_TITLE";
 
 	private DrawerLayout mDrawerLayout;
 	private ExpandableListView mDrawerList;
@@ -74,8 +75,11 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		mDrawerLayout.setFocusable(false);
 
-		if (savedInstanceState == null)
+		if (savedInstanceState == null) {
 			onChildClick(null, null, 0, 0, 0);
+		} else {
+			setTitle(savedInstanceState.getString(KEY_TITLE));
+		}
 
 		// Open the drawer the very first run.
 		SharedPreferences prefs = PreferenceManager
@@ -143,6 +147,13 @@ public class RajawaliExamplesActivity extends RajawaliActivity implements
 		launchFragment(category, exampleItem);
 
 		return true;
+	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		
+		outState.putString(KEY_TITLE, getTitle().toString());
 	}
 
 	/**
