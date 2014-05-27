@@ -55,6 +55,10 @@ import com.monyetmabuk.rajawali.tutorials.examples.parsers.AwdFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.parsers.FBXFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.parsers.LoadModelFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.parsers.LoaderGCodeFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.GaussianBlurFilterFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.GreyScaleFilterFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.MultiPassFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.SepiaFilterFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.CanvasTextFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.TransparentSurfaceFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.TwoDimensionalFragment;
@@ -73,6 +77,7 @@ public class ExamplesApplication extends Application {
 		, PARSERS("Parsers")
 		, ANIMATION("Animation")
 		, MATERIALS("Materials")
+		, POSTPROCESSING("Post Processing")
 		, ABOUT("About");
 		// @formatter:on
 
@@ -171,6 +176,12 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Loading Shader Textfiles", RawShaderFilesFragment.class)
 				, new ExampleItem("Animated GIF Texture", AnimatedGIFTextureFragment.class)
 			});
+		ITEMS.put(Category.POSTPROCESSING, new ExampleItem[] {
+				new ExampleItem("Sepia Filter", SepiaFilterFragment.class)
+				, new ExampleItem("Greyscale Filter", GreyScaleFilterFragment.class)
+				, new ExampleItem("Gaussian Blur Filter", GaussianBlurFilterFragment.class)
+				, new ExampleItem("Multi Pass", MultiPassFragment.class)
+		});
 		ITEMS.put(Category.ABOUT, new ExampleItem[] {
 			new ExampleItem("Community Stream", CommunityFeedFragment.class)
 			, new ExampleItem("Meet The Team", MeetTheTeamFragment.class)
