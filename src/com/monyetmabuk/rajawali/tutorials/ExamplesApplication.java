@@ -58,6 +58,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.parsers.LoaderGCodeFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.GaussianBlurFilterFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.GreyScaleFilterFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.MultiPassFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.RenderToTextureFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.SepiaFilterFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.CanvasTextFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.TransparentSurfaceFragment;
@@ -181,6 +182,7 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Greyscale Filter", GreyScaleFilterFragment.class)
 				, new ExampleItem("Gaussian Blur Filter", GaussianBlurFilterFragment.class)
 				, new ExampleItem("Multi Pass", MultiPassFragment.class)
+				, new ExampleItem("Render to Texture", RenderToTextureFragment.class)
 		});
 		ITEMS.put(Category.ABOUT, new ExampleItem[] {
 			new ExampleItem("Community Stream", CommunityFeedFragment.class)
