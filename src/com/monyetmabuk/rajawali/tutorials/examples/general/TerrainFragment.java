@@ -8,6 +8,8 @@ import rajawali.curves.CatmullRomCurve3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.Material;
 import rajawali.materials.methods.DiffuseMethod;
+import rajawali.materials.plugins.FogMaterialPlugin.FogParams;
+import rajawali.materials.plugins.FogMaterialPlugin.FogType;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.NormalMapTexture;
 import rajawali.materials.textures.Texture;
@@ -48,13 +50,10 @@ public class TerrainFragment extends AExampleFragment {
 
 			ChaseCamera chaseCamera = new ChaseCamera(new Vector3(0, 4, -8), .9f);
 			chaseCamera.setFarPlane(1000);
-			chaseCamera.setFogNear(50);
-			chaseCamera.setFogFar(100);
-			chaseCamera.setFogColor(0x999999);
-			chaseCamera.setFogEnabled(true);
 			getCurrentScene().replaceAndSwitchCamera(chaseCamera, 0);
-			setFogEnabled(true);
-
+			
+			getCurrentScene().setFog(new FogParams(FogType.LINEAR, 0x999999, 50, 100));
+			
 			//
 			// -- Load a bitmap that represents the terrain. Its color values will
 			//    be used to generate heights.

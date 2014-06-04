@@ -1,19 +1,16 @@
-package com.monyetmabuk.rajawali.tutorials.examples.effects;
+package com.monyetmabuk.rajawali.tutorials.examples.general;
 
-import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.Camera;
 import rajawali.Object3D;
 import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.Material;
 import rajawali.materials.methods.DiffuseMethod;
-import rajawali.materials.textures.ATexture.TextureException;
+import rajawali.materials.plugins.FogMaterialPlugin.FogParams;
+import rajawali.materials.plugins.FogMaterialPlugin.FogType;
 import rajawali.materials.textures.Texture;
 import rajawali.math.vector.Vector3;
 import rajawali.parser.LoaderOBJ;
-import rajawali.parser.ParsingException;
 import android.content.Context;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
@@ -40,15 +37,11 @@ public class FogFragment extends AExampleFragment {
 			mLight.setPower(.5f);
 
 			getCurrentScene().addLight(mLight);
-			
-			Camera camera = getCurrentCamera();
-			camera.setPosition(0, 1, 4);
-			camera.setFogNear(1);
-			camera.setFogFar(15);
-			camera.setFogColor(0x999999);
 
-			setFogEnabled(true);
-			getCurrentScene().setBackgroundColor(0x999999);
+			int fogColor = 0x999999;
+			
+			getCurrentScene().setBackgroundColor(fogColor);
+			getCurrentScene().setFog(new FogParams(FogType.LINEAR, fogColor, 1, 15));
 
 			LoaderOBJ objParser = new LoaderOBJ(mContext.getResources(),
 					mTextureManager, R.raw.road);
@@ -58,28 +51,20 @@ public class FogFragment extends AExampleFragment {
 				mRoad.setZ(-2);
 				mRoad.setRotY(180);
 				getCurrentScene().addChild(mRoad);
-			} catch (ParsingException e) {
-				e.printStackTrace();
-			}
-			mRoad = objParser.getParsedObject();
-			mRoad.setZ(-2);
-			mRoad.setRotY(180);
-			getCurrentScene().addChild(mRoad);
 
-			try {
 				Material roadMaterial = new Material();
 				roadMaterial.enableLighting(true);
 				roadMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
-				roadMaterial.addTexture(new Texture("road", R.drawable.road));
+				roadMaterial.addTexture(new Texture("roadTex", R.drawable.road));
 				roadMaterial.setColorInfluence(0);
 				mRoad.getChildByName("Road").setMaterial(roadMaterial);
 
 				Material signMaterial = new Material();
 				signMaterial.enableLighting(true);
 				signMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
-				signMaterial.addTexture(new Texture("sign", R.drawable.sign));
+				signMaterial.addTexture(new Texture("rajawaliSign", R.drawable.sign));
 				signMaterial.setColorInfluence(0);
-				mRoad.getChildByName("Sign").setMaterial(signMaterial);
+				mRoad.getChildByName("WarningSign").setMaterial(signMaterial);
 
 				Material warningMaterial = new Material();
 				warningMaterial.enableLighting(true);
@@ -87,11 +72,12 @@ public class FogFragment extends AExampleFragment {
 				warningMaterial.addTexture(new Texture("warning", R.drawable.warning));
 				warningMaterial.setColorInfluence(0);
 				mRoad.getChildByName("Warning").setMaterial(warningMaterial);
-			} catch (TextureException tme) {
-				tme.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 
 			TranslateAnimation3D camAnim = new TranslateAnimation3D(
+					new Vector3(0, 1, 0),
 					new Vector3(0, 1, -23));
 			camAnim.setDurationMilliseconds(8000);
 			camAnim.setInterpolator(new AccelerateDecelerateInterpolator());
@@ -100,12 +86,5 @@ public class FogFragment extends AExampleFragment {
 			getCurrentScene().registerAnimation(camAnim);
 			camAnim.play();
 		}
-
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
-			mLight.setZ(getCurrentCamera().getZ());
-		}
-
 	}
-
 }

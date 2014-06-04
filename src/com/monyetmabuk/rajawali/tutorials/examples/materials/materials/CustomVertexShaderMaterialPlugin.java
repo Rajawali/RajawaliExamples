@@ -125,5 +125,10 @@ public class CustomVertexShaderMaterialPlugin implements IMaterialPlugin {
 		public String getShaderId() {
 			return SHADER_ID;
 		}		
+		
+		@Override
+		public PluginInsertLocation getInsertLocation() {
+			return PluginInsertLocation.IGNORE;
+		}
 	}
 }

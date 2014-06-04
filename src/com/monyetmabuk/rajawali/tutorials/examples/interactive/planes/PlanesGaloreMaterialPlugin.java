@@ -181,6 +181,11 @@ public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 		public String getShaderId() {
 			return SHADER_ID;
 		}
+		
+		@Override
+		public PluginInsertLocation getInsertLocation() {
+			return PluginInsertLocation.IGNORE;
+		}
 	}
 	
 	private class PlanesGaloreFragmentShaderFragment extends AShader implements IShaderFragment
@@ -211,6 +216,11 @@ public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 		public void main() {
 			RVec4 gColor = (RVec4) getGlobal(DefaultShaderVar.G_COLOR);
 			gColor.rgb().assignMultiply(mvFog);
+		}
+		
+		@Override
+		public PluginInsertLocation getInsertLocation() {
+			return PluginInsertLocation.IGNORE;
 		}
 	}
 }

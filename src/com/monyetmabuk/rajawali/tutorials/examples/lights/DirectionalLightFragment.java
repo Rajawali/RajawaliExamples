@@ -12,6 +12,7 @@ import rajawali.materials.methods.SpecularMethod;
 import rajawali.math.MathUtil;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
+import rajawali.util.RajLog;
 import android.content.Context;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
