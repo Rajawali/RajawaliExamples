@@ -14,7 +14,6 @@ import rajawali.math.vector.Vector3;
 import rajawali.postprocessing.PostProcessingManager;
 import rajawali.postprocessing.passes.RenderPass;
 import rajawali.primitives.Cube;
-import rajawali.primitives.Sphere;
 import rajawali.scene.RajawaliScene;
 import android.content.Context;
 
@@ -46,7 +45,7 @@ public class RenderToTextureFragment extends AExampleFragment {
 			
 			DirectionalLight light = new DirectionalLight();
 			light.setPower(1);
-			getCurrentScene().setBackgroundColor(0xeeeeee);
+			getCurrentScene().setBackgroundColor(0xdfae74);
 			getCurrentScene().addLight(light);
 
 			Material material = new Material();
@@ -92,7 +91,7 @@ public class RenderToTextureFragment extends AExampleFragment {
 			cubeMaterial.setColorInfluence(0);
 			cubeMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
 
-			mSphere = new Sphere(1, 32, 32);
+			mSphere = new Cube(1);
 			mSphere.setMaterial(cubeMaterial);
 			mOtherScene.addChild(mSphere);
 
@@ -107,10 +106,10 @@ public class RenderToTextureFragment extends AExampleFragment {
 			anim.play();
 
 			//
-			// -- Set up the post processing manager
+			// -- Set up the post processing manager with the required texture size
 			//
 			
-			mEffects = new PostProcessingManager(this);
+			mEffects = new PostProcessingManager(this, 400, 400);
 			RenderPass renderPass = new RenderPass(getCurrentScene(),
 					getCurrentCamera(), 0);
 			mEffects.addPass(renderPass);
@@ -127,6 +126,13 @@ public class RenderToTextureFragment extends AExampleFragment {
 			
 			//
 			// -- Off screen rendering first. Render to texture.
+			//
+			
+			//
+			// -- Change the viewport to the required texture size
+			//
+			
+			setViewPort(400, 400);
 			
 			mEffects.render(deltaTime);
 			try {
@@ -143,6 +149,12 @@ public class RenderToTextureFragment extends AExampleFragment {
 			} catch (TextureException e) {
 				e.printStackTrace();
 			}
+			
+			//
+			// -- Change the viewport back to full screen
+			//
+			
+			setViewPort(mViewportWidth, mViewportHeight);
 			super.onRender(deltaTime);
 		}
 	}

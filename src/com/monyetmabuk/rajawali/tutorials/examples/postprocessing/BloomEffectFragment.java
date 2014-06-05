@@ -95,7 +95,6 @@ public class BloomEffectFragment extends AExampleFragment {
 		@Override
 		public void onRender(final double deltaTime) {
 			mEffects.render(deltaTime);
-			RajLog.i("xx _ Viewport: " + mViewportWidth + ", " + mViewportHeight);
 		}
 	}
 }
