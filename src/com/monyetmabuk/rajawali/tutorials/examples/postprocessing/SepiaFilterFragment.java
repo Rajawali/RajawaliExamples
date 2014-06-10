@@ -93,7 +93,6 @@ public class SepiaFilterFragment extends AExampleFragment {
 		
 		@Override
 		public void onRender(final double deltaTime) {
-			super.onRender(deltaTime);
 			
 			//
 			// -- Important. Call render() on the post processing manager.
