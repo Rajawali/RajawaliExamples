@@ -138,9 +138,4 @@ public class ExampleParticleSystem2 extends Object3D {
 		particleShader.setCameraPosition(camera.getPosition());
 		*/
 	}
-
-	public void render(Camera camera, final Matrix4 projMatrix, final Matrix4 vMatrix,
-			final Matrix4 parentMatrix, ColorPickerInfo pickerInfo) {
-		super.render(camera, projMatrix, vMatrix, parentMatrix, pickerInfo);
-	}
 }
