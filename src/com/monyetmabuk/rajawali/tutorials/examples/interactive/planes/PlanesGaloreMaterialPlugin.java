@@ -32,6 +32,11 @@ public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 		return mFragmentShader;
 	}
 	
+	@Override
+	public void bindTextures(int nextIndex) {}
+	@Override
+	public void unbindTextures() {}
+	
 	public void setPlanePositions(final int planePositionBufferHandle) {
 		mVertexShader.setPlanePositions(planePositionBufferHandle);
 	}
@@ -186,6 +191,12 @@ public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 		public PluginInsertLocation getInsertLocation() {
 			return PluginInsertLocation.IGNORE;
 		}
+
+		@Override
+		public void bindTextures(int nextIndex) {}
+
+		@Override
+		public void unbindTextures() {}
 	}
 	
 	private class PlanesGaloreFragmentShaderFragment extends AShader implements IShaderFragment
@@ -222,5 +233,11 @@ public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 		public PluginInsertLocation getInsertLocation() {
 			return PluginInsertLocation.IGNORE;
 		}
+
+		@Override
+		public void bindTextures(int nextIndex) {}
+
+		@Override
+		public void unbindTextures() {}
 	}
 }

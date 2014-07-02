@@ -27,6 +27,11 @@ public class CustomVertexShaderMaterialPlugin implements IMaterialPlugin {
 	public IShaderFragment getFragmentShaderFragment() {
 		return null;
 	}
+	
+	@Override
+	public void bindTextures(int nextIndex) {}
+	@Override
+	public void unbindTextures() {}
 
 	private class CustomVertexShaderFragment extends AShader implements IShaderFragment
 	{
@@ -130,5 +135,10 @@ public class CustomVertexShaderMaterialPlugin implements IMaterialPlugin {
 		public PluginInsertLocation getInsertLocation() {
 			return PluginInsertLocation.IGNORE;
 		}
+		
+		@Override
+		public void bindTextures(int nextIndex) {}
+		@Override
+		public void unbindTextures() {}
 	}
 }

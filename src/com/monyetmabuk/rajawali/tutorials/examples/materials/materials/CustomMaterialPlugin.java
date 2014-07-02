@@ -27,6 +27,11 @@ public class CustomMaterialPlugin implements IMaterialPlugin {
 	public IShaderFragment getFragmentShaderFragment() {
 		return mFragmentShader;
 	}
+	
+	@Override
+	public void bindTextures(int nextIndex) {}
+	@Override
+	public void unbindTextures() {}
 
 	private class CustomMaterialFragmentShaderFragment extends AShader implements IShaderFragment
 	{
@@ -88,5 +93,10 @@ public class CustomMaterialPlugin implements IMaterialPlugin {
 		public PluginInsertLocation getInsertLocation() {
 			return PluginInsertLocation.IGNORE;
 		}
+		
+		@Override
+		public void bindTextures(int nextIndex) {}
+		@Override
+		public void unbindTextures() {}
 	}
 }
