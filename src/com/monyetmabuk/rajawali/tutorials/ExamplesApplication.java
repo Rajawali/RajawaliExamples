@@ -62,6 +62,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.GreyScaleFilte
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.MultiPassFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.RenderToTextureFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.SepiaFilterFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.ShadowMappingFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.CanvasTextFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.TransparentSurfaceFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.TwoDimensionalFragment;
@@ -187,6 +188,7 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Multi Pass", MultiPassFragment.class)
 				, new ExampleItem("Render to Texture", RenderToTextureFragment.class)
 				, new ExampleItem("Bloom Effect", BloomEffectFragment.class)
+				, new ExampleItem("Shadow Mapping", ShadowMappingFragment.class)
 		});
 		ITEMS.put(Category.ABOUT, new ExampleItem[] {
 			new ExampleItem("Community Stream", CommunityFeedFragment.class)
