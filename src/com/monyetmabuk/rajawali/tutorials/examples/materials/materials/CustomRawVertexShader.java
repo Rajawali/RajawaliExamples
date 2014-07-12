@@ -9,6 +9,7 @@ public class CustomRawVertexShader extends VertexShader {
 	public CustomRawVertexShader()
 	{
 		super();
+		mNeedsBuild = false;
 		initialize();
 	}
 	

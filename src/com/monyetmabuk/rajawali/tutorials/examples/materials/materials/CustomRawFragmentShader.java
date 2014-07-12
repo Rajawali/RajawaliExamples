@@ -12,6 +12,7 @@ public class CustomRawFragmentShader extends FragmentShader {
 	public CustomRawFragmentShader()
 	{
 		super();
+		mNeedsBuild = false;
 		initialize();
 	}
 	
