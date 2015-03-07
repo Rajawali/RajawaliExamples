@@ -29,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.koushikdutta.async.future.Future;
@@ -85,7 +86,9 @@ public class CommunityFeedFragment extends AExampleFragment implements
 		}
 
 		// Enable logging in ION
-		Ion.getDefault(getActivity()).setLogging(TAG, Log.DEBUG);
+		Ion.getDefault(getActivity())
+                .configure()
+                .setLogging(TAG, Log.DEBUG);
 
 		// TODO ION should cache the JSON responses, likely for about an hour or so. No real reason
 		// to pull the feed more than that.
@@ -111,7 +114,7 @@ public class CommunityFeedFragment extends AExampleFragment implements
 
 		mGridView.setAdapter(mCommunityAdapter);
 		mGridView.setOnItemClickListener(this);
-		
+
 		mImageViewExampleLink = (GithubLogoView) mLayout
 				.findViewById(R.id.image_view_example_link);
 		mImageViewExampleLink.setVisibility(View.GONE);
@@ -132,7 +135,9 @@ public class CommunityFeedFragment extends AExampleFragment implements
 		}
 
 		// No cached data, request a feed from the network
-		Ion.with(getActivity(), mQueryURL).asJsonObject()
+        Ion.with(getActivity())
+                .load(mQueryURL)
+                .asJsonObject()
 				.setCallback(new FutureCallback<JsonObject>() {
 					@Override
 					public void onCompleted(Exception e, JsonObject jsonObject) {
@@ -158,7 +163,7 @@ public class CommunityFeedFragment extends AExampleFragment implements
 		feedItems.clear();
 
 		// Map the result
-		Activity activity = Ion.getDefault(getActivity()).getGson()
+		Activity activity = new Gson()
 				.fromJson(jsonObject, Activity.class);
 
 		// Check for results
