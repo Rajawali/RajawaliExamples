@@ -1,5 +1,12 @@
 package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
+import android.content.Context;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.LinearInterpolator;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import java.io.ObjectInputStream;
 
 import rajawali.Object3D;
@@ -17,12 +24,6 @@ import rajawali.materials.Material;
 import rajawali.materials.methods.DiffuseMethod;
 import rajawali.math.vector.Vector3;
 import rajawali.math.vector.Vector3.Axis;
-import android.content.Context;
-import android.view.animation.BounceInterpolator;
-import android.view.animation.LinearInterpolator;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class AnimationFragment extends AExampleFragment {
 	

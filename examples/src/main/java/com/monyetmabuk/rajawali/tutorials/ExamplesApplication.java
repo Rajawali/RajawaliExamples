@@ -1,10 +1,5 @@
 package com.monyetmabuk.rajawali.tutorials;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-
 import android.app.Application;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
@@ -63,10 +58,18 @@ import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.MultiPassFragm
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.RenderToTextureFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.SepiaFilterFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.ShadowMappingFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.scene.SceneFrameCallbackFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.CanvasTextFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.TransparentSurfaceFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.TwoDimensionalFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.UIElementsFragment;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
+import rajawali.util.RajLog;
 
 public class ExamplesApplication extends Application {
 
@@ -82,6 +85,7 @@ public class ExamplesApplication extends Application {
 		, ANIMATION("Animation")
 		, MATERIALS("Materials")
 		, POSTPROCESSING("Post Processing")
+        , SCENE("Scenes")
 		, ABOUT("About");
 		// @formatter:on
 
@@ -190,6 +194,9 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Bloom Effect", BloomEffectFragment.class)
 				, new ExampleItem("Shadow Mapping", ShadowMappingFragment.class)
 		});
+        ITEMS.put(Category.SCENE, new ExampleItem[] {
+                new ExampleItem("Frame Callbacks", SceneFrameCallbackFragment.class)
+        });
 		ITEMS.put(Category.ABOUT, new ExampleItem[] {
 			new ExampleItem("Community Stream", CommunityFeedFragment.class)
 			, new ExampleItem("Meet The Team", MeetTheTeamFragment.class)
