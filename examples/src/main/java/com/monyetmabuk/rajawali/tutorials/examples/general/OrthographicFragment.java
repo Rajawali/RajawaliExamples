@@ -40,6 +40,7 @@ public class OrthographicFragment extends AExampleFragment {
 			int[][] grid;
 
 			orthoCam = new OrthographicCamera();
+			orthoCam.setProjectionMatrix(mViewportWidth, mViewportHeight);
 			getCurrentScene().switchCamera(orthoCam);
 
 			DirectionalLight spotLight = new DirectionalLight(1f, -.1f, -.5f);
