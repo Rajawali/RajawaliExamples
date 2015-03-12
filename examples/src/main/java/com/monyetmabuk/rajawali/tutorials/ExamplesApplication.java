@@ -22,6 +22,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.general.LinesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.OrthographicFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.SVGPathFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.SkyboxFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.general.SpiralsFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.TerrainFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.ThreeSixtyImagesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.UniformDistributionFragment;
@@ -68,8 +69,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-
-import rajawali.util.RajLog;
 
 public class ExamplesApplication extends Application {
 
@@ -121,6 +120,7 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("360 Images", ThreeSixtyImagesFragment.class)
 				, new ExampleItem("Terrain", TerrainFragment.class)
 				, new ExampleItem("Curves", CurvesFragment.class)
+                , new ExampleItem("Spirals", SpiralsFragment.class)
 				, new ExampleItem("SVG Path", SVGPathFragment.class)
 				, new ExampleItem("Uniform Distribution", UniformDistributionFragment.class)
 				, new ExampleItem("Orthographic Camera", OrthographicFragment.class)
