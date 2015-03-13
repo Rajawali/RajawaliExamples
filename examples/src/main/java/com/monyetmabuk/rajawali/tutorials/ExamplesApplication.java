@@ -8,6 +8,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.about.MeetTheTeamFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.AnimationFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.BezierFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.CatmullRomFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.animation.CoalesceAnimationFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.ColorAnimationFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.MD2Fragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.SkeletalAnimationBlendingFragment;
@@ -165,6 +166,7 @@ public class ExamplesApplication extends Application {
 		ITEMS.put(Category.ANIMATION, new ExampleItem[] {
 				new ExampleItem("Animation", AnimationFragment.class)
 				, new ExampleItem("Bezier Path Animation", BezierFragment.class)
+                , new ExampleItem("Coalesce Animation", CoalesceAnimationFragment.class)
 				, new ExampleItem("MD2 Animation", MD2Fragment.class)
 				, new ExampleItem("Catmul-Rom Splines", CatmullRomFragment.class)
 				//, new ExampleItem("Animated Sprites", AnimatedSpritesFragment.class)

@@ -68,7 +68,7 @@ public class SpiralsFragment extends AExampleFragment {
             drawSpiralCurve(logSpiral, 0x0000ff, new Vector3(0, 1.5, 0));
 
             //
-            // -- Logarithmic Spiral
+            // -- Archimedean Spiral
             //
             ArchimedeanSpiral3D aSpiral = new ArchimedeanSpiral3D(.03125, 1, start, new Vector3(0, 1, -1), false);
             drawSpiralCurve(aSpiral, 0x00ff00, new Vector3(0, -1.5, 0));
