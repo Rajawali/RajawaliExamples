@@ -17,7 +17,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.general.ChaseCameraFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.CollisionDetectionFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.ColoredLinesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.CurvesFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.general.FogFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.FogFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.LinesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.OrthographicFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.SVGPathFragment;
@@ -186,7 +186,8 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Animated GIF Texture", AnimatedGIFTextureFragment.class)
 			});
 		ITEMS.put(Category.POSTPROCESSING, new ExampleItem[] {
-				new ExampleItem("Sepia Filter", SepiaFilterFragment.class)
+                new ExampleItem("Fog", FogFragment.class)
+				, new ExampleItem("Sepia Filter", SepiaFilterFragment.class)
 				, new ExampleItem("Greyscale Filter", GreyScaleFilterFragment.class)
 				, new ExampleItem("Gaussian Blur Filter", GaussianBlurFilterFragment.class)
 				, new ExampleItem("Multi Pass", MultiPassFragment.class)

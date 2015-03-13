@@ -1,4 +1,10 @@
-package com.monyetmabuk.rajawali.tutorials.examples.general;
+package com.monyetmabuk.rajawali.tutorials.examples.postprocessing;
+
+import android.content.Context;
+import android.view.animation.AccelerateDecelerateInterpolator;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import rajawali.Object3D;
 import rajawali.animation.Animation.RepeatMode;
@@ -11,11 +17,6 @@ import rajawali.materials.plugins.FogMaterialPlugin.FogType;
 import rajawali.materials.textures.Texture;
 import rajawali.math.vector.Vector3;
 import rajawali.parser.LoaderOBJ;
-import android.content.Context;
-import android.view.animation.AccelerateDecelerateInterpolator;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class FogFragment extends AExampleFragment {
 
@@ -48,7 +49,7 @@ public class FogFragment extends AExampleFragment {
 			try {
 				objParser.parse();
 				mRoad = objParser.getParsedObject();
-				mRoad.setZ(-2);
+				mRoad.setZ(5);
 				mRoad.setRotY(180);
 				getCurrentScene().addChild(mRoad);
 
@@ -77,8 +78,8 @@ public class FogFragment extends AExampleFragment {
 			}
 
 			TranslateAnimation3D camAnim = new TranslateAnimation3D(
-					new Vector3(0, 1, 0),
-					new Vector3(0, 1, -23));
+					new Vector3(0, 2, 0),
+					new Vector3(0, 2, -23));
 			camAnim.setDurationMilliseconds(8000);
 			camAnim.setInterpolator(new AccelerateDecelerateInterpolator());
 			camAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
