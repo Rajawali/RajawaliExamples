@@ -12,6 +12,10 @@
  */
 package com.monyetmabuk.rajawali.tutorials.examples.postprocessing;
 
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import java.util.Random;
 
 import rajawali.animation.Animation.RepeatMode;
@@ -26,9 +30,6 @@ import rajawali.postprocessing.passes.BlurPass.Direction;
 import rajawali.postprocessing.passes.EffectPass;
 import rajawali.postprocessing.passes.RenderPass;
 import rajawali.primitives.Cube;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class GaussianBlurFilterFragment extends AExampleFragment {
 	@Override
@@ -105,15 +106,14 @@ public class GaussianBlurFilterFragment extends AExampleFragment {
 			verticalPass.setRenderToScreen(true);
 			mEffects.addPass(verticalPass);
 		}
-		
-		@Override
-		public void onRender(final double deltaTime) {
-			
+
+        @Override
+        public void onRender(final long ellapsedTime, final double deltaTime) {
 			//
 			// -- Important. Call render() on the post processing manager.
 			//
 			
-			mEffects.render(deltaTime);
+			mEffects.render(ellapsedTime, deltaTime);
 		}
 	}
 }

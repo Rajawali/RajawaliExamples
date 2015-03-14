@@ -1,5 +1,9 @@
 package com.monyetmabuk.rajawali.tutorials.examples.postprocessing;
 
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import java.util.Random;
 
 import rajawali.Object3D;
@@ -15,9 +19,6 @@ import rajawali.postprocessing.PostProcessingManager;
 import rajawali.postprocessing.passes.RenderPass;
 import rajawali.primitives.Cube;
 import rajawali.scene.RajawaliScene;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class RenderToTextureFragment extends AExampleFragment {
 
@@ -121,9 +122,8 @@ public class RenderToTextureFragment extends AExampleFragment {
 			switchScene(mOtherScene);
 		}
 
-		@Override
-		public void onRender(final double deltaTime) {
-			
+        @Override
+        public void onRender(final long ellapsedTime, final double deltaTime) {
 			//
 			// -- Off screen rendering first. Render to texture.
 			//
@@ -134,7 +134,7 @@ public class RenderToTextureFragment extends AExampleFragment {
 			
 			setViewPort(400, 400);
 			
-			mEffects.render(deltaTime);
+			mEffects.render(ellapsedTime, deltaTime);
 			try {
 				if (mCurrentTexture != null)
 					mSphere.getMaterial().removeTexture(mCurrentTexture);
@@ -155,7 +155,7 @@ public class RenderToTextureFragment extends AExampleFragment {
 			//
 			
 			setViewPort(mViewportWidth, mViewportHeight);
-			super.onRender(deltaTime);
+			super.onRender(ellapsedTime, deltaTime);
 		}
 	}
 }

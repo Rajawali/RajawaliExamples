@@ -1,5 +1,10 @@
 package com.monyetmabuk.rajawali.tutorials.examples.postprocessing;
 
+import android.content.Context;
+import android.graphics.Color;
+
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import java.util.Random;
 
 import rajawali.animation.Animation.RepeatMode;
@@ -14,10 +19,6 @@ import rajawali.postprocessing.passes.BlendPass.BlendMode;
 import rajawali.postprocessing.passes.RenderPass;
 import rajawali.primitives.Cube;
 import rajawali.util.RajLog;
-import android.content.Context;
-import android.graphics.Color;
-
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class BloomEffectFragment extends AExampleFragment {
 
@@ -93,8 +94,8 @@ public class BloomEffectFragment extends AExampleFragment {
 		}
 
 		@Override
-		public void onRender(final double deltaTime) {
-			mEffects.render(deltaTime);
+		public void onRender(final long ellapsedTime, final double deltaTime) {
+			mEffects.render(ellapsedTime, deltaTime);
 		}
 	}
 }

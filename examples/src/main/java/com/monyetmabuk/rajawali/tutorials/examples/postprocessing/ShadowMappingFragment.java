@@ -1,5 +1,10 @@
 package com.monyetmabuk.rajawali.tutorials.examples.postprocessing;
 
+import android.content.Context;
+import android.graphics.Color;
+
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import rajawali.Object3D;
 import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.TranslateAnimation3D;
@@ -12,10 +17,6 @@ import rajawali.postprocessing.PostProcessingManager;
 import rajawali.postprocessing.effects.ShadowEffect;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Plane;
-import android.content.Context;
-import android.graphics.Color;
-
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class ShadowMappingFragment extends AExampleFragment {
 
@@ -91,11 +92,11 @@ public class ShadowMappingFragment extends AExampleFragment {
 			mPostProcessingManager.addEffect(shadowEffect);
 			shadowEffect.setRenderToScreen(true);
 		}
-		
-		@Override
-		public void onRender(final double deltaTime) {
+
+        @Override
+        public void onRender(final long ellapsedTime, final double deltaTime) {
 			mLight.setLookAt(mEmpty.getPosition());
-			mPostProcessingManager.render(deltaTime);
+			mPostProcessingManager.render(ellapsedTime, deltaTime);
 		}
 	}
 }

@@ -1,10 +1,5 @@
 package com.monyetmabuk.rajawali.tutorials;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-
 import android.app.Application;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
@@ -13,6 +8,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.about.MeetTheTeamFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.AnimationFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.BezierFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.CatmullRomFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.animation.CoalesceAnimationFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.ColorAnimationFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.MD2Fragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.SkeletalAnimationBlendingFragment;
@@ -22,11 +18,12 @@ import com.monyetmabuk.rajawali.tutorials.examples.general.ChaseCameraFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.CollisionDetectionFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.ColoredLinesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.CurvesFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.general.FogFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.FogFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.LinesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.OrthographicFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.SVGPathFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.SkyboxFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.general.SpiralsFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.TerrainFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.ThreeSixtyImagesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.UniformDistributionFragment;
@@ -63,10 +60,16 @@ import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.MultiPassFragm
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.RenderToTextureFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.SepiaFilterFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.ShadowMappingFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.scene.SceneFrameCallbackFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.CanvasTextFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.TransparentSurfaceFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.TwoDimensionalFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.UIElementsFragment;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 public class ExamplesApplication extends Application {
 
@@ -82,6 +85,7 @@ public class ExamplesApplication extends Application {
 		, ANIMATION("Animation")
 		, MATERIALS("Materials")
 		, POSTPROCESSING("Post Processing")
+        , SCENE("Scenes")
 		, ABOUT("About");
 		// @formatter:on
 
@@ -117,6 +121,7 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("360 Images", ThreeSixtyImagesFragment.class)
 				, new ExampleItem("Terrain", TerrainFragment.class)
 				, new ExampleItem("Curves", CurvesFragment.class)
+                , new ExampleItem("Spirals", SpiralsFragment.class)
 				, new ExampleItem("SVG Path", SVGPathFragment.class)
 				, new ExampleItem("Uniform Distribution", UniformDistributionFragment.class)
 				, new ExampleItem("Orthographic Camera", OrthographicFragment.class)
@@ -161,6 +166,7 @@ public class ExamplesApplication extends Application {
 		ITEMS.put(Category.ANIMATION, new ExampleItem[] {
 				new ExampleItem("Animation", AnimationFragment.class)
 				, new ExampleItem("Bezier Path Animation", BezierFragment.class)
+                , new ExampleItem("Coalesce Animation", CoalesceAnimationFragment.class)
 				, new ExampleItem("MD2 Animation", MD2Fragment.class)
 				, new ExampleItem("Catmul-Rom Splines", CatmullRomFragment.class)
 				//, new ExampleItem("Animated Sprites", AnimatedSpritesFragment.class)
@@ -182,7 +188,8 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Animated GIF Texture", AnimatedGIFTextureFragment.class)
 			});
 		ITEMS.put(Category.POSTPROCESSING, new ExampleItem[] {
-				new ExampleItem("Sepia Filter", SepiaFilterFragment.class)
+                new ExampleItem("Fog", FogFragment.class)
+				, new ExampleItem("Sepia Filter", SepiaFilterFragment.class)
 				, new ExampleItem("Greyscale Filter", GreyScaleFilterFragment.class)
 				, new ExampleItem("Gaussian Blur Filter", GaussianBlurFilterFragment.class)
 				, new ExampleItem("Multi Pass", MultiPassFragment.class)
@@ -190,6 +197,9 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Bloom Effect", BloomEffectFragment.class)
 				, new ExampleItem("Shadow Mapping", ShadowMappingFragment.class)
 		});
+        ITEMS.put(Category.SCENE, new ExampleItem[] {
+                new ExampleItem("Frame Callbacks", SceneFrameCallbackFragment.class)
+        });
 		ITEMS.put(Category.ABOUT, new ExampleItem[] {
 			new ExampleItem("Community Stream", CommunityFeedFragment.class)
 			, new ExampleItem("Meet The Team", MeetTheTeamFragment.class)
