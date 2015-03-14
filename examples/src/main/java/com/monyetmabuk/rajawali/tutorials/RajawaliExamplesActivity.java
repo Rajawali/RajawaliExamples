@@ -168,15 +168,13 @@ public class RajawaliExamplesActivity extends Activity implements
 		// Close the drawer
 		mDrawerLayout.closeDrawers();
 
-		// Set fragment title
-		setTitle(exampleItem.title);
-
 		final FragmentTransaction transaction = fragmentManager.beginTransaction();
 		try {
 			final Fragment fragment = (Fragment) exampleItem.exampleClass.getConstructors()[0].newInstance();
 
 			final Bundle bundle = new Bundle();
 			bundle.putString(AExampleFragment.BUNDLE_EXAMPLE_URL, exampleItem.getUrl(category));
+			bundle.putString(AExampleFragment.BUNDLE_EXAMPLE_TITLE, exampleItem.title);
 			fragment.setArguments(bundle);
 
 			if (fragmentManager.findFragmentByTag(FRAGMENT_TAG) != null)
