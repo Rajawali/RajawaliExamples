@@ -1,5 +1,9 @@
 package com.monyetmabuk.rajawali.tutorials.examples.lights;
 
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import rajawali.Object3D;
 import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.EllipticalOrbitAnimation3D;
@@ -10,9 +14,7 @@ import rajawali.materials.methods.SpecularMethod;
 import rajawali.math.MathUtil;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+import rajawali.util.RajLog;
 
 public class PointLightFragment extends AExampleFragment {
 
@@ -35,7 +37,6 @@ public class PointLightFragment extends AExampleFragment {
 			pointLight.setPower(1.5f);
 			
 			getCurrentScene().addLight(pointLight);
-
 			getCurrentCamera().setPosition(0, 2, 6);
 			getCurrentCamera().setLookAt(0, 0, 0);
 			
@@ -46,7 +47,6 @@ public class PointLightFragment extends AExampleFragment {
 			sphereMaterial.setSpecularMethod(phongMethod);
 			sphereMaterial.setAmbientIntensity(0, 0, 0);
 			sphereMaterial.enableLighting(true);
-
 			Sphere rootSphere = new Sphere(.2f, 12, 12);
 			rootSphere.setMaterial(sphereMaterial);
 			rootSphere.setRenderChildrenAsBatch(true);

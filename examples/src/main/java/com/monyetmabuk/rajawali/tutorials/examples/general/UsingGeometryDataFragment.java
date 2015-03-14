@@ -1,5 +1,10 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import java.io.ObjectInputStream;
 import java.nio.FloatBuffer;
 import java.util.zip.GZIPInputStream;
@@ -16,10 +21,6 @@ import rajawali.math.MathUtil;
 import rajawali.math.Quaternion;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class UsingGeometryDataFragment extends AExampleFragment {
 
@@ -79,7 +80,7 @@ public class UsingGeometryDataFragment extends AExampleFragment {
 				// -- now loop through the sphere's vertices and place
 				// a spike on each vertex
 				for (int i = 0; i < numVerts; i += 3) {
-					Object3D spike = mRootSpike.clone();
+					Object3D spike = mRootSpike.clone(true, false);
 					// -- set the spike's position to the sphere's current vertex position
 					spike.setPosition(vertBuffer.get(i), vertBuffer.get(i + 1),
 							vertBuffer.get(i + 2));
