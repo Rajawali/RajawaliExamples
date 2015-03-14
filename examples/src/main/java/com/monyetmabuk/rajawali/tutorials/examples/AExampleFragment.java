@@ -24,11 +24,13 @@ public abstract class AExampleFragment extends RajawaliFragment implements
 		OnClickListener {
 
 	public static final String BUNDLE_EXAMPLE_URL = "BUNDLE_EXAMPLE_URL";
+	public static final String BUNDLE_EXAMPLE_TITLE = "BUNDLE_EXAMPLE_TITLE";
 
 	protected RajawaliRenderer mRenderer;
 	protected ProgressBar mProgressBarLoader;
 	protected GithubLogoView mImageViewExampleLink;
 	protected String mExampleUrl;
+	protected String mExampleTitle;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public abstract class AExampleFragment extends RajawaliFragment implements
 		}
 
 		mExampleUrl = bundle.getString(BUNDLE_EXAMPLE_URL);
+		mExampleTitle = bundle.getString(BUNDLE_EXAMPLE_TITLE);
 
 		if (isTransparentSurfaceView())
 			setGLBackgroundTransparent(true);
@@ -75,6 +78,7 @@ public abstract class AExampleFragment extends RajawaliFragment implements
 				.findViewById(R.id.image_view_example_link);
 		mImageViewExampleLink.setOnClickListener(this);
 
+		getActivity().setTitle(mExampleTitle);
 		return mLayout;
 	}
 
