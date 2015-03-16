@@ -1,11 +1,5 @@
 package com.monyetmabuk.rajawali.tutorials.examples;
 
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.RajawaliFragment;
-import rajawali.renderer.RajawaliRenderer;
-import rajawali.util.RajLog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -19,6 +13,13 @@ import android.widget.ProgressBar;
 
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.views.GithubLogoView;
+
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
+
+import rajawali.RajawaliFragment;
+import rajawali.renderer.RajawaliRenderer;
+import rajawali.util.RajLog;
 
 public abstract class AExampleFragment extends RajawaliFragment implements
 		OnClickListener {
@@ -144,7 +145,7 @@ public abstract class AExampleFragment extends RajawaliFragment implements
 
 		public AExampleRenderer(Context context) {
 			super(context);
-			setFrameRate(60);
+			setFrameRate(0.5);
 		}
 
 		public void onSurfaceCreated(GL10 gl, EGLConfig config) {

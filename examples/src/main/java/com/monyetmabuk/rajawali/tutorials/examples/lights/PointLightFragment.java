@@ -14,7 +14,6 @@ import rajawali.materials.methods.SpecularMethod;
 import rajawali.math.MathUtil;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
-import rajawali.util.RajLog;
 
 public class PointLightFragment extends AExampleFragment {
 
@@ -37,9 +36,9 @@ public class PointLightFragment extends AExampleFragment {
 			pointLight.setPower(1.5f);
 			
 			getCurrentScene().addLight(pointLight);
-			getCurrentCamera().setPosition(0, 2, 6);
-			getCurrentCamera().setLookAt(0, 0, 0);
-			
+            // getCurrentCamera().setLookAt(0, 0, 0);
+            getCurrentCamera().setPosition(0, 2, 6);
+
 			Material sphereMaterial = new Material();
 			sphereMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
 			SpecularMethod.Phong phongMethod = new SpecularMethod.Phong();

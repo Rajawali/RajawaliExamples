@@ -1,5 +1,9 @@
 package com.monyetmabuk.rajawali.tutorials.examples.lights;
 
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import rajawali.Object3D;
 import rajawali.animation.Animation;
 import rajawali.animation.Animation.RepeatMode;
@@ -13,9 +17,6 @@ import rajawali.math.MathUtil;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
 import rajawali.util.RajLog;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class DirectionalLightFragment extends AExampleFragment {
 
@@ -37,8 +38,19 @@ public class DirectionalLightFragment extends AExampleFragment {
 			directionalLight.setPower(1.5f);
 			getCurrentScene().addLight(directionalLight);
 
-			getCurrentCamera().setPosition(0, 2, 6);
-			getCurrentCamera().setLookAt(0, 0, 0);
+            RajLog.d(this, "View Matrix: " + getCurrentCamera().getViewMatrix());
+            getCurrentCamera().enableLookAt();
+            RajLog.d(this, "View Matrix: " + getCurrentCamera().getViewMatrix());
+            RajLog.d(this, "Setting camera position.");
+            getCurrentCamera().setPosition(0, 2, 6);
+            RajLog.d(this, "View Matrix: " + getCurrentCamera().getViewMatrix());
+            RajLog.d(this, "Setting camera look at.");
+            getCurrentCamera().setLookAt(0, 0, 0);
+            RajLog.d(this, "View Matrix: " + getCurrentCamera().getViewMatrix());
+
+            RajLog.d(this, "Camera Rotation X: " + Math.toDegrees(getCurrentCamera().getRotX()));
+            RajLog.d(this, "Camera Rotation Y: " + Math.toDegrees(getCurrentCamera().getRotY()));
+            RajLog.d(this, "Camera Rotation Z: " + Math.toDegrees(getCurrentCamera().getRotZ()));
 
 			Material sphereMaterial = new Material();
 			SpecularMethod.Phong phongMethod = new SpecularMethod.Phong();
