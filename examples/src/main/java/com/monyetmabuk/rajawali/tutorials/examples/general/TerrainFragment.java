@@ -1,5 +1,12 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import rajawali.ChaseCamera;
 import rajawali.Object3D;
 import rajawali.animation.Animation.RepeatMode;
@@ -17,12 +24,6 @@ import rajawali.math.MathUtil;
 import rajawali.math.vector.Vector3;
 import rajawali.terrain.SquareTerrain;
 import rajawali.terrain.TerrainGenerator;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class TerrainFragment extends AExampleFragment {
 
@@ -84,7 +85,7 @@ public class TerrainFragment extends AExampleFragment {
 				//
 				// -- create the terrain
 				//
-				mTerrain = TerrainGenerator.createSquareTerrainFromBitmap(terrainParams);
+				mTerrain = TerrainGenerator.createSquareTerrainFromBitmap(terrainParams, true);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

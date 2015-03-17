@@ -1,5 +1,11 @@
 package com.monyetmabuk.rajawali.tutorials.examples.optimizations;
 
+import android.content.Context;
+import android.opengl.GLES20;
+import android.os.SystemClock;
+
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -15,11 +21,6 @@ import rajawali.curves.CatmullRomCurve3D;
 import rajawali.materials.Material;
 import rajawali.math.vector.Vector3;
 import rajawali.math.vector.Vector3.Axis;
-import android.content.Context;
-import android.opengl.GLES20;
-import android.os.SystemClock;
-
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class UpdateVertexBufferFragment extends AExampleFragment {
 
@@ -128,7 +129,7 @@ public class UpdateVertexBufferFragment extends AExampleFragment {
 			//
 
 			mCurveTris = new Object3D();
-			mCurveTris.setData(vertices, null, null, colors, indices);
+			mCurveTris.setData(vertices, null, null, colors, indices, true);
 			// -- We need to set this or else we won't see anyting
 			mCurveTris.isContainer(false);
 			// -- Vertices have some randomness and no normals so we need
