@@ -15,8 +15,8 @@ import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import rajawali.animation.mesh.VertexAnimationObject3D;
 import rajawali.lights.DirectionalLight;
-import rajawali.parser.LoaderMD2;
-import rajawali.parser.ParsingException;
+import rajawali.loader.LoaderMD2;
+import rajawali.loader.ParsingException;
 
 public class MD2Fragment extends AExampleFragment implements OnClickListener {
 

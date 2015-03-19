@@ -16,7 +16,7 @@ import rajawali.materials.plugins.FogMaterialPlugin.FogParams;
 import rajawali.materials.plugins.FogMaterialPlugin.FogType;
 import rajawali.materials.textures.Texture;
 import rajawali.math.vector.Vector3;
-import rajawali.parser.LoaderOBJ;
+import rajawali.loader.LoaderOBJ;
 
 public class FogFragment extends AExampleFragment {
 

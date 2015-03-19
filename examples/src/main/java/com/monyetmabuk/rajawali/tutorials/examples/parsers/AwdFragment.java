@@ -10,7 +10,7 @@ import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
 import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.math.vector.Vector3.Axis;
-import rajawali.parser.LoaderAWD;
+import rajawali.loader.LoaderAWD;
 
 public class AwdFragment extends AExampleFragment {
 

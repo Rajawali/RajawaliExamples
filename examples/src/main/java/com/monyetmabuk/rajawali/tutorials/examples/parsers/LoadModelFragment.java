@@ -14,8 +14,8 @@ import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.lights.PointLight;
 import rajawali.math.vector.Vector3;
 import rajawali.math.vector.Vector3.Axis;
-import rajawali.parser.LoaderOBJ;
-import rajawali.parser.ParsingException;
+import rajawali.loader.LoaderOBJ;
+import rajawali.loader.ParsingException;
 
 public class LoadModelFragment extends AExampleFragment {
 

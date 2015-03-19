@@ -15,7 +15,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import rajawali.Object3D;
 import rajawali.materials.Material;
-import rajawali.parser.LoaderGCode;
+import rajawali.loader.LoaderGCode;
 import rajawali.primitives.Line3D;
 import rajawali.util.RajLog;
 

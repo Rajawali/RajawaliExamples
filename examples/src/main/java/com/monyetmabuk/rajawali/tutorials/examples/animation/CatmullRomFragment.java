@@ -17,8 +17,8 @@ import rajawali.lights.ALight;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.Material;
 import rajawali.math.vector.Vector3;
-import rajawali.parser.LoaderOBJ;
-import rajawali.parser.ParsingException;
+import rajawali.loader.LoaderOBJ;
+import rajawali.loader.ParsingException;
 import rajawali.primitives.Line3D;
 import rajawali.primitives.Sphere;
 
