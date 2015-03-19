@@ -1,4 +1,4 @@
-package com.monyetmabuk.rajawali.tutorials.examples.parsers;
+package com.monyetmabuk.rajawali.tutorials.examples.loaders;
 
 import android.content.Context;
 
