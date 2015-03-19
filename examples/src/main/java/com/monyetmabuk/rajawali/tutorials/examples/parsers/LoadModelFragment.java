@@ -1,5 +1,10 @@
 package com.monyetmabuk.rajawali.tutorials.examples.parsers;
 
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import rajawali.Object3D;
 import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
@@ -11,15 +16,11 @@ import rajawali.math.vector.Vector3;
 import rajawali.math.vector.Vector3.Axis;
 import rajawali.parser.LoaderOBJ;
 import rajawali.parser.ParsingException;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class LoadModelFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new LoadModelRenderer(getActivity());
 	}
 
@@ -41,7 +42,7 @@ public class LoadModelFragment extends AExampleFragment {
 			getCurrentCamera().setZ(16);
 
 			LoaderOBJ objParser = new LoaderOBJ(mContext.getResources(),
-					mTextureManager, R.raw.multiobjects_obj);
+					mTextureManager, R.raw.rajawali_obj);
 			try {
 				objParser.parse();
 				mObjectGroup = objParser.getParsedObject();

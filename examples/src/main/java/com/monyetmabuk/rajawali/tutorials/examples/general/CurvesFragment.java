@@ -1,16 +1,5 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
-import java.util.Stack;
-
-import rajawali.curves.CatmullRomCurve3D;
-import rajawali.curves.CompoundCurve3D;
-import rajawali.curves.CubicBezierCurve3D;
-import rajawali.curves.ICurve3D;
-import rajawali.curves.LinearBezierCurve3D;
-import rajawali.curves.QuadraticBezierCurve3D;
-import rajawali.materials.Material;
-import rajawali.math.vector.Vector3;
-import rajawali.primitives.Line3D;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -22,6 +11,18 @@ import android.widget.TextView;
 
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
+import java.util.Stack;
+
+import rajawali.curves.CatmullRomCurve3D;
+import rajawali.curves.CompoundCurve3D;
+import rajawali.curves.CubicBezierCurve3D;
+import rajawali.curves.ICurve3D;
+import rajawali.curves.LinearBezierCurve3D;
+import rajawali.curves.QuadraticBezierCurve3D;
+import rajawali.materials.Material;
+import rajawali.math.vector.Vector3;
+import rajawali.primitives.Line3D;
 
 public class CurvesFragment extends AExampleFragment {
 
@@ -48,7 +49,7 @@ public class CurvesFragment extends AExampleFragment {
 	}
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new CurvesRenderer(getActivity());
 	}
 

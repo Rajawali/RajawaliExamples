@@ -1,5 +1,11 @@
 package com.monyetmabuk.rajawali.tutorials.examples.materials;
 
+import android.content.Context;
+import android.graphics.Color;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import java.io.ObjectInputStream;
 
 import javax.microedition.khronos.opengles.GL10;
@@ -12,16 +18,11 @@ import rajawali.materials.methods.DiffuseMethod;
 import rajawali.materials.methods.SpecularMethod;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.CubeMapTexture;
-import android.content.Context;
-import android.graphics.Color;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class MaterialsFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new MaterialsRenderer(getActivity());
 	}
 

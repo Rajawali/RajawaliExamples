@@ -1,16 +1,5 @@
 package com.monyetmabuk.rajawali.tutorials.examples.ui;
 
-import java.io.ObjectInputStream;
-import java.util.zip.GZIPInputStream;
-
-import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.Object3D;
-import rajawali.SerializedObject3D;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.materials.methods.SpecularMethod;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -23,6 +12,18 @@ import android.widget.TextView;
 
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
+import java.io.ObjectInputStream;
+import java.util.zip.GZIPInputStream;
+
+import javax.microedition.khronos.opengles.GL10;
+
+import rajawali.Object3D;
+import rajawali.SerializedObject3D;
+import rajawali.lights.DirectionalLight;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
+import rajawali.materials.methods.SpecularMethod;
 
 public class UIElementsFragment extends AExampleFragment {
 
@@ -52,7 +53,7 @@ public class UIElementsFragment extends AExampleFragment {
 	}
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new UIElementsRenderer(getActivity());
 	}
 

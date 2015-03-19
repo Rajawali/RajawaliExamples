@@ -1,5 +1,12 @@
 package com.monyetmabuk.rajawali.tutorials.examples.materials;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.view.animation.AccelerateDecelerateInterpolator;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.animation.TranslateAnimation3D;
@@ -14,17 +21,11 @@ import rajawali.materials.textures.Texture;
 import rajawali.math.vector.Vector3;
 import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Sphere;
-import android.content.Context;
-import android.graphics.Color;
-import android.view.animation.AccelerateDecelerateInterpolator;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class SpecularAndAlphaFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new SpecularAndAlphaRenderer(getActivity());
 	}
 

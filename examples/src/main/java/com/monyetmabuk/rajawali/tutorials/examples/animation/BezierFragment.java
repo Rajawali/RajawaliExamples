@@ -1,5 +1,9 @@
 package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import rajawali.Object3D;
 import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
@@ -12,14 +16,11 @@ import rajawali.materials.methods.DiffuseMethod;
 import rajawali.materials.methods.SpecularMethod;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class BezierFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new BezierRenderer(getActivity());
 	}
 

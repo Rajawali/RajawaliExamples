@@ -28,7 +28,7 @@ import rajawali.terrain.TerrainGenerator;
 public class TerrainFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new TerrainRenderer(getActivity());
 	}
 	

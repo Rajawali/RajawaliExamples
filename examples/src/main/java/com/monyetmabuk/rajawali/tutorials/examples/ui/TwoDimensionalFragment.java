@@ -1,18 +1,19 @@
 package com.monyetmabuk.rajawali.tutorials.examples.ui;
 
-import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.materials.Material;
-import rajawali.primitives.ScreenQuad;
 import android.content.Context;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomMaterialPlugin;
 
+import javax.microedition.khronos.opengles.GL10;
+
+import rajawali.materials.Material;
+import rajawali.primitives.ScreenQuad;
+
 public class TwoDimensionalFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new TwoDimensionalRenderer(getActivity());
 	}
 

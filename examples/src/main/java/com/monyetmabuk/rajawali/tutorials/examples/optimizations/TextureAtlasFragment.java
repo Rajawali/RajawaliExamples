@@ -1,5 +1,9 @@
 package com.monyetmabuk.rajawali.tutorials.examples.optimizations;
 
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.materials.Material;
@@ -11,14 +15,11 @@ import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Plane;
 import rajawali.primitives.Sphere;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class TextureAtlasFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new TextureAtlasRenderer(getActivity());
 	}
 

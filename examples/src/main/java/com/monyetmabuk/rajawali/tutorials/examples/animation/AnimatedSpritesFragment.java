@@ -1,16 +1,16 @@
 package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
-import javax.microedition.khronos.opengles.GL10;
-
 import android.content.Context;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.particles.ExampleParticleSystem2;
 
+import javax.microedition.khronos.opengles.GL10;
+
 public class AnimatedSpritesFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new AnimatedSpritesRenderer(getActivity());
 	}
 

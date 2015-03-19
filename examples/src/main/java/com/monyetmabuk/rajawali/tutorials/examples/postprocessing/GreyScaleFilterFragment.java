@@ -20,7 +20,7 @@ import rajawali.primitives.Cube;
 
 public class GreyScaleFilterFragment extends AExampleFragment {
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new GreyScaleFilterRenderer(getActivity());
 	}
 	

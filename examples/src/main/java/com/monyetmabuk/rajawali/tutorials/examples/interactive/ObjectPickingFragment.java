@@ -1,16 +1,5 @@
 package com.monyetmabuk.rajawali.tutorials.examples.interactive;
 
-import java.io.ObjectInputStream;
-
-import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.Object3D;
-import rajawali.SerializedObject3D;
-import rajawali.lights.PointLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.util.ObjectColorPicker;
-import rajawali.util.OnObjectPickedListener;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -24,6 +13,18 @@ import android.widget.TextView;
 
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
+import java.io.ObjectInputStream;
+
+import javax.microedition.khronos.opengles.GL10;
+
+import rajawali.Object3D;
+import rajawali.SerializedObject3D;
+import rajawali.lights.PointLight;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
+import rajawali.util.ObjectColorPicker;
+import rajawali.util.OnObjectPickedListener;
 
 public class ObjectPickingFragment extends AExampleFragment implements
 		OnTouchListener {
@@ -52,7 +53,7 @@ public class ObjectPickingFragment extends AExampleFragment implements
 	}
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new ObjectPickingRenderer(getActivity());
 	}
 

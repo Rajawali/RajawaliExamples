@@ -1,9 +1,5 @@
 package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
-import rajawali.animation.mesh.VertexAnimationObject3D;
-import rajawali.lights.DirectionalLight;
-import rajawali.parser.LoaderMD2;
-import rajawali.parser.ParsingException;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -16,6 +12,11 @@ import android.widget.LinearLayout;
 
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
+import rajawali.animation.mesh.VertexAnimationObject3D;
+import rajawali.lights.DirectionalLight;
+import rajawali.parser.LoaderMD2;
+import rajawali.parser.ParsingException;
 
 public class MD2Fragment extends AExampleFragment implements OnClickListener {
 
@@ -90,7 +91,7 @@ public class MD2Fragment extends AExampleFragment implements OnClickListener {
 	}
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new MD2Renderer(getActivity());
 	}
 

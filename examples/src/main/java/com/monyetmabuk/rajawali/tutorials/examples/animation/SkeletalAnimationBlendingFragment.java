@@ -73,7 +73,7 @@ public class SkeletalAnimationBlendingFragment extends AExampleFragment implemen
 	}
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new SkeletalAnimationBlendingRenderer(getActivity());
 	}
 

@@ -1,5 +1,13 @@
 package com.monyetmabuk.rajawali.tutorials.examples.optimizations;
 
+import android.content.Context;
+import android.view.animation.AccelerateDecelerateInterpolator;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.interactive.planes.PlanesGalore;
+import com.monyetmabuk.rajawali.tutorials.examples.interactive.planes.PlanesGaloreMaterialPlugin;
+
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
@@ -12,18 +20,11 @@ import rajawali.materials.Material;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
 import rajawali.math.vector.Vector3;
-import android.content.Context;
-import android.view.animation.AccelerateDecelerateInterpolator;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.interactive.planes.PlanesGalore;
-import com.monyetmabuk.rajawali.tutorials.examples.interactive.planes.PlanesGaloreMaterialPlugin;
 
 public class Optimized2000PlanesFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new Optimized2000PlanesRenderer(getActivity());
 	}
 

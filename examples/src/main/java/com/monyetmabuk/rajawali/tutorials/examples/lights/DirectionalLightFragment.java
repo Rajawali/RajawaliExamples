@@ -1,5 +1,9 @@
 package com.monyetmabuk.rajawali.tutorials.examples.lights;
 
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import rajawali.Object3D;
 import rajawali.animation.Animation;
 import rajawali.animation.Animation.RepeatMode;
@@ -12,15 +16,11 @@ import rajawali.materials.methods.SpecularMethod;
 import rajawali.math.MathUtil;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
-import rajawali.util.RajLog;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class DirectionalLightFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new DirectionalLightRenderer(getActivity());
 	}
 

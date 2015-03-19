@@ -1,5 +1,10 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
+import android.content.Context;
+import android.os.Bundle;
+
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import java.util.Stack;
 
 import rajawali.animation.Animation.RepeatMode;
@@ -9,10 +14,6 @@ import rajawali.lights.DirectionalLight;
 import rajawali.materials.Material;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Line3D;
-import android.content.Context;
-import android.os.Bundle;
-
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class LinesFragment extends AExampleFragment {
 
@@ -23,7 +24,7 @@ public class LinesFragment extends AExampleFragment {
 	}
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new LinesRenderer(getActivity());
 	}
 

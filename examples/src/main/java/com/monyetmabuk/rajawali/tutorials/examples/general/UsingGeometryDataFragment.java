@@ -1,5 +1,10 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import java.io.ObjectInputStream;
 import java.nio.FloatBuffer;
 import java.util.zip.GZIPInputStream;
@@ -16,15 +21,11 @@ import rajawali.math.MathUtil;
 import rajawali.math.Quaternion;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Sphere;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class UsingGeometryDataFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new UsingGeometryDataRenderer(getActivity());
 	}
 

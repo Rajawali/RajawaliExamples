@@ -1,20 +1,21 @@
 package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import rajawali.animation.mesh.SkeletalAnimationObject3D;
 import rajawali.animation.mesh.SkeletalAnimationSequence;
 import rajawali.lights.DirectionalLight;
 import rajawali.parser.ParsingException;
 import rajawali.parser.md5.LoaderMD5Anim;
 import rajawali.parser.md5.LoaderMD5Mesh;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class SkeletalAnimationMD5Fragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new SkeletalAnimationMD5Renderer(getActivity());
 	}
 

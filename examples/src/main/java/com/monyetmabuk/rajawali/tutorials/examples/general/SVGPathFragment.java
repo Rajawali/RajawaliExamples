@@ -1,5 +1,11 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
+import android.content.Context;
+import android.view.animation.BounceInterpolator;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import java.util.List;
 import java.util.Stack;
 
@@ -11,16 +17,11 @@ import rajawali.curves.SVGPath;
 import rajawali.materials.Material;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Line3D;
-import android.content.Context;
-import android.view.animation.BounceInterpolator;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class SVGPathFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new SVGPathRenderer(getActivity());
 	}
 

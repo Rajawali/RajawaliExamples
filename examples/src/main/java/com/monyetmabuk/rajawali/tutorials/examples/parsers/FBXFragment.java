@@ -1,12 +1,5 @@
 package com.monyetmabuk.rajawali.tutorials.examples.parsers;
 
-import rajawali.Object3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.Animation3D;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.math.vector.Vector3.Axis;
-import rajawali.parser.ParsingException;
-import rajawali.parser.fbx.LoaderFBX;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -18,6 +11,14 @@ import android.widget.TextView;
 
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
+import rajawali.Object3D;
+import rajawali.animation.Animation.RepeatMode;
+import rajawali.animation.Animation3D;
+import rajawali.animation.RotateOnAxisAnimation;
+import rajawali.math.vector.Vector3.Axis;
+import rajawali.parser.ParsingException;
+import rajawali.parser.fbx.LoaderFBX;
 
 public class FBXFragment extends AExampleFragment {
 	
@@ -43,7 +44,7 @@ public class FBXFragment extends AExampleFragment {
 	}
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new FBXRenderer(getActivity());
 	}
 

@@ -1,5 +1,10 @@
 package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import java.util.Stack;
 
 import rajawali.Object3D;
@@ -16,15 +21,11 @@ import rajawali.parser.LoaderOBJ;
 import rajawali.parser.ParsingException;
 import rajawali.primitives.Line3D;
 import rajawali.primitives.Sphere;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class CatmullRomFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new CatmullRomRenderer(getActivity());
 	}
 

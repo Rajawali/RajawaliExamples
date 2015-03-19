@@ -1,5 +1,13 @@
 package com.monyetmabuk.rajawali.tutorials.examples.materials;
 
+import android.content.Context;
+import android.content.res.Resources.NotFoundException;
+import android.media.MediaPlayer;
+import android.view.animation.AccelerateDecelerateInterpolator;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.zip.GZIPInputStream;
@@ -20,18 +28,11 @@ import rajawali.materials.textures.VideoTexture;
 import rajawali.math.vector.Vector3;
 import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Plane;
-import android.content.Context;
-import android.content.res.Resources.NotFoundException;
-import android.media.MediaPlayer;
-import android.view.animation.AccelerateDecelerateInterpolator;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class VideoTextureFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new VideoTextureRenderer(getActivity());
 	}
 

@@ -21,7 +21,7 @@ import rajawali.parser.LoaderOBJ;
 public class FogFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new FogRenderer(getActivity());
 	}
 

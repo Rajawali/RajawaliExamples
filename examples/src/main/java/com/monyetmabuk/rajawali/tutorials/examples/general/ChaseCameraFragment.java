@@ -1,5 +1,18 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import java.io.ObjectInputStream;
 import java.util.zip.GZIPInputStream;
 
@@ -16,18 +29,6 @@ import rajawali.materials.textures.Texture;
 import rajawali.math.vector.Vector3;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Sphere;
-import android.content.Context;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class ChaseCameraFragment extends AExampleFragment implements
 		OnSeekBarChangeListener {
@@ -75,7 +76,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
 	}
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new ChaseCameraRenderer(getActivity());
 	}
 

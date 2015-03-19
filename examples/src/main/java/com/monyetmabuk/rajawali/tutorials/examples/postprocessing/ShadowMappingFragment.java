@@ -21,7 +21,7 @@ import rajawali.primitives.Plane;
 public class ShadowMappingFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new ShadowMappingRenderer(getActivity());
 	}
 

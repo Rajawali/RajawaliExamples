@@ -1,19 +1,20 @@
 package com.monyetmabuk.rajawali.tutorials.examples.materials;
 
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomMaterialPlugin;
+
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.Object3D;
 import rajawali.lights.DirectionalLight;
 import rajawali.materials.Material;
 import rajawali.primitives.Cube;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomMaterialPlugin;
 
 public class CustomMaterialShaderFragment extends AExampleFragment {
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new CustomShaderRenderer(getActivity());
 	}
 

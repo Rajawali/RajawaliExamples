@@ -25,7 +25,7 @@ import rajawali.math.vector.Vector3.Axis;
 public class UpdateVertexBufferFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new UpdateVertexBufferRenderer(getActivity());
 	}
 

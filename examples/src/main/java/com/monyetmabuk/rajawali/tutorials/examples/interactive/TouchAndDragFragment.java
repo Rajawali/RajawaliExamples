@@ -1,15 +1,5 @@
 package com.monyetmabuk.rajawali.tutorials.examples.interactive;
 
-import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.Object3D;
-import rajawali.materials.Material;
-import rajawali.math.Matrix4;
-import rajawali.math.vector.Vector3;
-import rajawali.primitives.Sphere;
-import rajawali.util.GLU;
-import rajawali.util.ObjectColorPicker;
-import rajawali.util.OnObjectPickedListener;
 import android.content.Context;
 import android.opengl.GLES20;
 import android.os.Bundle;
@@ -24,6 +14,17 @@ import android.widget.TextView;
 
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
+import javax.microedition.khronos.opengles.GL10;
+
+import rajawali.Object3D;
+import rajawali.materials.Material;
+import rajawali.math.Matrix4;
+import rajawali.math.vector.Vector3;
+import rajawali.primitives.Sphere;
+import rajawali.util.GLU;
+import rajawali.util.ObjectColorPicker;
+import rajawali.util.OnObjectPickedListener;
 
 public class TouchAndDragFragment extends AExampleFragment implements
 		OnTouchListener {
@@ -56,7 +57,7 @@ public class TouchAndDragFragment extends AExampleFragment implements
 	}
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new TouchAndDragRenderer(getActivity());
 	}
 
