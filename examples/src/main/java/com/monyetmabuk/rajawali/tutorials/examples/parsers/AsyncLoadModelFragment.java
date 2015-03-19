@@ -65,7 +65,7 @@ public class AsyncLoadModelFragment extends AExampleFragment {
             //Begin loading
             final LoaderOBJ loaderOBJ = new LoaderOBJ(mContext.getResources(),
                 mTextureManager, R.raw.multiobjects_obj);
-            getCurrentScene().loadModel(loaderOBJ, this, R.raw.multiobjects_obj);
+            loadModel(loaderOBJ, this, R.raw.multiobjects_obj);
 
 			mCameraAnim = new RotateOnAxisAnimation(Axis.Y, 360);
 			mCameraAnim.setDurationMilliseconds(8000);
