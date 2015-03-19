@@ -17,8 +17,8 @@ import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
 import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.math.vector.Vector3.Axis;
-import rajawali.parser.ParsingException;
-import rajawali.parser.fbx.LoaderFBX;
+import rajawali.loader.ParsingException;
+import rajawali.loader.fbx.LoaderFBX;
 
 public class FBXFragment extends AExampleFragment {
 	

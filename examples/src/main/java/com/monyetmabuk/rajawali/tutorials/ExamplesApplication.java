@@ -18,6 +18,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.general.ChaseCameraFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.CollisionDetectionFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.ColoredLinesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.CurvesFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.parsers.AsyncLoadModelFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.FogFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.LinesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.OrthographicFragment;
@@ -159,6 +160,7 @@ public class ExamplesApplication extends Application {
 			});
 		ITEMS.put(Category.PARSERS, new ExampleItem[] {
 				new ExampleItem("Load AWD Model", AwdFragment.class)
+                , new ExampleItem("Async Load Model", AsyncLoadModelFragment.class)
 				, new ExampleItem("Load OBJ Model", LoadModelFragment.class)
 				, new ExampleItem("FBX Scene Importer", FBXFragment.class)
 				, new ExampleItem("GCode Toolpaths", LoaderGCodeFragment.class)
