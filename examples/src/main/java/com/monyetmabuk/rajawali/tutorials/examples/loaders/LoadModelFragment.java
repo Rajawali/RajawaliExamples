@@ -42,7 +42,7 @@ public class LoadModelFragment extends AExampleFragment {
 			getCurrentCamera().setZ(16);
 
 			LoaderOBJ objParser = new LoaderOBJ(mContext.getResources(),
-					mTextureManager, R.raw.rajawali_obj);
+					mTextureManager, R.raw.multiobjects_obj);
 			try {
 				objParser.parse();
 				mObjectGroup = objParser.getParsedObject();
