@@ -1,10 +1,5 @@
 package com.monyetmabuk.rajawali.tutorials.examples.effects;
 
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.animation.Animation3D;
-import rajawali.lights.DirectionalLight;
 import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -20,6 +15,12 @@ import android.widget.TextView;
 
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
+
+import rajawali.animation.Animation3D;
+import rajawali.lights.DirectionalLight;
 
 public class TouchRipplesFragment extends AExampleFragment implements
 		OnTouchListener {
@@ -49,7 +50,7 @@ public class TouchRipplesFragment extends AExampleFragment implements
 	}
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new TouchRipplesRenderer(getActivity());
 	}
 

@@ -46,7 +46,7 @@ public class SpiralsFragment extends AExampleFragment {
 	}
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new SpiralsRenderer(getActivity());
 	}
 

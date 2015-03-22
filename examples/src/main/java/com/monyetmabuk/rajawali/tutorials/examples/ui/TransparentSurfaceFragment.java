@@ -1,15 +1,5 @@
 package com.monyetmabuk.rajawali.tutorials.examples.ui;
 
-import java.io.ObjectInputStream;
-
-import rajawali.Object3D;
-import rajawali.SerializedObject3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.math.vector.Vector3.Axis;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,6 +10,17 @@ import android.widget.ImageView;
 
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
+import java.io.ObjectInputStream;
+
+import rajawali.Object3D;
+import rajawali.SerializedObject3D;
+import rajawali.animation.Animation.RepeatMode;
+import rajawali.animation.RotateOnAxisAnimation;
+import rajawali.lights.DirectionalLight;
+import rajawali.materials.Material;
+import rajawali.materials.methods.DiffuseMethod;
+import rajawali.math.vector.Vector3.Axis;
 
 public class TransparentSurfaceFragment extends AExampleFragment {
 	
@@ -37,7 +38,7 @@ public class TransparentSurfaceFragment extends AExampleFragment {
 	}
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new TransparentSurfaceRenderer(getActivity());
 	}
 	

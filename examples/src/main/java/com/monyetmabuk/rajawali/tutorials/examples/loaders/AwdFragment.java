@@ -1,20 +1,21 @@
-package com.monyetmabuk.rajawali.tutorials.examples.parsers;
+package com.monyetmabuk.rajawali.tutorials.examples.loaders;
+
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import rajawali.Object3D;
 import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
 import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.math.vector.Vector3.Axis;
-import rajawali.parser.LoaderAWD;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+import rajawali.loader.LoaderAWD;
 
 public class AwdFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new AwdRenderer(getActivity());
 	}
 

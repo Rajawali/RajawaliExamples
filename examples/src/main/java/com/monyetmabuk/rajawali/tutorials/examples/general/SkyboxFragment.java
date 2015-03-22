@@ -1,18 +1,19 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
-import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.math.vector.Vector3.Axis;
 import android.content.Context;
 
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
+import javax.microedition.khronos.opengles.GL10;
+
+import rajawali.materials.textures.ATexture.TextureException;
+import rajawali.math.vector.Vector3.Axis;
+
 public class SkyboxFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new SkyboxRenderer(getActivity());
 	}
 

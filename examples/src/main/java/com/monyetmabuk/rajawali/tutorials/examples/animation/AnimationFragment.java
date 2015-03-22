@@ -28,7 +28,7 @@ import rajawali.math.vector.Vector3.Axis;
 public class AnimationFragment extends AExampleFragment {
 	
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new AnimationRenderer(getActivity());
 	}
 

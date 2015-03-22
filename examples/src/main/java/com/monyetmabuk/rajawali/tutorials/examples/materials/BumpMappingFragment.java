@@ -1,5 +1,12 @@
 package com.monyetmabuk.rajawali.tutorials.examples.materials;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.view.animation.AccelerateDecelerateInterpolator;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import rajawali.Object3D;
 import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
@@ -16,17 +23,11 @@ import rajawali.math.vector.Vector3;
 import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Plane;
 import rajawali.primitives.Sphere;
-import android.content.Context;
-import android.graphics.Color;
-import android.view.animation.AccelerateDecelerateInterpolator;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class BumpMappingFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new BumpMappingRenderer(getActivity());
 	}
 

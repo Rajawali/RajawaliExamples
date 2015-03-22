@@ -23,7 +23,7 @@ import rajawali.util.RajLog;
 public class BloomEffectFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new BloomEffectRenderer(getActivity());
 	}
 

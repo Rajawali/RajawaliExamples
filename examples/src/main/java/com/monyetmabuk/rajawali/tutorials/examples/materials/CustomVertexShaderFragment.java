@@ -1,13 +1,5 @@
 package com.monyetmabuk.rajawali.tutorials.examples.materials;
 
-import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.Object3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.materials.Material;
-import rajawali.math.vector.Vector3;
-import rajawali.primitives.Sphere;
 import android.content.Context;
 import android.opengl.GLES20;
 import android.view.View;
@@ -16,11 +8,20 @@ import android.view.View.OnClickListener;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomVertexShaderMaterialPlugin;
 
+import javax.microedition.khronos.opengles.GL10;
+
+import rajawali.Object3D;
+import rajawali.animation.Animation.RepeatMode;
+import rajawali.animation.RotateOnAxisAnimation;
+import rajawali.materials.Material;
+import rajawali.math.vector.Vector3;
+import rajawali.primitives.Sphere;
+
 public class CustomVertexShaderFragment extends AExampleFragment implements
 		OnClickListener {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new VertexShaderRenderer(getActivity());
 	}
 

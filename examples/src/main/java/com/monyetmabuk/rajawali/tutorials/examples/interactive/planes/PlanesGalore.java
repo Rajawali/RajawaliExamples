@@ -1,5 +1,8 @@
 package com.monyetmabuk.rajawali.tutorials.examples.interactive.planes;
 
+import android.graphics.Color;
+import android.opengl.GLES20;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -9,10 +12,7 @@ import rajawali.Geometry3D;
 import rajawali.Geometry3D.BufferType;
 import rajawali.Object3D;
 import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
 import rajawali.math.vector.Vector3;
-import android.graphics.Color;
-import android.opengl.GLES20;
 
 /**
  * This example shows how you can create a large number of textured planes efficiently.
@@ -135,7 +135,7 @@ public class PlanesGalore extends Object3D {
 			rotationSpeeds[vIndex + 3] = rotationSpeed;
 		}
 
-		setData(vertices, normals, textureCoords, colors, indices);
+		setData(vertices, normals, textureCoords, colors, indices, true);
 
 		mPlanePositions = ByteBuffer.allocateDirect(planePositions.length * Geometry3D.FLOAT_SIZE_BYTES).order(ByteOrder.nativeOrder()).asFloatBuffer();
 		mPlanePositions.put(planePositions);

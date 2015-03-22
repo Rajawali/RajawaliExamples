@@ -1,5 +1,10 @@
 package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import rajawali.animation.Animation.RepeatMode;
 import rajawali.animation.Animation3D;
 import rajawali.animation.ColorAnimation3D;
@@ -9,15 +14,11 @@ import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.AlphaMapTexture;
 import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Cube;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class ColorAnimationFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new ColorAnimationRenderer(getActivity());
 	}
 

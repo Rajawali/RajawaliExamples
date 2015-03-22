@@ -1,5 +1,18 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
+import android.content.Context;
+import android.opengl.GLES20;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import java.util.List;
 import java.util.Stack;
 
@@ -14,18 +27,6 @@ import rajawali.math.vector.Vector3;
 import rajawali.primitives.Cube;
 import rajawali.primitives.Line3D;
 import rajawali.primitives.Sphere;
-import android.content.Context;
-import android.opengl.GLES20;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class UniformDistributionFragment extends AExampleFragment {
 
@@ -52,7 +53,7 @@ public class UniformDistributionFragment extends AExampleFragment {
 	}
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new UniformDistributionRenderer(getActivity());
 	}
 

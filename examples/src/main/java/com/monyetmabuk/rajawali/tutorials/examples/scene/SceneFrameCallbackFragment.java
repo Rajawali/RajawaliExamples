@@ -42,7 +42,7 @@ public class SceneFrameCallbackFragment extends AExampleFragment {
     }
 
     @Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new BasicRenderer(getActivity());
 	}
 

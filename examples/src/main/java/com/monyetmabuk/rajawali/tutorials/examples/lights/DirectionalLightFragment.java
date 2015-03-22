@@ -21,7 +21,7 @@ import rajawali.util.RajLog;
 public class DirectionalLightFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new DirectionalLightRenderer(getActivity());
 	}
 

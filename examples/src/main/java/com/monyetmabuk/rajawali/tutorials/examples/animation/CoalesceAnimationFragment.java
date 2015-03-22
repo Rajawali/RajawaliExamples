@@ -17,7 +17,7 @@ import rajawali.primitives.Sphere;
 public class CoalesceAnimationFragment extends AExampleFragment {
 	
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new CoalesceAnimationRenderer(getActivity());
 	}
 

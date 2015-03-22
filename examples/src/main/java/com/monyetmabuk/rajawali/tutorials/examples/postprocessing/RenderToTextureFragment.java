@@ -23,7 +23,7 @@ import rajawali.scene.RajawaliScene;
 public class RenderToTextureFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new RenderToTextureRenderer(getActivity());
 	}
 

@@ -1,5 +1,11 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.materials.Material;
@@ -7,16 +13,11 @@ import rajawali.materials.textures.ATexture;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
 import rajawali.primitives.ScreenQuad;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class ThreeSixtyImagesFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new ThreeSixtyImagesRenderer(getActivity());
 	}
 

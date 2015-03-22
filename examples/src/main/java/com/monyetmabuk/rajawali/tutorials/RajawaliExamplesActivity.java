@@ -40,11 +40,15 @@ public class RajawaliExamplesActivity extends Activity implements
 	private ExpandableListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
 
+	private CharSequence mDrawerTitle;
+	private CharSequence mTitle;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		mTitle = mDrawerTitle = getTitle();
 		// Configure the action bar
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
@@ -64,11 +68,13 @@ public class RajawaliExamplesActivity extends Activity implements
 				R.string.drawer_close) {
 			@Override
 			public void onDrawerClosed(View drawerView) {
+				getActionBar().setTitle(mTitle);
 				invalidateOptionsMenu();
 			}
 
 			@Override
 			public void onDrawerOpened(View drawerView) {
+				getActionBar().setTitle(mDrawerTitle);
 				invalidateOptionsMenu();
 			}
 		};
@@ -129,6 +135,21 @@ public class RajawaliExamplesActivity extends Activity implements
 	}
 
 	@Override
+	public void onBackPressed() {
+		if (mDrawerLayout.isDrawerOpen(mDrawerList)) {
+			mDrawerLayout.closeDrawer(mDrawerList);
+		} else {
+			super.onBackPressed();
+		}
+	}
+
+	@Override
+	public void setTitle(CharSequence title) {
+		mTitle = title;
+		getActionBar().setTitle(mTitle);
+	}
+
+	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 		mDrawerToggle.syncState();
@@ -168,15 +189,13 @@ public class RajawaliExamplesActivity extends Activity implements
 		// Close the drawer
 		mDrawerLayout.closeDrawers();
 
-		// Set fragment title
-		setTitle(exampleItem.title);
-
 		final FragmentTransaction transaction = fragmentManager.beginTransaction();
 		try {
 			final Fragment fragment = (Fragment) exampleItem.exampleClass.getConstructors()[0].newInstance();
 
 			final Bundle bundle = new Bundle();
 			bundle.putString(AExampleFragment.BUNDLE_EXAMPLE_URL, exampleItem.getUrl(category));
+			bundle.putString(AExampleFragment.BUNDLE_EXAMPLE_TITLE, exampleItem.title);
 			fragment.setArguments(bundle);
 
 			if (fragmentManager.findFragmentByTag(FRAGMENT_TAG) != null)

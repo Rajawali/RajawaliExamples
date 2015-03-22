@@ -1,7 +1,5 @@
 package com.monyetmabuk.rajawali.tutorials.examples.about;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -21,13 +19,15 @@ import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.TeamMember;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
+import java.util.ArrayList;
+
 public class MeetTheTeamFragment extends AExampleFragment {
 
 	private GridView mGridView;
 	private TeamAdapter mTeamAdapter;
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return null;
 	}
 

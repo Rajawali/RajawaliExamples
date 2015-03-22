@@ -25,7 +25,7 @@ import rajawali.primitives.Sphere;
 public class UsingGeometryDataFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new UsingGeometryDataRenderer(getActivity());
 	}
 

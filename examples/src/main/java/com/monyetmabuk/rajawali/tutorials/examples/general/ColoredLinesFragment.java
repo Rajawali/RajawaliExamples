@@ -1,5 +1,10 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
+import android.content.Context;
+import android.graphics.Color;
+
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import java.util.Stack;
 
 import rajawali.animation.Animation.RepeatMode;
@@ -9,15 +14,11 @@ import rajawali.materials.Material;
 import rajawali.math.vector.Vector3;
 import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Line3D;
-import android.content.Context;
-import android.graphics.Color;
-
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class ColoredLinesFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new ColoredLinesRenderer(getActivity());
 	}
 

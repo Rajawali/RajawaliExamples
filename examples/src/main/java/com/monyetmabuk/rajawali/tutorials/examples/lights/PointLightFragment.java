@@ -18,7 +18,7 @@ import rajawali.primitives.Sphere;
 public class PointLightFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new PointLightRenderer(getActivity());
 	}
 

@@ -1,5 +1,15 @@
 package com.monyetmabuk.rajawali.tutorials.examples.ui;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -15,20 +25,11 @@ import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.AlphaMapTexture;
 import rajawali.math.vector.Vector3.Axis;
 import rajawali.primitives.Sphere;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class CanvasTextFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new CanvasTextRenderer(getActivity());
 	}
 

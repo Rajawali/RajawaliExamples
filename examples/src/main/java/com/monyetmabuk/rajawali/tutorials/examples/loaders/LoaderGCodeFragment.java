@@ -1,10 +1,5 @@
-package com.monyetmabuk.rajawali.tutorials.examples.parsers;
+package com.monyetmabuk.rajawali.tutorials.examples.loaders;
 
-import rajawali.Object3D;
-import rajawali.materials.Material;
-import rajawali.parser.LoaderGCode;
-import rajawali.primitives.Line3D;
-import rajawali.util.RajLog;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,10 +13,16 @@ import android.widget.TextView;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
+import rajawali.Object3D;
+import rajawali.materials.Material;
+import rajawali.loader.LoaderGCode;
+import rajawali.primitives.Line3D;
+import rajawali.util.RajLog;
+
 public class LoaderGCodeFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new GCodeRenderer(getActivity());
 	}
 

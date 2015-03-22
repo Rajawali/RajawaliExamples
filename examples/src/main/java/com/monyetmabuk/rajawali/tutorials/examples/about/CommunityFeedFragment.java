@@ -1,14 +1,5 @@
 package com.monyetmabuk.rajawali.tutorials.examples.about;
 
-import java.lang.reflect.Method;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
-
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -41,6 +32,15 @@ import com.monyetmabuk.rajawali.tutorials.examples.about.CommunityFeedFragment.A
 import com.monyetmabuk.rajawali.tutorials.examples.about.dialogs.ExceptionDialog;
 import com.monyetmabuk.rajawali.tutorials.views.GithubLogoView;
 
+import java.lang.reflect.Method;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
+
 public class CommunityFeedFragment extends AExampleFragment implements
 		OnItemClickListener {
 
@@ -56,7 +56,7 @@ public class CommunityFeedFragment extends AExampleFragment implements
 	private String mQueryURL;
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+	public AExampleRenderer createRenderer() {
 		return null;
 	}
 

@@ -33,7 +33,7 @@ import rajawali.primitives.Cube;
 
 public class GaussianBlurFilterFragment extends AExampleFragment {
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new SepiaFilterRenderer(getActivity());
 	}
 	

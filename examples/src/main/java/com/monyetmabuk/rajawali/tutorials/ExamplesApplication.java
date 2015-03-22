@@ -18,6 +18,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.general.ChaseCameraFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.CollisionDetectionFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.ColoredLinesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.CurvesFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.loaders.AsyncLoadModelFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.FogFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.LinesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.OrthographicFragment;
@@ -49,10 +50,10 @@ import com.monyetmabuk.rajawali.tutorials.examples.optimizations.Optimized2000Pl
 import com.monyetmabuk.rajawali.tutorials.examples.optimizations.TextureAtlasFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.optimizations.TextureCompressionFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.optimizations.UpdateVertexBufferFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.parsers.AwdFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.parsers.FBXFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.parsers.LoadModelFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.parsers.LoaderGCodeFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.loaders.AwdFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.loaders.FBXFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.loaders.LoadModelFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.loaders.LoaderGCodeFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.BloomEffectFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.GaussianBlurFilterFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.GreyScaleFilterFragment;
@@ -159,6 +160,7 @@ public class ExamplesApplication extends Application {
 			});
 		ITEMS.put(Category.PARSERS, new ExampleItem[] {
 				new ExampleItem("Load AWD Model", AwdFragment.class)
+                , new ExampleItem("Async Load Model", AsyncLoadModelFragment.class)
 				, new ExampleItem("Load OBJ Model", LoadModelFragment.class)
 				, new ExampleItem("FBX Scene Importer", FBXFragment.class)
 				, new ExampleItem("GCode Toolpaths", LoaderGCodeFragment.class)

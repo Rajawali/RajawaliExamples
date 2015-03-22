@@ -1,5 +1,10 @@
 package com.monyetmabuk.rajawali.tutorials.examples.lights;
 
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
 import java.io.ObjectInputStream;
 
 import rajawali.Object3D;
@@ -12,15 +17,11 @@ import rajawali.materials.Material;
 import rajawali.materials.methods.DiffuseMethod;
 import rajawali.materials.textures.Texture;
 import rajawali.math.vector.Vector3;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 public class MultipleLightsFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new MultipleLightsRenderer(getActivity());
 	}
 

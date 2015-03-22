@@ -1,5 +1,12 @@
 package com.monyetmabuk.rajawali.tutorials.examples.materials;
 
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomRawFragmentShader;
+import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomRawVertexShader;
+
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.Object3D;
@@ -8,17 +15,11 @@ import rajawali.materials.Material;
 import rajawali.materials.textures.ATexture.TextureException;
 import rajawali.materials.textures.Texture;
 import rajawali.primitives.Sphere;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomRawFragmentShader;
-import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomRawVertexShader;
 
 public class RawShaderFilesFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new RawShaderFilesRenderer(getActivity());
 	}
 

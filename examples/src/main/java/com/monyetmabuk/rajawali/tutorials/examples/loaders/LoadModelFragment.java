@@ -1,4 +1,9 @@
-package com.monyetmabuk.rajawali.tutorials.examples.parsers;
+package com.monyetmabuk.rajawali.tutorials.examples.loaders;
+
+import android.content.Context;
+
+import com.monyetmabuk.rajawali.tutorials.R;
+import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import rajawali.Object3D;
 import rajawali.animation.Animation.RepeatMode;
@@ -9,17 +14,13 @@ import rajawali.animation.RotateOnAxisAnimation;
 import rajawali.lights.PointLight;
 import rajawali.math.vector.Vector3;
 import rajawali.math.vector.Vector3.Axis;
-import rajawali.parser.LoaderOBJ;
-import rajawali.parser.ParsingException;
-import android.content.Context;
-
-import com.monyetmabuk.rajawali.tutorials.R;
-import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+import rajawali.loader.LoaderOBJ;
+import rajawali.loader.ParsingException;
 
 public class LoadModelFragment extends AExampleFragment {
 
 	@Override
-	protected AExampleRenderer createRenderer() {
+    public AExampleRenderer createRenderer() {
 		return new LoadModelRenderer(getActivity());
 	}
 
