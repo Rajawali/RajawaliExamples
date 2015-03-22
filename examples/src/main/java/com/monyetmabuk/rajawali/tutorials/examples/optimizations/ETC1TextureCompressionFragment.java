@@ -14,18 +14,18 @@ import rajawali.materials.textures.Etc1Texture;
 import rajawali.materials.textures.Texture;
 import rajawali.primitives.Plane;
 
-public class TextureCompressionFragment extends AExampleFragment {
+public class ETC1TextureCompressionFragment extends AExampleFragment {
 
 	@Override
     public AExampleRenderer createRenderer() {
-		return new TextureCompressionRenderer(getActivity());
+		return new ETC1TextureCompression(getActivity());
 	}
 
-	private final class TextureCompressionRenderer extends AExampleRenderer {
+	private final class ETC1TextureCompression extends AExampleRenderer {
 		private Object3D mMipmappedPlane;
 		private Object3D mPlane;
 
-		public TextureCompressionRenderer(Context context) {
+		public ETC1TextureCompression(Context context) {
 			super(context);
 		}
 

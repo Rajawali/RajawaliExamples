@@ -18,8 +18,6 @@ import com.monyetmabuk.rajawali.tutorials.examples.general.ChaseCameraFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.CollisionDetectionFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.ColoredLinesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.CurvesFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.loaders.AsyncLoadModelFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.FogFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.LinesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.OrthographicFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.SVGPathFragment;
@@ -36,6 +34,11 @@ import com.monyetmabuk.rajawali.tutorials.examples.lights.DirectionalLightFragme
 import com.monyetmabuk.rajawali.tutorials.examples.lights.MultipleLightsFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.lights.PointLightFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.lights.SpotLightFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.loaders.AsyncLoadModelFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.loaders.AwdFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.loaders.FBXFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.loaders.LoadModelFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.loaders.LoaderGCodeFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.AnimatedGIFTextureFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.BumpMappingFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.CustomMaterialShaderFragment;
@@ -46,15 +49,13 @@ import com.monyetmabuk.rajawali.tutorials.examples.materials.SpecularAndAlphaFra
 import com.monyetmabuk.rajawali.tutorials.examples.materials.SphereMapFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.ToonShadingFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.VideoTextureFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.optimizations.ETC1TextureCompressionFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.optimizations.ETC2TextureCompressionFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.optimizations.Optimized2000PlanesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.optimizations.TextureAtlasFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.optimizations.TextureCompressionFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.optimizations.UpdateVertexBufferFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.loaders.AwdFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.loaders.FBXFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.loaders.LoadModelFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.loaders.LoaderGCodeFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.BloomEffectFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.FogFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.GaussianBlurFilterFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.GreyScaleFilterFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.MultiPassFragment;
@@ -155,8 +156,9 @@ public class ExamplesApplication extends Application {
 		ITEMS.put(Category.OPTIMIZATIONS, new ExampleItem[] {
 				new ExampleItem("2000 Textured Planes", Optimized2000PlanesFragment.class)
 				, new ExampleItem("Update Vertex Buffer", UpdateVertexBufferFragment.class)
-				, new ExampleItem("Texture Compression (ETC)", TextureCompressionFragment.class)
+				, new ExampleItem("ETC1 Texture Compression", ETC1TextureCompressionFragment.class)
 				, new ExampleItem("Texture Atlas", TextureAtlasFragment.class)
+                , new ExampleItem("ETC2 Texture Compression", ETC2TextureCompressionFragment.class)
 			});
 		ITEMS.put(Category.PARSERS, new ExampleItem[] {
 				new ExampleItem("Load AWD Model", AwdFragment.class)
