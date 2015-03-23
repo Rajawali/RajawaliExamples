@@ -56,7 +56,7 @@ public class BasicFragment extends AExampleFragment {
 
 		public void onDrawFrame(GL10 glUnused) {
 			super.onDrawFrame(glUnused);
-			mSphere.rotate(Axis.Y, 1.0);
+			mSphere.rotate(Axis.Y, -1.0);
 		}
 	}
 }
