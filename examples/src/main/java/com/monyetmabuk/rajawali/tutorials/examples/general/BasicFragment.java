@@ -5,15 +5,15 @@ import android.content.Context;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import javax.microedition.khronos.opengles.GL10;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Sphere;
 
-import rajawali.Object3D;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.Texture;
-import rajawali.math.vector.Vector3.Axis;
-import rajawali.primitives.Sphere;
+import javax.microedition.khronos.opengles.GL10;
 
 public class BasicFragment extends AExampleFragment {
 
@@ -46,7 +46,7 @@ public class BasicFragment extends AExampleFragment {
 				mSphere = new Sphere(1, 24, 24);
 				mSphere.setMaterial(material);
 				getCurrentScene().addChild(mSphere);
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 
@@ -56,7 +56,7 @@ public class BasicFragment extends AExampleFragment {
 
 		public void onDrawFrame(GL10 glUnused) {
 			super.onDrawFrame(glUnused);
-			mSphere.rotate(Axis.Y, -1.0);
+			mSphere.rotate(Vector3.Axis.Y, -1.0);
 		}
 	}
 }

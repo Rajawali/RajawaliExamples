@@ -5,18 +5,17 @@ import android.graphics.Color;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import rajawali.Object3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.TranslateAnimation3D;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.math.vector.Vector3;
-import rajawali.math.vector.Vector3.Axis;
-import rajawali.postprocessing.PostProcessingManager;
-import rajawali.postprocessing.effects.ShadowEffect;
-import rajawali.primitives.Cube;
-import rajawali.primitives.Plane;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.TranslateAnimation3D;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.postprocessing.PostProcessingManager;
+import org.rajawali3d.postprocessing.effects.ShadowEffect;
+import org.rajawali3d.primitives.Cube;
+import org.rajawali3d.primitives.Plane;
 
 public class ShadowMappingFragment extends AExampleFragment {
 
@@ -47,7 +46,7 @@ public class ShadowMappingFragment extends AExampleFragment {
 			planeMaterial.enableLighting(true);
 			planeMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
 			
-			Plane plane = new Plane(Axis.Y);
+			Plane plane = new Plane(Vector3.Axis.Y);
 			plane.setScale(10);
 			plane.setMaterial(planeMaterial);
 			plane.setColor(Color.GREEN);
@@ -81,7 +80,7 @@ public class ShadowMappingFragment extends AExampleFragment {
 			mEmpty = new Object3D();
 			TranslateAnimation3D anim = new TranslateAnimation3D(new Vector3(5, -5, -4), new Vector3(-5, -5, 4));
 			anim.setDurationMilliseconds(20000);
-			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(mEmpty);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();

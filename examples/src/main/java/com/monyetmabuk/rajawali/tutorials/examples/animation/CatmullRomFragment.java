@@ -5,22 +5,21 @@ import android.content.Context;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import java.util.Stack;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.EllipticalOrbitAnimation3D;
+import org.rajawali3d.animation.SplineTranslateAnimation3D;
+import org.rajawali3d.curves.CatmullRomCurve3D;
+import org.rajawali3d.lights.ALight;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.loader.LoaderOBJ;
+import org.rajawali3d.loader.ParsingException;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Line3D;
+import org.rajawali3d.primitives.Sphere;
 
-import rajawali.Object3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.EllipticalOrbitAnimation3D;
-import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
-import rajawali.animation.SplineTranslateAnimation3D;
-import rajawali.curves.CatmullRomCurve3D;
-import rajawali.lights.ALight;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.math.vector.Vector3;
-import rajawali.loader.LoaderOBJ;
-import rajawali.loader.ParsingException;
-import rajawali.primitives.Line3D;
-import rajawali.primitives.Sphere;
+import java.util.Stack;
 
 public class CatmullRomFragment extends AExampleFragment {
 
@@ -69,7 +68,7 @@ public class CatmullRomFragment extends AExampleFragment {
 
 				final SplineTranslateAnimation3D anim = new SplineTranslateAnimation3D(path);
 				anim.setDurationMilliseconds(12000);
-				anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+				anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 				// -- orient to path
 				anim.setOrientToPath(true);
 				anim.setTransformable3D(arrow);
@@ -109,9 +108,9 @@ public class CatmullRomFragment extends AExampleFragment {
 
 			EllipticalOrbitAnimation3D camAnim = new EllipticalOrbitAnimation3D(
 					new Vector3(), new Vector3(26, 0, 0), 0, 360,
-					OrbitDirection.CLOCKWISE);
+					EllipticalOrbitAnimation3D.OrbitDirection.CLOCKWISE);
 			camAnim.setDurationMilliseconds(10000);
-			camAnim.setRepeatMode(RepeatMode.INFINITE);
+			camAnim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			camAnim.setTransformable3D(getCurrentCamera());
 			getCurrentScene().registerAnimation(camAnim);
 			camAnim.play();

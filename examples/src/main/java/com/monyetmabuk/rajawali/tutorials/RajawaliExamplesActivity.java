@@ -2,7 +2,6 @@ package com.monyetmabuk.rajawali.tutorials;
 
 import java.util.Map;
 
-import rajawali.util.RajLog;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;

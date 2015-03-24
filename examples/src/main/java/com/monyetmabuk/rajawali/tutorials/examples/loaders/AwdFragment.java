@@ -5,12 +5,12 @@ import android.content.Context;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import rajawali.Object3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.Animation3D;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.math.vector.Vector3.Axis;
-import rajawali.loader.LoaderAWD;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.Animation3D;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.loader.LoaderAWD;
+import org.rajawali3d.math.vector.Vector3;
 
 public class AwdFragment extends AExampleFragment {
 
@@ -36,9 +36,9 @@ public class AwdFragment extends AExampleFragment {
 				obj.setScale(0.25f);
 				getCurrentScene().addChild(obj);
 
-				final Animation3D anim = new RotateOnAxisAnimation(Axis.Y, -360);
+				final Animation3D anim = new RotateOnAxisAnimation(Vector3.Axis.Y, -360);
 				anim.setDurationDelta(4d);
-				anim.setRepeatMode(RepeatMode.INFINITE);
+				anim.setRepeatMode(Animation.RepeatMode.INFINITE);
 				anim.setTransformable3D(obj);
 				anim.play();
 				getCurrentScene().registerAnimation(anim);

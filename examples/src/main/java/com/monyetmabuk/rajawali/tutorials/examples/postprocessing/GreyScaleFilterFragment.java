@@ -4,19 +4,19 @@ import android.content.Context;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import java.util.Random;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.postprocessing.PostProcessingManager;
+import org.rajawali3d.postprocessing.passes.EffectPass;
+import org.rajawali3d.postprocessing.passes.GreyScalePass;
+import org.rajawali3d.postprocessing.passes.RenderPass;
+import org.rajawali3d.primitives.Cube;
 
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.math.vector.Vector3;
-import rajawali.postprocessing.PostProcessingManager;
-import rajawali.postprocessing.passes.EffectPass;
-import rajawali.postprocessing.passes.GreyScalePass;
-import rajawali.postprocessing.passes.RenderPass;
-import rajawali.primitives.Cube;
+import java.util.Random;
 
 public class GreyScaleFilterFragment extends AExampleFragment {
 	@Override
@@ -64,7 +64,7 @@ public class GreyScaleFilterFragment extends AExampleFragment {
 				RotateOnAxisAnimation anim = new RotateOnAxisAnimation(randomAxis, 360);
 				anim.setTransformable3D(cube);
 				anim.setDurationMilliseconds(3000 + (int)(random.nextDouble() * 5000));
-				anim.setRepeatMode(RepeatMode.INFINITE);
+				anim.setRepeatMode(Animation.RepeatMode.INFINITE);
 				getCurrentScene().registerAnimation(anim);
 				anim.play();
 			}

@@ -1,10 +1,11 @@
 package com.monyetmabuk.rajawali.tutorials.examples.materials.materials;
 
-import rajawali.materials.shaders.FragmentShader;
-import rajawali.util.RawShaderLoader;
 import android.opengl.GLES20;
 
 import com.monyetmabuk.rajawali.tutorials.R;
+
+import org.rajawali3d.materials.shaders.FragmentShader;
+import org.rajawali3d.util.RawShaderLoader;
 
 public class CustomRawFragmentShader extends FragmentShader {
 	private int muTextureInfluenceHandle;

@@ -5,10 +5,10 @@ import android.content.Context;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomMaterialPlugin;
 
-import javax.microedition.khronos.opengles.GL10;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.primitives.ScreenQuad;
 
-import rajawali.materials.Material;
-import rajawali.primitives.ScreenQuad;
+import javax.microedition.khronos.opengles.GL10;
 
 public class TwoDimensionalFragment extends AExampleFragment {
 

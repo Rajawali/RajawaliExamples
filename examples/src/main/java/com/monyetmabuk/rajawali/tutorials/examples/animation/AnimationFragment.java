@@ -7,23 +7,21 @@ import android.view.animation.LinearInterpolator;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import java.io.ObjectInputStream;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.SerializedObject3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.Animation3D;
+import org.rajawali3d.animation.AnimationGroup;
+import org.rajawali3d.animation.EllipticalOrbitAnimation3D;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.animation.ScaleAnimation3D;
+import org.rajawali3d.animation.TranslateAnimation3D;
+import org.rajawali3d.lights.PointLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.math.vector.Vector3;
 
-import rajawali.Object3D;
-import rajawali.SerializedObject3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.Animation3D;
-import rajawali.animation.AnimationGroup;
-import rajawali.animation.EllipticalOrbitAnimation3D;
-import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.animation.ScaleAnimation3D;
-import rajawali.animation.TranslateAnimation3D;
-import rajawali.lights.PointLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.math.vector.Vector3;
-import rajawali.math.vector.Vector3.Axis;
+import java.io.ObjectInputStream;
 
 public class AnimationFragment extends AExampleFragment {
 	
@@ -67,14 +65,14 @@ public class AnimationFragment extends AExampleFragment {
 			mMonkey.setColor(0xff00ff00);
 
 			final AnimationGroup animGroup = new AnimationGroup();
-			animGroup.setRepeatMode(RepeatMode.INFINITE);
+			animGroup.setRepeatMode(Animation.RepeatMode.INFINITE);
 			animGroup.setRepeatCount(1);
 
 			Animation3D anim = new ScaleAnimation3D(new Vector3(1.6f, .8f, 1));
 			anim.setInterpolator(new LinearInterpolator());
 			anim.setDurationMilliseconds(1000);
 			anim.setRepeatCount(2);
-			anim.setRepeatMode(RepeatMode.REVERSE);
+			anim.setRepeatMode(Animation.RepeatMode.REVERSE);
 			anim.setTransformable3D(mMonkey);
 			animGroup.addAnimation(anim);
 
@@ -100,12 +98,12 @@ public class AnimationFragment extends AExampleFragment {
 			animGroup.addAnimation(anim);
 
 			anim = new EllipticalOrbitAnimation3D(new Vector3(), new Vector3(0,
-					3, 0), Vector3.getAxisVector(Axis.Z), 0, 360,
-					OrbitDirection.CLOCKWISE);
+					3, 0), Vector3.getAxisVector(Vector3.Axis.Z), 0, 360,
+					EllipticalOrbitAnimation3D.OrbitDirection.CLOCKWISE);
 			anim.setInterpolator(new LinearInterpolator());
 			anim.setDurationMilliseconds(2000);
 			anim.setRepeatCount(3);
-			anim.setRepeatMode(RepeatMode.REVERSE);
+			anim.setRepeatMode(Animation.RepeatMode.REVERSE);
 			anim.setTransformable3D(mMonkey);
 			animGroup.addAnimation(anim);
 			

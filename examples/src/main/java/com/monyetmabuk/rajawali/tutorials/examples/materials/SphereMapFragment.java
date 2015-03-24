@@ -5,20 +5,20 @@ import android.content.Context;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import java.io.ObjectInputStream;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.SerializedObject3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.Animation3D;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.lights.PointLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.SphereMapTexture;
+import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.math.vector.Vector3;
 
-import rajawali.Object3D;
-import rajawali.SerializedObject3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.Animation3D;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.lights.PointLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.SphereMapTexture;
-import rajawali.materials.textures.Texture;
-import rajawali.math.vector.Vector3;
+import java.io.ObjectInputStream;
 
 public class SphereMapFragment extends AExampleFragment {
 
@@ -74,7 +74,7 @@ public class SphereMapFragment extends AExampleFragment {
 			axis.normalize();
 
 			Animation3D anim1 = new RotateOnAxisAnimation(axis, 360);
-			anim1.setRepeatMode(RepeatMode.INFINITE);
+			anim1.setRepeatMode(Animation.RepeatMode.INFINITE);
 			anim1.setDurationMilliseconds(12000);
 			anim1.setTransformable3D(jet1);
 			getCurrentScene().registerAnimation(anim1);
@@ -90,7 +90,7 @@ public class SphereMapFragment extends AExampleFragment {
 			material2.setDiffuseMethod(new DiffuseMethod.Lambert());
 			try {
 				material2.addTexture(sphereMapTexture);
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 			material2.setColorInfluence(.5f);
@@ -103,7 +103,7 @@ public class SphereMapFragment extends AExampleFragment {
 			getCurrentScene().addChild(jet2);
 
 			Animation3D anim2 = new RotateOnAxisAnimation(axis, -360);
-			anim2.setRepeatMode(RepeatMode.INFINITE);
+			anim2.setRepeatMode(Animation.RepeatMode.INFINITE);
 			anim2.setDurationMilliseconds(12000);
 			anim2.setTransformable3D(jet2);
 			getCurrentScene().registerAnimation(anim2);

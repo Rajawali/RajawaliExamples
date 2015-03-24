@@ -13,11 +13,11 @@ import android.widget.ProgressBar;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.views.GithubLogoView;
 
+import org.rajawali3d.RajawaliFragment;
+import org.rajawali3d.renderer.RajawaliRenderer;
+
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.RajawaliFragment;
-import rajawali.renderer.RajawaliRenderer;
 
 public abstract class AExampleFragment extends RajawaliFragment implements
 		OnClickListener {

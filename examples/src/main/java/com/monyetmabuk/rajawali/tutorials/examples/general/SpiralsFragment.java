@@ -12,14 +12,14 @@ import android.widget.TextView;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import java.util.Stack;
+import org.rajawali3d.curves.ArchimedeanSpiral3D;
+import org.rajawali3d.curves.ICurve3D;
+import org.rajawali3d.curves.LogarithmicSpiral3D;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Line3D;
 
-import rajawali.curves.ArchimedeanSpiral3D;
-import rajawali.curves.ICurve3D;
-import rajawali.curves.LogarithmicSpiral3D;
-import rajawali.materials.Material;
-import rajawali.math.vector.Vector3;
-import rajawali.primitives.Line3D;
+import java.util.Stack;
 
 public class SpiralsFragment extends AExampleFragment {
 

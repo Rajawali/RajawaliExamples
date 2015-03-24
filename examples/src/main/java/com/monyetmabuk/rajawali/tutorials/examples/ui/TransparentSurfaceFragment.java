@@ -11,16 +11,16 @@ import android.widget.ImageView;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import java.io.ObjectInputStream;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.SerializedObject3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.math.vector.Vector3;
 
-import rajawali.Object3D;
-import rajawali.SerializedObject3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.math.vector.Vector3.Axis;
+import java.io.ObjectInputStream;
 
 public class TransparentSurfaceFragment extends AExampleFragment {
 	
@@ -76,9 +76,9 @@ public class TransparentSurfaceFragment extends AExampleFragment {
 				monkey.setScale(2);
 				getCurrentScene().addChild(monkey);
 
-				RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Axis.Y, 360);
+				RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Vector3.Axis.Y, 360);
 				anim.setDurationMilliseconds(6000);
-				anim.setRepeatMode(RepeatMode.INFINITE);
+				anim.setRepeatMode(Animation.RepeatMode.INFINITE);
 				anim.setInterpolator(new AccelerateDecelerateInterpolator());
 				anim.setTransformable3D(monkey);
 				getCurrentScene().registerAnimation(anim);

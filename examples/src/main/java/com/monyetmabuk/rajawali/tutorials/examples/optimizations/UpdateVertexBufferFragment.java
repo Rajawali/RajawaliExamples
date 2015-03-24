@@ -6,21 +6,20 @@ import android.os.SystemClock;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
+import org.rajawali3d.BufferInfo;
+import org.rajawali3d.Geometry3D;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.RotateAroundAnimation3D;
+import org.rajawali3d.curves.CatmullRomCurve3D;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.math.vector.Vector3;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.BufferInfo;
-import rajawali.Geometry3D;
-import rajawali.Object3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.RotateAroundAnimation3D;
-import rajawali.curves.CatmullRomCurve3D;
-import rajawali.materials.Material;
-import rajawali.math.vector.Vector3;
-import rajawali.math.vector.Vector3.Axis;
 
 public class UpdateVertexBufferFragment extends AExampleFragment {
 
@@ -165,10 +164,10 @@ public class UpdateVertexBufferFragment extends AExampleFragment {
 			//
 
 			RotateAroundAnimation3D anim = new RotateAroundAnimation3D(
-					new Vector3(), Axis.Y, 10);
+					new Vector3(), Vector3.Axis.Y, 10);
 			anim.setDurationMilliseconds(200000);
 			anim.setTransformable3D(getCurrentCamera());
-			anim.setRepeatMode(RepeatMode.INFINITE);
+			anim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
 		}

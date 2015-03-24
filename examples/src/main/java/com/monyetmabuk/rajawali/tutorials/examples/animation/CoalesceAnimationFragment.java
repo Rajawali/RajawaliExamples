@@ -5,14 +5,14 @@ import android.view.animation.LinearInterpolator;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.CoalesceAnimation3D;
-import rajawali.curves.LogarithmicSpiral3D;
-import rajawali.lights.PointLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.math.vector.Vector3;
-import rajawali.primitives.Sphere;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.CoalesceAnimation3D;
+import org.rajawali3d.curves.LogarithmicSpiral3D;
+import org.rajawali3d.lights.PointLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Sphere;
 
 public class CoalesceAnimationFragment extends AExampleFragment {
 	
@@ -82,7 +82,7 @@ public class CoalesceAnimationFragment extends AExampleFragment {
             // Adjust the animation behaviors
             coalesceAnimation3D.setInterpolator(new LinearInterpolator());
             coalesceAnimation3D.setDurationMilliseconds(10000);
-            coalesceAnimation3D.setRepeatMode(RepeatMode.INFINITE);
+            coalesceAnimation3D.setRepeatMode(Animation.RepeatMode.INFINITE);
 
             // Register and play the animation
 			getCurrentScene().registerAnimation(coalesceAnimation3D);

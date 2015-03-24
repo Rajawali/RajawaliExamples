@@ -10,21 +10,21 @@ import android.graphics.PorterDuff.Mode;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.AlphaMapTexture;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Sphere;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.AlphaMapTexture;
-import rajawali.math.vector.Vector3.Axis;
-import rajawali.primitives.Sphere;
 
 public class CanvasTextFragment extends AExampleFragment {
 
@@ -58,7 +58,7 @@ public class CanvasTextFragment extends AExampleFragment {
 			mTimeTexture = new AlphaMapTexture("timeTexture", mTimeBitmap);
 			try {
 				timeSphereMaterial.addTexture(mTimeTexture);
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 			timeSphereMaterial.setColorInfluence(1);
@@ -85,9 +85,9 @@ public class CanvasTextFragment extends AExampleFragment {
 
 				int direction = Math.random() < .5 ? 1 : -1;
 
-				RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Axis.Y, 0,
+				RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Vector3.Axis.Y, 0,
 						360 * direction);
-				anim.setRepeatMode(RepeatMode.INFINITE);
+				anim.setRepeatMode(Animation.RepeatMode.INFINITE);
 				anim.setDurationMilliseconds(i == 0 ? 12000
 						: 4000 + (int) (Math.random() * 4000));
 				anim.setTransformable3D(timeSphere);

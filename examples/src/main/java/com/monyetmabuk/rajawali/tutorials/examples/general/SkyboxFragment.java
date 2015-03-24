@@ -5,10 +5,10 @@ import android.content.Context;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import javax.microedition.khronos.opengles.GL10;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.math.vector.Vector3;
 
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.math.vector.Vector3.Axis;
+import javax.microedition.khronos.opengles.GL10;
 
 public class SkyboxFragment extends AExampleFragment {
 
@@ -32,14 +32,14 @@ public class SkyboxFragment extends AExampleFragment {
 				getCurrentScene().setSkybox(R.drawable.posx, R.drawable.negx,
 						R.drawable.posy, R.drawable.negy, R.drawable.posz,
 						R.drawable.negz);
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 		}
 
 		public void onDrawFrame(GL10 glUnused) {
 			super.onDrawFrame(glUnused);
-			getCurrentCamera().rotate(Axis.Y, -0.2);;
+			getCurrentCamera().rotate(Vector3.Axis.Y, -0.2);;
 		}
 	}
 

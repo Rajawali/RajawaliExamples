@@ -5,15 +5,14 @@ import android.graphics.Color;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import java.util.Stack;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.animation.TranslateAnimation3D;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Line3D;
 
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.animation.TranslateAnimation3D;
-import rajawali.materials.Material;
-import rajawali.math.vector.Vector3;
-import rajawali.math.vector.Vector3.Axis;
-import rajawali.primitives.Line3D;
+import java.util.Stack;
 
 public class ColoredLinesFragment extends AExampleFragment {
 
@@ -55,9 +54,9 @@ public class ColoredLinesFragment extends AExampleFragment {
 			line.setMaterial(material);
 			getCurrentScene().addChild(line);
 
-			RotateOnAxisAnimation lineAnim = new RotateOnAxisAnimation(Axis.Y, 359);
+			RotateOnAxisAnimation lineAnim = new RotateOnAxisAnimation(Vector3.Axis.Y, 359);
 			lineAnim.setDurationMilliseconds(10000);
-			lineAnim.setRepeatMode(RepeatMode.INFINITE);
+			lineAnim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			lineAnim.setTransformable3D(line);
 			getCurrentScene().registerAnimation(lineAnim);
 			lineAnim.play();
@@ -65,7 +64,7 @@ public class ColoredLinesFragment extends AExampleFragment {
 			TranslateAnimation3D camAnim = new TranslateAnimation3D(
 					new Vector3(0, 0, 10), new Vector3(0, 0, -10));
 			camAnim.setDurationMilliseconds(12000);
-			camAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			camAnim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 			camAnim.setTransformable3D(getCurrentCamera());
 			getCurrentScene().registerAnimation(camAnim);
 			camAnim.play();

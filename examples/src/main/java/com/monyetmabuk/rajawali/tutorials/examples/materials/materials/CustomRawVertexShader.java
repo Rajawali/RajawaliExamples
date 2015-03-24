@@ -1,9 +1,9 @@
 package com.monyetmabuk.rajawali.tutorials.examples.materials.materials;
 
-import rajawali.materials.shaders.VertexShader;
-import rajawali.util.RawShaderLoader;
-
 import com.monyetmabuk.rajawali.tutorials.R;
+
+import org.rajawali3d.materials.shaders.VertexShader;
+import org.rajawali3d.util.RawShaderLoader;
 
 public class CustomRawVertexShader extends VertexShader {
 	public CustomRawVertexShader()

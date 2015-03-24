@@ -8,18 +8,18 @@ import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.interactive.planes.PlanesGalore;
 import com.monyetmabuk.rajawali.tutorials.examples.interactive.planes.PlanesGaloreMaterialPlugin;
 
+import org.rajawali3d.Object3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.SplineTranslateAnimation3D;
+import org.rajawali3d.curves.CatmullRomCurve3D;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.math.vector.Vector3;
+
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.Object3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.SplineTranslateAnimation3D;
-import rajawali.curves.CatmullRomCurve3D;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.Texture;
-import rajawali.math.vector.Vector3;
 
 public class Optimized2000PlanesFragment extends AExampleFragment {
 
@@ -49,7 +49,7 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 			mMaterial.setColorInfluence(0);
 			try {
 				mMaterial.addTexture(new Texture("flickrPics", R.drawable.flickrpics));
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 			
@@ -74,7 +74,7 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 
 			final SplineTranslateAnimation3D anim = new SplineTranslateAnimation3D(path);
 			anim.setDurationMilliseconds(20000);
-			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(getCurrentCamera());
 			anim.setInterpolator(new AccelerateDecelerateInterpolator());
 			getCurrentScene().registerAnimation(anim);

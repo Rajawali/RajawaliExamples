@@ -13,11 +13,11 @@ import android.widget.TextView;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import rajawali.Object3D;
-import rajawali.materials.Material;
-import rajawali.loader.LoaderGCode;
-import rajawali.primitives.Line3D;
-import rajawali.util.RajLog;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.loader.LoaderGCode;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.primitives.Line3D;
+import org.rajawali3d.util.RajLog;
 
 public class LoaderGCodeFragment extends AExampleFragment {
 

@@ -7,20 +7,19 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.animation.TranslateAnimation3D;
-import rajawali.lights.PointLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.materials.methods.SpecularMethod;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.AlphaMapTexture;
-import rajawali.materials.textures.SpecularMapTexture;
-import rajawali.materials.textures.Texture;
-import rajawali.math.vector.Vector3;
-import rajawali.math.vector.Vector3.Axis;
-import rajawali.primitives.Sphere;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.animation.TranslateAnimation3D;
+import org.rajawali3d.lights.PointLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.materials.methods.SpecularMethod;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.AlphaMapTexture;
+import org.rajawali3d.materials.textures.SpecularMapTexture;
+import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Sphere;
 
 public class SpecularAndAlphaFragment extends AExampleFragment {
 
@@ -58,10 +57,10 @@ public class SpecularAndAlphaFragment extends AExampleFragment {
 				sphere.setY(1.2f);
 				getCurrentScene().addChild(sphere);
 
-				RotateOnAxisAnimation sphereAnim = new RotateOnAxisAnimation(Axis.Y,
+				RotateOnAxisAnimation sphereAnim = new RotateOnAxisAnimation(Vector3.Axis.Y,
 						359);
 				sphereAnim.setDurationMilliseconds(14000);
-				sphereAnim.setRepeatMode(RepeatMode.INFINITE);
+				sphereAnim.setRepeatMode(Animation.RepeatMode.INFINITE);
 				sphereAnim.setTransformable3D(sphere);
 				getCurrentScene().registerAnimation(sphereAnim);
 				sphereAnim.play();
@@ -80,13 +79,13 @@ public class SpecularAndAlphaFragment extends AExampleFragment {
 				sphere.setY(-1.2f);
 				getCurrentScene().addChild(sphere);
 
-				sphereAnim = new RotateOnAxisAnimation(Axis.Y, -359);
+				sphereAnim = new RotateOnAxisAnimation(Vector3.Axis.Y, -359);
 				sphereAnim.setDurationMilliseconds(10000);
-				sphereAnim.setRepeatMode(RepeatMode.INFINITE);
+				sphereAnim.setRepeatMode(Animation.RepeatMode.INFINITE);
 				sphereAnim.setTransformable3D(sphere);
 				getCurrentScene().registerAnimation(sphereAnim);
 				sphereAnim.play();
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 
@@ -94,7 +93,7 @@ public class SpecularAndAlphaFragment extends AExampleFragment {
 					new Vector3(-2, 3, 3), new Vector3(2, -1, 3));
 			lightAnim.setDurationMilliseconds(3000);
 			lightAnim.setInterpolator(new AccelerateDecelerateInterpolator());
-			lightAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			lightAnim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 			lightAnim.setTransformable3D(pointLight);
 			getCurrentScene().registerAnimation(lightAnim);
 			lightAnim.play();

@@ -16,11 +16,11 @@ import android.widget.TextView;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
+import org.rajawali3d.animation.Animation3D;
+import org.rajawali3d.lights.DirectionalLight;
+
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.animation.Animation3D;
-import rajawali.lights.DirectionalLight;
 
 public class TouchRipplesFragment extends AExampleFragment implements
 		OnTouchListener {

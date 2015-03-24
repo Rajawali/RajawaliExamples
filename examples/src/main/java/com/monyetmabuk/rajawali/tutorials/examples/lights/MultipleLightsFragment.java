@@ -5,18 +5,18 @@ import android.content.Context;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import java.io.ObjectInputStream;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.SerializedObject3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.Animation3D;
+import org.rajawali3d.animation.TranslateAnimation3D;
+import org.rajawali3d.lights.PointLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.math.vector.Vector3;
 
-import rajawali.Object3D;
-import rajawali.SerializedObject3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.Animation3D;
-import rajawali.animation.TranslateAnimation3D;
-import rajawali.lights.PointLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.materials.textures.Texture;
-import rajawali.math.vector.Vector3;
+import java.io.ObjectInputStream;
 
 public class MultipleLightsFragment extends AExampleFragment {
 
@@ -67,7 +67,7 @@ public class MultipleLightsFragment extends AExampleFragment {
 			Animation3D anim = new TranslateAnimation3D(
 					new Vector3(-10, -10, 5), new Vector3(-10, 10, 5));
 			anim.setDurationMilliseconds(4000);
-			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(light1);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
@@ -75,7 +75,7 @@ public class MultipleLightsFragment extends AExampleFragment {
 			anim = new TranslateAnimation3D(new Vector3(10, 10, 5),
 					new Vector3(10, -10, 5));
 			anim.setDurationMilliseconds(2000);
-			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 			anim.setTransformable3D(light2);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();

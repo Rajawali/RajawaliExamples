@@ -15,16 +15,16 @@ import android.widget.TextView;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import javax.microedition.khronos.opengles.GL10;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.math.Matrix4;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Sphere;
+import org.rajawali3d.util.GLU;
+import org.rajawali3d.util.ObjectColorPicker;
+import org.rajawali3d.util.OnObjectPickedListener;
 
-import rajawali.Object3D;
-import rajawali.materials.Material;
-import rajawali.math.Matrix4;
-import rajawali.math.vector.Vector3;
-import rajawali.primitives.Sphere;
-import rajawali.util.GLU;
-import rajawali.util.ObjectColorPicker;
-import rajawali.util.OnObjectPickedListener;
+import javax.microedition.khronos.opengles.GL10;
 
 public class TouchAndDragFragment extends AExampleFragment implements
 		OnTouchListener {
@@ -79,7 +79,7 @@ public class TouchAndDragFragment extends AExampleFragment implements
 	}
 
 	private final class TouchAndDragRenderer extends AExampleRenderer implements
-			OnObjectPickedListener {
+        OnObjectPickedListener {
 		private ObjectColorPicker mPicker;
 		private Object3D mSelectedObject;
 		private int[] mViewport;
@@ -152,7 +152,7 @@ public class TouchAndDragFragment extends AExampleFragment implements
 			//
 
 			GLU.gluUnProject(x, mViewportHeight - y, 0, mViewMatrix.getDoubleValues(), 0,
-					mProjectionMatrix.getDoubleValues(), 0, mViewport, 0, mNearPos4, 0);
+                mProjectionMatrix.getDoubleValues(), 0, mViewport, 0, mNearPos4, 0);
 
 			//
 			// -- unproject the screen coordinate (2D) to the camera's far plane

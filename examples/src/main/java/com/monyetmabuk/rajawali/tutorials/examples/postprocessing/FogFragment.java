@@ -6,17 +6,16 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import rajawali.Object3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.TranslateAnimation3D;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.materials.plugins.FogMaterialPlugin.FogParams;
-import rajawali.materials.plugins.FogMaterialPlugin.FogType;
-import rajawali.materials.textures.Texture;
-import rajawali.math.vector.Vector3;
-import rajawali.loader.LoaderOBJ;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.TranslateAnimation3D;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.loader.LoaderOBJ;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.materials.plugins.FogMaterialPlugin;
+import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.math.vector.Vector3;
 
 public class FogFragment extends AExampleFragment {
 
@@ -42,7 +41,7 @@ public class FogFragment extends AExampleFragment {
 			int fogColor = 0x999999;
 			
 			getCurrentScene().setBackgroundColor(fogColor);
-			getCurrentScene().setFog(new FogParams(FogType.LINEAR, fogColor, 1, 15));
+			getCurrentScene().setFog(new FogMaterialPlugin.FogParams(FogMaterialPlugin.FogType.LINEAR, fogColor, 1, 15));
 
 			LoaderOBJ objParser = new LoaderOBJ(mContext.getResources(),
 					mTextureManager, R.raw.road);
@@ -82,7 +81,7 @@ public class FogFragment extends AExampleFragment {
 					new Vector3(0, 2, -23));
 			camAnim.setDurationMilliseconds(8000);
 			camAnim.setInterpolator(new AccelerateDecelerateInterpolator());
-			camAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			camAnim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 			camAnim.setTransformable3D(getCurrentCamera());
 			getCurrentScene().registerAnimation(camAnim);
 			camAnim.play();

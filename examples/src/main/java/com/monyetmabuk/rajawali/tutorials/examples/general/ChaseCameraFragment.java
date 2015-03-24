@@ -13,22 +13,22 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
+import org.rajawali3d.ChaseCamera;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.SerializedObject3D;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Cube;
+import org.rajawali3d.primitives.Sphere;
+
 import java.io.ObjectInputStream;
 import java.util.zip.GZIPInputStream;
 
 import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.ChaseCamera;
-import rajawali.Object3D;
-import rajawali.SerializedObject3D;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.Texture;
-import rajawali.math.vector.Vector3;
-import rajawali.primitives.Cube;
-import rajawali.primitives.Sphere;
 
 public class ChaseCameraFragment extends AExampleFragment implements
 		OnSeekBarChangeListener {
@@ -115,7 +115,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
 			try {
 				sphereMaterial.addTexture(new Texture("skySphere", R.drawable.skysphere));
 				sphereMaterial.setColorInfluence(0);
-			} catch (TextureException e1) {
+			} catch (ATexture.TextureException e1) {
 				e1.printStackTrace();
 			}
 			mSphere.setMaterial(sphereMaterial);
@@ -153,7 +153,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
 			try {
 				rootCubeMaterial.addTexture(new Texture("camouflage", R.drawable.camouflage));
 				rootCubeMaterial.setColorInfluence(0);
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 			mRootCube.setMaterial(rootCubeMaterial);

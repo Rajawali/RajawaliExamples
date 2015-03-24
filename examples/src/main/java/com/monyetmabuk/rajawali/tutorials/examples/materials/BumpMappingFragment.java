@@ -7,22 +7,21 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import rajawali.Object3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.Animation3D;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.animation.TranslateAnimation3D;
-import rajawali.lights.PointLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.materials.methods.SpecularMethod;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.NormalMapTexture;
-import rajawali.materials.textures.Texture;
-import rajawali.math.vector.Vector3;
-import rajawali.math.vector.Vector3.Axis;
-import rajawali.primitives.Plane;
-import rajawali.primitives.Sphere;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.Animation3D;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.animation.TranslateAnimation3D;
+import org.rajawali3d.lights.PointLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.materials.methods.SpecularMethod;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.NormalMapTexture;
+import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Plane;
+import org.rajawali3d.primitives.Sphere;
 
 public class BumpMappingFragment extends AExampleFragment {
 
@@ -60,8 +59,8 @@ public class BumpMappingFragment extends AExampleFragment {
 				cube.setZ(-2);
 				getCurrentScene().addChild(cube);
 
-				RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Axis.Y, -5, 5);
-				anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+				RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Vector3.Axis.Y, -5, 5);
+				anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 				anim.setDurationMilliseconds(5000);
 				anim.setTransformable3D(cube);
 				getCurrentScene().registerAnimation(anim);
@@ -80,21 +79,21 @@ public class BumpMappingFragment extends AExampleFragment {
 				material2.setColorInfluence(0);
 				mEarth.setMaterial(material2);
 
-				RotateOnAxisAnimation earthAnim = new RotateOnAxisAnimation(Axis.Y, 359);
+				RotateOnAxisAnimation earthAnim = new RotateOnAxisAnimation(Vector3.Axis.Y, 359);
 				earthAnim.setDurationMilliseconds(6000);
-				earthAnim.setRepeatMode(RepeatMode.INFINITE);
+				earthAnim.setRepeatMode(Animation.RepeatMode.INFINITE);
 				earthAnim.setTransformable3D(mEarth);
 				getCurrentScene().registerAnimation(earthAnim);
 				earthAnim.play();
 
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 
 			mLightAnim = new TranslateAnimation3D(new Vector3(-2, 2, 2),
 					new Vector3(2, -2, 2));
 			mLightAnim.setDurationMilliseconds(4000);
-			mLightAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			mLightAnim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 			mLightAnim.setTransformable3D(mLight);
 			mLightAnim.setInterpolator(new AccelerateDecelerateInterpolator());
 			getCurrentScene().registerAnimation(mLightAnim);

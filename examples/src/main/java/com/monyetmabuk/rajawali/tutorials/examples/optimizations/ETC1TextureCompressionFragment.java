@@ -5,14 +5,14 @@ import android.content.Context;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import javax.microedition.khronos.opengles.GL10;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.Etc1Texture;
+import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.primitives.Plane;
 
-import rajawali.Object3D;
-import rajawali.materials.Material;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.Etc1Texture;
-import rajawali.materials.textures.Texture;
-import rajawali.primitives.Plane;
+import javax.microedition.khronos.opengles.GL10;
 
 public class ETC1TextureCompressionFragment extends AExampleFragment {
 
@@ -44,7 +44,7 @@ public class ETC1TextureCompressionFragment extends AExampleFragment {
 				mPlane.setDoubleSided(true);
 				mPlane.setRotZ(90);
 				getCurrentScene().addChild(mPlane);
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 
@@ -68,7 +68,7 @@ public class ETC1TextureCompressionFragment extends AExampleFragment {
 				mMipmappedPlane.setDoubleSided(true);
 				mMipmappedPlane.setRotZ(90);
 				getCurrentScene().addChild(mMipmappedPlane);
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 		}
