@@ -13,20 +13,20 @@ import android.widget.TextView;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
+import org.rajawali3d.Object3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.Animation3D;
+import org.rajawali3d.animation.SplineTranslateAnimation3D;
+import org.rajawali3d.curves.CatmullRomCurve3D;
+import org.rajawali3d.curves.ICurve3D;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Cube;
+import org.rajawali3d.primitives.Line3D;
+import org.rajawali3d.primitives.Sphere;
+
 import java.util.List;
 import java.util.Stack;
-
-import rajawali.Object3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.Animation3D;
-import rajawali.animation.SplineTranslateAnimation3D;
-import rajawali.curves.CatmullRomCurve3D;
-import rajawali.curves.ICurve3D;
-import rajawali.materials.Material;
-import rajawali.math.vector.Vector3;
-import rajawali.primitives.Cube;
-import rajawali.primitives.Line3D;
-import rajawali.primitives.Sphere;
 
 public class UniformDistributionFragment extends AExampleFragment {
 
@@ -106,7 +106,7 @@ public class UniformDistributionFragment extends AExampleFragment {
 			Animation3D anim = new SplineTranslateAnimation3D(curve1);
 			anim.setDurationMilliseconds(ANIMATION_DURATION);
 			anim.setTransformable3D(pathFollowObject);
-			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
@@ -138,7 +138,7 @@ public class UniformDistributionFragment extends AExampleFragment {
 			anim = new SplineTranslateAnimation3D(curve2);
 			anim.setDurationMilliseconds(ANIMATION_DURATION);
 			anim.setTransformable3D(pathFollowObject);
-			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
 		}

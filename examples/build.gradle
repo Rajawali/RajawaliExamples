@@ -19,7 +19,7 @@ android {
 }
 
 dependencies {
-    compile 'rajawali.framework:rajawali:1.0.0-SNAPSHOT'
+    compile 'org.rajawali3d:rajawali:1.0.0-SNAPSHOT'
     compile 'com.android.support:support-v4:22.0.0'
     compile 'com.google.code.gson:gson:2.3'
     compile 'com.koushikdutta.ion:ion:2.0.9'

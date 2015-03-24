@@ -6,18 +6,18 @@ import android.graphics.Color;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
+import org.rajawali3d.Object3D;
+import org.rajawali3d.SerializedObject3D;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.materials.methods.SpecularMethod;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.CubeMapTexture;
+
 import java.io.ObjectInputStream;
 
 import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.Object3D;
-import rajawali.SerializedObject3D;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.materials.methods.SpecularMethod;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.CubeMapTexture;
 
 public class MaterialsFragment extends AExampleFragment {
 
@@ -107,7 +107,7 @@ public class MaterialsFragment extends AExampleFragment {
 				envMap.isEnvironmentTexture(true);
 				cubeMapMaterial.addTexture(envMap);
 				cubeMapMaterial.setColorInfluence(0);
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 			mMonkey4.setMaterial(cubeMapMaterial);

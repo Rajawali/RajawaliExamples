@@ -5,15 +5,15 @@ import android.os.Bundle;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import java.util.Stack;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.lights.ALight;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Line3D;
 
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.lights.ALight;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.math.vector.Vector3;
-import rajawali.primitives.Line3D;
+import java.util.Stack;
 
 public class LinesFragment extends AExampleFragment {
 
@@ -54,7 +54,7 @@ public class LinesFragment extends AExampleFragment {
 			axis.normalize();
 			RotateOnAxisAnimation anim = new RotateOnAxisAnimation(axis, 360);
 			anim.setDurationMilliseconds(8000);
-			anim.setRepeatMode(RepeatMode.INFINITE);
+			anim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			anim.setTransformable3D(whirl);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();

@@ -8,14 +8,14 @@ import android.view.View.OnClickListener;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomVertexShaderMaterialPlugin;
 
-import javax.microedition.khronos.opengles.GL10;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Sphere;
 
-import rajawali.Object3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.materials.Material;
-import rajawali.math.vector.Vector3;
-import rajawali.primitives.Sphere;
+import javax.microedition.khronos.opengles.GL10;
 
 public class CustomVertexShaderFragment extends AExampleFragment implements
 		OnClickListener {
@@ -53,7 +53,7 @@ public class CustomVertexShaderFragment extends AExampleFragment implements
 			axis.normalize();
 
 			RotateOnAxisAnimation mAnim = new RotateOnAxisAnimation(axis, 360);
-			mAnim.setRepeatMode(RepeatMode.INFINITE);
+			mAnim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			mAnim.setDurationMilliseconds(12000);
 			mAnim.setTransformable3D(mSphere);
 			getCurrentScene().registerAnimation(mAnim);

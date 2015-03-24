@@ -5,22 +5,22 @@ import android.content.Context;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
+import org.rajawali3d.Object3D;
+import org.rajawali3d.SerializedObject3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.materials.methods.SpecularMethod;
+import org.rajawali3d.math.MathUtil;
+import org.rajawali3d.math.Quaternion;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Sphere;
+
 import java.io.ObjectInputStream;
 import java.nio.FloatBuffer;
 import java.util.zip.GZIPInputStream;
-
-import rajawali.Object3D;
-import rajawali.SerializedObject3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.materials.methods.SpecularMethod;
-import rajawali.math.MathUtil;
-import rajawali.math.Quaternion;
-import rajawali.math.vector.Vector3;
-import rajawali.primitives.Sphere;
 
 public class UsingGeometryDataFragment extends AExampleFragment {
 
@@ -107,7 +107,7 @@ public class UsingGeometryDataFragment extends AExampleFragment {
 
 			RotateOnAxisAnimation mAnim = new RotateOnAxisAnimation(rotationAxis, 360);
 			mAnim.setDurationMilliseconds(8000);
-			mAnim.setRepeatMode(RepeatMode.INFINITE);
+			mAnim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			mAnim.setTransformable3D(mRootSpike);
 
 			getCurrentScene().registerAnimation(mAnim);

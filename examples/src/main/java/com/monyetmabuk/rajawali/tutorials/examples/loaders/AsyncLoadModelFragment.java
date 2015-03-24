@@ -5,23 +5,21 @@ import android.content.Context;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import rajawali.Object3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.Animation3D;
-import rajawali.animation.EllipticalOrbitAnimation3D;
-import rajawali.animation.EllipticalOrbitAnimation3D.OrbitDirection;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.lights.PointLight;
-import rajawali.loader.ALoader;
-import rajawali.loader.LoaderOBJ;
-import rajawali.loader.async.IAsyncLoaderCallback;
-import rajawali.materials.Material;
-import rajawali.materials.textures.ATexture;
-import rajawali.materials.textures.Texture;
-import rajawali.math.vector.Vector3;
-import rajawali.math.vector.Vector3.Axis;
-import rajawali.primitives.Cube;
-import rajawali.util.RajLog;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.Animation3D;
+import org.rajawali3d.animation.EllipticalOrbitAnimation3D;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.lights.PointLight;
+import org.rajawali3d.loader.ALoader;
+import org.rajawali3d.loader.LoaderOBJ;
+import org.rajawali3d.loader.async.IAsyncLoaderCallback;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Cube;
+import org.rajawali3d.util.RajLog;
 
 public class AsyncLoadModelFragment extends AExampleFragment {
 
@@ -67,17 +65,17 @@ public class AsyncLoadModelFragment extends AExampleFragment {
                 mTextureManager, R.raw.multiobjects_obj);
             loadModel(loaderOBJ, this, R.raw.multiobjects_obj);
 
-			mCameraAnim = new RotateOnAxisAnimation(Axis.Y, 360);
+			mCameraAnim = new RotateOnAxisAnimation(Vector3.Axis.Y, 360);
 			mCameraAnim.setDurationMilliseconds(8000);
-			mCameraAnim.setRepeatMode(RepeatMode.INFINITE);
+			mCameraAnim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			mCameraAnim.setTransformable3D(getCurrentCamera());
 
 			mLightAnim = new EllipticalOrbitAnimation3D(new Vector3(),
-					new Vector3(0, 10, 0), Vector3.getAxisVector(Axis.Z), 0,
-					360, OrbitDirection.CLOCKWISE);
+					new Vector3(0, 10, 0), Vector3.getAxisVector(Vector3.Axis.Z), 0,
+					360, EllipticalOrbitAnimation3D.OrbitDirection.CLOCKWISE);
 
 			mLightAnim.setDurationMilliseconds(3000);
-			mLightAnim.setRepeatMode(RepeatMode.INFINITE);
+			mLightAnim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			mLightAnim.setTransformable3D(mLight);
 
 			getCurrentScene().registerAnimation(mCameraAnim);

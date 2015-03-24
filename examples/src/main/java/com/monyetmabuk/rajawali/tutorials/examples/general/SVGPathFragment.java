@@ -6,17 +6,17 @@ import android.view.animation.BounceInterpolator;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.TranslateAnimation3D;
+import org.rajawali3d.curves.CompoundCurve3D;
+import org.rajawali3d.curves.ICurve3D;
+import org.rajawali3d.curves.SVGPath;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Line3D;
+
 import java.util.List;
 import java.util.Stack;
-
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.TranslateAnimation3D;
-import rajawali.curves.CompoundCurve3D;
-import rajawali.curves.ICurve3D;
-import rajawali.curves.SVGPath;
-import rajawali.materials.Material;
-import rajawali.math.vector.Vector3;
-import rajawali.primitives.Line3D;
 
 public class SVGPathFragment extends AExampleFragment {
 
@@ -64,7 +64,7 @@ public class SVGPathFragment extends AExampleFragment {
 				anim.setInterpolator(new BounceInterpolator());
 				anim.setDurationDelta(1 + Math.random() * 5);
 				anim.setDelayDelta(.5f + Math.random());
-				anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+				anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 				anim.setTransformable3D(line);
 				getCurrentScene().registerAnimation(anim);
 				anim.play();

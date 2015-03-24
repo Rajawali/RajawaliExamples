@@ -5,15 +5,15 @@ import android.content.Context;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.Animation3D;
-import rajawali.animation.ColorAnimation3D;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.materials.Material;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.AlphaMapTexture;
-import rajawali.math.vector.Vector3.Axis;
-import rajawali.primitives.Cube;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.Animation3D;
+import org.rajawali3d.animation.ColorAnimation3D;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.AlphaMapTexture;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Cube;
 
 public class ColorAnimationFragment extends AExampleFragment {
 
@@ -45,14 +45,14 @@ public class ColorAnimationFragment extends AExampleFragment {
 			Animation3D anim = new ColorAnimation3D(0xaaff1111, 0xffffff11);
 			anim.setTransformable3D(cube1);
 			anim.setDurationMilliseconds(2000);
-			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
-			anim = new RotateOnAxisAnimation(Axis.Y, 359);
+			anim = new RotateOnAxisAnimation(Vector3.Axis.Y, 359);
 			anim.setTransformable3D(cube1);
 			anim.setDurationMilliseconds(6000);
-			anim.setRepeatMode(RepeatMode.INFINITE);
+			anim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
@@ -66,7 +66,7 @@ public class ColorAnimationFragment extends AExampleFragment {
 				alphaTex.setInfluence(.5f);
 				material2.addTexture(alphaTex);
 				material2.setColorInfluence(0);
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 			material2.setColorInfluence(.5f);
@@ -80,14 +80,14 @@ public class ColorAnimationFragment extends AExampleFragment {
 			anim = new ColorAnimation3D(0xaaff1111, 0xff0000ff);
 			anim.setTransformable3D(cube2);
 			anim.setDurationMilliseconds(2000);
-			anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
 
-			anim = new RotateOnAxisAnimation(Axis.Y, -359);
+			anim = new RotateOnAxisAnimation(Vector3.Axis.Y, -359);
 			anim.setTransformable3D(cube2);
 			anim.setDurationMilliseconds(6000);
-			anim.setRepeatMode(RepeatMode.INFINITE);
+			anim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
 

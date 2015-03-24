@@ -7,23 +7,22 @@ import android.graphics.BitmapFactory;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import rajawali.ChaseCamera;
-import rajawali.Object3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.SplineTranslateAnimation3D;
-import rajawali.curves.CatmullRomCurve3D;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.materials.plugins.FogMaterialPlugin.FogParams;
-import rajawali.materials.plugins.FogMaterialPlugin.FogType;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.NormalMapTexture;
-import rajawali.materials.textures.Texture;
-import rajawali.math.MathUtil;
-import rajawali.math.vector.Vector3;
-import rajawali.terrain.SquareTerrain;
-import rajawali.terrain.TerrainGenerator;
+import org.rajawali3d.ChaseCamera;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.SplineTranslateAnimation3D;
+import org.rajawali3d.curves.CatmullRomCurve3D;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.materials.plugins.FogMaterialPlugin;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.NormalMapTexture;
+import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.math.MathUtil;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.terrain.SquareTerrain;
+import org.rajawali3d.terrain.TerrainGenerator;
 
 public class TerrainFragment extends AExampleFragment {
 
@@ -53,7 +52,7 @@ public class TerrainFragment extends AExampleFragment {
 			chaseCamera.setFarPlane(1000);
 			getCurrentScene().replaceAndSwitchCamera(chaseCamera, 0);
 			
-			getCurrentScene().setFog(new FogParams(FogType.LINEAR, 0x999999, 50, 100));
+			getCurrentScene().setFog(new FogMaterialPlugin.FogParams(FogMaterialPlugin.FogType.LINEAR, 0x999999, 50, 100));
 			
 			//
 			// -- Load a bitmap that represents the terrain. Its color values will
@@ -112,7 +111,7 @@ public class TerrainFragment extends AExampleFragment {
 				material.addTexture(groundTexture);
 				material.addTexture(new NormalMapTexture("groundNormalMap", R.drawable.groundnor));
 				material.setColorInfluence(0);
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 
@@ -145,7 +144,7 @@ public class TerrainFragment extends AExampleFragment {
 			SplineTranslateAnimation3D anim = new SplineTranslateAnimation3D(cameraPath);
 			anim.setTransformable3D(empty);
 			anim.setDurationMilliseconds(60000);
-			anim.setRepeatMode(RepeatMode.INFINITE);
+			anim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			anim.setOrientToPath(true);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();

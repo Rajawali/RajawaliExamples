@@ -4,21 +4,20 @@ import android.content.Context;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import java.util.Random;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.postprocessing.PostProcessingManager;
+import org.rajawali3d.postprocessing.passes.BlurPass;
+import org.rajawali3d.postprocessing.passes.EffectPass;
+import org.rajawali3d.postprocessing.passes.RenderPass;
+import org.rajawali3d.postprocessing.passes.SepiaPass;
+import org.rajawali3d.primitives.Cube;
 
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.math.vector.Vector3;
-import rajawali.postprocessing.PostProcessingManager;
-import rajawali.postprocessing.passes.BlurPass;
-import rajawali.postprocessing.passes.BlurPass.Direction;
-import rajawali.postprocessing.passes.EffectPass;
-import rajawali.postprocessing.passes.RenderPass;
-import rajawali.postprocessing.passes.SepiaPass;
-import rajawali.primitives.Cube;
+import java.util.Random;
 
 public class MultiPassFragment extends AExampleFragment {
 	@Override
@@ -66,7 +65,7 @@ public class MultiPassFragment extends AExampleFragment {
 				RotateOnAxisAnimation anim = new RotateOnAxisAnimation(randomAxis, 360);
 				anim.setTransformable3D(cube);
 				anim.setDurationMilliseconds(3000 + (int)(random.nextDouble() * 5000));
-				anim.setRepeatMode(RepeatMode.INFINITE);
+				anim.setRepeatMode(Animation.RepeatMode.INFINITE);
 				getCurrentScene().registerAnimation(anim);
 				anim.play();
 			}
@@ -96,9 +95,9 @@ public class MultiPassFragment extends AExampleFragment {
 			// -- Add a Gaussian blur effect. This requires a horizontal and a vertical pass.
 			//
 			
-			EffectPass horizontalPass = new BlurPass(Direction.HORIZONTAL, 6, mViewportWidth, mViewportHeight);
+			EffectPass horizontalPass = new BlurPass(BlurPass.Direction.HORIZONTAL, 6, mViewportWidth, mViewportHeight);
 			mEffects.addPass(horizontalPass);
-			EffectPass verticalPass = new BlurPass(Direction.VERTICAL, 6, mViewportWidth, mViewportHeight);
+			EffectPass verticalPass = new BlurPass(BlurPass.Direction.VERTICAL, 6, mViewportWidth, mViewportHeight);
 			
 			//
 			// -- Important. The last pass should render to screen or nothing will happen.

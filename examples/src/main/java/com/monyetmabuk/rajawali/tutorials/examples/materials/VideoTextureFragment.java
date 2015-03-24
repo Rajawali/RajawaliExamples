@@ -8,26 +8,25 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
+import org.rajawali3d.Object3D;
+import org.rajawali3d.SerializedObject3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.EllipticalOrbitAnimation3D;
+import org.rajawali3d.animation.TranslateAnimation3D;
+import org.rajawali3d.lights.PointLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.materials.methods.SpecularMethod;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.VideoTexture;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Plane;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.zip.GZIPInputStream;
 
 import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.Object3D;
-import rajawali.SerializedObject3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.EllipticalOrbitAnimation3D;
-import rajawali.animation.TranslateAnimation3D;
-import rajawali.lights.PointLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.materials.methods.SpecularMethod;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.VideoTexture;
-import rajawali.math.vector.Vector3;
-import rajawali.math.vector.Vector3.Axis;
-import rajawali.primitives.Plane;
 
 public class VideoTextureFragment extends AExampleFragment {
 
@@ -84,11 +83,11 @@ public class VideoTextureFragment extends AExampleFragment {
 			material.setColorInfluence(0);
 			try {
 				material.addTexture(mVideoTexture);
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 
-			Plane screen = new Plane(3, 2, 2, 2, Axis.Z);
+			Plane screen = new Plane(3, 2, 2, 2, Vector3.Axis.Z);
 			screen.setMaterial(material);
 			screen.setX(.1f);
 			screen.setY(-.2f);
@@ -103,7 +102,7 @@ public class VideoTextureFragment extends AExampleFragment {
 					new Vector3(-3, 3, 10), // from
 					new Vector3(3, 1, 3)); // to
 			lightAnim.setDurationMilliseconds(5000);
-			lightAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			lightAnim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 			lightAnim.setTransformable3D(pointLight);
 			lightAnim.setInterpolator(new AccelerateDecelerateInterpolator());
 			getCurrentScene().registerAnimation(lightAnim);
@@ -114,7 +113,7 @@ public class VideoTextureFragment extends AExampleFragment {
 			EllipticalOrbitAnimation3D camAnim = new EllipticalOrbitAnimation3D(
 					new Vector3(3, 2, 10), new Vector3(1, 0, 8), 0, 359);
 			camAnim.setDurationMilliseconds(20000);
-			camAnim.setRepeatMode(RepeatMode.INFINITE);
+			camAnim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			camAnim.setTransformable3D(getCurrentCamera());
 			getCurrentScene().registerAnimation(camAnim);
 			camAnim.play();

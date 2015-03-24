@@ -7,14 +7,14 @@ import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomRawFragmentShader;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomRawVertexShader;
 
-import javax.microedition.khronos.opengles.GL10;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.primitives.Sphere;
 
-import rajawali.Object3D;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.Texture;
-import rajawali.primitives.Sphere;
+import javax.microedition.khronos.opengles.GL10;
 
 public class RawShaderFilesFragment extends AExampleFragment {
 
@@ -44,7 +44,7 @@ public class RawShaderFilesFragment extends AExampleFragment {
 				Texture texture = new Texture("myTex", R.drawable.flickrpics);
 				texture.setInfluence(.5f);
 				mMaterial.addTexture(texture);
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 			mMaterial.setColorInfluence(.5f);

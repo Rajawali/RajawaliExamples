@@ -12,17 +12,17 @@ import android.widget.TextView;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import java.util.Stack;
+import org.rajawali3d.curves.CatmullRomCurve3D;
+import org.rajawali3d.curves.CompoundCurve3D;
+import org.rajawali3d.curves.CubicBezierCurve3D;
+import org.rajawali3d.curves.ICurve3D;
+import org.rajawali3d.curves.LinearBezierCurve3D;
+import org.rajawali3d.curves.QuadraticBezierCurve3D;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Line3D;
 
-import rajawali.curves.CatmullRomCurve3D;
-import rajawali.curves.CompoundCurve3D;
-import rajawali.curves.CubicBezierCurve3D;
-import rajawali.curves.ICurve3D;
-import rajawali.curves.LinearBezierCurve3D;
-import rajawali.curves.QuadraticBezierCurve3D;
-import rajawali.materials.Material;
-import rajawali.math.vector.Vector3;
-import rajawali.primitives.Line3D;
+import java.util.Stack;
 
 public class CurvesFragment extends AExampleFragment {
 

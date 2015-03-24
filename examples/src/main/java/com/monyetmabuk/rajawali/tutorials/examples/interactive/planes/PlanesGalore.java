@@ -3,16 +3,15 @@ package com.monyetmabuk.rajawali.tutorials.examples.interactive.planes;
 import android.graphics.Color;
 import android.opengl.GLES20;
 
+import org.rajawali3d.BufferInfo;
+import org.rajawali3d.Geometry3D;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.math.vector.Vector3;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-
-import rajawali.BufferInfo;
-import rajawali.Geometry3D;
-import rajawali.Geometry3D.BufferType;
-import rajawali.Object3D;
-import rajawali.materials.Material;
-import rajawali.math.vector.Vector3;
 
 /**
  * This example shows how you can create a large number of textured planes efficiently.
@@ -147,8 +146,8 @@ public class PlanesGalore extends Object3D {
 	}
 	
 	private void createBuffers() {
-		mGeometry.createBuffer(mPlanePositionsBufferInfo, BufferType.FLOAT_BUFFER, mPlanePositions, GLES20.GL_ARRAY_BUFFER);
-		mGeometry.createBuffer(mRotationSpeedsBufferInfo, BufferType.FLOAT_BUFFER, mRotationSpeeds, GLES20.GL_ARRAY_BUFFER);
+		mGeometry.createBuffer(mPlanePositionsBufferInfo, Geometry3D.BufferType.FLOAT_BUFFER, mPlanePositions, GLES20.GL_ARRAY_BUFFER);
+		mGeometry.createBuffer(mRotationSpeedsBufferInfo, Geometry3D.BufferType.FLOAT_BUFFER, mRotationSpeeds, GLES20.GL_ARRAY_BUFFER);
 		
 		mMaterialPlugin.setPlanePositions(mPlanePositionsBufferInfo.bufferHandle);
 		mMaterialPlugin.setRotationSpeeds(mRotationSpeedsBufferInfo.bufferHandle);

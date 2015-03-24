@@ -4,18 +4,18 @@ import android.content.Context;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import rajawali.Object3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.Animation3D;
-import rajawali.animation.SplineTranslateAnimation3D;
-import rajawali.curves.CompoundCurve3D;
-import rajawali.curves.CubicBezierCurve3D;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.materials.methods.SpecularMethod;
-import rajawali.math.vector.Vector3;
-import rajawali.primitives.Sphere;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.Animation3D;
+import org.rajawali3d.animation.SplineTranslateAnimation3D;
+import org.rajawali3d.curves.CompoundCurve3D;
+import org.rajawali3d.curves.CubicBezierCurve3D;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.materials.methods.SpecularMethod;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Sphere;
 
 public class BezierFragment extends AExampleFragment {
 
@@ -75,14 +75,14 @@ public class BezierFragment extends AExampleFragment {
 
 			Animation3D redAnim = new SplineTranslateAnimation3D(redBezierPath);
 			redAnim.setDurationMilliseconds(2000);
-			redAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			redAnim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 			redAnim.setTransformable3D(redSphere);
 			getCurrentScene().registerAnimation(redAnim);
 			redAnim.play();
 
 			Animation3D yellowAnim = new SplineTranslateAnimation3D(yellowBezierPath);
 			yellowAnim.setDurationMilliseconds(3800);
-			yellowAnim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+			yellowAnim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 			yellowAnim.setTransformable3D(yellowSphere);
 			getCurrentScene().registerAnimation(yellowAnim);
 			yellowAnim.play();

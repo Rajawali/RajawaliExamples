@@ -4,17 +4,17 @@ import android.content.Context;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import javax.microedition.khronos.opengles.GL10;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.materials.textures.TextureAtlas;
+import org.rajawali3d.materials.textures.TexturePacker;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Cube;
+import org.rajawali3d.primitives.Plane;
+import org.rajawali3d.primitives.Sphere;
 
-import rajawali.materials.Material;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.Texture;
-import rajawali.materials.textures.TextureAtlas;
-import rajawali.materials.textures.TexturePacker;
-import rajawali.math.vector.Vector3.Axis;
-import rajawali.primitives.Cube;
-import rajawali.primitives.Plane;
-import rajawali.primitives.Sphere;
+import javax.microedition.khronos.opengles.GL10;
 
 public class TextureAtlasFragment extends AExampleFragment {
 
@@ -65,14 +65,14 @@ public class TextureAtlasFragment extends AExampleFragment {
 				mCubeMaterial.setColorInfluence(0);
 				mPlaneMaterial.addTexture(new Texture("rajawali", mAtlas));
 				mPlaneMaterial.setColorInfluence(0);
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 			
 			//
 			// -- Show the full atlas for demonstration purposes
 			//
-			mAtlasPlane = new Plane(Axis.Z);
+			mAtlasPlane = new Plane(Vector3.Axis.Z);
 			mAtlasPlane.setMaterial(mAtlasMaterial);
 			mAtlasPlane.setY(1);
 			getCurrentScene().addChild(mAtlasPlane);

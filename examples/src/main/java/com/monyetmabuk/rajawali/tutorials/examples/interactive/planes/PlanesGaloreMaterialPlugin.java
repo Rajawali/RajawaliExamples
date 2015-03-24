@@ -1,11 +1,12 @@
 package com.monyetmabuk.rajawali.tutorials.examples.interactive.planes;
 
-import rajawali.materials.Material.PluginInsertLocation;
-import rajawali.materials.plugins.IMaterialPlugin;
-import rajawali.materials.shaders.AShader;
-import rajawali.materials.shaders.IShaderFragment;
-import rajawali.math.vector.Vector3;
 import android.opengl.GLES20;
+
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.plugins.IMaterialPlugin;
+import org.rajawali3d.materials.shaders.AShader;
+import org.rajawali3d.materials.shaders.IShaderFragment;
+import org.rajawali3d.math.vector.Vector3;
 
 public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 	private PlanesGaloreVertexShaderFragment mVertexShader;
@@ -18,8 +19,8 @@ public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 	}
 	
 	@Override
-	public PluginInsertLocation getInsertLocation() {
-		return PluginInsertLocation.PRE_LIGHTING;
+	public Material.PluginInsertLocation getInsertLocation() {
+		return Material.PluginInsertLocation.PRE_LIGHTING;
 	}
 
 	@Override
@@ -188,8 +189,8 @@ public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 		}
 		
 		@Override
-		public PluginInsertLocation getInsertLocation() {
-			return PluginInsertLocation.IGNORE;
+		public Material.PluginInsertLocation getInsertLocation() {
+			return Material.PluginInsertLocation.IGNORE;
 		}
 
 		@Override
@@ -230,8 +231,8 @@ public class PlanesGaloreMaterialPlugin implements IMaterialPlugin {
 		}
 		
 		@Override
-		public PluginInsertLocation getInsertLocation() {
-			return PluginInsertLocation.IGNORE;
+		public Material.PluginInsertLocation getInsertLocation() {
+			return Material.PluginInsertLocation.IGNORE;
 		}
 
 		@Override

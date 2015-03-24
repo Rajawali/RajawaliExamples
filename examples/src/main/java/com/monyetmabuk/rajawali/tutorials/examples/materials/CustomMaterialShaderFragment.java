@@ -5,12 +5,12 @@ import android.content.Context;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.materials.materials.CustomMaterialPlugin;
 
-import javax.microedition.khronos.opengles.GL10;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.primitives.Cube;
 
-import rajawali.Object3D;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.primitives.Cube;
+import javax.microedition.khronos.opengles.GL10;
 
 public class CustomMaterialShaderFragment extends AExampleFragment {
 	@Override

@@ -5,12 +5,12 @@ import android.content.Context;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import rajawali.animation.mesh.SkeletalAnimationObject3D;
-import rajawali.animation.mesh.SkeletalAnimationSequence;
-import rajawali.lights.DirectionalLight;
-import rajawali.loader.ParsingException;
-import rajawali.loader.md5.LoaderMD5Anim;
-import rajawali.loader.md5.LoaderMD5Mesh;
+import org.rajawali3d.animation.mesh.SkeletalAnimationObject3D;
+import org.rajawali3d.animation.mesh.SkeletalAnimationSequence;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.loader.ParsingException;
+import org.rajawali3d.loader.md5.LoaderMD5Anim;
+import org.rajawali3d.loader.md5.LoaderMD5Mesh;
 
 public class SkeletalAnimationMD5Fragment extends AExampleFragment {
 

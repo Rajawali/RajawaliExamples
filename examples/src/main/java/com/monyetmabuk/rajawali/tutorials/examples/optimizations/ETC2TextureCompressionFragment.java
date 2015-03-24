@@ -13,16 +13,16 @@ import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.about.dialogs.ExceptionDialog;
 
-import javax.microedition.khronos.opengles.GL10;
+import org.rajawali3d.Capabilities;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.Etc1Texture;
+import org.rajawali3d.materials.textures.Etc2Texture;
+import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.primitives.Plane;
 
-import rajawali.Capabilities;
-import rajawali.Object3D;
-import rajawali.materials.Material;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.Etc1Texture;
-import rajawali.materials.textures.Etc2Texture;
-import rajawali.materials.textures.Texture;
-import rajawali.primitives.Plane;
+import javax.microedition.khronos.opengles.GL10;
 
 public class ETC2TextureCompressionFragment extends AExampleFragment {
 
@@ -87,7 +87,7 @@ public class ETC2TextureCompressionFragment extends AExampleFragment {
                 mPNGPlane.setPosition(0, -1.75f, 0);
                 mPNGPlane.setDoubleSided(true);
                 getCurrentScene().addChild(mPNGPlane);
-            } catch (TextureException e) {
+            } catch (ATexture.TextureException e) {
                 e.printStackTrace();
             }
 
@@ -102,7 +102,7 @@ public class ETC2TextureCompressionFragment extends AExampleFragment {
 				mETC1Plane.setPosition(0, 0, 0);
 				mETC1Plane.setDoubleSided(true);
 				getCurrentScene().addChild(mETC1Plane);
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 
@@ -119,7 +119,7 @@ public class ETC2TextureCompressionFragment extends AExampleFragment {
 				mETC2Plane.setPosition(0, 1.75f, 0);
 				mETC2Plane.setDoubleSided(true);
 				getCurrentScene().addChild(mETC2Plane);
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 		}

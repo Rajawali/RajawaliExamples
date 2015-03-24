@@ -1,12 +1,10 @@
 package com.monyetmabuk.rajawali.tutorials.examples.animation.particles;
 
-import java.nio.FloatBuffer;
+import org.rajawali3d.Camera;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.math.vector.Vector3;
 
-import rajawali.Camera;
-import rajawali.Object3D;
-import rajawali.math.Matrix4;
-import rajawali.math.vector.Vector3;
-import rajawali.util.ObjectColorPicker.ColorPickerInfo;
+import java.nio.FloatBuffer;
 
 public class ExampleParticleSystem2 extends Object3D {
 	protected Vector3 mFriction;

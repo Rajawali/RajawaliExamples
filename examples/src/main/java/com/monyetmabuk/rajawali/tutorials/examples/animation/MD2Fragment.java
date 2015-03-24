@@ -13,10 +13,10 @@ import android.widget.LinearLayout;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import rajawali.animation.mesh.VertexAnimationObject3D;
-import rajawali.lights.DirectionalLight;
-import rajawali.loader.LoaderMD2;
-import rajawali.loader.ParsingException;
+import org.rajawali3d.animation.mesh.VertexAnimationObject3D;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.loader.LoaderMD2;
+import org.rajawali3d.loader.ParsingException;
 
 public class MD2Fragment extends AExampleFragment implements OnClickListener {
 

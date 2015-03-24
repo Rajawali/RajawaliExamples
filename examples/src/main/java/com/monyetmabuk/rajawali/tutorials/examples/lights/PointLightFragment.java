@@ -4,16 +4,16 @@ import android.content.Context;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import rajawali.Object3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.EllipticalOrbitAnimation3D;
-import rajawali.lights.PointLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.materials.methods.SpecularMethod;
-import rajawali.math.MathUtil;
-import rajawali.math.vector.Vector3;
-import rajawali.primitives.Sphere;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.EllipticalOrbitAnimation3D;
+import org.rajawali3d.lights.PointLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.materials.methods.SpecularMethod;
+import org.rajawali3d.math.MathUtil;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Sphere;
 
 public class PointLightFragment extends AExampleFragment {
 
@@ -101,7 +101,7 @@ public class PointLightFragment extends AExampleFragment {
 			// -- Circular animation. Rotate the camera around the point (0, 1, 0)
 			EllipticalOrbitAnimation3D anim = new EllipticalOrbitAnimation3D(
 					new Vector3(0, 1, 0), new Vector3(1, 1, 1), 0, 359);
-			anim.setRepeatMode(RepeatMode.INFINITE);
+			anim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			anim.setDurationMilliseconds(6000);
 			anim.setTransformable3D(pointLight);
 			getCurrentScene().registerAnimation(anim);

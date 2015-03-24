@@ -12,13 +12,13 @@ import android.widget.TextView;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import rajawali.Object3D;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.Animation3D;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.math.vector.Vector3.Axis;
-import rajawali.loader.ParsingException;
-import rajawali.loader.fbx.LoaderFBX;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.Animation3D;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.loader.ParsingException;
+import org.rajawali3d.loader.fbx.LoaderFBX;
+import org.rajawali3d.math.vector.Vector3;
 
 public class FBXFragment extends AExampleFragment {
 	
@@ -56,9 +56,9 @@ public class FBXFragment extends AExampleFragment {
 		}
 
 		protected void initScene() {
-			mAnim = new RotateOnAxisAnimation(Axis.Y, 360);
+			mAnim = new RotateOnAxisAnimation(Vector3.Axis.Y, 360);
 			mAnim.setDurationMilliseconds(16000);
-			mAnim.setRepeatMode(RepeatMode.INFINITE);
+			mAnim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			getCurrentScene().registerAnimation(mAnim);
 
 			try {

@@ -5,20 +5,20 @@ import android.graphics.Color;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import java.util.Random;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.postprocessing.PostProcessingManager;
+import org.rajawali3d.postprocessing.effects.BloomEffect;
+import org.rajawali3d.postprocessing.passes.BlendPass;
+import org.rajawali3d.postprocessing.passes.RenderPass;
+import org.rajawali3d.primitives.Cube;
+import org.rajawali3d.util.RajLog;
 
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.math.vector.Vector3;
-import rajawali.postprocessing.PostProcessingManager;
-import rajawali.postprocessing.effects.BloomEffect;
-import rajawali.postprocessing.passes.BlendPass.BlendMode;
-import rajawali.postprocessing.passes.RenderPass;
-import rajawali.primitives.Cube;
-import rajawali.util.RajLog;
+import java.util.Random;
 
 public class BloomEffectFragment extends AExampleFragment {
 
@@ -72,7 +72,7 @@ public class BloomEffectFragment extends AExampleFragment {
 						360);
 				anim.setTransformable3D(cube);
 				anim.setDurationMilliseconds(3000 + (int) (random.nextDouble() * 5000));
-				anim.setRepeatMode(RepeatMode.INFINITE);
+				anim.setRepeatMode(Animation.RepeatMode.INFINITE);
 				getCurrentScene().registerAnimation(anim);
 				anim.play();
 			}
@@ -85,7 +85,7 @@ public class BloomEffectFragment extends AExampleFragment {
 			RenderPass renderPass = new RenderPass(getCurrentScene(), getCurrentCamera(), 0);
 			mEffects.addPass(renderPass);
 			
-			BloomEffect bloomEffect = new BloomEffect(getCurrentScene(), getCurrentCamera(), mViewportWidth, mViewportHeight, 0x111111, 0xffffff, BlendMode.SCREEN);
+			BloomEffect bloomEffect = new BloomEffect(getCurrentScene(), getCurrentCamera(), mViewportWidth, mViewportHeight, 0x111111, 0xffffff, BlendPass.BlendMode.SCREEN);
 			mEffects.addEffect(bloomEffect);
 
 			bloomEffect.setRenderToScreen(true);

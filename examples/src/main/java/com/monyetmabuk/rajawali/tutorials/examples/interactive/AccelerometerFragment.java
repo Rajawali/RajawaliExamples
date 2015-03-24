@@ -10,18 +10,18 @@ import android.os.Bundle;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
+import org.rajawali3d.Object3D;
+import org.rajawali3d.SerializedObject3D;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.CubeMapTexture;
+import org.rajawali3d.math.vector.Vector3;
+
 import java.io.ObjectInputStream;
 
 import javax.microedition.khronos.opengles.GL10;
-
-import rajawali.Object3D;
-import rajawali.SerializedObject3D;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.CubeMapTexture;
-import rajawali.math.vector.Vector3;
 
 public class AccelerometerFragment extends AExampleFragment implements
 		SensorEventListener {
@@ -112,7 +112,7 @@ public class AccelerometerFragment extends AExampleFragment implements
 				material.addTexture(envMap);
 				material.setColorInfluence(0);
 				mMonkey.setMaterial(material);
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 		}

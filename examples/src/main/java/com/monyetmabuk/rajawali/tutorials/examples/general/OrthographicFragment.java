@@ -6,22 +6,21 @@ import android.view.animation.BounceInterpolator;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import java.util.Random;
+import org.rajawali3d.Object3D;
+import org.rajawali3d.OrthographicCamera;
+import org.rajawali3d.animation.Animation;
+import org.rajawali3d.animation.RotateOnAxisAnimation;
+import org.rajawali3d.animation.TranslateAnimation3D;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.materials.Material;
+import org.rajawali3d.materials.methods.DiffuseMethod;
+import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Cube;
+import org.rajawali3d.primitives.Plane;
 
-import rajawali.Object3D;
-import rajawali.OrthographicCamera;
-import rajawali.animation.Animation.RepeatMode;
-import rajawali.animation.RotateOnAxisAnimation;
-import rajawali.animation.TranslateAnimation3D;
-import rajawali.lights.DirectionalLight;
-import rajawali.materials.Material;
-import rajawali.materials.methods.DiffuseMethod;
-import rajawali.materials.textures.ATexture.TextureException;
-import rajawali.materials.textures.Texture;
-import rajawali.math.vector.Vector3;
-import rajawali.math.vector.Vector3.Axis;
-import rajawali.primitives.Cube;
-import rajawali.primitives.Plane;
+import java.util.Random;
 
 public class OrthographicFragment extends AExampleFragment {
 
@@ -55,7 +54,7 @@ public class OrthographicFragment extends AExampleFragment {
 			try {
 				material.addTexture(new Texture("checkerboard", R.drawable.checkerboard));
 				material.setColorInfluence(0);
-			} catch (TextureException e) {
+			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
 			}
 
@@ -67,7 +66,7 @@ public class OrthographicFragment extends AExampleFragment {
 			Object3D innerGroup = new Object3D();
 			group.addChild(innerGroup);
 
-			Plane plane = new Plane(Axis.Y);
+			Plane plane = new Plane(Vector3.Axis.Y);
 			plane.setMaterial(material);
 			plane.setDoubleSided(true);
 			plane.setColor(0xff0000ff);
@@ -110,16 +109,16 @@ public class OrthographicFragment extends AExampleFragment {
 						fromPosition, toPosition);
 				anim.setDurationMilliseconds(4000 + (int) (4000 * Math.random()));
 				anim.setInterpolator(new BounceInterpolator());
-				anim.setRepeatMode(RepeatMode.REVERSE_INFINITE);
+				anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
 				anim.setTransformable3D(cube);
 				anim.setDelayMilliseconds((int) (10000 * Math.random()));
 				getCurrentScene().registerAnimation(anim);
 				anim.play();
 			}
 
-			RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Axis.Y, 359);
+			RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Vector3.Axis.Y, 359);
 			anim.setDurationMilliseconds(20000);
-			anim.setRepeatMode(RepeatMode.INFINITE);
+			anim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			anim.setTransformable3D(innerGroup);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
