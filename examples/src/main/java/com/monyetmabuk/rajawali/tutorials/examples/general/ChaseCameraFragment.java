@@ -15,8 +15,9 @@ import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.ChaseCamera;
 import org.rajawali3d.Object3D;
-import org.rajawali3d.SerializedObject3D;
 import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.loader.LoaderOBJ;
+import org.rajawali3d.loader.ParsingException;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.materials.textures.ATexture;
@@ -24,9 +25,6 @@ import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Cube;
 import org.rajawali3d.primitives.Sphere;
-
-import java.io.ObjectInputStream;
-import java.util.zip.GZIPInputStream;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -124,19 +122,18 @@ public class ChaseCameraFragment extends AExampleFragment implements
 
 			try {
 				// -- load gzipped serialized object
-				ObjectInputStream ois;
-				GZIPInputStream zis = new GZIPInputStream(mContext
-						.getResources().openRawResource(R.raw.raptor));
-				ois = new ObjectInputStream(zis);
-				mRaptor = new Object3D(
-						(SerializedObject3D) ois.readObject());
-				Material raptorMaterial = new Material();
-				raptorMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
-				raptorMaterial.enableLighting(true);
-				raptorMaterial.addTexture(new Texture("raptorTex", R.drawable.raptor_texture));
-				raptorMaterial.setColorInfluence(0);
-				mRaptor.setMaterial(raptorMaterial);
-				mRaptor.setScale(.5f);
+                LoaderOBJ objParser = new LoaderOBJ(mContext.getResources(),
+                    mTextureManager, R.raw.teapot_obj);
+                try {
+                    objParser.parse();
+                    mRaptor = objParser.getParsedObject();
+                    mRaptor.setScale(2.0f);
+                    mRaptor.setDoubleSided(true);
+                    mRaptor.setY(-2.0);
+                    getCurrentScene().addChild(mRaptor);
+                } catch (ParsingException e) {
+                    e.printStackTrace();
+                }
 				getCurrentScene().addChild(mRaptor);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -174,13 +171,14 @@ public class ChaseCameraFragment extends AExampleFragment implements
 			// -- create a chase camera
 			// the first parameter is the camera offset
 			// the second parameter is the interpolation factor
-			ChaseCamera chaseCamera = new ChaseCamera(new Vector3(0, 3, 16),
-					.1f);
+			ChaseCamera chaseCamera = new ChaseCamera(new Vector3(0, 3, 8), .1f);
 			// -- tell the camera which object to chase
 			chaseCamera.setObjectToChase(mRaptor);
 			// -- set the far plane to 1000 so that we actually see the sky sphere
 			chaseCamera.setFarPlane(1000);
-			getCurrentScene().replaceAndSwitchCamera(chaseCamera, 0);
+            getCurrentCamera().setFarPlane(1000);
+            getCurrentCamera().setZ(20);
+			//getCurrentScene().replaceAndSwitchCamera(chaseCamera, 0);
 		}
 
 		public void setCameraOffset(Vector3 offset) {
@@ -189,23 +187,23 @@ public class ChaseCameraFragment extends AExampleFragment implements
 		}
 
 		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
 			// -- no proper physics here, just a bad approximation to keep
 			// this example as short as possible ;-)
-			mRaptor.setZ(mRaptor.getZ() + 2.0);
+			//mRaptor.setZ(mRaptor.getZ() + 2.0);
 			mRaptor.setX(Math.sin(mTime) * 20.0);
-			mRaptor.setRotZ(Math.sin(mTime + 8.0) * -30.0);
-			mRaptor.setRotY(180 + (mRaptor.getRotZ() * 0.1));
-			mRaptor.setRotY(180);
+			//mRaptor.setRotZ(Math.sin(mTime + 8.0) * -30.0);
+			//mRaptor.setRotY(180 + (mRaptor.getRotZ() * 0.1));
+			//mRaptor.setRotY(180);
 			mRaptor.setY(Math.cos(mTime) * 10.0);
 			mRaptor.setRotX(Math.cos(mTime + 1.0) * -20.0);
 
 			mSphere.setZ(mRaptor.getZ());
 			mTime += 0.01;
 
-			if (mRootCube.getZ() - mRaptor.getZ() <= (30 * -6)) {
+			//if (mRootCube.getZ() - mRaptor.getZ() <= (30 * -6)) {
 				mRootCube.setZ(mRaptor.getZ());
-			}
+			//}
+            super.onDrawFrame(glUnused);
 		}
 
 	}
