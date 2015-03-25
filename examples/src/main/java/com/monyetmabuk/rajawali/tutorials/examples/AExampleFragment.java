@@ -116,7 +116,7 @@ public abstract class AExampleFragment extends RajawaliFragment implements
 
 		public AExampleRenderer(Context context) {
 			super(context);
-			setFrameRate(0.5);
+			setFrameRate(60);
 		}
 
 		public void onSurfaceCreated(GL10 gl, EGLConfig config) {

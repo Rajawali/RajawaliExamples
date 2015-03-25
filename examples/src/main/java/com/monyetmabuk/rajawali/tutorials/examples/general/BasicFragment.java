@@ -10,6 +10,7 @@ import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Sphere;
 
 import javax.microedition.khronos.opengles.GL10;
@@ -39,7 +40,6 @@ public class BasicFragment extends AExampleFragment {
 
 			try {
 				Material material = new Material();
-                material.setDebug(true);
 				material.addTexture(new Texture("earthColors",
 						R.drawable.earthtruecolor_nasa_big));
 				material.setColorInfluence(0);
@@ -56,7 +56,7 @@ public class BasicFragment extends AExampleFragment {
 
 		public void onDrawFrame(GL10 glUnused) {
 			super.onDrawFrame(glUnused);
-			//mSphere.rotate(Vector3.Axis.Y, -1.0);
+			mSphere.rotate(Vector3.Axis.Y, -1.0);
 		}
 	}
 }
