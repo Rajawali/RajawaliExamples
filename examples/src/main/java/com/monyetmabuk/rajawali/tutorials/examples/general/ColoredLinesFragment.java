@@ -36,11 +36,11 @@ public class ColoredLinesFragment extends AExampleFragment {
 			int[] colors = new int[2000];
 			int colorCount = 0;
 			for (int i = -1000; i < 1000; i++) {
-				float j = i * .5f;
+				double j = i * .5;
 				Vector3 v = new Vector3();
-				v.x = (float) (Math.cos(j * .4f));
-				v.y = (float) (Math.sin(j * .3f));
-				v.z = j * .01f;
+				v.x = Math.cos(j * .4);
+				v.y = Math.sin(j * .3);
+				v.z = j * .01;
 				points.add(v);
 				colors[colorCount++] = Color.argb(255,
 						(int) (190.f * Math.sin(j)),

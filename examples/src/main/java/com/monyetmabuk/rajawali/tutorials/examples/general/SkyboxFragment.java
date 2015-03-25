@@ -6,6 +6,7 @@ import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.materials.textures.ATexture;
+import org.rajawali3d.math.vector.Vector3;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -38,9 +39,8 @@ public class SkyboxFragment extends AExampleFragment {
 
 		public void onDrawFrame(GL10 glUnused) {
 			super.onDrawFrame(glUnused);
-			getCurrentCamera().setRotY(getCurrentCamera().getRotY() - .2f);
+			getCurrentCamera().rotate(Vector3.Axis.Y, -0.2);;
 		}
-
 	}
 
 }
