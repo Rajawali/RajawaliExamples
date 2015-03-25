@@ -48,7 +48,7 @@ public class TerrainFragment extends AExampleFragment {
 			//    and add fog for a nice effect.
 			//
 
-			ChaseCamera chaseCamera = new ChaseCamera(new Vector3(0, 4, -8), .9f);
+			ChaseCamera chaseCamera = new ChaseCamera(new Vector3(0, 4, -8));
 			chaseCamera.setFarPlane(1000);
 			getCurrentScene().replaceAndSwitchCamera(chaseCamera, 0);
 			
