@@ -2,19 +2,16 @@ package com.monyetmabuk.rajawali.tutorials.examples.materials;
 
 import android.content.Context;
 
-import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.Object3D;
-import org.rajawali3d.SerializedObject3D;
 import org.rajawali3d.animation.Animation;
 import org.rajawali3d.animation.RotateOnAxisAnimation;
 import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.math.vector.Vector3;
-
-import java.io.ObjectInputStream;
+import org.rajawali3d.primitives.Cube;
 
 public class ToonShadingFragment extends AExampleFragment {
 
@@ -40,17 +37,11 @@ public class ToonShadingFragment extends AExampleFragment {
 			getCurrentCamera().setPosition(0, 0, 12);
 
 			try {
-				ObjectInputStream ois = new ObjectInputStream(mContext
-						.getResources().openRawResource(R.raw.monkey_ser));
-				SerializedObject3D serializedMonkey = (SerializedObject3D) ois
-						.readObject();
-				ois.close();
-
 				Material toonMat = new Material();
 				toonMat.enableLighting(true);
 				toonMat.setDiffuseMethod(new DiffuseMethod.Toon());
 
-				mMonkey1 = new Object3D(serializedMonkey);
+				mMonkey1 = new Cube(2.0f);
 				mMonkey1.setMaterial(toonMat);
 				mMonkey1.setPosition(-1.5f, 2, 0);
 				getCurrentScene().addChild(mMonkey1);

@@ -2,11 +2,9 @@ package com.monyetmabuk.rajawali.tutorials.examples.general;
 
 import android.content.Context;
 
-import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.Object3D;
-import org.rajawali3d.SerializedObject3D;
 import org.rajawali3d.animation.Animation;
 import org.rajawali3d.animation.Animation3D;
 import org.rajawali3d.animation.RotateOnAxisAnimation;
@@ -17,8 +15,6 @@ import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Cube;
-
-import java.io.ObjectInputStream;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -65,13 +61,7 @@ public class CollisionDetectionFragment extends AExampleFragment {
 			getCurrentScene().addChild(mCubeSphere);
 
 			try {
-				ObjectInputStream ois = new ObjectInputStream(mContext
-						.getResources().openRawResource(R.raw.boxes));
-				SerializedObject3D serializedMonkey = (SerializedObject3D) ois
-						.readObject();
-				ois.close();
-
-				mBoxesBox = new Object3D(serializedMonkey);
+				mBoxesBox = new Cube(1.0f);
 				mBoxesBox.setMaterial(material);
 				mBoxesBox.setColor(0xff990000);
 				mBoxesBox.setScale(.2f);
@@ -80,7 +70,7 @@ public class CollisionDetectionFragment extends AExampleFragment {
 				mBoxesBox.setShowBoundingVolume(true);
 				getCurrentScene().addChild(mBoxesBox);
 
-				mBoxesSphere = new Object3D(serializedMonkey);
+				mBoxesSphere = new Cube(1.0f);
 				mBoxesSphere.setMaterial(material);
 				mBoxesSphere.setColor(0xff00bfff);
 				mBoxesSphere.setScale(.3f);

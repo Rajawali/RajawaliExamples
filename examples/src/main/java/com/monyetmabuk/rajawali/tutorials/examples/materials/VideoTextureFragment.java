@@ -9,7 +9,6 @@ import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.Object3D;
-import org.rajawali3d.SerializedObject3D;
 import org.rajawali3d.animation.Animation;
 import org.rajawali3d.animation.EllipticalOrbitAnimation3D;
 import org.rajawali3d.animation.TranslateAnimation3D;
@@ -20,11 +19,8 @@ import org.rajawali3d.materials.methods.SpecularMethod;
 import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.VideoTexture;
 import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Cube;
 import org.rajawali3d.primitives.Plane;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.zip.GZIPInputStream;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -51,14 +47,8 @@ public class VideoTextureFragment extends AExampleFragment {
 			getCurrentScene().addLight(pointLight);
 			getCurrentScene().setBackgroundColor(0xff040404);
 
-			GZIPInputStream gzi;
 			try {
-				gzi = new GZIPInputStream(mContext.getResources()
-						.openRawResource(R.raw.android));
-				ObjectInputStream fis = new ObjectInputStream(gzi);
-
-				Object3D android = new Object3D(
-						(SerializedObject3D) fis.readObject());
+				Object3D android = new Cube(2.0f);
 				Material material = new Material();
 				material.enableLighting(true);
 				material.setDiffuseMethod(new DiffuseMethod.Lambert());
@@ -67,10 +57,6 @@ public class VideoTextureFragment extends AExampleFragment {
 				android.setColor(0xff99C224);
 				getCurrentScene().addChild(android);
 			} catch (NotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
 

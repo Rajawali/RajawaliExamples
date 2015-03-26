@@ -6,7 +6,6 @@ import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.Object3D;
-import org.rajawali3d.SerializedObject3D;
 import org.rajawali3d.animation.Animation;
 import org.rajawali3d.animation.Animation3D;
 import org.rajawali3d.animation.RotateOnAxisAnimation;
@@ -17,8 +16,7 @@ import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.SphereMapTexture;
 import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.math.vector.Vector3;
-
-import java.io.ObjectInputStream;
+import org.rajawali3d.primitives.Sphere;
 
 public class SphereMapFragment extends AExampleFragment {
 
@@ -59,10 +57,7 @@ public class SphereMapFragment extends AExampleFragment {
 				material1.addTexture(sphereMapTexture);
 				material1.setColorInfluence(0);
 
-				ObjectInputStream ois;
-				ois = new ObjectInputStream(mContext.getResources()
-						.openRawResource(R.raw.jet));
-				jet1 = new Object3D((SerializedObject3D) ois.readObject());
+				jet1 = new Sphere(1.0f, 24, 24);
 				jet1.setMaterial(material1);
 				jet1.setY(2.5f);
 				getCurrentScene().addChild(jet1);

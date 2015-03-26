@@ -12,15 +12,13 @@ import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.Object3D;
-import org.rajawali3d.SerializedObject3D;
 import org.rajawali3d.animation.Animation;
 import org.rajawali3d.animation.RotateOnAxisAnimation;
 import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.math.vector.Vector3;
-
-import java.io.ObjectInputStream;
+import org.rajawali3d.primitives.Cube;
 
 public class TransparentSurfaceFragment extends AExampleFragment {
 	
@@ -61,13 +59,7 @@ public class TransparentSurfaceFragment extends AExampleFragment {
 			getCurrentCamera().setPosition(0, 0, 16);
 
 			try {
-				ObjectInputStream ois = new ObjectInputStream(mContext
-						.getResources().openRawResource(R.raw.monkey_ser));
-				SerializedObject3D serializedMonkey = (SerializedObject3D) ois
-						.readObject();
-				ois.close();
-
-				Object3D monkey = new Object3D(serializedMonkey);
+				Object3D monkey = new Cube(2.0f);
 				Material material = new Material();
 				material.enableLighting(true);
 				material.setDiffuseMethod(new DiffuseMethod.Lambert());

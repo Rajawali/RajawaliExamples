@@ -7,15 +7,13 @@ import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.Object3D;
-import org.rajawali3d.SerializedObject3D;
 import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.materials.methods.SpecularMethod;
 import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.CubeMapTexture;
-
-import java.io.ObjectInputStream;
+import org.rajawali3d.primitives.Sphere;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -42,13 +40,7 @@ public class MaterialsFragment extends AExampleFragment {
 			getCurrentCamera().setPosition(0, 0, 9);
 
 			try {
-				ObjectInputStream ois = new ObjectInputStream(mContext
-						.getResources().openRawResource(R.raw.monkey_ser));
-				SerializedObject3D serializedMonkey = (SerializedObject3D) ois
-						.readObject();
-				ois.close();
-
-				mMonkey1 = new Object3D(serializedMonkey);
+				mMonkey1 = new Sphere(1.0f, 24, 24);
 				mMonkey1.setScale(.7f);
 				mMonkey1.setPosition(-1, 1, 0);
 				mMonkey1.setRotY(0);

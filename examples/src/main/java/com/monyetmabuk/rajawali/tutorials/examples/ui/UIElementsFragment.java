@@ -14,14 +14,11 @@ import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.Object3D;
-import org.rajawali3d.SerializedObject3D;
 import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.materials.methods.SpecularMethod;
-
-import java.io.ObjectInputStream;
-import java.util.zip.GZIPInputStream;
+import org.rajawali3d.primitives.Cube;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -72,16 +69,8 @@ public class UIElementsFragment extends AExampleFragment {
 			getCurrentScene().addLight(mLight);
 			getCurrentCamera().setPosition(0, 0, 13);
 
-			GZIPInputStream gzi;
 			try {
-				gzi = new GZIPInputStream(mContext.getResources()
-						.openRawResource(R.raw.android));
-				ObjectInputStream fis = new ObjectInputStream(gzi);
-				SerializedObject3D serializedAndroid = (SerializedObject3D) fis
-						.readObject();
-				fis.close();
-
-				mAndroid = new Object3D(serializedAndroid);
+				mAndroid = new Cube(2.0f);
 				getCurrentScene().addChild(mAndroid);
 			} catch (Exception e) {
 				e.printStackTrace();

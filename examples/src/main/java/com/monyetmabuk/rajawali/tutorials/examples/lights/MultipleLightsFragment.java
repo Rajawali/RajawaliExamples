@@ -6,7 +6,6 @@ import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.Object3D;
-import org.rajawali3d.SerializedObject3D;
 import org.rajawali3d.animation.Animation;
 import org.rajawali3d.animation.Animation3D;
 import org.rajawali3d.animation.TranslateAnimation3D;
@@ -15,8 +14,7 @@ import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.math.vector.Vector3;
-
-import java.io.ObjectInputStream;
+import org.rajawali3d.primitives.Cube;
 
 public class MultipleLightsFragment extends AExampleFragment {
 
@@ -44,13 +42,7 @@ public class MultipleLightsFragment extends AExampleFragment {
 			getCurrentCamera().setLookAt(0, 0, 0);
 
 			try {
-				ObjectInputStream ois = new ObjectInputStream(mContext
-						.getResources().openRawResource(R.raw.jet));
-				SerializedObject3D serializedJet = (SerializedObject3D) ois
-						.readObject();
-				ois.close();
-
-				Object3D jet = new Object3D(serializedJet);
+				Object3D jet = new Cube(2.0f);
 				Material material = new Material();
 				material.setDiffuseMethod(new DiffuseMethod.Lambert());
 				material.enableLighting(true);
