@@ -12,6 +12,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.Object3D;
 import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.loader.LoaderAWD;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.materials.textures.ATexture;
@@ -75,32 +76,37 @@ public class AccelerometerFragment extends AExampleFragment implements
         }
 
         protected void initScene() {
-            mLight = new DirectionalLight(0.1f, 0.2f, -1.0f);
-            mLight.setColor(1.0f, 1.0f, 1.0f);
-            mLight.setPower(1);
-            getCurrentScene().addLight(mLight);
-
-            mMonkey = new Cube(2.0f);
-            mMonkey.setRotY(180);
-            getCurrentScene().addChild(mMonkey);
-
-            getCurrentCamera().setZ(7);
-
-            int[] resourceIds = new int[]{R.drawable.posx, R.drawable.negx,
-                R.drawable.posy, R.drawable.negy, R.drawable.posz,
-                R.drawable.negz};
-
-            Material material = new Material();
-            material.enableLighting(true);
-            material.setDiffuseMethod(new DiffuseMethod.Lambert());
             try {
+                mLight = new DirectionalLight(0.1f, 0.2f, -1.0f);
+                mLight.setColor(1.0f, 1.0f, 1.0f);
+                mLight.setPower(1);
+                getCurrentScene().addLight(mLight);
+
+                final LoaderAWD parser = new LoaderAWD(mContext.getResources(), mTextureManager, R.raw.awd_suzanne);
+                parser.parse();
+
+                mMonkey = parser.getParsedObject();
+
+                mMonkey.setRotY(180);
+                getCurrentScene().addChild(mMonkey);
+
+                getCurrentCamera().setZ(7);
+
+                int[] resourceIds = new int[]{R.drawable.posx, R.drawable.negx,
+                    R.drawable.posy, R.drawable.negy, R.drawable.posz,
+                    R.drawable.negz};
+
+                Material material = new Material();
+                material.enableLighting(true);
+                material.setDiffuseMethod(new DiffuseMethod.Lambert());
+
                 CubeMapTexture envMap = new CubeMapTexture("environmentMap",
                     resourceIds);
                 envMap.isEnvironmentTexture(true);
                 material.addTexture(envMap);
                 material.setColorInfluence(0);
                 mMonkey.setMaterial(material);
-            } catch (ATexture.TextureException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

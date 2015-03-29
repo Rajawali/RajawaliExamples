@@ -16,6 +16,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.Object3D;
 import org.rajawali3d.lights.PointLight;
+import org.rajawali3d.loader.LoaderAWD;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.primitives.Sphere;
@@ -80,54 +81,62 @@ public class ObjectPickingFragment extends AExampleFragment implements
         }
 
         protected void initScene() {
-            mPicker = new ObjectColorPicker(this);
-            mPicker.setOnObjectPickedListener(this);
-            mLight = new PointLight();
-            mLight.setPosition(-2, 1, 4);
-            mLight.setPower(1.5f);
-            getCurrentScene().addLight(mLight);
-            getCurrentCamera().setPosition(0, 0, 7);
+            try {
+                mPicker = new ObjectColorPicker(this);
+                mPicker.setOnObjectPickedListener(this);
+                mLight = new PointLight();
+                mLight.setPosition(-2, 1, 4);
+                mLight.setPower(1.5f);
+                getCurrentScene().addLight(mLight);
+                getCurrentCamera().setPosition(0, 0, 7);
 
-            Material material = new Material();
-            material.enableLighting(true);
-            material.setDiffuseMethod(new DiffuseMethod.Lambert());
+                Material material = new Material();
+                material.enableLighting(true);
+                material.setDiffuseMethod(new DiffuseMethod.Lambert());
 
-            mMonkey1 = new Sphere(1.0f, 24, 24);
-            mMonkey1.setScale(.7f);
-            mMonkey1.setPosition(-1, 1, 0);
-            mMonkey1.setRotY(0);
-            mMonkey1.setMaterial(material);
-            mMonkey1.setColor(0x0000ff);
-            getCurrentScene().addChild(mMonkey1);
+                final LoaderAWD parser = new LoaderAWD(mContext.getResources(), mTextureManager, R.raw.awd_suzanne);
+                parser.parse();
 
-            mMonkey2 = mMonkey1.clone();
-            mMonkey2.setScale(.7f);
-            mMonkey2.setPosition(1, 1, 0);
-            mMonkey2.setRotY(45);
-            mMonkey2.setMaterial(material);
-            mMonkey2.setColor(0x00ff00);
-            getCurrentScene().addChild(mMonkey2);
+                mMonkey1 = parser.getParsedObject();
 
-            mMonkey3 = mMonkey1.clone();
-            mMonkey3.setScale(.7f);
-            mMonkey3.setPosition(-1, -1, 0);
-            mMonkey3.setRotY(90);
-            mMonkey3.setMaterial(material);
-            mMonkey3.setColor(0xcc1100);
-            getCurrentScene().addChild(mMonkey3);
+                mMonkey1.setScale(.7f);
+                mMonkey1.setPosition(-1, 1, 0);
+                mMonkey1.setRotY(0);
+                mMonkey1.setMaterial(material);
+                mMonkey1.setColor(0x0000ff);
+                getCurrentScene().addChild(mMonkey1);
 
-            mMonkey4 = mMonkey1.clone();
-            mMonkey4.setScale(.7f);
-            mMonkey4.setPosition(1, -1, 0);
-            mMonkey4.setRotY(135);
-            mMonkey4.setMaterial(material);
-            mMonkey4.setColor(0xff9955);
-            getCurrentScene().addChild(mMonkey4);
+                mMonkey2 = mMonkey1.clone();
+                mMonkey2.setScale(.7f);
+                mMonkey2.setPosition(1, 1, 0);
+                mMonkey2.setRotY(45);
+                mMonkey2.setMaterial(material);
+                mMonkey2.setColor(0x00ff00);
+                getCurrentScene().addChild(mMonkey2);
 
-            mPicker.registerObject(mMonkey1);
-            mPicker.registerObject(mMonkey2);
-            mPicker.registerObject(mMonkey3);
-            mPicker.registerObject(mMonkey4);
+                mMonkey3 = mMonkey1.clone();
+                mMonkey3.setScale(.7f);
+                mMonkey3.setPosition(-1, -1, 0);
+                mMonkey3.setRotY(90);
+                mMonkey3.setMaterial(material);
+                mMonkey3.setColor(0xcc1100);
+                getCurrentScene().addChild(mMonkey3);
+
+                mMonkey4 = mMonkey1.clone();
+                mMonkey4.setScale(.7f);
+                mMonkey4.setPosition(1, -1, 0);
+                mMonkey4.setRotY(135);
+                mMonkey4.setMaterial(material);
+                mMonkey4.setColor(0xff9955);
+                getCurrentScene().addChild(mMonkey4);
+
+                mPicker.registerObject(mMonkey1);
+                mPicker.registerObject(mMonkey2);
+                mPicker.registerObject(mMonkey3);
+                mPicker.registerObject(mMonkey4);
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
 
         public void onDrawFrame(GL10 glUnused) {
