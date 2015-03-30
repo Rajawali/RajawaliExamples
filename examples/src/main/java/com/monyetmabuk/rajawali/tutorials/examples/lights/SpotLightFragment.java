@@ -34,11 +34,15 @@ public class SpotLightFragment extends AExampleFragment {
 
 			final SpotLight spotLight = new SpotLight();
 			spotLight.setPower(1.5f);
-			
+            spotLight.enableLookAt();
+            spotLight.setPosition(0, 4.0, 0.0);
+            spotLight.setLookAt(0, 0, 0);
 			getCurrentScene().addLight(spotLight);
 
-			getCurrentCamera().setPosition(0, 2, 6);
-			getCurrentCamera().setLookAt(0, 0, 0);
+            getCurrentCamera().setPosition(0, 2, 6);
+            getCurrentCamera().setLookAt(0, 0, 0);
+            getCurrentCamera().enableLookAt();
+            getCurrentCamera().resetToLookAt();
 
 			Material sphereMaterial = new Material();
 			sphereMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
@@ -105,25 +109,29 @@ public class SpotLightFragment extends AExampleFragment {
 			anim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			anim.setDurationMilliseconds(6000);
 			anim.setTransformable3D(target);
-			anim.registerListener(new IAnimationListener() {
-				public void onAnimationUpdate(Animation animation,
-						double interpolatedTime) {
-					spotLight.setLookAt(target.getPosition());
-				}
+            anim.registerListener(new IAnimationListener() {
+                @Override
+                public void onAnimationEnd(Animation animation) {
 
-				public void onAnimationStart(Animation animation) {
-				}
+                }
 
-				public void onAnimationRepeat(Animation animation) {
-				}
+                @Override
+                public void onAnimationRepeat(Animation animation) {
 
-				public void onAnimationEnd(Animation animation) {
-				}
-			});
+                }
+
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationUpdate(Animation animation, double v) {
+                    spotLight.setLookAt(target.getWorldPosition());
+                }
+            });
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
 		}
-
-	}
-
+    }
 }

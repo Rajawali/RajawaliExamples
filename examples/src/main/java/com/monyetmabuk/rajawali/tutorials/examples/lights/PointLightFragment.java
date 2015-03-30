@@ -36,8 +36,8 @@ public class PointLightFragment extends AExampleFragment {
 			pointLight.setPower(1.5f);
 			
 			getCurrentScene().addLight(pointLight);
-            // getCurrentCamera().setLookAt(0, 0, 0);
             getCurrentCamera().setPosition(0, 2, 6);
+            getCurrentCamera().setLookAt(0, 0, 0);
 
 			Material sphereMaterial = new Material();
 			sphereMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
