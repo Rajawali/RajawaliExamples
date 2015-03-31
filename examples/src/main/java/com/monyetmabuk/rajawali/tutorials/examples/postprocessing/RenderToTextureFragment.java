@@ -44,6 +44,8 @@ public class RenderToTextureFragment extends AExampleFragment {
 			//
 			
 			DirectionalLight light = new DirectionalLight();
+            light.setLookAt(0, 0, -1);
+            light.enableLookAt();
 			light.setPower(1);
 			getCurrentScene().setBackgroundColor(0xdfae74);
 			getCurrentScene().addLight(light);
@@ -130,7 +132,7 @@ public class RenderToTextureFragment extends AExampleFragment {
 			//
 			// -- Change the viewport to the required texture size
 			//
-			
+
 			setViewPort(400, 400);
 			
 			mEffects.render(ellapsedTime, deltaTime);

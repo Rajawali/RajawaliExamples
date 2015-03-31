@@ -8,6 +8,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.Object3D;
 import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.loader.LoaderAWD;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.materials.methods.SpecularMethod;
@@ -40,7 +41,10 @@ public class MaterialsFragment extends AExampleFragment {
 			getCurrentCamera().setPosition(0, 0, 9);
 
 			try {
-				mMonkey1 = new Sphere(1.0f, 24, 24);
+                final LoaderAWD parser = new LoaderAWD(mContext.getResources(), mTextureManager, R.raw.awd_suzanne);
+                parser.parse();
+
+                mMonkey1 = parser.getParsedObject();
 				mMonkey1.setScale(.7f);
 				mMonkey1.setPosition(-1, 1, 0);
 				mMonkey1.setRotY(0);

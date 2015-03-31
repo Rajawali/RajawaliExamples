@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.LinearInterpolator;
 
+import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.Object3D;
@@ -15,6 +16,7 @@ import org.rajawali3d.animation.RotateOnAxisAnimation;
 import org.rajawali3d.animation.ScaleAnimation3D;
 import org.rajawali3d.animation.TranslateAnimation3D;
 import org.rajawali3d.lights.PointLight;
+import org.rajawali3d.loader.LoaderAWD;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.math.vector.Vector3;
@@ -34,68 +36,76 @@ public class AnimationFragment extends AExampleFragment {
         }
 
         protected void initScene() {
-            PointLight mLight = new PointLight();
-            mLight.setPosition(-2, 1, -4);
-            mLight.setPower(1.5f);
-            getCurrentCamera().setPosition(0, 0, -14);
-            getCurrentCamera().setLookAt(0, 0, 0);
+            try {
+                PointLight mLight = new PointLight();
+                mLight.setPosition(-2, 1, -4);
+                mLight.setPower(3.5f);
+                getCurrentCamera().setPosition(0, 0, -14);
+                getCurrentCamera().setLookAt(0, 0, 0);
 
-            Object3D mMonkey = null;
-            mMonkey = new Sphere(2.0f, 24, 24);
-            getCurrentScene().addLight(mLight);
-            getCurrentScene().addChild(mMonkey);
+                final LoaderAWD parser = new LoaderAWD(mContext.getResources(), mTextureManager, R.raw.awd_suzanne);
+                parser.parse();
 
-            Material material = new Material();
-            material.enableLighting(true);
-            material.setDiffuseMethod(new DiffuseMethod.Lambert());
-            mMonkey.setMaterial(material);
-            mMonkey.setColor(0xff00ff00);
+                final Object3D monkey = parser.getParsedObject();
 
-            final AnimationGroup animGroup = new AnimationGroup();
-            animGroup.setRepeatMode(Animation.RepeatMode.INFINITE);
-            animGroup.setRepeatCount(1);
+                getCurrentScene().addLight(mLight);
+                getCurrentScene().addChild(monkey);
 
-            Animation3D anim = new ScaleAnimation3D(new Vector3(1.6f, .8f, 1));
-            anim.setInterpolator(new LinearInterpolator());
-            anim.setDurationMilliseconds(1000);
-            anim.setRepeatCount(2);
-            anim.setRepeatMode(Animation.RepeatMode.REVERSE);
-            anim.setTransformable3D(mMonkey);
-            animGroup.addAnimation(anim);
+                Material material = new Material();
+                material.enableLighting(true);
+                material.setDiffuseMethod(new DiffuseMethod.Lambert());
+                monkey.setMaterial(material);
+                monkey.setColor(0xff00ff00);
 
-            Vector3 axis = new Vector3(10, 5, 2);
-            axis.normalize();
+                final AnimationGroup animGroup = new AnimationGroup();
+                animGroup.setRepeatMode(Animation.RepeatMode.INFINITE);
+                animGroup.setRepeatCount(1);
 
-            anim = new RotateOnAxisAnimation(axis, 0, 360);
-            anim.setDurationMilliseconds(2000);
-            anim.setTransformable3D(mMonkey);
-            animGroup.addAnimation(anim);
+                Animation3D anim = new ScaleAnimation3D(new Vector3(1.6f, .8f, 1));
+                anim.setInterpolator(new LinearInterpolator());
+                anim.setDurationMilliseconds(1000);
+                anim.setRepeatCount(2);
+                anim.setRepeatMode(Animation.RepeatMode.REVERSE);
+                anim.setTransformable3D(monkey);
+                animGroup.addAnimation(anim);
 
-            anim = new TranslateAnimation3D(new Vector3(-2, -2, 0));
-            anim.setDurationMilliseconds(500);
-            anim.setTransformable3D(mMonkey);
-            animGroup.addAnimation(anim);
+                Vector3 axis = new Vector3(10, 5, 2);
+                axis.normalize();
 
-            anim = new TranslateAnimation3D(new Vector3(-2, -2, 0),
-                new Vector3(2, 2, 0));
-            anim.setDurationMilliseconds(2000);
-            anim.setTransformable3D(mMonkey);
-            anim.setInterpolator(new BounceInterpolator());
-            anim.setRepeatCount(3);
-            animGroup.addAnimation(anim);
+                anim = new RotateOnAxisAnimation(axis, 0, 360);
+                anim.setDurationMilliseconds(2000);
+                anim.setTransformable3D(monkey);
+                animGroup.addAnimation(anim);
 
-            anim = new EllipticalOrbitAnimation3D(new Vector3(), new Vector3(0,
-                3, 0), Vector3.getAxisVector(Vector3.Axis.Z), 0, 360,
-                EllipticalOrbitAnimation3D.OrbitDirection.CLOCKWISE);
-            anim.setInterpolator(new LinearInterpolator());
-            anim.setDurationMilliseconds(2000);
-            anim.setRepeatCount(3);
-            anim.setRepeatMode(Animation.RepeatMode.REVERSE);
-            anim.setTransformable3D(mMonkey);
-            animGroup.addAnimation(anim);
+                anim = new TranslateAnimation3D(new Vector3(-2, -2, 0));
+                anim.setDurationMilliseconds(500);
+                anim.setTransformable3D(monkey);
+                animGroup.addAnimation(anim);
 
-            getCurrentScene().registerAnimation(animGroup);
-            animGroup.play();
+                anim = new TranslateAnimation3D(new Vector3(-2, -2, 0),
+                        new Vector3(2, 2, 0));
+                anim.setDurationMilliseconds(2000);
+                anim.setTransformable3D(monkey);
+                anim.setInterpolator(new BounceInterpolator());
+                anim.setRepeatCount(3);
+                animGroup.addAnimation(anim);
+
+                anim = new EllipticalOrbitAnimation3D(new Vector3(), new Vector3(0,
+                        3, 0), Vector3.getAxisVector(Vector3.Axis.Z), 0, 360,
+                        EllipticalOrbitAnimation3D.OrbitDirection.CLOCKWISE);
+                anim.setInterpolator(new LinearInterpolator());
+                anim.setDurationMilliseconds(2000);
+                anim.setRepeatCount(3);
+                anim.setRepeatMode(Animation.RepeatMode.REVERSE);
+                anim.setTransformable3D(monkey);
+                animGroup.addAnimation(anim);
+
+                getCurrentScene().registerAnimation(animGroup);
+                animGroup.play();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+
         }
 
     }

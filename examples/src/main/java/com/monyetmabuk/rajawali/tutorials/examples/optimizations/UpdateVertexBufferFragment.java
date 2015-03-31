@@ -158,6 +158,7 @@ public class UpdateVertexBufferFragment extends AExampleFragment {
 
 			getCurrentCamera().setZ(10);
 			getCurrentCamera().setLookAt(0, 0, 0);
+            getCurrentCamera().enableLookAt();
 
 			//
 			// -- Animate the camera

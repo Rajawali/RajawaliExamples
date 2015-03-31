@@ -37,6 +37,8 @@ public class BloomEffectFragment extends AExampleFragment {
 		public void initScene() {
 			DirectionalLight light = new DirectionalLight();
 			light.setPower(1);
+            light.setLookAt(0, 0, -1);
+            light.enableLookAt();
 			getCurrentScene().setBackgroundColor(Color.BLACK);
 			getCurrentScene().addLight(light);
 

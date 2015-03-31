@@ -26,7 +26,6 @@ public class ShadowMappingFragment extends AExampleFragment {
 
 	private final class ShadowMappingRenderer extends AExampleRenderer {
 		private PostProcessingManager mPostProcessingManager;
-		private Object3D mEmpty;
 		private DirectionalLight mLight;
 		
 		public ShadowMappingRenderer(Context context) {
@@ -35,14 +34,14 @@ public class ShadowMappingFragment extends AExampleFragment {
 		
 		public void initScene() {
 			mLight = new DirectionalLight();
+			mLight.setLookAt(1, -1, 1);
             mLight.enableLookAt();
-			mLight.setLookAt(1, -1, -1);
-            mLight.setPosition(Vector3.ZERO);
 			mLight.setPower(1.5f);
 			getCurrentScene().addLight(mLight);
 			getCurrentCamera().setFarPlane(50);		
 			getCurrentCamera().setPosition(5, 15, 30);
 			getCurrentCamera().setLookAt(0, 0, 0);
+            getCurrentCamera().enableLookAt();
 
 			Material planeMaterial = new Material();
 			planeMaterial.enableLighting(true);
@@ -79,14 +78,6 @@ public class ShadowMappingFragment extends AExampleFragment {
 			cube.setY(1.5f);
 			getCurrentScene().addChild(cube);
 			
-			mEmpty = new Object3D();
-			TranslateAnimation3D anim = new TranslateAnimation3D(new Vector3(5, -5, -4), new Vector3(-5, -5, 4));
-			anim.setDurationMilliseconds(20000);
-			anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
-			anim.setTransformable3D(mEmpty);
-			getCurrentScene().registerAnimation(anim);
-			anim.play();
-			
 			mPostProcessingManager = new PostProcessingManager(this);
 			ShadowEffect shadowEffect = new ShadowEffect(getCurrentScene(), getCurrentCamera(), mLight, 2048);
 			shadowEffect.setShadowInfluence(.5f);
@@ -96,7 +87,6 @@ public class ShadowMappingFragment extends AExampleFragment {
 
         @Override
         public void onRender(final long ellapsedTime, final double deltaTime) {
-			mLight.setLookAt(mEmpty.getPosition());
 			mPostProcessingManager.render(ellapsedTime, deltaTime);
 		}
 	}
