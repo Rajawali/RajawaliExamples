@@ -7,7 +7,6 @@ import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import org.rajawali3d.Object3D;
 import org.rajawali3d.animation.Animation;
 import org.rajawali3d.animation.EllipticalOrbitAnimation3D;
-import org.rajawali3d.animation.IAnimationListener;
 import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
@@ -15,6 +14,7 @@ import org.rajawali3d.materials.methods.SpecularMethod;
 import org.rajawali3d.math.MathUtil;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Sphere;
+import org.rajawali3d.util.RajLog;
 
 public class DirectionalLightFragment extends AExampleFragment {
 
@@ -33,12 +33,17 @@ public class DirectionalLightFragment extends AExampleFragment {
 			super.initScene();
 
 			final DirectionalLight directionalLight = new DirectionalLight();
+            directionalLight.setPosition(1.0, 0.0, 0.0);
 			directionalLight.setPower(1.5f);
+            directionalLight.setLookAt(Vector3.ZERO);
+            directionalLight.enableLookAt();
 			getCurrentScene().addLight(directionalLight);
 
             getCurrentCamera().enableLookAt();
             getCurrentCamera().setPosition(0, 2, 6);
             getCurrentCamera().setLookAt(0, 0, 0);
+
+            RajLog.d(this, "View Matrix: " + getCurrentCamera().getViewMatrix());
 
 			Material sphereMaterial = new Material();
 			SpecularMethod.Phong phongMethod = new SpecularMethod.Phong();
@@ -97,30 +102,11 @@ public class DirectionalLightFragment extends AExampleFragment {
 				rootSphere.addChild(sphere);
 			}
 
-			final Object3D target = new Object3D();
-
 			EllipticalOrbitAnimation3D anim = new EllipticalOrbitAnimation3D(
-					new Vector3(0, .2f, 0), new Vector3(1, .2f, 1), 0, 359);
+					new Vector3(0, 0f, 0), new Vector3(1, 0, 1), 0, 359);
 			anim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			anim.setDurationMilliseconds(6000);
-			anim.setTransformable3D(target);
-			anim.registerListener(new IAnimationListener() {
-				public void onAnimationUpdate(Animation animation,
-						double interpolatedTime) {
-					Vector3 position = target.getPosition().clone();
-					position.normalize();
-					directionalLight.setDirection(position);
-				}
-
-				public void onAnimationStart(Animation animation) {
-				}
-
-				public void onAnimationRepeat(Animation animation) {
-				}
-
-				public void onAnimationEnd(Animation animation) {
-				}
-			});
+			anim.setTransformable3D(directionalLight);
 			getCurrentScene().registerAnimation(anim);
 			anim.play();
 		}

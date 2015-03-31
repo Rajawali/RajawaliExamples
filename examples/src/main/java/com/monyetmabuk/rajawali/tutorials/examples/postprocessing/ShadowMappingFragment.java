@@ -35,7 +35,9 @@ public class ShadowMappingFragment extends AExampleFragment {
 		
 		public void initScene() {
 			mLight = new DirectionalLight();
-			mLight.setDirection(1, -1, -1);
+            mLight.enableLookAt();
+			mLight.setLookAt(1, -1, -1);
+            mLight.setPosition(Vector3.ZERO);
 			mLight.setPower(1.5f);
 			getCurrentScene().addLight(mLight);
 			getCurrentCamera().setFarPlane(50);		

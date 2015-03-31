@@ -6,7 +6,6 @@ import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.Object3D;
-import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.Texture;
@@ -24,7 +23,6 @@ public class BasicFragment extends AExampleFragment {
 
 	private final class BasicRenderer extends AExampleRenderer {
 
-		private DirectionalLight mLight;
 		private Object3D mSphere;
 
 		public BasicRenderer(Context context) {
@@ -32,12 +30,6 @@ public class BasicFragment extends AExampleFragment {
 		}
 
 		protected void initScene() {
-			mLight = new DirectionalLight(1.0, 0.2, -1.0); // set the direction
-			mLight.setColor(1.0f, 1.0f, 1.0f);
-			mLight.setPower(2);
-			
-			getCurrentScene().addLight(mLight);
-
 			try {
 				Material material = new Material();
 				material.addTexture(new Texture("earthColors",
@@ -50,9 +42,10 @@ public class BasicFragment extends AExampleFragment {
 				e.printStackTrace();
 			}
 
-			getCurrentCamera().setLookAt(0, 0, 0);
-			getCurrentCamera().setZ(6);
-		}
+            getCurrentCamera().enableLookAt();
+            getCurrentCamera().setLookAt(0, 0, 0);
+            getCurrentCamera().setZ(6);
+        }
 
 		public void onDrawFrame(GL10 glUnused) {
 			super.onDrawFrame(glUnused);
