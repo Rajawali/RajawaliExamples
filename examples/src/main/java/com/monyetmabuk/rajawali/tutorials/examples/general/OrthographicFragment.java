@@ -36,10 +36,12 @@ public class OrthographicFragment extends AExampleFragment {
 		}
 
 		protected void initScene() {
-			OrthographicCamera orthoCam;
+			OrthographicCamera orthoCam = new OrthographicCamera();
+            orthoCam.setLookAt(0, 0, 0);
+            orthoCam.enableLookAt();
+            orthoCam.setY(1.5);
 			int[][] grid;
 
-			orthoCam = new OrthographicCamera();
 			getCurrentScene().switchCamera(orthoCam);
 
 			DirectionalLight spotLight = new DirectionalLight(1f, -.1f, -.5f);
@@ -72,8 +74,6 @@ public class OrthographicFragment extends AExampleFragment {
 			plane.setColor(0xff0000ff);
 			innerGroup.addChild(plane);
 
-			orthoCam.setZoom(1.5f);
-
 			Material cubeMaterial = new Material();
 			cubeMaterial.enableLighting(true);
 			cubeMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
@@ -83,7 +83,7 @@ public class OrthographicFragment extends AExampleFragment {
 			for (int i = 0; i < 40; i++) {
 				Cube cube = new Cube(.1f);
 				cube.setMaterial(cubeMaterial);
-				cube.setY(100);
+				cube.setY(7);
 				cube.setColor(0x666666 + random.nextInt(0x999999));
 				innerGroup.addChild(cube);
 

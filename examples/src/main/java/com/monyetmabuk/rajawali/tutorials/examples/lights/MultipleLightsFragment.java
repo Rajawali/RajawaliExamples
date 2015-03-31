@@ -10,6 +10,7 @@ import org.rajawali3d.animation.Animation;
 import org.rajawali3d.animation.Animation3D;
 import org.rajawali3d.animation.TranslateAnimation3D;
 import org.rajawali3d.lights.PointLight;
+import org.rajawali3d.loader.LoaderAWD;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.materials.textures.Texture;
@@ -31,27 +32,28 @@ public class MultipleLightsFragment extends AExampleFragment {
 
 		protected void initScene() {
 			PointLight light1 = new PointLight();
-			light1.setPower(5);
+			light1.setPower(1.5f);
 			PointLight light2 = new PointLight();
-			light2.setPower(5);
+			light2.setPower(1.5f);
 
 			getCurrentScene().addLight(light1);
 			getCurrentScene().addLight(light2);
 			
-			getCurrentCamera().setPosition(-8, 8, 8);
+			getCurrentCamera().setPosition(0, 2, 4);
 			getCurrentCamera().setLookAt(0, 0, 0);
 
 			try {
-				Object3D jet = new Cube(2.0f);
+                final LoaderAWD parser = new LoaderAWD(mContext.getResources(), mTextureManager, R.raw.awd_suzanne);
+                parser.parse();
+
+                Object3D suzanne = parser.getParsedObject();
 				Material material = new Material();
 				material.setDiffuseMethod(new DiffuseMethod.Lambert());
+                material.setColor(0xff990000);
 				material.enableLighting(true);
-				material.addTexture(new Texture("jetTexture", R.drawable.jettexture));
-				material.setColorInfluence(0);
-				jet.setMaterial(material);
-				jet.setPosition(1, 0, 0);
-				jet.setRotY(180);
-				getCurrentScene().addChild(jet);
+				suzanne.setMaterial(material);
+				suzanne.setRotY(180);
+				getCurrentScene().addChild(suzanne);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

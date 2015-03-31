@@ -34,6 +34,8 @@ public class MultiPassFragment extends AExampleFragment {
 		
 		public void initScene() {
 			DirectionalLight light = new DirectionalLight();
+            light.setLookAt(0, 0, -1);
+            light.enableLookAt();
 			getCurrentScene().addLight(light);
 			
 			//

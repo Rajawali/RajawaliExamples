@@ -65,11 +65,6 @@ public class AsyncLoadModelFragment extends AExampleFragment {
                 mTextureManager, R.raw.multiobjects_obj);
             loadModel(loaderOBJ, this, R.raw.multiobjects_obj);
 
-			mCameraAnim = new RotateOnAxisAnimation(Vector3.Axis.Y, 360);
-			mCameraAnim.setDurationMilliseconds(8000);
-			mCameraAnim.setRepeatMode(Animation.RepeatMode.INFINITE);
-			mCameraAnim.setTransformable3D(getCurrentCamera());
-
 			mLightAnim = new EllipticalOrbitAnimation3D(new Vector3(),
 					new Vector3(0, 10, 0), Vector3.getAxisVector(Vector3.Axis.Z), 0,
 					360, EllipticalOrbitAnimation3D.OrbitDirection.CLOCKWISE);
@@ -78,10 +73,7 @@ public class AsyncLoadModelFragment extends AExampleFragment {
 			mLightAnim.setRepeatMode(Animation.RepeatMode.INFINITE);
 			mLightAnim.setTransformable3D(mLight);
 
-			getCurrentScene().registerAnimation(mCameraAnim);
 			getCurrentScene().registerAnimation(mLightAnim);
-
-			mCameraAnim.play();
 			mLightAnim.play();
 		}
 
@@ -92,6 +84,15 @@ public class AsyncLoadModelFragment extends AExampleFragment {
             final Object3D parsedObject = obj.getParsedObject();
             parsedObject.setPosition(Vector3.ZERO);
             getCurrentScene().addChild(parsedObject);
+
+            mCameraAnim = new RotateOnAxisAnimation(Vector3.Axis.Y, 360);
+            mCameraAnim.setDurationMilliseconds(8000);
+            mCameraAnim.setRepeatMode(Animation.RepeatMode.INFINITE);
+            mCameraAnim.setTransformable3D(parsedObject);
+
+            getCurrentScene().registerAnimation(mCameraAnim);
+
+            mCameraAnim.play();
         }
 
         @Override

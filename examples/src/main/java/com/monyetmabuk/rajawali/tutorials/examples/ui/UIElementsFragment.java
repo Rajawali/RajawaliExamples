@@ -15,9 +15,11 @@ import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.Object3D;
 import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.loader.LoaderAWD;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.materials.methods.SpecularMethod;
+import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Cube;
 
 import javax.microedition.khronos.opengles.GL10;
@@ -56,7 +58,7 @@ public class UIElementsFragment extends AExampleFragment {
 
 	private final class UIElementsRenderer extends AExampleRenderer {
 		private DirectionalLight mLight;
-		private Object3D mAndroid;
+		private Object3D mMonkey;
 
 		public UIElementsRenderer(Context context) {
 			super(context);
@@ -67,11 +69,16 @@ public class UIElementsFragment extends AExampleFragment {
 			mLight.setPower(.8f);
 			
 			getCurrentScene().addLight(mLight);
-			getCurrentCamera().setPosition(0, 0, 13);
+			getCurrentCamera().setPosition(0, 0, 8);
 
 			try {
-				mAndroid = new Cube(2.0f);
-				getCurrentScene().addChild(mAndroid);
+                final LoaderAWD parser = new LoaderAWD(mContext.getResources(), mTextureManager, R.raw.awd_suzanne);
+                parser.parse();
+
+                mMonkey = parser.getParsedObject();
+                mMonkey.setRotation(Vector3.Axis.Y, 180);
+
+                getCurrentScene().addChild(mMonkey);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -80,13 +87,12 @@ public class UIElementsFragment extends AExampleFragment {
 			material.enableLighting(true);
 			material.setDiffuseMethod(new DiffuseMethod.Lambert());
 			material.setSpecularMethod(new SpecularMethod.Phong());
-			mAndroid.setMaterial(material);
-			mAndroid.setColor(0xff99C224);
+            mMonkey.setMaterial(material);
+            mMonkey.setColor(0xff99C224);
 		}
 
 		public void onDrawFrame(GL10 glUnused) {
 			super.onDrawFrame(glUnused);
-			mAndroid.setRotY(mAndroid.getRotY() + 1);
 		}
 	}
 

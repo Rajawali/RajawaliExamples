@@ -43,6 +43,7 @@ public class CatmullRomFragment extends AExampleFragment {
 			
 			getCurrentCamera().setPosition(0, 0, 10);
 			getCurrentCamera().setLookAt(0, 0, 0);
+            getCurrentCamera().enableLookAt();
 
 			Material material = new Material();
 			

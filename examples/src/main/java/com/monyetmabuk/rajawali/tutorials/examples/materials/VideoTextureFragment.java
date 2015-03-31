@@ -75,11 +75,13 @@ public class VideoTextureFragment extends AExampleFragment {
 
 			Plane screen = new Plane(3, 2, 2, 2, Vector3.Axis.Z);
 			screen.setMaterial(material);
+            screen.setRotY(180);
 			screen.setX(.1f);
 			screen.setY(-.2f);
 			screen.setZ(1.5f);
 			getCurrentScene().addChild(screen);
 
+            getCurrentCamera().enableLookAt();
 			getCurrentCamera().setLookAt(0, 0, 0);
 
 			// -- animate the spot light
