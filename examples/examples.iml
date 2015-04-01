@@ -87,8 +87,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="ion-2.0.9" level="project" />
     <orderEntry type="library" exported="" name="support-v4-22.0.0" level="project" />
-    <orderEntry type="library" exported="" name="rajawali-1.0.0-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-22.0.0" level="project" />
+    <orderEntry type="library" exported="" name="rajawali-1.0.150-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" name="androidasync-2.0.9" level="project" />
     <orderEntry type="library" exported="" name="gson-2.3" level="project" />
   </component>
