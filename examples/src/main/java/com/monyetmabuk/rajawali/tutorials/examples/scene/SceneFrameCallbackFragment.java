@@ -93,6 +93,11 @@ public class SceneFrameCallbackFragment extends AExampleFragment {
         }
 
         @Override
+        public void onPreDraw(long l, double v) {
+            
+        }
+
+        @Override
         public void onPostFrame(final long sceneTime, double deltaTime) {
             mHandler.post(new Runnable() {
                 @Override
