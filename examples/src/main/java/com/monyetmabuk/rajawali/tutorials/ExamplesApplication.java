@@ -19,6 +19,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.general.CollisionDetectionFra
 import com.monyetmabuk.rajawali.tutorials.examples.general.ColoredLinesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.CurvesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.DebugRendererFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.general.DebugVisualizerFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.LinesFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.OrthographicFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.SVGPathFragment;
@@ -129,6 +130,7 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Uniform Distribution", UniformDistributionFragment.class)
 				, new ExampleItem("Orthographic Camera", OrthographicFragment.class)
                 , new ExampleItem("Debug Renderer", DebugRendererFragment.class)
+                , new ExampleItem("Debug Visualizer", DebugVisualizerFragment.class)
 			});
 		ITEMS.put(Category.LIGHTS, new ExampleItem[]{
 				new ExampleItem("Directional Light", DirectionalLightFragment.class)
