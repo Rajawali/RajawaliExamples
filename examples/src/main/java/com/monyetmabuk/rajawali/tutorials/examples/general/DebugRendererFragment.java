@@ -17,7 +17,6 @@ import org.rajawali3d.renderer.RajawaliRenderer;
 import org.rajawali3d.util.RajawaliGLDebugger;
 
 import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
 
 public class DebugRendererFragment extends AExampleFragment {
 
@@ -40,12 +39,14 @@ public class DebugRendererFragment extends AExampleFragment {
             setFrameRate(60);
 		}
 
-        public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+        @Override
+        public void onRenderSurfaceCreated(EGLConfig config, Object surface, int width, int height) {
             showLoader();
-            super.onSurfaceCreated(gl, config);
+            super.onRenderSurfaceCreated(config, surface, width, height);
             hideLoader();
         }
 
+        @Override
 		protected void initScene() {
 			mLight = new DirectionalLight(1.0, 0.2, -1.0); // set the direction
 			mLight.setColor(1.0f, 1.0f, 1.0f);
@@ -69,9 +70,10 @@ public class DebugRendererFragment extends AExampleFragment {
 			getCurrentCamera().setZ(6);
 		}
 
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
-			mSphere.rotate(Vector3.Axis.Y, 1.0);
-		}
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
+            mSphere.rotate(Vector3.Axis.Y, 1.0);
+        }
 	}
 }

@@ -31,6 +31,7 @@ public class LoadModelFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			mLight = new PointLight();
 			mLight.setPosition(0, 0, 4);

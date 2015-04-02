@@ -20,9 +20,6 @@ import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.materials.methods.SpecularMethod;
 import org.rajawali3d.math.vector.Vector3;
-import org.rajawali3d.primitives.Cube;
-
-import javax.microedition.khronos.opengles.GL10;
 
 public class UIElementsFragment extends AExampleFragment {
 
@@ -64,6 +61,7 @@ public class UIElementsFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			mLight = new DirectionalLight(0, 0, -1);
 			mLight.setPower(.8f);
@@ -90,10 +88,5 @@ public class UIElementsFragment extends AExampleFragment {
             mMonkey.setMaterial(material);
             mMonkey.setColor(0xff99C224);
 		}
-
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
-		}
 	}
-
 }

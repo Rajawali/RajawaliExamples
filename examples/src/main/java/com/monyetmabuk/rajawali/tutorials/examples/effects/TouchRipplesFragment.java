@@ -20,7 +20,6 @@ import org.rajawali3d.animation.Animation3D;
 import org.rajawali3d.lights.DirectionalLight;
 
 import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
 
 public class TouchRipplesFragment extends AExampleFragment implements
 		OnTouchListener {
@@ -133,20 +132,21 @@ public class TouchRipplesFragment extends AExampleFragment implements
 			mFilter.setRippleSize(62);*/
 		}
 
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			//mFilter.setTime((float) frameCount++ * .05f);
 		}
 
 		@Override
-		public void onSurfaceChanged(GL10 gl, int width, int height) {
-			super.onSurfaceChanged(gl, width, height);
+		public void onRenderSurfaceSizeChanged(Object gl, int width, int height) {
+			super.onRenderSurfaceSizeChanged(gl, width, height);
 			//mFilter.setScreenSize(width, height);
 		}
 
-		@Override
-		public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-			super.onSurfaceCreated(gl, config);
+        @Override
+        public void onRenderSurfaceCreated(EGLConfig config, Object surface, int width, int height) {
+            super.onRenderSurfaceCreated(config, surface, width, height);
 			/*
 			for (int i = 0; i < NUM_CUBES; ++i) {
 				registerAnimation(mAnims[i]);

@@ -31,7 +31,8 @@ public class MultiPassFragment extends AExampleFragment {
 		public SepiaFilterRenderer(Context context) {
 			super(context);
 		}
-		
+
+        @Override
 		public void initScene() {
 			DirectionalLight light = new DirectionalLight();
             light.setLookAt(0, 0, -1);

@@ -15,8 +15,6 @@ import org.rajawali3d.materials.Material;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Sphere;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class CustomVertexShaderFragment extends AExampleFragment implements
 		OnClickListener {
 
@@ -62,9 +60,9 @@ public class CustomVertexShaderFragment extends AExampleFragment implements
 			getCurrentCamera().setPosition(0, 0, 10);
 		}
 
-		@Override
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			mMaterial.setTime((float) mFrameCount++);
 		}
 

@@ -19,11 +19,8 @@ import org.rajawali3d.lights.PointLight;
 import org.rajawali3d.loader.LoaderAWD;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
-import org.rajawali3d.primitives.Sphere;
 import org.rajawali3d.util.ObjectColorPicker;
 import org.rajawali3d.util.OnObjectPickedListener;
-
-import javax.microedition.khronos.opengles.GL10;
 
 public class ObjectPickingFragment extends AExampleFragment implements
     OnTouchListener {
@@ -80,6 +77,7 @@ public class ObjectPickingFragment extends AExampleFragment implements
             super(context);
         }
 
+        @Override
         protected void initScene() {
             try {
                 mPicker = new ObjectColorPicker(this);
@@ -139,8 +137,9 @@ public class ObjectPickingFragment extends AExampleFragment implements
             }
         }
 
-        public void onDrawFrame(GL10 glUnused) {
-            super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
             mMonkey1.setRotY(mMonkey1.getRotY() - 1f);
             mMonkey2.setRotY(mMonkey2.getRotY() + 1f);
             mMonkey3.setRotY(mMonkey3.getRotY() - 1f);

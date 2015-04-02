@@ -13,9 +13,7 @@ import org.rajawali3d.lights.PointLight;
 import org.rajawali3d.loader.LoaderAWD;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
-import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.math.vector.Vector3;
-import org.rajawali3d.primitives.Cube;
 
 public class MultipleLightsFragment extends AExampleFragment {
 
@@ -30,6 +28,7 @@ public class MultipleLightsFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			PointLight light1 = new PointLight();
 			light1.setPower(1.5f);

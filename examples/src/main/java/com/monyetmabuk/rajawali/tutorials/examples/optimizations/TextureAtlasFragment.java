@@ -14,8 +14,6 @@ import org.rajawali3d.primitives.Cube;
 import org.rajawali3d.primitives.Plane;
 import org.rajawali3d.primitives.Sphere;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class TextureAtlasFragment extends AExampleFragment {
 
 	@Override
@@ -35,6 +33,7 @@ public class TextureAtlasFragment extends AExampleFragment {
 		    getCurrentScene().setBackgroundColor(0x666666);
 		}
 
+        @Override
 		public void initScene() {
 			//
 			// -- Pack all textures in the "assets/atlas" folder into an 1024x1024 atlas
@@ -100,10 +99,10 @@ public class TextureAtlasFragment extends AExampleFragment {
 			mTilePlane.setPosition(.5f, -1f, 0);
 			getCurrentScene().addChild(mTilePlane);
 		}
-		
-		@Override
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			mTileCube.setRotY(mTileCube.getRotY()+1);
 			mTileSphere.setRotY(mTileSphere.getRotY()+1);
 		}		

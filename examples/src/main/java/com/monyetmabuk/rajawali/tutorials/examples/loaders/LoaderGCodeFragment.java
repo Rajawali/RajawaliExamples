@@ -31,6 +31,7 @@ public class LoaderGCodeFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			RajLog.systemInformation();
 			setFrameRate(60);

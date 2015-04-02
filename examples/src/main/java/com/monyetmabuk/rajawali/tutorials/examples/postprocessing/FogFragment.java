@@ -32,6 +32,7 @@ public class FogFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			mLight = new DirectionalLight(0, -1, -1);
 			mLight.setPower(.5f);

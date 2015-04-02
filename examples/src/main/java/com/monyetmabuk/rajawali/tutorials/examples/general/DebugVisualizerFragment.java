@@ -34,6 +34,7 @@ public class DebugVisualizerFragment extends AExampleFragment {
             super(context);
         }
 
+        @Override
         public void initScene() {
             mDirectionalLight = new DirectionalLight();
             mDirectionalLight.setLookAt(1, -1, -1);

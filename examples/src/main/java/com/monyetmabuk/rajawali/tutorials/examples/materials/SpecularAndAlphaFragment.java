@@ -34,6 +34,7 @@ public class SpecularAndAlphaFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			PointLight pointLight = new PointLight();
 			pointLight.setPower(1);

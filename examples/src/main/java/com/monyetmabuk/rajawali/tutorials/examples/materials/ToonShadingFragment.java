@@ -13,7 +13,6 @@ import org.rajawali3d.loader.LoaderAWD;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.math.vector.Vector3;
-import org.rajawali3d.primitives.Cube;
 
 public class ToonShadingFragment extends AExampleFragment {
 
@@ -31,6 +30,7 @@ public class ToonShadingFragment extends AExampleFragment {
 			getCurrentScene().setBackgroundColor(0xffeeeeee);
 		}
 
+        @Override
 		protected void initScene() {
 			mLight = new DirectionalLight(0, 0, -1);
 			mLight.setPower(1);

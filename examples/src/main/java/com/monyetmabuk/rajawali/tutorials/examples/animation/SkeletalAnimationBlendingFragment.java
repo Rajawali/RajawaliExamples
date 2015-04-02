@@ -95,6 +95,7 @@ public class SkeletalAnimationBlendingFragment extends AExampleFragment implemen
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			mLight = new DirectionalLight(0, -0.2f, -1.0f); // set the direction
 			mLight.setColor(1.0f, 1.0f, .8f);

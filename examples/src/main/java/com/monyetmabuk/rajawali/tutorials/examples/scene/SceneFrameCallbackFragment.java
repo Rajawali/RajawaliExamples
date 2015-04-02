@@ -21,8 +21,6 @@ import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.primitives.Sphere;
 import org.rajawali3d.scene.ASceneFrameCallback;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class SceneFrameCallbackFragment extends AExampleFragment {
 
     private TextView mRenderTimeView;
@@ -55,6 +53,7 @@ public class SceneFrameCallbackFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			mLight = new DirectionalLight(1f, 0.2f, -1.0f); // set the direction
 			mLight.setColor(1.0f, 1.0f, 1.0f);
@@ -79,8 +78,9 @@ public class SceneFrameCallbackFragment extends AExampleFragment {
             getCurrentScene().registerFrameCallback(new ElapsedTimeFrameCallback());
 		}
 
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			mSphere.setRotY(mSphere.getRotY() + 1);
 		}
 	}

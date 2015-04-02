@@ -35,6 +35,7 @@ public class OrthographicFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			OrthographicCamera orthoCam = new OrthographicCamera();
             orthoCam.setLookAt(0, 0, 0);

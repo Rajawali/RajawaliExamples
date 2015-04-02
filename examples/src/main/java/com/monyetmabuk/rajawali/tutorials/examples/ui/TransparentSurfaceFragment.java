@@ -51,6 +51,7 @@ public class TransparentSurfaceFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			DirectionalLight light = new DirectionalLight(0, 0, -1);
 			light.setPower(1);

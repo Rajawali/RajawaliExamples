@@ -14,9 +14,6 @@ import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.materials.methods.SpecularMethod;
 import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.CubeMapTexture;
-import org.rajawali3d.primitives.Sphere;
-
-import javax.microedition.khronos.opengles.GL10;
 
 public class MaterialsFragment extends AExampleFragment {
 
@@ -33,6 +30,7 @@ public class MaterialsFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			mLight = new DirectionalLight(.3f, -.3f, -1);
 			mLight.setPower(.6f);
@@ -109,8 +107,9 @@ public class MaterialsFragment extends AExampleFragment {
 			mMonkey4.setMaterial(cubeMapMaterial);
 		}
 
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			mMonkey1.setRotY(mMonkey1.getRotY() - 1f);
 			mMonkey2.setRotY(mMonkey2.getRotY() + 1f);
 			mMonkey3.setRotY(mMonkey3.getRotY() - 1f);

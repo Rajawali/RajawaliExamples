@@ -12,8 +12,6 @@ import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Sphere;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class BasicFragment extends AExampleFragment {
 
 	@Override
@@ -29,6 +27,7 @@ public class BasicFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			try {
 				Material material = new Material();
@@ -47,8 +46,9 @@ public class BasicFragment extends AExampleFragment {
             getCurrentCamera().setZ(6);
         }
 
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+        @Override
+        public void onRender(final long elapsedTime, final double deltaTime) {
+			super.onRender(elapsedTime, deltaTime);
 			mSphere.rotate(Vector3.Axis.Y, 1.0);
 		}
 	}

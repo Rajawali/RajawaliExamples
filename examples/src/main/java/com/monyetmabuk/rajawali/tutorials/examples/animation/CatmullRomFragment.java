@@ -34,8 +34,8 @@ public class CatmullRomFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
-			super.initScene();
 			ALight light = new DirectionalLight(0, 0, -1);
 			light.setPower(1);
 			

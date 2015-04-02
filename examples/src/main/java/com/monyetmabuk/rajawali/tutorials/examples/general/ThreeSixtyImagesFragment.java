@@ -11,8 +11,6 @@ import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.primitives.ScreenQuad;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class ThreeSixtyImagesFragment extends AExampleFragment {
 
 	@Override
@@ -31,6 +29,7 @@ public class ThreeSixtyImagesFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			if (mTextureManager != null)
 				mTextureManager.reset();
@@ -77,8 +76,9 @@ public class ThreeSixtyImagesFragment extends AExampleFragment {
 			}
 		}
 
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			// -- get the texture info list and remove the previous TextureInfo object
 			mMaterial.getTextureList().remove(
 					mTextures[mFrameCount++ % NUM_TEXTURES]);

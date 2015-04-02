@@ -5,8 +5,6 @@ import android.content.Context;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.effects.particles.ExampleParticleSystem;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class ParticlesFragment extends AExampleFragment {
 
 	@Override
@@ -23,6 +21,7 @@ public class ParticlesFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			getCurrentCamera().setPosition(0, 0, 10);
 			// TODO add particle system
@@ -40,8 +39,9 @@ public class ParticlesFragment extends AExampleFragment {
 			*/
 		}
 
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			/*
 			mParticleSystem.setTime((float) mFrameCount * .2f);
 

@@ -34,6 +34,7 @@ public class UsingGeometryDataFragment extends AExampleFragment {
             super(context);
         }
 
+        @Override
         protected void initScene() {
             try {
                 DirectionalLight light = new DirectionalLight(0, -.6f, -.4f);

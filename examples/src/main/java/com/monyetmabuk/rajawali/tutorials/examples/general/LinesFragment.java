@@ -34,8 +34,8 @@ public class LinesFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
-			super.initScene();
 			ALight light1 = new DirectionalLight(0, 0, -1);
 			light1.setPower(.3f);
 			getCurrentCamera().setPosition(0, 0, 27);

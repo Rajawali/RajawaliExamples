@@ -34,6 +34,7 @@ public class BloomEffectFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		public void initScene() {
 			DirectionalLight light = new DirectionalLight();
 			light.setPower(1);

@@ -12,8 +12,6 @@ import org.rajawali3d.materials.textures.Etc1Texture;
 import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.primitives.Plane;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class ETC1TextureCompressionFragment extends AExampleFragment {
 
 	@Override
@@ -29,6 +27,7 @@ public class ETC1TextureCompressionFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			getCurrentCamera().setPosition(0, 0, 7);
 
@@ -73,8 +72,9 @@ public class ETC1TextureCompressionFragment extends AExampleFragment {
 			}
 		}
 
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			// Rotate the plane to showcase difference between a mipmapped
 			// texture and non-mipmapped texture.
 			if (mMipmappedPlane != null) {

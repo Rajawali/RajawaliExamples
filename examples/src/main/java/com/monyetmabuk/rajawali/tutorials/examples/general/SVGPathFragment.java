@@ -31,6 +31,7 @@ public class SVGPathFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		public void initScene() {
 			final String path = "M22.395-127.223c-4.492,11.344-4.688,33.75,0,44.883"
 					+ "c-11.328-4.492-33.656-4.579-44.789,0.109c4.491-11.354,4.688-33.75,0-44.892"

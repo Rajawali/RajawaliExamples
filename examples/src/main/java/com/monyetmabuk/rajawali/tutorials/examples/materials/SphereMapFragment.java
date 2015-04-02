@@ -31,6 +31,7 @@ public class SphereMapFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			PointLight light = new PointLight();
 			light.setZ(6);

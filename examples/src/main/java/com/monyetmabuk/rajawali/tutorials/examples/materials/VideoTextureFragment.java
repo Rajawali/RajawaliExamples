@@ -2,6 +2,7 @@ package com.monyetmabuk.rajawali.tutorials.examples.materials;
 
 import android.content.Context;
 import android.content.res.Resources.NotFoundException;
+import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
@@ -22,8 +23,6 @@ import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Cube;
 import org.rajawali3d.primitives.Plane;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class VideoTextureFragment extends AExampleFragment {
 
 	@Override
@@ -39,6 +38,7 @@ public class VideoTextureFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			PointLight pointLight = new PointLight();
 			pointLight.setPower(1);
@@ -109,12 +109,13 @@ public class VideoTextureFragment extends AExampleFragment {
 			mMediaPlayer.start();
 		}
 
-		@Override
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			mVideoTexture.update();
 		}
 
+        @Override
 		public void onVisibilityChanged(boolean visible) {
 			super.onVisibilityChanged(visible);
 			if (!visible)
@@ -124,8 +125,9 @@ public class VideoTextureFragment extends AExampleFragment {
 					mMediaPlayer.start();
 		}
 
-		public void onSurfaceDestroyed() {
-			super.onSurfaceDestroyed();
+        @Override
+		public void onRenderSurfaceDestroyed(SurfaceTexture surfaceTexture) {
+			super.onRenderSurfaceDestroyed(surfaceTexture);
 			mMediaPlayer.stop();
 			mMediaPlayer.release();
 		}

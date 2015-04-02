@@ -36,6 +36,7 @@ public class RenderToTextureFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		public void initScene() {
 			
 			//

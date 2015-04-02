@@ -26,8 +26,6 @@ import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Cube;
 import org.rajawali3d.primitives.Sphere;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class ChaseCameraFragment extends AExampleFragment implements
     OnSeekBarChangeListener {
 
@@ -103,6 +101,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
             super(context);
         }
 
+        @Override
         protected void initScene() {
             DirectionalLight light = new DirectionalLight(0, 0, 1.0);
             light.setPower(2.0f);
@@ -182,7 +181,8 @@ public class ChaseCameraFragment extends AExampleFragment implements
             ((ChaseCamera) getCurrentCamera()).setCameraOffset(offset);
         }
 
-        public void onDrawFrame(GL10 glUnused) {
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
             // -- no proper physics here, just a bad approximation to keep
             // this example as short as possible ;-)
             mRaptor.setZ(mRaptor.getZ() + 2.0);
@@ -202,7 +202,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
 
             mPointLight.setPosition(getCurrentCamera().getPosition());
             mPointLight.setLookAt(mRaptor.getWorldPosition());
-            super.onDrawFrame(glUnused);
+            super.onRender(ellapsedRealtime, deltaTime);
         }
 
     }

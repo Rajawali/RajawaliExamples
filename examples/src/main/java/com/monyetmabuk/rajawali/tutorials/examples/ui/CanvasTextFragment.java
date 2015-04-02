@@ -24,8 +24,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class CanvasTextFragment extends AExampleFragment {
 
 	@Override
@@ -46,6 +44,7 @@ public class CanvasTextFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		public void initScene() {
 			DirectionalLight light = new DirectionalLight(.1f, .1f, -1);
 			light.setPower(2);
@@ -125,23 +124,24 @@ public class CanvasTextFragment extends AExampleFragment {
 			}).start();
 		}
 
-		public void onDrawFrame(GL10 glUnused) {
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
 			//
-			// -- not a really accurate way of doing things but you get the point :)
-			//
-			if (mFrameCount++ >= mFrameRate) {
-				mFrameCount = 0;
-				updateTimeBitmap();
-			}
-			//
-			// -- update the texture because it is ready
-			//
-			if (mShouldUpdateTexture) {
-				mTimeTexture.setBitmap(mTimeBitmap);
-				mTextureManager.replaceTexture(mTimeTexture);
-				mShouldUpdateTexture = false;
-			}
-			super.onDrawFrame(glUnused);
+            // -- not a really accurate way of doing things but you get the point :)
+            //
+            if (mFrameCount++ >= mFrameRate) {
+                mFrameCount = 0;
+                updateTimeBitmap();
+            }
+            //
+            // -- update the texture because it is ready
+            //
+            if (mShouldUpdateTexture) {
+                mTimeTexture.setBitmap(mTimeBitmap);
+                mTextureManager.replaceTexture(mTimeTexture);
+                mShouldUpdateTexture = false;
+            }
+            super.onRender(ellapsedRealtime, deltaTime);
 		}
 
 	}

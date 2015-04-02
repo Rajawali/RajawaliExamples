@@ -22,8 +22,6 @@ import org.rajawali3d.materials.textures.Etc2Texture;
 import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.primitives.Plane;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class ETC2TextureCompressionFragment extends AExampleFragment {
 
     @Override
@@ -68,6 +66,7 @@ public class ETC2TextureCompressionFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
             if (Capabilities.getGLESMajorVersion() < 3) {
                 showExceptionDialog("ETC2 Not Supported", "This device does not support OpenGL ES 3.0 and cannot use ETC2 textures.");
@@ -123,21 +122,5 @@ public class ETC2TextureCompressionFragment extends AExampleFragment {
 				e.printStackTrace();
 			}
 		}
-
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
-			// Rotate the plane to showcase difference between a mipmapped
-			// texture and non-mipmapped texture.
-			/*if (mETC2Plane != null) {
-				mETC2Plane.setRotX(mETC2Plane.getRotX() - 0.1f);
-				mETC2Plane.setRotY(mETC2Plane.getRotY() - 0.1f);
-			}
-			if (mETC1Plane != null) {
-				mETC1Plane.setRotX(mETC1Plane.getRotX() + 0.1f);
-				mETC1Plane.setRotY(mETC1Plane.getRotY() + 0.1f);
-			}*/
-		}
-
 	}
-
 }
