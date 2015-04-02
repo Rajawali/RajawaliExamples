@@ -17,6 +17,7 @@ import org.rajawali3d.renderer.RajawaliRenderer;
 import org.rajawali3d.util.RajawaliGLDebugger;
 
 import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 public class DebugRendererFragment extends AExampleFragment {
 
@@ -40,9 +41,9 @@ public class DebugRendererFragment extends AExampleFragment {
 		}
 
         @Override
-        public void onRenderSurfaceCreated(EGLConfig config, Object surface, int width, int height) {
+        public void onRenderSurfaceCreated(EGLConfig config, GL10 gl, int width, int height) {
             showLoader();
-            super.onRenderSurfaceCreated(config, surface, width, height);
+            super.onRenderSurfaceCreated(config, gl, width, height);
             hideLoader();
         }
 

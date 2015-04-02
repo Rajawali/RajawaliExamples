@@ -17,6 +17,7 @@ import org.rajawali3d.RajawaliFragment;
 import org.rajawali3d.renderer.RajawaliRenderer;
 
 import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 public abstract class AExampleFragment extends RajawaliFragment implements
 		OnClickListener {
@@ -119,10 +120,15 @@ public abstract class AExampleFragment extends RajawaliFragment implements
 		}
 
         @Override
-		public void onRenderSurfaceCreated(EGLConfig config, Object surface, int width, int height) {
+		public void onRenderSurfaceCreated(EGLConfig config, GL10 gl, int width, int height) {
 			showLoader();
-			super.onRenderSurfaceCreated(config, surface, width, height);
+			super.onRenderSurfaceCreated(config, gl, width, height);
 			hideLoader();
 		}
-	}
+
+        @Override
+        public void onRenderFrame(GL10 gl) {
+            super.onRenderFrame(gl);
+        }
+    }
 }

@@ -19,6 +19,7 @@ import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.math.vector.Vector3;
 
 import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 public class Optimized2000PlanesFragment extends AExampleFragment {
 
@@ -84,8 +85,8 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 		}
 
         @Override
-        public void onRenderSurfaceCreated(EGLConfig config, Object surface, int width, int height) {
-            super.onRenderSurfaceCreated(config, surface, width, height);
+        public void onRenderSurfaceCreated(EGLConfig config, GL10 gl, int width, int height) {
+            super.onRenderSurfaceCreated(config, gl, width, height);
 			mStartTime = System.currentTimeMillis();
 		}
 

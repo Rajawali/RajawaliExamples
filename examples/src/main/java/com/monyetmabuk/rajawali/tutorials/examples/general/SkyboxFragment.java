@@ -37,8 +37,8 @@ public class SkyboxFragment extends AExampleFragment {
 		}
 
         @Override
-		public void onRenderFrame(Object surface) {
-			super.onRenderFrame(surface);
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			getCurrentCamera().rotate(Vector3.Axis.Y, -0.2);;
 		}
 	}

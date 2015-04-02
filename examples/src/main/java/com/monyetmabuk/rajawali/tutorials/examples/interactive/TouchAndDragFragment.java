@@ -24,6 +24,8 @@ import org.rajawali3d.util.GLU;
 import org.rajawali3d.util.ObjectColorPicker;
 import org.rajawali3d.util.OnObjectPickedListener;
 
+import javax.microedition.khronos.opengles.GL10;
+
 public class TouchAndDragFragment extends AExampleFragment implements
 		OnTouchListener {
 	
@@ -126,8 +128,8 @@ public class TouchAndDragFragment extends AExampleFragment implements
 			}
 		}
 
-		public void onRenderSurfaceSizeChanged(Object surface, int width, int height) {
-			super.onRenderSurfaceSizeChanged(surface, width, height);
+		public void onRenderSurfaceSizeChanged(GL10 gl, int width, int height) {
+			super.onRenderSurfaceSizeChanged(gl, width, height);
 			mViewport[2] = mViewportWidth;
 			mViewport[3] = mViewportHeight;
 			mViewMatrix = getCurrentCamera().getViewMatrix();
