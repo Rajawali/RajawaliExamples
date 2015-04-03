@@ -33,7 +33,8 @@ public class SceneFrameCallbackFragment extends AExampleFragment {
         mRenderTimeView = new TextView(getActivity());
         final FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
         mLayout.addView(mRenderTimeView, params);
-
+        mRenderTimeView.bringToFront();
+        mRenderTimeView.setTextColor(getResources().getColor(android.R.color.white));
         mHandler = new Handler(getActivity().getMainLooper());
 
         return mLayout;

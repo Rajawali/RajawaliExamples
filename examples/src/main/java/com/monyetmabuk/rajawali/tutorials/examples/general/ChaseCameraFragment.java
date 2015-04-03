@@ -34,7 +34,6 @@ public class ChaseCameraFragment extends AExampleFragment implements
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        mMultisamplingEnabled = false;
         mCameraOffset = new Vector3();
         super.onCreate(savedInstanceState);
     }
@@ -69,6 +68,12 @@ public class ChaseCameraFragment extends AExampleFragment implements
         mLayout.addView(ll);
 
         return mLayout;
+    }
+
+    @Override
+    protected void onBeforeApplyRenderer() {
+        mRajawaliSurface.setMultisamplingEnabled(false);
+        super.onBeforeApplyRenderer();
     }
 
     @Override

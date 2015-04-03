@@ -116,14 +116,18 @@ public class VideoTextureFragment extends AExampleFragment {
 		}
 
         @Override
-		public void onVisibilityChanged(boolean visible) {
-			super.onVisibilityChanged(visible);
-			if (!visible)
-				if (mMediaPlayer != null)
-					mMediaPlayer.pause();
-				else if (mMediaPlayer != null)
-					mMediaPlayer.start();
-		}
+        public void onPause() {
+            super.onPause();
+            if (mMediaPlayer != null)
+                mMediaPlayer.pause();
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            if (mMediaPlayer != null)
+                mMediaPlayer.start();
+        }
 
         @Override
 		public void onRenderSurfaceDestroyed(SurfaceTexture surfaceTexture) {

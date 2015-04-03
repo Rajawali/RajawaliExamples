@@ -19,6 +19,7 @@ import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Cube;
+import org.rajawali3d.surface.RajawaliSurfaceView;
 
 public class TransparentSurfaceFragment extends AExampleFragment {
 	
@@ -31,20 +32,27 @@ public class TransparentSurfaceFragment extends AExampleFragment {
 		iv.setImageResource(R.drawable.flickrpics);
 
 		mLayout.addView(iv, 0);
+        ((View) mRajawaliSurface).bringToFront();
 
 		return mLayout;
 	}
 
-	@Override
+    @Override
+    protected void onBeforeApplyRenderer() {
+        ((RajawaliSurfaceView) mRajawaliSurface).setTransparent(true);
+        super.onBeforeApplyRenderer();
+    }
+
+    @Override
+    public int getLayoutID() {
+        return R.layout.rajawali_surfaceview_fragment;
+    }
+
+    @Override
     public AExampleRenderer createRenderer() {
 		return new TransparentSurfaceRenderer(getActivity());
 	}
 	
-	@Override
-	protected boolean isTransparentSurfaceView() {
-		return true;
-	}
-
 	private final class TransparentSurfaceRenderer extends AExampleRenderer {
 
 		public TransparentSurfaceRenderer(Context context) {

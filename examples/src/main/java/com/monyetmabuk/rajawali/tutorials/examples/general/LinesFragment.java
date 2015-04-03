@@ -19,11 +19,16 @@ public class LinesFragment extends AExampleFragment {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		mMultisamplingEnabled = true;
 		super.onCreate(savedInstanceState);
 	}
 
-	@Override
+    @Override
+    protected void onBeforeApplyRenderer() {
+        mRajawaliSurface.setMultisamplingEnabled(true);
+        super.onBeforeApplyRenderer();
+    }
+
+    @Override
     public AExampleRenderer createRenderer() {
 		return new LinesRenderer(getActivity());
 	}

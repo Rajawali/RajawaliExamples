@@ -1,18 +1,18 @@
 package com.monyetmabuk.rajawali.tutorials;
 
-import java.util.Map;
-
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,7 +28,9 @@ import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.Category;
 import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-public class RajawaliExamplesActivity extends Activity implements
+import java.util.Map;
+
+public class RajawaliExamplesActivity extends ActionBarActivity implements
 		OnChildClickListener {
 
 	private static final String FRAGMENT_TAG = "rajawali";
@@ -49,8 +51,8 @@ public class RajawaliExamplesActivity extends Activity implements
 
 		mTitle = mDrawerTitle = getTitle();
 		// Configure the action bar
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(true);
 
 		// Configure the drawer
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -67,13 +69,13 @@ public class RajawaliExamplesActivity extends Activity implements
 				R.string.drawer_close) {
 			@Override
 			public void onDrawerClosed(View drawerView) {
-				getActionBar().setTitle(mTitle);
+				getSupportActionBar().setTitle(mTitle);
 				invalidateOptionsMenu();
 			}
 
 			@Override
 			public void onDrawerOpened(View drawerView) {
-				getActionBar().setTitle(mDrawerTitle);
+				getSupportActionBar().setTitle(mDrawerTitle);
 				invalidateOptionsMenu();
 			}
 		};
@@ -145,7 +147,7 @@ public class RajawaliExamplesActivity extends Activity implements
 	@Override
 	public void setTitle(CharSequence title) {
 		mTitle = title;
-		getActionBar().setTitle(mTitle);
+		getSupportActionBar().setTitle(mTitle);
 	}
 
 	@Override
@@ -183,7 +185,7 @@ public class RajawaliExamplesActivity extends Activity implements
 	 * @param fragClass
 	 */
 	private void launchFragment(Category category, ExampleItem exampleItem) {
-		final FragmentManager fragmentManager = getFragmentManager();
+		final FragmentManager fragmentManager = getSupportFragmentManager();
 
 		// Close the drawer
 		mDrawerLayout.closeDrawers();

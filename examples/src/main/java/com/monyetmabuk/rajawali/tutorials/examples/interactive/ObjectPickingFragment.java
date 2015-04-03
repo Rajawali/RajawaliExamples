@@ -30,7 +30,7 @@ public class ObjectPickingFragment extends AExampleFragment implements
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
-        mSurfaceView.setOnTouchListener(this);
+        ((View) mRajawaliSurface).setOnTouchListener(this);
 
         LinearLayout ll = new LinearLayout(getActivity());
         ll.setOrientation(LinearLayout.VERTICAL);

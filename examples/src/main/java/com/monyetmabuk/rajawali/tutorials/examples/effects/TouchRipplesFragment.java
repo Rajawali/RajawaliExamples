@@ -22,8 +22,7 @@ import org.rajawali3d.lights.DirectionalLight;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-public class TouchRipplesFragment extends AExampleFragment implements
-		OnTouchListener {
+public class TouchRipplesFragment extends AExampleFragment implements OnTouchListener {
 	private Point mScreenSize;
 
 	@Override
@@ -31,7 +30,7 @@ public class TouchRipplesFragment extends AExampleFragment implements
 			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		
-		mSurfaceView.setOnTouchListener(this);
+        ((View) mRajawaliSurface).setOnTouchListener(this);
 
 		Display display = getActivity().getWindowManager().getDefaultDisplay();
 		mScreenSize = new Point();
@@ -60,7 +59,7 @@ public class TouchRipplesFragment extends AExampleFragment implements
 			((TouchRipplesRenderer) mRenderer).setTouch(event.getX()
 					/ mScreenSize.x, 1.0f - (event.getY() / mScreenSize.y));
 		}
-		return mSurfaceView.onTouchEvent(event);
+		return ((View) mRajawaliSurface).onTouchEvent(event);
 	}
 
 	private final class TouchRipplesRenderer extends AExampleRenderer {
