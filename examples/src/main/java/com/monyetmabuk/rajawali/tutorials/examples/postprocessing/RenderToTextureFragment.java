@@ -156,7 +156,7 @@ public class RenderToTextureFragment extends AExampleFragment {
 			// -- Change the viewport back to full screen
 			//
 			
-			setViewPort(mViewportWidth, mViewportHeight);
+			setViewPort(getViewportWidth(), getViewportHeight());
 			super.onRender(ellapsedTime, deltaTime);
 		}
 	}

@@ -88,12 +88,12 @@ public class BloomEffectFragment extends AExampleFragment {
 			RenderPass renderPass = new RenderPass(getCurrentScene(), getCurrentCamera(), 0);
 			mEffects.addPass(renderPass);
 			
-			BloomEffect bloomEffect = new BloomEffect(getCurrentScene(), getCurrentCamera(), mViewportWidth, mViewportHeight, 0x111111, 0xffffff, BlendPass.BlendMode.SCREEN);
+			BloomEffect bloomEffect = new BloomEffect(getCurrentScene(), getCurrentCamera(), getViewportWidth(), getViewportHeight(), 0x111111, 0xffffff, BlendPass.BlendMode.SCREEN);
 			mEffects.addEffect(bloomEffect);
 
 			bloomEffect.setRenderToScreen(true);
 			
-			RajLog.i("Viewport: " + mViewportWidth + ", " + mViewportHeight);
+			RajLog.i("Viewport: " + getViewportWidth() + ", " + getViewportHeight());
 		}
 
 		@Override
