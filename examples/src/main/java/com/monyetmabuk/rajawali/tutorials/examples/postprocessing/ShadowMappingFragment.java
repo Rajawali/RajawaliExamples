@@ -5,9 +5,6 @@ import android.graphics.Color;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import org.rajawali3d.Object3D;
-import org.rajawali3d.animation.Animation;
-import org.rajawali3d.animation.TranslateAnimation3D;
 import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
@@ -31,7 +28,8 @@ public class ShadowMappingFragment extends AExampleFragment {
 		public ShadowMappingRenderer(Context context) {
 			super(context);
 		}
-		
+
+        @Override
 		public void initScene() {
 			mLight = new DirectionalLight();
 			mLight.setLookAt(1, -1, 1);

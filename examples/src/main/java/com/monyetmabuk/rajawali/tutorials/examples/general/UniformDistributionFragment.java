@@ -67,6 +67,7 @@ public class UniformDistributionFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		public void initScene() {
 			Material material = new Material();
 

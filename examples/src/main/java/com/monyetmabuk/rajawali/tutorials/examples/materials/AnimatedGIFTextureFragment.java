@@ -13,8 +13,6 @@ import org.rajawali3d.materials.textures.AnimatedGIFTexture;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Plane;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class AnimatedGIFTextureFragment extends AExampleFragment {
 
 	@Override
@@ -30,8 +28,8 @@ public class AnimatedGIFTextureFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
-
 			final Material material = new Material();
 			final Plane plane = new Plane(1, 1, 1, 1);
 			plane.setMaterial(material);
@@ -57,8 +55,9 @@ public class AnimatedGIFTextureFragment extends AExampleFragment {
 			anim.play();
 		}
 
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			if (mGifTexture != null) {
 				try {
 					mGifTexture.update();

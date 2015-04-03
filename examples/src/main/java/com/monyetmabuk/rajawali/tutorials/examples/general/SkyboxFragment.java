@@ -8,8 +8,6 @@ import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.math.vector.Vector3;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class SkyboxFragment extends AExampleFragment {
 
 	@Override
@@ -23,6 +21,7 @@ public class SkyboxFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			getCurrentCamera().setFarPlane(1000);
 			/*
@@ -37,8 +36,9 @@ public class SkyboxFragment extends AExampleFragment {
 			}
 		}
 
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			getCurrentCamera().rotate(Vector3.Axis.Y, -0.2);;
 		}
 	}

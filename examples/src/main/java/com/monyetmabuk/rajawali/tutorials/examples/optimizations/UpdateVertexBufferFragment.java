@@ -19,8 +19,6 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class UpdateVertexBufferFragment extends AExampleFragment {
 
 	@Override
@@ -86,6 +84,7 @@ public class UpdateVertexBufferFragment extends AExampleFragment {
 			mTmpVec = new Vector3();
 		}
 
+        @Override
 		public void initScene() {
 			getCurrentScene().setBackgroundColor(0xffffff);
 
@@ -173,15 +172,15 @@ public class UpdateVertexBufferFragment extends AExampleFragment {
 			anim.play();
 		}
 
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
-
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			//
 			// -- Calculate interpolation
 			//
 
-			final double deltaTime = (SystemClock.elapsedRealtime() - mStartTime) / 1000d;
-			mInterpolation += deltaTime / 20f;
+			final double updateTime = (SystemClock.elapsedRealtime() - mStartTime) / 1000d;
+			mInterpolation += updateTime / 20f;
 
 			// -- Get the current curve position
 

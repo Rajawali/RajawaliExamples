@@ -22,8 +22,7 @@ import org.rajawali3d.lights.DirectionalLight;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-public class TouchRipplesFragment extends AExampleFragment implements
-		OnTouchListener {
+public class TouchRipplesFragment extends AExampleFragment implements OnTouchListener {
 	private Point mScreenSize;
 
 	@Override
@@ -31,7 +30,7 @@ public class TouchRipplesFragment extends AExampleFragment implements
 			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		
-		mSurfaceView.setOnTouchListener(this);
+        ((View) mRajawaliSurface).setOnTouchListener(this);
 
 		Display display = getActivity().getWindowManager().getDefaultDisplay();
 		mScreenSize = new Point();
@@ -60,7 +59,7 @@ public class TouchRipplesFragment extends AExampleFragment implements
 			((TouchRipplesRenderer) mRenderer).setTouch(event.getX()
 					/ mScreenSize.x, 1.0f - (event.getY() / mScreenSize.y));
 		}
-		return mSurfaceView.onTouchEvent(event);
+		return ((View) mRajawaliSurface).onTouchEvent(event);
 	}
 
 	private final class TouchRipplesRenderer extends AExampleRenderer {
@@ -133,20 +132,21 @@ public class TouchRipplesFragment extends AExampleFragment implements
 			mFilter.setRippleSize(62);*/
 		}
 
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			//mFilter.setTime((float) frameCount++ * .05f);
 		}
 
 		@Override
-		public void onSurfaceChanged(GL10 gl, int width, int height) {
-			super.onSurfaceChanged(gl, width, height);
+		public void onRenderSurfaceSizeChanged(GL10 gl, int width, int height) {
+			super.onRenderSurfaceSizeChanged(gl, width, height);
 			//mFilter.setScreenSize(width, height);
 		}
 
-		@Override
-		public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-			super.onSurfaceCreated(gl, config);
+        @Override
+        public void onRenderSurfaceCreated(EGLConfig config, GL10 gl, int width, int height) {
+            super.onRenderSurfaceCreated(config, gl, width, height);
 			/*
 			for (int i = 0; i < NUM_CUBES; ++i) {
 				registerAnimation(mAnims[i]);

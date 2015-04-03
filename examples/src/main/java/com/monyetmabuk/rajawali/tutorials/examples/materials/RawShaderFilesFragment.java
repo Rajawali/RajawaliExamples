@@ -14,8 +14,6 @@ import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.primitives.Sphere;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class RawShaderFilesFragment extends AExampleFragment {
 
 	@Override
@@ -33,6 +31,7 @@ public class RawShaderFilesFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			mLight = new DirectionalLight(0, 1, 1);
 
@@ -57,8 +56,9 @@ public class RawShaderFilesFragment extends AExampleFragment {
 			mTime = 0;
 		}
 
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			mTime += .007f;
 			mMaterial.setTime(mTime);
 		}

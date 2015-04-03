@@ -31,6 +31,7 @@ public class BezierFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			mLight = new DirectionalLight(0, 1, -1);
 			mLight.setPower(1);

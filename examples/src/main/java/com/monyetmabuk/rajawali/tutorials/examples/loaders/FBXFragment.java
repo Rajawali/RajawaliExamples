@@ -55,6 +55,7 @@ public class FBXFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			mAnim = new RotateOnAxisAnimation(Vector3.Axis.Y, 360);
 			mAnim.setDurationMilliseconds(16000);

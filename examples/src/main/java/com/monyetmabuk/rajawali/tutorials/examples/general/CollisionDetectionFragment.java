@@ -16,8 +16,6 @@ import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Cube;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class CollisionDetectionFragment extends AExampleFragment {
 
 	@Override
@@ -37,6 +35,7 @@ public class CollisionDetectionFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			mLight = new DirectionalLight(0, .2f, -1);
 			getCurrentScene().addLight(mLight);
@@ -122,8 +121,9 @@ public class CollisionDetectionFragment extends AExampleFragment {
 			anim.play();
 		}
 
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			IBoundingVolume bbox = mBoxesBox.getGeometry().getBoundingBox();
 			bbox.transform(mBoxesBox.getModelMatrix());
 

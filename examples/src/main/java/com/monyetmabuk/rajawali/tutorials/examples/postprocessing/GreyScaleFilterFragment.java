@@ -30,7 +30,8 @@ public class GreyScaleFilterFragment extends AExampleFragment {
 		public GreyScaleFilterRenderer(Context context) {
 			super(context);
 		}
-		
+
+        @Override
 		public void initScene() {
 			DirectionalLight light = new DirectionalLight();
             light.setLookAt(0, 0, -1);

@@ -39,6 +39,7 @@ public class BumpMappingFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			mLight = new PointLight();
 			mLight.setPosition(-2, -2, 0);

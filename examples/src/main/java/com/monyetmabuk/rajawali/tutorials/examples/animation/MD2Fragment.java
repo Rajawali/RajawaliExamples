@@ -111,6 +111,7 @@ public class MD2Fragment extends AExampleFragment implements OnClickListener {
 			}
 		}
 
+        @Override
 		protected void initScene() {
 			mLight = new DirectionalLight();
 			mLight.setPower(1);

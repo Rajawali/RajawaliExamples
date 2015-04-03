@@ -39,7 +39,8 @@ public class TerrainFragment extends AExampleFragment {
 		public TerrainRenderer(Context context) {
 			super(context);
 		}
-		
+
+        @Override
 		public void initScene() {
 			getCurrentScene().setBackgroundColor(0x999999);
 

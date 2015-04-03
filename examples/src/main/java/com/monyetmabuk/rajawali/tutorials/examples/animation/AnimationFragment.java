@@ -20,7 +20,6 @@ import org.rajawali3d.loader.LoaderAWD;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.math.vector.Vector3;
-import org.rajawali3d.primitives.Sphere;
 
 public class AnimationFragment extends AExampleFragment {
 
@@ -35,6 +34,7 @@ public class AnimationFragment extends AExampleFragment {
             super(context);
         }
 
+        @Override
         protected void initScene() {
             try {
                 PointLight mLight = new PointLight();

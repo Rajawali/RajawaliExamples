@@ -32,14 +32,13 @@ public class TouchAndDragFragment extends AExampleFragment implements
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mSurfaceView.setOnTouchListener(this);
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
-
+        ((View) mRajawaliSurface).setOnTouchListener(this);
 		LinearLayout ll = new LinearLayout(getActivity());
 		ll.setOrientation(LinearLayout.VERTICAL);
 		ll.setGravity(Gravity.BOTTOM);
@@ -95,8 +94,9 @@ public class TouchAndDragFragment extends AExampleFragment implements
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
-			mViewport = new int[] { 0, 0, mViewportWidth, mViewportHeight };
+			mViewport = new int[] { 0, 0, getViewportWidth(), getViewportHeight() };
 			mNearPos4 = new double[4];
 			mFarPos4 = new double[4];
 			mNearPos = new Vector3();
@@ -127,10 +127,10 @@ public class TouchAndDragFragment extends AExampleFragment implements
 			}
 		}
 
-		public void onSurfaceChanged(GL10 gl, int width, int height) {
-			super.onSurfaceChanged(gl, width, height);
-			mViewport[2] = mViewportWidth;
-			mViewport[3] = mViewportHeight;
+		public void onRenderSurfaceSizeChanged(GL10 gl, int width, int height) {
+			super.onRenderSurfaceSizeChanged(gl, width, height);
+			mViewport[2] = getViewportWidth();
+			mViewport[3] = getViewportHeight();
 			mViewMatrix = getCurrentCamera().getViewMatrix();
 			mProjectionMatrix = getCurrentCamera().getProjectionMatrix();
 		}
@@ -151,14 +151,14 @@ public class TouchAndDragFragment extends AExampleFragment implements
 			// -- unproject the screen coordinate (2D) to the camera's near plane
 			//
 
-			GLU.gluUnProject(x, mViewportHeight - y, 0, mViewMatrix.getDoubleValues(), 0,
+			GLU.gluUnProject(x, getViewportHeight() - y, 0, mViewMatrix.getDoubleValues(), 0,
                 mProjectionMatrix.getDoubleValues(), 0, mViewport, 0, mNearPos4, 0);
 
 			//
 			// -- unproject the screen coordinate (2D) to the camera's far plane
 			//
 
-			GLU.gluUnProject(x, mViewportHeight - y, 1.f, mViewMatrix.getDoubleValues(), 0,
+			GLU.gluUnProject(x, getViewportHeight() - y, 1.f, mViewMatrix.getDoubleValues(), 0,
 					mProjectionMatrix.getDoubleValues(), 0, mViewport, 0, mFarPos4, 0);
 
 			//

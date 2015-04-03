@@ -60,6 +60,7 @@ public class CurvesFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		public void initScene() {
 			getCurrentCamera().setZ(7);
 

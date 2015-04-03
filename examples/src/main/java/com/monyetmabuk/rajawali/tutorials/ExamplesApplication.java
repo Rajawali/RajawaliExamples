@@ -14,6 +14,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.animation.MD2Fragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.SkeletalAnimationBlendingFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.SkeletalAnimationMD5Fragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.BasicFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.ui.AnimatedTextureViewFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.ChaseCameraFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.CollisionDetectionFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.ColoredLinesFragment;
@@ -155,6 +156,7 @@ public class ExamplesApplication extends Application {
 				new ExampleItem("UI Elements", UIElementsFragment.class)
 				, new ExampleItem("2D Renderer", TwoDimensionalFragment.class)
 				, new ExampleItem("Transparent GLSurfaceView", TransparentSurfaceFragment.class)
+                , new ExampleItem("RajawaliTextureView/XML", AnimatedTextureViewFragment.class)
 			});
 		ITEMS.put(Category.OPTIMIZATIONS, new ExampleItem[] {
 				new ExampleItem("2000 Textured Planes", Optimized2000PlanesFragment.class)
@@ -263,8 +265,7 @@ public class ExamplesApplication extends Application {
 		public final String title;
 		public final String url;
 
-		public ExampleItem(String title,
-				Class<? extends AExampleFragment> exampleClass) {
+		public ExampleItem(String title, Class<? extends AExampleFragment> exampleClass) {
 			this.title = title;
 			this.exampleClass = exampleClass;
 			this.url = exampleClass.getSimpleName() + ".java";

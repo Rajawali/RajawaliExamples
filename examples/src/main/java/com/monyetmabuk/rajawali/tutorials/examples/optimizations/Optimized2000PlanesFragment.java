@@ -38,6 +38,7 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			DirectionalLight light = new DirectionalLight(0, 0, 1);
 			
@@ -83,14 +84,15 @@ public class Optimized2000PlanesFragment extends AExampleFragment {
 			getCurrentCamera().setLookAt(new Vector3(0, 0, 30));
 		}
 
-		@Override
-		public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-			super.onSurfaceCreated(gl, config);
-			mStartTime = System.currentTimeMillis();		
+        @Override
+        public void onRenderSurfaceCreated(EGLConfig config, GL10 gl, int width, int height) {
+            super.onRenderSurfaceCreated(config, gl, width, height);
+			mStartTime = System.currentTimeMillis();
 		}
 
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			mMaterial.setTime((System.currentTimeMillis() - mStartTime) / 1000f);
 			mMaterialPlugin.setCameraPosition(getCurrentCamera().getPosition());
 		}

@@ -5,8 +5,6 @@ import android.content.Context;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.particles.ExampleParticleSystem2;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class AnimatedSpritesFragment extends AExampleFragment {
 
 	@Override
@@ -23,9 +21,10 @@ public class AnimatedSpritesFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			getCurrentCamera().setPosition(0, 0, 10);
-// TODO add particle system
+            // TODO add particle system
 			/*
 			// -- explosion sprite sheet from:
 			// http://gushh.net/blog/free-game-sprites-explosion-3/
@@ -40,9 +39,9 @@ public class AnimatedSpritesFragment extends AExampleFragment {
 			addChild(mParticleSystem);*/
 		}
 
-		@Override
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			/*
 			mParticleSystem.setCurrentFrame(mFrameCount);
 			mParticleSystem.setTime((float) mFrameCount * .1f);

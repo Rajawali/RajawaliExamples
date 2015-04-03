@@ -19,11 +19,16 @@ public class LinesFragment extends AExampleFragment {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		mMultisamplingEnabled = true;
 		super.onCreate(savedInstanceState);
 	}
 
-	@Override
+    @Override
+    protected void onBeforeApplyRenderer() {
+        mRajawaliSurface.setMultisamplingEnabled(true);
+        super.onBeforeApplyRenderer();
+    }
+
+    @Override
     public AExampleRenderer createRenderer() {
 		return new LinesRenderer(getActivity());
 	}
@@ -34,8 +39,8 @@ public class LinesFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
-			super.initScene();
 			ALight light1 = new DirectionalLight(0, 0, -1);
 			light1.setPower(.3f);
 			getCurrentCamera().setPosition(0, 0, 27);

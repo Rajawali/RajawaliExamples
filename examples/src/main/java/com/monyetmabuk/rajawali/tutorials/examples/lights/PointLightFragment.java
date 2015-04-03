@@ -28,9 +28,8 @@ public class PointLightFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
-			super.initScene();
-
 			PointLight pointLight = new PointLight();
 			pointLight.setY(2);
 			pointLight.setPower(1.5f);

@@ -29,9 +29,8 @@ public class SpotLightFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
-			super.initScene();
-
 			final SpotLight spotLight = new SpotLight();
 			spotLight.setPower(1.5f);
             spotLight.enableLookAt();

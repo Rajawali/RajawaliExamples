@@ -1,6 +1,8 @@
-package com.monyetmabuk.rajawali.tutorials.examples.general;
+package com.monyetmabuk.rajawali.tutorials.examples.ui;
 
 import android.content.Context;
+import android.view.View;
+import android.view.animation.BounceInterpolator;
 
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
@@ -11,13 +13,31 @@ import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Sphere;
+import org.rajawali3d.surface.RajawaliTextureView;
 
-public class BasicFragment extends AExampleFragment {
+/**
+ * This example shows the addition of a {@link RajawaliTextureView} with properties
+ * set in XML.
+ */
+public class AnimatedTextureViewFragment extends AExampleFragment {
+
+    private RajawaliTextureView mRajawaliTextureView;
 
 	@Override
     public AExampleRenderer createRenderer() {
 		return new BasicRenderer(getActivity());
 	}
+
+    @Override
+    public int getLayoutID() {
+        return R.layout.rajawali_textureview_fragment;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((View) mRajawaliSurface).animate().rotation(360.0f).setDuration(20000).setInterpolator(new BounceInterpolator());
+    }
 
 	private final class BasicRenderer extends AExampleRenderer {
 

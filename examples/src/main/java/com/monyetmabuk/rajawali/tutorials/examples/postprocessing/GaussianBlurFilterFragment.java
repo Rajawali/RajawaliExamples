@@ -42,7 +42,8 @@ public class GaussianBlurFilterFragment extends AExampleFragment {
 		public SepiaFilterRenderer(Context context) {
 			super(context);
 		}
-		
+
+        @Override
 		public void initScene() {
 			DirectionalLight light = new DirectionalLight();
             light.setLookAt(0, 0, -1);
@@ -101,9 +102,9 @@ public class GaussianBlurFilterFragment extends AExampleFragment {
 			// -- Add a Gaussian blur effect. This requires a horizontal and a vertical pass.
 			//
 			
-			EffectPass horizontalPass = new BlurPass(BlurPass.Direction.HORIZONTAL, 6, mViewportWidth, mViewportHeight);
+			EffectPass horizontalPass = new BlurPass(BlurPass.Direction.HORIZONTAL, 6, getViewportWidth(), getViewportHeight());
 			mEffects.addPass(horizontalPass);
-			EffectPass verticalPass = new BlurPass(BlurPass.Direction.VERTICAL, 6, mViewportWidth, mViewportHeight);
+			EffectPass verticalPass = new BlurPass(BlurPass.Direction.VERTICAL, 6, getViewportWidth(), getViewportHeight());
 			verticalPass.setRenderToScreen(true);
 			mEffects.addPass(verticalPass);
 		}

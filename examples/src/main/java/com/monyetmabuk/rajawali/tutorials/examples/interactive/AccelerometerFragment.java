@@ -15,12 +15,8 @@ import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.loader.LoaderAWD;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
-import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.CubeMapTexture;
 import org.rajawali3d.math.vector.Vector3;
-import org.rajawali3d.primitives.Cube;
-
-import javax.microedition.khronos.opengles.GL10;
 
 public class AccelerometerFragment extends AExampleFragment implements
     SensorEventListener {
@@ -75,6 +71,7 @@ public class AccelerometerFragment extends AExampleFragment implements
             mAccValues = new Vector3();
         }
 
+        @Override
         protected void initScene() {
             try {
                 mLight = new DirectionalLight(0.1f, 0.2f, -1.0f);
@@ -111,8 +108,9 @@ public class AccelerometerFragment extends AExampleFragment implements
             }
         }
 
-        public void onDrawFrame(GL10 glUnused) {
-            super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
             mMonkey.setRotation(mAccValues.x, mAccValues.y + 180, mAccValues.z);
         }
 

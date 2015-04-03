@@ -27,6 +27,7 @@ public class CoalesceAnimationFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
             // Create our light and camera
 			PointLight mLight = new PointLight();

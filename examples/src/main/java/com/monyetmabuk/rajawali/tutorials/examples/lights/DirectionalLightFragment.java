@@ -29,9 +29,8 @@ public class DirectionalLightFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
-			super.initScene();
-
 			final DirectionalLight directionalLight = new DirectionalLight();
             directionalLight.setPosition(1.0, 0.0, 0.0);
 			directionalLight.setPower(1.5f);

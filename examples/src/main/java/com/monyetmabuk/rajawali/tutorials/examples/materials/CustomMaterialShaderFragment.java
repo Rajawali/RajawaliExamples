@@ -10,8 +10,6 @@ import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.primitives.Cube;
 
-import javax.microedition.khronos.opengles.GL10;
-
 public class CustomMaterialShaderFragment extends AExampleFragment {
 	@Override
     public AExampleRenderer createRenderer() {
@@ -28,6 +26,7 @@ public class CustomMaterialShaderFragment extends AExampleFragment {
 			super(context);
 		}
 
+        @Override
 		protected void initScene() {
 			mLight = new DirectionalLight(0, 1, 1);
 
@@ -45,8 +44,9 @@ public class CustomMaterialShaderFragment extends AExampleFragment {
 			mTime = 0;
 		}
 
-		public void onDrawFrame(GL10 glUnused) {
-			super.onDrawFrame(glUnused);
+        @Override
+        protected void onRender(long ellapsedRealtime, double deltaTime) {
+            super.onRender(ellapsedRealtime, deltaTime);
 			mTime += .007f;
 			mMaterial.setTime(mTime);
 			mCube.setRotX(mCube.getRotX() + .5f);
