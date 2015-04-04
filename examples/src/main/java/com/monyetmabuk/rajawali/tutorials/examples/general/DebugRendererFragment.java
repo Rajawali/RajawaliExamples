@@ -48,6 +48,11 @@ public class DebugRendererFragment extends AExampleFragment {
         }
 
         @Override
+        public void onOffsetsChanged(float v, float v2, float v3, float v4, int i, int i2) {
+
+        }
+
+        @Override
 		protected void initScene() {
 			mLight = new DirectionalLight(1.0, 0.2, -1.0); // set the direction
 			mLight.setColor(1.0f, 1.0f, 1.0f);

@@ -138,6 +138,11 @@ public abstract class AExampleFragment extends Fragment implements IRajawaliDisp
 		}
 
         @Override
+        public void onOffsetsChanged(float v, float v2, float v3, float v4, int i, int i2) {
+
+        }
+
+        @Override
 		public void onRenderSurfaceCreated(EGLConfig config, GL10 gl, int width, int height) {
 			showLoader();
 			super.onRenderSurfaceCreated(config, gl, width, height);

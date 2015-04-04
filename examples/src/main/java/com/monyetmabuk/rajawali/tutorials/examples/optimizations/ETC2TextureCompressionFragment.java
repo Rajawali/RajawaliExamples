@@ -13,7 +13,6 @@ import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.about.dialogs.ExceptionDialog;
 
-import org.rajawali3d.Capabilities;
 import org.rajawali3d.Object3D;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.textures.ATexture;
@@ -21,6 +20,7 @@ import org.rajawali3d.materials.textures.Etc1Texture;
 import org.rajawali3d.materials.textures.Etc2Texture;
 import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.primitives.Plane;
+import org.rajawali3d.util.Capabilities;
 
 public class ETC2TextureCompressionFragment extends AExampleFragment {
 
