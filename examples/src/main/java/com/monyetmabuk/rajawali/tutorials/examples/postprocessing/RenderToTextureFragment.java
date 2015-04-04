@@ -134,7 +134,7 @@ public class RenderToTextureFragment extends AExampleFragment {
 			// -- Change the viewport to the required texture size
 			//
 
-			setViewPort(400, 400);
+            setOverrideViewportDimensions(400, 400);
 			
 			mEffects.render(ellapsedTime, deltaTime);
 			try {
@@ -156,7 +156,7 @@ public class RenderToTextureFragment extends AExampleFragment {
 			// -- Change the viewport back to full screen
 			//
 			
-			setViewPort(getViewportWidth(), getViewportHeight());
+			clearOverrideViewportDimensions();
 			super.onRender(ellapsedTime, deltaTime);
 		}
 	}
