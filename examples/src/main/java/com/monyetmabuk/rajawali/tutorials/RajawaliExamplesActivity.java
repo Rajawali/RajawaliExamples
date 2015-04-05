@@ -1,13 +1,12 @@
 package com.monyetmabuk.rajawali.tutorials;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -27,6 +26,8 @@ import android.widget.TextView;
 import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.Category;
 import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+import com.monyetmabuk.rajawali.tutorials.wallpaper.FragmentPreferences;
+import com.monyetmabuk.rajawali.tutorials.wallpaper.WallpaperPreferenceActivity;
 
 import java.util.Map;
 
@@ -116,21 +117,24 @@ public class RajawaliExamplesActivity extends ActionBarActivity implements
 	public boolean onOptionsItemSelected(MenuItem item) {
 		final ExampleItem exampleItem;
 
-		switch (item.getItemId()) {
-		case R.id.menu_item_community_stream:
-			exampleItem = ExamplesApplication.ITEMS.get(Category.ABOUT)[0];
-			launchFragment(Category.ABOUT, exampleItem);
-			return true;
-		case R.id.menu_item_meet_the_team:
-			exampleItem = ExamplesApplication.ITEMS.get(Category.ABOUT)[1];
-			launchFragment(Category.ABOUT, exampleItem);
-			return true;
-		case android.R.id.home:
-			if (mDrawerToggle.onOptionsItemSelected(item))
-				return true;
-			
-			break;
-		}
+        switch (item.getItemId()) {
+            case R.id.menu_settings:
+                startActivity(new Intent(this, WallpaperPreferenceActivity.class));
+                return true;
+            case R.id.menu_item_community_stream:
+                exampleItem = ExamplesApplication.ITEMS.get(Category.ABOUT)[0];
+                launchFragment(Category.ABOUT, exampleItem);
+                return true;
+            case R.id.menu_item_meet_the_team:
+                exampleItem = ExamplesApplication.ITEMS.get(Category.ABOUT)[1];
+                launchFragment(Category.ABOUT, exampleItem);
+                return true;
+            case android.R.id.home:
+                if (mDrawerToggle.onOptionsItemSelected(item))
+                    return true;
+
+                break;
+        }
 
 		return super.onOptionsItemSelected(item);
 	}

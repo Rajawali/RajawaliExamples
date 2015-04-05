@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -139,6 +140,11 @@ public abstract class AExampleFragment extends Fragment implements IRajawaliDisp
 
         @Override
         public void onOffsetsChanged(float v, float v2, float v3, float v4, int i, int i2) {
+
+        }
+
+        @Override
+        public void onTouchEvent(MotionEvent event) {
 
         }
 

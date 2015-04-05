@@ -1,6 +1,7 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
 import android.content.Context;
+import android.view.MotionEvent;
 
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
@@ -49,6 +50,11 @@ public class DebugRendererFragment extends AExampleFragment {
 
         @Override
         public void onOffsetsChanged(float v, float v2, float v3, float v4, int i, int i2) {
+
+        }
+
+        @Override
+        public void onTouchEvent(MotionEvent event) {
 
         }
 
