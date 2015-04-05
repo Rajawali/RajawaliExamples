@@ -34,13 +34,11 @@
         <activity
             android:name=".wallpaper.WallpaperPreferenceActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Light.WallpaperSettings">
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".wallpaper.PreviewActivity"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo.Wallpaper">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

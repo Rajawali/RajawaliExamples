@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
+import com.monyetmabuk.rajawali.tutorials.R;
+
 /**
  * @author Jared Woolston (jwoolston@idealcorp.com)
  */
@@ -13,7 +15,7 @@ public class FragmentPreferences extends PreferenceFragment implements SharedPre
     private SharedPreferences mSharedPreferences;
 
     private int[] preferencesToLoad() {
-        return new int[0];
+        return new int[] {R.xml.preferences};
     }
 
     @Override
