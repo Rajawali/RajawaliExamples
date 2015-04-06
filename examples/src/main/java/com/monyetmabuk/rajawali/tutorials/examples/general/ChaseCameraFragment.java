@@ -13,8 +13,8 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
-import org.rajawali3d.ChaseCamera;
 import org.rajawali3d.Object3D;
+import org.rajawali3d.cameras.ChaseCamera;
 import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.lights.PointLight;
 import org.rajawali3d.materials.Material;
