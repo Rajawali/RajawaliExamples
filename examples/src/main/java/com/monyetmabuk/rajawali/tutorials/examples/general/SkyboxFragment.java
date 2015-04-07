@@ -25,12 +25,12 @@ public class SkyboxFragment extends AExampleFragment {
 
         LinearLayout ll = new LinearLayout(getActivity());
         ll.setOrientation(LinearLayout.VERTICAL);
-        ll.setGravity(Gravity.CENTER);
+        ll.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.TOP);
 
         Button label = new Button(getActivity());
-        label.setText("Toggle");
+        label.setText("Toggle Skybox");
         label.setTextSize(20);
-        label.setGravity(Gravity.CENTER);
+        label.setGravity(Gravity.CENTER_HORIZONTAL);
         label.setHeight(100);
         ll.addView(label);
         label.setOnClickListener((SkyboxRenderer) mRenderer);
@@ -39,52 +39,56 @@ public class SkyboxFragment extends AExampleFragment {
         return mLayout;
     }
 
-	@Override
+    @Override
     public AExampleRenderer createRenderer() {
-		mRenderer = new SkyboxRenderer(getActivity());
+        mRenderer = new SkyboxRenderer(getActivity());
         return ((SkyboxRenderer) mRenderer);
-	}
+    }
 
-	private final class SkyboxRenderer extends AExampleRenderer implements View.OnClickListener {
+    private final class SkyboxRenderer extends AExampleRenderer implements View.OnClickListener {
 
         boolean odd = true;
 
-		public SkyboxRenderer(Context context) {
-			super(context);
-		}
+        public SkyboxRenderer(Context context) {
+            super(context);
+        }
 
         @Override
-		protected void initScene() {
-			getCurrentCamera().setFarPlane(1000);
-			/*
-			 * Skybox images by Emil Persson, aka Humus. http://www.humus.name humus@comhem.se
-			 */
-			try {
-				getCurrentScene().setSkybox(R.drawable.posx, R.drawable.negx,
-						R.drawable.posy, R.drawable.negy, R.drawable.posz,
-						R.drawable.negz);
-			} catch (ATexture.TextureException e) {
-				e.printStackTrace();
-			}
-		}
+        protected void initScene() {
+            getCurrentCamera().setFarPlane(1000);
+            /**
+             * Skybox images by Emil Persson, aka Humus. http://www.humus.name humus@comhem.se
+             */
+            try {
+                getCurrentScene().setSkybox(R.drawable.posx, R.drawable.negx,
+                    R.drawable.posy, R.drawable.negy, R.drawable.posz, R.drawable.negz);
+            } catch (ATexture.TextureException e) {
+                e.printStackTrace();
+            }
+        }
 
         @Override
         protected void onRender(long ellapsedRealtime, double deltaTime) {
             super.onRender(ellapsedRealtime, deltaTime);
-			getCurrentCamera().rotate(Vector3.Axis.Y, -0.2);
-		}
+            getCurrentCamera().rotate(Vector3.Axis.Y, -0.2);
+        }
 
         @Override
         public void onClick(View v) {
             RajLog.d(this, "OnTouchEvent");
             try {
                 if (odd) {
+                    /**
+                     * Skybox images by Emil Persson, aka Humus. http://www.humus.name humus@comhem.se
+                     */
                     getCurrentScene().updateSkybox(R.drawable.posx2, R.drawable.negx2,
                         R.drawable.posy2, R.drawable.negy2, R.drawable.posz2, R.drawable.negz2);
                 } else {
+                    /**
+                     * Skybox images by Emil Persson, aka Humus. http://www.humus.name humus@comhem.se
+                     */
                     getCurrentScene().updateSkybox(R.drawable.posx, R.drawable.negx,
-                        R.drawable.posy, R.drawable.negy, R.drawable.posz,
-                        R.drawable.negz);
+                        R.drawable.posy, R.drawable.negy, R.drawable.posz, R.drawable.negz);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
