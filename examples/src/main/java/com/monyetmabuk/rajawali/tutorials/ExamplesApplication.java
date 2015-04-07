@@ -14,6 +14,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.animation.MD2Fragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.SkeletalAnimationBlendingFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.SkeletalAnimationMD5Fragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.BasicFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.interactive.FirstPersonCameraFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.AnimatedTextureViewFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.ChaseCameraFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.CollisionDetectionFragment;
@@ -151,6 +152,7 @@ public class ExamplesApplication extends Application {
 				new ExampleItem("Using The Accelerometer", AccelerometerFragment.class)
 				, new ExampleItem("Object Picking", ObjectPickingFragment.class)
 				, new ExampleItem("Touch & Drag", TouchAndDragFragment.class)
+                , new ExampleItem("First Person Camera", FirstPersonCameraFragment.class)
 			});
 		ITEMS.put(Category.UI, new ExampleItem[] {
 				new ExampleItem("UI Elements", UIElementsFragment.class)

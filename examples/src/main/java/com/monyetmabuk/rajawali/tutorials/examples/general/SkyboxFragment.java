@@ -1,21 +1,53 @@
 package com.monyetmabuk.rajawali.tutorials.examples.general;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.util.RajLog;
 
 public class SkyboxFragment extends AExampleFragment {
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+
+        LinearLayout ll = new LinearLayout(getActivity());
+        ll.setOrientation(LinearLayout.VERTICAL);
+        ll.setGravity(Gravity.CENTER);
+
+        Button label = new Button(getActivity());
+        label.setText("Toggle");
+        label.setTextSize(20);
+        label.setGravity(Gravity.CENTER);
+        label.setHeight(100);
+        ll.addView(label);
+        label.setOnClickListener((SkyboxRenderer) mRenderer);
+        mLayout.addView(ll);
+
+        return mLayout;
+    }
+
 	@Override
     public AExampleRenderer createRenderer() {
-		return new SkyboxRenderer(getActivity());
+		mRenderer = new SkyboxRenderer(getActivity());
+        return ((SkyboxRenderer) mRenderer);
 	}
 
-	private final class SkyboxRenderer extends AExampleRenderer {
+	private final class SkyboxRenderer extends AExampleRenderer implements View.OnClickListener {
+
+        boolean odd = true;
 
 		public SkyboxRenderer(Context context) {
 			super(context);
@@ -39,8 +71,27 @@ public class SkyboxFragment extends AExampleFragment {
         @Override
         protected void onRender(long ellapsedRealtime, double deltaTime) {
             super.onRender(ellapsedRealtime, deltaTime);
-			getCurrentCamera().rotate(Vector3.Axis.Y, -0.2);;
+			getCurrentCamera().rotate(Vector3.Axis.Y, -0.2);
 		}
-	}
+
+        @Override
+        public void onClick(View v) {
+            RajLog.d(this, "OnTouchEvent");
+            try {
+                if (odd) {
+                    getCurrentScene().updateSkybox(R.drawable.negy, R.drawable.posy,
+                        R.drawable.negz, R.drawable.posz, R.drawable.negx, R.drawable.posx);
+                } else {
+                    getCurrentScene().updateSkybox(R.drawable.posx, R.drawable.negx,
+                        R.drawable.posy, R.drawable.negy, R.drawable.posz,
+                        R.drawable.negz);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                odd = !odd;
+            }
+        }
+    }
 
 }
