@@ -84,7 +84,7 @@ public class ETC2TextureCompressionFragment extends AExampleFragment {
                 mPNGPlane = new Plane(1.5f, 1.5f, 1, 1);
                 mPNGPlane.setMaterial(material0);
                 mPNGPlane.setPosition(0, -1.75f, 0);
-                mPNGPlane.setDoubleSided(true);
+                //mPNGPlane.setDoubleSided(true);
                 getCurrentScene().addChild(mPNGPlane);
             } catch (ATexture.TextureException e) {
                 e.printStackTrace();
@@ -99,7 +99,7 @@ public class ETC2TextureCompressionFragment extends AExampleFragment {
 				mETC1Plane = new Plane(1.5f, 1.5f, 1, 1);
 				mETC1Plane.setMaterial(material1);
 				mETC1Plane.setPosition(0, 0, 0);
-				mETC1Plane.setDoubleSided(true);
+				//mETC1Plane.setDoubleSided(true);
 				getCurrentScene().addChild(mETC1Plane);
 			} catch (ATexture.TextureException e) {
 				e.printStackTrace();
@@ -116,7 +116,7 @@ public class ETC2TextureCompressionFragment extends AExampleFragment {
 				mETC2Plane = new Plane(1.5f, 1.5f, 1, 1);
 				mETC2Plane.setMaterial(material2);
 				mETC2Plane.setPosition(0, 1.75f, 0);
-				mETC2Plane.setDoubleSided(true);
+				//mETC2Plane.setDoubleSided(true);
 				getCurrentScene().addChild(mETC2Plane);
 			} catch (ATexture.TextureException e) {
 				e.printStackTrace();

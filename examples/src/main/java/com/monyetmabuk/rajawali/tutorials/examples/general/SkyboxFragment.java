@@ -79,8 +79,8 @@ public class SkyboxFragment extends AExampleFragment {
             RajLog.d(this, "OnTouchEvent");
             try {
                 if (odd) {
-                    getCurrentScene().updateSkybox(R.drawable.negy, R.drawable.posy,
-                        R.drawable.negz, R.drawable.posz, R.drawable.negx, R.drawable.posx);
+                    getCurrentScene().updateSkybox(R.drawable.posx2, R.drawable.negx2,
+                        R.drawable.posy2, R.drawable.negy2, R.drawable.posz2, R.drawable.negz2);
                 } else {
                     getCurrentScene().updateSkybox(R.drawable.posx, R.drawable.negx,
                         R.drawable.posy, R.drawable.negy, R.drawable.posz,
