@@ -175,7 +175,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
             // the second parameter is the interpolation factor
             ChaseCamera chaseCamera = new ChaseCamera(new Vector3(0, 3, 16));
             // -- tell the camera which object to chase
-            chaseCamera.setObjectToChase(mRaptor);
+            chaseCamera.setLinkedObject(mRaptor);
             // -- set the far plane to 1000 so that we actually see the sky sphere
             chaseCamera.setFarPlane(1000);
             getCurrentScene().replaceAndSwitchCamera(chaseCamera, 0);

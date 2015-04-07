@@ -135,7 +135,7 @@ public class TerrainFragment extends AExampleFragment {
 			//
 			// -- Tell the camera to chase the empty.
 			//
-			chaseCamera.setObjectToChase(empty);
+			chaseCamera.setLinkedObject(empty);
 
 			//
 			// -- Create a camera path based on the terrain height

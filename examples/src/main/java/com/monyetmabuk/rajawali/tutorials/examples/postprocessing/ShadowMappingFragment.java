@@ -49,7 +49,7 @@ public class ShadowMappingFragment extends AExampleFragment {
 			plane.setScale(10);
 			plane.setMaterial(planeMaterial);
 			plane.setColor(Color.GREEN);
-			getCurrentScene().addChild(plane);		
+			getCurrentScene().addChild(plane);
 			
 			Material sphereMaterial = new Material();
 			sphereMaterial.enableLighting(true);
