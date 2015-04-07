@@ -34,8 +34,8 @@ public class SepiaFilterFragment extends AExampleFragment {
         @Override
 		public void initScene() {
 			DirectionalLight light = new DirectionalLight();
-            light.setLookAt(0, 0, -1);
             light.enableLookAt();
+            light.setLookAt(0, 0, -1);
 			getCurrentScene().addLight(light);
 			
 			//

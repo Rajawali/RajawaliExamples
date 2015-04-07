@@ -14,7 +14,6 @@ import org.rajawali3d.materials.methods.SpecularMethod;
 import org.rajawali3d.math.MathUtil;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Sphere;
-import org.rajawali3d.util.RajLog;
 
 public class DirectionalLightFragment extends AExampleFragment {
 
@@ -41,8 +40,6 @@ public class DirectionalLightFragment extends AExampleFragment {
             getCurrentCamera().enableLookAt();
             getCurrentCamera().setPosition(0, 2, 6);
             getCurrentCamera().setLookAt(0, 0, 0);
-
-            RajLog.d(this, "View Matrix: " + getCurrentCamera().getViewMatrix());
 
 			Material sphereMaterial = new Material();
 			SpecularMethod.Phong phongMethod = new SpecularMethod.Phong();

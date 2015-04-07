@@ -48,4 +48,25 @@
     <string name="exception_dialog_title">Exception Occurred</string>
     <string name="exception_dialog_message_unknown">Unknown error!</string>
 
+    <!-- Wallpaper -->
+    <!-- Name in Live Wallpaper Picker list -->
+    <string name="lwp_name">Rajawali LWP Example</string>
+
+    <!-- Description in Live Wallpaper Picker list -->
+    <string name="lwp_desc">Example wallpaper that uses Rajawali, an open-source OpenGL ES 2.x/3.x engine for Android.</string>
+
+    <!-- Author -->
+    <string name="lwp_author">Rajawali Contributors</string>
+
+    <!-- Quick little message displayed when the Live Wallpaper Picker is opened -->
+    <!-- The message text is the prefix, lwp_name, and suffix concatenated -->
+    <string name="picker_toast_prefix">Choose \"</string>
+    <string name="picker_toast_suffix">\" from the list of live wallpapers</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="renderer_category">Wallpaper Renderer</string>
+    <string name="renderer_picker_title">Renderer</string>
+    <string name="renderer_picker_summary">Choose the renderer class to use for the wallpaper demo.</string>
+
 </resources>

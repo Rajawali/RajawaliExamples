@@ -1,7 +1,7 @@
 package com.monyetmabuk.rajawali.tutorials.examples.animation.particles;
 
-import org.rajawali3d.Camera;
 import org.rajawali3d.Object3D;
+import org.rajawali3d.cameras.Camera;
 import org.rajawali3d.math.vector.Vector3;
 
 import java.nio.FloatBuffer;
