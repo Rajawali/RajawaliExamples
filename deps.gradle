@@ -1,4 +1,4 @@
-project.ext.set('depRajawali', 'org.rajawali3d:rajawali:1.0.202-SNAPSHOT@aar')
+project.ext.set('depRajawali', 'org.rajawali3d:rajawali:1.0.211-SNAPSHOT@aar')
 project.ext.set('depAndroidSupport', 'com.android.support:support-v13:22.0.0')
 project.ext.set('depAppCompat', 'com.android.support:appcompat-v7:22.0.0')
 project.ext.set('depGSON', 'com.google.code.gson:gson:2.3')
