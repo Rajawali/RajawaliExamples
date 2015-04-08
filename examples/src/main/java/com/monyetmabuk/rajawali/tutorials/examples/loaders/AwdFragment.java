@@ -33,6 +33,7 @@ public class AwdFragment extends AExampleFragment {
 				parser.parse();
 
 				final Object3D obj = parser.getParsedObject();
+
 				obj.setScale(0.25f);
 				getCurrentScene().addChild(obj);
 
