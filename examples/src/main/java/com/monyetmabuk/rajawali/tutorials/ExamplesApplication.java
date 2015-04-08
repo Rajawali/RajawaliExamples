@@ -88,7 +88,7 @@ public class ExamplesApplication extends Application {
 		, INTERACTIVE("Interactive")
 		, UI("UI")
 		, OPTIMIZATIONS("Optimizations")
-		, PARSERS("Parsers")
+		, LOADERS("Loaders")
 		, ANIMATION("Animation")
 		, MATERIALS("Materials")
 		, POSTPROCESSING("Post Processing")
@@ -169,7 +169,7 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Texture Atlas", TextureAtlasFragment.class)
                 , new ExampleItem("ETC2 Texture Compression", ETC2TextureCompressionFragment.class)
 			});
-		ITEMS.put(Category.PARSERS, new ExampleItem[] {
+		ITEMS.put(Category.LOADERS, new ExampleItem[] {
 				new ExampleItem("Load AWD Model", AwdFragment.class)
                 , new ExampleItem("Async Load Model", AsyncLoadModelFragment.class)
 				, new ExampleItem("Load OBJ Model", LoadModelFragment.class)
