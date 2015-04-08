@@ -13,6 +13,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.animation.ColorAnimationFragm
 import com.monyetmabuk.rajawali.tutorials.examples.animation.MD2Fragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.SkeletalAnimationBlendingFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.SkeletalAnimationMD5Fragment;
+import com.monyetmabuk.rajawali.tutorials.examples.general.ArcballCameraFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.BasicFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.interactive.FirstPersonCameraFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.AnimatedTextureViewFragment;
@@ -131,6 +132,7 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("SVG Path", SVGPathFragment.class)
 				, new ExampleItem("Uniform Distribution", UniformDistributionFragment.class)
 				, new ExampleItem("Orthographic Camera", OrthographicFragment.class)
+                , new ExampleItem("Arcball Camera", ArcballCameraFragment.class)
                 , new ExampleItem("Debug Renderer", DebugRendererFragment.class)
                 , new ExampleItem("Debug Visualizer", DebugVisualizerFragment.class)
 			});
