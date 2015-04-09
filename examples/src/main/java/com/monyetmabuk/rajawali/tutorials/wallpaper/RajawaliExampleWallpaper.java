@@ -23,7 +23,7 @@ public class RajawaliExampleWallpaper extends Wallpaper {
         boolean useFallback = false;
         try {
             final Class rendererClass = Class.forName(mSharedPreferences.getString("renderer_class", WallpaperRenderer.class.getCanonicalName()));
-            RajLog.d(this, "Creating wallpaper engine: " + rendererClass.getCanonicalName());
+            RajLog.d("Creating wallpaper engine: " + rendererClass.getCanonicalName());
             mRenderer = (IRajawaliSurfaceRenderer) rendererClass.getConstructor(Context.class).newInstance(this);
         } catch (NoSuchMethodException e) {
             useFallback = true;
