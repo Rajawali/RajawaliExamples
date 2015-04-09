@@ -79,7 +79,7 @@ public class AsyncLoadModelFragment extends AExampleFragment {
 
         @Override
         public void onModelLoadComplete(ALoader aLoader) {
-            RajLog.d(this, "Model load complete: " + aLoader);
+            RajLog.d("Model load complete: " + aLoader);
             final LoaderOBJ obj = (LoaderOBJ) aLoader;
             final Object3D parsedObject = obj.getParsedObject();
             parsedObject.setPosition(Vector3.ZERO);
@@ -97,7 +97,7 @@ public class AsyncLoadModelFragment extends AExampleFragment {
 
         @Override
         public void onModelLoadFailed(ALoader aLoader) {
-            RajLog.e(this, "Model load failed: " + aLoader);
+            RajLog.e("Model load failed: " + aLoader);
         }
     }
 

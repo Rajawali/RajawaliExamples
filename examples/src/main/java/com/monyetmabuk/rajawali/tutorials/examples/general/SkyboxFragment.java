@@ -75,7 +75,7 @@ public class SkyboxFragment extends AExampleFragment {
 
         @Override
         public void onClick(View v) {
-            RajLog.d(this, "OnTouchEvent");
+            RajLog.d("OnTouchEvent");
             try {
                 if (odd) {
                     /**

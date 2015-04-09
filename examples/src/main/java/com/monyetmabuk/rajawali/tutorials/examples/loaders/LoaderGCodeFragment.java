@@ -33,7 +33,6 @@ public class LoaderGCodeFragment extends AExampleFragment {
 
         @Override
 		protected void initScene() {
-			RajLog.systemInformation();
 			setFrameRate(60);
 			LoaderGCode gCodeParser = new LoaderGCode(getResources(), getTextureManager(), R.raw.calibrationcube_404020_psm_pla35);
 			try {

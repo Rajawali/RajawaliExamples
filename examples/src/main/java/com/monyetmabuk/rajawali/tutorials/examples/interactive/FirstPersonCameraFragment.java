@@ -139,7 +139,7 @@ public class FirstPersonCameraFragment extends AExampleFragment {
         @Override
         public void onClick(View v) {
             if (mSceneInitialized) {
-                RajLog.d(this, "Person orientation: " + mPerson.getOrientation());
+                RajLog.d("Person orientation: " + mPerson.getOrientation());
                 if (v.equals(mMoveForward)) {
                     mPerson.moveForward(0.25);
                 } else if (v.equals(mMoveRight)) {
