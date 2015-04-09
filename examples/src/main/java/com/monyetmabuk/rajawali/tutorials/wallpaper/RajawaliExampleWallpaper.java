@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import org.rajawali3d.surface.IRajawaliSurface;
 import org.rajawali3d.surface.IRajawaliSurfaceRenderer;
 import org.rajawali3d.util.RajLog;
 import org.rajawali3d.wallpaper.Wallpaper;
@@ -37,6 +38,6 @@ public class RajawaliExampleWallpaper extends Wallpaper {
             useFallback = true;
         }
         if (useFallback) mRenderer = new WallpaperRenderer(this);
-        return new WallpaperEngine(getBaseContext(), mRenderer, true, true);
+        return new WallpaperEngine(getBaseContext(), mRenderer, IRajawaliSurface.ANTI_ALIASING_CONFIG.NONE);
     }
 }

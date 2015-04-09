@@ -26,7 +26,6 @@ import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Sphere;
 import org.rajawali3d.surface.IRajawaliSurfaceRenderer;
-import org.rajawali3d.util.RajLog;
 
 /**
  * @author Jared Woolston (jwoolston@idealcorp.com)
@@ -139,7 +138,6 @@ public class FirstPersonCameraFragment extends AExampleFragment {
         @Override
         public void onClick(View v) {
             if (mSceneInitialized) {
-                RajLog.d("Person orientation: " + mPerson.getOrientation());
                 if (v.equals(mMoveForward)) {
                     mPerson.moveForward(0.25);
                 } else if (v.equals(mMoveRight)) {

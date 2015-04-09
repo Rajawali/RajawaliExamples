@@ -14,7 +14,6 @@ import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
 
 import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.math.vector.Vector3;
-import org.rajawali3d.util.RajLog;
 
 public class SkyboxFragment extends AExampleFragment {
 
@@ -75,7 +74,6 @@ public class SkyboxFragment extends AExampleFragment {
 
         @Override
         public void onClick(View v) {
-            RajLog.d("OnTouchEvent");
             try {
                 if (odd) {
                     /**
