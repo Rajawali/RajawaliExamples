@@ -11,6 +11,7 @@ import com.monyetmabuk.rajawali.tutorials.examples.animation.CatmullRomFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.CoalesceAnimationFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.ColorAnimationFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.MD2Fragment;
+import com.monyetmabuk.rajawali.tutorials.examples.animation.SkeletalAnimationAWDFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.SkeletalAnimationBlendingFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.animation.SkeletalAnimationMD5Fragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.ArcballCameraFragment;
@@ -184,6 +185,7 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Catmul-Rom Splines", CatmullRomFragment.class)
 				//, new ExampleItem("Animated Sprites", AnimatedSpritesFragment.class)
 				, new ExampleItem("Skeletal Animation (MD5)", SkeletalAnimationMD5Fragment.class)
+				, new ExampleItem("Skeletal Animation (AWD)", SkeletalAnimationAWDFragment.class)
 				, new ExampleItem("Skeletal Animation Blending", SkeletalAnimationBlendingFragment.class)
 				, new ExampleItem("Color Animation", ColorAnimationFragment.class)
 			});
