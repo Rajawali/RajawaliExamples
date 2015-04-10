@@ -1,14 +1,15 @@
 package com.monyetmabuk.rajawali.tutorials.examples.animation;
 
-import org.rajawali3d.animation.mesh.SkeletalAnimationObject3D;
-import org.rajawali3d.lights.DirectionalLight;
-import org.rajawali3d.loader.LoaderAWD;
-import org.rajawali3d.loader.ParsingException;
-
 import android.content.Context;
 
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
+
+import org.rajawali3d.animation.mesh.SkeletalAnimationObject3D;
+import org.rajawali3d.lights.DirectionalLight;
+import org.rajawali3d.loader.LoaderAWD;
+import org.rajawali3d.loader.ParsingException;
+import org.rajawali3d.math.vector.Vector3;
 
 public class SkeletalAnimationAWDFragment extends AExampleFragment {
 
@@ -41,8 +42,8 @@ public class SkeletalAnimationAWDFragment extends AExampleFragment {
 
 				parser.parse();
 
-				mObject =
-					(SkeletalAnimationObject3D)parser.getParsedObject();
+				mObject = (SkeletalAnimationObject3D) parser.getParsedObject();
+                mObject.rotate(Vector3.Y, -90.0);
 
 				mObject.setAnimationSequence(0);
 				mObject.setScale(.04f);
