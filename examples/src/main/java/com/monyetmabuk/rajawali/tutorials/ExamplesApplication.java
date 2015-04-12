@@ -164,7 +164,7 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("2D Renderer", TwoDimensionalFragment.class)
 				, new ExampleItem("Transparent GLSurfaceView", TransparentSurfaceFragment.class)
                 , new ExampleItem("RajawaliTextureView/XML", AnimatedTextureViewFragment.class)
-				, new ExampleItem("View To Texture Fragment", ViewToTextureFragment.class)
+				, new ExampleItem("View To Texture", ViewToTextureFragment.class)
 			});
 		ITEMS.put(Category.OPTIMIZATIONS, new ExampleItem[] {
 				new ExampleItem("2000 Textured Planes", Optimized2000PlanesFragment.class)

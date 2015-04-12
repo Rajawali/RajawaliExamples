@@ -25,7 +25,6 @@ import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Cube;
-import org.rajawali3d.util.RajLog;
 
 public class ViewToTextureFragment extends AExampleFragment {
 
@@ -117,13 +116,12 @@ public class ViewToTextureFragment extends AExampleFragment {
         @Override
         protected void onRender(long ellapsedRealtime, double deltaTime) {
             // -- not a really accurate way of doing things but you get the point :)
-            if (mFrameCount++ >= 10) { //mFrameRate) {
+            if (mFrameCount++ >= mFrameRate) {
                 mFrameCount = 0;
                 mHandler.post(mUpdateTexture);
             }
             // -- update the texture because it is ready
             if (mShouldUpdateTexture) {
-                RajLog.i("Updating texture (" + ellapsedRealtime + ")");
                 mViewTexture.setBitmap(mViewBitmap);
                 mTextureManager.replaceTexture(mViewTexture);
                 mShouldUpdateTexture = false;
