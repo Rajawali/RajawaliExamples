@@ -69,10 +69,12 @@ import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.RenderToTextur
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.SepiaFilterFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.postprocessing.ShadowMappingFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.scene.SceneFrameCallbackFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.ui.AnimatedTextureViewFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.CanvasTextFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.TransparentSurfaceFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.TwoDimensionalFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.UIElementsFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.ui.ViewToTextureFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -162,6 +164,7 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("2D Renderer", TwoDimensionalFragment.class)
 				, new ExampleItem("Transparent GLSurfaceView", TransparentSurfaceFragment.class)
                 , new ExampleItem("RajawaliTextureView/XML", AnimatedTextureViewFragment.class)
+				, new ExampleItem("View To Texture Fragment", ViewToTextureFragment.class)
 			});
 		ITEMS.put(Category.OPTIMIZATIONS, new ExampleItem[] {
 				new ExampleItem("2000 Textured Planes", Optimized2000PlanesFragment.class)
