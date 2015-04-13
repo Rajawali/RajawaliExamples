@@ -1,13 +1,13 @@
 package com.monyetmabuk.rajawali.tutorials.examples.ui;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
@@ -22,7 +22,7 @@ import org.rajawali3d.animation.Animation;
 import org.rajawali3d.animation.RotateOnAxisAnimation;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.textures.ATexture;
-import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.materials.textures.ViewTexture;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Cube;
 
@@ -37,7 +37,7 @@ public class ViewToTextureFragment extends AExampleFragment {
         mHandler = new Handler(Looper.getMainLooper());
 
         final FrameLayout fragmentFrame = new FrameLayout(getActivity());
-        final FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(512, 512);
+        final FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(1024, 1024);
         fragmentFrame.setLayoutParams(params);
         fragmentFrame.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_bright));
         fragmentFrame.setId(R.id.view_to_texture_frame);
@@ -51,7 +51,7 @@ public class ViewToTextureFragment extends AExampleFragment {
 
     @Override
     public AExampleRenderer createRenderer() {
-        return new CanvasTextRenderer(getActivity());
+        return new ViewTextureRenderer(getActivity());
     }
 
     @Override
@@ -59,16 +59,17 @@ public class ViewToTextureFragment extends AExampleFragment {
         super.onBeforeApplyRenderer();
     }
 
-    private final class CanvasTextRenderer extends AExampleRenderer {
-        private Texture mViewTexture;
-        private Bitmap mViewBitmap;
-        private Canvas mViewCanvas;
+    private final class ViewTextureRenderer extends AExampleRenderer implements ViewTexture.IViewTexture {
         private int mFrameCount;
+        private Surface mSurface;
+        private ViewTexture mVideoTexture;
         private volatile boolean mShouldUpdateTexture;
+
+        private final float[] mMatrix = new float[16];
 
         private Object3D mObject3D;
 
-        public CanvasTextRenderer(Context context) {
+        public ViewTextureRenderer(Context context) {
             super(context);
         }
 
@@ -80,19 +81,16 @@ public class ViewToTextureFragment extends AExampleFragment {
             mObject3D.setPosition(0, 0, -3);
             mObject3D.setRenderChildrenAsBatch(true);
 
-            Material viewMaterial = new Material();
-            viewMaterial.setColorInfluence(0);
-            mViewBitmap = Bitmap.createBitmap(mFragmentToDraw.getView().getWidth(),
-                mFragmentToDraw.getView().getHeight(), Bitmap.Config.ARGB_8888);
-            mViewTexture = new Texture("viewTexture", mViewBitmap);
+            mVideoTexture = new ViewTexture("viewTexture", this);
+            Material material = new Material();
+            material.setColorInfluence(0);
             try {
-                viewMaterial.addTexture(mViewTexture);
+                material.addTexture(mVideoTexture);
             } catch (ATexture.TextureException e) {
                 e.printStackTrace();
             }
+            mObject3D.setMaterial(material);
 
-            mViewCanvas = new Canvas(mViewBitmap);
-            mObject3D.setMaterial(viewMaterial);
             getCurrentScene().addChild(mObject3D);
 
             RotateOnAxisAnimation anim = new RotateOnAxisAnimation(Vector3.Axis.Y, 0,
@@ -107,7 +105,10 @@ public class ViewToTextureFragment extends AExampleFragment {
         final Runnable mUpdateTexture = new Runnable() {
             public void run() {
                 // -- Draw the view on the canvas
-                mFragmentToDraw.getView().draw(mViewCanvas);
+                final Canvas canvas = mSurface.lockCanvas(null);
+                mVideoTexture.getSurfaceTexture().getTransformMatrix(mMatrix);
+                mFragmentToDraw.getView().draw(canvas);
+                mSurface.unlockCanvasAndPost(canvas);
                 // -- Indicates that the texture should be updated on the OpenGL thread.
                 mShouldUpdateTexture = true;
             }
@@ -116,17 +117,22 @@ public class ViewToTextureFragment extends AExampleFragment {
         @Override
         protected void onRender(long ellapsedRealtime, double deltaTime) {
             // -- not a really accurate way of doing things but you get the point :)
-            if (mFrameCount++ >= mFrameRate) {
+            if (mSurface != null && mFrameCount++ >= (mFrameRate * 0.25)) {
                 mFrameCount = 0;
                 mHandler.post(mUpdateTexture);
             }
             // -- update the texture because it is ready
             if (mShouldUpdateTexture) {
-                mViewTexture.setBitmap(mViewBitmap);
-                mTextureManager.replaceTexture(mViewTexture);
+                mVideoTexture.update();
                 mShouldUpdateTexture = false;
             }
             super.onRender(ellapsedRealtime, deltaTime);
+        }
+
+        @Override
+        public void setSurface(Surface surface) {
+            mSurface = surface;
+            mVideoTexture.getSurfaceTexture().setDefaultBufferSize(1024, 1024);
         }
     }
 
@@ -142,8 +148,9 @@ public class ViewToTextureFragment extends AExampleFragment {
             // Load the Rajawali Repo commit activity graph
             //webView.loadUrl("https://github.com/Rajawali/Rajawali/graphs/commit-activity");
             mWebView.loadUrl("https://plus.google.com/communities/116529974266844528013");
-            mWebView.setInitialScale(50);
+            mWebView.setInitialScale(100);
             mWebView.setScrollY(0);
+            mWebView.animate().rotationYBy(360.0f).setDuration(60000);
             view.setVisibility(View.INVISIBLE);
             return view;
         }
