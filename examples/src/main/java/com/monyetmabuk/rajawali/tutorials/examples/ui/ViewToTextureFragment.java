@@ -22,7 +22,7 @@ import org.rajawali3d.animation.Animation;
 import org.rajawali3d.animation.RotateOnAxisAnimation;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.textures.ATexture;
-import org.rajawali3d.materials.textures.ViewTexture;
+import org.rajawali3d.materials.textures.StreamingTexture;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Cube;
 
@@ -59,10 +59,10 @@ public class ViewToTextureFragment extends AExampleFragment {
         super.onBeforeApplyRenderer();
     }
 
-    private final class ViewTextureRenderer extends AExampleRenderer implements ViewTexture.IViewTexture {
+    private final class ViewTextureRenderer extends AExampleRenderer implements StreamingTexture.ISurfaceListener {
         private int mFrameCount;
         private Surface mSurface;
-        private ViewTexture mVideoTexture;
+        private StreamingTexture mStreamingTexture;
         private volatile boolean mShouldUpdateTexture;
 
         private final float[] mMatrix = new float[16];
@@ -81,11 +81,11 @@ public class ViewToTextureFragment extends AExampleFragment {
             mObject3D.setPosition(0, 0, -3);
             mObject3D.setRenderChildrenAsBatch(true);
 
-            mVideoTexture = new ViewTexture("viewTexture", this);
+            mStreamingTexture = new StreamingTexture("viewTexture", this);
             Material material = new Material();
             material.setColorInfluence(0);
             try {
-                material.addTexture(mVideoTexture);
+                material.addTexture(mStreamingTexture);
             } catch (ATexture.TextureException e) {
                 e.printStackTrace();
             }
@@ -106,7 +106,7 @@ public class ViewToTextureFragment extends AExampleFragment {
             public void run() {
                 // -- Draw the view on the canvas
                 final Canvas canvas = mSurface.lockCanvas(null);
-                mVideoTexture.getSurfaceTexture().getTransformMatrix(mMatrix);
+                mStreamingTexture.getSurfaceTexture().getTransformMatrix(mMatrix);
                 mFragmentToDraw.getView().draw(canvas);
                 mSurface.unlockCanvasAndPost(canvas);
                 // -- Indicates that the texture should be updated on the OpenGL thread.
@@ -123,7 +123,7 @@ public class ViewToTextureFragment extends AExampleFragment {
             }
             // -- update the texture because it is ready
             if (mShouldUpdateTexture) {
-                mVideoTexture.update();
+                mStreamingTexture.update();
                 mShouldUpdateTexture = false;
             }
             super.onRender(ellapsedRealtime, deltaTime);
@@ -132,7 +132,7 @@ public class ViewToTextureFragment extends AExampleFragment {
         @Override
         public void setSurface(Surface surface) {
             mSurface = surface;
-            mVideoTexture.getSurfaceTexture().setDefaultBufferSize(1024, 1024);
+            mStreamingTexture.getSurfaceTexture().setDefaultBufferSize(1024, 1024);
         }
     }
 

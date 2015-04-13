@@ -18,7 +18,7 @@ import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.materials.methods.SpecularMethod;
 import org.rajawali3d.materials.textures.ATexture;
-import org.rajawali3d.materials.textures.VideoTexture;
+import org.rajawali3d.materials.textures.StreamingTexture;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Cube;
 import org.rajawali3d.primitives.Plane;
@@ -32,7 +32,7 @@ public class VideoTextureFragment extends AExampleFragment {
 
 	private final class VideoTextureRenderer extends AExampleRenderer {
 		private MediaPlayer mMediaPlayer;
-		private VideoTexture mVideoTexture;
+		private StreamingTexture mVideoTexture;
 
 		public VideoTextureRenderer(Context context) {
 			super(context);
@@ -64,7 +64,7 @@ public class VideoTextureFragment extends AExampleFragment {
 					R.raw.sintel_trailer_480p);
 			mMediaPlayer.setLooping(true);
 
-			mVideoTexture = new VideoTexture("sintelTrailer", mMediaPlayer);
+			mVideoTexture = new StreamingTexture("sintelTrailer", mMediaPlayer);
 			Material material = new Material();
 			material.setColorInfluence(0);
 			try {
