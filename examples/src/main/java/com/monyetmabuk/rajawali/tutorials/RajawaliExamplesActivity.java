@@ -26,8 +26,9 @@ import android.widget.TextView;
 import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.Category;
 import com.monyetmabuk.rajawali.tutorials.ExamplesApplication.ExampleItem;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
-import com.monyetmabuk.rajawali.tutorials.wallpaper.FragmentPreferences;
 import com.monyetmabuk.rajawali.tutorials.wallpaper.WallpaperPreferenceActivity;
+
+import org.rajawali3d.util.RajLog;
 
 import java.util.Map;
 
@@ -171,7 +172,15 @@ public class RajawaliExamplesActivity extends ActionBarActivity implements
 			int groupPosition, int childPosition, long id) {
 		final Category category = Category.values()[groupPosition];
 		final ExampleItem exampleItem = ExamplesApplication.ITEMS.get(category)[childPosition];
-		launchFragment(category, exampleItem);
+		RajLog.i("Example Activity: " + exampleItem.exampleActivity);
+		RajLog.i("Example Fragment: " + exampleItem.exampleFragment);
+		if (exampleItem.exampleActivity != null) {
+			// Launch Activity
+			launchActivity(category, exampleItem);
+		} else {
+			// Launch Fragment
+			launchFragment(category, exampleItem);
+		}
 
 		return true;
 	}
@@ -181,6 +190,16 @@ public class RajawaliExamplesActivity extends ActionBarActivity implements
 		super.onSaveInstanceState(outState);
 		
 		outState.putString(KEY_TITLE, getTitle().toString());
+	}
+
+	private void launchActivity(Category category, ExampleItem exampleItem) {
+		// Close the drawer
+		RajLog.d("Launching Activity: " + exampleItem.exampleActivity.getSimpleName());
+		mDrawerLayout.closeDrawers();
+		final Intent intent = new Intent(getApplicationContext(), exampleItem.exampleActivity);
+		//intent.putExtra(AExampleFragment.BUNDLE_EXAMPLE_URL, exampleItem.getUrl(category));
+		//intent.putExtra(AExampleFragment.BUNDLE_EXAMPLE_TITLE, exampleItem.title);
+		startActivity(intent);
 	}
 
 	/**
@@ -196,7 +215,7 @@ public class RajawaliExamplesActivity extends ActionBarActivity implements
 
 		final FragmentTransaction transaction = fragmentManager.beginTransaction();
 		try {
-			final Fragment fragment = (Fragment) exampleItem.exampleClass.getConstructors()[0].newInstance();
+			final Fragment fragment = (Fragment) exampleItem.exampleFragment.getConstructors()[0].newInstance();
 
 			final Bundle bundle = new Bundle();
 			bundle.putString(AExampleFragment.BUNDLE_EXAMPLE_URL, exampleItem.getUrl(category));

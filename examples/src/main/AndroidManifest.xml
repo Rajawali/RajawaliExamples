@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
     package="com.monyetmabuk.rajawali.tutorials"
     android:versionCode="1"
     android:versionName="1.0" >
+
+    <uses-sdk
+        tools:overrideLibrary="org.rajawali3d.vr"/>
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -30,7 +34,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".examples.interactive.VRActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name">
+            <intent-filter>
+                <category android:name="com.google.intent.category.CARDBOARD"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".wallpaper.WallpaperPreferenceActivity"
             android:exported="true"
@@ -39,11 +51,6 @@
         <activity
             android:name=".wallpaper.PreviewActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
 
         <service

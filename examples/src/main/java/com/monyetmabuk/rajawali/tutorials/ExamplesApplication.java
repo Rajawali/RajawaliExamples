@@ -1,5 +1,6 @@
 package com.monyetmabuk.rajawali.tutorials;
 
+import android.app.Activity;
 import android.app.Application;
 
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
@@ -16,8 +17,6 @@ import com.monyetmabuk.rajawali.tutorials.examples.animation.SkeletalAnimationBl
 import com.monyetmabuk.rajawali.tutorials.examples.animation.SkeletalAnimationMD5Fragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.ArcballCameraFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.BasicFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.interactive.FirstPersonCameraFragment;
-import com.monyetmabuk.rajawali.tutorials.examples.ui.AnimatedTextureViewFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.ChaseCameraFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.CollisionDetectionFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.ColoredLinesFragment;
@@ -34,8 +33,10 @@ import com.monyetmabuk.rajawali.tutorials.examples.general.ThreeSixtyImagesFragm
 import com.monyetmabuk.rajawali.tutorials.examples.general.UniformDistributionFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.general.UsingGeometryDataFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.interactive.AccelerometerFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.interactive.FirstPersonCameraFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.interactive.ObjectPickingFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.interactive.TouchAndDragFragment;
+import com.monyetmabuk.rajawali.tutorials.examples.interactive.VRActivity;
 import com.monyetmabuk.rajawali.tutorials.examples.lights.DirectionalLightFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.lights.MultipleLightsFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.lights.PointLightFragment;
@@ -75,6 +76,8 @@ import com.monyetmabuk.rajawali.tutorials.examples.ui.TransparentSurfaceFragment
 import com.monyetmabuk.rajawali.tutorials.examples.ui.TwoDimensionalFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.UIElementsFragment;
 import com.monyetmabuk.rajawali.tutorials.examples.ui.ViewToTextureFragment;
+
+import org.rajawali3d.util.RajLog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -119,6 +122,8 @@ public class ExamplesApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 
+		RajLog.setDebugEnabled(true);
+
 		// @formatter:off
 		ITEMS.put(Category.GENERAL, new ExampleItem[] { 
 				new ExampleItem("Getting Started", BasicFragment.class) 
@@ -158,6 +163,7 @@ public class ExamplesApplication extends Application {
 				, new ExampleItem("Object Picking", ObjectPickingFragment.class)
 				, new ExampleItem("Touch & Drag", TouchAndDragFragment.class)
                 , new ExampleItem("First Person Camera", FirstPersonCameraFragment.class)
+				, new ExampleItem("Rajawali VR", VRActivity.class)
 			});
 		ITEMS.put(Category.UI, new ExampleItem[] {
 				new ExampleItem("UI Elements", UIElementsFragment.class)
@@ -270,13 +276,22 @@ public class ExamplesApplication extends Application {
 
 	public static final class ExampleItem {
 
-		public final Class<? extends AExampleFragment> exampleClass;
+		public final Class<?> exampleFragment;
+		public final Class<?> exampleActivity;
 		public final String title;
 		public final String url;
 
-		public ExampleItem(String title, Class<? extends AExampleFragment> exampleClass) {
+		public ExampleItem(String title, Class<?> exampleClass) {
 			this.title = title;
-			this.exampleClass = exampleClass;
+			if (AExampleFragment.class.isAssignableFrom(exampleClass)) {
+				exampleFragment = exampleClass;
+				exampleActivity = null;
+			} else if (Activity.class.isAssignableFrom(exampleClass)) {
+				exampleFragment = null;
+				exampleActivity = exampleClass;
+			} else {
+				throw new IllegalArgumentException("Example must extend either AExampleFragment or Activity.");
+			}
 			this.url = exampleClass.getSimpleName() + ".java";
 		}
 

@@ -20,6 +20,7 @@ android {
 
 dependencies {
     compile project.depRajawali
+    compile project.depRajawaliVR
     compile project.depAndroidSupport
     compile project.depAppCompat
     compile project.depGSON
