@@ -1,1 +1,1 @@
-include ':examples'
+include ':examples', ':wear_example_face', ':wear_example_app'

@@ -10,6 +10,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/examples" />
+            <option value="$PROJECT_DIR$/wear_example_app" />
+            <option value="$PROJECT_DIR$/wear_example_face" />
           </set>
         </option>
       </GradleProjectSettings>
