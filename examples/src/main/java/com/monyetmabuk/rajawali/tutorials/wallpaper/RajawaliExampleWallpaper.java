@@ -38,6 +38,6 @@ public class RajawaliExampleWallpaper extends Wallpaper {
             useFallback = true;
         }
         if (useFallback) mRenderer = new WallpaperRenderer(this);
-        return new WallpaperEngine(getBaseContext(), mRenderer, IRajawaliSurface.ANTI_ALIASING_CONFIG.NONE);
+        return new WallpaperEngine(getBaseContext(), mRenderer, IRajawaliSurface.ANTI_ALIASING_MODE.NONE);
     }
 }
