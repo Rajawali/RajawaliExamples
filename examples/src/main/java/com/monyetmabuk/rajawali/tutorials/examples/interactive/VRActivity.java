@@ -35,11 +35,6 @@ import org.rajawali3d.vr.RajawaliVRRenderer;
 @TargetApi(16)
 public class VRActivity extends RajawaliVRActivity {
 
-    public VRActivity() {
-        super();
-        RajLog.d("VRActivity <init>");
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         RajLog.d("VRActivity onCreate()");
@@ -87,6 +82,7 @@ public class VRActivity extends RajawaliVRActivity {
             light = new DirectionalLight(0.2f, 1f, 0f);
             light.setPower(1f);
             getCurrentScene().addLight(light);
+            getCurrentCamera().setNearPlane(1);
             getCurrentCamera().setFarPlane(1000);
             getCurrentScene().setBackgroundColor(0xdddddd);
 
