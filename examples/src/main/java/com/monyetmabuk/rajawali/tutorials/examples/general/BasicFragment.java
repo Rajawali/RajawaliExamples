@@ -19,7 +19,7 @@ public class BasicFragment extends AExampleFragment {
 		return new BasicRenderer(getActivity());
 	}
 
-	private final class BasicRenderer extends AExampleRenderer {
+	public final class BasicRenderer extends AExampleRenderer {
 
 		private Object3D mSphere;
 

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-    package="com.monyetmabuk.rajawali.tutorials"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    package="com.monyetmabuk.rajawali.tutorials">
 
     <uses-sdk
         tools:overrideLibrary="org.rajawali3d.vr"/>
@@ -67,6 +65,21 @@
                 android:name="android.service.wallpaper"
                 android:resource="@xml/rajawali_example_wallpaper">
             </meta-data>
+        </service>
+
+        <service
+            android:name="com.monyetmabuk.rajawali.tutorials.daydream.DayDream"
+            android:exported="true"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.service.dreams.DreamService"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.service.dream"
+                android:resource="@xml/rajawali_example_daydream"/>
         </service>
     </application>
 
