@@ -25,7 +25,7 @@ import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Cube;
 import org.rajawali3d.primitives.Sphere;
-import org.rajawali3d.surface.IRajawaliSurface;
+import org.rajawali3d.view.ISurface;
 
 public class ChaseCameraFragment extends AExampleFragment implements
     OnSeekBarChangeListener {
@@ -73,7 +73,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
 
     @Override
     protected void onBeforeApplyRenderer() {
-        mRajawaliSurface.setAntiAliasingMode(IRajawaliSurface.ANTI_ALIASING_CONFIG.MULTISAMPLING);
+        mRajawaliSurface.setAntiAliasingMode(ISurface.ANTI_ALIASING_CONFIG.MULTISAMPLING);
         mRajawaliSurface.setSampleCount(2);
         super.onBeforeApplyRenderer();
     }

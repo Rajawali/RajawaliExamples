@@ -2,18 +2,16 @@ package com.monyetmabuk.rajawali.tutorials.examples.general;
 
 import android.app.Activity;
 import android.content.Context;
-
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
-
 import org.rajawali3d.Object3D;
 import org.rajawali3d.cameras.ArcballCamera;
+import org.rajawali3d.debug.DebugVisualizer;
+import org.rajawali3d.debug.GridFloor;
 import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.loader.LoaderAWD;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
-import org.rajawali3d.util.debugvisualizer.DebugVisualizer;
-import org.rajawali3d.util.debugvisualizer.GridFloor;
 
 /**
  * Drag to rotate and pinch to zoom.

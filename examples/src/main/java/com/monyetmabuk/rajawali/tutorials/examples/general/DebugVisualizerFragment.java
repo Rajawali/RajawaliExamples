@@ -2,23 +2,21 @@ package com.monyetmabuk.rajawali.tutorials.examples.general;
 
 import android.content.Context;
 import android.graphics.Color;
-
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
-
-import org.rajawali3d.cameras.Camera;
 import org.rajawali3d.Object3D;
 import org.rajawali3d.animation.Animation;
 import org.rajawali3d.animation.EllipticalOrbitAnimation3D;
 import org.rajawali3d.animation.RotateAroundAnimation3D;
+import org.rajawali3d.cameras.Camera;
+import org.rajawali3d.debug.DebugCamera;
+import org.rajawali3d.debug.DebugLight;
+import org.rajawali3d.debug.DebugVisualizer;
+import org.rajawali3d.debug.GridFloor;
 import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Sphere;
-import org.rajawali3d.util.debugvisualizer.DebugCamera;
-import org.rajawali3d.util.debugvisualizer.DebugLight;
-import org.rajawali3d.util.debugvisualizer.DebugVisualizer;
-import org.rajawali3d.util.debugvisualizer.GridFloor;
 
 public class DebugVisualizerFragment extends AExampleFragment {
 

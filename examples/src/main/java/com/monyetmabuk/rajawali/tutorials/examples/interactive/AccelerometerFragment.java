@@ -84,7 +84,6 @@ public class AccelerometerFragment extends AExampleFragment implements
 
                 mMonkey = parser.getParsedObject();
 
-                mMonkey.setRotY(180);
                 getCurrentScene().addChild(mMonkey);
 
                 getCurrentCamera().setZ(7);

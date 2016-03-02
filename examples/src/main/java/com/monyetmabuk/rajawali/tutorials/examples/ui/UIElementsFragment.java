@@ -9,17 +9,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.examples.AExampleFragment;
-
 import org.rajawali3d.Object3D;
 import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.loader.LoaderAWD;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.materials.methods.SpecularMethod;
-import org.rajawali3d.math.vector.Vector3;
 
 public class UIElementsFragment extends AExampleFragment {
 
@@ -65,7 +62,7 @@ public class UIElementsFragment extends AExampleFragment {
 		protected void initScene() {
 			mLight = new DirectionalLight(0, 0, -1);
 			mLight.setPower(.8f);
-			
+
 			getCurrentScene().addLight(mLight);
 			getCurrentCamera().setPosition(0, 0, 8);
 
@@ -74,7 +71,6 @@ public class UIElementsFragment extends AExampleFragment {
                 parser.parse();
 
                 mMonkey = parser.getParsedObject();
-                mMonkey.setRotation(Vector3.Axis.Y, 180);
 
                 getCurrentScene().addChild(mMonkey);
 			} catch (Exception e) {

@@ -3,9 +3,7 @@ package com.monyetmabuk.rajawali.tutorials.wallpaper;
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.animation.AccelerateDecelerateInterpolator;
-
 import com.monyetmabuk.rajawali.tutorials.R;
-
 import org.rajawali3d.animation.Animation;
 import org.rajawali3d.animation.Animation3D;
 import org.rajawali3d.animation.RotateOnAxisAnimation;
@@ -17,12 +15,12 @@ import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Cube;
-import org.rajawali3d.renderer.RajawaliRenderer;
+import org.rajawali3d.renderer.Renderer;
 
 /**
  * @author Jared Woolston (jwoolston@idealcorp.com)
  */
-public class WallpaperRenderer extends RajawaliRenderer {
+public class WallpaperRenderer extends Renderer {
 
     public WallpaperRenderer(Context context) {
         super(context);

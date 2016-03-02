@@ -25,7 +25,7 @@ import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Sphere;
-import org.rajawali3d.surface.IRajawaliSurfaceRenderer;
+import org.rajawali3d.renderer.ISurfaceRenderer;
 
 /**
  * @author Jared Woolston (jwoolston@idealcorp.com)
@@ -66,7 +66,7 @@ public class FirstPersonCameraFragment extends AExampleFragment {
     }
 
     @Override
-    public IRajawaliSurfaceRenderer createRenderer() {
+    public ISurfaceRenderer createRenderer() {
         mRenderer = new FPSRenderer(getActivity());
         return mRenderer;
     }

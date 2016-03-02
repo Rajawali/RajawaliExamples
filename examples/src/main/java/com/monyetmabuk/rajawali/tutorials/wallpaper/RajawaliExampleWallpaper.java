@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import org.rajawali3d.surface.IRajawaliSurface;
-import org.rajawali3d.surface.IRajawaliSurfaceRenderer;
+import org.rajawali3d.renderer.ISurfaceRenderer;
 import org.rajawali3d.util.RajLog;
+import org.rajawali3d.view.ISurface;
 import org.rajawali3d.wallpaper.Wallpaper;
 
 import java.lang.reflect.InvocationTargetException;
@@ -16,7 +16,7 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class RajawaliExampleWallpaper extends Wallpaper {
 
-    private IRajawaliSurfaceRenderer mRenderer;
+    private ISurfaceRenderer mRenderer;
 
     @Override
     public Engine onCreateEngine() {
@@ -25,7 +25,7 @@ public class RajawaliExampleWallpaper extends Wallpaper {
         try {
             final Class rendererClass = Class.forName(mSharedPreferences.getString("renderer_class", WallpaperRenderer.class.getCanonicalName()));
             RajLog.d("Creating wallpaper engine: " + rendererClass.getCanonicalName());
-            mRenderer = (IRajawaliSurfaceRenderer) rendererClass.getConstructor(Context.class).newInstance(this);
+            mRenderer = (ISurfaceRenderer) rendererClass.getConstructor(Context.class).newInstance(this);
         } catch (NoSuchMethodException e) {
             useFallback = true;
         } catch (InvocationTargetException e) {
@@ -38,6 +38,6 @@ public class RajawaliExampleWallpaper extends Wallpaper {
             useFallback = true;
         }
         if (useFallback) mRenderer = new WallpaperRenderer(this);
-        return new WallpaperEngine(getBaseContext(), mRenderer, IRajawaliSurface.ANTI_ALIASING_CONFIG.NONE);
+        return new WallpaperEngine(getBaseContext(), mRenderer, ISurface.ANTI_ALIASING_CONFIG.NONE);
     }
 }

@@ -37,7 +37,7 @@ public class MultipleLightsFragment extends AExampleFragment {
 
 			getCurrentScene().addLight(light1);
 			getCurrentScene().addLight(light2);
-			
+
 			getCurrentCamera().setPosition(0, 2, 4);
 			getCurrentCamera().setLookAt(0, 0, 0);
 
@@ -51,7 +51,6 @@ public class MultipleLightsFragment extends AExampleFragment {
                 material.setColor(0xff990000);
 				material.enableLighting(true);
 				suzanne.setMaterial(material);
-				suzanne.setRotY(180);
 				getCurrentScene().addChild(suzanne);
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -16,26 +16,26 @@ import android.widget.ProgressBar;
 import com.monyetmabuk.rajawali.tutorials.R;
 import com.monyetmabuk.rajawali.tutorials.views.GithubLogoView;
 
-import org.rajawali3d.IRajawaliDisplay;
-import org.rajawali3d.renderer.RajawaliRenderer;
-import org.rajawali3d.surface.IRajawaliSurface;
-import org.rajawali3d.surface.IRajawaliSurfaceRenderer;
+import org.rajawali3d.renderer.ISurfaceRenderer;
+import org.rajawali3d.renderer.Renderer;
+import org.rajawali3d.view.IDisplay;
+import org.rajawali3d.view.ISurface;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-public abstract class AExampleFragment extends Fragment implements IRajawaliDisplay, OnClickListener {
+public abstract class AExampleFragment extends Fragment implements IDisplay, OnClickListener {
 
 	public static final String BUNDLE_EXAMPLE_URL = "BUNDLE_EXAMPLE_URL";
 	public static final String BUNDLE_EXAMPLE_TITLE = "BUNDLE_EXAMPLE_TITLE";
 
-	protected ProgressBar mProgressBarLoader;
-	protected GithubLogoView mImageViewExampleLink;
-	protected String mExampleUrl;
-	protected String mExampleTitle;
-    protected FrameLayout mLayout;
-    protected IRajawaliSurface mRajawaliSurface;
-    protected IRajawaliSurfaceRenderer mRenderer;
+	protected ProgressBar      mProgressBarLoader;
+	protected GithubLogoView   mImageViewExampleLink;
+	protected String           mExampleUrl;
+	protected String           mExampleTitle;
+    protected FrameLayout      mLayout;
+    protected ISurface         mRajawaliSurface;
+    protected ISurfaceRenderer mRenderer;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public abstract class AExampleFragment extends Fragment implements IRajawaliDisp
 		mLayout.findViewById(R.id.relative_layout_loader_container).bringToFront();
 
         // Find the TextureView
-        mRajawaliSurface = (IRajawaliSurface) mLayout.findViewById(R.id.rajwali_surface);
+        mRajawaliSurface = (ISurface) mLayout.findViewById(R.id.rajwali_surface);
 
 		// Create the loader
 		mProgressBarLoader = (ProgressBar) mLayout.findViewById(R.id.progress_bar_loader);
@@ -132,7 +132,7 @@ public abstract class AExampleFragment extends Fragment implements IRajawaliDisp
 		});
 	}
 
-	protected abstract class AExampleRenderer extends RajawaliRenderer {
+	protected abstract class AExampleRenderer extends Renderer {
 
 		public AExampleRenderer(Context context) {
 			super(context);

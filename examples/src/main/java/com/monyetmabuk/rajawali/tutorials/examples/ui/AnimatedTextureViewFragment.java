@@ -13,15 +13,15 @@ import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Sphere;
-import org.rajawali3d.surface.RajawaliTextureView;
+import org.rajawali3d.view.TextureView;
 
 /**
- * This example shows the addition of a {@link RajawaliTextureView} with properties
+ * This example shows the addition of a {@link TextureView} with properties
  * set in XML.
  */
 public class AnimatedTextureViewFragment extends AExampleFragment {
 
-    private RajawaliTextureView mRajawaliTextureView;
+    private TextureView mRajawaliTextureView;
 
 	@Override
     public AExampleRenderer createRenderer() {

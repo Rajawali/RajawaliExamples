@@ -20,6 +20,7 @@ import org.rajawali3d.loader.LoaderAWD;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.math.vector.Vector3.Axis;
 
 public class AnimationFragment extends AExampleFragment {
 
@@ -47,6 +48,7 @@ public class AnimationFragment extends AExampleFragment {
                 parser.parse();
 
                 final Object3D monkey = parser.getParsedObject();
+                monkey.rotate(Axis.Y, 180.0);
 
                 getCurrentScene().addLight(mLight);
                 getCurrentScene().addChild(monkey);

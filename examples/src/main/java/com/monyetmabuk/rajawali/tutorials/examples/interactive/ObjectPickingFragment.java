@@ -83,7 +83,7 @@ public class ObjectPickingFragment extends AExampleFragment implements
                 mPicker = new ObjectColorPicker(this);
                 mPicker.setOnObjectPickedListener(this);
                 mLight = new PointLight();
-                mLight.setPosition(-2, 1, 4);
+                mLight.setPosition(0, 0, 4);
                 mLight.setPower(1.5f);
                 getCurrentScene().addLight(mLight);
                 getCurrentCamera().setPosition(0, 0, 7);

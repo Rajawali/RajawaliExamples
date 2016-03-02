@@ -19,10 +19,10 @@ import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Cube;
-import org.rajawali3d.surface.RajawaliSurfaceView;
+import org.rajawali3d.view.SurfaceView;
 
 public class TransparentSurfaceFragment extends AExampleFragment {
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class TransparentSurfaceFragment extends AExampleFragment {
 
     @Override
     protected void onBeforeApplyRenderer() {
-        ((RajawaliSurfaceView) mRajawaliSurface).setTransparent(true);
+        ((SurfaceView) mRajawaliSurface).setTransparent(true);
         super.onBeforeApplyRenderer();
     }
 
@@ -52,7 +52,7 @@ public class TransparentSurfaceFragment extends AExampleFragment {
     public AExampleRenderer createRenderer() {
 		return new TransparentSurfaceRenderer(getActivity());
 	}
-	
+
 	private final class TransparentSurfaceRenderer extends AExampleRenderer {
 
 		public TransparentSurfaceRenderer(Context context) {
@@ -63,7 +63,7 @@ public class TransparentSurfaceFragment extends AExampleFragment {
 		protected void initScene() {
 			DirectionalLight light = new DirectionalLight(0, 0, -1);
 			light.setPower(1);
-			
+
 			getCurrentScene().addLight(light);
 			getCurrentCamera().setPosition(0, 0, 16);
 

@@ -143,9 +143,9 @@ public class CollisionDetectionFragment extends AExampleFragment {
 			mSphereIntersect = bsphere.intersectsWith(bsphere2);
 
 			if (mSphereIntersect && !mBoxIntersect)
-				getCurrentScene().setBackgroundColor(0xff990000);
-			else if (!mSphereIntersect && mBoxIntersect)
 				getCurrentScene().setBackgroundColor(0xff00bfff);
+			else if (!mSphereIntersect && mBoxIntersect)
+				getCurrentScene().setBackgroundColor(0xff990000);
 			else if (mSphereIntersect && mBoxIntersect)
 				getCurrentScene().setBackgroundColor(0xff999999);
 			else
