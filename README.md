@@ -1,7 +1,4 @@
 ## Rajawali Examples
 
-## Build Status
-**Master Branch Status**  [![master](https://travis-ci.org/Rajawali/RajawaliExamples.svg?branch=master)](https://travis-ci.org/Rajawali/RajawaliExamples)
-
-**Development Branch Status**  [![development](https://travis-ci.org/Rajawali/RajawaliExamples.svg?branch=development)](https://travis-ci.org/Rajawali/RajawaliExamples)
-
+## ATTENTION
+As of 03/17/2016, this module/example is fully integrated to the examples application which has been moved to the main Rajawali repository: https://github.com/Rajawali/Rajawali. This repository will remain for historical reference but **it is effectively abandoned and no responses from the maintainers should be expected.**
